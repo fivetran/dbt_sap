@@ -12,3 +12,4 @@ vars:
   sap:
     ## Staging Models
     mara: "{{ ref('stg_sap__mara') }}"
+    ska1: "{{ ref('stg_sap__ska1') }}"
