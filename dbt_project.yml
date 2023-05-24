@@ -11,5 +11,10 @@ models:
 vars:
   sap:
     ## Staging Models
+    bkpf: "{{ ref('stg_sap__bkpf') }}"
+    bseg: "{{ ref('stg_sap__bseg') }}"
+    faglflexa: "{{ ref('stg_sap__faglflexa') }}"
+    faglflext: "{{ ref('stg_sap__faglflext') }}"
     mara: "{{ ref('stg_sap__mara') }}"
     ska1: "{{ ref('stg_sap__ska1') }}"
+    t001: "{{ ref('stg_sap__t001') }}"
