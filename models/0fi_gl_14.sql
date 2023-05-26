@@ -91,8 +91,10 @@ final as (
         and bkpf.belnr = bseg.belnr
         and bkpf.gjahr = bseg.gjahr
         and faglflexa.buzei = bseg.buzei
-    where bkpf.mandt = '800'
-        and faglflexa.rldnr = '0l'
+    where bkpf.mandt = {{ var('bkpf_mandt_var') }}
+        --bkpf.mandt = '800'
+        and faglflexa.rldnr = {{ var('faglflexa_rldnr_var') }}
+        -- faglflexa.rldnr = '0l'
 )
 
 select *

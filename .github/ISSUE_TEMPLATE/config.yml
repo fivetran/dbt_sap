@@ -1,7 +1,7 @@
 contact_links:
-  - name: Ask a question during our office hours
-    url: https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours
-    about: Schedule time during the external office hours block with the Fivetran Analytics Engineering team for support
+  - name: Chat with us in our Fivetran dbt community
+    url: https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group
+    about: Submit any questions you have about our dbt packages so our Fivetran Analytics Engineering team can provide guidance as quickly as possible!
   - name: Fivetran connector question
     url: https://support.fivetran.com/hc
     about: Have a question about your connector? Check out the Fivetran support portal for more details.
