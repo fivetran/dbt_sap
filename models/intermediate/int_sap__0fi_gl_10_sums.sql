@@ -1,4 +1,4 @@
-th faglflext as ( 
+with faglflext as ( 
 
 	select * 
 	from {{ var('faglflext') }}
@@ -205,3 +205,6 @@ final as (
         and rldnr = '0L'
         --and prctr = '0000001500'
 )
+
+select *
+from final
