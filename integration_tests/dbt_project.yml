@@ -3,11 +3,8 @@ version: '0.1.0'
 profile: 'integration_tests'
 config-version: 2
 
-models: 
-  +materialized: table 
-
 vars:
-  sap_schema: sap_source_integration_tests
+  sap_schema: sap_integration_tests
   sap_source:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bseg_identifier: "sap_bseg_data"
@@ -20,3 +17,239 @@ vars:
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
+
+seeds:
+  sap_integration_tests:
+    +column_types:
+      _fivetran_rowid: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+      _fivetran_synced: timestamp
+
+    sap_bkpf_data:
+      +column_types:
+        aedat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        awkey: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bldat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cpudt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cputm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ctxkrs: numeric
+        frath: numeric
+        kursf: numeric
+        kurs2: numeric
+        kurs3: numeric
+        kursx: numeric
+        kur2x: numeric
+        kur3x: numeric
+        kzkrs: numeric
+        reindat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stodt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txkrs: numeric
+        upddt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wwert: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_bseg_data:
+      +column_types:
+        absbt: numeric
+        bdiff: numeric
+        bdif2: numeric
+        bdif3: numeric
+        blnbt: numeric
+        blnpz: numeric
+        bonfb: numeric
+        bpmng: numeric
+        bualt: numeric
+        dmbe2: numeric
+        dmb21: numeric
+        dmb22: numeric
+        dmb23: numeric
+        dmbe3: numeric
+        dmb31: numeric
+        dmb32: numeric
+        dmb33: numeric
+        dmbt1: numeric
+        dmbt2: numeric
+        dmbt3: numeric
+        dmbtr: numeric
+        erfmg: numeric
+        fdwbt: numeric
+        fwbas: numeric
+        gbetr: numeric
+        fwzuz: numeric
+        hwbas: numeric
+        hwzus: numeric
+        hwzuz: numeric
+        klibt: numeric
+        kzbtr: numeric
+        kursr: numeric
+        menge: numeric
+        mwst2: numeric
+        mwst3: numeric
+        mwsts: numeric
+        navfw: numeric
+        navhw: numeric
+        navh2: numeric
+        navh3: numeric
+        nebtr: numeric
+        nprei: numeric
+        penfc: numeric
+        penlc1: numeric
+        penlc2: numeric
+        penlc3: numeric
+        popts: numeric
+        ppdiff: numeric
+        ppdif2: numeric
+        ppdif3: numeric
+        pswbt: numeric
+        pyamt: numeric
+        qbshb: numeric
+        qsfbt: numeric
+        qsshb: numeric
+        rdiff: numeric
+        rdif2: numeric
+        rdif3: numeric
+        rewrt: numeric 
+        rewwr: numeric
+        sctax: numeric
+        skfbt: numeric
+        sknto: numeric
+        sknt2: numeric
+        sknt3: numeric
+        sttax: numeric
+        txbfw: numeric
+        txbhw: numeric
+        txbh2: numeric
+        txbh3: numeric
+        wmwst: numeric
+        wrbt1: numeric
+        wrbt2: numeric
+        wrbt3: numeric
+        wrbtr: numeric
+        wskto: numeric
+        zbd1p: numeric
+        zbd2p: numeric
+        
+    sap_faglflexa_data:
+      +column_types:
+        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hsl: numeric
+        ksl: numeric
+        msl: numeric
+        osl: numeric
+        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        timestamp: numeric
+        tsl: numeric
+        wsl: numeric
+
+    sap_faglflext_data:
+      +column_types:
+        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hslvt: numeric
+        hsl01: numeric 
+        hsl02: numeric
+        hsl03: numeric
+        hsl04: numeric
+        hsl05: numeric
+        hsl06: numeric
+        hsl07: numeric
+        hsl08: numeric
+        hsl09: numeric
+        hsl10: numeric
+        hsl11: numeric
+        hsl12: numeric
+        hsl13: numeric
+        hsl14: numeric
+        hsl15: numeric
+        hsl16: numeric
+        kslvt: numeric
+        ksl01: numeric
+        ksl02: numeric
+        ksl03: numeric
+        ksl04: numeric
+        ksl05: numeric
+        ksl06: numeric
+        ksl07: numeric
+        ksl08: numeric
+        ksl09: numeric
+        ksl10: numeric 
+        ksl11: numeric
+        ksl12: numeric
+        ksl13: numeric
+        ksl14: numeric
+        ksl15: numeric
+        ksl16: numeric
+        mslvt: numeric
+        msl01: numeric
+        msl02: numeric
+        msl03: numeric
+        msl04: numeric
+        msl05: numeric
+        msl06: numeric
+        msl07: numeric
+        msl08: numeric
+        msl09: numeric
+        msl10: numeric
+        msl11: numeric
+        msl12: numeric
+        msl13: numeric
+        msl14: numeric
+        msl15: numeric
+        msl16: numeric
+        oslvt: numeric
+        osl01: numeric
+        osl02: numeric
+        osl03: numeric
+        osl04: numeric
+        osl05: numeric
+        osl06: numeric
+        osl07: numeric
+        osl08: numeric
+        osl09: numeric
+        osl10: numeric
+        osl11: numeric
+        osl12: numeric
+        osl13: numeric
+        osl14: numeric
+        osl15: numeric
+        osl16: numeric
+        tslvt: numeric
+        tsl01: numeric
+        tsl02: numeric
+        tsl03: numeric
+        tsl04: numeric
+        tsl05: numeric
+        tsl06: numeric
+        tsl07: numeric
+        tsl08: numeric
+        tsl09: numeric
+        tsl10: numeric
+        tsl11: numeric
+        tsl12: numeric
+        tsl13: numeric
+        tsl14: numeric
+        tsl15: numeric
+        tsl16: numeric
+        timestamp: numeric
+
+    sap_mara_data:
+      +column_types:
+        breit: numeric
+        brgew: numeric
+        ergew: numeric
+        ervol: numeric
+        gewto: numeric
+        hoehe: numeric
+        inhal: numeric
+        inhbr: numeric
+        laeng: numeric
+        ntgew: numeric
+        volto: numeric
+        volum: numeric
+        wesch: numeric
