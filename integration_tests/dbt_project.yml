@@ -13,6 +13,18 @@ vars:
     sap_mara_identifier: "sap_mara_data"
     sap_ska1_identifier: "sap_ska1_data"
     sap_t001_identifier: "sap_t001_data"
+  
+  bkpf_mandt_var: '800'
+  mara_mandt_var: '' 
+  ska1_mandt_var: ''
+  faglflexa_rldnr_var: "0l"
+  faglflext_prctr_var: ''
+  faglflext_racct_var: ''
+  faglflext_racct_var: ''
+  faglflext_rbukrs_var: '2400'
+  faglflext_rclnt_var: '800'
+  faglflext_rldnr_var: "0L"
+  faglflext_ryear_var: '2007'
 
 dispatch:
   - macro_namespace: dbt_utils
