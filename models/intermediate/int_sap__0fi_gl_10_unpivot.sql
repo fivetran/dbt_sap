@@ -39,7 +39,7 @@ final as (
 			when left(fieldtype,1) = 'k' then '20' 
 			when left(fieldtype,1) = 'o' then '40' 
 			end as currency_type,
-		concat('0', case when right(fieldtype,2) = 'vt' then '00' else right(fieldtype,2) end, '.', ryear) as fiscal_period,
+		'0' || case when right(fieldtype, 2) = 'vt' then '00' else right(fieldtype, 2) end|| '.' || ryear as fiscal_period, 
 		case when drcrk = 's' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as debit_amount,
