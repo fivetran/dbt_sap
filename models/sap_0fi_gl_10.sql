@@ -1,4 +1,4 @@
-with unpivot as ( 
+with unpivot_gl as ( 
 
 	select * 
 	from {{ ref('int_sap__0fi_gl_10_unpivot') }}
@@ -39,7 +39,7 @@ final as (
         sum(credit_amount) as credit_amount,
         sum(accumulated_balance) as accumulated_balance,
         sum(turnover) as turnover
-    from unpivot
+    from unpivot_gl
     {{ dbt_utils.group_by(28) }}  
 )
 
