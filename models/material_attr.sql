@@ -138,8 +138,8 @@ final as (
 		_fivetran_synced
 	from
 		mara
-	where
-		mandt = {{ var('mara_mandt_var') }}
+	-- where
+	-- 	mandt = {{ var('mara_mandt_var') }}
 )
 
 select * 

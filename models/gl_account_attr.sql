@@ -26,8 +26,8 @@ final as (
 		mustr	
 	from
 		ska1
-	where
-		mandt = {{ var('ska1_mandt_var') }}
+	-- where
+	-- 	mandt = {{ var('ska1_mandt_var') }}
 )
 
 select * 
