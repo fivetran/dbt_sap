@@ -136,8 +136,7 @@ final as (
 		_fivetran_rowid,
 		_fivetran_deleted,
 		_fivetran_synced
-	from
-		mara
+	from mara
 	-- where
 	-- 	mandt = {{ var('mara_mandt_var') }}
 )

@@ -24,8 +24,7 @@ final as (
 		xspep,
 		func_area,
 		mustr	
-	from
-		ska1
+	from ska1
 	-- where
 	-- 	mandt = {{ var('ska1_mandt_var') }}
 )
