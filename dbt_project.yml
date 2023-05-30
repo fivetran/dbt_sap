@@ -6,7 +6,7 @@ require-dbt-version: [">=1.3.0", "<2.0.0"]
 models:
   sap:
     +materialized: table
-    +schema: sap
+    +schema: sap 
 
 vars:
   sap:

@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: 0fi_gl_10
+    description: to fill in 
+    quoting:
+      database: true
+      schema: true
+      identifier: true
+  - name: 0fi_gl_14
+    description: to fill in 
+    quoting:
+      database: true
+      schema: true
+      identifier: true
+  - name: gl_account_attr
+    description: to fill in 
+  - name: material_attr
+    description: to fill in

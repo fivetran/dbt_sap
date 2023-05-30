@@ -55,142 +55,197 @@ final as (
         t001.periv,
         t001.ktopl,
         faglflext.hslvt,
-        faglflext.hslvt AS hsmvt,
+        faglflext.hslvt as hsmvt,
+
         faglflext.hsl01,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01, 'numeric', 23,2) }} AS hsm01,
+        cast(faglflext.hslvt+faglflext.hsl01 as {{ dbt.type_numeric() }}) as hsm01,
         faglflext.hsl02,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02, 'numeric', 23,2) }} AS hsm02,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02 as {{ dbt.type_numeric() }} as hsm02,
         faglflext.hsl03,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03, 'numeric', 23,2) }} AS hsm03,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03 as {{ dbt.type_numeric() }}) as hsm03,
         faglflext.hsl04,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04, 'numeric', 23,2) }} AS hsm04,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04 as {{ dbt.type_numeric() }}) as hsm04,
         faglflext.hsl05,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05, 'numeric', 23,2) }} AS hsm05,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05 as {{ dbt.type_numeric() }}) as hsm05,
         faglflext.hsl06,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06, 'numeric', 23,2) }} AS hsm06,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06 as {{ dbt.type_numeric() }}) as hsm06,
         faglflext.hsl07,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07, 'numeric', 23,2) }} AS hsm07,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07 as {{ dbt.type_numeric() }}) as hsm07,
         faglflext.hsl08,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08, 'numeric', 23,2) }} AS hsm08,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08 as {{ dbt.type_numeric() }}) as hsm08,
         faglflext.hsl09,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09, 'numeric', 23,2) }} AS hsm09,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09 as {{ dbt.type_numeric() }}) as hsm09,
         faglflext.hsl10,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10, 'numeric', 23,2) }} AS hsm10,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10 as {{ dbt.type_numeric() }}) as hsm10,
         faglflext.hsl11,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11, 'numeric', 23,2) }} AS hsm11,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11 as {{ dbt.type_numeric() }}) as hsm11,
         faglflext.hsl12,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12, 'numeric', 23,2) }} AS hsm12,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12 as {{ dbt.type_numeric() }}) as hsm12,
         faglflext.hsl13,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13, 'numeric', 23,2) }} AS hsm13,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13 as {{ dbt.type_numeric() }}) as hsm13,
         faglflext.hsl14,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14, 'numeric', 23,2) }} AS hsm14,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14 as {{ dbt.type_numeric() }}) as hsm14,
         faglflext.hsl15,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14+faglflext.hsl15, 'numeric', 23,2) }} AS hsm15,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14+faglflext.hsl15 as {{ dbt.type_numeric() }}) as hsm15,
         faglflext.hsl16,
-        {{ dbt_utils.safe_cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14+faglflext.hsl15+faglflext.hsl16, 'numeric', 23,2) }} AS hsm16,
+        cast(faglflext.hslvt+faglflext.hsl01+faglflext.hsl02+faglflext.hsl03+faglflext.hsl04+faglflext.hsl05+faglflext.hsl06+faglflext.hsl07+faglflext.hsl08+faglflext.hsl09+faglflext.hsl10+faglflext.hsl11+faglflext.hsl12+faglflext.hsl13+faglflext.hsl14+faglflext.hsl15+faglflext.hsl16 as {{ dbt.type_numeric() }}) as hsm16, 
+
         faglflext.tslvt,
         faglflext.tslvt AS tsmvt,
+
         faglflext.tsl01,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01, 'numeric', 23,2) }} AS tsm01,
+        cast(faglflext.tslvt+faglflext.tsl01 as {{ dbt.type_numeric() }}) as tsm01,
+
         faglflext.tsl02,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02, 'numeric', 23,2) }} AS tsm02,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02 as {{ dbt.type_numeric() }}) as tsm02,
+
         faglflext.tsl03,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03, 'numeric', 23,2) }} AS tsm03,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03 as {{ dbt.type_numeric() }}) as tsm03,
+
         faglflext.tsl04,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04, 'numeric', 23,2) }} AS tsm04,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04 as {{ dbt.type_numeric() }}) as tsm04,
+
         faglflext.tsl05,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05, 'numeric', 23,2) }} AS tsm05,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05 as {{ dbt.type_numeric() }}) as tsm05,
+
         faglflext.tsl06,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06, 'numeric', 23,2) }} AS tsm06,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06 as {{ dbt.type_numeric() }}) as tsm06,
+
         faglflext.tsl07,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07, 'numeric', 23,2) }} AS tsm07,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07 as {{ dbt.type_numeric() }}) as tsm07,
+
         faglflext.tsl08,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08, 'numeric', 23,2) }} AS tsm08,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08 as {{ dbt.type_numeric() }}) as tsm08,
+
         faglflext.tsl09,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09, 'numeric', 23,2) }} AS tsm09,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09 as {{ dbt.type_numeric() }}) as tsm09,
+
         faglflext.tsl10,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10, 'numeric', 23,2) }} AS tsm10,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10 as {{ dbt.type_numeric() }}) as tsm10,
+
         faglflext.tsl11,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11, 'numeric', 23,2) }} AS tsm11,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11 as {{ dbt.type_numeric() }}) as tsm11,
+
         faglflext.tsl12,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12, 'numeric', 23,2) }} AS tsm12,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12 as {{ dbt.type_numeric() }}) as tsm12,
+
         faglflext.tsl13,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13, 'numeric', 23,2) }} AS tsm13,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13 as {{ dbt.type_numeric() }}) as tsm13,
+
         faglflext.tsl14,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14, 'numeric', 23,2) }} AS tsm14,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14 as {{ dbt.type_numeric() }}) as tsm14,
+
         faglflext.tsl15,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14+faglflext.tsl15, 'numeric', 23,2) }} AS tsm15,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14+faglflext.tsl15 as {{ dbt.type_numeric() }}) as tsm15,
+
         faglflext.tsl16,
-        {{ dbt_utils.safe_cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14+faglflext.tsl15+faglflext.tsl16, 'numeric', 23,2) }} AS tsm16,
+        cast(faglflext.tslvt+faglflext.tsl01+faglflext.tsl02+faglflext.tsl03+faglflext.tsl04+faglflext.tsl05+faglflext.tsl06+faglflext.tsl07+faglflext.tsl08+faglflext.tsl09+faglflext.tsl10+faglflext.tsl11+faglflext.tsl12+faglflext.tsl13+faglflext.tsl14+faglflext.tsl15+faglflext.tsl16 as {{ dbt.type_numeric() }}) as tsm16,
+
         faglflext.kslvt,
         faglflext.kslvt AS ksmvt,
+
         faglflext.ksl01,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01, 'numeric', 23,2) }} AS ksm01,
+        cast(faglflext.kslvt+faglflext.ksl01 as {{ dbt.type_numeric() }}) as ksm01,
+
         faglflext.ksl02,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02, 'numeric', 23,2) }} AS ksm02,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02 as {{ dbt.type_numeric() }}) as ksm02,
+
         faglflext.ksl03,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03, 'numeric', 23,2) }} AS ksm03,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03 as {{ dbt.type_numeric() }}) as ksm03,
+
         faglflext.ksl04,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04, 'numeric', 23,2) }} AS ksm04,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04 as {{ dbt.type_numeric() }}) as ksm04,
+
         faglflext.ksl05,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05, 'numeric', 23,2) }} AS ksm05,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05 as {{ dbt.type_numeric() }}) as ksm05,
+
         faglflext.ksl06,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06, 'numeric', 23,2) }} AS ksm06,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06 as {{ dbt.type_numeric() }}) as ksm06,
+
         faglflext.ksl07,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07, 'numeric', 23,2) }} AS ksm07,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07 as {{ dbt.type_numeric() }}) as ksm07,
+
         faglflext.ksl08,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08, 'numeric', 23,2) }} AS ksm08,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08 as {{ dbt.type_numeric() }}) as ksm08,
+
         faglflext.ksl09,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09, 'numeric', 23,2) }} AS ksm09,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09 as {{ dbt.type_numeric() }}) as ksm09,
+
         faglflext.ksl10,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10, 'numeric', 23,2) }} AS ksm10,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10 as {{ dbt.type_numeric() }}) as ksm10,
+
         faglflext.ksl11,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11, 'numeric', 23,2) }} AS ksm11,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11 as {{ dbt.type_numeric() }}) as ksm11,
+
         faglflext.ksl12,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12, 'numeric', 23,2) }} AS ksm12,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12 as {{ dbt.type_numeric() }}) as ksm12,
+
         faglflext.ksl13,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13, 'numeric', 23,2) }} AS ksm13,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13 as {{ dbt.type_numeric() }}) as ksm13,
+
         faglflext.ksl14,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14, 'numeric', 23,2) }} AS ksm14,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14 as {{ dbt.type_numeric() }}) as ksm14,
+
         faglflext.ksl15,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14+faglflext.ksl15, 'numeric', 23,2) }} AS ksm15,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14+faglflext.ksl15 as {{ dbt.type_numeric() }}) as ksm15,
+
         faglflext.ksl16,
-        {{ dbt_utils.safe_cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14+faglflext.ksl15+faglflext.ksl16, 'numeric', 23,2) }} AS ksm16,
+        cast(faglflext.kslvt+faglflext.ksl01+faglflext.ksl02+faglflext.ksl03+faglflext.ksl04+faglflext.ksl05+faglflext.ksl06+faglflext.ksl07+faglflext.ksl08+faglflext.ksl09+faglflext.ksl10+faglflext.ksl11+faglflext.ksl12+faglflext.ksl13+faglflext.ksl14+faglflext.ksl15+faglflext.ksl16 as {{ dbt.type_numeric() }}) as ksm16,
+
         faglflext.oslvt,
-        faglflext.oslvt AS osmvt,
+        faglflext.oslvt AS osmvt, 
+
         faglflext.osl01,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01, 'numeric', 23,2) }} AS osm01,
+        cast(faglflext.oslvt+faglflext.osl01 as {{ dbt.type_numeric() }}) as osm01,
+
+
         faglflext.osl02,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02, 'numeric', 23,2) }} AS osm02,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02 as {{ dbt.type_numeric() }}) as osm02,
+
         faglflext.osl03,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03, 'numeric', 23,2) }} AS osm03,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03 as {{ dbt.type_numeric() }}) as osm03,
+
+
         faglflext.osl04,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04, 'numeric', 23,2) }} AS osm04,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04 as {{ dbt.type_numeric() }}) as osm04,
+
         faglflext.osl05,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05, 'numeric', 23,2) }} AS osm05,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05 as {{ dbt.type_numeric() }}) as osm05,
+
         faglflext.osl06,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06, 'numeric', 23,2) }} AS osm06,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06 as {{ dbt.type_numeric() }}) as osm06,
+
         faglflext.osl07,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07, 'numeric', 23,2) }} AS osm07,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07 as {{ dbt.type_numeric() }}) as osm07,
+
         faglflext.osl08,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08, 'numeric', 23,2) }} AS osm08,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08 as {{ dbt.type_numeric() }}) as osm08,
+
         faglflext.osl09,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09, 'numeric', 23,2) }} AS osm09,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09 as {{ dbt.type_numeric() }}) as osm09,
+
         faglflext.osl10,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10, 'numeric', 23,2) }} AS osm10,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10 as {{ dbt.type_numeric() }}) as osm10,
+
         faglflext.osl11,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11, 'numeric', 23,2) }} AS osm11,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11 as {{ dbt.type_numeric() }}) as osm11,
+
         faglflext.osl12,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12, 'numeric', 23,2) }} AS osm12,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11+faglfext.osl12 as {{ dbt.type_numeric() }}) as osm12,
+
         faglflext.osl13,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12+faglflext.osl13, 'numeric', 23,2) }} AS osm13,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11+faglfext.osl12+faglfext.osl13 as {{ dbt.type_numeric() }}) as osm13,
+
         faglflext.osl14,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12+faglflext.osl13+faglflext.osl14, 'numeric', 23,2) }} AS osm14,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11+faglfext.osl12+faglfext.osl13+faglfext.osl14 as {{ dbt.type_numeric() }}) as osm14,
+
         faglflext.osl15,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12+faglflext.osl13+faglflext.osl14+faglflext.osl15, 'numeric', 23,2) }} AS osm15,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11+faglfext.osl12+faglfext.osl13+faglfext.osl14+faglfext.osl15 as {{ dbt.type_numeric() }}) as osm15,
+
         faglflext.osl16,
-        {{ dbt_utils.safe_cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12+faglflext.osl13+faglflext.osl14+faglflext.osl15+faglflext.osl16, 'numeric', 23,2) }} AS osm16,
-        faglflext.timestamp,
+        cast(faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglfext.osl09+faglfext.osl10+faglfext.osl11+faglfext.osl12+faglfext.osl13+faglfext.osl14+faglfext.osl15+faglfext.osl16 as {{ dbt.type_numeric() }}) as osm16,
+
+        faglflext.faglflext_timestamp,
         faglflext._fivetran_rowid,
         faglflext._fivetran_deleted,
         faglflext._fivetran_synced
@@ -198,12 +253,12 @@ final as (
     inner join t001 
         on faglflext.rbukrs = t001.bukrs
         and faglflext.rclnt = t001.mandt
-    where rclnt = '800'
-        and ryear = '2007'
-        and rbukrs = '2400'
-        --and racct = '0000792000'
-        and rldnr = '0L'
-        --and prctr = '0000001500'
+    where faglflext.rclnt =  {{ var('faglflext_rclnt_var') }}
+        and faglflext.ryear = {{ var('faglflext_ryear_var') }}
+        and faglflext.rbukrs = {{ var('faglflext_rbukrs_var') }}
+        and faglflext.racct = {{ var('faglflext_racct_var') }}
+        and faglflext.rldnr =  {{ var('faglflext_rldnr_var') }}
+        and faglflext.prctr = {{ var('faglflext_prctr_var') }} 
 )
 
 select *

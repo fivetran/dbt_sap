@@ -27,7 +27,7 @@ final as (
 	from
 		ska1
 	where
-		mandt = {{ var('mandt_var') }}
+		mandt = {{ var('ska1_mandt_var') }}
 )
 
 select * 

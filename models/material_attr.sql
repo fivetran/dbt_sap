@@ -139,7 +139,7 @@ final as (
 	from
 		mara
 	where
-		mandt = {{ var('mandt_var') }}
+		mandt = {{ var('mara_mandt_var') }}
 )
 
 select * 

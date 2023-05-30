@@ -10,10 +10,10 @@ final as (
 	select   
 		{{ 
 			dbt_utils.unpivot(
-				relation=ref('sums'), 
+				relation=ref('int_sap__0fi_gl_10_sums'), 
 				cast_to='numeric', 
-        		exclude=['ryear','activ','rmvct','rtcur','runit','awtyp','rldnr','rrcty','rvers','logsys','racct','cost_elem','rbukrs','rcntr','prctr','rfarea','rbusa','kokrs','segment','scntr','pprctr','sfarea','sbusa','rassc','psegment'],
-				remove=['drcrk','objnr00','objnr01','objnr02','objnr03','objnr04','objnr05','objnr06','objnr07','objnr08','rclnt','rpmax','waers','periv','zzspreg','ktopl'],
+        		exclude=['ryear','activ','rmvct','rtcur','runit','awtyp','rldnr','rrcty','rvers','logsys','racct','cost_elem','rbukrs','rcntr','prctr','rfarea','rbusa','kokrs','segment','scntr','pprctr','sfarea','sbusa','rassc','psegment', 'faglflext_timestamp'],
+				remove=['drcrk','objnr00','objnr01','objnr02','objnr03','objnr04','objnr05','objnr06','objnr07','objnr08','rclnt','rpmax','waers','periv','zzspreg','ktopl','_fivetran_rowid','_fivetran_deleted','_fivetran_synced'],
 				field_name = fieldtype
 			) 
 		}},
@@ -22,7 +22,7 @@ final as (
 			when left(fieldtype,1) = 'k' then '20' 
 			when left(fieldtype,1) = 'o' then '40' 
 			end as currency_type,
-		{{ dbt.concat(["0", case when right(fieldtype,2) = 'vt' then '00' else right(fieldtype,2) end, ".", ryear])}} as fiscal_period,
+		concat("0", case when right(fieldtype,2) = 'vt' then '00' else right(fieldtype,2) end, ".", ryear) as fiscal_period,
 		case when drcrk = 's' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as debit_amount,
