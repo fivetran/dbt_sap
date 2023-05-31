@@ -137,8 +137,10 @@ final as (
 		_fivetran_deleted,
 		_fivetran_synced
 	from mara
-	-- where
-	-- 	mandt = {{ var('mara_mandt_var') }}
+	{% if var('mara_mandt_var') %}
+	where
+		mandt = {{ var('mara_mandt_var') }}
+	{% endif %}
 )
 
 select * 
