@@ -120,7 +120,7 @@ final as (
       			'hsmvt', hsmvt,
       			'hsl01', hsl01,
       			'hsm01', hsm01
-    	) as unpivot(fieldtype, value)
+    	) unpivoted_data AS fieldtype, value
 	{% elif target.name in ('bigquery', 'snowflake', 'redshift') %} 
 		unpivot(value for fieldtype in (
 				hslvt, 
