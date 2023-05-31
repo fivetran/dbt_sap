@@ -25,7 +25,7 @@ The following table provides a detailed list of all models materialized within t
 
 | **model**                         | **description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute              |
+| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute.              |
 | [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  Access the material master data from the source system.                                                                                                     |
 | [sap__0fi_gl_10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10)    | Access the totals records from the leading ledger in the new general ledger.  |
 | [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                                                                     |                                                                    
@@ -65,7 +65,8 @@ vars:
 ```
 
 ## (Optional) Step 4: Additional configurations
-
+<details><summary>Expand to view details</summary>
+<br>
 ### Filter the data you bring in with field variable conditionals
 By default, these models are set to bring in all your data from SAP, but you may be interested in bringing in only a smaller sample of data given the relative size of the SAP source tables.
 
