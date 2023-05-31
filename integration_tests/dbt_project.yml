@@ -17,10 +17,10 @@ vars:
   bkpf_mandt_var: '800'
   mara_mandt_var: '' 
   ska1_mandt_var: ''
-  faglflexa_rldnr_var: '0L' 
+  faglflexa_rldnr_var: '0l'
   faglflext_rbukrs_var: '2400'
   faglflext_rclnt_var: '800'
-  faglflext_rldnr_var: '0L'
+  faglflext_rldnr_var: '0l'
   faglflext_ryear_var: '2007'
 
 dispatch:
