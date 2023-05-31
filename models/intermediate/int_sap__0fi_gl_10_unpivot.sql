@@ -53,6 +53,12 @@ final as (
 			else 0 
 			end as turnover
 	from sums	
+	{% if target.name == 'postgres' or target.name == 'databricks' %}
+	    select hslvt as value, 'hslvt' as fieldtype from sums union all
+    	select hsmvt as value, 'hsmvt' as fieldtype FROM sums union all
+     	select hsl01 as value, 'hsl01' as fieldtype FROM sums union all
+    	select hsm01 as value, 'hsm01' as fieldtype FROM sums union all
+	{% else %}
 	unpivot(value for fieldtype in (
 				hslvt, 
 				hsmvt,
@@ -191,6 +197,8 @@ final as (
 				osl16,
 				osm16)
 	)
+
+	{% endif %}
 )
 
 select * 
