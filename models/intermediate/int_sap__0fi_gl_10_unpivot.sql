@@ -4,23 +4,24 @@ with sums as (
 	from {{ ref('int_sap__0fi_gl_10_sums') }}
 ),
 
-{%  if target.name == 'postgres' %}
-	unpivoted_data as (
-	  select
-	    ryear,
-	    case
-	      when left(fieldtype, 1) = 't' then '00'
-	      when left(fieldtype, 1) = 'h' then '10'
-	      when left(fieldtype, 1) = 'k' then '20'
-	      when left(fieldtype, 1) = 'o' then '40'
-	    end as currency_type,
-	    unnested.fieldtype,
-	    unnested.value
-	  from sums
-	  cross join lateral (
-	    values ('hslvt', hslvt), ('hsmvt', hsmvt), ('hsl01', hsl01), ('hsm01', hsm01)
-	  ) as unnested (fieldtype, value)
-	),
+{% if target.name == 'postgres' %}
+unpivoted_data as (
+	
+  	select
+  	  ryear,
+  	  case
+  	    when left(fieldtype, 1) = 't' then '00'
+  	    when left(fieldtype, 1) = 'h' then '10'
+  	    when left(fieldtype, 1) = 'k' then '20'
+  	    when left(fieldtype, 1) = 'o' then '40'
+  	  end as currency_type,
+  	  unnested.fieldtype,
+  	  unnested.value
+  	from sums
+  	cross join lateral (
+  	  values ('hslvt', hslvt), ('hsmvt', hsmvt), ('hsl01', hsl01), ('hsm01', hsm01)
+  	) as unnested (fieldtype, value)
+),
 
 final as (
 	SELECT ryear, currency_type, fieldtype, value
