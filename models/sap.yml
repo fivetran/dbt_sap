@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: sap_0fi_gl_10
-    description: to fill in 
-  - name: sap_0fi_gl_14
-    description: to fill in  
-  - name: gl_account_attr
-    description: to fill in 
-  - name: material_attr
-    description: to fill in
+  - name: sap__0fi_gl_10
+    description: Access the totals records from the leading ledger in the new general ledger.
+  - name: sap__0fi_gl_14
+    description: Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                              
+  - name: sap__0gl_account_attr
+    description: Access the general ledger account number attribute.
+  - name: sap__0material_attr
+    description: Access the material master data from the source system.

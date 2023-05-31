@@ -2,8 +2,7 @@ packages:
 # - package: fivetran/sap_source
 #   version: [">=0.1.0", "<0.2.0"]
 
-  # - local: ../dbt_sap_source
-
+#Revert package before releasing
 - git: https://github.com/fivetran/dbt_sap_source.git 
   revision: main
   warn-unpinned: false

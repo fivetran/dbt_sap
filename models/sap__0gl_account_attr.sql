@@ -25,8 +25,9 @@ final as (
 		func_area,
 		mustr	
 	from ska1
-	-- where
-	-- 	mandt = {{ var('ska1_mandt_var') }}
+	{% if var('ska1_mandt_var',[]) %}
+	where mandt = {{ var('ska1_mandt_var') }}
+	{% endif %}
 )
 
 select * 

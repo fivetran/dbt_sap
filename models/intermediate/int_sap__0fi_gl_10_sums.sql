@@ -198,12 +198,14 @@ final as (
     inner join t001 
         on faglflext.rbukrs = t001.bukrs
         and faglflext.rclnt = t001.mandt
-    -- where faglflext.rclnt =  {{ var('faglflext_rclnt_var') }}
-    --     and faglflext.ryear = {{ var('faglflext_ryear_var') }}
-    --     and faglflext.rbukrs = {{ var('faglflext_rbukrs_var') }}
-    --     and faglflext.racct = {{ var('faglflext_racct_var') }}
-    --     and faglflext.rldnr =  {{ var('faglflext_rldnr_var') }}
-    --     and faglflext.prctr = {{ var('faglflext_prctr_var') }} 
+    {% if var('faglflext_rclnt_var',[]) && var('faglflext_ryear_var',[]) && var('faglflext_rbukrs_var',[]) && var('faglflext_racct_var',[]) && var('faglflext_rldnr_var',[]) && var('faglflext_prctr_var',[]) %}
+    where faglflext.rclnt =  {{ var('faglflext_rclnt_var') }}
+    and faglflext.ryear = {{ var('faglflext_ryear_var') }}
+    and faglflext.rbukrs = {{ var('faglflext_rbukrs_var') }}
+    and faglflext.racct = {{ var('faglflext_racct_var') }}
+    and faglflext.rldnr =  {{ var('faglflext_rldnr_var') }}
+    and faglflext.prctr = {{ var('faglflext_prctr_var') }} 
+    {% endif %}
 )
 
 select *
