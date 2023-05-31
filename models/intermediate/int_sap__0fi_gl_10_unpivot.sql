@@ -53,9 +53,16 @@ final as (
 			else 0 
 			end as turnover
 	from sums	
-	{% if target.name == 'postgres' or target.name == 'databricks' %}
-    	unnest(array[hslvt, hsmvt, hsl01, hsm01]) as value,
+	{% if target.name == 'postgres' %}
+    	unnest(ARRAY[hslvt, hsmvt, hsl01, hsm01]) as value,
     	unnest(ARRAY['hslvt', 'hsmvt', 'hsl01', 'hsm01']) as fieldtype 
+	{% elif target.name == 'databricks' %}
+		stack(4, 
+			    hslvt, 
+				hsmvt,
+				hsl01,
+				hsm01
+				)
 	{% else %}
 		unpivot(value for fieldtype in (
 				hslvt, 
