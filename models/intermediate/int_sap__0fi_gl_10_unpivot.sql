@@ -54,13 +54,17 @@ final as (
 			end as turnover
 	from sums	
 	{% if target.name == 'postgres' %}
-    	CROSS JOIN LATERAL (
-    VALUES
-      ('hslvt', sums.hslvt),
-      ('hsmvt', sums.hsmvt),
-      ('hsl01', sums.hsl01),
-      ('hsm01', sums.hsm01)
-  ) AS unpivot(fieldtype, value)
+    	
+  cross join lateral (
+    select
+      fieldtype,
+      value
+    from
+      (values ('hslvt', sums.hslvt),
+              ('hsmvt', sums.hsmvt),
+              ('hsl01', sums.hsl01),
+              ('hsm01', sums.hsm01)) AS unpivot(fieldtype, value)
+  ) as lateral_join
 
 		)
 	{% elif target.name == 'databricks' %}
