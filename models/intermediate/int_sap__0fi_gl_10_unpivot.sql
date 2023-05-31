@@ -54,12 +54,10 @@ final as (
 			end as turnover
 	from sums	
 	{% if target.name == 'postgres' or target.name == 'databricks' %}
-	    select hslvt as value, 'hslvt' as fieldtype from sums union all
-    	select hsmvt as value, 'hsmvt' as fieldtype FROM sums union all
-     	select hsl01 as value, 'hsl01' as fieldtype FROM sums union all
-    	select hsm01 as value, 'hsm01' as fieldtype FROM sums union all
+    	unnest(array[hslvt, hsmvt, hsl01, hsm01]) as value,
+    	unnest(ARRAY['hslvt', 'hsmvt', 'hsl01', 'hsm01']) as fieldtype 
 	{% else %}
-	unpivot(value for fieldtype in (
+		unpivot(value for fieldtype in (
 				hslvt, 
 				hsmvt,
 				hsl01,
