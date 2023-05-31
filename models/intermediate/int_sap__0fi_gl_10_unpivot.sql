@@ -6,7 +6,7 @@ with sums as (
 
 {% if target.name == 'postgres' %}
 unpivoted_data as (
-	
+
   	select
   	  ryear,
   	  case
@@ -27,8 +27,6 @@ final as (
 	SELECT ryear, currency_type, fieldtype, value
 	FROM unpivoted_data
 )
-{%  endif %}
-
 
 {% else %}
 final as ( 
