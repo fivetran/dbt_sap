@@ -4,7 +4,32 @@ with sums as (
 	from {{ ref('int_sap__0fi_gl_10_sums') }}
 ),
 
+{%  if target.name == 'postgres' %}
+	unpivoted_data as (
+	  select
+	    ryear,
+	    case
+	      when left(fieldtype, 1) = 't' then '00'
+	      when left(fieldtype, 1) = 'h' then '10'
+	      when left(fieldtype, 1) = 'k' then '20'
+	      when left(fieldtype, 1) = 'o' then '40'
+	    end as currency_type,
+	    unnested.fieldtype,
+	    unnested.value
+	  from sums
+	  cross join lateral (
+	    values ('hslvt', hslvt), ('hsmvt', hsmvt), ('hsl01', hsl01), ('hsm01', hsm01)
+	  ) as unnested (fieldtype, value)
+	),
 
+final as (
+	SELECT ryear, currency_type, fieldtype, value
+	FROM unpivoted_data
+)
+{%  endif %}
+
+
+{% else %}
 final as ( 
 
 	select   
@@ -51,30 +76,17 @@ final as (
 			end as accumulated_balance,
 		case when substring(fieldtype,3,1) = 'l' then value 
 			else 0 
-			end as turnover
-	from sums	
-	{% if target.name == 'postgres' %}
-    	
-  cross join lateral (
-    select
-      fieldtype,
-      value
-    from
-      (values ('hslvt', sums.hslvt),
-              ('hsmvt', sums.hsmvt),
-              ('hsl01', sums.hsl01),
-              ('hsm01', sums.hsm01)) AS unpivot(fieldtype, value)
-  ) as lateral_join
+    from sums
+	{% if target.name == 'databricks' %}
 
-		)
-	{% elif target.name == 'databricks' %}
 		stack(4, 
-			    hslvt, 
-				hsmvt,
-				hsl01,
-				hsm01
-				)
-	{% else %}
+			    'hslvt', hslvt, 
+				'hsmvt', hsmvt,
+				'hsl01', hsl01,
+				'hsm01', hsm01
+				)as (fieldtype, value)
+	{% elif target.name in ('bigquery', 'snowflake', 'redshift') %}
+    from sums
 		unpivot(value for fieldtype in (
 				hslvt, 
 				hsmvt,
@@ -212,10 +224,10 @@ final as (
 				osm15,
 				osl16,
 				osm16)
-	)
-
+		)
 	{% endif %}
 )
+{% endif %}
 
 select * 
 from final
