@@ -54,8 +54,15 @@ final as (
 			end as turnover
 	from sums	
 	{% if target.name == 'postgres' %}
-    	unnest(ARRAY[hslvt, hsmvt, hsl01, hsm01]) as value,
-    	unnest(ARRAY['hslvt', 'hsmvt', 'hsl01', 'hsm01']) as fieldtype 
+    	CROSS JOIN LATERAL (
+    VALUES
+      ('hslvt', sums.hslvt),
+      ('hsmvt', sums.hsmvt),
+      ('hsl01', sums.hsl01),
+      ('hsm01', sums.hsm01)
+  ) AS unpivot(fieldtype, value)
+
+		)
 	{% elif target.name == 'databricks' %}
 		stack(4, 
 			    hslvt, 
