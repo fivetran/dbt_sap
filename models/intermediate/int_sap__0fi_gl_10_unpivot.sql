@@ -5,6 +5,7 @@ with sums as (
 ),
 
 {% if target.name == 'postgres' %}
+
 final as (
 
   	select
@@ -64,6 +65,75 @@ final as (
 select *
 from final
 
+{% elif target.name == 'databricks' %}
+
+final as (
+
+	select   
+		ryear, 
+		activ, 
+		rmvct, 
+		rtcur, 
+		runit, 
+		awtyp, 
+		rldnr, 
+		rrcty, 
+		rvers, 
+		logsys, 
+		racct, 
+		cost_elem, 
+		rbukrs, 
+		rcntr, 
+		prctr, 
+		rfarea, 
+		rbusa, 
+		kokrs, 
+		segment, 
+		scntr, 
+		pprctr, 
+		sfarea, 
+		sbusa, 
+		rassc, 
+		psegment, 
+		faglflext_timestamp, 
+		case when left(fieldtype,1) = 't' then '00'	   
+			when left(fieldtype,1) = 'h' then '10'
+			when left(fieldtype,1) = 'k' then '20' 
+			when left(fieldtype,1) = 'o' then '40' 
+			end as currency_type,
+		'0' || case when right(fieldtype, 2) = 'vt' then '00' else right(fieldtype, 2) end|| '.' || ryear as fiscal_period, 
+		case when drcrk = 's' and substring(fieldtype,3,1) = 'l' then value 
+			else 0 
+			end as debit_amount,
+		case when drcrk = 'h' and substring(fieldtype,3,1) = 'l' then value 
+			else 0 
+			end as credit_amount,
+		case when substring(fieldtype,3,1) = 'm' then value 
+			else 0 
+			end as accumulated_balance,
+		case when substring(fieldtype,3,1) = 'l' then value 
+			else 0 
+			end as turnover,
+		fieldtype,
+		case fieldtype
+    		when 'hslvt' then hslvt
+    		when 'hsmvt' then hsmvt
+    		when 'hsl01' then hsl01
+    		when 'hsm01' then hsm01
+			end as value,
+    from sums
+	cross join (
+  		select 'hslvt' AS fieldtype union all
+  		select 'hsmvt' AS fieldtype union all
+  		select 'hsl01' AS fieldtype union all
+  		select 'hsm01' AS fieldtype
+	) as unpivot_columns
+)
+
+select * 
+from final
+
+
 {% else %}
 final as ( 
 
@@ -112,15 +182,7 @@ final as (
 		case when substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as turnover
-    from sums
-	{% if target.name == 'databricks' %}
-		stack(4, 
-			    'hslvt', hslvt, 
-				'hsmvt', hsmvt,
-				'hsl01', hsl01,
-				'hsm01', hsm01
-				)as (fieldtype, value)
-	{% elif target.name in ('bigquery', 'snowflake', 'redshift') %} 
+    from sums  
 		unpivot(value for fieldtype in (
 				hslvt, 
 				hsmvt,
@@ -258,10 +320,8 @@ final as (
 				osm15,
 				osl16,
 				osm16)
-		)
-	{% endif %}
+		) 
 )
-
 
 select * 
 from final
