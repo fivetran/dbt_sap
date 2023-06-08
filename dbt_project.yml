@@ -15,6 +15,8 @@ vars:
     bseg: "{{ ref('stg_sap__bseg') }}"
     faglflexa: "{{ ref('stg_sap__faglflexa') }}"
     faglflext: "{{ ref('stg_sap__faglflext') }}"
+    kna1: "{{ ref('stg_sap__kna1') }}"
+    lfa1: "{{ ref('stg_sap__lfa1') }}"
     mara: "{{ ref('stg_sap__mara') }}"
     ska1: "{{ ref('stg_sap__ska1') }}"
     t001: "{{ ref('stg_sap__t001') }}"

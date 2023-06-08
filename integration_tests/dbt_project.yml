@@ -41,7 +41,7 @@ seeds:
         kursx: numeric
         kur2x: numeric
         kur3x: numeric
-        kzkrs: numeric
+        kzkrs: numeric 
         reindat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         stodt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         txkrs: numeric
@@ -50,15 +50,33 @@ seeds:
 
     sap_bseg_data:
       +column_types:
+        abper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         absbt: numeric
+        agzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        altkt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anfae: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"  
+        anfbj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aplzl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aufpl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        augcp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        augdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        auggj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         bdiff: numeric
         bdif2: numeric
         bdif3: numeric
+        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         blnbt: numeric
         blnpz: numeric
         bonfb: numeric
         bpmng: numeric
+        bschl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         bualt: numeric
+        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        buzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        bzdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dabrz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disbj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disbz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         dmbe2: numeric
         dmb21: numeric
         dmb22: numeric
@@ -71,17 +89,42 @@ seeds:
         dmbt2: numeric
         dmbt3: numeric
         dmbtr: numeric
+        dtws1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebelp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         erfmg: numeric
+        eten2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fdtag: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         fdwbt: numeric
+        fipos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fkber_long: 
+        fkont: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmxdocln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmxyear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         fwbas: numeric
-        gbetr: numeric
         fwzuz: numeric
+        gbetr: numeric
+        gjahr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gsber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hkont: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         hwbas: numeric
         hwzus: numeric
         hwzuz: numeric
+        kblpos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         klibt: numeric
+        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kostl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         kzbtr: numeric
         kursr: numeric
+        linfv: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lnran: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lokkt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        madat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        manst: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         menge: numeric
         mwst2: numeric
         mwst3: numeric
@@ -92,34 +135,55 @@ seeds:
         navh3: numeric
         nebtr: numeric
         nprei: numeric
+        obzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        paobjnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pasubnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         penfc: numeric
         penlc1: numeric
         penlc2: numeric
         penlc3: numeric
+        peinh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        perop_beg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        perop_end: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        posn2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         popts: numeric
         ppdiff: numeric
         ppdif2: numeric
         ppdif3: numeric
+        prctr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prodper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        projk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         pswbt: numeric
         pyamt: numeric
         qbshb: numeric
         qsfbt: numeric
         qsshb: numeric
+        rebzj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rebzz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         rdiff: numeric
         rdif2: numeric
         rdif3: numeric
         rewrt: numeric 
         rewwr: numeric
+        rfzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rpacq: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        samnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         sctax: numeric
         skfbt: numeric
         sknto: numeric
         sknt2: numeric
         sknt3: numeric
         sttax: numeric
+        taxps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         txbfw: numeric
         txbhw: numeric
         txbh2: numeric
         txbh3: numeric
+        txdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txgrp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        valut: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vrsdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         wmwst: numeric
         wrbt1: numeric
         wrbt2: numeric
@@ -127,19 +191,36 @@ seeds:
         wrbtr: numeric
         wskto: numeric
         zbd1p: numeric
+        zbd1t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         zbd2p: numeric
+        zbd2t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        zbd3t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        zekkn: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        zfbdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        zolld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        zuonr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         
     sap_faglflexa_data:
       +column_types:
         belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bschl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        buzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gjahr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         hsl: numeric
+        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         ksl: numeric
         msl: numeric
         osl: numeric
+        poper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcnlt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         timestamp: numeric
         tsl: numeric
         wsl: numeric
@@ -150,7 +231,6 @@ seeds:
         budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         hslvt: numeric
         hsl01: numeric 
         hsl02: numeric
@@ -167,7 +247,8 @@ seeds:
         hsl13: numeric
         hsl14: numeric
         hsl15: numeric
-        hsl16: numeric
+        hsl16: numeric        
+        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         kslvt: numeric
         ksl01: numeric
         ksl02: numeric
@@ -202,6 +283,15 @@ seeds:
         msl14: numeric
         msl15: numeric
         msl16: numeric
+        objnr00: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         oslvt: numeric
         osl01: numeric
         osl02: numeric
@@ -218,7 +308,19 @@ seeds:
         osl13: numeric
         osl14: numeric
         osl15: numeric
-        osl16: numeric
+        osl16: numeric       
+        prctr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbusa: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"  
+        rfarea: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rclnt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcntr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfarea: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rpmax: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         tslvt: numeric
         tsl01: numeric
         tsl02: numeric
@@ -237,9 +339,76 @@ seeds:
         tsl15: numeric
         tsl16: numeric
         timestamp: numeric
+        _fivetran_rowid: numeric
+
+    sap_kna1_data:
+      +column_types:
+        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbbnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbsnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hzuor: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        jmjah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        jmzah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        legalnat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"  
+        pestle: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        regio: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rgdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rnedate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ric: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        umjah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        updat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uptim: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _vso_r_i_no_lyr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _vso_r_uld_side: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _vso_r_load_pref: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _vso_r_palhgt: numeric
+        umsa1: numeric
+        umsat: numeric
+
+    sap_lfa1_data:
+      +column_types:
+        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbbnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbsnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bubkz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gbdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        legalnat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pstlz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        qssysdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        revdb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rgdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ric: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rnedate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        taxbs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        txjcd: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        updat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        uptim: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_sc_capital: numeric
+        staging_time: numeric
 
     sap_mara_data:
       +column_types:
+        blanz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        compl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cuobf: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        datab: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ersda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fuelg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        laeda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        liqdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdhb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdlp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdrz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mstde: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mstdv: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stfak: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vpreh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         breit: numeric
         brgew: numeric
         ergew: numeric
@@ -253,3 +422,30 @@ seeds:
         volto: numeric
         volum: numeric
         wesch: numeric
+
+    sap_ska1_data:
+      +column_types:
+        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sakan: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        saknr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t001_data:
+      +column_types:
+        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        buvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fikrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmhrdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fstva: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        impda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokfi: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        offsacct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcomp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        umkrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        waabw: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wfvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        xcos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"

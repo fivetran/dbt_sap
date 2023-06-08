@@ -67,6 +67,7 @@ vars:
 ## (Optional) Step 4: Additional configurations
 <details><summary>Expand to view details</summary>
 <br>
+
 ### Filter the data you bring in with field variable conditionals
 By default, these models are set to bring in all your data from SAP, but you may be interested in bringing in only a smaller sample of data given the relative size of the SAP source tables.
 
@@ -74,18 +75,18 @@ We have set up where conditions in our data to allow you to bring in only the da
 
 ```yml
 vars:
-    bkpf_mandt_var: 'value1'
-    mara_mandt_var: 'value2'
-    ska1_mandt_var: 'value3'
-    faglflexa_rldnr_var: 'value4'
-    faglflext_prctr_var: 'value5'
-    faglflext_racct_var: 'value6'
-    faglflext_racct_var: 'value7'
-    faglflext_rbukrs_var: 'value8'
-    faglflext_rclnt_var: 'value9'
-    faglflext_rldnr_var: 'value10'
-    faglflext_ryear_var: 'value11'
-```
+    bkpf_mandt_var: 'value1' # Applicable to the `sap__0fi_gl_14` model
+    kna1_mandt_var: 'value2' # Applicable to the `sap__0customer_attr` model
+    lfa1_mandt_var: 'value3' # Applicable to the `sap__0vendor_attr` model
+    mara_mandt_var: 'value4' # Applicable to the `sap__0material_attr` model
+    ska1_mandt_var: 'value5' # Applicable to the `sap__0gl_account_attr` model
+    t001_mandt_var: 'value6' # Applicable to the `sap__0comp_code_attr` model
+    faglflexa_rldnr_var: 'value7' # Applicable to the `sap__0fi_gl_14` model
+    faglflext_rbukrs_var: 'value8' # Applicable to the `sap__0fi_gl_10` model
+    faglflext_rclnt_var: 'value9' # Applicable to the `sap__0fi_gl_10` model
+    faglflext_rldnr_var: 'value10' # Applicable to the `sap__0fi_gl_10` model
+    faglflext_ryear_var: 'value11' # Applicable to the `sap__0fi_gl_10` model
+``` 
 ### Passing Through Additional Fields
 
 ### Change the build schema
