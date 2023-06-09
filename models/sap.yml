@@ -1,11 +1,443 @@
 version: 2
 
 models:
+  - name: sap__0comp_code_attr
+    description: Company codes attribute data source
+    columns:
+      - name: mandt
+        description: Client
+      - name: waers
+        description: Currency key
+      - name: periv
+        description: Fiscal year variant
+      - name: ktopl
+        description: Chart of accounts
+      - name: bukrs
+        description: Company code
+      - name: land1
+        description: Country key
+      - name: kkber
+        description: Credit control area
+      - name: rcomp
+        description: Company
+
+  - name: sap__0customer_attr
+    description: Customer attributes data source
+    columns:
+      - name: kunnr
+        description: Customer number
+      - name: brsch
+        description: Industry key
+      - name: ktokd
+        description: Customer account group
+      - name: kukla
+        description: Customer classification
+      - name: land1
+        description: Country key
+      - name: lifnr
+        description: Account number of vendor or creditor
+      - name: loevm
+        description: Central deletion flag for master record
+      - name: name1
+        description: Name 1
+      - name: niels
+        description: Nielsen ID
+      - name: ort01
+        description: City
+      - name: pstlz
+        description: Postal code
+      - name: regio
+        description: Regional market
+      - name: counc
+        description: County code
+      - name: stcd1
+        description: Tax number 1
+      - name: stras
+        description: House number and street
+      - name: telf1
+        description: First telephone number
+      - name: vbund
+        description: Company id of trading partner
+      - name: bran1
+        description: Industry code 1
+      - name: bran2
+        description: Industry code 2
+      - name: bran3
+        description: Industry code 3
+      - name: bran4
+        description: Industry code 4
+      - name: bran5
+        description: Industry code 5
+      - name: periv
+        description: Fiscal year variant
+      - name: abrvw
+        description: Usage indicator
+      - name: werks
+        description: Plant
+      - name: name2
+        description: Name 2
+      - name: name3
+        description: Name 3
+      - name: dear6
+        description: Indicator (Consumer)
+      - name: pstl2
+        description: PO Box postal code
+
   - name: sap__0fi_gl_10
-    description: Access the totals records from the leading ledger in the new general ledger.
+    description: Extracts the totals records from the leading ledger in the new General Ledger 
   - name: sap__0fi_gl_14
-    description: Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                              
+    description: Contains the structure to provide new general ledger line item data. 
+
   - name: sap__0gl_account_attr
-    description: Access the general ledger account number attribute.
+    description: G/L Account Number data source
+    columns:
+      - name: mandt
+        description: Client
+      - name: ktopl
+        description: Chart of accounts
+      - name: saknr
+        description: G/L account number
+      - name: bilkt
+        description: Group account number
+      - name: gvtyp
+        description: P&L statement account type
+      - name: vbund
+        description: Company id of tradiing partner
+      - name: xbilk
+        description: Indicator (account is a balance sheet account?)
+      - name: sakan
+        description: G/L account number, significant length
+      - name: erdat
+        description: Date on which the record was created
+      - name: ernam
+        description: Name of person who created the object
+      - name: ktoks
+        description: G/L account group
+      - name: xloev
+        description: Indicator (account marked for deletion?)
+      - name: xspea
+        description: Indicator (account is blocked for creation?)
+      - name: xspeb
+        description: Indicator (Is account blocked for posting?)
+      - name: xspep
+        description: Indicator (Account blocked for planning?)
+      - name: func_area
+        description: Functional area
+      - name: mustr
+        description: Number of the sample account
+
   - name: sap__0material_attr
-    description: Access the material master data from the source system.
+    description: Material attributes data source
+    columns:
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: ersda
+        description: Created on
+      - name: ernam
+        description: Name of person who created the object
+      - name: laeda
+        description: Date of last change
+      - name: aenam
+        description: Name of person who changed object
+      - name: vpsta
+        description: Maintenance status of complete material
+      - name: pstat
+        description: Maintenance status
+      - name: lvorm
+        description: Flag material for deletion at client level
+      - name: mtart
+        description: Material type
+      - name: mbrsh
+        description: Industry sector
+      - name: matkl
+        description: Material group
+      - name: bismt
+        description: Old material number
+      - name: meins
+        description: Base unit of measure
+      - name: bstme
+        description: Order unit
+      - name: zeinr
+        description: Document number (without document management system)
+      - name: zeiar
+        description: Document type (without document management system)
+      - name: zeivr
+        description: Document version (without document management system)
+      - name: zeifo
+        description: Page form of document (without document management system)
+      - name: aeszn
+        description: Document change number (without document management system)
+      - name: blatt
+        description: Page number of document (without document management system)
+      - name: blanz
+        description: Number of sheets (without document management system)
+      - name: ferth
+        description: Production/inspection memo
+      - name: formt
+        description: Page format of production memo
+      - name: groes
+        description: Size/dimensions
+      - name: wrkst
+        description: Basic material
+      - name: normt
+        description: Industry Standard Description (such as ANSI or ISO)
+      - name: labor
+        description: Laboratory/design office
+      - name: ekwsl
+        description: Purchasing value key
+      - name: brgew
+        description: Gross weight
+      - name: ntgew
+        description: Net weight
+      - name: gewei
+        description: Weight unit
+      - name: volum
+        description: Volume
+      - name: voleh
+        description: Volume unit
+      - name: behvo
+        description: Container requirements
+      - name: raube
+        description: Storage conditions
+      - name: tempb
+        description: Temperature conditions indicator
+      - name: disst
+        description: Low-level code
+      - name: tragr
+        description: Transportation group
+      - name: stoff
+        description: Hazardous material number
+      - name: spart
+        description: Divsion
+      - name: kunnr
+        description: Competitor
+      - name: eannr
+        description: European Article Number (EAN)
+      - name: wesch
+        description: Quantity, or number of GR/GI slips to be printed
+      - name: bwvor
+        description: Procurement rule
+      - name: bwscl
+        description: Source of supply
+      - name: saiso
+        description: Season category
+      - name: etiar
+        description: Label type
+      - name: etifo
+        description: Label form
+      - name: entar
+        description: Disposal type
+      - name: ean11
+        description: International Article Number (EAN/UPC)
+      - name: numtp
+        description: Category of International Article Number (EAN)
+      - name: laeng
+        description: Length
+      - name: breit
+        description: Width
+      - name: hoehe
+        description: Height
+      - name: meabm
+        description: Unit of dimension for length/width/height
+      - name: prdha
+        description: Product hierarchy
+      - name: aeklk
+        description: Stock transfer net change costing
+      - name: cadkz
+        description: CAD indicator
+      - name: qmpur
+        description: QM in procurement is active
+      - name: ergew
+        description: Allowed packaging weight
+      - name: ergei
+        description: Unit of weight (allowed packaging weight) 
+      - name: ervol
+        description: Allowed packaging volume
+      - name: ervoe
+        description: Volume unit (allowed packaging volume)
+      - name: gewto
+        description: Excess weight tolerance for handling unit
+      - name: volto
+        description: Excess volume tolerance of the handling unit
+      - name: vabme
+        description: Variable purchase order unit active
+      - name: kzrev
+        description: Revision level has been assigned to the material
+      - name: kzkfg
+        description: Configurable material
+      - name: xchpf
+        description: Batch management requirement indicator
+      - name: vhart
+        description: Packaging material type
+      - name: fuelg
+        description: Maximum level (by volume)
+      - name: stfak
+        description: Stacking factor
+      - name: magrv
+        description: Material group (Packaging materials)
+      - name: begru
+        description: Authorization group
+      - name: datab
+        description: Valid-from date
+      - name: liqdt
+        description: Deletion date
+      - name: saisj
+        description: Season year
+      - name: plgtp
+        description: Price band category
+      - name: mlgut
+        description: Empties bill of material
+      - name: extwg
+        description: External material group
+      - name: satnr
+        description: Cross-plant configurable material
+      - name: attyp
+        description: Material category
+      - name: kzkup
+        description: Indicator (Material can be co-product)
+      - name: kznfm
+        description: Indicator (The amterial has a follow-up material)
+      - name: pmata
+        description: Pricing reference material
+      - name: mstae
+        description: Cross-plant material status
+      - name: mstav
+        description: Cross-distribution-chain material status
+      - name: mstde
+        description: Date from which the cross-plan material status is valid
+      - name: mstdv
+        description: Date from which the X-distr.-chain material status is valid
+      - name: taklv
+        description: Tax classification of the material
+      - name: rbnrm
+        description: Catalog profile
+      - name: mhdrz
+        description: Minimum remaining shelf life
+      - name: mhdhb
+        description: Total shelf life
+      - name: mhdlp
+        description: Storage percentage
+      - name: inhme
+        description: Content unit
+      - name: inhal
+        description: Net contents
+      - name: vpreh
+        description: Comparison price unit
+      - name: etiag
+        description: IS-R labeling (material grouping)
+      - name: inhbr
+        description: Gross contents
+      - name: cmeth
+        description: Quantity conversion method
+      - name: cuobf
+        description: Internal object number
+      - name: kzumw
+        description: Environmentally relevant
+      - name: kosch
+        description: Product allocation determination procedure
+      - name: sprof
+        description: Pricing profile for variants
+      - name: nrfhg
+        description: Material qualifies for discount in kind
+      - name: mfrpn
+        description: Manufacturer part number
+      - name: mfrnr
+        description: Manufacturer number
+      - name: bmatn
+        description: Number of firm's own (internal) inventory-managed material
+      - name: mprof
+        description: Mfr part profile
+      - name: kzwsm
+        description: Units of measure usage
+      - name: saity
+        description: Rollout in a season
+      - name: profl
+        description: Dangerous goods indicator profile
+      - name: ihivi
+        description: Indicator (highly viscous)
+      - name: iloos
+        description: Indicator (in bulk/liquid)
+      - name: serlv
+        description: Level of explicitness for serial numbers
+      - name: kzgvh
+        description: Packaging material is closed packaging
+      - name: xgchp
+        description: Indicator (Approved batch record required)
+      - name: kzeff
+        description: Assign effectivity parameter values / override change numbers
+      - name: compl
+        description: Material completion level
+      - name: iprkz
+        description: Period indicator for shelf life expiration date
+      - name: rdmhd
+        description: Rounding rule for calculation of SLED
+      - name: przus
+        description: Indicator (Product composition printed on packaging)
+      - name: mtpos_mara
+        description: General item category group
+      - name: bflme
+        description: Generic material with logistical variants
+      - name: nsnid
+        description: NATO item identification number
+
+  = name: sap__0vendor_attr
+    description: Vendor attributes data source
+    columns:
+      - name: mandt
+        description: Client
+      - name: lifnr
+        description: Account number of vendor or creditor
+      - name: brsch
+        description: Industry key
+      - name: ktokk
+        description: Vendor account group
+      - name: land1
+        description: Country key
+      - name: loevm
+        description: Central deletion flag for master record
+      - name: name1
+        description: Name 1
+      - name: name2
+        description: Name 2
+      - name: name3
+        description: Name 3
+      - name: ort01 
+        description: City
+      - name: ort02 
+        description: District
+      - name: pfach 
+        description: PO Box
+      - name: pstl2 
+        description: P.O. Box postal code
+      - name: pstlz 
+        description: Postal code
+      - name: regio 
+        description: Region (State, province, county)
+      - name: sortl 
+        description: Sort field
+      - name: spras 
+        description: Language key
+      - name: stcd1 
+        description: Tax number 1
+      - name: stcd2 
+        description: Tax number 2
+      - name: stcd3 
+        description: Tax number 3
+      - name: stras 
+        description: Street and house number
+      - name: telf1 
+        description: First telephone number
+      - name: telfx 
+        description: Fax number
+      - name: xcpdk 
+        description: Indicator (is the account a one-time account?)
+      - name: vbund 
+        description: Company id of trading partner
+      - name: kraus 
+        description: Credit information number
+      - name: pfort 
+        description: PO box city
+      - name: werks 
+        description: Plant
