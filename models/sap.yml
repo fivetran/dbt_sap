@@ -385,8 +385,6 @@ models:
   = name: sap__0vendor_attr
     description: Vendor attributes data source
     columns:
-      - name: mandt
-        description: Client
       - name: lifnr
         description: Account number of vendor or creditor
       - name: brsch
