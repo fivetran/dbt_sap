@@ -382,7 +382,7 @@ models:
       - name: nsnid
         description: NATO item identification number
 
-  = name: sap__0vendor_attr
+  - name: sap__0vendor_attr
     description: Vendor attributes data source
     columns:
       - name: lifnr
