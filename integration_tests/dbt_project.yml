@@ -99,8 +99,8 @@ seeds:
         fdtag: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
         fdwbt: numeric
         fipos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fkber_long: 
+        fkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fkber_long: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         fkont: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         fmxdocln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         fmxyear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
