@@ -4,5 +4,5 @@ packages:
 
 #Revert package before releasing
 - git: https://github.com/fivetran/dbt_sap_source.git 
-  revision: main
+  revision: feature/attr-reports
   warn-unpinned: false
