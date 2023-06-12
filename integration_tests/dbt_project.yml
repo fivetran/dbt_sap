@@ -10,6 +10,8 @@ vars:
     sap_bseg_identifier: "sap_bseg_data"
     sap_faglflexa_identifier: "sap_faglflexa_data"
     sap_faglflext_identifier: "sap_faglflext_data"
+    sap_kna1_identifier: "sap_kna1_data"
+    sap_lfa1_identifier: "sap_lfa1_data"
     sap_mara_identifier: "sap_mara_data"
     sap_ska1_identifier: "sap_ska1_data"
     sap_t001_identifier: "sap_t001_data"
