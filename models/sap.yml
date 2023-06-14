@@ -84,9 +84,420 @@ models:
         description: PO Box postal code
 
   - name: sap__0fi_gl_10
-    description: Extracts the totals records from the leading ledger in the new General Ledger 
+    description: Extracts the totals records from the leading ledger in the new General Ledger
+    columns:
+      - name: ryear
+        description: Fiscal year
+      - name: activ
+        description: General ledger (transaction attributes)
+      - name: rmvct
+        description: Transaction type
+      - name: rtcur
+        description: Currency key
+      - name: runit
+        description: Base unit of measurement
+      - name: awtyp
+        description: Reference transaction
+      - name: rldnr
+        description: Ledgers in general ledger accounting
+      - name: rrcty
+        description: Record type
+      - name: rvers
+        description: Version
+      - name: logsys
+        description: Logical system
+      - name: racct
+        description: Account number
+      - name: cost_elem
+        description: Cost element
+      - name: rbukrs
+        description: Company code
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rfarea
+        description: Functional area
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for segment reporting
+      - name: scntr
+        description: Sender cost center
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Partner functional area
+      - name: sbusa
+        description: Business area of the business partner
+      - name: rassc
+        description: Company id of trading partner
+      - name: psegment
+        description: Partner segment for segment reporting
+      - name: faglflext_timestamp
+        description: UTC time stamp in short form (YYYYMMDDhhmmss)
+      - name: currency_type
+        description: Currency type
+      - name: fiscal_period
+        description: Fiscal year/period
+      - name: debit_amount
+        description: Total debit postings
+      - name: credit_amount
+        description: Total credit postings
+      - name: accumulated_balance
+        description: Cumulated balance
+      - name: turnover
+        description: Sales of the period
+
   - name: sap__0fi_gl_14
-    description: Contains the structure to provide new general ledger line item data. 
+    description: Contains the structure to provide new general ledger line item data.
+    columns:
+      - name: ryear
+        description: Fiscal year of the general ledger
+      - name: docnr
+        description: Document number of the general ledger document
+      - name: rldnr
+        description: Ledger
+      - name: rbukrs
+        description: Company code
+      - name: docln
+        description: Six-digit line item for ledger
+      - name: activ
+        description: FI-SL business transaction
+      - name: rmvct
+        description: Flow type
+      - name: rtcur
+        description: Transaction currency key
+      - name: runit
+        description: Base unit of measure
+      - name: awtyp
+        description: Reference transaction
+      - name: rrcty
+        description: Record type
+      - name: rvers
+        description: Version
+      - name: logsys
+        description: Logical system
+      - name: racct
+        description: G/L account in General Ledger Accounting
+      - name: cost_elem
+        description: Cost element
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rfarea
+        description: Functional area
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for segment reporting
+      - name: scntr
+        description: Partner cost center
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Functional area of partner
+      - name: sbusa
+        description: Business area of business partner
+      - name: rassc
+        description: Company id of trading partner
+      - name: psegment
+        description: Partner segment for segment reporting
+      - name: tsl
+        description: Amount in transaction currency
+      - name: hsl
+        description: Amount in local currency
+      - name: ksl
+        description: Amount in global currency
+      - name: osl
+        description: Amount in another currency
+      - name: msl
+        description: Quantity information
+      - name: wsl
+        description: Amount in original transaction currency
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: poper
+        description: Posting period
+      - name: rwcur
+        description: Document currency (key)
+      - name: gjahr
+        description: Fiscal year
+      - name: budat
+        description: Posting date in document
+      - name: belnr
+        description: Accounting document number 
+      - name: buzei
+        description: Number of the line item within the accounting document
+      - name: bschl
+        description: Posting key
+      - name: bstat
+        description: Document status
+      - name: faglflexa_timestamp
+        description: UTC time stamp in short form (YYYYMMDDhhmmss)
+      - name: bukrs
+        description: Company code
+      - name: blart
+        description: Document type
+      - name: bldat
+        description: Document date in document
+      - name: monat
+        description: Fiscal period
+      - name: cpudt
+        description: Entry date of the accounting document
+      - name: xblnr
+        description: Reference document number
+      - name: waers
+        description: Document currency (key)
+      - name: glvor
+        description: Business transaction
+      - name: awkey
+        description: Reference key
+      - name: fikrs
+        description: Financial management area
+      - name: hwaer
+        description: Local currency key
+      - name: hwae2
+        description: Currency key of the second local currency
+      - name: hwae3
+        description: Currency key of the third local currency
+      - name: awsys
+        description: Logical system
+      - name: ldgrp
+        description: Ledger group
+      - name: kursf
+        description: Effective exchange rate in line item
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber - new, four-digit
+      - name: aufnr
+        description: Order number
+      - name: augbl
+        description: Clearing document number
+      - name: augdt
+        description: Clearing date
+      - name: ebeln
+        description: Purchasing document number
+      - name: ebelp
+        description: Item number of purchasing document
+      - name: eten2
+        description: Schedule number
+      - name: filkd
+        description: Branch account number
+      - name: gsber
+        description: Business area
+      - name: koart
+        description: Account types
+      - name: kostl
+        description: Cost center
+      - name: maber
+        description: Dunning area
+      - name: madat
+        description: Date of last dunning notices
+      - name: mansp
+        description: Dunning lock
+      - name: manst
+        description: Dunning level
+      - name: mschl
+        description: Dunning key
+      - name: mwskz
+        description: Tax on sales/purchases code
+      - name: posn2
+        description: Sales document items
+      - name: qbshb
+        description: Withholding tax amount in document currency
+      - name: qsfbt
+        description: Withholding tax exempt amount in document currency
+      - name: qsshb
+        description: Withholding tax base amount in document currency
+      - name: rebzg
+        description: Document number of the invoice to which the transaction belongs
+      - name: samnr
+        description: Invoice list number
+      - name: sgtxt
+        description: Item text
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: skfbt
+        description: Amount eligible for cash discount in document currency
+      - name: wskto
+        description: Cash discount amount in document currency
+      - name: sknto
+        description: Cash discount amount in local currency
+      - name: umsks
+        description: Transaction class special general ledger
+      - name: umskz
+        description: Special G/L indicator
+      - name: uzawe
+        description: Additional payment method
+      - name: valut
+        description: Value date 
+      - name: vbel2
+        description: Sales document
+      - name: vbeln
+        description: Billing
+      - name: vbewa
+        description: Flow type
+      - name: vbund
+        description: Company id of trading partner
+      - name: vertn
+        description: Contract number
+      - name: vertt
+        description: Contract type
+      - name: werks
+        description: Plant
+      - name: wverw
+        description: Type of bill of exchange usage
+      - name: xzahl
+        description: Indicator (Is this a payment transaction?)
+      - name: zbd1p
+        description: Cash discount percentage 1
+      - name: zbd1t
+        description: Cash discount days 1
+      - name: zbd2p
+        description: Cash discount percentage 2
+      - name: zbd2t
+        description: Cash discount days 2
+      - name: zbd3t
+        description: Deadline for terms of payment net
+      - name: zfbdt
+        description: Baseline date for due date calculation
+      - name: zlsch
+        description: Payment method
+      - name: zlspr
+        description: Payment lock key
+      - name: zterm
+        description: Terms of payment key
+      - name: xref1
+        description: Reference key of the business partner
+      - name: zuonr
+        description: Assignemnt number
+      - name: rstgr
+        description: Reason code for payments
+      - name: rebzt
+        description: Type of follow-on document
+      - name: hkont
+        description: G/L account in general ledger accounting
+      - name: pswbt
+        description: Amount for general ledger update (absolute)
+      - name: zbfix
+        description: Fixed payment condition
+      - name: xnegp
+        description: Indicator (negative posting)
+      - name: ccbtc
+        description: Payment cards (Settlement run)
+      - name: rfzei
+        description: Payment card item
+      - name: xref3
+        description: Reference key for the document items
+      - name: kkber
+        description: Credit control area
+      - name: dtws1
+        description: Instruction 1
+      - name: dtws2
+        description: Instruction 2
+      - name: dtws3
+        description: Instruction 3
+      - name: dtws4
+        description: Instruction 4
+      - name: projk
+        description: WBS element in external format 
+      - name: absbt
+        description: Credit Management--Guaranteed amount (absolute)
+      - name: kidno
+        description: Payment reference
+      - name: xpypr
+        description: Indicator (Payment order exists for this item)
+      - name: secco
+        description: Withholding tax section
+      - name: bupla
+        description: Business place
+      - name: pyamt
+        description: Amount in currency for automatic payment (absolute)
+      - name: pycur
+        description: Currency for automatic payment
+      - name: cession_kz
+        description: Accounts receivable pledging indicator
+      - name: xragl
+        description: Indicator (Clearing was undone)
+      - name: auggj
+        description: Fiscal year of clearing document
+      - name: buzid
+        description: Identification of posting line
+      - name: bdiff
+        description: Valuation difference
+      - name: agzei
+        description: Clearing item
+      - name: bdif2
+        description: Valuation difference for the second local currency
+      - name: bdif3
+        description: Valuation difference for the third local currency
+      - name: dabrz
+        description: Asset value date for billing
+      - name: bewar
+        description: Flow type
+      - name: fkber
+        description: Functional area
+      - name: dmbtr
+        description: Amount in local currency
+      - name: imkey
+        description: Internal key for Real Estate object
+      - name: fkber_long
+        description: Functional area (long)
+      - name: kunnr
+        description: Customer number 1
+      - name: kstar
+        description: Cost element
+      - name: meins
+        description: Base unit of measure
+      - name: lifnr
+        description: Account number of vendor
+      - name: pargb
+        description: Business area of the business partner
+      - name: menge
+        description: Quantity
+      - name: pprct
+        description: Partner profit center
+      - name: pfkber
+        description: Functional area of partner
+      - name: wrbtr
+        description: Amount in document currency
+      - name: saknr
+        description: G/L account number
+      - name: xlgclr
+        description: Clearing specific to ledger groups
+      - name: xopvw
+        description: Indicator (Open Item Management?)
+      - name: zzspreg
+        description: Special region
+      - name: xreorg
+        description: Doc. contains open item that Was transferred during reorg.
+      - name: zzbuspartn
+        description: Business partner
+      - name: zzproduct
+        description: Product group
+      - name: zzloca
+        description: City
+      - name: zzchan
+        description: Distribution channel
+      - name: zzlob
+        description: Business line
+      - name: zzuserfld1
+        description: Territory
+      - name: zzuserfld2
+        description: Owner/Cont.
+      - name: zzuserfld3
+        description: Vein
+      - name: zzregion
+        description: User defined regions
+      - name: zzstate 
+        description: State/province code
 
   - name: sap__0gl_account_attr
     description: G/L Account Number data source

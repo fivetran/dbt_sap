@@ -15,7 +15,7 @@
 # 📣 What does this dbt package do?
 - Produces modeled tables that leverage SAP data from [Fivetran's connector](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
 - Enables you to better understand your SAP data. The package achieves this by performing the following: 
-    - Brings in essential tables like G/L Account Number attribute (`sap__0gl_account_attr`) and Master Material data (`sap__0material_attr`).
+    - Brings in essential attribute tables like Company Code (`sap__0comp_code_attr`), Customer Master  (`sap__0customer_attr`), G/L Account Number (`sap__0gl_account_attr`), Material Data (`sap__0material_attr`), and Vendor Number (`sap__0vendor_attr`).
     - Adds general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
@@ -25,10 +25,13 @@ The following table provides a detailed list of all models materialized within t
 
 | **model**                         | **description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute.              |
-| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  Access the material master data from the source system.                                                                                                     |
+| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  Access the company code attributes.                               |
+| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  Access the customer master data attributes.                               |
 | [sap__0fi_gl_10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10)    | Access the totals records from the leading ledger in the new general ledger.  |
-| [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                                                                     |                                                                    
+| [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                                                                     |                            
+| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute.              |
+| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  Access the material master data from the source system.                                                          |
+| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  Access the vendor master data attributes.                               |
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
