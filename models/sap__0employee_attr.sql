@@ -22,13 +22,11 @@ pa0008 as (
     from {{ var('pa0008') }} 
 ),
 
-
 pa0031 as (
 
     select *
     from {{ var('pa0031') }} 
 ),
- 
 
 t503 as (
 
@@ -40,7 +38,7 @@ employee_date_changes as (
 
 	select * 
 	from {{ ref('int_sap__0employee_date_changes') }}
-    where endda is not null 
+    where endda is not null
 ),
 
 final as (
