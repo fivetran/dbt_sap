@@ -12,7 +12,7 @@ with
     {{ employee_model }}_end as (
         select
             pernr,
-			case when endda = '99991231' then date_change
+			case when endda = '99991231' then endda
 				else
 				--convert date strings to dates to avoid null records when joining on date ranges in the end model
 				{% if target.type in ('redshift', 'snowflake', 'snowflake-sap') %}
