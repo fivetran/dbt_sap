@@ -3,14 +3,12 @@ version: 2
 models:
   - name: sap__0comp_code_attr
     description: Company codes attribute data source
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
     columns:
-      - name: mandt
-        description: Client
+      - name: burks
+        description: Company code
+        tests:
+          - unique
+          - not_null
       - name: waers
         description: Currency key
       - name: periv
