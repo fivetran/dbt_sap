@@ -31,24 +31,46 @@ with
 unioned_dates as (
 
 	{% for employee_model in employee_models %}
-	select 
-		pernr,
-		date_change 
-	from {{ employee_model }}_beg
-	{{ dbt_utils.group_by(2) }}
-
-	union 
-
-	select 
-		pernr,
-		date_change 
-	from {{ employee_model }}_end
-	{{ dbt_utils.group_by(2) }}
-
-	{% if not loop.last %}
-    union
-	{% endif %} 
 	
+		{% if target.type == 'bigquery' %}
+		select 
+			pernr,
+			date_change 
+		from {{ employee_model }}_beg
+		{{ dbt_utils.group_by(2) }}
+
+		union distinct
+
+		select 
+			pernr,
+			date_change 
+		from {{ employee_model }}_end
+		{{ dbt_utils.group_by(2) }}
+
+			{% if not loop.last %}
+    		union distinct
+			{% endif %} 
+
+		{% else %}
+		select 
+			pernr,
+			date_change 
+		from {{ employee_model }}_beg
+		{{ dbt_utils.group_by(2) }}
+
+		union 
+
+		select 
+			pernr,
+			date_change 
+		from {{ employee_model }}_end
+		{{ dbt_utils.group_by(2) }}
+
+			{% if not loop.last %}
+    		union
+			{% endif %} 
+
+		{% endif %} 
 	{% endfor %}
 	order by pernr, date_change
 ),
@@ -73,7 +95,7 @@ employee_original_date_ranges as (
 				{% if target.type in ('redshift', 'snowflake', 'snowflake-sap') %}
 				to_char(dateadd(day, -1, to_date(endda, 'YYYYMMDD')), 'YYYYMMDD') end as endda
 				{% elif target.type == 'postgres' %}
-				to_char(to_date(endda, 'YYYYMMDD') - interval '1 day', 'YYYYMMDD') end as date_change
+				to_char(to_date(endda, 'YYYYMMDD') - interval '1 day', 'YYYYMMDD') end as endda
 				{% elif target.type == 'bigquery' %}
 				format_date('%Y%m%d', date_sub(parse_date('%Y%m%d', endda), interval 1 day)) end as endda
 				{% elif target.type == 'databricks' %}
