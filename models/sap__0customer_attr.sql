@@ -40,6 +40,7 @@ final as (
     {% if var('kna1_mandt_var',[]) %}
 	where mandt = '{{ var('kna1_mandt_var') }}'
 	{% endif %}
+    {{ dbt_utils.group_by(29) }}
 )
 
 select * 

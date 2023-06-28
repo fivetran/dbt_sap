@@ -14,7 +14,7 @@ with
             pernr,
 			case when endda = '99991231' then endda
 				else
-				--convert date strings to dates to avoid null records when joining on date ranges in the end model
+				--convert date strings to dates, add one day, and back to avoid null records as we would join on date ranges in the end model that don't exist
 				{% if target.type in ('redshift', 'snowflake', 'snowflake-sap') %}
 				to_char(dateadd(day, 1, to_date(endda, 'YYYYMMDD')), 'YYYYMMDD') end as date_change
 				{% elif target.type == 'postgres' %}

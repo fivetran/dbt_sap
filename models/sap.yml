@@ -3,6 +3,11 @@ version: 2
 models:
   - name: sap__0comp_code_attr
     description: Company codes attribute data source
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - bukrs
     columns:
       - name: mandt
         description: Client
@@ -23,6 +28,11 @@ models:
 
   - name: sap__0comp_code_text
     description: Company code text
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - bukrs
     columns: 
       - name: mandt
         description: Client
@@ -35,6 +45,11 @@ models:
 
   - name: sap__0company_text
     description: Company text
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - rcomp
     columns: 
       - name: mandt 
         description: Client
@@ -48,6 +63,9 @@ models:
     columns:
       - name: kunnr
         description: Customer number
+        tests:
+          - unique
+          - not_null
       - name: brsch
         description: Industry key
       - name: ktokd
@@ -104,6 +122,71 @@ models:
         description: Indicator (Consumer)
       - name: pstl2
         description: PO Box postal code
+
+  - name: sap__0employee_attr
+    description: Contains the attributes for employees.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - pernr
+            - begda
+            - endda
+    columns:
+      - name: begda
+        description: Vaild from date
+      - name: endda
+        description: Valid to date
+      - name: pernr
+        description: Personnel number
+      - name: rfpnr
+        description: Reference personnel number
+      - name: bukrs
+        description: Company code
+      - name: werks
+        description: Personnel area
+      - name: btrtl
+        description: Personnel subarea
+      - name: persg
+        description: Employee group
+      - name: persk
+        description: Employee subgroup
+      - name: orgeh
+        description: Organizational unit
+      - name: stell
+        description: Job
+      - name: plans
+        description: Position
+      - name: kokrs
+        description: Controlling area of master cost center
+      - name: kostl
+        description: Master cost center
+      - name: abkrs
+        description: Payroll area
+      - name: trfar
+        description: Pay scale type
+      - name: trfgb
+        description: Pay scale area
+      - name: trfkz
+        description: Employee subgroup grouping for collective agreement provisions
+      - name: trfgr
+        description: Pay scale group
+      - name: trfst
+        description: Pay scale level
+      - name: bsgrd
+        description: Capacity utilization level
+      - name: ancur
+        description: Currency key for annual salary
+      - name: empct
+        description: Employment percentage
+      - name: stat2
+        description: Employment status
+      - name: ansvh
+        description: Work contract
+      - name: vdsk1
+        description: Organizational key
+      - name: sname
+        description: Employee's name (sortable, LASTNAME, FIRSTNAME)
+
 
   - name: sap__0fi_gl_10
     description: Extracts the totals records from the leading ledger in the new General Ledger
@@ -172,64 +255,6 @@ models:
         description: Cumulated balance
       - name: turnover
         description: Sales of the period
-
-  - name: sap__0employee_attr
-    description: Contains the attributes for employees.
-    columns:
-      - name: begda
-        description: Vaild from date
-      - name: endda
-        description: Valid to date
-      - name: pernr
-        description: Personnel number
-      - name: rfpnr
-        description: Reference personnel number
-      - name: bukrs
-        description: Company code
-      - name: werks
-        description: Personnel area
-      - name: btrtl
-        description: Personnel subarea
-      - name: persg
-        description: Employee group
-      - name: persk
-        description: Employee subgroup
-      - name: orgeh
-        description: Organizational unit
-      - name: stell
-        description: Job
-      - name: plans
-        description: Position
-      - name: kokrs
-        description: Controlling area of master cost center
-      - name: kostl
-        description: Master cost center
-      - name: abkrs
-        description: Payroll area
-      - name: trfar
-        description: Pay scale type
-      - name: trfgb
-        description: Pay scale area
-      - name: trfkz
-        description: Employee subgroup grouping for collective agreement provisions
-      - name: trfgr
-        description: Pay scale group
-      - name: trfst
-        description: Pay scale level
-      - name: bsgrd
-        description: Capacity utilization level
-      - name: ancur
-        description: Currency key for annual salary
-      - name: empct
-        description: Employment percentage
-      - name: stat2
-        description: Employment status
-      - name: ansvh
-        description: Work contract
-      - name: vdsk1
-        description: Organizational key
-      - name: sname
-        description: Employee's name (sortable, LASTNAME, FIRSTNAME)
 
   - name: sap__0fi_gl_14
     description: Contains the structure to provide new general ledger line item data.
@@ -581,6 +606,12 @@ models:
 
   - name: sap__0gl_account_attr
     description: G/L Account Number data source
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - ktopl
+            - saknr
     columns:
       - name: mandt
         description: Client
@@ -619,6 +650,11 @@ models:
 
   - name: sap__0material_attr
     description: Material attributes data source
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - matnr
     columns:
       - name: mandt
         description: Client
@@ -878,6 +914,9 @@ models:
     columns:
       - name: lifnr
         description: Account number of vendor or creditor
+        tests:
+          - unique
+          - not_null
       - name: brsch
         description: Industry key
       - name: ktokk
@@ -933,6 +972,11 @@ models:
 
   - name: sap__0vendor_text
     description: Vendor number text
+    tests: 
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - lifnr
     columns:
       - name: mandt
         description: Client
