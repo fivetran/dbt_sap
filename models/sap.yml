@@ -4,7 +4,7 @@ models:
   - name: sap__0comp_code_attr
     description: Company codes attribute data source
     columns:
-      - name: burks
+      - name: bukrs
         description: Company code
         tests:
           - unique
