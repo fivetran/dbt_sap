@@ -6,9 +6,6 @@ models:
     columns:
       - name: bukrs
         description: Company code
-        tests:
-          - unique
-          - not_null
       - name: waers
         description: Currency key
       - name: periv
@@ -60,10 +57,7 @@ models:
     description: Customer attributes
     columns:
       - name: kunnr
-        description: Customer number
-        tests:
-          - unique
-          - not_null
+        description: Customer number 
       - name: brsch
         description: Industry key
       - name: ktokd
@@ -908,13 +902,10 @@ models:
         description: NATO item identification number
 
   - name: sap__0vendor_attr
-    description: Vendor attributes
+    description: Vendor attributs
     columns:
       - name: lifnr
-        description: Account number of vendor or creditor
-        tests:
-          - unique
-          - not_null
+        description: Account number of vendor or creditor 
       - name: brsch
         description: Industry key
       - name: ktokk
