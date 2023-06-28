@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: sap__0comp_code_attr
-    description: Company codes attribute data source
+    description: Company codes attributes
     columns:
       - name: bukrs
         description: Company code
@@ -57,7 +57,7 @@ models:
         description: Company name
 
   - name: sap__0customer_attr
-    description: Customer attributes data source
+    description: Customer attributes
     columns:
       - name: kunnr
         description: Customer number
@@ -647,7 +647,7 @@ models:
         description: Number of the sample account
 
   - name: sap__0material_attr
-    description: Material attributes data source
+    description: Material attributes
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -908,7 +908,7 @@ models:
         description: NATO item identification number
 
   - name: sap__0vendor_attr
-    description: Vendor attributes data source
+    description: Vendor attributes
     columns:
       - name: lifnr
         description: Account number of vendor or creditor
