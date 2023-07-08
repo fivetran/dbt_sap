@@ -203,7 +203,7 @@ final as (
     {% set conditions = [] %}
     {% for v in var_checks %}
     {% set variable = 'faglflext_' ~ v ~ '_var' %}
-        {% if var(variable,[]) is not none %}
+        {% if var(variable,[]) %}
         {% if loop.first %} where {% else %} and {% endif %}
         faglflext.{{ v }} = '{{ var(variable) }}'
         {% endif %}

@@ -139,7 +139,7 @@ final as (
 	from mara
 
 	{% if var('mara_mandt_var',[]) %}
-	where mandt = '{{ var('mara_mandt_var') }}'
+	where mandt = '{{ var('mara_mandt_var') }}' 
 	{% endif %}
 )
 
