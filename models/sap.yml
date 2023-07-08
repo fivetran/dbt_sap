@@ -2,8 +2,15 @@ version: 2
 
 models:
   - name: sap__0comp_code_attr
-    description: Company codes attributes
+    description: This data source is used for loading company code attributes, extracting from the t001 data source from the master data warehouse.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - bukrs
     columns:
+      - name: mandt
+        description: Client
       - name: bukrs
         description: Company code
       - name: waers
@@ -22,7 +29,7 @@ models:
         description: Company
 
   - name: sap__0comp_code_text
-    description: Company code text
+    description: This data source is used for loading company code text information, extracting from the t001 data source from the master data warehouse.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -39,7 +46,7 @@ models:
         description: Language key  
 
   - name: sap__0company_text
-    description: Company text
+    description: This data source is used for loading customer text data, extracting from the t880 data source from the master data warehouse.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -50,12 +57,19 @@ models:
         description: Client
       - name: rcomp
         description: Company
-      - name: name1
+      - name: txtmd
         description: Company name
 
   - name: sap__0customer_attr
-    description: Customer attributes
+    description: This data source is used for loading customer master data, originating from the kna1 source.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - kunnr    
     columns:
+      - name: mandt 
+        description: Client
       - name: kunnr
         description: Customer number 
       - name: brsch
@@ -116,7 +130,7 @@ models:
         description: PO Box postal code
 
   - name: sap__0employee_attr
-    description: Contains the attributes for employees.
+    description: This datasource contains information that concerns the employee's work relationship, extracting master data from the personnel administration tables.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -179,9 +193,8 @@ models:
       - name: sname
         description: Employee's name (sortable, LASTNAME, FIRSTNAME)
 
-
   - name: sap__0fi_gl_10
-    description: Extracts the totals records from the leading ledger in the new General Ledger
+    description: Extracts the transaction figures from the leading ledger in the new General Ledger.
     columns:
       - name: ryear
         description: Fiscal year
@@ -249,7 +262,7 @@ models:
         description: Sales of the period
 
   - name: sap__0fi_gl_14
-    description: Contains the structure to provide new general ledger line item data.
+    description: Extracts line items from the leading ledger in new General Ledger Accounting.
     columns:
       - name: ryear
         description: Fiscal year of the general ledger
@@ -597,7 +610,7 @@ models:
         description: State/province code
 
   - name: sap__0gl_account_attr
-    description: G/L Account Number data source
+    description: This data source is used for loading G/L Account Number master data, originating from the ska1 source.    
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -641,7 +654,7 @@ models:
         description: Number of the sample account
 
   - name: sap__0material_attr
-    description: Material attributes
+    description: A standard SAP report used to display material attribute information, originating from the mara source.  
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -902,8 +915,15 @@ models:
         description: NATO item identification number
 
   - name: sap__0vendor_attr
-    description: Vendor attributs
+    description: A standard SAP report used to display vendor attributes, originating from the lfa1 source.  
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - lifnr
     columns:
+      - name: mandt 
+        description: Client
       - name: lifnr
         description: Account number of vendor or creditor 
       - name: brsch
@@ -960,7 +980,7 @@ models:
         description: Plant
 
   - name: sap__0vendor_text
-    description: Vendor number text
+    description: A standard SAP report used to display vendor text, originating from the lfa1 source.  
     tests: 
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -972,4 +992,4 @@ models:
       - name: lifnr
         description: Account number of vendor or creditor
       - name: txtmd
-        description: Name 1s
+        description: Name of vendor

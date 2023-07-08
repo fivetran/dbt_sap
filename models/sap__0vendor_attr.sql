@@ -7,6 +7,7 @@ with lfa1 as (
 final as (
 
     select
+        mandt,
         lifnr,
         brsch,
         ktokk,
@@ -35,9 +36,10 @@ final as (
         pfort,
         werks
     from lfa1
+
     {% if var('lfa1_mandt_var',[]) %}
-	where mandt = '{{ var('lfa1_mandt_var') }}'
-	{% endif %}
+    where mandt = '{{ var('lfa1_mandt_var') }}'
+    {% endif %}
 )
 
 select *

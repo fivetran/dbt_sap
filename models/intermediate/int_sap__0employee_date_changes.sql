@@ -13,17 +13,8 @@ with
         select
             pernr,
 			case when endda = '99991231' then endda
-				else
-				--convert date strings to dates, add one day, and back to avoid null records as we would join on date ranges in the end model that don't exist
-				{% if target.type in ('redshift', 'snowflake', 'snowflake-sap') %}
-				to_char(dateadd(day, 1, to_date(endda, 'YYYYMMDD')), 'YYYYMMDD') end as date_change
-				{% elif target.type == 'postgres' %}
-				to_char(to_date(endda, 'YYYYMMDD') + interval '1 day', 'YYYYMMDD') end as date_change
-				{% elif target.type == 'bigquery' %}
-				format_date('%Y%m%d', date_add(parse_date('%Y%m%d', endda), interval 1 day)) end as date_change
-				{% elif target.type == 'databricks' %}
-				date_format(date_add(to_date(endda, 'yyyyMMdd'), 1), 'yyyyMMdd') end as date_change
-				{% endif %}
+				else {{ add_day_to_char_date('endda') }} 
+				end as date_change
 		from {{ var(employee_model) }}
 	), 
 {% endfor %}
@@ -47,9 +38,9 @@ unioned_dates as (
 		from {{ employee_model }}_end
 		{{ dbt_utils.group_by(2) }}
 
-			{% if not loop.last %}
-    		union distinct
-			{% endif %} 
+		{% if not loop.last %}
+		union distinct
+		{% endif %} 
 
 		{% else %}
 		select 
@@ -66,9 +57,9 @@ unioned_dates as (
 		from {{ employee_model }}_end
 		{{ dbt_utils.group_by(2) }}
 
-			{% if not loop.last %}
-    		union
-			{% endif %} 
+		{% if not loop.last %}
+		union
+		{% endif %} 
 
 		{% endif %} 
 	{% endfor %}
@@ -90,17 +81,8 @@ employee_original_date_ranges as (
 		pernr,
 		begda,
 		case when endda = '99991231' then endda
-			else
-				--convert date strings to dates to avoid null records when joining on date ranges in the end model
-				{% if target.type in ('redshift', 'snowflake', 'snowflake-sap') %}
-				to_char(dateadd(day, -1, to_date(endda, 'YYYYMMDD')), 'YYYYMMDD') end as endda
-				{% elif target.type == 'postgres' %}
-				to_char(to_date(endda, 'YYYYMMDD') - interval '1 day', 'YYYYMMDD') end as endda
-				{% elif target.type == 'bigquery' %}
-				format_date('%Y%m%d', date_sub(parse_date('%Y%m%d', endda), interval 1 day)) end as endda
-				{% elif target.type == 'databricks' %}
-				date_format(date_sub(to_date(endda, 'yyyyMMdd'), 1), 'yyyyMMdd') end as endda
-				{% endif %}
+			else {{ subtract_day_to_char_date('endda') }} 
+			end as endda
 	from employee_date_ranges
 )
 

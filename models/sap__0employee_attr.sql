@@ -36,8 +36,8 @@ t503 as (
 
 employee_date_changes as ( 
 
-	select * 
-	from {{ ref('int_sap__0employee_date_changes') }}
+    select * 
+    from {{ ref('int_sap__0employee_date_changes') }}
     where endda is not null
 ),
 

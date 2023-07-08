@@ -19,7 +19,6 @@ bseg as (
 final as (
     
     select
- 
         faglflexa.ryear,
         faglflexa.docnr,
         faglflexa.rldnr,
@@ -193,8 +192,7 @@ final as (
         bseg.zzuserfld2,
         bseg.zzuserfld3,
         bseg.zzregion,
-        bseg.zzstate,
-        _fivetran_synced
+        bseg.zzstate
     from faglflexa
     inner join bkpf
         on bkpf.bukrs = faglflexa.rbukrs
@@ -207,9 +205,9 @@ final as (
         and bkpf.belnr = bseg.belnr
         and bkpf.gjahr = bseg.gjahr
         and faglflexa.buzei = bseg.buzei
-    {% if var('bkpf_mandt_var',[]) and var('faglflexa_rldnr_var',[]) %}
-    where bkpf.mandt = '{{ var('bkpf_mandt_var') }}'  
-    and faglflexa.rldnr = '{{ var('faglflexa_rldnr_var') }}'
+    {% if var('bkpf_mandt_var',[]) or var('faglflexa_rldnr_var',[]) %}
+    where bkpf.mandt = "{{ var('bkpf_mandt_var') }}"  
+    and faglflexa.rldnr = "{{ var('faglflexa_rldnr_var') }}"
     {% endif %}
 )
 

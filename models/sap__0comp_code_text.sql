@@ -6,7 +6,7 @@ with t001 as (
 
 final as (
 
-    select 
+    select
         mandt,
         bukrs,
         butxt as txtmd,

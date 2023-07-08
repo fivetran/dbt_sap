@@ -6,7 +6,8 @@ with t001 as (
 
 final as (
 
-    select 
+    select
+        mandt,
         bukrs,
         land1,
         waers,
@@ -15,9 +16,10 @@ final as (
         periv,
         rcomp
     from t001
-	{% if var('t001_mandt_var',[]) %}
-	where mandt = '{{ var('t001_mandt_var') }}'
-	{% endif %}
+
+    {% if var('t001_mandt_var',[]) %}
+    where mandt = '{{ var('t001_mandt_var') }}'
+    {% endif %}
 )
 
 select * 

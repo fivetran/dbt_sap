@@ -7,6 +7,7 @@ with kna1 as (
 final as (
 
     select
+        mandt,
         kunnr,
         brsch,
         ktokd,
@@ -37,10 +38,11 @@ final as (
         dear6,
         pstl2
     from kna1
+
     {% if var('kna1_mandt_var',[]) %}
 	where mandt = '{{ var('kna1_mandt_var') }}'
 	{% endif %}
-    {{ dbt_utils.group_by(29) }}
+ 
 )
 
 select * 

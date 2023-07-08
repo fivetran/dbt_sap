@@ -388,7 +388,7 @@ final as (
 			    'osl16', osl16,
 			    'osm16', osm16
     	) final as fieldtype, value
-	{% elif target.name in ('bigquery', 'snowflake', 'redshift', 'snowflake-sap') %} 
+	{% else %} 
 		unpivot(value for fieldtype in (
 				hslvt, 
 				hsmvt,
