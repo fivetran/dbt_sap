@@ -198,14 +198,12 @@ final as (
     inner join t001 
         on faglflext.rbukrs = t001.bukrs
         and faglflext.rclnt = t001.mandt
-
+    where 1=1
     {% set var_checks = ['rclnt', 'ryear', 'rbukrs', 'rldnr'] %}
-    {% set conditions = [] %}
     {% for v in var_checks %}
     {% set variable = 'faglflext_' ~ v ~ '_var' %}
         {% if var(variable,[]) %}
-        {% if loop.first %} where {% else %} and {% endif %}
-        faglflext.{{ v }} = '{{ var(variable) }}'
+        and faglflext.{{ v }} = '{{ var(variable) }}'
         {% endif %}
     {% endfor %}
 )

@@ -205,8 +205,11 @@ final as (
         and bkpf.belnr = bseg.belnr
         and bkpf.gjahr = bseg.gjahr
         and faglflexa.buzei = bseg.buzei
-    {% if var('bkpf_mandt_var',[]) or var('faglflexa_rldnr_var',[]) %}
-    where bkpf.mandt = '{{ var('bkpf_mandt_var') }}'
+    where 1=1
+    {% if var('bkpf_mandt_var',[]) %}  
+    and bkpf.mandt = '{{ var('bkpf_mandt_var') }}'
+    {% endif %}
+    {% if var('faglflexa_rldnr_var',[]) %}
     and faglflexa.rldnr = '{{ var('faglflexa_rldnr_var') }}'
     {% endif %}
 )
