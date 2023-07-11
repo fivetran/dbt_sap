@@ -44,7 +44,7 @@ unioned as (
 
 unioned_dates as (
 	
-	select * 
+	select pernr, date_change 
 	from unioned
 	{{ dbt_utils.group_by(2) }}
 	order by pernr, date_change
