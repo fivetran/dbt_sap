@@ -19,50 +19,34 @@ with
 	), 
 {% endfor %}
 
-unioned_dates as (
+
+unioned as (
 
 	{% for employee_model in employee_models %}
-	
-		{% if target.type == 'bigquery' %}
 		select 
 			pernr,
 			date_change 
-		from {{ employee_model }}_beg
-		{{ dbt_utils.group_by(2) }}
+		from {{ employee_model }}_beg 
 
-		union distinct
+		union all
 
 		select 
 			pernr,
 			date_change 
-		from {{ employee_model }}_end
-		{{ dbt_utils.group_by(2) }}
+		from {{ employee_model }}_end 
 
 		{% if not loop.last %}
-		union distinct
-		{% endif %} 
-
-		{% else %}
-		select 
-			pernr,
-			date_change 
-		from {{ employee_model }}_beg
-		{{ dbt_utils.group_by(2) }}
-
-		union 
-
-		select 
-			pernr,
-			date_change 
-		from {{ employee_model }}_end
-		{{ dbt_utils.group_by(2) }}
-
-		{% if not loop.last %}
-		union
-		{% endif %} 
-
+		union all
 		{% endif %} 
 	{% endfor %}
+),
+	
+
+unioned_dates as (
+	
+	select * 
+	from unioned
+	{{ dbt_utils.group_by(2) }}
 	order by pernr, date_change
 ),
 

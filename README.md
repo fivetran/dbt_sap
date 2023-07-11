@@ -40,25 +40,27 @@ The following table provides a detailed list of all models materialized within t
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran SAP connector syncing these respective tables into your destination. 
-
-* bkpf
-* bseg
-* faglflexa
-* faglflext
-* kna1
-* lfa1
-* mara
-* pa0000
-* pa0001
-* pa0007
-* pa0008
-* pa0031
-* ska1
-* t001
-* t503
-* t880
-
+- At least one Fivetran of the following SAP connectors:
+   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
+   - [HVA SAP ECC](https://fivetran.com/docs/databases/sap-erp/high-volume-agent/hva-sap-ecc-hana)
+   - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) 
+-  Within the connector, syncing the following respective tables into your destination:
+  - bkpf
+  - bseg
+  - faglflexa
+  - faglflext
+  - kna1
+  - lfa1
+  - mara
+  - pa0000
+  - pa0001
+  - pa0007
+  - pa0008
+  - pa0031
+  - ska1
+  - t001
+  - t503
+  - t880
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks** destination.
 
 ### Databricks Dispatch Configuration
