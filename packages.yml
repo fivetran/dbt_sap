@@ -4,5 +4,5 @@ packages:
 
 #Revert package before releasing
 - git: https://github.com/fivetran/dbt_sap_source.git 
-  revision: feature/employee-text-reports
+  revision: main
   warn-unpinned: false
