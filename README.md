@@ -3,7 +3,7 @@
         href="https://github.com/fivetran/dbt_sap/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.0.0_,<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_,<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
@@ -13,10 +13,11 @@
 # SAP Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_sap/))
 
 # 📣 What does this dbt package do?
-- Produces modeled tables that leverage SAP data from [Fivetran's connector](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
-- Enables you to better understand your SAP data. The package achieves this by performing the following: 
-    - Brings in essential tables like G/L Account Number attribute (`sap__0gl_account_attr`) and Master Material data (`sap__0material_attr`).
-    - Adds general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
+- Provides recreations of the SAP extractor models to enable you to better understand your SAP data. The package achieves this by performing the following: 
+    - Brings in essential master attribute tables like Company Code (`sap__0comp_code_attr`), Customer Master (`sap__0customer_attr`), Employee (`sap__0employee_attr`), G/L Account Number (`sap__0gl_account_attr`), Material Data (`sap__0material_attr`), and Vendor Number (`sap__0vendor_attr`).
+    - Brings in general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
+    - Brings in master text models like Company Code (`sap__0comp_code_text`), Company (`sap__0company_text`), and Vendor (`sap__0vendor_text`).
+- Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP ECC](https://fivetran.com/docs/databases/sap-erp/high-volume-agent/hva-sap-ecc-hana) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
 
@@ -25,15 +26,41 @@ The following table provides a detailed list of all models materialized within t
 
 | **model**                         | **description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute.              |
-| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  Access the material master data from the source system.                                                                                                     |
+| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  Access the company code attributes.                               |
+| [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  Access the company code text information.   |
+| [sap__0company_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0company_text) |  Access the company text information.   |
+| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  Access the customer master data attributes.                               |
 | [sap__0fi_gl_10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10)    | Access the totals records from the leading ledger in the new general ledger.  |
-| [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                                                                     |                                                                    
+| [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | Access line items of the leading ledger,  contains all line items that have been extracted from the source system.                                                                  |                            
+| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |  Access the general ledger account number attribute.              |
+| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  Access the material master data from the source system.                                                          |
+| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  Access the vendor master data attributes.                               |
+| [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  Access the vendor text information.   |
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran SAP connector syncing data into your destination. 
+- At least one Fivetran of the following SAP connectors:
+   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
+   - [HVA SAP ECC](https://fivetran.com/docs/databases/sap-erp/high-volume-agent/hva-sap-ecc-hana)
+   - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) 
+- Within the connector, syncing the following respective tables into your destination:
+   - bkpf
+   - bseg
+   - faglflexa
+   - faglflext
+   - kna1
+   - lfa1
+   - mara
+   - pa0000
+   - pa0001
+   - pa0007
+   - pa0008
+   - pa0031
+   - ska1
+   - t001
+   - t503
+   - t880
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks** destination.
 
 ### Databricks Dispatch Configuration
@@ -48,12 +75,12 @@ dispatch:
 Include the following sap_source package version in your `packages.yml` file.
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
-- git: https://github.com/fivetran/dbt_sap.git 
-  revision: main
-  warn-unpinned: false
+packages:
+  - package: fivetran/sap
+    version: [">=0.1.0", "<0.2.0"]
 ```
 
-Do NOT include the `sap_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+It's our recommendation that you do not include the `sap_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
 
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `sap` schema. If this is not where your sap data is (for example, if your sap schema is named `sap_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -67,6 +94,7 @@ vars:
 ## (Optional) Step 4: Additional configurations
 <details><summary>Expand to view details</summary>
 <br>
+
 ### Filter the data you bring in with field variable conditionals
 By default, these models are set to bring in all your data from SAP, but you may be interested in bringing in only a smaller sample of data given the relative size of the SAP source tables.
 
@@ -74,19 +102,18 @@ We have set up where conditions in our data to allow you to bring in only the da
 
 ```yml
 vars:
-    bkpf_mandt_var: 'value1'
-    mara_mandt_var: 'value2'
-    ska1_mandt_var: 'value3'
-    faglflexa_rldnr_var: 'value4'
-    faglflext_prctr_var: 'value5'
-    faglflext_racct_var: 'value6'
-    faglflext_racct_var: 'value7'
-    faglflext_rbukrs_var: 'value8'
-    faglflext_rclnt_var: 'value9'
-    faglflext_rldnr_var: 'value10'
-    faglflext_ryear_var: 'value11'
-```
-### Passing Through Additional Fields
+    bkpf_mandt_var: 'value1' # The client field in the `sap__0fi_gl_14` model, this filter allows you to parse down to one client's records.
+    kna1_mandt_var: 'value2' # The client field in the `sap__0customer_attr` model, this filter allows you to parse down to one client's records.
+    lfa1_mandt_var: 'value3' # The client field in the `sap__0vendor_attr` model, this filter allows you to parse down to one client's records.
+    mara_mandt_var: 'value4' # The client field in the `sap__0vendor_attr` model, this filter allows you to parse down to one client's records.
+    ska1_mandt_var: 'value5' # The client field in the `sap__0gl_account_attr` model, this filter allows you to parse down to one client's records.
+    t001_mandt_var: 'value6' # The client field in the `sap__0comp_code_attr` model, this filter allows you to parse down to one client's records.
+    faglflexa_rldnr_var: 'value7' # The ledger field in the `sap__0fi_gl_14` model, this filter allows you to parse down to one ledger's records.
+    faglflext_rbukrs_var: 'value8' # The company code field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one company's records.
+    faglflext_rclnt_var: 'value9' # The client in the `sap__0fi_gl_10` model, this filter allows you to parse down to one client's records.
+    faglflext_rldnr_var: 'value10' # The ledger account field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one ledger account's records.
+    faglflext_ryear_var: 'value11' # The fiscal year in the `sap__0fi_gl_10` model, this filter allows you to parse down to one fiscal year.
+```  
 
 ### Change the build schema
 By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `_sap_source`) in your destination. If this is not where you would like your sap staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
