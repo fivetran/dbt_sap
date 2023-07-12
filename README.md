@@ -44,23 +44,23 @@ To use this dbt package, you must have the following:
    - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
    - [HVA SAP ECC](https://fivetran.com/docs/databases/sap-erp/high-volume-agent/hva-sap-ecc-hana)
    - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) 
--  Within the connector, syncing the following respective tables into your destination:
-  - bkpf
-  - bseg
-  - faglflexa
-  - faglflext
-  - kna1
-  - lfa1
-  - mara
-  - pa0000
-  - pa0001
-  - pa0007
-  - pa0008
-  - pa0031
-  - ska1
-  - t001
-  - t503
-  - t880
+- Within the connector, syncing the following respective tables into your destination:
+   - bkpf
+   - bseg
+   - faglflexa
+   - faglflext
+   - kna1
+   - lfa1
+   - mara
+   - pa0000
+   - pa0001
+   - pa0007
+   - pa0008
+   - pa0031
+   - ska1
+   - t001
+   - t503
+   - t880
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks** destination.
 
 ### Databricks Dispatch Configuration
