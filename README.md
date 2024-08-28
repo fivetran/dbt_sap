@@ -21,10 +21,12 @@
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
 
-The following table provides a detailed list of all models materialized within this package by default.
-> TIP: See more details about these models in the package's [dbt docs site](https://fivetran.github.io/dbt_sap/#!/overview?g_v=1).
+<!--section=“sap_transformation_model"-->
 
-| **model**                         | **description**                                                                                                                                                                                                                             |
+The following table provides a detailed list of all tables materialized within this package by default.
+> TIP: See more details about these tables in the package's [dbt docs site](https://fivetran.github.io/dbt_sap/#!/overview?g_v=1).
+
+| **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  This model is used for loading company code attributes, extracting from the t001 data source.                              |
 | [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  This model is used for loading company code text information, extracting from the t001 data source.   |
@@ -38,30 +40,32 @@ The following table provides a detailed list of all models materialized within t
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the lfa1 source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the lfa1 source.     |
 
+<!--section-end-->
+
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
 - At least one Fivetran of the following SAP connectors:
-- [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
-- [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
-- [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana)
+   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
+   - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
+   - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana)
 - Within the connector, syncing the following respective tables into your destination:
-- bkpf
-- bseg
-- faglflexa
-- faglflext
-- kna1
-- lfa1
-- mara
-- pa0000
-- pa0001
-- pa0007
-- pa0008
-- pa0031
-- ska1
-- t001
-- t503
-- t880
+   - bkpf
+   - bseg
+   - faglflexa
+   - faglflext
+   - kna1
+   - lfa1
+   - mara
+   - pa0000
+   - pa0001
+   - pa0007
+   - pa0008
+   - pa0031
+   - ska1
+   - t001
+   - t503
+   - t880
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks** destination.
 
 #### Databricks Dispatch Configuration
