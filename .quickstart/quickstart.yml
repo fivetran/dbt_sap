@@ -8,3 +8,17 @@ destination_configurations:
     dispatch:
       - macro_namespace: dbt_utils
         search_order: [ 'spark_utils', 'dbt_utils' ]
+
+public_models: [
+  "sap__0fi_gl_10",
+  "sap__0fi_gl_14",
+  "sap__0company_text",
+  "sap__0material_attr",
+  "sap__0gl_account_attr",
+  "sap__0employee_attr",
+  "sap__0vendor_attr",
+  "sap__0customer_attr",
+  "sap__0comp_code_text",
+  "sap__0comp_code_attr",
+  "sap__0vendor_text"
+]

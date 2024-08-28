@@ -1,7 +1,7 @@
 contact_links:
-  - name: Chat with us in our Fivetran dbt community
-    url: https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group
-    about: Submit any questions you have about our dbt packages so our Fivetran Analytics Engineering team can provide guidance as quickly as possible!
+  - name: Provide feedback to our dbt package team
+    url: https://www.surveymonkey.com/r/DQ7K7WW
+    about: Fill out our survey form to provide valuable feedback to the Fivetran team developing and maintaining the dbt packages.
   - name: Fivetran connector question
     url: https://support.fivetran.com/hc
     about: Have a question about your connector? Check out the Fivetran support portal for more details.
