@@ -1,5 +1,5 @@
 name: 'sap_integration_tests'
-version: '0.1.1'
+version: '0.1.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -230,7 +230,7 @@ seeds:
         rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        timestamp: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        timestamp: numeric
         tsl: numeric
         wsl: numeric
 
@@ -347,7 +347,7 @@ seeds:
         tsl14: numeric
         tsl15: numeric
         tsl16: numeric
-        timestamp: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        timestamp: numeric
         _fivetran_rowid: numeric
 
     sap_kna1_data:
