@@ -1,3 +1,6 @@
+# dbt_sap v0.1.1
+## Bugfix
+- Corrects the documentation regarding which schema the models are written to.
 
 # dbt_sap v0.1.0  
 🎉 This is the initial release of this package! 🎉

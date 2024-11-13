@@ -77,7 +77,7 @@ dispatch:
 ```
 
 ### Step 2: Install the package
-Include the following sap_source package version in your `packages.yml` file.
+Include the following sap package version in your `packages.yml` file.
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
@@ -121,7 +121,7 @@ vars:
 ```  
 
 #### Change the build schema
-By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `_sap_source`) in your destination. If this is not where you would like your sap staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `sap`) in your destination. If this is not where you would like your sap staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
