@@ -121,11 +121,13 @@ vars:
 ```  
 
 #### Change the build schema
-By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `stg_sap`) in your destination. If this is not where you would like your sap staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `stg_sap`) and the SAP final models within a schema titled (<target_schema> + `_sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
     sap:
+      +schema: my_new_schema_name # leave blank for just the target_schema
+    sap_source:
       +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
