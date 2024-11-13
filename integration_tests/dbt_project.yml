@@ -230,7 +230,7 @@ seeds:
         rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        timestamp: numeric
+        timestamp: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         tsl: numeric
         wsl: numeric
 
@@ -347,7 +347,7 @@ seeds:
         tsl14: numeric
         tsl15: numeric
         tsl16: numeric
-        timestamp: numeric
+        timestamp: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         _fivetran_rowid: numeric
 
     sap_kna1_data:
