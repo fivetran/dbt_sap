@@ -1,3 +1,9 @@
+# dbt_sap version.version
+
+## Documentation
+- Added Quickstart model counts to README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
+- Corrected references to connectors and connections in the README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
+
 
 # dbt_sap v0.1.0  
 🎉 This is the initial release of this package! 🎉
