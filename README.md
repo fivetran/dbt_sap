@@ -40,6 +40,8 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the lfa1 source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the lfa1 source.     |
 
+### Materialized Models
+Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -49,7 +51,7 @@ To use this dbt package, you must have the following:
    - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
    - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
    - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana)
-- Within the connector, syncing the following respective tables into your destination:
+- Within the connection, syncing the following respective tables into your destination:
    - bkpf
    - bseg
    - faglflexa
