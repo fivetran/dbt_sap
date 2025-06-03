@@ -1,19 +1,19 @@
 with faglflexa as ( 
 
 	select * 
-	from {{ var('faglflexa') }}
+	from {{ ref('stg_sap__faglflexa') }}
 ),
 
 bkpf as (
 
     select *
-    from {{ var('bkpf') }}
+    from {{ ref('stg_sap__bkpf') }}
 ),
 
 bseg as (
 
     select *
-    from {{ var('bseg') }}
+    from {{ ref('stg_sap__bseg') }}
 ),
 
 final as (
@@ -61,7 +61,7 @@ final as (
         faglflexa.buzei,
         faglflexa.bschl,
         faglflexa.bstat,
-        faglflexa_timestamp,
+        faglflexa.faglflexa_timestamp,
         bkpf.bukrs,
         bkpf.blart,
         bkpf.bldat,

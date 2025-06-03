@@ -1,11 +1,25 @@
-with lfa1 as ( 
+{{ config(enabled=var('sap_using_lfa1', True)) }}
 
-	select * 
-	from {{ var('lfa1') }}
+with base as (
+
+    select * 
+    from {{ ref('stg_sap__lfa1_tmp') }}
+),
+
+fields as (
+
+    select
+        {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=adapter.get_columns_in_relation(ref('stg_sap__lfa1_tmp')),
+                staging_columns=get_lfa1_columns()
+            )
+        }}
+    from base
 ),
 
 final as (
-
+    
     select
         mandt,
         lifnr,
@@ -35,11 +49,7 @@ final as (
         kraus,
         pfort,
         werks
-    from lfa1
-
-    {% if var('lfa1_mandt_var',[]) %}
-    where mandt = '{{ var('lfa1_mandt_var') }}'
-    {% endif %}
+    from fields
 )
 
 select *

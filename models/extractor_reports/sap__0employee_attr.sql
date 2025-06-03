@@ -1,37 +1,37 @@
 with pa0000 as (
 
     select *
-    from {{ var('pa0000') }} 
+    from {{ ref('stg_sap__pa0000') }} 
 ),
 
 pa0001 as (
 
     select *
-    from {{ var('pa0001') }} 
+    from {{ ref('stg_sap__pa0001') }} 
 ),
 
 pa0007 as (
 
     select *
-    from {{ var('pa0007') }} 
+    from {{ ref('stg_sap__pa0007') }} 
 ),
 
 pa0008 as (
 
     select *
-    from {{ var('pa0008') }} 
+    from {{ ref('stg_sap__pa0008') }} 
 ),
 
 pa0031 as (
 
     select *
-    from {{ var('pa0031') }} 
+    from {{ ref('stg_sap__pa0031') }} 
 ),
 
 t503 as (
 
     select *
-    from {{ var('t503') }} 
+    from {{ ref('stg_sap__t503') }} 
 ),
 
 employee_date_changes as ( 

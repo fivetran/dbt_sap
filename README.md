@@ -84,7 +84,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 ```
 
 It's our recommendation that you do not include the `sap_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -157,9 +157,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
 ```yml
 packages:
-    - package: fivetran/sap_source
-      version: [">=0.1.0", "<0.2.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 

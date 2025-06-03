@@ -1,7 +1,7 @@
 with ska1 as ( 
 
 	select * 
-	from {{ var('ska1') }}
+	from {{ ref('stg_sap__ska1') }}
 ),
 
 final as (

@@ -1,7 +1,7 @@
 with mara as ( 
 
 	select * 
-	from {{ var('mara') }}
+	from {{ ref('stg_sap__mara') }}
 ),
 
 final as (

@@ -1,7 +1,7 @@
 with lfa1 as ( 
 
 	select * 
-	from {{ var('lfa1') }}
+	from {{ ref('stg_sap__lfa1') }}
 ),
 
 final as (

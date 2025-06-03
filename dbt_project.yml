@@ -1,6 +1,6 @@
 config-version: 2
 name: 'sap'
-version: '0.1.0'
+version: '0.2.0'
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 
 models:
@@ -10,20 +10,37 @@ models:
 
 vars:
   sap:
-    ## Staging Models
-    bkpf: "{{ ref('stg_sap__bkpf') }}"
-    bseg: "{{ ref('stg_sap__bseg') }}"
-    faglflexa: "{{ ref('stg_sap__faglflexa') }}"
-    faglflext: "{{ ref('stg_sap__faglflext') }}"
-    kna1: "{{ ref('stg_sap__kna1') }}"
-    lfa1: "{{ ref('stg_sap__lfa1') }}"
-    mara: "{{ ref('stg_sap__mara') }}"
-    pa0000: "{{ ref('stg_sap__pa0000') }}"
-    pa0001: "{{ ref('stg_sap__pa0001') }}"
-    pa0007: "{{ ref('stg_sap__pa0007') }}"
-    pa0008: "{{ ref('stg_sap__pa0008') }}"
-    pa0031: "{{ ref('stg_sap__pa0031') }}"
-    ska1: "{{ ref('stg_sap__ska1') }}"
-    t001: "{{ ref('stg_sap__t001') }}"
-    t503: "{{ ref('stg_sap__t503') }}"
-    t880: "{{ ref('stg_sap__t880') }}"
+    bkpf: "{{ source('sap', 'bkpf') }}"
+    bseg: "{{ source('sap', 'bseg') }}"
+    faglflexa: "{{ source('sap', 'faglflexa') }}"
+    faglflext: "{{ source('sap', 'faglflext') }}"
+    lfa1: "{{ source('sap', 'lfa1') }}"
+    kna1: "{{ source('sap', 'kna1') }}"
+    mara: "{{ source('sap', 'mara') }}"
+    pa0000: "{{ source('sap', 'pa0000') }}"
+    pa0001: "{{ source('sap', 'pa0001') }}"
+    pa0007: "{{ source('sap', 'pa0007') }}"
+    pa0008: "{{ source('sap', 'pa0008') }}"
+    pa0031: "{{ source('sap', 'pa0031') }}" 
+    ska1: "{{ source('sap', 'ska1') }}"
+    t001: "{{ source('sap', 't001') }}"
+    t503: "{{ source('sap', 't503') }}"
+    t880: "{{ source('sap', 't880') }}"
+  # sap:
+  #   ## Staging Models
+  #   bkpf: "{{ ref('stg_sap__bkpf') }}"
+  #   bseg: "{{ ref('stg_sap__bseg') }}"
+  #   faglflexa: "{{ ref('stg_sap__faglflexa') }}"
+  #   faglflext: "{{ ref('stg_sap__faglflext') }}"
+  #   kna1: "{{ ref('stg_sap__kna1') }}"
+  #   lfa1: "{{ ref('stg_sap__lfa1') }}"
+  #   mara: "{{ ref('stg_sap__mara') }}"
+  #   pa0000: "{{ ref('stg_sap__pa0000') }}"
+  #   pa0001: "{{ ref('stg_sap__pa0001') }}"
+  #   pa0007: "{{ ref('stg_sap__pa0007') }}"
+  #   pa0008: "{{ ref('stg_sap__pa0008') }}"
+  #   pa0031: "{{ ref('stg_sap__pa0031') }}"
+  #   ska1: "{{ ref('stg_sap__ska1') }}"
+  #   t001: "{{ ref('stg_sap__t001') }}"
+  #   t503: "{{ ref('stg_sap__t503') }}"
+  #   t880: "{{ ref('stg_sap__t880') }}"

@@ -1,7 +1,7 @@
 with t880 as ( 
 
 	select * 
-	from {{ var('t880') }}
+	from {{ ref('stg_sap__t880') }}
 ),
 
 final as (

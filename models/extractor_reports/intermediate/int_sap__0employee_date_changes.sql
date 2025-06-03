@@ -6,7 +6,7 @@ with
         select
             pernr,
             begda as date_change
-        from {{ var(employee_model) }}
+        from {{ ref('stg_sap__' + employee_model) }}
     ),
 
     {{ employee_model }}_end as (
@@ -15,7 +15,7 @@ with
 			case when endda = '99991231' then endda
 				else {{ add_day_to_char_date('endda') }} 
 				end as date_change
-		from {{ var(employee_model) }}
+		from {{ ref('stg_sap__' + employee_model) }}
 	), 
 {% endfor %}
 

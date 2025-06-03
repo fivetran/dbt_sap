@@ -1,13 +1,13 @@
 with faglflext as ( 
 
 	select * 
-	from {{ var('faglflext') }}
+	from {{ ref('stg_sap__faglflext') }}
 ),
 
 t001 as (
 
     select *
-    from {{ var('t001') }}
+    from {{ ref('stg_sap__t001') }}
 ),
 
 final as (
