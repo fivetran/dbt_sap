@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_t880', True)) }}
+
 with t880 as ( 
 
 	select * 

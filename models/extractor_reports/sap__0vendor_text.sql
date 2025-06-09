@@ -1,3 +1,4 @@
+{{ config(enabled=var('sap_using_lfa1', True)) }}
 with lfa1 as ( 
 
 	select * 

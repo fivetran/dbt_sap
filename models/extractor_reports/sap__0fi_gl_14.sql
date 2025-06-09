@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_faglflexa', True) and var('sap_using_bkpf', True) and var('sap_using_bseg', True)) }}
+
 with faglflexa as ( 
 
 	select * 

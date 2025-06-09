@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_mara', True)) }}
+
 with mara as ( 
 
 	select * 

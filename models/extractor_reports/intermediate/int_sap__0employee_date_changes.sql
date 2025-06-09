@@ -1,7 +1,7 @@
 {% set employee_models = ['pa0000', 'pa0001', 'pa0007', 'pa0008', 'pa0031'] %}
 
 with
-{% for employee_model in employee_models %}
+{% for employee_model in employee_models if var('sap_using_' ~ employee_model, True)  %}
     {{ employee_model }}_beg as (
         select
             pernr,

@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_kna1', True)) }}
+
 with kna1 as ( 
 
 	select * 

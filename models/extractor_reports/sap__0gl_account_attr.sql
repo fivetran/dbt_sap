@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_ska1', True)) }}
+
 with ska1 as ( 
 
 	select * 

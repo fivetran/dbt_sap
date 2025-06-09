@@ -1,3 +1,11 @@
+{{ config(enabled=var('sap_using_t503', True) 
+        and var('sap_using_pa0000', True)
+        and var('sap_using_pa0001', True)
+        and var('sap_using_pa0007', True)
+        and var('sap_using_pa0008', True)
+        and var('sap_using_pa0031', True)
+        )}}
+
 with pa0000 as (
 
     select *

@@ -1,3 +1,6 @@
+{{ config(enabled=var('sap_using_faglflext', True) and var('sap_using_t001', True)) }}
+
+
 with faglflext as ( 
 
 	select * 
