@@ -1,65 +1,3 @@
-create or replace view EC_DB.SAP_STG."VW_Purchasing_Document_Type"(
-	"Client_Id",
-	"Purch_Doc_Category_Id",
-	"Purchasing_Document_Type_Id",
-	"Control_Indicator",
-	"Item_Number_Interval",
-	"No_Range_Int_Assgt",
-	"No_Range_Ext_Assg",
-	"Field_Selection_Key_Id",
-	"Reference_Document_Type_Id",
-	"Stdrd_Rel_Order_Qty",
-	"Update_Group_Stats_Id",
-	"Subitem_Interval",
-	"Time_Dep_Conditions",
-	"Partner_Determination_Procedure_Id",
-	"Number_Range_Ale",
-	"Vendor_Hierarchy_Cat_Id",
-	"Rel_Documentation",
-	"Overall_Release_Requisitions",
-	"Layout",
-	"Shared_Lock_Only",
-	"Distributed_Contract_Ale",
-	"Global_Perc_Bid",
-	"Corr_Misc_Provis",
-	"Vendor",
-	"Contract_With_Delivery_Schedule",
-	"Document_Type_Id",
-	"Koako",
-	"Qty_Sched_Permitted",
-	"Precedence_F_Rfq_Req",
-	"Further_Processing_Summar_Docs",
-	"Cross_System_Transit",
-	"Commitment_Plan_Is_Active",
-	"Category_Commitment_Plan",
-	"Enh_Store_Return",
-	"Adv_Returns_Active",
-	"Risk_Distribution_Plan_Profile_Id",
-	"Srm_Contract_Number_Range",
-	"Sapmp_Fastentry_Chars_Is_Active",
-	"Sapmp_Activate_Inheritance",
-	"Sapmp_Inheritance_Log",
-	"Sapmp_Inheritance_Overwrite_User_Values",
-	"Sapmp_Inheritance_Char_Selection_List",
-	"Sapmp_Characteristic_Name",
-	"Sapmp_Global_Local_Group_May_Be_Undone",
-	"Tolerance_Key_Id",
-	"Vas_Active_Flag",
-	"Determination_Procedure",
-	"Vas_Deletion_Criteria",
-	"Date_Vas_Determination",
-	"Exclude_Return_Items",
-	"Determination_Procedure_Id",
-	FSH_DPR_DETPRO,
-	"Generic_Article_In_Po_Using_Idoc",
-	"Use_Ref_Characteristics",
-	"Enable_Dateline",
-	"Hvr_Is_Deleted",
-	"Hvr_Change_Time",
-	DOC_TYPE_DESCRIPT
-) as (
-    
-
 Select
 T161."MANDT" as "Client_Id"
 ,T161."BSTYP" as "Purch_Doc_Category_Id"
@@ -119,12 +57,11 @@ T161."MANDT" as "Client_Id"
 ,T161."HVR_IS_DELETED" as "Hvr_Is_Deleted"
 ,T161."HVR_CHANGE_TIME" as "Hvr_Change_Time"
 , T161T."BATXT" as Doc_Type_Descript
-from SAP_RAW.T161
-Left Join SAP_RAW.T161T on 
+from {{ ref('stg_sap__t161') }}
+Left Join {{ ref('stg_sap__t161t') }}on 
     T161.MANDT = T161T.MANDT
     AND T161.BSART = T161T.BSART
     AND T161.BSTYP = T161T.BSTYP
 and T161T."SPRAS"= 'E'
 where
 T161."MANDT" in ('800')
-  );

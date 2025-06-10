@@ -1,75 +1,3 @@
-create or replace view EC_DB.SAP_STG."VW_Plant"(
-	"Client_Id",
-	"Plant_Id",
-	"Order_Allocation_Run",
-	"Tax_Indicator_Plant_Id",
-	"City_Code_Id",
-	"Region_Id",
-	"Factory_Calendar_Id",
-	"Actual_Activities_Updated",
-	"Mixed_Costing",
-	"Vendor_Type",
-	"Purchasing_Organization_Id",
-	"Node_Type_Supply_Chain_Network_Id",
-	"Store_Cat",
-	"Distrib_Channel_Id",
-	"Text_1St_Dunning",
-	"Ipi_Credit_Allowed",
-	"Customer_Number_Plant_Id",
-	"Name",
-	"Season_Active_In_Inventory_Management",
-	"Address_Id",
-	"Sales_District_Id",
-	"Language_Key_Id",
-	"Street_And_House_Number",
-	"Supply_Region_Region_Supplied_Id",
-	"Sales_Organization_Id",
-	"Structure_Name_Formation_Id",
-	"Superior_Department_Store_Id",
-	"Activating_Requirements_Planning",
-	"Vendor_Number_Plant_Id",
-	"Po_Box",
-	"Int_Co_Billing_Div_Id",
-	"3Rd_Reminder_Exped",
-	"Exchange_Valuation_Indicator",
-	"Af_Srce_Det_Via_Atp",
-	"Sop_Plant",
-	"Source_List",
-	"County_Code_Id",
-	"Shipping_Point_Id",
-	"Text_3Rd_Dunning",
-	"2Nd_Reminder_Exped",
-	"Batch_Type_Dms_Used",
-	"Postal_Code",
-	"Take_Regular_Vendor_Into_Account",
-	"Actual_Costing",
-	"Cost_Obj_Controlling",
-	"Batch_Status_Mgmt",
-	"Tax_Jurisdiction_Id",
-	"Variance_Key_Id",
-	CHAZV_OLD,
-	"Control_Credit_Cost_Centers",
-	"Valuation_Area_Id",
-	"Plant_Category",
-	"1St_Reminder_Exped",
-	"Text_2Nd_Dunning",
-	"Control_Bom",
-	"Conds_At_Plant_Level",
-	"Business_Place_Id",
-	"Po_Tolerance",
-	"Sales_Area_Detrm",
-	"Name_2",
-	"Country_Key_Id",
-	"Archiving_Marker",
-	"Distrib_Profile_Plant_Id",
-	"City",
-	"Maintenance_Planning_Plant_Id",
-	"_Fivetran_Deleted",
-	"_Fivetran_Synced",
-	"_Fivetran_Sap_Archived"
-) as (
-    
-
 Select
 T001W."MANDT" as "Client_Id"
 ,T001W."WERKS" as "Plant_Id"
@@ -139,7 +67,6 @@ T001W."MANDT" as "Client_Id"
 ,T001W."_FIVETRAN_DELETED" as "_Fivetran_Deleted"
 ,T001W."_FIVETRAN_SYNCED" as "_Fivetran_Synced"
 ,T001W."_FIVETRAN_SAP_ARCHIVED" as "_Fivetran_Sap_Archived"
-from SAP_HANA_DB_SAPABAP1.T001W
+from {{ ref('stg_sap__t001w') }}
 where
 T001W."MANDT" in ('800')
-  );

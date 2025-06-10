@@ -1,46 +1,3 @@
-create or replace view EC_DB.SAP_STG."VW_Material_Type"(
-	"Client_Id",
-	"Material_Type_Id",
-	"Reference_Material_Type",
-	"Sref_Material_Type",
-	"Field_Reference_Id",
-	"Number_Range",
-	NUMKE,
-	"External_No_Assignment_W_O_Check",
-	"External_Purchase_Orders_Allowed",
-	"Internal_Purchase_Orders_Allowed",
-	"Maintenance_Status",
-	"Account_Category_Reference_Id",
-	"Price_Control",
-	"Price_Control_Mandatory",
-	"Item_Category_Group_Id",
-	"With_Qty_Structure",
-	"Grouping_Indicator",
-	"Configurable_Material",
-	"Authorization_Group_Id",
-	"Material_F_Process",
-	"Pipeline_Handling_Mandatory",
-	"Print_Price",
-	"Display_Material",
-	WMAKG,
-	"Initial_Status_New_Batch",
-	"Time_Till_Deleted",
-	"Manufacturer_Part",
-	"Cross_Plant_Material_Status_Id",
-	"History_Reqmt",
-	"Class_Type_Id",
-	"Class_Number",
-	"Create_New_Batch",
-	"Version_Category_Id",
-	VNUMKI,
-	VNUMKE,
-	"Mand_Rp_Logistics",
-	"Hvr_Is_Deleted",
-	"Hvr_Change_Time",
-	DESCRIPTION_MATERIAL_TYPE
-) as (
-    
-
 Select
 T134."MANDT" as "Client_Id"
 ,T134."MTART" as "Material_Type_Id"
@@ -81,11 +38,9 @@ T134."MANDT" as "Client_Id"
 ,T134."HVR_IS_DELETED" as "Hvr_Is_Deleted"
 ,T134."HVR_CHANGE_TIME" as "Hvr_Change_Time"
 , T134T."MTBEZ" as Description_Material_Type
-from SAP_RAW.T134
-Left Join SAP_RAW.T134T on 
+from {{ ref('stg_sap__t134') }}
+Left Join {{ ref('stg_sap__t134t') }} on 
     T134.MANDT = T134T.MANDT
     AND T134.MTART = T134T.MTART
 and T134T."SPRAS"= 'E'
-where
-T134."MANDT" in ('800')
-  );
+where T134."MANDT" in ('800')

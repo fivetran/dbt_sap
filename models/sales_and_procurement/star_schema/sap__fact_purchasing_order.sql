@@ -1,36 +1,3 @@
-create or replace view EC_DB.SAP_BI.F_PURCHASING_ORDER(
-	"Purchasing_Document_Id",
-	"Purchasing_Document_Item_Id",
-	"Company_Code_Id",
-	"Currency_Id",
-	"Material_Id",
-	"Plant_Id",
-	"Purchasing_Group_Id",
-	"Purchasing_Organization_Id",
-	"Vendor_Id",
-	"Order_Uom_Id",
-	"Purchasing_Document_Date",
-	"Scheduled_Delivery_Date",
-	"Purchase_Deliver_Late_Days",
-	"Purchase_Late_Lead_Days",
-	"Purchase_Order_Quantity",
-	"Purchase_Open_Quantity",
-	"Purchasing_Delivered_Quantity",
-	"Purchase_Late_Quantity",
-	"Cancel_Purchase_Quantity",
-	"Purchase_Order_Amount",
-	"Purchasing_Document_Currency_Amount",
-	"Document_Currency_Id",
-	"Purchase_Open_Amount",
-	"Purchase_Delivered_Amount",
-	"Cancel_Purchase_Amount",
-	"Purchase_Late_Amount",
-	"Purchase_Invoiced_Amount",
-	"Purchase_Order_Item_Count",
-	"Purchase_Item_Late_Count",
-	PURCHASE_ITEM_OPEN_COUNT,
-	PURCHASE_ITEM_CLOSED_COUNT
-) as
 SELECT T1."Purchasing_Document_Id"
 	,t1."Purchasing_Document_Item_Id"
 	,T2."Company_Code_Id"
@@ -143,12 +110,12 @@ SELECT T1."Purchasing_Document_Id"
 			THEN CAST(1 AS DECIMAL(15, 0))
 		ELSE CAST(0 AS DECIMAL(15, 0))
 		END AS PURCHASE_ITEM_CLOSED_COUNT
-FROM SAP_STG."VW_Purchasing_Document_Item" T1
-LEFT OUTER JOIN SAP_STG."VW_Purchasing_Document_Header" T2 ON T2."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
-LEFT OUTER JOIN SAP_STG."VW_Company" T3 ON T3."Company_Code_Id" = T2."Company_Code_Id"
-LEFT OUTER JOIN SAP_STG."VW_Purchasing_Document_Overview" T4 ON T4."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
+FROM {{ ref('vw_purchasing_document_item') }} T1
+LEFT OUTER JOIN {{ ref('vw_purchasing_document_header') }} T2 ON T2."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
+LEFT OUTER JOIN {{ ref('vw_company') }} T3 ON T3."Company_Code_Id" = T2."Company_Code_Id"
+LEFT OUTER JOIN {{ ref('vw_purchasing_document_overview') }} T4 ON T4."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
 	AND T4."Purchasing_Document_Item_Id" = T1."Purchasing_Document_Item_Id"
 --WHERE COALESCE (T1."Deletion_Indicator") , '#') IN ('#','S')
 --  AND COALESCE (T2."Hvr_Is_Deleted" , 'Y') <> 'X'
-LEFT OUTER JOIN SAP_STG."VW_Purchasing_Document_Schedule_Total" T5 ON T1."Purchasing_Document_Id" = T5."Purchasing_Document_Id"
-	AND T1."Purchasing_Document_Item_Id" = T5."Purchasing_Document_Item_Id";
+LEFT OUTER JOIN {{ ref('vw_purchasing_document_schedule_total') }} T5 ON T1."Purchasing_Document_Id" = T5."Purchasing_Document_Id"
+	AND T1."Purchasing_Document_Item_Id" = T5."Purchasing_Document_Item_Id"
