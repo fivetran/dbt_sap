@@ -1,12 +1,21 @@
+with vw_material as (
+    select *
+    from {{ ref('vw_material') }}
+
+), vw_material_type as (
+    select *
+    from {{ ref('vw_material_type') }}
+)
+
 select	
-ltrim(mat.material_id , '0') as material_number
-,	mat.material_description 
-, 	mt.material_type_id 
-,   mt.description_material_type  as material_type_description
-,	mat.base_uom_id 
-, 	mat.gross_weight 
-, 	mat.weight_uom_id
-,   mat.material_id 
-from {{ ref('vw_material') }} mat
-left outer join {{ ref('vw_material_type') }}  mt
-on mat.material_type_id  = mt.material_type_id
+    ltrim(vw_material.material_id , '0') as material_number,
+    vw_material.material_description,
+    vw_material_type.material_type_id,
+    vw_material_type.description_material_type  as material_type_description,
+    vw_material.base_uom_id,
+    vw_material.gross_weight,
+    vw_material.weight_uom_id,
+    vw_material.material_id 
+from vw_material
+left outer join vw_material_type
+on vw_material.material_type_id  = vw_material_type.material_type_id
