@@ -1,23 +1,23 @@
-SELECT
-  T1."Purchasing_Document_Id" ,
-  T1."Purchasing_Document_Category" ,
-  T2.PURCHASING_DOCUMENT_CATEGORY_TXT, 
-  T1."Purchasing_Document_Type_Id", 
-  T3.DOC_TYPE_DESCRIPT "Purchasing_Document_Type_Text",
-  T1."Purchasing_Group_Id" ,
-  T4."Description_Purchasing_Group" ,
-  T1."Status_Purchasing_Document" AS "Purchasing_Document_Status",
-  T5.PURCHASING_DOCUMENT_STATUS_TXT, 
-  T1."Payment_Terms" ,
-  T1."Reason_Cancellation_Id" ,
-  T1."Company_Code_Id" 
-FROM {{ ref('vw_purchasing_document_header') }} T1
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_category') }} T2 on
-  T1."Purchasing_Document_Category" = T2.PURCHASING_DOCUMENT_CATEGORY_ID  
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_type') }} T3 on
- T1."Purchasing_Document_Type_Id" = t3."Purchasing_Document_Type_Id" 
-  AND T3."Purch_Doc_Category_Id"  = T1."Purchasing_Document_Category" 
-LEFT OUTER JOIN {{ ref('vw_purchasing_group') }} T4 on
- T4."Purchasing_Group_Id"  = T1."Purchasing_Group_Id" 
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_status') }} T5 on
- T5.PURCHASING_DOCUMENT_STATUS_ID  = T1."Status_Purchasing_Document"
+select
+  t1.purchasing_document_id ,
+  t1.purchasing_document_category ,
+  t2.purchasing_document_category_txt, 
+  t1.purchasing_document_type_id, 
+  t3.doc_type_descript purchasing_document_type_text,
+  t1.purchasing_group_id ,
+  t4.description_purchasing_group ,
+  t1.status_purchasing_document as purchasing_document_status,
+  t5.purchasing_document_status_txt, 
+  t1.payment_terms ,
+  t1.reason_cancellation_id ,
+  t1.company_code_id 
+from {{ ref('vw_purchasing_document_header') }} t1
+left outer join {{ ref('vw_purchasing_document_category') }} t2 on
+  t1.purchasing_document_category = t2.purchasing_document_category_id  
+left outer join {{ ref('vw_purchasing_document_type') }} t3 on
+ t1.purchasing_document_type_id = t3.purchasing_document_type_id 
+  and t3.purch_doc_category_id  = t1.purchasing_document_category 
+left outer join {{ ref('vw_purchasing_group') }} t4 on
+ t4.purchasing_group_id  = t1.purchasing_group_id 
+left outer join {{ ref('vw_purchasing_document_status') }} t5 on
+ t5.purchasing_document_status_id  = t1.status_purchasing_document

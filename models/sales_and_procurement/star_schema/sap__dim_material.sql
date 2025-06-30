@@ -1,12 +1,12 @@
-SELECT	
-LTRIM(MAT."Material_Id" , '0') as Material_Number
-,	MAT.MATERIAL_DESCRIPTION 
-, 	MT."Material_Type_Id" 
-,   MT.DESCRIPTION_MATERIAL_TYPE  AS Material_Type_Description
-,	MAT."Base_Uom_Id" 
-, 	MAT."Gross_Weight" 
-, 	MAT."Weight_Uom_Id"
-,   MAT."Material_Id" 
-FROM {{ ref('vw_material') }} MAT
-LEFT OUTER JOIN {{ ref('vw_material_type') }}  MT
-ON MAT."Material_Type_Id"  = MT."Material_Type_Id"
+select	
+ltrim(mat.material_id , '0') as material_number
+,	mat.material_description 
+, 	mt.material_type_id 
+,   mt.description_material_type  as material_type_description
+,	mat.base_uom_id 
+, 	mat.gross_weight 
+, 	mat.weight_uom_id
+,   mat.material_id 
+from {{ ref('vw_material') }} mat
+left outer join {{ ref('vw_material_type') }}  mt
+on mat.material_type_id  = mt.material_type_id

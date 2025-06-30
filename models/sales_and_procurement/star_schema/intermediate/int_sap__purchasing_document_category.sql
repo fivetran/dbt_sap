@@ -1,13 +1,13 @@
-  Select 
-    dd07l.DOMVALUE_L as Purchasing_Document_Category_id, 
-    dd07t.DDTEXT as Purchasing_Document_Category_txt , 
+  select 
+    dd07l.domvalue_l as purchasing_document_category_id, 
+    dd07t.ddtext as purchasing_document_category_txt , 
     dd07l.hvr_change_time as hvr_change_time 
   from {{ ref('stg_sap__dd07l') }}
   left join {{ ref('stg_sap__dd07t') }} on
-  dd07l.DOMNAME = dd07t.DOMNAME
-  and dd07l.DOMVALUE_L = dd07t.DOMVALUE_L
-  and dd07l.AS4VERS = dd07t.AS4VERS
-  and dd07t.DDLANGUAGE in ('E')
+  dd07l.domname = dd07t.domname
+  and dd07l.domvalue_l = dd07t.domvalue_l
+  and dd07l.as4vers = dd07t.as4vers
+  and dd07t.ddlanguage in ('e')
   where 
-  dd07l.DOMNAME = 'BSTYP' 
-  and dd07l.AS4VERS = '0000'
+  dd07l.domname = 'bstyp' 
+  and dd07l.as4vers = '0000'

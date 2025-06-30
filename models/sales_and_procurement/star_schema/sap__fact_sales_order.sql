@@ -1,55 +1,55 @@
 select 		
-	ltrim(t1."Sales_Document_Id" , '0') 	as	sales_document_number
-,	ltrim(t2."Sales_Document_Item_Id"  , '0')     as	sales_document_item
-,	t1."Sd_Document_Category" 
-,	t1."Sales_Document_Type_Id" 
-,	t1."Order_Reason_Id" 
-,	t1."Delivery_Block_Document_Header_Id" 	as	delivery_block_id
-,	t1."Sales_Organization_Id" 
-,	t1."Distribution_Channel_Id" 
-,	t1."Division_Id" 
-,	t2."Plant_Own_Or_External_Id" AS Plant_Id
-, t1."Document_Date" 
-, t1."Requested_Delivery_Date" 
-,	t1."Sold_To_Party_Id" AS Sold_To_Customer_Id
-,	t1."Sales_Document_Id" 
-,	t2."Material_Id" 
-,	t2."Material_Group_Id" 
-,	t2."Sales_Document_Item_Category_Id" 
-,	t2."Product_Hierarchy_Id" 
-,	t2."Base_Uom_Id" 
+	ltrim(t1.sales_document_id , '0') 	as	sales_document_number
+,	ltrim(t2.sales_document_item_id  , '0')     as	sales_document_item
+,	t1.sd_document_category 
+,	t1.sales_document_type_id 
+,	t1.order_reason_id 
+,	t1.delivery_block_document_header_id 	as	delivery_block_id
+,	t1.sales_organization_id 
+,	t1.distribution_channel_id 
+,	t1.division_id 
+,	t2.plant_own_or_external_id as plant_id
+, t1.document_date 
+, t1.requested_delivery_date 
+,	t1.sold_to_party_id as sold_to_customer_id
+,	t1.sales_document_id 
+,	t2.material_id 
+,	t2.material_group_id 
+,	t2.sales_document_item_category_id 
+,	t2.product_hierarchy_id 
+,	t2.base_uom_id 
 -- ,	vbap.kwmeng	as	orderquantitysalesunits
-,	case when t1."Sd_Document_Category"  = 'C' then 
-        t2."Order_Quantity"  
+,	case when t1.sd_document_category  = 'c' then 
+        t2.order_quantity  
         else
-        t2."Order_Quantity"  * -1
-    end  as Order_Quantity
-,	t2."Sales_Uom_Id" 
+        t2.order_quantity  * -1
+    end  as order_quantity
+,	t2.sales_uom_id 
 -- ,	vbap.netwr	as	netvalue
-,	case when t1."Sd_Document_Category"  = 'C' then 
-        t2."Net_Val" 	
+,	case when t1.sd_document_category  = 'c' then 
+        t2.net_val 	
         else
-        t2."Net_Val"  * -1
+        t2.net_val  * -1
     end  as net_value
-,	t2."Net_Price_Val" 	as	net_price
-,	t2."Sd_Document_Currency_Id" 
-,	t2."Gross_Weight_The_Item" as	gross_weight
-,	t2."Weight_Uom_Id" 
-,	t1."Created_Date" 
-,	t2."Returns_Item" 
-,   t2."Reason_Rejection_Id" 
-,	t3."Delivery_Status" 
-,	t3."Overall_Status" 
-,	t4."Delivery_Status" AS "Item_Delivery_Status"
-, t1."Created_By" 
-, t2."_Fivetran_Deleted"
-, t2."_Fivetran_Synced" 
+,	t2.net_price_val 	as	net_price
+,	t2.sd_document_currency_id 
+,	t2.gross_weight_the_item as	gross_weight
+,	t2.weight_uom_id 
+,	t1.created_date 
+,	t2.returns_item 
+,   t2.reason_rejection_id 
+,	t3.delivery_status 
+,	t3.overall_status 
+,	t4.delivery_status as item_delivery_status
+, t1.created_by 
+, t2._fivetran_deleted
+, t2._fivetran_synced 
 from {{ ref('vw_sales_document_header') }}  t1
 inner join {{ ref('vw_sales_document_item') }}  t2
-ON t1."Sales_Document_Id" = t2."Sales_Document_Id" 
+on t1.sales_document_id = t2.sales_document_id 
 inner join {{ ref('vw_sales_document_header_status') }}  t3
-on t1."Sales_Document_Id" = t3."Sales_Document_Id" 
+on t1.sales_document_id = t3.sales_document_id 
 inner join {{ ref('vw_sales_document_item_status') }}  t4
-on t2."Sales_Document_Id" = t4."Sales_Document_Id" 
-AND t2."Sales_Document_Item_Id" = t4."Sd_Item_Id"  
-and t1."Sd_Document_Category"  in ('C', 'H')  -- c = orders h returns;
+on t2.sales_document_id = t4.sales_document_id 
+and t2.sales_document_item_id = t4.sd_item_id  
+and t1.sd_document_category  in ('c', 'h')  -- c = orders h returns;

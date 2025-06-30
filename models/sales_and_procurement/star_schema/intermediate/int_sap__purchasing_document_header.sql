@@ -1,142 +1,142 @@
-Select
-EKKO."MANDT" as "Client_Id"
-,EKKO."EBELN" as "Purchasing_Document_Id"
-,EKKO."BUKRS" as "Company_Code_Id"
-,EKKO."BSTYP" as "Purchasing_Document_Category"
-,EKKO."BSART" as "Purchasing_Document_Type_Id"
-,EKKO."BSAKZ" as "Control_Indicator"
-,EKKO."LOEKZ" as "Deletion_Indicator"
-,EKKO."STATU" as "Status_Purchasing_Document"
-,CASE when EKKO."AEDAT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."AEDAT", 'YYYYMMDD' ) END as "Created_Date"
-,EKKO."ERNAM" as "Created_By"
-,EKKO."PINCR" as "Item_Number_Interval"
-,EKKO."LPONR" as "Last_Item_Number_Id"
-,EKKO."LIFNR" as "Vendor_Id"
-,EKKO."SPRAS" as "Language_Key_Id"
-,EKKO."ZTERM" as "Payment_Terms"
-,EKKO."ZBD1T" as "Payment_In"
-,EKKO."ZBD2T" as "ZBD2T"
-,EKKO."ZBD3T" as "ZBD3T"
-,EKKO."ZBD1P" as "Cash_Discount_Percentage_1"
-,EKKO."ZBD2P" as "Cash_Discount_Percentage_2"
-,EKKO."EKORG" as "Purchasing_Organization_Id"
-,EKKO."EKGRP" as "Purchasing_Group_Id"
-,EKKO."WAERS" as "Currency_Id"
-,EKKO."WKURS" as "Exchange_Rate"
-,EKKO."KUFIX" as "Exchange_Rate_Fixed"
-,CASE when EKKO."BEDAT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."BEDAT", 'YYYYMMDD' ) END as "Purchasing_Document_Date"
-,CASE when EKKO."KDATB" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."KDATB", 'YYYYMMDD' ) END as "Start_Validity_Period_Date"
-,CASE when EKKO."KDATE" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."KDATE", 'YYYYMMDD' ) END as "End_Validity_Period_Date"
-,CASE when EKKO."BWBDT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."BWBDT", 'YYYYMMDD' ) END as "Closing_Applications_Date"
-,CASE when EKKO."ANGDT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."ANGDT", 'YYYYMMDD' ) END as "Quotation_Deadline_Date"
-,CASE when EKKO."BNDDT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."BNDDT", 'YYYYMMDD' ) END as "Binding_Period_Quotation_Date"
-,CASE when EKKO."GWLDT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."GWLDT", 'YYYYMMDD' ) END as "Warranty_Date"
-,EKKO."AUSNR" as "Bid_Invitation_Number_Id"
-,EKKO."ANGNR" as "Quotation_Number"
-,CASE when EKKO."IHRAN" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."IHRAN", 'YYYYMMDD' ) END as "Quotation_Submission_Date"
-,EKKO."IHREZ" as "Your_Reference"
-,EKKO."VERKF" as "Salesperson"
-,EKKO."TELF1" as "Vendors_Telephone_Number"
-,EKKO."LLIEF" as "Supplying_Vendor_Id"
-,EKKO."KUNNR" as "Customer_Id"
-,EKKO."KONNR" as "Outline_Agreement_Id"
-,EKKO."ABGRU" as "Field_Not_Used"
-,EKKO."AUTLF" as "Complete_Delivery"
-,EKKO."WEAKT" as "Indicator_Goods_Receipt_Message"
-,EKKO."RESWK" as "Supplying_Plant_Id"
-,EKKO."LBLIF" as "Field_Not_Used_Id"
-,EKKO."INCO1" as "Incoterms_Id"
-,EKKO."INCO2" as "Incoterms_Part_2"
-,EKKO."KTWRT" as "Target_Header_Val"
-,EKKO."SUBMI" as "Collective_Number"
-,EKKO."KNUMV" as "Document_Condition_No"
-,EKKO."KALSM" as "Procedure_Id"
-,EKKO."STAFO" as "Update_Group_Stats_Id"
-,EKKO."LIFRE" as "Different_Invoicing_Party_Id"
-,EKKO."EXNUM" as "Number_Foreign_Trade_Id"
-,EKKO."UNSEZ" as "Our_Reference"
-,EKKO."LOGSY" as "Logical_System_Id"
-,EKKO."UPINC" as "Subitem_Interval"
-,EKKO."STAKO" as "Time_Dep_Conditions"
-,EKKO."FRGGR" as "Release_Group_Id"
-,EKKO."FRGSX" as "Release_Strategy_Id"
-,EKKO."FRGKE" as "Release_Indicator_Id"
-,EKKO."FRGZU" as "Release_State"
-,EKKO."FRGRL" as "Subject_To_Release"
-,EKKO."LANDS" as "Country_Tax_Return_Id"
-,EKKO."LPHIS" as "Rel_Documentation"
-,EKKO."ADRNR" as "Address_Number_Id"
-,EKKO."STCEG_L" as "Country_Sales_Tax_Id_Number_Id"
-,EKKO."STCEG" as "Vat_Registration_No"
-,EKKO."ABSGR" as "Reason_Cancellation_Id"
-,EKKO."ADDNR" as "Document_Number_Additional"
-,EKKO."KORNR" as "Corr_Misc_Provis"
-,EKKO."MEMORY" as "Purchase_Order_Not_Yet_Complete"
-,EKKO."PROCSTAT" as "Purch_Doc_Proc_State"
-,EKKO."RLWRT" as "Total_At_Time_Release_Val"
-,EKKO."REVNO" as "Version_Number_In_Purchasing"
-,EKKO."SCMPROC" as "Scmproc"
-,EKKO."REASON_CODE" as "Goods_Receipt_Reason_Code"
-,EKKO."MEMORYTYPE" as "Category_Incompleteness"
-,EKKO."RETTP" as "Retention_Indicator"
-,EKKO."RETPC" as "Retention_In_Percent"
-,EKKO."DPTYP" as "Down_Payment_Indicator"
-,EKKO."DPPCT" as "Down_Payment_Percentage"
-,EKKO."DPAMT" as "Down_Payment_Amount_Val"
-,CASE when EKKO."DPDAT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."DPDAT", 'YYYYMMDD' ) END as "Due_Down_Payment_Date"
-,EKKO."MSR_ID" as "Process_Identification_Number"
-,EKKO."HIERARCHY_EXISTS" as "Part_Contract_Hierarchy"
-,EKKO."THRESHOLD_EXISTS" as "Threshold_Value_Exchange_Rates"
-,EKKO."LEGAL_CONTRACT" as "Legal_Contract_Number"
-,EKKO."DESCRIPTION" as "Contract_Name"
-,CASE when EKKO."RELEASE_DATE" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."RELEASE_DATE", 'YYYYMMDD' ) END as "Release_Contract_Date"
-,EKKO."VSART" as "Shipping_Type_Id"
-,EKKO."HANDOVERLOC" as "Handover_Location"
-,EKKO."SHIPCOND" as "Shipping_Conditions_Id"
-,EKKO."INCOV" as "Incoterms_Version_Id"
-,EKKO."INCO2_L" as "Incoterms_Location_1"
-,EKKO."INCO3_L" as "Incoterms_Location_2"
-,EKKO."FORCE_ID" as "Internal_Key_Force_Element"
-,EKKO."FORCE_CNT" as "Internal_Version_Counter"
-,EKKO."RELOC_ID" as "Relocation_Id"
-,EKKO."RELOC_SEQ_ID" as "Relocation_Step_Id"
-,EKKO."SOURCE_LOGSYS" as "SOURCE_LOGSYS"
-,EKKO."FSH_TRANSACTION" as "Transaction_Number"
-,EKKO."FSH_ITEM_GROUP" as "Item_Group"
-,EKKO."FSH_VAS_LAST_ITEM" as "Last_Vas_Item_Number"
-,EKKO."FSH_OS_STG_CHANGE" as "Os_Strategy_Specific_Fields_Change"
-,EKKO."VZSKZ" as "Interest_Calculation_Indicator_Id"
-,EKKO."FSH_SNST_STATUS" as "Snapshot_Status"
-,EKKO."POHF_TYPE" as "Document_Category"
-,CASE when EKKO."EQ_EINDT" in ('00000000', ' ') THEN NULL ELSE TO_DATE(EKKO."EQ_EINDT", 'YYYYMMDD' ) END as "Same_Delivery_Date"
-,EKKO."EQ_WERKS" as "Same_Plant_Id"
-,EKKO."FIXPO" as "Firm_Deal_Indicator"
-,EKKO."EKGRP_ALLOW" as "Take_Account_Purch_Group"
-,EKKO."WERKS_ALLOW" as "Take_Account_Plants"
-,EKKO."CONTRACT_ALLOW" as "Take_Account_Contracts"
-,EKKO."PSTYP_ALLOW" as "Take_Account_Item_Categories"
-,EKKO."FIXPO_ALLOW" as "Take_Account_Fixed_Date_Purchases"
-,EKKO."KEY_ID_ALLOW" as "Consider_Budget"
-,EKKO."AUREL_ALLOW" as "Take_Account_Alloc_Table_Relevance"
-,EKKO."DELPER_ALLOW" as "Take_Account_Dlvy_Period"
-,EKKO."EINDT_ALLOW" as "Take_Account_Delivery_Date"
-,EKKO."LTSNR_ALLOW" as "Include_Vendor_Subrange"
-,EKKO."OTB_LEVEL" as "Otb_Check_Level"
-,EKKO."OTB_COND_TYPE" as "Otb_Condition_Type_Id"
-,EKKO."KEY_ID" as "Unique_Number_Budget"
-,EKKO."OTB_VALUE" as "Required_Budget_Val"
-,EKKO."OTB_CURR" as "Otb_Currency_Id"
-,EKKO."OTB_RES_VALUE" as "Reserved_Budget_Val"
-,EKKO."OTB_SPEC_VALUE" as "Special_Release_Budget_Val"
-,EKKO."SPR_RSN_PROFILE" as "Otb_Reason_Profile_Special_Release"
-,EKKO."BUDG_TYPE" as "Budget_Type"
-,EKKO."OTB_STATUS" as "Otb_Check_Status"
-,EKKO."OTB_REASON" as "Reason"
-,EKKO."CHECK_TYPE" as "Type_Otb_Check"
-,EKKO."CON_OTB_REQ" as "Otb_Relevant_Contract"
-,EKKO."CON_PREBOOK_LEV" as "Indicator_Level_Contracts"
-,EKKO."CON_DISTR_LEV" as "Distrib_Using_Target_Value_Or_Item"
-,EKKO."HVR_IS_DELETED" as "Hvr_Is_Deleted"
-,EKKO."HVR_CHANGE_TIME" as "Hvr_Change_Time"
+select
+ekko.mandt as client_id
+,ekko.ebeln as purchasing_document_id
+,ekko.bukrs as company_code_id
+,ekko.bstyp as purchasing_document_category
+,ekko.bsart as purchasing_document_type_id
+,ekko.bsakz as control_indicator
+,ekko.loekz as deletion_indicator
+,ekko.statu as status_purchasing_document
+,case when ekko.aedat in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.aedat') }} end as created_date
+,ekko.ernam as created_by
+,ekko.pincr as item_number_interval
+,ekko.lponr as last_item_number_id
+,ekko.lifnr as vendor_id
+,ekko.spras as language_key_id
+,ekko.zterm as payment_terms
+,ekko.zbd1t as payment_in
+,ekko.zbd2t as zbd2t
+,ekko.zbd3t as zbd3t
+,ekko.zbd1p as cash_discount_percentage_1
+,ekko.zbd2p as cash_discount_percentage_2
+,ekko.ekorg as purchasing_organization_id
+,ekko.ekgrp as purchasing_group_id
+,ekko.waers as currency_id
+,ekko.wkurs as exchange_rate
+,ekko.kufix as exchange_rate_fixed
+,case when ekko.bedat in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.bedat') }} end as purchasing_document_date
+,case when ekko.kdatb in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.kdatb') }} end as start_validity_period_date
+,case when ekko.kdate in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.kdate') }} end as end_validity_period_date
+,case when ekko.bwbdt in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.bwbdt') }} end as closing_applications_date
+,case when ekko.angdt in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.angdt') }} end as quotation_deadline_date
+,case when ekko.bnddt in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.bnddt') }} end as binding_period_quotation_date
+,case when ekko.gwldt in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.gwldt') }} end as warranty_date
+,ekko.ausnr as bid_invitation_number_id
+,ekko.angnr as quotation_number
+,case when ekko.ihran in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.ihran') }} end as quotation_submission_date
+,ekko.ihrez as your_reference
+,ekko.verkf as salesperson
+,ekko.telf1 as vendors_telephone_number
+,ekko.llief as supplying_vendor_id
+,ekko.kunnr as customer_id
+,ekko.konnr as outline_agreement_id
+,ekko.abgru as field_not_used
+,ekko.autlf as complete_delivery
+,ekko.weakt as indicator_goods_receipt_message
+,ekko.reswk as supplying_plant_id
+,ekko.lblif as field_not_used_id
+,ekko.inco1 as incoterms_id
+,ekko.inco2 as incoterms_part_2
+,ekko.ktwrt as target_header_val
+,ekko.submi as collective_number
+,ekko.knumv as document_condition_no
+,ekko.kalsm as procedure_id
+,ekko.stafo as update_group_stats_id
+,ekko.lifre as different_invoicing_party_id
+,ekko.exnum as number_foreign_trade_id
+,ekko.unsez as our_reference
+,ekko.logsy as logical_system_id
+,ekko.upinc as subitem_interval
+,ekko.stako as time_dep_conditions
+,ekko.frggr as release_group_id
+,ekko.frgsx as release_strategy_id
+,ekko.frgke as release_indicator_id
+,ekko.frgzu as release_state
+,ekko.frgrl as subject_to_release
+,ekko.lands as country_tax_return_id
+,ekko.lphis as rel_documentation
+,ekko.adrnr as address_number_id
+,ekko.stceg_l as country_sales_tax_id_number_id
+,ekko.stceg as vat_registration_no
+,ekko.absgr as reason_cancellation_id
+,ekko.addnr as document_number_additional
+,ekko.kornr as corr_misc_provis
+,ekko.memory as purchase_order_not_yet_complete
+,ekko.procstat as purch_doc_proc_state
+,ekko.rlwrt as total_at_time_release_val
+,ekko.revno as version_number_in_purchasing
+,ekko.scmproc as scmproc
+,ekko.reason_code as goods_receipt_reason_code
+,ekko.memorytype as category_incompleteness
+,ekko.rettp as retention_indicator
+,ekko.retpc as retention_in_percent
+,ekko.dptyp as down_payment_indicator
+,ekko.dppct as down_payment_percentage
+,ekko.dpamt as down_payment_amount_val
+,case when ekko.dpdat in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.dpdat') }} end as due_down_payment_date
+,ekko.msr_id as process_identification_number
+,ekko.hierarchy_exists as part_contract_hierarchy
+,ekko.threshold_exists as threshold_value_exchange_rates
+,ekko.legal_contract as legal_contract_number
+,ekko.description as contract_name
+,case when ekko.release_date in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.release_date') }} end as release_contract_date
+,ekko.vsart as shipping_type_id
+,ekko.handoverloc as handover_location
+,ekko.shipcond as shipping_conditions_id
+,ekko.incov as incoterms_version_id
+,ekko.inco2_l as incoterms_location_1
+,ekko.inco3_l as incoterms_location_2
+,ekko.force_id as internal_key_force_element
+,ekko.force_cnt as internal_version_counter
+,ekko.reloc_id as relocation_id
+,ekko.reloc_seq_id as relocation_step_id
+,ekko.source_logsys as source_logsys
+,ekko.fsh_transaction as transaction_number
+,ekko.fsh_item_group as item_group
+,ekko.fsh_vas_last_item as last_vas_item_number
+,ekko.fsh_os_stg_change as os_strategy_specific_fields_change
+,ekko.vzskz as interest_calculation_indicator_id
+,ekko.fsh_snst_status as snapshot_status
+,ekko.pohf_type as document_category
+,case when ekko.eq_eindt in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('ekko.eq_eindt') }} end as same_delivery_date
+,ekko.eq_werks as same_plant_id
+,ekko.fixpo as firm_deal_indicator
+,ekko.ekgrp_allow as take_account_purch_group
+,ekko.werks_allow as take_account_plants
+,ekko.contract_allow as take_account_contracts
+,ekko.pstyp_allow as take_account_item_categories
+,ekko.fixpo_allow as take_account_fixed_date_purchases
+,ekko.key_id_allow as consider_budget
+,ekko.aurel_allow as take_account_alloc_table_relevance
+,ekko.delper_allow as take_account_dlvy_period
+,ekko.eindt_allow as take_account_delivery_date
+,ekko.ltsnr_allow as include_vendor_subrange
+,ekko.otb_level as otb_check_level
+,ekko.otb_cond_type as otb_condition_type_id
+,ekko.key_id as unique_number_budget
+,ekko.otb_value as required_budget_val
+,ekko.otb_curr as otb_currency_id
+,ekko.otb_res_value as reserved_budget_val
+,ekko.otb_spec_value as special_release_budget_val
+,ekko.spr_rsn_profile as otb_reason_profile_special_release
+,ekko.budg_type as budget_type
+,ekko.otb_status as otb_check_status
+,ekko.otb_reason as reason
+,ekko.check_type as type_otb_check
+,ekko.con_otb_req as otb_relevant_contract
+,ekko.con_prebook_lev as indicator_level_contracts
+,ekko.con_distr_lev as distrib_using_target_value_or_item
+,ekko.hvr_is_deleted as hvr_is_deleted
+,ekko.hvr_change_time as hvr_change_time
 from {{ ref('stg_sap__ekko') }}
-where EKKO."MANDT" in ('800')
+where ekko.mandt in ('800')
