@@ -1,4 +1,4 @@
 select 
-	t1."Reason_Rejection_Id", 
-	t1.description  as Rejection_Reason_Description
-from  {{ ref('vw_sales_documents_rejection_reason') }}  t1
+	reason_rejection_id, 
+	description  as rejection_reason_description
+from  {{ ref('vw_sales_documents_rejection_reason') }}

@@ -1,121 +1,121 @@
-SELECT T1."Purchasing_Document_Id"
-	,t1."Purchasing_Document_Item_Id"
-	,T2."Company_Code_Id"
-	,T3."Currency_Id"
-	,T1."Material_Id"
-	,T1."Plant_Id"
-	,T2."Purchasing_Group_Id"
-	,T2."Purchasing_Organization_Id"
-	,T2."Vendor_Id"
-	,T1."Order_Uom_Id"
-	,T2."Purchasing_Document_Date"
-	,t5."Lastest_Scheduled_Delivery_Date" AS "Scheduled_Delivery_Date"
-	,CAST((T4.LATEST_GOODS_RECEIVE_DATE - T2."Purchasing_Document_Date") AS DECIMAL(15, 2)) AS "Purchase_Deliver_Late_Days"
-	,CAST((T4.LATEST_GOODS_RECEIVE_DATE - T5."Lastest_Scheduled_Delivery_Date") AS DECIMAL(15, 2)) AS "Purchase_Late_Lead_Days"
+select t1.purchasing_document_id
+	,t1.purchasing_document_item_id
+	,t2.company_code_id
+	,t3.currency_id
+	,t1.material_id
+	,t1.plant_id
+	,t2.purchasing_group_id
+	,t2.purchasing_organization_id
+	,t2.vendor_id
+	,t1.order_uom_id
+	,t2.purchasing_document_date
+	,t5.lastest_scheduled_delivery_date as scheduled_delivery_date
+	,cast((t4.latest_goods_receive_date - t2.purchasing_document_date) as {{ dbt.type_numeric() }}) as purchase_deliver_late_days
+	,cast((t4.latest_goods_receive_date - t5.lastest_scheduled_delivery_date) as {{ dbt.type_numeric() }}) as purchase_late_lead_days
 	,
-	--  CAST((T4.LATEST_GOODS_RECEIVE_DATE - T5."Lastest_Scheduled_Delivery_Date") as DECIMAL(15,2)) AS PURCHASE_LATE_ORIG_LEAD_DAYS,
-	CASE 
-		WHEN t1."Returns_Item" = ''
-			THEN T1."Purchase_Order_Quantity"
-		ELSE - 1 * T1."Purchase_Order_Quantity"
-		END AS "Purchase_Order_Quantity"
-	,CASE 
-		WHEN T1."Delivery_Completed" <> ''
-			THEN CAST(0 AS DECIMAL(15, 3))
-		ELSE (T1."Purchase_Order_Quantity" - COALESCE(T4.RECEIVED_QUANTITY,0))
-		END AS "Purchase_Open_Quantity"
-	,T4.RECEIVED_QUANTITY AS "Purchasing_Delivered_Quantity"
+	--  cast((t4.latest_goods_receive_date - t5.lastest_scheduled_delivery_date) as {{ dbt.type_numeric() }}) as purchase_late_orig_lead_days,
+	case 
+		when t1.returns_item = ''
+			then t1.purchase_order_quantity
+		else - 1 * t1.purchase_order_quantity
+		end as purchase_order_quantity
+	,case 
+		when t1.delivery_completed <> ''
+			then cast(0 as {{ dbt.type_numeric() }})
+		else (t1.purchase_order_quantity - coalesce(t4.received_quantity,0))
+		end as purchase_open_quantity
+	,t4.received_quantity as purchasing_delivered_quantity
 	,
-	--  CASE
-	--   WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE
-	--    THEN T4.RECEIVED_QUANTITY
-	--    ELSE CAST(0 as DECIMAL(15,3))
-	--  END AS PURCHASE_ORIG_LATE_QUANTITY,
-	CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN T4.RECEIVED_QUANTITY
-		ELSE CAST(0 AS DECIMAL(15, 3))
-		END AS "Purchase_Late_Quantity"
-	,CASE 
-		WHEN T1."Rejection_Indicator" = 'X'
-			THEN T1."Purchase_Order_Quantity"
-		ELSE CAST(0 AS DECIMAL(15, 3))
-		END AS "Cancel_Purchase_Quantity"
-	,CAST(T1."Net_Order_Po_Currency_Val" * CASE 
-			WHEN T2."Exchange_Rate" < 0
-				THEN - 1 / T2."Exchange_Rate"
-			ELSE T2."Exchange_Rate"
-			END AS DECIMAL(15, 2)) AS "Purchase_Order_Amount"
-	,T1."Net_Order_Po_Currency_Val" "Purchasing_Document_Currency_Amount"
-	,t2."Currency_Id" "Document_Currency_Id"
-	,CASE 
-		WHEN T4."Delivery_Completed" IS NOT NULL
-			THEN CAST(0 AS DECIMAL(15, 2))
-		ELSE (
-				T1."Net_Order_Po_Currency_Val"  * (
-					CASE 
-						WHEN T2."Exchange_Rate" < 0
-							THEN - 1 / T2."Exchange_Rate"
-						ELSE T2."Exchange_Rate"
-						END
+	--  case
+	--   when t4.latest_goods_receive_date > t1.original_latest_sched_del_date
+	--    then t4.received_quantity
+	--    else cast(0 as {{ dbt.type_numeric() }})
+	--  end as purchase_orig_late_quantity,
+	case 
+		when t4.latest_goods_receive_date > t5.lastest_scheduled_delivery_date
+			then t4.received_quantity
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as purchase_late_quantity
+	,case 
+		when t1.rejection_indicator = 'x'
+			then t1.purchase_order_quantity
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as cancel_purchase_quantity
+	,cast(t1.net_order_po_currency_val * case 
+			when t2.exchange_rate < 0
+				then - 1 / t2.exchange_rate
+			else t2.exchange_rate
+			end as {{ dbt.type_numeric() }}) as purchase_order_amount
+	,t1.net_order_po_currency_val purchasing_document_currency_amount
+	,t2.currency_id document_currency_id
+	,case 
+		when t4.delivery_completed is not null
+			then cast(0 as {{ dbt.type_numeric() }})
+		else (
+				t1.net_order_po_currency_val  * (
+					case 
+						when t2.exchange_rate < 0
+							then - 1 / t2.exchange_rate
+						else t2.exchange_rate
+						end
 					)
-				) - T4.RECEIVED_VALUE_IN_LOCAL_CURR
-		END AS "Purchase_Open_Amount"
-	,T4.RECEIVED_VALUE_IN_LOCAL_CURR AS "Purchase_Delivered_Amount"
-	,CASE 
-		WHEN T1."Rejection_Indicator" = 'X'
-			THEN (
-					CAST(T1."Net_Order_Po_Currency_Val" * CASE 
-							WHEN T2."Exchange_Rate" < 0
-								THEN - 1 / T2."Exchange_Rate"
-							ELSE T2."Exchange_Rate"
-							END AS DECIMAL(15, 2))
+				) - t4.received_value_in_local_curr
+		end as purchase_open_amount
+	,t4.received_value_in_local_curr as purchase_delivered_amount
+	,case 
+		when t1.rejection_indicator = 'x'
+			then (
+					cast(t1.net_order_po_currency_val * case 
+							when t2.exchange_rate < 0
+								then - 1 / t2.exchange_rate
+							else t2.exchange_rate
+							end as {{ dbt.type_numeric() }})
 					)
-		ELSE CAST(0 AS DECIMAL(15, 2))
-		END AS "Cancel_Purchase_Amount"
-	,CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN T4.RECEIVED_VALUE_IN_LOCAL_CURR
-		ELSE CAST(0 AS DECIMAL(15, 2))
-		END AS "Purchase_Late_Amount"
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as cancel_purchase_amount
+	,case 
+		when t4.latest_goods_receive_date > t5.lastest_scheduled_delivery_date
+			then t4.received_value_in_local_curr
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as purchase_late_amount
 	,
-	-- CASE
-	--   WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE
-	--   THEN T4.RECEIVED_VALUE_IN_LOCAL_CURR
-	--   ELSE CAST(0 as DECIMAL(15,2))
-	-- END AS PURCHASE_LATE_ORIG_AMOUNT,
-	-- T4.RECEIVED_VALUE_IN_LOCAL_CURR - COALESCE(CAST((T1.NET_VALUE * T2.EXCHANGE_RATE) AS DECIMAL (15,2)), 0) AS PURCH_INVOICE_VARIANCE_AMOUNT,
-	T4.INVOICE_VALUE_LOCAL_CURR AS "Purchase_Invoiced_Amount"
-	,CAST(1 AS DECIMAL(15, 0)) AS "Purchase_Order_Item_Count"
-	,CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END "Purchase_Item_Late_Count"
+	-- case
+	--   when t4.latest_goods_receive_date > t1.original_latest_sched_del_date
+	--   then t4.received_value_in_local_curr
+	--   else cast(0 as {{ dbt.type_numeric() }})
+	-- end as purchase_late_orig_amount,
+	-- t4.received_value_in_local_curr - coalesce(cast((t1.net_value * t2.exchange_rate) as {{ dbt.type_numeric() }}), 0) as purch_invoice_variance_amount,
+	t4.invoice_value_local_curr as purchase_invoiced_amount
+	,cast(1 as {{ dbt.type_numeric() }}) as purchase_order_item_count
+	,case 
+		when t4.latest_goods_receive_date > t5.lastest_scheduled_delivery_date
+			then cast(1 as {{ dbt.type_numeric() }})
+		else cast(0 as {{ dbt.type_numeric() }})
+		end purchase_item_late_count
 	,
-	-- CASE
-	--  WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE 
-	--  THEN CAST(1 as DECIMAL(15,0))
-	--  ELSE CAST(0 as DECIMAL(15,0))
-	-- END AS PURCHASE_ITEM_ORG_LATE_COUNT,
-	CASE 
-		WHEN COALESCE(T4."Delivery_Completed", 'N') <> ' '
-			AND COALESCE (T4.RECEIVED_QUANTITY,0) < T1."Purchase_Order_Quantity"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END AS PURCHASE_ITEM_OPEN_COUNT
-	,CASE 
-		WHEN COALESCE(T4."Delivery_Completed", 'N') <> ' '
-			OR T4.RECEIVED_QUANTITY >= T1."Purchase_Order_Quantity"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END AS PURCHASE_ITEM_CLOSED_COUNT
-FROM {{ ref('vw_purchasing_document_item') }} T1
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_header') }} T2 ON T2."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
-LEFT OUTER JOIN {{ ref('vw_company') }} T3 ON T3."Company_Code_Id" = T2."Company_Code_Id"
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_overview') }} T4 ON T4."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
-	AND T4."Purchasing_Document_Item_Id" = T1."Purchasing_Document_Item_Id"
---WHERE COALESCE (T1."Deletion_Indicator") , '#') IN ('#','S')
---  AND COALESCE (T2."Hvr_Is_Deleted" , 'Y') <> 'X'
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_schedule_total') }} T5 ON T1."Purchasing_Document_Id" = T5."Purchasing_Document_Id"
-	AND T1."Purchasing_Document_Item_Id" = T5."Purchasing_Document_Item_Id"
+	-- case
+	--  when t4.latest_goods_receive_date > t1.original_latest_sched_del_date 
+	--  then cast(1 as {{ dbt.type_numeric() }})
+	--  else cast(0 as {{ dbt.type_numeric() }})
+	-- end as purchase_item_org_late_count,
+	case 
+		when coalesce(t4.delivery_completed, 'n') <> ' '
+			and coalesce (t4.received_quantity,0) < t1.purchase_order_quantity
+			then cast(1 as {{ dbt.type_numeric() }})
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as purchase_item_open_count
+	,case 
+		when coalesce(t4.delivery_completed, 'n') <> ' '
+			or t4.received_quantity >= t1.purchase_order_quantity
+			then cast(1 as {{ dbt.type_numeric() }})
+		else cast(0 as {{ dbt.type_numeric() }})
+		end as purchase_item_closed_count
+from {{ ref('vw_purchasing_document_item') }} t1
+left outer join {{ ref('vw_purchasing_document_header') }} t2 on t2.purchasing_document_id = t1.purchasing_document_id
+left outer join {{ ref('vw_company') }} t3 on t3.company_code_id = t2.company_code_id
+left outer join {{ ref('vw_purchasing_document_overview') }} t4 on t4.purchasing_document_id = t1.purchasing_document_id
+	and t4.purchasing_document_item_id = t1.purchasing_document_item_id
+--where coalesce (t1.deletion_indicator) , '#') in ('#','s')
+--  and coalesce (t2.hvr_is_deleted , 'y') <> 'x'
+left outer join {{ ref('vw_purchasing_document_schedule_total') }} t5 on t1.purchasing_document_id = t5.purchasing_document_id
+	and t1.purchasing_document_item_id = t5.purchasing_document_item_id
