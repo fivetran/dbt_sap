@@ -2156,3 +2156,89 @@ models:
         description: Company
       - name: name1
         description: Company name
+
+  - name: stg_sap__dd07l
+    description: Domain values
+    columns:
+      - name: domname
+        description: Domain name
+      - name: domvalue_l
+        description: Domain value
+
+  - name: stg_sap__dd07t
+    description: Domain text values
+    columns:
+      - name: domname
+        description: Domain name
+      - name: domvalue_l
+        description: Domain value
+      - name: ddlanguage
+        description: Language key
+
+  - name: stg_sap__ekko
+    description: Purchasing document header
+    columns:
+      - name: mandt
+        description: Client
+      - name: ebeln
+        description: Purchasing document number
+
+  - name: stg_sap__t001w
+    description: Plants/Branches
+    columns:
+      - name: mandt
+        description: Client
+      - name: werks
+        description: Plant
+
+  - name: stg_sap__t024
+    description: Purchasing groups
+    columns:
+      - name: ekgrp
+        description: Purchasing group
+
+  - name: stg_sap__t134
+    description: Material types
+    columns:
+      - name: mtart
+        description: Material type
+
+  - name: stg_sap__t134t
+    description: Material type descriptions
+    columns:
+      - name: mtart
+        description: Material type
+      - name: mttxt
+        description: Description
+
+  - name: stg_sap__t161
+    description: Purchasing document types
+    columns:
+      - name: bstyp
+        description: Document category
+      - name: bsart
+        description: Document type
+
+  - name: stg_sap__t161t
+    description: Purchasing doc type texts
+    columns:
+      - name: bstyp
+        description: Document category
+      - name: bsart
+        description: Document type
+      - name: batxt
+        description: Description
+
+  - name: stg_sap__tvag
+    description: Sales document rejection reasons
+    columns:
+      - name: abgru
+        description: Reason code
+
+  - name: stg_sap__tvagt
+    description: Sales document rejection reason text
+    columns:
+      - name: abgru
+        description: Reason code
+      - name: bezei
+        description: Description

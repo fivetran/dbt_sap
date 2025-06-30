@@ -2085,3 +2085,130 @@ sources:
             description: Street of company 2
           - name: zweig
             description: Industrial sector
+
+      - name: dd07l
+        identifier: "{{ var('sap_dd07l_identifier', 'dd07l')}}"
+        description: Domain values
+        columns:
+          - name: domname
+            description: Domain name
+          - name: domvalue_l
+            description: Value of domain
+          - name: as4vers
+            description: Active version
+
+      - name: dd07t
+        identifier: "{{ var('sap_dd07t_identifier', 'dd07t')}}"
+        description: Texts for domain values
+        columns:
+          - name: domname
+            description: Domain name
+          - name: domvalue_l
+            description: Domain value
+          - name: as4vers
+            description: Active version
+          - name: ddlanguage
+            description: Language key
+          - name: ddtext
+            description: Text
+
+      - name: ekko
+        identifier: "{{ var('sap_ekko_identifier', 'ekko')}}"
+        description: Purchasing document header
+        columns:
+          - name: mandt
+            description: Client
+          - name: ebeln
+            description: Purchasing document number
+          - name: bukrs
+            description: Company code
+          - name: bstyp
+            description: Document category
+          - name: bsart
+            description: Document type
+          - name: lifnr
+            description: Vendor account number
+
+      - name: t001w
+        identifier: "{{ var('sap_t001w_identifier', 't001w')}}"
+        description: Plants/Branches
+        columns:
+          - name: mandt
+            description: Client
+          - name: werks
+            description: Plant
+          - name: name1
+            description: Name 1
+          - name: land1
+            description: Country key
+
+      - name: t024
+        identifier: "{{ var('sap_t024_identifier', 't024')}}"
+        description: Purchasing groups
+        columns:
+          - name: ekgrp
+            description: Purchasing group
+          - name: eknam
+            description: Description
+
+      - name: t134
+        identifier: "{{ var('sap_t134_identifier', 't134')}}"
+        description: Material types
+        columns:
+          - name: mtart
+            description: Material type
+
+      - name: t134t
+        identifier: "{{ var('sap_t134t_identifier', 't134t')}}"
+        description: Material type descriptions
+        columns:
+          - name: mtart
+            description: Material type
+          - name: mttxt
+            description: Description
+
+      - name: t161
+        identifier: "{{ var('sap_t161_identifier', 't161')}}"
+        description: Purchasing document types
+        columns:
+          - name: bstyp
+            description: Document category
+          - name: bsart
+            description: Document type
+
+      - name: t161t
+        identifier: "{{ var('sap_t161t_identifier', 't161t')}}"
+        description: Descriptions for purchasing document types
+        columns:
+          - name: bstyp
+            description: Document category
+          - name: bsart
+            description: Document type
+          - name: spras
+            description: Language key
+          - name: batxt
+            description: Description
+
+      - name: tvag
+        identifier: "{{ var('sap_tvag_identifier', 'tvag')}}"
+        description: Sales document rejection reasons
+        columns:
+          - name: mandt
+            description: Client
+          - name: abgru
+            description: Reason code
+          - name: dragr
+            description: Not relevant for printing
+
+      - name: tvagt
+        identifier: "{{ var('sap_tvagt_identifier', 'tvagt')}}"
+        description: Rejection reason texts
+        columns:
+          - name: mandt
+            description: Client
+          - name: abgru
+            description: Reason code
+          - name: spras
+            description: Language key
+          - name: bezei
+            description: Description
