@@ -22,6 +22,18 @@ vars:
     sap_t001_identifier: "sap_t001_data"
     sap_t503_identifier: "sap_t503_data"
     sap_t880_identifier: "sap_t880_data"
+    sap_dd07l_identifier: "sap_dd07l_data"
+    sap_dd07t_identifier: "sap_dd07t_data"
+    sap_ekko_identifier: "sap_ekko_data"
+    sap_makt_identifier: "sap_makt_data"
+    sap_t001w_identifier: "sap_t001w_data"
+    sap_t024_identifier: "sap_t024_data"
+    sap_t134_identifier: "sap_t134_data"
+    sap_t134t_identifier: "sap_t134t_data"
+    sap_t161_identifier: "sap_t161_data"
+    sap_t161t_identifier: "sap_t161t_data"
+    sap_tvag_identifier: "sap_tvag_data"
+    sap_tvagt_identifier: "sap_tvagt_data"
   
 dispatch:
   - macro_namespace: dbt_utils
@@ -949,3 +961,79 @@ seeds:
         mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         rcomp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         name1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07l_data:
+      +column_types:
+        domname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07t_data:
+      +column_types:
+        domname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddlanguage: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddtext: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_ekko_data:
+      +column_types:
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebeln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lifnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_makt_data:
+      +column_types:
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        maktx: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t001w_data:
+      +column_types:
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        werks: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        name1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        land1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t024_data:
+      +column_types:
+        ekgrp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eknam: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t134_data:
+      +column_types:
+        mtart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t134t_data:
+      +column_types:
+        mtart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mttxt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t161_data:
+      +column_types:
+        bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t161t_data:
+      +column_types:
+        bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        batxt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_tvag_data:
+      +column_types:
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abgru: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dragr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_tvagt_data:
+      +column_types:
+        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abgru: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bezei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
