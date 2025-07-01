@@ -1,0 +1,4 @@
+_fivetran_deleted,_fivetran_rowid,_fivetran_synced,_fivetran_sap_archived,ekgrp,eknam,ektel,ldest,mandt,smtp_addr,tel_extens,tel_number,telfx
+true,1,2023-01-01T12:00:00Z,val1,text1,val1,val1,val1,val1,val1,val1,1,val1
+false,2,2023-01-02T12:00:00Z,val2,text2,val2,val2,val2,val2,val2,val2,2,val2
+false,3,2023-01-03T12:00:00Z,val3,text3,val3,val3,val3,val3,val3,val3,3,val3
