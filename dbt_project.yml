@@ -22,6 +22,7 @@ vars:
     faglflext: "{{ source('sap', 'faglflext') }}"
     kna1: "{{ source('sap', 'kna1') }}"
     lfa1: "{{ source('sap', 'lfa1') }}"
+    makt: "{{ source('sap', 'makt') }}"
     mara: "{{ source('sap', 'mara') }}"
     pa0000: "{{ source('sap', 'pa0000') }}"
     pa0001: "{{ source('sap', 'pa0001') }}"

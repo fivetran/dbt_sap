@@ -1,4 +1,4 @@
-{% macro get_t134_columns() %}
+{% macro get_vbup_columns() %}
 
 {% set columns = [] %}
 

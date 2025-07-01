@@ -1,4 +1,4 @@
-{% macro get_t134_columns() %}
+{% macro get_t161t_columns() %}
 
 {% set columns = [] %}
 

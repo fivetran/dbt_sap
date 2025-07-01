@@ -2118,6 +2118,8 @@ sources:
         identifier: "{{ var('sap_ekbe_identifier', 'eket')}}"
       - name: ekpo
         identifier: "{{ var('sap_ekbe_identifier', 'ekpo')}}"
+      - name: makt
+        identifier: "{{ var('sap_ekbe_identifier', 'makt')}}"
       - name: vbak
         identifier: "{{ var('sap_ekbe_identifier', 'vbak')}}"
       - name: vbap
