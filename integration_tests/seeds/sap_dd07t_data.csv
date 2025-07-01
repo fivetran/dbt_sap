@@ -1,2 +1,4 @@
-domname,domvalue_l,as4vers,ddlanguage,ddtext,_fivetran_rowid,_fivetran_deleted,_fivetran_synced
-DOM1,VAL1,0001,EN,Example text,1,false,2023-01-01T00:00:00Z
+_fivetran_deleted,_fivetran_rowid,_fivetran_synced,domname,domvalue_l,as4vers,ddlanguage,ddtext,hvr_change_time
+true,1,2023-01-01T12:00:00Z,text1,A,val1,val1,text1,2023-01-01T12:00:00Z
+false,2,2023-01-02T12:00:00Z,text2,B,val2,val2,text2,2023-01-02T12:00:00Z
+false,3,2023-01-03T12:00:00Z,text3,C,val3,val3,text3,2023-01-03T12:00:00Z

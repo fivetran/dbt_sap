@@ -1,10 +1,10 @@
 with vw_material as (
     select *
-    from {{ ref('vw_material') }}
+    from {{ ref('int_sap__material') }}
 
 ), vw_material_type as (
     select *
-    from {{ ref('vw_material_type') }}
+    from {{ ref('int_sap__material_type') }}
 )
 
 select	
