@@ -1,8 +1,55 @@
 {% macro get_vbup_columns() %}
 
-{% set columns = [] %}
+{% set columns = [
+    {"name": "mandt", "datatype": dbt.type_string()},
+    {"name": "posnr", "datatype": dbt.type_string()},
+    {"name": "vbeln", "datatype": dbt.type_string()},
+    {"name": "uvpak", "datatype": dbt.type_string()},
+    {"name": "uvvlk", "datatype": dbt.type_string()},
+    {"name": "mill_vs_vssta", "datatype": dbt.type_string()},
+    {"name": "pksta", "datatype": dbt.type_string()},
+    {"name": "lssta", "datatype": dbt.type_string()},
+    {"name": "vlstp", "datatype": dbt.type_string()},
+    {"name": "absta", "datatype": dbt.type_string()},
+    {"name": "fksta", "datatype": dbt.type_string()},
+    {"name": "fkivp", "datatype": dbt.type_string()},
+    {"name": "lfgsa", "datatype": dbt.type_string()},
+    {"name": "rrsta", "datatype": dbt.type_string()},
+    {"name": "lfsta", "datatype": dbt.type_string()},
+    {"name": "fksaa", "datatype": dbt.type_string()},
+    {"name": "wbsta", "datatype": dbt.type_string()},
+    {"name": "ltsps", "datatype": dbt.type_string()},
+    {"name": "costa", "datatype": dbt.type_string()},
+    {"name": "fssta", "datatype": dbt.type_string()},
+    {"name": "kosta", "datatype": dbt.type_string()},
+    {"name": "uvpik", "datatype": dbt.type_string()},
+    {"name": "uvfak", "datatype": dbt.type_string()},
+    {"name": "uvall", "datatype": dbt.type_string()},
+    {"name": "rfgsa", "datatype": dbt.type_string()},
+    {"name": "uvprs", "datatype": dbt.type_string()},
+    {"name": "lvsta", "datatype": dbt.type_string()},
+    {"name": "rfsta", "datatype": dbt.type_string()},
+    {"name": "cmppj", "datatype": dbt.type_string()},
+    {"name": "cmppi", "datatype": dbt.type_string()},
+    {"name": "hdall", "datatype": dbt.type_string()},
+    {"name": "besta", "datatype": dbt.type_string()},
+    {"name": "pdsta", "datatype": dbt.type_string()},
+    {"name": "fsh_ar_stat_itm", "datatype": dbt.type_string()},
+    {"name": "manek", "datatype": dbt.type_string()},
+    {"name": "gbsta", "datatype": dbt.type_string()},
+    {"name": "uvwak", "datatype": dbt.type_string()},
+    {"name": "dcsta", "datatype": dbt.type_string()},
+    {"name": "uvp05", "datatype": dbt.type_string()},
+    {"name": "uvp02", "datatype": dbt.type_string()},
+    {"name": "uvp04", "datatype": dbt.type_string()},
+    {"name": "koqua", "datatype": dbt.type_string()},
+    {"name": "uvp01", "datatype": dbt.type_string()},
+    {"name": "uvp03", "datatype": dbt.type_string()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
+    {"name": "_fivetran_sap_archived", "datatype": dbt.type_string()},
+] %}
 
 {{ return(columns) }}
 
 {% endmacro %}
-
