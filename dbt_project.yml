@@ -15,6 +15,9 @@ vars:
     dd07l: "{{ source('sap', 'dd07l') }}"
     dd07t: "{{ source('sap', 'dd07t') }}"
     ekko: "{{ source('sap', 'ekko') }}"
+    ekbe: "{{ source('sap', 'ekbe') }}"
+    eket: "{{ source('sap', 'eket') }}"
+    ekpo: "{{ source('sap', 'ekpo') }}"
     faglflexa: "{{ source('sap', 'faglflexa') }}"
     faglflext: "{{ source('sap', 'faglflext') }}"
     kna1: "{{ source('sap', 'kna1') }}"
@@ -37,6 +40,10 @@ vars:
     t880: "{{ source('sap', 't880') }}"
     tvag: "{{ source('sap', 'tvag') }}"
     tvagt: "{{ source('sap', 'tvagt') }}"
+    vbak: "{{ source('sap', 'vbak') }}"
+    vbap: "{{ source('sap', 'vbap') }}"
+    vbuk: "{{ source('sap', 'vbuk') }}"
+    vbup: "{{ source('sap', 'vbup') }}"
   # sap:
   #   ## Staging Models
   #   bkpf: "{{ ref('stg_sap__bkpf') }}"

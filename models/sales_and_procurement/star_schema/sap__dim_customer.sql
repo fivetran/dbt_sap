@@ -4,4 +4,4 @@ select
 	name as customer_name,
 	city,
 	customer_id 	
-from {{ ref('vw_customer') }}
+from {{ ref('int_sap__customer') }}

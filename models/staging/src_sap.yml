@@ -2112,6 +2112,21 @@ sources:
           - name: ddtext
             description: Text
 
+      - name: ekbe
+        identifier: "{{ var('sap_ekbe_identifier', 'ekbe')}}"
+      - name: eket
+        identifier: "{{ var('sap_ekbe_identifier', 'eket')}}"
+      - name: ekpo
+        identifier: "{{ var('sap_ekbe_identifier', 'ekpo')}}"
+      - name: vbak
+        identifier: "{{ var('sap_ekbe_identifier', 'vbak')}}"
+      - name: vbap
+        identifier: "{{ var('sap_ekbe_identifier', 'vbap')}}"
+      - name: vbuk
+        identifier: "{{ var('sap_ekbe_identifier', 'vbuk')}}"
+      - name: vbup
+        identifier: "{{ var('sap_ekbe_identifier', 'vbup')}}"
+
       - name: ekko
         identifier: "{{ var('sap_ekko_identifier', 'ekko')}}"
         description: Purchasing document header
