@@ -64,7 +64,7 @@ final as (
         licha,
         lpein,
         mahnz,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         mbdat,
         mbuhr,
         menge,

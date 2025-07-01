@@ -52,7 +52,7 @@ final as (
         rebzg,
         samnr,
         sgtxt,
-        shkzg,
+        cast(shkzg as {{ dbt.type_string() }}) as shkzg,
         skfbt,
         wskto,
         sknto, 

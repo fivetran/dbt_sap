@@ -21,7 +21,7 @@ final as (
         batxt,
         bsart,
         bstyp,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         spras
     from fields
 )

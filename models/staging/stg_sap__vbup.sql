@@ -21,7 +21,7 @@ final as (
         _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         posnr,
         vbeln,
         uvpak,

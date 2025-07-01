@@ -17,7 +17,7 @@
     {"name": "envop", "datatype": dbt.type_string()},
     {"name": "flref", "datatype": dbt.type_string()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "izust", "datatype": dbt.type_string()},
     {"name": "kkref", "datatype": dbt.type_string()},
     {"name": "kzgrp", "datatype": dbt.type_string()},

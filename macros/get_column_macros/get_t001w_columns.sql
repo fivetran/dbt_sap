@@ -44,7 +44,7 @@
     {"name": "fstva", "datatype": dbt.type_string()},
     {"name": "fstvare", "datatype": dbt.type_string()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "impda", "datatype": dbt.type_string()},
     {"name": "infmt", "datatype": dbt.type_string()},
     {"name": "iwerk", "datatype": dbt.type_string()},

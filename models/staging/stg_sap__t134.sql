@@ -41,7 +41,7 @@ final as (
         kzprc,
         kzrac,
         kzvpr,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         mbref,
         mstae,
         mtart,

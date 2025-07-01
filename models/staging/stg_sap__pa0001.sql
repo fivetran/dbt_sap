@@ -21,7 +21,7 @@ fields as (
 final as (
     
     select
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         pernr,
         subty,
         objps,
@@ -34,7 +34,7 @@ final as (
         ansvh,
         btrtl,
         budget_pd,
-        bukrs,
+        cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         ename,
         fistl,
         fkber,

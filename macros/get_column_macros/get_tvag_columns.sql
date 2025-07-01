@@ -10,7 +10,7 @@
     {"name": "fk_erl", "datatype": dbt.type_string()},
     {"name": "fsh_pqr_spec", "datatype": dbt.type_string()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "kowrr", "datatype": dbt.type_string()},
     {"name": "mandt", "datatype": dbt.type_string()},
 ] %}

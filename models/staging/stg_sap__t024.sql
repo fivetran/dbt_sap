@@ -26,7 +26,7 @@ final as (
         eknam,
         ektel,
         ldest,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         smtp_addr,
         tel_extens,
         tel_number,

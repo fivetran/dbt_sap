@@ -20,7 +20,7 @@ final as (
     select
         abgru,
         bezei,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         spras
     from fields
 )

@@ -85,7 +85,7 @@
     {"name": "cmps_te", "datatype": dbt.type_string()},
     {"name": "vbtyp_ext", "datatype": dbt.type_string()},
     {"name": "fsh_ar_stat_hdr", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
 ] %}
 

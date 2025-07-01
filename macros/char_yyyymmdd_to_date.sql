@@ -17,10 +17,10 @@
 
 {% macro postgres__char_yyyymmdd_to_date(date_string) %}
     case
-        when {{ date_string }} ~ '^[0-9]{8}$'
-            and substring({{ date_string }}, 5, 2)::int between 1 and 12
-            and substring({{ date_string }}, 7, 2)::int between 1 and 31
-        then to_date({{ date_string }}, 'YYYYMMDD')
+        when {{ date_string }}::text ~ '^[0-9]{8}$'
+            and substring({{ date_string }}::text, 5, 2)::int between 1 and 12
+            and substring({{ date_string }}::text, 7, 2)::int between 1 and 31
+        then to_date({{ date_string }}::text, 'YYYYMMDD')
         else null
     end
 {% endmacro %}

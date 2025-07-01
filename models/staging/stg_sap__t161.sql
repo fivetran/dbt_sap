@@ -45,7 +45,7 @@ final as (
         kornr,
         kzale,
         lphis,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         mill_omkz,
         msr_active,
         numka,

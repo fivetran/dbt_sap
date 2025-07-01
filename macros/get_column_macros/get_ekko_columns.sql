@@ -58,7 +58,7 @@
     {"name": "handoverloc", "datatype": dbt.type_string()},
     {"name": "hierarchy_exists", "datatype": dbt.type_string()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "ihran", "datatype": dbt.type_string()},
     {"name": "ihrez", "datatype": dbt.type_string()},
     {"name": "inco1", "datatype": dbt.type_string()},

@@ -25,7 +25,7 @@
     {"name": "gsfrg", "datatype": dbt.type_string()},
     {"name": "hityp", "datatype": dbt.type_string()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
-    {"name": "hvr_is_deleted", "datatype": dbt.type_string()},
+    {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "koako", "datatype": dbt.type_string()},
     {"name": "koett", "datatype": dbt.type_string()},
     {"name": "kornr", "datatype": dbt.type_string()},

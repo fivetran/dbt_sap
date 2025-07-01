@@ -78,7 +78,7 @@
     {"name": "fsh_kvgr8", "datatype": dbt.type_string()},
     {"name": "ernam", "datatype": dbt.type_string()},
     {"name": "hb_cont_reason", "datatype": dbt.type_string()},
-    {"name": "netwr", "datatype": dbt.type_string()},
+    {"name": "netwr", "datatype": dbt.type_int()},
     {"name": "vbkla", "datatype": dbt.type_string()},
     {"name": "vgtyp", "datatype": dbt.type_string()},
     {"name": "sbgrp", "datatype": dbt.type_string()},

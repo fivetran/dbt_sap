@@ -36,7 +36,7 @@ final as (
         _xlso_partner,
         _xlso_pref_pay,
         _xlso_sysid,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         kunnr,
         pmt_office,
         brsch,

@@ -21,7 +21,7 @@ fields as (
 final as (
     
     select
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         pernr,
         subty,
         objps,

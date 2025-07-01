@@ -19,8 +19,8 @@ fields as (
 final as (
     select
         maktx,
-        mandt,
-        matnr,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
+        cast(matnr as {{ dbt.type_string() }}) as matnr,
         spras
     from fields
 )
