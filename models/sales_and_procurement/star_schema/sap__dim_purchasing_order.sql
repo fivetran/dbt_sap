@@ -28,7 +28,7 @@ with purchasing_document_header as (
         purchasing_document_header.purchasing_group_id,
         purchasing_group.description_purchasing_group,
         purchasing_document_header.status_purchasing_document as purchasing_document_status,
-        purchasing_document_status.purchasing_document_status_txt,
+        purchasing_document_status.document_status_txt as purchasing_document_status_txt,
         purchasing_document_header.payment_terms,
         purchasing_document_header.reason_cancellation_id,
         purchasing_document_header.company_code_id
@@ -41,7 +41,7 @@ with purchasing_document_header as (
     left outer join purchasing_group
         on purchasing_group.purchasing_group_id = purchasing_document_header.purchasing_group_id 
     left outer join purchasing_document_status
-        on purchasing_document_status.purchasing_document_status_id = purchasing_document_header.status_purchasing_document
+        on purchasing_document_status.document_status_id = purchasing_document_header.status_purchasing_document
 )
 
 select *

@@ -17,7 +17,20 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        _fivetran_deleted,
+        _fivetran_rowid,
+        _fivetran_synced,
+        _fivetran_sap_archived,
+        ekgrp,
+        eknam,
+        ektel,
+        ldest,
+        mandt,
+        smtp_addr,
+        tel_extens,
+        tel_number,
+        telfx
     from fields
 )
 

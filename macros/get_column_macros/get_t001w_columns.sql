@@ -36,6 +36,7 @@
     {"name": "fdbuk", "datatype": dbt.type_string()},
     {"name": "fikrs", "datatype": dbt.type_string()},
     {"name": "fm_derive_acc", "datatype": dbt.type_string()},
+    {"name": "fmhrdate", "datatype": dbt.type_string()},
     {"name": "fprfw", "datatype": dbt.type_string()},
     {"name": "fsh_bom_maintenance", "datatype": dbt.type_string()},
     {"name": "fsh_mg_arun_req", "datatype": dbt.type_string()},

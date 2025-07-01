@@ -25,7 +25,7 @@
     {"name": "uvprs", "datatype": dbt.type_string()},
     {"name": "vbtyp", "datatype": dbt.type_string()},
     {"name": "vbobj", "datatype": dbt.type_string()},
-    {"name": "case when aedat in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('aedat') }} end", "datatype": dbt.type_string()},
+    {"name": "aedat", "datatype": dbt.type_string()},
     {"name": "fkivk", "datatype": dbt.type_string()},
     {"name": "relik", "datatype": dbt.type_string()},
     {"name": "uvk01", "datatype": dbt.type_string()},

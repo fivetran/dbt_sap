@@ -17,7 +17,16 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        abgru,
+        dragr,
+        ep_off,
+        fk_erl,
+        fsh_pqr_spec,
+        hvr_change_time,
+        hvr_is_deleted,
+        kowrr,
+        mandt
     from fields
 )
 

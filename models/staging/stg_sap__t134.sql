@@ -17,7 +17,45 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        aranz,
+        ardel,
+        begru,
+        bsext,
+        bsint,
+        cchis,
+        chneu,
+        class,
+        ctype,
+        ekalr,
+        envop,
+        flref,
+        hvr_change_time,
+        hvr_is_deleted,
+        izust,
+        kkref,
+        kzgrp,
+        kzkfg,
+        kzmpn,
+        kzpip,
+        kzprc,
+        kzrac,
+        kzvpr,
+        mandt,
+        mbref,
+        mstae,
+        mtart,
+        mtref,
+        numke,
+        numki,
+        prdru,
+        pstat,
+        vmtpo,
+        vnumke,
+        vnumki,
+        vprsv,
+        vtype,
+        wmakg
     from fields
 )
 

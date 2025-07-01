@@ -23,7 +23,7 @@ select
     uvprs as pricing,
     vbtyp as sd_document_category,
     vbobj as sd_document_object,
-    case when aedat in ('00000000', ' ') then null else {{ char_yyyymmdd_to_date('aedat') }} end as changed_date,
+    {{ char_yyyymmdd_to_date('aedat') }} as changed_date,
     fkivk as totals_status,
     relik as inv_list_status,
     uvk01 as header_reserves_1,

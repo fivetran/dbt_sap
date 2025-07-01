@@ -17,7 +17,11 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        maktx,
+        mandt,
+        matnr,
+        spras
     from fields
 )
 

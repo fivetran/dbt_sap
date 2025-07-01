@@ -54,13 +54,13 @@
     {"name": "wrf_enable_dateline", "datatype": dbt.type_string()},
     {"name": "wvvkz", "datatype": dbt.type_string()},
     {"name": "xlokz", "datatype": dbt.type_string()},
-    {"name": "/sapmp/atnam", "datatype": dbt.type_string()},
-    {"name": "/sapmp/ceact", "datatype": dbt.type_string()},
-    {"name": "/sapmp/gauf", "datatype": dbt.type_string()},
-    {"name": "/sapmp/pdact", "datatype": dbt.type_string()},
-    {"name": "/sapmp/pprot", "datatype": dbt.type_string()},
-    {"name": "/sapmp/puser", "datatype": dbt.type_string()},
-    {"name": "/sapmp/pausw", "datatype": dbt.type_string()}
+    {"name": "/sapmp/atnam", "datatype": dbt.type_string(), "alias": "_sapmp_atnam", "quote": true},
+    {"name": "/sapmp/ceact", "datatype": dbt.type_string(), "alias": "_sapmp_ceact", "quote": true},
+    {"name": "/sapmp/gauf", "datatype": dbt.type_string(), "alias": "_sapmp_gauf", "quote": true},
+    {"name": "/sapmp/pdact", "datatype": dbt.type_string(), "alias": "_sapmp_pdact", "quote": true},
+    {"name": "/sapmp/pprot", "datatype": dbt.type_string(), "alias": "_sapmp_pprot", "quote": true},
+    {"name": "/sapmp/puser", "datatype": dbt.type_string(), "alias": "_sapmp_puser", "quote": true},
+    {"name": "/sapmp/pausw", "datatype": dbt.type_string(), "alias": "_sapmp_pausw", "quote": true}
 ] %}
 
 {{ return(columns) }}

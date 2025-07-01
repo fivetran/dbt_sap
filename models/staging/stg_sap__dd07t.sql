@@ -17,7 +17,13 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        domname,
+        domvalue_l,
+        as4vers,
+        ddlanguage,
+        ddtext,
+        hvr_change_time
     from fields
 )
 

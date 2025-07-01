@@ -17,7 +17,11 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        abgru,
+        bezei,
+        mandt,
+        spras
     from fields
 )
 

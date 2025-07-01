@@ -17,7 +17,12 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        batxt,
+        bsart,
+        bstyp,
+        mandt,
+        spras
     from fields
 )
 

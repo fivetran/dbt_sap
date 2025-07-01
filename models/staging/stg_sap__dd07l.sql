@@ -17,7 +17,11 @@ fields as (
 ),
 
 final as (
-    select *
+    select
+        domvalue_l,
+        domname,
+        as4vers,
+        hvr_change_time
     from fields
 )
 
