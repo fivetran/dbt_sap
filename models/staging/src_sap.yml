@@ -4,13 +4,15 @@ sources:
   - name: sap
     schema: "{{ var('sap_schema', 'sap') }}"
     database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
-    
+
     loader: fivetran
     loaded_at_field: _fivetran_synced
 
     tables:
       - name: bkpf
         identifier: "{{ var('sap_bkpf_identifier', 'bkpf')}}"
+        config:
+          enabled: "{{ var('sap_using_bkpf', true) }}"
         description: Accounting document header
         columns:
           - name: mandt
@@ -28,7 +30,7 @@ sources:
           - name: monat
             description: Fiscal period
           - name: cpudt
-            description: Day on which accounting document was entered 
+            description: Day on which accounting document was entered
           - name: xblnr
             description: Reference document number
           - name: waers
@@ -56,17 +58,19 @@ sources:
 
       - name: bseg
         identifier: "{{ var('sap_bseg_identifier', 'bseg')}}"
+        config:
+          enabled: "{{ var('sap_using_bseg', true) }}"
         description: Accounting document segment
         columns:
           - name: mandt
             description: Client
           - name: bukrs
             description: Company code
-          - name: belnr 
+          - name: belnr
             description: Accounting document number
-          - name: gjahr 
+          - name: gjahr
             description: Fiscal year
-          - name: buzei 
+          - name: buzei
             description: Number of line item within accounting document
           - name: anln1
             description: Main asset number
@@ -294,11 +298,13 @@ sources:
             description: Vein
           - name: zzregion
             description: User defined regions
-          - name: zzstate 
+          - name: zzstate
             description: State/province code
 
       - name: faglflexa
         identifier: "{{ var('sap_faglflexa_identifier', 'faglflexa')}}"
+        config:
+          enabled: "{{ var('sap_using_faglflexa', true) }}"
         description: General ledger (Actual line items)
         columns:
           - name: ryear
@@ -350,7 +356,7 @@ sources:
           - name: pprctr
             description: Partner profit center
           - name: sfarea
-            description: Partner functional area 
+            description: Partner functional area
           - name: sbusa
             description: Trading partner's business area
           - name: rassc
@@ -384,7 +390,7 @@ sources:
           - name: buzei
             description: Number of line item within accounting document
           - name: bschl
-            description: Posting key 
+            description: Posting key
           - name: bstat
             description: Document status
           - name: faglflexa_timestamp
@@ -392,11 +398,13 @@ sources:
 
       - name: faglflext
         identifier: "{{ var('sap_faglflext_identifier', 'faglflext')}}"
+        config:
+          enabled: "{{ var('sap_using_faglflext', true) }}"
         description: General ledger (Totals)
         columns:
           - name: drcrk
             description: Debit/credit indicator
-          - name: objnr00 
+          - name: objnr00
             description: Object number for table group
           - name: objnr01
             description: Object number for table group
@@ -472,41 +480,41 @@ sources:
             description: Partner segment for segmental reporting
           - name: hslvt
             description: Balance carried forward in local currency
-          - name: hsl01 
+          - name: hsl01
             description: Total of transactions of the period in local currency
-          - name: hsl02 
+          - name: hsl02
             description: Total of transactions of the period in local currency
-          - name: hsl03 
+          - name: hsl03
             description: Total of transactions of the period in local currency
-          - name: hsl04 
+          - name: hsl04
             description: Total of transactions of the period in local currency
-          - name: hsl05 
+          - name: hsl05
             description: Total of transactions of the period in local currency
-          - name: hsl06 
+          - name: hsl06
             description: Total of transactions of the period in local currency
-          - name: hsl07 
+          - name: hsl07
             description: Total of transactions of the period in local currency
-          - name: hsl08 
+          - name: hsl08
             description: Total of transactions of the period in local currency
-          - name: hsl09 
+          - name: hsl09
             description: Total of transactions of the period in local currency
-          - name: hsl10 
+          - name: hsl10
             description: Total of transactions of the period in local currency
-          - name: hsl11 
+          - name: hsl11
             description: Total of transactions of the period in local currency
-          - name: hsl12 
+          - name: hsl12
             description: Total of transactions of the period in local currency
-          - name: hsl13 
+          - name: hsl13
             description: Total of transactions of the period in local currency
-          - name: hsl14 
+          - name: hsl14
             description: Total of transactions of the period in local currency
-          - name: hsl15 
+          - name: hsl15
             description: Total of transactions of the period in local currency
-          - name: hsl16 
+          - name: hsl16
             description: Total of transactions of the period in local currency
           - name: tslvt
             description: Balance carried forward in transaction currency
-          - name: tsl01 
+          - name: tsl01
             description: Total of transactions of the period in transaction currency
           - name: tsl02
             description: Total of transactions of the period in transaction currency
@@ -540,77 +548,79 @@ sources:
             description: Total of transactions of the period in transaction currency
           - name: kslvt
             description: Balance carried forward in group currency
-          - name: ksl01 
-            description: Total of transactions of the period in group currency 
-          - name: ksl02 
+          - name: ksl01
             description: Total of transactions of the period in group currency
-          - name: ksl03 
+          - name: ksl02
             description: Total of transactions of the period in group currency
-          - name: ksl04 
+          - name: ksl03
             description: Total of transactions of the period in group currency
-          - name: ksl05 
+          - name: ksl04
             description: Total of transactions of the period in group currency
-          - name: ksl06 
+          - name: ksl05
             description: Total of transactions of the period in group currency
-          - name: ksl07 
+          - name: ksl06
             description: Total of transactions of the period in group currency
-          - name: ksl08 
+          - name: ksl07
             description: Total of transactions of the period in group currency
-          - name: ksl09 
+          - name: ksl08
             description: Total of transactions of the period in group currency
-          - name: ksl10 
+          - name: ksl09
             description: Total of transactions of the period in group currency
-          - name: ksl11 
+          - name: ksl10
             description: Total of transactions of the period in group currency
-          - name: ksl12 
+          - name: ksl11
             description: Total of transactions of the period in group currency
-          - name: ksl13 
+          - name: ksl12
             description: Total of transactions of the period in group currency
-          - name: ksl14 
+          - name: ksl13
             description: Total of transactions of the period in group currency
-          - name: ksl15 
+          - name: ksl14
             description: Total of transactions of the period in group currency
-          - name: ksl16 
+          - name: ksl15
+            description: Total of transactions of the period in group currency
+          - name: ksl16
             description: Total of transactions of the period in group currency
           - name: oslvt
             description: Balance carried forward in fourth currency
-          - name: osl01 
+          - name: osl01
             description: Total transactions for the period in the fourth currency
-          - name: osl02 
+          - name: osl02
             description: Total transactions for the period in the fourth currency
-          - name: osl03 
+          - name: osl03
             description: Total transactions for the period in the fourth currency
-          - name: osl04 
+          - name: osl04
             description: Total transactions for the period in the fourth currency
-          - name: osl05 
+          - name: osl05
             description: Total transactions for the period in the fourth currency
-          - name: osl06 
+          - name: osl06
             description: Total transactions for the period in the fourth currency
-          - name: osl07 
+          - name: osl07
             description: Total transactions for the period in the fourth currency
-          - name: osl08 
+          - name: osl08
             description: Total transactions for the period in the fourth currency
-          - name: osl09 
+          - name: osl09
             description: Total transactions for the period in the fourth currency
-          - name: osl10 
+          - name: osl10
             description: Total transactions for the period in the fourth currency
-          - name: osl11 
+          - name: osl11
             description: Total transactions for the period in the fourth currency
-          - name: osl12 
+          - name: osl12
             description: Total transactions for the period in the fourth currency
-          - name: osl13 
+          - name: osl13
             description: Total transactions for the period in the fourth currency
-          - name: osl14 
+          - name: osl14
             description: Total transactions for the period in the fourth currency
-          - name: osl15 
+          - name: osl15
             description: Total transactions for the period in the fourth currency
-          - name: osl16 
+          - name: osl16
             description: Total transactions for the period in the fourth currency
           - name: faglflext_timestamp
             description: UTC timestamp in short form (YYYYMMDDhhmmss)
 
       - name: kna1
         identifier: "{{ var('sap_kna1_identifier', 'kna1')}}"
+        config:
+          enabled: "{{ var('sap_using_kna1', true) }}"
         description: General Data in Customer Master
         columns:
           - name: mandt
@@ -664,7 +674,7 @@ sources:
           - name: stcd2
             description: Tax number 2
           - name: stcd3
-            description: Tax number 3 
+            description: Tax number 3
           - name: stras
             description: House number and street
           - name: telf1
@@ -677,8 +687,8 @@ sources:
             description: Company id of trading partner
           - name: dear6
             description: Indicator (Consumer)
-          - name: bran1 
-            description: Industry code 1 
+          - name: bran1
+            description: Industry code 1
           - name: bran2
             description: Industry code 2
           - name: bran3
@@ -694,6 +704,8 @@ sources:
 
       - name: lfa1
         identifier: "{{ var('sap_lfa1_identifier', 'lfa1')}}"
+        config:
+          enabled: "{{ var('sap_using_lfa1', true) }}"
         description: Vendor master (General section)
         columns:
           - name: mandt
@@ -714,47 +726,49 @@ sources:
             description: Name 2
           - name: name3
             description: Name 3
-          - name: ort01 
+          - name: ort01
             description: City
-          - name: ort02 
+          - name: ort02
             description: District
-          - name: pfach 
+          - name: pfach
             description: PO Box
-          - name: pstl2 
+          - name: pstl2
             description: P.O. Box postal code
-          - name: pstlz 
+          - name: pstlz
             description: Postal code
-          - name: regio 
+          - name: regio
             description: Region (State, province, county)
-          - name: sortl 
+          - name: sortl
             description: Sort field
-          - name: spras 
+          - name: spras
             description: Language key
-          - name: stcd1 
+          - name: stcd1
             description: Tax number 1
-          - name: stcd2 
+          - name: stcd2
             description: Tax number 2
-          - name: stcd3 
+          - name: stcd3
             description: Tax number 3
-          - name: stras 
+          - name: stras
             description: Street and house number
-          - name: telf1 
+          - name: telf1
             description: First telephone number
-          - name: telfx 
+          - name: telfx
             description: Fax number
-          - name: xcpdk 
+          - name: xcpdk
             description: Indicator (is the account a one-time account?)
-          - name: vbund 
+          - name: vbund
             description: Company id of trading partner
-          - name: kraus 
+          - name: kraus
             description: Credit information number
-          - name: pfort 
+          - name: pfort
             description: PO box city
-          - name: werks 
+          - name: werks
             description: Plant
 
       - name: mara
         identifier: "{{ var('sap_mara_identifier', 'mara')}}"
+        config:
+          enabled: "{{ var('sap_using_mara', true) }}"
         description: General material data
         columns:
           - name: mandt
@@ -880,7 +894,7 @@ sources:
           - name: ergew
             description: Allowed packaging weight
           - name: ergei
-            description: Unit of weight (allowed packaging weight) 
+            description: Unit of weight (allowed packaging weight)
           - name: ervol
             description: Allowed packaging volume
           - name: ervoe
@@ -1012,6 +1026,8 @@ sources:
 
       - name: pa0000
         identifier: "{{ var('sap_pa0000_identifier', 'pa0000')}}"
+        config:
+          enabled: "{{ var('sap_using_pa0000', true) }}"
         description: HR master record--infotype 0000 (Actions)
         columns:
           - name: mandt
@@ -1073,6 +1089,8 @@ sources:
 
       - name: pa0001
         identifier: "{{ var('sap_pa0001_identifier', 'pa0001')}}"
+        config:
+          enabled: "{{ var('sap_using_pa0001', true) }}"
         description: HR master record--infotype 0001 (org. assignment)
         columns:
           - name: mandt
@@ -1112,11 +1130,11 @@ sources:
           - name: flag1
             description: Reserved field/unused field
           - name: flag2
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: flag3
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: flag4
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: geber
             description: Fund
           - name: grant_nbr
@@ -1182,6 +1200,8 @@ sources:
 
       - name: pa0007
         identifier: "{{ var('sap_pa0007_identifier', 'pa0007')}}"
+        config:
+          enabled: "{{ var('sap_using_pa0007', true) }}"
         description: HR master record--infotype 0007 (planned working time)
         columns:
           - name: mandt
@@ -1213,7 +1233,7 @@ sources:
           - name: flag1
             description: Reserved field/unused field
           - name: flag2
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: flag3
             description: Reserved field/unused field
           - name: flag4
@@ -1257,11 +1277,11 @@ sources:
           - name: rese1
             description: Reserved field/unused field of length 2
           - name: rese2
-            description: Reserved field/unused field of length 2 
+            description: Reserved field/unused field of length 2
           - name: schkz
             description: Work schedule rule
           - name: teilk
-            description: Indicator part-time employee 
+            description: Indicator part-time employee
           - name: uname
             description: Name of person who changed objects
           - name: wkwdy
@@ -1275,6 +1295,8 @@ sources:
 
       - name: pa0008
         identifier: "{{ var('sap_pa0008_identifier', 'pa0008')}}"
+        config:
+          enabled: "{{ var('sap_using_pa0008', true) }}"
         description: HR master record--infotype 0008 (basic pay)
         columns:
           - name: mandt
@@ -1308,7 +1330,7 @@ sources:
           - name: anz04
             description: Number/unit
           - name: anz05
-            description: Number/unit 
+            description: Number/unit
           - name: anz06
             description: Number/unit
           - name: anz07
@@ -1426,7 +1448,7 @@ sources:
           - name: bet23
             description: Wage type amount for payments
           - name: bet24
-            description: Wage type amount for payments 
+            description: Wage type amount for payments
           - name: bet25
             description: Wage type amount for payments
           - name: bet26
@@ -1488,7 +1510,7 @@ sources:
           - name: ein11
             description: Time/measurement unit
           - name: ein12
-            description: Time/measurement unit 
+            description: Time/measurement unit
           - name: ein13
             description: Time/measurement unit
           - name: ein14
@@ -1536,7 +1558,7 @@ sources:
           - name: ein35
             description: Time/measurement unit
           - name: ein36
-            description: Time/measurement unit 
+            description: Time/measurement unit
           - name: ein37
             description: Time/measurement unit
           - name: ein38
@@ -1650,163 +1672,163 @@ sources:
           - name: lga01
             description: Wage type
           - name: lga02
-            description: Wage type 
+            description: Wage type
           - name: lga03
-            description: Wage type 
+            description: Wage type
           - name: lga04
-            description: Wage type 
+            description: Wage type
           - name: lga05
-            description: Wage type 
+            description: Wage type
           - name: lga06
-            description: Wage type 
+            description: Wage type
           - name: lga07
-            description: Wage type 
+            description: Wage type
           - name: lga08
-            description: Wage type 
+            description: Wage type
           - name: lga09
-            description: Wage type 
+            description: Wage type
           - name: lga10
-            description: Wage type 
+            description: Wage type
           - name: lga11
-            description: Wage type 
+            description: Wage type
           - name: lga12
-            description: Wage type 
+            description: Wage type
           - name: lga13
-            description: Wage type 
+            description: Wage type
           - name: lga14
-            description: Wage type 
+            description: Wage type
           - name: lga15
-            description: Wage type 
+            description: Wage type
           - name: lga16
-            description: Wage type 
+            description: Wage type
           - name: lga17
-            description: Wage type 
+            description: Wage type
           - name: lga18
-            description: Wage type 
+            description: Wage type
           - name: lga19
-            description: Wage type 
+            description: Wage type
           - name: lga20
-            description: Wage type 
+            description: Wage type
           - name: lga21
-            description: Wage type 
+            description: Wage type
           - name: lga22
-            description: Wage type 
+            description: Wage type
           - name: lga23
-            description: Wage type 
+            description: Wage type
           - name: lga24
-            description: Wage type 
+            description: Wage type
           - name: lga25
-            description: Wage type 
+            description: Wage type
           - name: lga26
-            description: Wage type 
+            description: Wage type
           - name: lga27
-            description: Wage type 
+            description: Wage type
           - name: lga28
-            description: Wage type 
+            description: Wage type
           - name: lga29
-            description: Wage type 
+            description: Wage type
           - name: lga30
-            description: Wage type 
+            description: Wage type
           - name: lga31
-            description: Wage type 
+            description: Wage type
           - name: lga32
-            description: Wage type 
+            description: Wage type
           - name: lga33
-            description: Wage type 
+            description: Wage type
           - name: lga34
-            description: Wage type 
+            description: Wage type
           - name: lga35
-            description: Wage type 
+            description: Wage type
           - name: lga36
-            description: Wage type 
+            description: Wage type
           - name: lga37
-            description: Wage type 
+            description: Wage type
           - name: lga38
-            description: Wage type 
+            description: Wage type
           - name: lga39
-            description: Wage type 
+            description: Wage type
           - name: lga40
-            description: Wage type 
+            description: Wage type
           - name: opk01
             description: Operation indicator for wage types
           - name: opk02
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk03
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk04
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk05
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk06
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk07
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk08
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk09
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk10
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk11
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk12
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk13
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk14
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk15
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk16
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk17
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk18
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk19
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk20
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk21
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk22
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk23
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk24
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk25
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk26
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk27
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk28
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk29
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk30
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk31
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk32
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk33
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk34
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk35
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk36
             description: Operation indicator for wage types
           - name: opk37
             description: Operation indicator for wage types
           - name: opk38
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk39
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: opk40
-            description: Operation indicator for wage types 
+            description: Operation indicator for wage types
           - name: ordex
             description: Confirmation fields exist
           - name: orzst
@@ -1848,6 +1870,8 @@ sources:
 
       - name: pa0031
         identifier: "{{ var('sap_pa0031_identifier', 'pa0031')}}"
+        config:
+          enabled: "{{ var('sap_using_pa0031', true) }}"
         description: HR master record--infotype 0031 (Reference personnel numbers)
         columns:
           - name: mandt
@@ -1871,11 +1895,11 @@ sources:
           - name: flag1
             description: Reserved field/unused field
           - name: flag2
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: flag3
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: flag4
-            description: Reserved field/unused field 
+            description: Reserved field/unused field
           - name: grpvl
             description: Grouping value for personnel assignments
           - name: histo
@@ -1893,29 +1917,29 @@ sources:
           - name: rese1
             description: Reserved field/unused field of length 2
           - name: rese2
-            description: Reserved field/unused field of length 2 
+            description: Reserved field/unused field of length 2
           - name: rfp01
             description: Reference personnel number
           - name: rfp02
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp03
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp04
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp05
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp06
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp07
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp08
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp09
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp10
             description: Reference personnel number
           - name: rfp11
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp12
             description: Reference personnel number
           - name: rfp13
@@ -1929,9 +1953,9 @@ sources:
           - name: rfp17
             description: Reference personnel number
           - name: rfp18
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp19
-            description: Reference personnel number 
+            description: Reference personnel number
           - name: rfp20
             description: Reference personnel number
           - name: uname
@@ -1939,6 +1963,8 @@ sources:
 
       - name: ska1
         identifier: "{{ var('sap_ska1_identifier', 'ska1')}}"
+        config:
+          enabled: "{{ var('sap_using_ska1', true) }}"
         description: G/L Account Master (Chart of Accounts)
         columns:
           - name: mandt
@@ -1979,6 +2005,8 @@ sources:
 
       - name: t001
         identifier: "{{ var('sap_t001_identifier', 't001')}}"
+        config:
+          enabled: "{{ var('sap_using_t001', true) }}"
         description: Company codes
         columns:
           - name: mandt
@@ -2004,12 +2032,14 @@ sources:
 
       - name: t503
         identifier: "{{ var('sap_t503_identifier', 't503')}}"
+        config:
+          enabled: "{{ var('sap_using_t503', true) }}"
         description: Employee group/subgroup
         columns:
           - name: mandt
             description: Client
           - name: persg
-            description: Employee group 
+            description: Employee group
           - name: persk
             description: Employee subgroup
           - name: abart
@@ -2041,6 +2071,8 @@ sources:
 
       - name: t880
         identifier: "{{ var('sap_t880_identifier', 't880')}}"
+        config:
+          enabled: "{{ var('sap_using_t880', true) }}"
         description: Global company data (for KONS Ledger)
         columns:
           - name: mandt
@@ -2060,7 +2092,7 @@ sources:
           - name: langu
             description: Language key
           - name: lccomp
-            description: Consolidation company indicator 
+            description: Consolidation company indicator
           - name: mclnt
             description: Master data client
           - name: mcomp
@@ -2088,6 +2120,8 @@ sources:
 
       - name: dd07l
         identifier: "{{ var('sap_dd07l_identifier', 'dd07l')}}"
+        config:
+          enabled: "{{ var('sap_using_dd07l', true) }}"
         description: Domain values
         columns:
           - name: domname
@@ -2099,6 +2133,8 @@ sources:
 
       - name: dd07t
         identifier: "{{ var('sap_dd07t_identifier', 'dd07t')}}"
+        config:
+          enabled: "{{ var('sap_using_dd07t', true) }}"
         description: Texts for domain values
         columns:
           - name: domname
@@ -2114,23 +2150,41 @@ sources:
 
       - name: ekbe
         identifier: "{{ var('sap_ekbe_identifier', 'ekbe')}}"
+        config:
+          enabled: "{{ var('sap_using_ekbe', true) }}"
       - name: eket
         identifier: "{{ var('sap_eket_identifier', 'eket')}}"
+        config:
+          enabled: "{{ var('sap_using_eket', true) }}"
       - name: ekpo
         identifier: "{{ var('sap_ekpo_identifier', 'ekpo')}}"
+        config:
+          enabled: "{{ var('sap_using_ekpo', true) }}"
       - name: makt
         identifier: "{{ var('sap_makt_identifier', 'makt')}}"
+        config:
+          enabled: "{{ var('sap_using_makt', true) }}"
       - name: vbak
         identifier: "{{ var('sap_vbak_identifier', 'vbak')}}"
+        config:
+          enabled: "{{ var('sap_using_vbak', true) }}"
       - name: vbap
         identifier: "{{ var('sap_vbap_identifier', 'vbap')}}"
+        config:
+          enabled: "{{ var('sap_using_vbap', true) }}"
       - name: vbuk
         identifier: "{{ var('sap_vbuk_identifier', 'vbuk')}}"
+        config:
+          enabled: "{{ var('sap_using_vbuk', true) }}"
       - name: vbup
         identifier: "{{ var('sap_vbup_identifier', 'vbup')}}"
+        config:
+          enabled: "{{ var('sap_using_vbup', true) }}"
 
       - name: ekko
         identifier: "{{ var('sap_ekko_identifier', 'ekko')}}"
+        config:
+          enabled: "{{ var('sap_using_ekko', true) }}"
         description: Purchasing document header
         columns:
           - name: mandt
@@ -2148,6 +2202,8 @@ sources:
 
       - name: t001w
         identifier: "{{ var('sap_t001w_identifier', 't001w')}}"
+        config:
+          enabled: "{{ var('sap_using_t001w', true) }}"
         description: Plants/Branches
         columns:
           - name: mandt
@@ -2161,6 +2217,8 @@ sources:
 
       - name: t024
         identifier: "{{ var('sap_t024_identifier', 't024')}}"
+        config:
+          enabled: "{{ var('sap_using_t024', true) }}"
         description: Purchasing groups
         columns:
           - name: ekgrp
@@ -2170,6 +2228,8 @@ sources:
 
       - name: t134
         identifier: "{{ var('sap_t134_identifier', 't134')}}"
+        config:
+          enabled: "{{ var('sap_using_t134', true) }}"
         description: Material types
         columns:
           - name: mtart
@@ -2177,6 +2237,8 @@ sources:
 
       - name: t134t
         identifier: "{{ var('sap_t134t_identifier', 't134t')}}"
+        config:
+          enabled: "{{ var('sap_using_t134t', true) }}"
         description: Material type descriptions
         columns:
           - name: mtart
@@ -2186,6 +2248,8 @@ sources:
 
       - name: t161
         identifier: "{{ var('sap_t161_identifier', 't161')}}"
+        config:
+          enabled: "{{ var('sap_using_t161', true) }}"
         description: Purchasing document types
         columns:
           - name: bstyp
@@ -2195,6 +2259,8 @@ sources:
 
       - name: t161t
         identifier: "{{ var('sap_t161t_identifier', 't161t')}}"
+        config:
+          enabled: "{{ var('sap_using_t161t', true) }}"
         description: Descriptions for purchasing document types
         columns:
           - name: bstyp
@@ -2208,6 +2274,8 @@ sources:
 
       - name: tvag
         identifier: "{{ var('sap_tvag_identifier', 'tvag')}}"
+        config:
+          enabled: "{{ var('sap_using_tvag', true) }}"
         description: Sales document rejection reasons
         columns:
           - name: mandt
@@ -2219,6 +2287,8 @@ sources:
 
       - name: tvagt
         identifier: "{{ var('sap_tvagt_identifier', 'tvagt')}}"
+        config:
+          enabled: "{{ var('sap_using_tvagt', true) }}"
         description: Rejection reason texts
         columns:
           - name: mandt
