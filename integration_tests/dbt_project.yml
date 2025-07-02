@@ -52,92 +52,6 @@ seeds:
       _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
       _fivetran_synced: timestamp
 
-    sap_ekbe_data:
-      +column_types:
-        dmbtr: numeric
-        dmbtr_pop: numeric
-        retamt_fc: numeric
-        retamt_lc: numeric
-        retamtp_fc: numeric
-        retamtp_lc: numeric
-        wrbtr: numeric
-        wrbtr_pop: numeric
-
-    sap_eket_data:
-      +column_types:
-        otb_res_value: numeric
-        otb_spec_value: numeric
-        otb_value: numeric
-
-    sap_ekpo_data:
-      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
-      +quote_columns: true
-    sap_ekpo_data_bigquery:
-      +alias: sap_ekpo_data
-      +enabled: "{{ true if target.type == 'bigquery' else false }}"
-      +quote_columns: true
-      +column_types:
-        abmng: numeric
-        brtwr: numeric     
-    sap_ekpo_data_snowflake:
-      +alias: sap_ekpo_data
-      +enabled: "{{ true if target.type == 'snowflake' else false }}"
-      +quote_columns: true
-
-    sap_vbak_data:
-      +column_types:
-        cmngv: numeric
-        netwr: numeric
-
-    sap_vbap_data:
-      +column_types:
-        ablfz: numeric
-        absfz: numeric
-        anltf: numeric
-        anzsn: numeric
-        brgew: numeric
-        cmkua: numeric
-        cmpre: numeric
-        cpd_updat: numeric
-        hvr_is_deleted: numeric
-        hvr_rowid: numeric
-        kbmeng: numeric
-        kbver: numeric
-        kever: numeric
-        klmeng: numeric
-        kpein: numeric
-        kwmeng: numeric
-        kzwi1: numeric
-        kzwi2: numeric
-        kzwi3: numeric
-        kzwi4: numeric
-        kzwi5: numeric
-        kzwi6: numeric
-        lfmng: numeric
-        lsmeng: numeric
-        netpr: numeric
-        netwr: numeric
-        ntgew: numeric
-        oifeetot: numeric
-        oih_folqty: numeric
-        oih_folqty_ex: numeric
-        oioilcon: numeric
-        smeng: numeric
-        stcur: numeric
-        stpos: numeric
-        uebto: numeric
-        umvkn: numeric
-        umvkz: numeric
-        umzim: numeric
-        umziz: numeric
-        untto: numeric
-        vbeaf: numeric
-        vbeav: numeric
-        volum: numeric
-        wavwr: numeric
-        zmeng: numeric
-        zwert: numeric
-
     sap_bkpf_data:
       +column_types:
         aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -313,6 +227,80 @@ seeds:
         zfbdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         zolld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         zuonr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07l_data:
+      +column_types:
+        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07t_data:
+      +column_types:
+        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddlanguage: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddtext: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_ekbe_data:
+      +column_types:
+        dmbtr: numeric
+        dmbtr_pop: numeric
+        retamt_fc: numeric
+        retamt_lc: numeric
+        retamtp_fc: numeric
+        retamtp_lc: numeric
+        wrbtr: numeric
+        wrbtr_pop: numeric
+
+    sap_eket_data:
+      +column_types:
+        otb_res_value: numeric
+        otb_spec_value: numeric
+        otb_value: numeric
+
+    sap_ekko_data:
+      +column_types:
+        dpamt: numeric
+        dppct: numeric
+        ktwrt: numeric
+        otb_res_value: numeric
+        otb_spec_value: numeric
+        otb_value: numeric
+        rlwrt: numeric
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lifnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdatb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bwbdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        angdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bnddt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gwldt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ihran: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dpdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        release_date: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eq_eindt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_ekpo_data:
+      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
+      +quote_columns: true
+    sap_ekpo_data_bigquery:
+      +alias: sap_ekpo_data
+      +enabled: "{{ true if target.type == 'bigquery' else false }}"
+      +quote_columns: true
+      +column_types:
+        abmng: numeric
+        brtwr: numeric     
+    sap_ekpo_data_snowflake:
+      +alias: sap_ekpo_data
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +quote_columns: true
 
     sap_faglflexa_data:
       +column_types:
@@ -503,6 +491,13 @@ seeds:
         uptim: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         j_sc_capital: numeric
         staging_time: numeric
+
+    sap_makt_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        maktx: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_mara_data:
       +column_types:
@@ -1030,80 +1025,6 @@ seeds:
         wfvar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         xcos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
-    sap_t503_data:
-      +column_types:
-        abart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        abtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        aksta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ansta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        antyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        austa: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        burkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        inwid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        konty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        molga: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        typsz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zeity: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
-    sap_t880_data:
-      +column_types:
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rcomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
-    sap_dd07l_data:
-      +column_types:
-        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
-    sap_dd07t_data:
-      +column_types:
-        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ddlanguage: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ddtext: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
-    sap_ekko_data:
-      +column_types:
-        dpamt: numeric
-        dppct: numeric
-        ktwrt: numeric
-        otb_res_value: numeric
-        otb_spec_value: numeric
-        otb_value: numeric
-        rlwrt: numeric
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ebeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lifnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kdatb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bwbdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        angdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bnddt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        gwldt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ihran: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dpdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        release_date: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        eq_eindt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
-    sap_makt_data:
-      +column_types:
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        maktx: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
     sap_t001w_data:
       +column_types:
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1154,6 +1075,31 @@ seeds:
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         batxt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
+    sap_t503_data:
+      +column_types:
+        abart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        abtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aksta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ansta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        antyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        austa: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        burkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inwid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        konty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        molga: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        typsz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zeity: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t880_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
     sap_tvag_data:
       +column_types:
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1166,3 +1112,57 @@ seeds:
         abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bezei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_vbak_data:
+      +column_types:
+        cmngv: numeric
+        netwr: numeric
+
+    sap_vbap_data:
+      +column_types:
+        ablfz: numeric
+        absfz: numeric
+        anltf: numeric
+        anzsn: numeric
+        brgew: numeric
+        cmkua: numeric
+        cmpre: numeric
+        cpd_updat: numeric
+        hvr_is_deleted: numeric
+        hvr_rowid: numeric
+        kbmeng: numeric
+        kbver: numeric
+        kever: numeric
+        klmeng: numeric
+        kpein: numeric
+        kwmeng: numeric
+        kzwi1: numeric
+        kzwi2: numeric
+        kzwi3: numeric
+        kzwi4: numeric
+        kzwi5: numeric
+        kzwi6: numeric
+        lfmng: numeric
+        lsmeng: numeric
+        netpr: numeric
+        netwr: numeric
+        ntgew: numeric
+        oifeetot: numeric
+        oih_folqty: numeric
+        oih_folqty_ex: numeric
+        oioilcon: numeric
+        smeng: numeric
+        stcur: numeric
+        stpos: numeric
+        uebto: numeric
+        umvkn: numeric
+        umvkz: numeric
+        umzim: numeric
+        umziz: numeric
+        untto: numeric
+        vbeaf: numeric
+        vbeav: numeric
+        volum: numeric
+        wavwr: numeric
+        zmeng: numeric
+        zwert: numeric
