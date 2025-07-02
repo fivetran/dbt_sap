@@ -89,7 +89,7 @@ final as (
         tragr,
         stoff,
         spart,
-        kunnr,
+        cast(kunnr as {{ dbt.type_string() }}) as kunnr,
         eannr,
         wesch,
         bwvor,

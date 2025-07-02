@@ -2115,19 +2115,19 @@ sources:
       - name: ekbe
         identifier: "{{ var('sap_ekbe_identifier', 'ekbe')}}"
       - name: eket
-        identifier: "{{ var('sap_ekbe_identifier', 'eket')}}"
+        identifier: "{{ var('sap_eket_identifier', 'eket')}}"
       - name: ekpo
-        identifier: "{{ var('sap_ekbe_identifier', 'ekpo')}}"
+        identifier: "{{ var('sap_ekpo_identifier', 'ekpo')}}"
       - name: makt
-        identifier: "{{ var('sap_ekbe_identifier', 'makt')}}"
+        identifier: "{{ var('sap_makt_identifier', 'makt')}}"
       - name: vbak
-        identifier: "{{ var('sap_ekbe_identifier', 'vbak')}}"
+        identifier: "{{ var('sap_vbak_identifier', 'vbak')}}"
       - name: vbap
-        identifier: "{{ var('sap_ekbe_identifier', 'vbap')}}"
+        identifier: "{{ var('sap_vbap_identifier', 'vbap')}}"
       - name: vbuk
-        identifier: "{{ var('sap_ekbe_identifier', 'vbuk')}}"
+        identifier: "{{ var('sap_vbuk_identifier', 'vbuk')}}"
       - name: vbup
-        identifier: "{{ var('sap_ekbe_identifier', 'vbup')}}"
+        identifier: "{{ var('sap_vbup_identifier', 'vbup')}}"
 
       - name: ekko
         identifier: "{{ var('sap_ekko_identifier', 'ekko')}}"

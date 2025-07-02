@@ -20,7 +20,7 @@ final as (
     select
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         aedat,
-        vbeln,
+        cast(vbeln as {{ dbt.type_string() }}) as vbeln,
         rfstk,
         rfgsk,
         bestk,

@@ -73,7 +73,7 @@ final as (
         kordb,
         ktop2,
         ktopl,
-        kunnr,
+        cast(kunnr as {{ dbt.type_string() }}) as kunnr,
         land1,
         let01,
         let02,

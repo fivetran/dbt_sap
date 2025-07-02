@@ -61,7 +61,12 @@ seeds:
         otb_res_value: numeric
 
     sap_ekpo_data:
-      +quote_columns: true # "{{ true if target.name == 'snowflake' else false }}"
+      +enabled: "{{ false if target.type == 'snowflake' else true }}"
+      +quote_columns: true
+    sap_ekpo_data_snowflake:
+      +alias: sap_ekpo_data
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +quote_columns: true
 
     sap_vbak_data:
       +column_types:
@@ -1054,7 +1059,15 @@ seeds:
         mttxt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t161_data:
-      +quote_columns: true #"{{ true if target.name == 'snowflake' else false }}"
+      +enabled: "{{ false if target.type == 'snowflake' else true }}"
+      +quote_columns: true
+      +column_types:
+        bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+    sap_t161_data_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +quote_columns: true
+      +alias: sap_t161_data
       +column_types:
         bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"

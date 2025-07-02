@@ -37,7 +37,7 @@ final as (
         _xlso_pref_pay,
         _xlso_sysid,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
-        kunnr,
+        cast(kunnr as {{ dbt.type_string() }}) as kunnr,
         pmt_office,
         brsch,
         katr9,
