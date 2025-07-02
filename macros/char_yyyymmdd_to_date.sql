@@ -4,11 +4,11 @@
 {%- endmacro %}
 
 {% macro default__char_yyyymmdd_to_date(date_string) %}
-    to_date({{ date_string }}, 'YYYYMMDD')
+    to_date(cast{{ date_string }} as {{ dbt.type_string() }}), 'YYYYMMDD')
 {% endmacro %}
 
 {% macro bigquery__char_yyyymmdd_to_date(date_string) %}
-    safe.parse_date('%Y%m%d', {{ date_string }})
+    safe.parse_date('%Y%m%d', cast({{ date_string }} as string))
 {% endmacro %}
 
 {% macro snowflake__char_yyyymmdd_to_date(date_string) %}
@@ -26,5 +26,5 @@
 {% endmacro %}
 
 {% macro databricks__char_yyyymmdd_to_date(date_string) %}
-    to_date({{ date_string }}, 'yyyyMMdd')
+    to_date(cast({{ date_string }} as string), 'yyyyMMdd')
 {% endmacro %}

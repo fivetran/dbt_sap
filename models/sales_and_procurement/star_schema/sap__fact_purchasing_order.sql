@@ -32,8 +32,8 @@ with purchasing_document_item as (
         purchasing_document_item.order_uom_id,
         purchasing_document_header.purchasing_document_date,
         purchasing_document_schedule_total.lastest_scheduled_delivery_date as scheduled_delivery_date,
-        cast((purchasing_document_overview.latest_goods_receive_date - purchasing_document_header.purchasing_document_date) as {{ dbt.type_numeric() }}) as purchase_deliver_late_days,
-        cast((purchasing_document_overview.latest_goods_receive_date - purchasing_document_schedule_total.lastest_scheduled_delivery_date) as {{ dbt.type_numeric() }}) as purchase_late_lead_days,
+        {{ dbt.datediff("purchasing_document_header.purchasing_document_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_deliver_late_days,
+        {{ dbt.datediff("purchasing_document_schedule_total.lastest_scheduled_delivery_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_late_lead_days,
 
         case 
         when purchasing_document_item.returns_item = ''
