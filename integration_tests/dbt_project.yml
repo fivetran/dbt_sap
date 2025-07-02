@@ -991,6 +991,18 @@ seeds:
         bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         lifnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bedat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdatb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bwbdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        angdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bnddt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gwldt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ihran: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dpdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        release_date: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eq_eindt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_makt_data:
       +column_types:
