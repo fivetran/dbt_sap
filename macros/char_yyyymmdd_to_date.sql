@@ -12,7 +12,7 @@
 {% endmacro %}
 
 {% macro snowflake__char_yyyymmdd_to_date(date_string) %}
-    try_to_date({{ date_string }}, 'YYYYMMDD')
+    try_to_date(cast({{ date_string }} as varchar), 'YYYYMMDD')
 {% endmacro %}
 
 {% macro postgres__char_yyyymmdd_to_date(date_string) %}

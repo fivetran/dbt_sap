@@ -52,6 +52,25 @@ seeds:
       _fivetran_rowid: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
       _fivetran_synced: timestamp
 
+    sap_ekbe_data:
+      +column_types:
+        dmbtr: numeric
+
+    sap_eket_data:
+      +column_types:
+        otb_res_value: numeric
+
+    sap_ekpo_data:
+      +quote_columns: "{{ true if target.name == 'snowflake' else false }}"
+
+    sap_vbak_data:
+      +column_types:
+        cmngv: numeric
+
+    sap_vbap_data:
+      +column_types:
+        smeng: numeric
+
     sap_bkpf_data:
       +column_types:
         aedat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -985,6 +1004,7 @@ seeds:
 
     sap_ekko_data:
       +column_types:
+        dpamt: numeric
         mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         ebeln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1033,6 +1053,7 @@ seeds:
         mttxt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t161_data:
+      +quote_columns: "{{ true if target.name == 'snowflake' else false }}"
       +column_types:
         bstyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         bsart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
