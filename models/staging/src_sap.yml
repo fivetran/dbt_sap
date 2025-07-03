@@ -10,126 +10,497 @@ sources:
 
     tables:
       - name: bkpf
-        identifier: "{{ var('sap_bkpf_identifier', 'bkpf')}}"
+        identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
         config:
           enabled: "{{ var('sap_using_bkpf', true) }}"
         description: Accounting document header
         columns:
-          - name: mandt
-            description: Client
-          - name: gjahr
-            description: Fiscal year
-          - name: bukrs
-            description: Company code
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: _sapf15_status
+          - name: adisc
+          - name: aedat
+          - name: arcid
+          - name: ausbk
+          - name: awkey
+            description: Reference key
+          - name: awsys
+            description: Logical system
+          - name: awtyp
+          - name: basw2
+          - name: basw3
+          - name: batch
           - name: belnr
             description: Accounting document number
+          - name: bktxt
           - name: blart
             description: Document type
           - name: bldat
             description: Document date in document
-          - name: monat
-            description: Fiscal period
+          - name: blind
+          - name: brnch
+          - name: bstat
+          - name: budat
+          - name: bukrs
+            description: Company code
+          - name: bvorg
+          - name: cash_alloc
+          - name: ccins
+          - name: ccnum
           - name: cpudt
             description: Day on which accounting document was entered
-          - name: xblnr
-            description: Reference document number
-          - name: waers
-            description: Currency key
-          - name: glvor
-            description: Business transaction
-          - name: awkey
-            description: Reference key
+          - name: cputm
+          - name: ctxkrs
+          - name: curt2
+          - name: curt3
+          - name: dbblg
+          - name: doccat
+          - name: dokid
+          - name: duefl
+          - name: exclude_flag
           - name: fikrs
             description: Financial management area
-          - name: hwaer
-            description: Local currency
+          - name: fm_umart
+          - name: follow_on
+          - name: frath
+          - name: gjahr
+            description: Fiscal year
+          - name: glvor
+            description: Business transaction
+          - name: grpid
           - name: hwae2
             description: Currency key of second local currency
           - name: hwae3
             description: Currency key of third local currency
-          - name: awsys
-            description: Logical system
-          - name: ldgrp
-            description: Ledger group
+          - name: hwaer
+            description: Local currency
+          - name: iblar
+          - name: intdate
+          - name: intform
+          - name: knumv
+          - name: kur2x
+          - name: kur3x
+          - name: kurs2
+          - name: kurs3
           - name: kursf
             description: Exchange rate
+          - name: kurst
+          - name: kursx
+          - name: kuty2
+          - name: kuty3
+          - name: kzkrs
+          - name: kzwrs
+          - name: ldgrp
+            description: Ledger group
+          - name: lotkz
+          - name: mandt
+            description: Client
+          - name: monat
+            description: Fiscal period
+          - name: numpg
+          - name: offset_refer_dat
+          - name: offset_status
+          - name: penrc
+          - name: ppnam
+          - name: propmano
+          - name: psoak
+          - name: psobt
+          - name: psodt
+          - name: psofn
+          - name: psoks
+          - name: psosg
+          - name: psotm
+          - name: psoty
+          - name: psozl
+          - name: reindat
+          - name: resubmission
+          - name: rldnr
+          - name: sampled
+          - name: sname
+          - name: ssblk
+          - name: stblg
+          - name: stgrd
+          - name: stjah
+          - name: stodt
+          - name: subset
+          - name: tcode
+          - name: txkrs
+          - name: umrd2
+          - name: umrd3
+          - name: upddt
+          - name: usnam
+          - name: vatdate
+          - name: waers
+            description: Currency key
+          - name: wwert
+          - name: xblnr
+            description: Reference document number
+          - name: xblnr_alt
+          - name: xmca
+          - name: xmwst
+          - name: xnetb
+          - name: xref1_hd
+          - name: xref2_hd
           - name: xreorg
             description: Doc. contains open item that was transferred during reorg.
-
+          - name: xreversal
+          - name: xrueb
+          - name: xsnet
+          - name: xsplit
+          - name: xstov
+          - name: xusvr
+          - name: xwvof
       - name: bseg
-        identifier: "{{ var('sap_bseg_identifier', 'bseg')}}"
+        identifier: "{{ var('sap_bseg_identifier', 'bseg') }}"
         config:
           enabled: "{{ var('sap_using_bseg', true) }}"
         description: Accounting document segment
         columns:
-          - name: mandt
-            description: Client
-          - name: bukrs
-            description: Company code
-          - name: belnr
-            description: Accounting document number
-          - name: gjahr
-            description: Fiscal year
-          - name: buzei
-            description: Number of line item within accounting document
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: abper
+          - name: absbt
+            description: Credit management (Hedged amount)
+          - name: agzei
+            description: Clearing item
+          - name: altkt
+          - name: anbwa
+          - name: anfae
+          - name: anfbj
+          - name: anfbn
+          - name: anfbu
           - name: anln1
             description: Main asset number
           - name: anln2
             description: Asset subnumber
+          - name: aplzl
           - name: aufnr
             description: Order number
+          - name: aufpl
           - name: augbl
             description: Document number of the clearing document
+          - name: augcp
           - name: augdt
             description: Clearing date
+          - name: auggj
+            description: Fiscal year of clearing document
+          - name: bdif2
+            description: Valuation difference for the second local currency
+          - name: bdif3
+            description: Valuation difference for the third local currency
+          - name: bdiff
+            description: Valuation difference
+          - name: belnr
+            description: Accounting document number
+          - name: bewar
+            description: Transaction type
+          - name: blnbt
+          - name: blnkz
+          - name: blnpz
+          - name: bonfb
+          - name: bpmng
+          - name: bprme
+          - name: bschl
+          - name: btype
+          - name: bualt
+          - name: budget_pd
+          - name: bukrs
+            description: Company code
+          - name: bupla
+            description: Business place
+          - name: bustw
+          - name: buzei
+            description: Number of line item within accounting document
+          - name: buzid
+            description: Identification of the line item
+          - name: bvtyp
+          - name: bwkey
+          - name: bwtar
+          - name: bzdat
+          - name: ccbtc
+            description: Payment cards (Settlement run)
+          - name: cession_kz
+            description: Accounts receivable pledging indicator
+          - name: dabrz
+            description: Reference date for settlement
+          - name: depot
+          - name: diekz
+          - name: disbj
+          - name: disbn
+          - name: disbz
+          - name: dmb21
+          - name: dmb22
+          - name: dmb23
+          - name: dmb31
+          - name: dmb32
+          - name: dmb33
+          - name: dmbe2
+          - name: dmbe3
+          - name: dmbt1
+          - name: dmbt2
+          - name: dmbt3
+          - name: dmbtr
+            description: Amount in local currency
+          - name: docln
+          - name: dtws1
+            description: Instruction key 1
+          - name: dtws2
+            description: Instruction key 2
+          - name: dtws3
+            description: Instruction key 3
+          - name: dtws4
+            description: Instruction key 4
           - name: ebeln
             description: Purchasing document number
           - name: ebelp
             description: Item number of purchasing document
+          - name: egbld
+          - name: eglld
+          - name: egrup
+          - name: elikz
+          - name: empfb
+          - name: erfme
+          - name: erfmg
+          - name: esrnr
+          - name: esrpz
+          - name: esrre
           - name: eten2
             description: Delivery schedule line number
+          - name: etype
+          - name: fastpay
+          - name: fdgrp
+          - name: fdlev
+          - name: fdtag
+          - name: fdwbt
           - name: filkd
             description: Account number of the branch
+          - name: fipos
+          - name: fistl
+          - name: fkber
+            description: Functional area
+          - name: fkber_long
+            description: Functional area
+          - name: fkont
+          - name: fmfgus_key
+          - name: fmxdocln
+          - name: fmxdocnr
+          - name: fmxyear
+          - name: fmxzekkn
+          - name: fwbas
+          - name: fwzuz
+          - name: gbetr
+          - name: geber
+          - name: gityp
+          - name: gjahr
+            description: Fiscal year
+          - name: glupm
+          - name: gmvkz
+          - name: grant_nbr
+          - name: gricd
+          - name: grirg
           - name: gsber
             description: Business area
+          - name: gvtyp
+          - name: hbkid
+          - name: hkont
+            description: General ledger account
+          - name: hktid
+          - name: hrkft
+          - name: hwbas
+          - name: hwmet
+          - name: hwzuz
+          - name: hzuon
+          - name: idxsp
+          - name: ignr_ivref
+          - name: imkey
+            description: Internal key for real estate object
+          - name: intreno
+          - name: j_1tpbupl
+          - name: kblnr
+          - name: kblpos
+          - name: kidno
+            description: Payment reference
+          - name: kkber
+            description: Credit control area
+          - name: klibt
           - name: koart
             description: Account type
+          - name: kokrs
+          - name: kontl
+          - name: kontt
           - name: kostl
             description: Cost center
+          - name: kstar
+            description: Cost element
+          - name: kstrg
+          - name: ktosl
+          - name: kunnr
+            description: Customer numbers
+          - name: kursr
+          - name: kzbtr
+          - name: landl
+          - name: lifnr
+            description: Account number of vendor or creditor
+          - name: linfv
+          - name: lnran
+          - name: lokkt
+          - name: lstar
+          - name: lzbkz
           - name: maber
             description: Dunning Area
           - name: madat
             description: Last dunned on
+          - name: mandt
+            description: Client
           - name: mansp
             description: Dunning block
           - name: manst
             description: Dunning level
+          - name: matnr
+          - name: measure
+          - name: meins
+            description: Base unit of measure
+          - name: menge
+            description: Quantity
+          - name: mndid
           - name: mschl
             description: Dunning key
+          - name: mwart
+          - name: mwsk1
+          - name: mwsk2
+          - name: mwsk3
           - name: mwskz
             description: Tax on sales/purchases code
+          - name: mwst2
+          - name: mwst3
+          - name: mwsts
+          - name: navfw
+          - name: navh2
+          - name: navh3
+          - name: navhw
+          - name: nebtr
+          - name: nplnr
+          - name: nprei
+          - name: obzei
+          - name: paobjnr
+          - name: pargb
+            description: Trading partner's business area
+          - name: pasubnr
+          - name: pays_prov
+          - name: pays_tran
+          - name: pbudget_pd
+          - name: peinh
+          - name: pendays
+          - name: penfc
+          - name: penlc1
+          - name: penlc2
+          - name: penlc3
+          - name: penrc
+          - name: pernr
+          - name: perop_beg
+          - name: perop_end
+          - name: pfkber
+            description: Partner functional area
+          - name: pgeber
+          - name: pgrant_nbr
+          - name: popts
           - name: posn2
             description: Sales document item
+          - name: ppa_ex_ind
+          - name: ppdif2
+          - name: ppdif3
+          - name: ppdiff
+          - name: pprct
+            description: Partner profit center
+          - name: prctr
+          - name: prodper
+          - name: projk
+            description: Work Breakdown Structure Element (WBS Element)
+          - name: projn
+          - name: prznr
+          - name: psalt
+          - name: psegment
+          - name: pswbt
+            description: Amount for updating in general ledger
+          - name: pswsl
+            description: Update currency for general ledger transaction figures
+          - name: pyamt
+            description: Amount in payment currency
+          - name: pycur
+            description: Currency for automatic payment
           - name: qbshb
             description: Withholding tax amount (in document currency)
           - name: qsfbt
             description: Withholding tax-exempt amount (in document currency)
           - name: qsshb
             description: Withholding tax base amount
+          - name: qsskz
+          - name: qsznr
+          - name: rdif2
+          - name: rdif3
+          - name: rdiff
+          - name: re_account
+          - name: re_bukrs
           - name: rebzg
             description: Number of the invoice the transaction belongs to
+          - name: rebzj
+          - name: rebzt
+            description: Follow-on document type
+          - name: rebzz
+          - name: recid
+          - name: recrf
+          - name: rewrt
+          - name: rewwr
+          - name: rfzei
+            description: Payment card item
+          - name: rpacq
+          - name: rstgr
+            description: Reason code for payments
+          - name: ryacq
+          - name: saknr
+            description: G/L account number
           - name: samnr
             description: Invoice list number
+          - name: sctax
+          - name: secco
+            description: Section code
+          - name: segment
           - name: sgtxt
             description: Item text
           - name: shkzg
             description: Debit/credit indicator
+          - name: shzuz
           - name: skfbt
             description: Amount eligible for cash discount in document currency
-          - name: wskto
-            description: Cash discount amount in document currency
+          - name: sknt2
+          - name: sknt3
           - name: sknto
             description: Cash discount amount in local currency
+          - name: spgrc
+          - name: spgrg
+          - name: spgrm
+          - name: spgrp
+          - name: spgrq
+          - name: spgrs
+          - name: spgrt
+          - name: spgrv
+          - name: squan
+          - name: srtype
+          - name: stbuk
+          - name: stceg
+          - name: stekz
+          - name: sttax
+          - name: taxps
+          - name: tbtkz
+          - name: txbfw
+          - name: txbh2
+          - name: txbh3
+          - name: txbhw
+          - name: txdat
+          - name: txgrp
+          - name: txjcd
           - name: umsks
             description: Special G/L transaction type
           - name: umskz
@@ -150,10 +521,60 @@ sources:
             description: Contract number
           - name: vertt
             description: Contract type
+          - name: vname
+          - name: vorgn
+          - name: vprsv
+          - name: vptnr
+          - name: vrsdt
+          - name: vrskz
           - name: werks
             description: Plant
+          - name: wmwst
+          - name: wrbt1
+          - name: wrbt2
+          - name: wrbt3
+          - name: wrbtr
+            description: Amount in document currency
+          - name: wskto
+            description: Cash discount amount in document currency
           - name: wverw
             description: Bill of exchange usage type
+          - name: xanet
+          - name: xauto
+          - name: xbilk
+          - name: xcpdd
+          - name: xegdr
+          - name: xfakt
+          - name: xfrge_bseg
+          - name: xhkom
+          - name: xhres
+          - name: xinve
+          - name: xkres
+          - name: xlgclr
+            description: Clearing specific to ledger groups
+          - name: xncop
+          - name: xnegp
+            description: Indicator (Negative posting)
+          - name: xopvw
+            description: Indicator (Open item management?)
+          - name: xpanz
+          - name: xpypr
+            description: Indicator (Items from payment program blocked)
+          - name: xragl
+            description: Indicator (Clearing was reversed)
+          - name: xref1
+            description: Business partner reference key
+          - name: xref2
+            description: Business partner reference key
+          - name: xref3
+            description: Reference key for line item
+          - name: xsauf
+          - name: xserg
+          - name: xskrl
+          - name: xskst
+          - name: xspro
+          - name: xuman
+          - name: xumsw
           - name: xzahl
             description: Indicator (Is the posting key used in a payment transaction?)
           - name: zbd1p
@@ -166,320 +587,922 @@ sources:
             description: Cash discount days 2
           - name: zbd3t
             description: Net payment terms period
+          - name: zbfix
+            description: Fixed payment terms
+          - name: zekkn
           - name: zfbdt
             description: Baseline date for due date calculation
+          - name: zinkz
           - name: zlsch
             description: Payment method
           - name: zlspr
             description: Payment block key
+          - name: zolld
+          - name: zollt
           - name: zterm
             description: Terms of payment key
+          - name: zumsk
           - name: zuonr
             description: Assignment number
-          - name: xref1
-            description: Business partner reference key
-          - name: xref2
-            description: Business partner reference key
-          - name: rstgr
-            description: Reason code for payments
-          - name: rebzt
-            description: Follow-on document type
-          - name: pswsl
-            description: Update currency for general ledger transaction figures
-          - name: pswbt
-            description: Amount for updating in general ledger
-          - name: hkont
-            description: General ledger account
-          - name: xnegp
-            description: Indicator (Negative posting)
-          - name: zbfix
-            description: Fixed payment terms
-          - name: rfzei
-            description: Payment card item
-          - name: ccbtc
-            description: Payment cards (Settlement run)
-          - name: kkber
-            description: Credit control area
-          - name: xref3
-            description: Reference key for line item
-          - name: dtws1
-            description: Instruction key 1
-          - name: dtws2
-            description: Instruction key 2
-          - name: dtws3
-            description: Instruction key 3
-          - name: dtws4
-            description: Instruction key 4
-          - name: absbt
-            description: Credit management (Hedged amount)
-          - name: projk
-            description: Work Breakdown Structure Element (WBS Element)
-          - name: xpypr
-            description: Indicator (Items from payment program blocked)
-          - name: kidno
-            description: Payment reference
-          - name: bupla
-            description: Business place
-          - name: secco
-            description: Section code
-          - name: pycur
-            description: Currency for automatic payment
-          - name: pyamt
-            description: Amount in payment currency
-          - name: xragl
-            description: Indicator (Clearing was reversed)
-          - name: cession_kz
-            description: Accounts receivable pledging indicator
-          - name: buzid
-            description: Identification of the line item
-          - name: auggj
-            description: Fiscal year of clearing document
-          - name: agzei
-            description: Clearing item
-          - name: bdiff
-            description: Valuation difference
-          - name: bdif2
-            description: Valuation difference for the second local currency
-          - name: bdif3
-            description: Valuation difference for the third local currency
-          - name: bewar
-            description: Transaction type
-          - name: dabrz
-            description: Reference date for settlement
-          - name: dmbtr
-            description: Amount in local currency
-          - name: fkber
-            description: Functional area
-          - name: fkber_long
-            description: Functional area
-          - name: imkey
-            description: Internal key for real estate object
-          - name: kstar
-            description: Cost element
-          - name: kunnr
-            description: Customer numbers
-          - name: lifnr
-            description: Account number of vendor or creditor
-          - name: meins
-            description: Base unit of measure
-          - name: menge
-            description: Quantity
-          - name: pargb
-            description: Trading partner's business area
-          - name: pfkber
-            description: Partner functional area
-          - name: pprct
-            description: Partner profit center
-          - name: saknr
-            description: G/L account number
-          - name: wrbtr
-            description: Amount in document currency
-          - name: xopvw
-            description: Indicator (Open item management?)
-          - name: xlgclr
-            description: Clearing specific to ledger groups
-          - name: zzspreg
-            description: Special region
           - name: zzbuspartn
             description: Business partner
-          - name: zzproduct
-            description: Product group
-          - name: zzloca
-            description: City
           - name: zzchan
             description: Distribution channel
           - name: zzlob
             description: Business line
+          - name: zzloca
+            description: City
+          - name: zzproduct
+            description: Product group
+          - name: zzregion
+            description: User defined regions
+          - name: zzspreg
+            description: Special region
+          - name: zzstate
+            description: State/province code
           - name: zzuserfld1
             description: Territory
           - name: zzuserfld2
             description: Owner/Cont.
           - name: zzuserfld3
             description: Vein
-          - name: zzregion
-            description: User defined regions
-          - name: zzstate
-            description: State/province code
-
+      - name: dd07l
+        identifier: "{{ var('sap_dd07l_identifier', 'dd07l') }}"
+        config:
+          enabled: "{{ var('sap_using_dd07l', true) }}"
+        description: Domain values
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: as4vers
+            description: Active version
+          - name: domname
+            description: Domain name
+          - name: domvalue_l
+            description: Value of domain
+          - name: hvr_change_time
+      - name: dd07t
+        identifier: "{{ var('sap_dd07t_identifier', 'dd07t') }}"
+        config:
+          enabled: "{{ var('sap_using_dd07t', true) }}"
+        description: Texts for domain values
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: as4vers
+            description: Active version
+          - name: ddlanguage
+            description: Language key
+          - name: ddtext
+            description: Text
+          - name: domname
+            description: Domain name
+          - name: domvalue_l
+            description: Domain value
+          - name: hvr_change_time
+      - name: ekbe
+        identifier: "{{ var('sap_ekbe_identifier', 'ekbe') }}"
+        config:
+          enabled: "{{ var('sap_using_ekbe', true) }}"
+        description:
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: arewb
+          - name: arewr
+          - name: arewr_pop
+          - name: areww
+          - name: bamng
+          - name: bekkn
+          - name: belnr
+          - name: bewtp
+          - name: bldat
+          - name: bpmng
+          - name: bpmng_pop
+          - name: bpweb
+          - name: bpwes
+          - name: budat
+          - name: buzei
+          - name: bwart
+          - name: bwtar
+          - name: charg
+          - name: cpudt
+          - name: cputm
+          - name: dmbtr
+          - name: dmbtr_pop
+          - name: ebeln
+          - name: ebelp
+          - name: elikz
+          - name: ematn
+          - name: ernam
+          - name: et_upd
+          - name: etens
+          - name: evere
+          - name: fsh_collection
+          - name: fsh_season
+          - name: fsh_season_year
+          - name: fsh_theme
+          - name: gjahr
+          - name: grund
+          - name: hswae
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: introw
+          - name: inv_item_origin
+          - name: j_sc_die_comp_f
+          - name: knumv
+          - name: kudif
+          - name: lemin
+          - name: lfbnr
+          - name: lfgja
+          - name: lfpos
+          - name: lsmeh
+          - name: lsmng
+          - name: mandt
+          - name: matnr
+          - name: menge
+          - name: menge_pop
+          - name: mwskz
+          - name: packno
+          - name: reewr
+          - name: refwr
+          - name: retamt_fc
+          - name: retamt_lc
+          - name: retamtp_fc
+          - name: retamtp_lc
+          - name: rewrb
+          - name: saprl
+          - name: sgt_scat
+          - name: shkzg
+          - name: srvpos
+          - name: vbeln_st
+          - name: vbelp_st
+          - name: vgabe
+          - name: waers
+          - name: weora
+          - name: werks
+          - name: wesbb
+          - name: wesbs
+          - name: wkurs
+          - name: wrbtr
+          - name: wrbtr_pop
+          - name: wrf_charstc1
+          - name: wrf_charstc2
+          - name: wrf_charstc3
+          - name: xblnr
+          - name: xmacc
+          - name: xunpl
+          - name: xwoff
+          - name: xwsbr
+          - name: zekkn
+      - name: eket
+        identifier: "{{ var('sap_eket_identifier', 'eket') }}"
+        config:
+          enabled: "{{ var('sap_using_eket', true) }}"
+        description:
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: abart
+          - name: altdt
+          - name: ameng
+          - name: anzsn
+          - name: aulwe
+          - name: banfn
+          - name: bedat
+          - name: bnfpo
+          - name: budg_type
+          - name: cd_locno
+          - name: cd_loctype
+          - name: charg
+          - name: check_type
+          - name: chkom
+          - name: cncl_ancmnt_done
+          - name: dabmg
+          - name: dat01
+          - name: dateshift_number
+          - name: dl_id
+          - name: dng_date
+          - name: dng_time
+          - name: ebeln
+          - name: ebelp
+          - name: eindt
+          - name: eldat
+          - name: eluhr
+          - name: estkz
+          - name: etenr
+          - name: fixkz
+          - name: fsh_os_id
+          - name: fsh_ralloc_qty
+          - name: fsh_salloc_qty
+          - name: geo_route
+          - name: glmng
+          - name: gts_ind
+          - name: handover_date
+          - name: handoverdate
+          - name: handovertime
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: key_id
+          - name: lddat
+          - name: lduhr
+          - name: licha
+          - name: lpein
+          - name: mahnz
+          - name: mandt
+          - name: mbdat
+          - name: mbuhr
+          - name: menge
+          - name: mng02
+          - name: no_scem
+          - name: nodisp
+          - name: otb_curr
+          - name: otb_reason
+          - name: otb_res_value
+          - name: otb_spec_value
+          - name: otb_status
+          - name: otb_value
+          - name: qunum
+          - name: qupos
+          - name: route_gts
+          - name: rsnum
+          - name: sernr
+          - name: slfdt
+          - name: spr_rsn_profile
+          - name: tddat
+          - name: tduhr
+          - name: tsp
+          - name: uzeit
+          - name: verid
+          - name: wadat
+          - name: wamng
+          - name: wauhr
+          - name: wemng
+      - name: ekko
+        identifier: "{{ var('sap_ekko_identifier', 'ekko') }}"
+        config:
+          enabled: "{{ var('sap_using_ekko', true) }}"
+        description: Purchasing document header
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: abgru
+          - name: absgr
+          - name: addnr
+          - name: adrnr
+          - name: aedat
+          - name: angdt
+          - name: angnr
+          - name: aurel_allow
+          - name: ausnr
+          - name: autlf
+          - name: bedat
+          - name: bnddt
+          - name: bsakz
+          - name: bsart
+          - name: bstyp
+          - name: budg_type
+          - name: bukrs
+          - name: bwbdt
+          - name: check_type
+          - name: con_distr_lev
+          - name: con_otb_req
+          - name: con_prebook_lev
+          - name: contract_allow
+          - name: delper_allow
+          - name: description
+          - name: dpamt
+          - name: dpdat
+          - name: dppct
+          - name: dptyp
+          - name: ebeln
+            description: Purchasing document number
+          - name: eindt
+          - name: eindt_allow
+          - name: ekgrp
+          - name: ekgrp_allow
+          - name: ekorg
+          - name: eq_eindt
+          - name: eq_werks
+          - name: ernam
+          - name: exnum
+          - name: fixpo
+          - name: fixpo_allow
+          - name: force_cnt
+          - name: force_id
+          - name: frggr
+          - name: frgke
+          - name: frgrl
+          - name: frgsx
+          - name: frgzu
+          - name: fsh_item_group
+          - name: fsh_os_stg_change
+          - name: fsh_snst_status
+          - name: fsh_transaction
+          - name: fsh_vas_last_item
+          - name: gwldt
+          - name: handoverloc
+          - name: hierarchy_exists
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: ihran
+          - name: ihrez
+          - name: inco1
+          - name: inco2
+          - name: inco2_l
+          - name: inco3_l
+          - name: incov
+          - name: kalsm
+          - name: kdatb
+          - name: kdate
+          - name: key_id
+          - name: key_id_allow
+          - name: knumv
+          - name: konnr
+          - name: kornr
+          - name: ktwrt
+          - name: kufix
+          - name: kunnr
+          - name: lands
+          - name: lblif
+          - name: legal_contract
+          - name: lifnr
+          - name: lifre
+          - name: llief
+          - name: loekz
+          - name: logsy
+          - name: lphis
+          - name: lponr
+          - name: ltsnr_allow
+          - name: mandt
+            description: Client
+          - name: memory
+          - name: memorytype
+          - name: msr_id
+          - name: otb_cond_type
+          - name: otb_curr
+          - name: otb_level
+          - name: otb_reason
+          - name: otb_res_value
+          - name: otb_spec_value
+          - name: otb_status
+          - name: otb_value
+          - name: pincr
+          - name: pohf_type
+          - name: procstat
+          - name: pstyp_allow
+          - name: reason_code
+          - name: release_date
+          - name: reloc_id
+          - name: reloc_seq_id
+          - name: reswk
+          - name: retpc
+          - name: rettp
+          - name: revno
+          - name: rlwrt
+          - name: scmproc
+          - name: shipcond
+          - name: source_logsys
+          - name: spr_rsn_profile
+          - name: spras
+          - name: stafo
+          - name: stako
+          - name: statu
+          - name: stceg
+          - name: stceg_l
+          - name: submi
+          - name: telf1
+          - name: threshold_exists
+          - name: unsez
+          - name: upinc
+          - name: verkf
+          - name: vsart
+          - name: vzskz
+          - name: waers
+          - name: weakt
+          - name: werks_allow
+          - name: wkurs
+          - name: zbd1p
+          - name: zbd1t
+          - name: zbd2p
+          - name: zbd2t
+          - name: zbd3t
+          - name: zterm
+      - name: ekpo
+        identifier: "{{ var('sap_ekpo_identifier', 'ekpo') }}"
+        config:
+          enabled: "{{ var('sap_using_ekpo', true) }}"
+        description:
+        columns:
+          - name: _accgo_is_co_rel
+          - name: _bev1_nedepfree
+          - name: _bev1_negen_item
+          - name: _bev1_nestruccat
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: abdat
+          - name: abeln
+          - name: abelp
+          - name: abftz
+          - name: abmng
+          - name: abskz
+          - name: abueb
+          - name: adrn2
+          - name: adrnr
+          - name: advcode
+          - name: aedat
+          - name: afnam
+          - name: agdat
+          - name: agmem
+          - name: aktnr
+          - name: anfnr
+          - name: anfps
+          - name: anzpu
+          - name: anzsn
+          - name: apoms
+          - name: arsnr
+          - name: arsps
+          - name: attyp
+          - name: aurel
+          - name: banfn
+          - name: bednr
+          - name: berid
+          - name: blk_reason_id
+          - name: blk_reason_txt
+          - name: bnfpo
+          - name: bonba
+          - name: bonus
+          - name: bprme
+          - name: bpumn
+          - name: bpumz
+          - name: brgew
+          - name: brtwr
+          - name: bsgru
+          - name: bstae
+          - name: bstyp
+          - name: budget_pd
+          - name: bukrs
+          - name: bwtar
+          - name: bwtty
+          - name: ccomp
+          - name: chg_fplnr
+          - name: chg_srv
+          - name: cmpl_dlv_itm
+          - name: cnfm_qty
+          - name: cons_order
+          - name: cqu_sar
+          - name: cuobj
+          - name: diff_invoice
+          - name: disub_kunnr
+          - name: disub_owner
+          - name: disub_posnr
+          - name: disub_pspnr
+          - name: disub_sobkz
+          - name: disub_vbeln
+          - name: dpamt
+          - name: dpdat
+          - name: dppct
+          - name: dptyp
+          - name: drdat
+          - name: druhr
+          - name: drunr
+          - name: ean11
+          - name: ebeln
+          - name: ebelp
+          - name: ebon2
+          - name: ebon3
+          - name: ebonf
+          - name: effwr
+          - name: eglkz
+          - name: ehtyp
+          - name: eildt
+          - name: ekkol
+          - name: elikz
+          - name: ematn
+          - name: emlif
+          - name: emnfr
+          - name: empst
+          - name: erekz
+          - name: etdrk
+          - name: etfz1
+          - name: etfz2
+          - name: evers
+          - name: excpe
+          - name: exlin
+          - name: exsnr
+          - name: ext_rfx_item
+          - name: ext_rfx_number
+          - name: ext_rfx_system
+          - name: fabkz
+          - name: ffzhi
+          - name: fipos
+          - name: fiscal_incentive
+          - name: fiscal_incentive_id
+          - name: fistl
+          - name: fixmg
+          - name: fkber
+          - name: fls_rsto
+          - name: fmfgus_key
+          - name: fplnr
+          - name: fsh_atp_date
+          - name: fsh_collection
+          - name: fsh_grid_cond_rec
+          - name: fsh_item
+          - name: fsh_item_group
+          - name: fsh_psm_pfm_split
+          - name: fsh_season
+          - name: fsh_season_year
+          - name: fsh_ss
+          - name: fsh_theme
+          - name: fsh_transaction
+          - name: fsh_vas_prnt_id
+          - name: fsh_vas_rel
+          - name: geber
+          - name: gewei
+          - name: gnetwr
+          - name: grant_nbr
+          - name: handoverloc
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: idnlf
+          - name: inco1
+          - name: inco2
+          - name: inco2_l
+          - name: inco3_l
+          - name: infnr
+          - name: insmk
+          - name: insnc
+          - name: iprkz
+          - name: itcons
+          - name: iuid_relevant
+          - name: j_1aidatep
+          - name: j_1aindxp
+          - name: j_1bindust
+          - name: j_1bmatorg
+          - name: j_1bmatuse
+          - name: j_1bnbm
+          - name: j_1bownpro
+          - name: kanba
+          - name: kblnr
+          - name: kblpos
+          - name: knttp
+          - name: ko_gsber
+          - name: ko_pargb
+          - name: ko_pprctr
+          - name: ko_prctr
+          - name: kolif
+          - name: konnr
+          - name: ktmng
+          - name: ktpnr
+          - name: kunnr
+          - name: kzabs
+          - name: kzbws
+          - name: kzfme
+          - name: kzkfg
+          - name: kzstu
+          - name: kztlf
+          - name: kzvbr
+          - name: kzwi1
+          - name: kzwi2
+          - name: kzwi3
+          - name: kzwi4
+          - name: kzwi5
+          - name: kzwi6
+          - name: labnr
+          - name: lblkz
+          - name: lebre
+          - name: lewed
+          - name: lfret
+          - name: lgort
+          - name: lmein
+          - name: loekz
+          - name: ltsnr
+          - name: mahn1
+          - name: mahn2
+          - name: mahn3
+          - name: mahnz
+          - name: mandt
+          - name: manual_tc_reason
+          - name: matkl
+          - name: matnr
+          - name: meins
+          - name: menge
+          - name: meprf
+          - name: mfrgr
+          - name: mfrnr
+          - name: mfrpn
+          - name: mfzhi
+          - name: mhdrz
+          - name: mlmaa
+          - name: mprof
+          - name: mrpind
+          - name: mtart
+          - name: mwskz
+          - name: navnw
+          - name: netpr
+          - name: netwr
+          - name: nfabd
+          - name: nlabd
+          - name: notkz
+          - name: novet
+          - name: nrfhg
+          - name: ntgew
+          - name: oia_baselo
+          - name: oia_ipmvat
+          - name: oia_spltiv
+          - name: oibasprod
+          - name: oic_adestn
+          - name: oic_aorgin
+          - name: oic_dcityc
+          - name: oic_dcounc
+          - name: oic_dland1
+          - name: oic_dregio
+          - name: oic_lifnr
+          - name: oic_mot
+          - name: oic_ocityc
+          - name: oic_ocounc
+          - name: oic_oland1
+          - name: oic_oregio
+          - name: oic_pbatch
+          - name: oic_pdestn
+          - name: oic_porgin
+          - name: oic_ptrip
+          - name: oic_truckn
+          - name: oicertf1
+          - name: oicertf1_gi
+          - name: oid_extbol
+          - name: oid_miscdl
+          - name: oidatfm1
+          - name: oidatfm1_gi
+          - name: oidatto1
+          - name: oidatto1_gi
+          - name: oiedbal
+          - name: oiedbal_gi
+          - name: oiedbalm
+          - name: oiedbalm_gi
+          - name: oiedok
+          - name: oiedok_gi
+          - name: oiexgnum
+          - name: oiexgtyp
+          - name: oiextnr
+          - name: oifeech
+          - name: oifeedt
+          - name: oifeetot
+          - name: oiferp
+          - name: oiftind
+          - name: oighndl
+          - name: oih_folqty
+          - name: oih_folqty_gi
+          - name: oih_lcfol
+          - name: oih_lcfol_gi
+          - name: oih_licin
+          - name: oih_licin_gi
+          - name: oih_lictp
+          - name: oih_lictp_gi
+          - name: oihantyp
+          - name: oihantyp_gi
+          - name: oiinex
+          - name: oiinex_gi
+          - name: oiitmnr
+          - name: oimatcyc
+          - name: oinetcyc
+          - name: oioilcon
+          - name: oipipeval
+          - name: oipricie
+          - name: oipriop
+          - name: oisbrel
+          - name: oitaxcon
+          - name: oitaxfrom
+          - name: oitaxgrp
+          - name: oitaxgrp_gi
+          - name: oitaxto
+          - name: oitrind
+          - name: oitrkjr
+          - name: oitrknr
+          - name: oitxcon1
+          - name: oitxcon2
+          - name: oitxcon3
+          - name: oitxcon4
+          - name: oitxcon5
+          - name: oitxcon6
+          - name: oiumbar
+          - name: oivatf
+          - name: oivath
+          - name: packno
+          - name: peinh
+          - name: plifz
+          - name: pol_id
+          - name: prdat
+          - name: prio_req
+          - name: prio_urg
+          - name: prsdr
+          - name: pstyp
+          - name: punei
+          - name: put_back
+          - name: rdprf
+          - name: reason_code
+          - name: ref_item
+          - name: refsite
+          - name: repos
+          - name: reslo
+          - name: retpc
+          - name: retpo
+          - name: revlv
+          - name: saisj
+          - name: saiso
+          - name: satnr
+          - name: schpr
+          - name: sernp
+          - name: serru
+          - name: sf_txjcd
+          - name: sgt_rcat
+          - name: sgt_scat
+          - name: sikgr
+          - name: sktof
+          - name: sobkz
+          - name: source_id
+          - name: source_key
+          - name: spe_abgru
+          - name: spe_chng_sys
+          - name: spe_cq_ctrltype
+          - name: spe_cq_nocq
+          - name: spe_crm_fkrel
+          - name: spe_crm_ref_item
+          - name: spe_crm_ref_so
+          - name: spe_crm_so
+          - name: spe_crm_so_item
+          - name: spe_ewm_dtc
+          - name: spe_insmk_src
+          - name: spinf
+          - name: srm_contract_id
+          - name: srm_contract_itm
+          - name: srv_bas_com
+          - name: ssqss
+          - name: stafo
+          - name: stapo
+          - name: statu
+          - name: status
+          - name: tax_subject_st
+          - name: tc_aut_det
+          - name: techs
+          - name: trmrisk_relevant
+          - name: twrkz
+          - name: txjcd
+          - name: txz01
+          - name: tzonrc
+          - name: uebpo
+          - name: uebtk
+          - name: uebto
+          - name: umren
+          - name: umrez
+          - name: umsok
+          - name: untto
+          - name: uptyp
+          - name: upvor
+          - name: usequ
+          - name: voleh
+          - name: volum
+          - name: vorab
+          - name: vrtkz
+          - name: vsart
+          - name: wabwe
+          - name: webaz
+          - name: webre
+          - name: weora
+          - name: wepos
+          - name: werks
+          - name: weunb
+          - name: wrf_charstc1
+          - name: wrf_charstc2
+          - name: wrf_charstc3
+          - name: xconditions
+          - name: xersy
+          - name: xoblr
+          - name: zgtyp
+          - name: zwert
       - name: faglflexa
-        identifier: "{{ var('sap_faglflexa_identifier', 'faglflexa')}}"
+        identifier: "{{ var('sap_faglflexa_identifier', 'faglflexa') }}"
         config:
           enabled: "{{ var('sap_using_faglflexa', true) }}"
         description: General ledger (Actual line items)
         columns:
-          - name: ryear
-            description: Fiscal year
-          - name: docnr
-            description: Accounting document number
-          - name: rldnr
-            description: Ledger in genral ledger accounting
-          - name: rbukrs
-            description: Company code
-          - name: docln
-            description: Six-character posting item for ledger
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: activ
             description: FI-SL business transaction
-          - name: rmvct
-            description: Transaction type
-          - name: rtcur
-            description: Currency key
-          - name: runit
-            description: Base unit of measure
           - name: awtyp
             description: Reference transaction
-          - name: rrcty
-            description: Record type
-          - name: rvers
-            description: Version
-          - name: logsys
-            description: Logical system
-          - name: racct
-            description: Account number
-          - name: cost_elem
-            description: Cost element
-          - name: rclnt
-            description: Client
-          - name: rcntr
-            description: Cost center
-          - name: prctr
-            description: Profit center
-          - name: rfarea
-            description: Functional area
-          - name: rbusa
-            description: Business area
-          - name: kokrs
-            description: Controlling area
-          - name: segment
-            description: Segment for segmental reporting
-          - name: scntr
-            description: Sender cost center
-          - name: pprctr
-            description: Partner profit center
-          - name: sfarea
-            description: Partner functional area
-          - name: sbusa
-            description: Trading partner's business area
-          - name: rassc
-            description: Company id of trading partner
-          - name: psegment
-            description: Partner segment for segmental reporting
-          - name: tsl
-            description: Value in transaction currency
-          - name: hsl
-            description: Value in local currency
-          - name: ksl
-            description: Value in group currency
-          - name: osl
-            description: Value in another currency
-          - name: msl
-            description: Quantity
-          - name: wsl
-            description: Value in original transaction currency
-          - name: drcrk
-            description: Debt/credit indicator
-          - name: poper
-            description: Posting period
-          - name: rwcur
-            description: Currency key of the original transaction currency
-          - name: gjahr
-            description: Fiscal year
-          - name: budat
-            description: Posting date in the document
           - name: belnr
             description: Accounting document number
-          - name: buzei
-            description: Number of line item within accounting document
           - name: bschl
             description: Posting key
           - name: bstat
             description: Document status
-          - name: faglflexa_timestamp
-            description: UTC Timestamp in short form (YYYYMMDDhhmmss)
-
-      - name: faglflext
-        identifier: "{{ var('sap_faglflext_identifier', 'faglflext')}}"
-        config:
-          enabled: "{{ var('sap_using_faglflext', true) }}"
-        description: General ledger (Totals)
-        columns:
+          - name: budat
+            description: Posting date in the document
+          - name: buzei
+            description: Number of line item within accounting document
+          - name: cost_elem
+            description: Cost element
+          - name: docln
+            description: Six-character posting item for ledger
+          - name: docnr
+            description: Accounting document number
           - name: drcrk
-            description: Debit/credit indicator
-          - name: objnr00
-            description: Object number for table group
-          - name: objnr01
-            description: Object number for table group
-          - name: objnr02
-            description: Object number for table group
-          - name: objnr03
-            description: Object number for table group
-          - name: objnr04
-            description: Object number for table group
-          - name: objnr05
-            description: Object number for table group
-          - name: objnr06
-            description: Object number for table group
-          - name: objnr07
-            description: Object number for table group
-          - name: objnr08
-            description: Object number for table group
+            description: Debt/credit indicator
+          - name: gjahr
+            description: Fiscal year
+          - name: hsl
+            description: Value in local currency
+          - name: kokrs
+            description: Controlling area
+          - name: ksl
+            description: Value in group currency
+          - name: linetype
+          - name: logsys
+            description: Logical system
+          - name: msl
+            description: Quantity
+          - name: osl
+            description: Value in another currency
+          - name: poper
+            description: Posting period
+          - name: pprctr
+            description: Partner profit center
+          - name: prctr
+            description: Profit center
+          - name: psegment
+            description: Partner segment for segmental reporting
+          - name: racct
+            description: Account number
+          - name: rassc
+            description: Company id of trading partner
+          - name: rbukrs
+            description: Company code
+          - name: rbusa
+            description: Business area
           - name: rclnt
             description: Client
-          - name: rpmax
-            description: Period
-          - name: ryear
-            description: Fiscal year
-          - name: activ
-            description: FI-SL business transaction
+          - name: rcntr
+            description: Cost center
+          - name: rfarea
+            description: Functional area
+          - name: rldnr
+            description: Ledger in genral ledger accounting
           - name: rmvct
             description: Transaction type
+          - name: rrcty
+            description: Record type
           - name: rtcur
             description: Currency key
           - name: runit
             description: Base unit of measure
-          - name: awtyp
-            description: Reference transaction
-          - name: rldnr
-            description: Ledger in general ledger accounting
-          - name: rrcty
-            description: Record type
           - name: rvers
             description: Version
-          - name: logsys
-            description: Logical system
-          - name: racct
-            description: Account number
-          - name: cost_elem
-            description: Cost element
-          - name: rbukrs
-            description: Company code
-          - name: rcntr
-            description: Cost center
-          - name: prctr
-            description: Profit center
-          - name: rfarea
-            description: Functional area
-          - name: rbusa
-            description: Business area
-          - name: kokrs
-            description: Controlling area
-          - name: segment
-            description: Segment for segmental reporting
-          - name: zzspreg
-            description: Special region
-          - name: scntr
-            dsecription: Sender cost center
-          - name: pprctr
-            description: Partner profit center
-          - name: sfarea
-            description: Partner functional area
+          - name: rwcur
+            description: Currency key of the original transaction currency
+          - name: ryear
+            description: Fiscal year
           - name: sbusa
             description: Trading partner's business area
-          - name: rassc
-            description: Company id of trading partner
-          - name: psegment
-            description: Partner segment for segmental reporting
-          - name: hslvt
-            description: Balance carried forward in local currency
+          - name: scntr
+            description: Sender cost center
+          - name: segment
+            description: Segment for segmental reporting
+          - name: sfarea
+            description: Partner functional area
+          - name: timestamp
+          - name: tsl
+            description: Value in transaction currency
+          - name: usnam
+          - name: wsl
+            description: Value in original transaction currency
+          - name: xsplitmod
+          - name: zzspreg
+      - name: faglflext
+        identifier: "{{ var('sap_faglflext_identifier', 'faglflext') }}"
+        config:
+          enabled: "{{ var('sap_using_faglflext', true) }}"
+        description: General ledger (Totals)
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: activ
+            description: FI-SL business transaction
+          - name: awtyp
+            description: Reference transaction
+          - name: cost_elem
+            description: Cost element
+          - name: drcrk
+            description: Debit/credit indicator
           - name: hsl01
             description: Total of transactions of the period in local currency
           - name: hsl02
@@ -512,42 +1535,10 @@ sources:
             description: Total of transactions of the period in local currency
           - name: hsl16
             description: Total of transactions of the period in local currency
-          - name: tslvt
-            description: Balance carried forward in transaction currency
-          - name: tsl01
-            description: Total of transactions of the period in transaction currency
-          - name: tsl02
-            description: Total of transactions of the period in transaction currency
-          - name: tsl03
-            description: Total of transactions of the period in transaction currency
-          - name: tsl04
-            description: Total of transactions of the period in transaction currency
-          - name: tsl05
-            description: Total of transactions of the period in transaction currency
-          - name: tsl06
-            description: Total of transactions of the period in transaction currency
-          - name: tsl07
-            description: Total of transactions of the period in transaction currency
-          - name: tsl08
-            description: Total of transactions of the period in transaction currency
-          - name: tsl09
-            description: Total of transactions of the period in transaction currency
-          - name: tsl10
-            description: Total of transactions of the period in transaction currency
-          - name: tsl11
-            description: Total of transactions of the period in transaction currency
-          - name: tsl12
-            description: Total of transactions of the period in transaction currency
-          - name: tsl13
-            description: Total of transactions of the period in transaction currency
-          - name: tsl14
-            description: Total of transactions of the period in transaction currency
-          - name: tsl15
-            description: Total of transactions of the period in transaction currency
-          - name: tsl16
-            description: Total of transactions of the period in transaction currency
-          - name: kslvt
-            description: Balance carried forward in group currency
+          - name: hslvt
+            description: Balance carried forward in local currency
+          - name: kokrs
+            description: Controlling area
           - name: ksl01
             description: Total of transactions of the period in group currency
           - name: ksl02
@@ -580,8 +1571,45 @@ sources:
             description: Total of transactions of the period in group currency
           - name: ksl16
             description: Total of transactions of the period in group currency
-          - name: oslvt
-            description: Balance carried forward in fourth currency
+          - name: kslvt
+            description: Balance carried forward in group currency
+          - name: logsys
+            description: Logical system
+          - name: msl01
+          - name: msl02
+          - name: msl03
+          - name: msl04
+          - name: msl05
+          - name: msl06
+          - name: msl07
+          - name: msl08
+          - name: msl09
+          - name: msl10
+          - name: msl11
+          - name: msl12
+          - name: msl13
+          - name: msl14
+          - name: msl15
+          - name: msl16
+          - name: mslvt
+          - name: objnr00
+            description: Object number for table group
+          - name: objnr01
+            description: Object number for table group
+          - name: objnr02
+            description: Object number for table group
+          - name: objnr03
+            description: Object number for table group
+          - name: objnr04
+            description: Object number for table group
+          - name: objnr05
+            description: Object number for table group
+          - name: objnr06
+            description: Object number for table group
+          - name: objnr07
+            description: Object number for table group
+          - name: objnr08
+            description: Object number for table group
           - name: osl01
             description: Total transactions for the period in the fourth currency
           - name: osl02
@@ -614,79 +1642,124 @@ sources:
             description: Total transactions for the period in the fourth currency
           - name: osl16
             description: Total transactions for the period in the fourth currency
-          - name: faglflext_timestamp
-            description: UTC timestamp in short form (YYYYMMDDhhmmss)
-
+          - name: oslvt
+            description: Balance carried forward in fourth currency
+          - name: pprctr
+            description: Partner profit center
+          - name: prctr
+            description: Profit center
+          - name: psegment
+            description: Partner segment for segmental reporting
+          - name: racct
+            description: Account number
+          - name: rassc
+            description: Company id of trading partner
+          - name: rbukrs
+            description: Company code
+          - name: rbusa
+            description: Business area
+          - name: rclnt
+            description: Client
+          - name: rcntr
+            description: Cost center
+          - name: rfarea
+            description: Functional area
+          - name: rldnr
+            description: Ledger in general ledger accounting
+          - name: rmvct
+            description: Transaction type
+          - name: rpmax
+            description: Period
+          - name: rrcty
+            description: Record type
+          - name: rtcur
+            description: Currency key
+          - name: runit
+            description: Base unit of measure
+          - name: rvers
+            description: Version
+          - name: ryear
+            description: Fiscal year
+          - name: sbusa
+            description: Trading partner's business area
+          - name: scntr
+          - name: segment
+            description: Segment for segmental reporting
+          - name: sfarea
+            description: Partner functional area
+          - name: timestamp
+          - name: tsl01
+            description: Total of transactions of the period in transaction currency
+          - name: tsl02
+            description: Total of transactions of the period in transaction currency
+          - name: tsl03
+            description: Total of transactions of the period in transaction currency
+          - name: tsl04
+            description: Total of transactions of the period in transaction currency
+          - name: tsl05
+            description: Total of transactions of the period in transaction currency
+          - name: tsl06
+            description: Total of transactions of the period in transaction currency
+          - name: tsl07
+            description: Total of transactions of the period in transaction currency
+          - name: tsl08
+            description: Total of transactions of the period in transaction currency
+          - name: tsl09
+            description: Total of transactions of the period in transaction currency
+          - name: tsl10
+            description: Total of transactions of the period in transaction currency
+          - name: tsl11
+            description: Total of transactions of the period in transaction currency
+          - name: tsl12
+            description: Total of transactions of the period in transaction currency
+          - name: tsl13
+            description: Total of transactions of the period in transaction currency
+          - name: tsl14
+            description: Total of transactions of the period in transaction currency
+          - name: tsl15
+            description: Total of transactions of the period in transaction currency
+          - name: tsl16
+            description: Total of transactions of the period in transaction currency
+          - name: tslvt
+            description: Balance carried forward in transaction currency
+          - name: zzspreg
+            description: Special region
       - name: kna1
-        identifier: "{{ var('sap_kna1_identifier', 'kna1')}}"
+        identifier: "{{ var('sap_kna1_identifier', 'kna1') }}"
         config:
           enabled: "{{ var('sap_using_kna1', true) }}"
         description: General Data in Customer Master
         columns:
-          - name: mandt
-            description: Client
-          - name: kunnr
-            description: Customer number
-          - name: brsch
-            description: Industry key
-          - name: ktokd
-            description: Customer account group
-          - name: kukla
-            description: Customer classification
-          - name: land1
-            description: Country key
-          - name: lifnr
-            description: Account number of vendor or creditor
-          - name: loevm
-            description: Central deletion flag for master record
-          - name: name1
-            description: Name 1
-          - name: name2
-            description: Name 2
-          - name: name3
-            description: Name 3
-          - name: niels
-            description: Nielsen ID
-          - name: ort01
-            description: City
-          - name: ort02
-            description: District
-          - name: periv
-            description: Fiscal year variant
-          - name: pfach
-            description: PO Box
-          - name: pfort
-            description: PO Box city
-          - name: pstl2
-            description: PO Box postal code
-          - name: pstlz
-            description: Postal code
-          - name: regio
-            description: Regional market
-          - name: counc
-            description: County code
-          - name: sortl
-            description: Sort field
-          - name: spras
-            description: Language key
-          - name: stcd1
-            description: Tax number 1
-          - name: stcd2
-            description: Tax number 2
-          - name: stcd3
-            description: Tax number 3
-          - name: stras
-            description: House number and street
-          - name: telf1
-            description: First telephone number
-          - name: telfx
-            description: Fax number
-          - name: xcpdk
-            description: Indictoar (Is the account a one-time account?)
-          - name: vbund
-            description: Company id of trading partner
-          - name: dear6
-            description: Indicator (Consumer)
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: _vso_r_dpoint
+          - name: _vso_r_i_no_lyr
+          - name: _vso_r_load_pref
+          - name: _vso_r_matpal
+          - name: _vso_r_one_mat
+          - name: _vso_r_one_sort
+          - name: _vso_r_pal_ul
+          - name: _vso_r_palhgt
+          - name: _vso_r_pk_mat
+          - name: _vso_r_uld_side
+          - name: _xlso_client
+          - name: _xlso_customer
+          - name: _xlso_partner
+          - name: _xlso_pref_pay
+          - name: _xlso_sysid
+          - name: abrvw
+            description: Usage indicator
+          - name: adrnr
+          - name: alc
+          - name: anred
+          - name: aufsd
+          - name: bahne
+          - name: bahns
+          - name: bbbnr
+          - name: bbsnr
+          - name: begru
           - name: bran1
             description: Industry code 1
           - name: bran2
@@ -697,49 +1770,155 @@ sources:
             description: Industry code 4
           - name: bran5
             description: Industry code 5
-          - name: abrvw
-            description: Usage indicator
-          - name: werks
-            description: Plant
-
-      - name: lfa1
-        identifier: "{{ var('sap_lfa1_identifier', 'lfa1')}}"
-        config:
-          enabled: "{{ var('sap_using_lfa1', true) }}"
-        description: Vendor master (General section)
-        columns:
-          - name: mandt
-            description: Client
-          - name: lifnr
-            description: Account number of vendor or creditor
           - name: brsch
             description: Industry key
-          - name: ktokk
-            description: Vendor account group
+          - name: bubkz
+          - name: cassd
+          - name: ccc01
+          - name: ccc02
+          - name: ccc03
+          - name: ccc04
+          - name: cfopc
+          - name: cityc
+          - name: civve
+          - name: cnae
+          - name: comsize
+          - name: confs
+          - name: counc
+            description: County code
+          - name: crtn
+          - name: cvp_xblck
+          - name: datlt
+          - name: dear1
+          - name: dear2
+          - name: dear3
+          - name: dear4
+          - name: dear5
+          - name: dear6
+            description: Indicator (Consumer)
+          - name: decregpc
+          - name: dtams
+          - name: dtaws
+          - name: duefl
+          - name: duns
+          - name: duns4
+          - name: ekont
+          - name: erdat
+          - name: ernam
+          - name: etikg
+          - name: exabl
+          - name: exp
+          - name: faksd
+          - name: fee_schedule
+          - name: fiskn
+          - name: fityp
+          - name: gform
+          - name: hzuor
+          - name: icmstaxpay
+          - name: indtyp
+          - name: inspatdebi
+          - name: inspbydebi
+          - name: j_1kfrepre
+          - name: j_1kftbus
+          - name: j_1kftind
+          - name: jmjah
+          - name: jmzah
+          - name: katr1
+          - name: katr10
+          - name: katr2
+          - name: katr3
+          - name: katr4
+          - name: katr5
+          - name: katr6
+          - name: katr7
+          - name: katr8
+          - name: katr9
+          - name: kdkg1
+          - name: kdkg2
+          - name: kdkg3
+          - name: kdkg4
+          - name: kdkg5
+          - name: knazk
+          - name: knrza
+          - name: knurl
+          - name: konzs
+          - name: ktocd
+          - name: ktokd
+            description: Customer account group
+          - name: kukla
+            description: Customer classification
+          - name: kunnr
+            description: Customer number
           - name: land1
             description: Country key
+          - name: legalnat
+          - name: lifnr
+            description: Account number of vendor or creditor
+          - name: lifsd
+          - name: locco
           - name: loevm
             description: Central deletion flag for master record
+          - name: lzone
+          - name: mandt
+            description: Client
+          - name: mcod1
+          - name: mcod2
+          - name: mcod3
+          - name: milve
           - name: name1
             description: Name 1
           - name: name2
             description: Name 2
           - name: name3
             description: Name 3
+          - name: name4
+          - name: niels
+            description: Nielsen ID
+          - name: nodel
+          - name: oid_poreqd
+          - name: oidrc
+          - name: oipbl
           - name: ort01
             description: City
           - name: ort02
             description: District
+          - name: periv
+            description: Fiscal year variant
           - name: pfach
             description: PO Box
+          - name: pfort
+            description: PO Box city
+          - name: pmt_office
+          - name: psofg
+          - name: psohs
+          - name: psois
+          - name: pson1
+          - name: pson2
+          - name: pson3
+          - name: psoo1
+          - name: psoo2
+          - name: psoo3
+          - name: psoo4
+          - name: psoo5
+          - name: psost
+          - name: psotl
+          - name: psovn
           - name: pstl2
-            description: P.O. Box postal code
+            description: PO Box postal code
           - name: pstlz
             description: Postal code
           - name: regio
-            description: Region (State, province, county)
+            description: Regional market
+          - name: rg
+          - name: rgdate
+          - name: ric
+          - name: rne
+          - name: rnedate
+          - name: rpmkr
           - name: sortl
             description: Sort field
+          - name: sperr
+          - name: sperz
           - name: spras
             description: Language key
           - name: stcd1
@@ -748,201 +1927,487 @@ sources:
             description: Tax number 2
           - name: stcd3
             description: Tax number 3
+          - name: stcd4
+          - name: stcd5
+          - name: stcdt
+          - name: stceg
+          - name: stkza
+          - name: stkzn
+          - name: stkzu
           - name: stras
-            description: Street and house number
+            description: House number and street
+          - name: suframa
+          - name: tdt
+          - name: telbx
           - name: telf1
             description: First telephone number
+          - name: telf2
           - name: telfx
             description: Fax number
-          - name: xcpdk
-            description: Indicator (is the account a one-time account?)
+          - name: teltx
+          - name: telx1
+          - name: txjcd
+          - name: txlw1
+          - name: txlw2
+          - name: uf
+          - name: umjah
+          - name: umsa1
+          - name: umsat
+          - name: updat
+          - name: uptim
+          - name: uwaer
           - name: vbund
             description: Company id of trading partner
-          - name: kraus
-            description: Credit information number
-          - name: pfort
-            description: PO box city
           - name: werks
             description: Plant
-
+          - name: xcpdk
+            description: Indictoar (Is the account a one-time account?)
+          - name: xicms
+          - name: xknza
+          - name: xsubt
+          - name: xxipi
+          - name: xzemp
+      - name: lfa1
+        identifier: "{{ var('sap_lfa1_identifier', 'lfa1') }}"
+        config:
+          enabled: "{{ var('sap_using_lfa1', true) }}"
+        description: Vendor master (General section)
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: actss
+          - name: adrnr
+          - name: alc
+          - name: anred
+          - name: bahns
+          - name: bbbnr
+          - name: bbsnr
+          - name: begru
+          - name: brsch
+            description: Industry key
+          - name: bubkz
+          - name: carrier_conf
+          - name: cnae
+          - name: comsize
+          - name: confs
+          - name: crc_num
+          - name: crtn
+          - name: cvp_xblck
+          - name: datlt
+          - name: decregpc
+          - name: dlgrp
+          - name: dtams
+          - name: dtaws
+          - name: duefl
+          - name: emnfr
+          - name: erdat
+          - name: ernam
+          - name: esrnr
+          - name: exp
+          - name: fiskn
+          - name: fisku
+          - name: fityp
+          - name: gbdat
+          - name: gbort
+          - name: icmstaxpay
+          - name: indtyp
+          - name: ipisp
+          - name: j_1kfrepre
+          - name: j_1kftbus
+          - name: j_1kftind
+          - name: j_sc_capital
+          - name: j_sc_currency
+          - name: konzs
+          - name: kraus
+            description: Credit information number
+          - name: ktock
+          - name: ktokk
+            description: Vendor account group
+          - name: kunnr
+          - name: land1
+            description: Country key
+          - name: legalnat
+          - name: lfurl
+          - name: lifnr
+            description: Account number of vendor or creditor
+          - name: lnrza
+          - name: loevm
+            description: Central deletion flag for master record
+          - name: ltsna
+          - name: lzone
+          - name: mandt
+            description: Client
+          - name: mcod1
+          - name: mcod2
+          - name: mcod3
+          - name: min_comp
+          - name: name1
+            description: Name 1
+          - name: name2
+            description: Name 2
+          - name: name3
+            description: Name 3
+          - name: name4
+          - name: nodel
+          - name: ort01
+            description: City
+          - name: ort02
+            description: District
+          - name: pfach
+            description: PO Box
+          - name: pfort
+            description: PO box city
+          - name: plkal
+          - name: pmt_office
+          - name: podkzb
+          - name: ppa_relevant
+          - name: profs
+          - name: psofg
+          - name: psohs
+          - name: psois
+          - name: pson1
+          - name: pson2
+          - name: pson3
+          - name: psost
+          - name: psotl
+          - name: psovn
+          - name: pstl2
+            description: P.O. Box postal code
+          - name: pstlz
+            description: Postal code
+          - name: qssys
+          - name: qssysdat
+          - name: regio
+            description: Region (State, province, county)
+          - name: regss
+          - name: revdb
+          - name: rg
+          - name: rgdate
+          - name: ric
+          - name: rne
+          - name: rnedate
+          - name: scacd
+          - name: scheduling_type
+          - name: sexkz
+          - name: sfrgr
+          - name: sortl
+            description: Sort field
+          - name: sperm
+          - name: sperq
+          - name: sperr
+          - name: sperz
+          - name: spras
+            description: Language key
+          - name: staging_time
+          - name: stcd1
+            description: Tax number 1
+          - name: stcd2
+            description: Tax number 2
+          - name: stcd3
+            description: Tax number 3
+          - name: stcd4
+          - name: stcd5
+          - name: stcdt
+          - name: stceg
+          - name: stenr
+          - name: stgdl
+          - name: stkza
+          - name: stkzn
+          - name: stkzu
+          - name: stras
+            description: Street and house number
+          - name: submi_relevant
+          - name: taxbs
+          - name: tdt
+          - name: telbx
+          - name: telf1
+            description: First telephone number
+          - name: telf2
+          - name: telfx
+            description: Fax number
+          - name: teltx
+          - name: telx1
+          - name: term_li
+          - name: transport_chain
+          - name: txjcd
+          - name: uf
+          - name: updat
+          - name: uptim
+          - name: vbund
+            description: Company id of trading partner
+          - name: werkr
+          - name: werks
+            description: Plant
+          - name: xcpdk
+            description: Indicator (is the account a one-time account?)
+          - name: xlfza
+          - name: xzemp
+      - name: makt
+        identifier: "{{ var('sap_makt_identifier', 'makt') }}"
+        config:
+          enabled: "{{ var('sap_using_makt', true) }}"
+        description:
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: maktx
+          - name: mandt
+          - name: matnr
+          - name: spras
       - name: mara
-        identifier: "{{ var('sap_mara_identifier', 'mara')}}"
+        identifier: "{{ var('sap_mara_identifier', 'mara') }}"
         config:
           enabled: "{{ var('sap_using_mara', true) }}"
         description: General material data
         columns:
-          - name: mandt
-            description: Client
-          - name: matnr
-            description: Material number
-          - name: ersda
-            description: Created on
-          - name: ernam
-            description: Name of person who created the object
-          - name: laeda
-            description: Date of last change
+          - name: _accgo_assgd_uom
+          - name: _bev1_luldegrp
+          - name: _bev1_luleinh
+          - name: _bev1_nestruccat
+          - name: _dsd_sl_toltyp
+          - name: _dsd_sv_cnt_grp
+          - name: _dsd_vc_group
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: _sttpec_country_ref
+          - name: _sttpec_prdcat
+          - name: _sttpec_sertype
+          - name: _sttpec_syncact
+          - name: _sttpec_syncchg
+          - name: _sttpec_synctime
+          - name: _vso_r_bot_ind
+          - name: _vso_r_kzgvh_ind
+          - name: _vso_r_no_p_gvh
+          - name: _vso_r_pal_b_ht
+          - name: _vso_r_pal_ind
+          - name: _vso_r_pal_min_h
+          - name: _vso_r_pal_ovr_d
+          - name: _vso_r_pal_ovr_w
+          - name: _vso_r_quan_unit
+          - name: _vso_r_stack_ind
+          - name: _vso_r_stack_no
+          - name: _vso_r_tilt_ind
+          - name: _vso_r_tol_b_ht
+          - name: _vso_r_top_ind
+          - name: adprof
+          - name: adspc_spc
+          - name: aeklk
+            description: Stock transfer net change costing
           - name: aenam
             description: Name of person who changed object
-          - name: vpsta
-            description: Maintenance status of complete material
-          - name: pstat
-            description: Maintenance status
-          - name: lvorm
-            description: Flag material for deletion at client level
-          - name: mtart
-            description: Material type
-          - name: mbrsh
-            description: Industry sector
-          - name: matkl
-            description: Material group
-          - name: bismt
-            description: Old material number
-          - name: meins
-            description: Base unit of measure
-          - name: bstme
-            description: Order unit
-          - name: zeinr
-            description: Document number (without document management system)
-          - name: zeiar
-            description: Document type (without document management system)
-          - name: zeivr
-            description: Document version (without document management system)
-          - name: zeifo
-            description: Page form of document (without document management system)
           - name: aeszn
             description: Document change number (without document management system)
-          - name: blatt
-            description: Page number of document (without document management system)
-          - name: blanz
-            description: Number of sheets (without document management system)
-          - name: ferth
-            description: Production/inspection memo
-          - name: formt
-            description: Page format of production memo
-          - name: groes
-            description: Size/dimensions
-          - name: wrkst
-            description: Basic material
-          - name: normt
-            description: Industry Standard Description (such as ANSI or ISO)
-          - name: labor
-            description: Laboratory/design office
-          - name: ekwsl
-            description: Purchasing value key
-          - name: brgew
-            description: Gross weight
-          - name: ntgew
-            description: Net weight
-          - name: gewei
-            description: Weight unit
-          - name: volum
-            description: Volume
-          - name: voleh
-            description: Volume unit
+          - name: allow_pmat_igno
+          - name: animal_origin
+          - name: anp
+          - name: attyp
+            description: Material category
+          - name: bbtyp
+          - name: begru
+            description: Authorization group
           - name: behvo
             description: Container requirements
-          - name: raube
-            description: Storage conditions
-          - name: tempb
-            description: Temperature conditions indicator
-          - name: disst
-            description: Low-level code
-          - name: tragr
-            description: Transportation group
-          - name: stoff
-            description: Hazardous material number
-          - name: spart
-            description: Divsion
-          - name: kunnr
-            description: Competitor
-          - name: eannr
-            description: European Article Number (EAN)
-          - name: wesch
-            description: Quantity, or number of GR/GI slips to be printed
-          - name: bwvor
-            description: Procurement rule
+          - name: bflme
+            description: Generic material with logistical variants
+          - name: bismt
+            description: Old material number
+          - name: blanz
+            description: Number of sheets (without document management system)
+          - name: blatt
+            description: Page number of document (without document management system)
+          - name: bmatn
+            description: Number of firm's own (internal) inventory-managed material
+          - name: brand_id
+          - name: breit
+            description: Width
+          - name: brgew
+            description: Gross weight
+          - name: bstat
+          - name: bstme
+            description: Order unit
           - name: bwscl
             description: Source of supply
-          - name: saiso
-            description: Season category
+          - name: bwvor
+            description: Procurement rule
+          - name: cadkz
+            description: CAD indicator
+          - name: care_code
+          - name: cmeth
+            description: Quantity conversion method
+          - name: cmrel
+          - name: cobjid
+          - name: color
+          - name: color_atinn
+          - name: commodity
+          - name: compl
+            description: Material completion level
+          - name: cotype
+          - name: cuobf
+            description: Internal object number
+          - name: cwqproc
+          - name: cwqrel
+          - name: cwqtolgr
+          - name: datab
+            description: Valid-from date
+          - name: dg_pack_status
+          - name: disst
+            description: Low-level code
+          - name: ean11
+            description: International Article Number (EAN/UPC)
+          - name: eannr
+            description: European Article Number (EAN)
+          - name: ekwsl
+            description: Purchasing value key
+          - name: entar
+            description: Disposal type
+          - name: ergei
+            description: Unit of weight (allowed packaging weight)
+          - name: ergew
+            description: Allowed packaging weight
+          - name: ernam
+            description: Name of person who created the object
+          - name: ersda
+            description: Created on
+          - name: ervoe
+            description: Volume unit (allowed packaging volume)
+          - name: ervol
+            description: Allowed packaging volume
+          - name: etiag
+            description: IS-R labeling (material grouping)
           - name: etiar
             description: Label type
           - name: etifo
             description: Label form
-          - name: entar
-            description: Disposal type
-          - name: ean11
-            description: International Article Number (EAN/UPC)
-          - name: numtp
-            description: Category of International Article Number (EAN)
-          - name: laeng
-            description: Length
-          - name: breit
-            description: Width
-          - name: hoehe
-            description: Height
-          - name: meabm
-            description: Unit of dimension for length/width/height
-          - name: prdha
-            description: Product hierarchy
-          - name: aeklk
-            description: Stock transfer net change costing
-          - name: cadkz
-            description: CAD indicator
-          - name: qmpur
-            description: QM in procurement is active
-          - name: ergew
-            description: Allowed packaging weight
-          - name: ergei
-            description: Unit of weight (allowed packaging weight)
-          - name: ervol
-            description: Allowed packaging volume
-          - name: ervoe
-            description: Volume unit (allowed packaging volume)
-          - name: gewto
-            description: Excess weight tolerance for handling unit
-          - name: volto
-            description: Excess volume tolerance of the handling unit
-          - name: vabme
-            description: Variable purchase order unit active
-          - name: kzrev
-            description: Revision level has been assigned to the material
-          - name: kzkfg
-            description: Configurable material
-          - name: xchpf
-            description: Batch management requirement indicator
-          - name: vhart
-            description: Packaging material type
-          - name: fuelg
-            description: Maximum level (by volume)
-          - name: stfak
-            description: Stacking factor
-          - name: magrv
-            description: Material group (Packaging materials)
-          - name: begru
-            description: Authorization group
-          - name: datab
-            description: Valid-from date
-          - name: liqdt
-            description: Deletion date
-          - name: saisj
-            description: Season year
-          - name: plgtp
-            description: Price band category
-          - name: mlgut
-            description: Empties bill of material
           - name: extwg
             description: External material group
-          - name: satnr
-            description: Cross-plant configurable material
-          - name: attyp
-            description: Material category
+          - name: fashgrd
+          - name: ferth
+            description: Production/inspection memo
+          - name: fiber_code1
+          - name: fiber_code2
+          - name: fiber_code3
+          - name: fiber_code4
+          - name: fiber_code5
+          - name: fiber_part1
+          - name: fiber_part2
+          - name: fiber_part3
+          - name: fiber_part4
+          - name: fiber_part5
+          - name: formt
+            description: Page format of production memo
+          - name: free_char
+          - name: fsh_mg_at1
+          - name: fsh_mg_at2
+          - name: fsh_mg_at3
+          - name: fsh_sc_mid
+          - name: fsh_seaim
+          - name: fsh_sealv
+          - name: fuelg
+            description: Maximum level (by volume)
+          - name: gds_relevant
+          - name: gennr
+          - name: gewei
+            description: Weight unit
+          - name: gewto
+            description: Excess weight tolerance for handling unit
+          - name: groes
+            description: Size/dimensions
+          - name: gtin_variant
+          - name: hazmat
+          - name: herkl
+          - name: hndlcode
+          - name: hoehe
+            description: Height
+          - name: hutyp
+          - name: hutyp_dflt
+          - name: ihivi
+            description: Indicator (highly viscous)
+          - name: iloos
+            description: Indicator (in bulk/liquid)
+          - name: imatn
+          - name: inhal
+            description: Net contents
+          - name: inhbr
+            description: Gross contents
+          - name: inhme
+            description: Content unit
+          - name: ipmipproduct
+          - name: iprkz
+            description: Period indicator for shelf life expiration date
+          - name: kosch
+            description: Product allocation determination procedure
+          - name: kunnr
+            description: Competitor
+          - name: kzeff
+            description: Assign effectivity parameter values / override change numbers
+          - name: kzgvh
+            description: Packaging material is closed packaging
+          - name: kzkfg
+            description: Configurable material
           - name: kzkup
             description: Indicator (Material can be co-product)
           - name: kznfm
             description: Indicator (The amterial has a follow-up material)
-          - name: pmata
-            description: Pricing reference material
+          - name: kzrev
+            description: Revision level has been assigned to the material
+          - name: kzumw
+            description: Environmentally relevant
+          - name: kzwsm
+            description: Units of measure usage
+          - name: labor
+            description: Laboratory/design office
+          - name: laeda
+            description: Date of last change
+          - name: laeng
+            description: Length
+          - name: liqdt
+            description: Deletion date
+          - name: loglev_reto
+          - name: logunit
+          - name: lvorm
+            description: Flag material for deletion at client level
+          - name: magrv
+            description: Material group (Packaging materials)
+          - name: mandt
+            description: Client
+          - name: matfi
+          - name: matkl
+            description: Material group
+          - name: matnr
+            description: Material number
+          - name: maxb
+          - name: maxc
+          - name: maxc_tol
+          - name: maxdim_uom
+          - name: maxh
+          - name: maxl
+          - name: mbrsh
+            description: Industry sector
+          - name: mcond
+          - name: meabm
+            description: Unit of dimension for length/width/height
+          - name: medium
+          - name: meins
+            description: Base unit of measure
+          - name: mfrgr
+          - name: mfrnr
+            description: Manufacturer number
+          - name: mfrpn
+            description: Manufacturer part number
+          - name: mhdhb
+            description: Total shelf life
+          - name: mhdlp
+            description: Storage percentage
+          - name: mhdrz
+            description: Minimum remaining shelf life
+          - name: mlgut
+            description: Empties bill of material
+          - name: mprof
+            description: Mfr part profile
           - name: mstae
             description: Cross-plant material status
           - name: mstav
@@ -951,103 +2416,138 @@ sources:
             description: Date from which the cross-plan material status is valid
           - name: mstdv
             description: Date from which the X-distr.-chain material status is valid
-          - name: taklv
-            description: Tax classification of the material
-          - name: rbnrm
-            description: Catalog profile
-          - name: mhdrz
-            description: Minimum remaining shelf life
-          - name: mhdhb
-            description: Total shelf life
-          - name: mhdlp
-            description: Storage percentage
-          - name: inhme
-            description: Content unit
-          - name: inhal
-            description: Net contents
-          - name: vpreh
-            description: Comparison price unit
-          - name: etiag
-            description: IS-R labeling (material grouping)
-          - name: inhbr
-            description: Gross contents
-          - name: cmeth
-            description: Quantity conversion method
-          - name: cuobf
-            description: Internal object number
-          - name: kzumw
-            description: Environmentally relevant
-          - name: kosch
-            description: Product allocation determination procedure
-          - name: sprof
-            description: Pricing profile for variants
-          - name: nrfhg
-            description: Material qualifies for discount in kind
-          - name: mfrpn
-            description: Manufacturer part number
-          - name: mfrnr
-            description: Manufacturer number
-          - name: bmatn
-            description: Number of firm's own (internal) inventory-managed material
-          - name: mprof
-            description: Mfr part profile
-          - name: kzwsm
-            description: Units of measure usage
-          - name: saity
-            description: Rollout in a season
-          - name: profl
-            description: Dangerous goods indicator profile
-          - name: ihivi
-            description: Indicator (highly viscous)
-          - name: iloos
-            description: Indicator (in bulk/liquid)
-          - name: serlv
-            description: Level of explicitness for serial numbers
-          - name: kzgvh
-            description: Packaging material is closed packaging
-          - name: xgchp
-            description: Indicator (Approved batch record required)
-          - name: kzeff
-            description: Assign effectivity parameter values / override change numbers
-          - name: compl
-            description: Material completion level
-          - name: iprkz
-            description: Period indicator for shelf life expiration date
-          - name: rdmhd
-            description: Rounding rule for calculation of SLED
-          - name: przus
-            description: Indicator (Product composition printed on packaging)
+          - name: mtart
+            description: Material type
           - name: mtpos_mara
             description: General item category group
-          - name: bflme
-            description: Generic material with logistical variants
+          - name: normt
+            description: Industry Standard Description (such as ANSI or ISO)
+          - name: nrfhg
+            description: Material qualifies for discount in kind
           - name: nsnid
             description: NATO item identification number
-
+          - name: ntgew
+            description: Net weight
+          - name: numtp
+            description: Category of International Article Number (EAN)
+          - name: oigroupnam
+          - name: oihmtxgr
+          - name: oitrind
+          - name: packcode
+          - name: picnum
+          - name: pilferable
+          - name: plgtp
+            description: Price band category
+          - name: pmata
+            description: Pricing reference material
+          - name: prdha
+            description: Product hierarchy
+          - name: profl
+            description: Dangerous goods indicator profile
+          - name: przus
+            description: Indicator (Product composition printed on packaging)
+          - name: ps_smartform
+          - name: psm_code
+          - name: pstat
+            description: Maintenance status
+          - name: qgrp
+          - name: qmpur
+            description: QM in procurement is active
+          - name: qqtime
+          - name: qqtimeuom
+          - name: raube
+            description: Storage conditions
+          - name: rbnrm
+            description: Catalog profile
+          - name: rdmhd
+            description: Rounding rule for calculation of SLED
+          - name: retdelc
+          - name: rmatp
+          - name: saisj
+            description: Season year
+          - name: saiso
+            description: Season category
+          - name: saity
+            description: Rollout in a season
+          - name: satnr
+            description: Cross-plant configurable material
+          - name: serial
+          - name: serlv
+            description: Level of explicitness for serial numbers
+          - name: sgt_covsa
+          - name: sgt_csgr
+          - name: sgt_rel
+          - name: sgt_scope
+          - name: sgt_stat
+          - name: size1
+          - name: size1_atinn
+          - name: size2
+          - name: size2_atinn
+          - name: sled_bbd
+          - name: spart
+            description: Divsion
+          - name: sprof
+            description: Pricing profile for variants
+          - name: stfak
+            description: Stacking factor
+          - name: stoff
+            description: Hazardous material number
+          - name: taklv
+            description: Tax classification of the material
+          - name: tare_var
+          - name: tempb
+            description: Temperature conditions indicator
+          - name: textile_comp_ind
+          - name: tragr
+            description: Transportation group
+          - name: vabme
+            description: Variable purchase order unit active
+          - name: vhart
+            description: Packaging material type
+          - name: voleh
+            description: Volume unit
+          - name: volto
+            description: Excess volume tolerance of the handling unit
+          - name: volum
+            description: Volume
+          - name: vpreh
+            description: Comparison price unit
+          - name: vpsta
+            description: Maintenance status of complete material
+          - name: weora
+          - name: wesch
+            description: Quantity, or number of GR/GI slips to be printed
+          - name: whmatgr
+          - name: whstc
+          - name: wrkst
+            description: Basic material
+          - name: xchpf
+            description: Batch management requirement indicator
+          - name: xgchp
+            description: Indicator (Approved batch record required)
+          - name: zeiar
+            description: Document type (without document management system)
+          - name: zeifo
+            description: Page form of document (without document management system)
+          - name: zeinr
+            description: Document number (without document management system)
+          - name: zeivr
+            description: Document version (without document management system)
       - name: pa0000
-        identifier: "{{ var('sap_pa0000_identifier', 'pa0000')}}"
+        identifier: "{{ var('sap_pa0000_identifier', 'pa0000') }}"
         config:
           enabled: "{{ var('sap_using_pa0000', true) }}"
         description: HR master record--infotype 0000 (Actions)
         columns:
-          - name: mandt
-            description: Client
-          - name: pernr
-            description: Personnel number
-          - name: subty
-            description: Subtype
-          - name: objps
-            description: Object identification
-          - name: sprps
-            description: Lock indicator for HR master data record
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: aedtm
+            description: Last changed on
           - name: begda
             description: Start date
           - name: endda
             description: End date
-          - name: seqnr
-            description: Number of infotype record with same key
-          - name: aedtm
-            description: Last changed on
           - name: flag1
             description: Reserved field/Unused field
           - name: flag2
@@ -1064,12 +2564,18 @@ sources:
             description: Infotype screen control
           - name: itxex
             description: Text exists for infotype
+          - name: mandt
+            description: Client
           - name: massg
             description: Reason for action
           - name: massn
             description: Action type
+          - name: objps
+            description: Object identification
           - name: ordex
             description: Confirmation fields exist
+          - name: pernr
+            description: Personnel number
           - name: preas
             description: Reason for changing master data
           - name: refex
@@ -1078,43 +2584,37 @@ sources:
             description: Reserved field/unused field of length 2
           - name: rese2
             description: Reserved field/unused field of length 2
+          - name: seqnr
+            description: Number of infotype record with same key
+          - name: sprps
+            description: Lock indicator for HR master data record
           - name: stat1
             description: Customer-specific status
           - name: stat2
             description: Employment status
           - name: stat3
             description: Special payment status
+          - name: subty
+            description: Subtype
           - name: uname
             description: Name of person who changed object
-
       - name: pa0001
-        identifier: "{{ var('sap_pa0001_identifier', 'pa0001')}}"
+        identifier: "{{ var('sap_pa0001_identifier', 'pa0001') }}"
         config:
           enabled: "{{ var('sap_using_pa0001', true) }}"
         description: HR master record--infotype 0001 (org. assignment)
         columns:
-          - name: mandt
-            description: Client
-          - name: pernr
-            description: Personnel number
-          - name: subty
-            description: Subtype
-          - name: objps
-            description: Object identification
-          - name: sprps
-            description: Lock indicator for HR master data record
-          - name: begda
-            description: Start date
-          - name: endda
-            description: End date
-          - name: seqnr
-            description: Number of infotype record with same key
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: abkrs
             description: Payroll area
           - name: aedtm
             description: Changed on
           - name: ansvh
             description: Work contract
+          - name: begda
+            description: Start date
           - name: btrtl
             description: Personnel subarea
           - name: budget_pd
@@ -1123,6 +2623,8 @@ sources:
             description: Company code
           - name: ename
             description: Formatted name of employee or applicant
+          - name: endda
+            description: End date
           - name: fistl
             description: Funds center
           - name: fkber
@@ -1155,14 +2657,20 @@ sources:
             description: Controlling area
           - name: kostl
             description: Cost center
+          - name: mandt
+            description: Client
           - name: mstbr
             description: Supervisor area
+          - name: objps
+            description: Object identification
           - name: ordex
             description: Confirmation fields exist
           - name: orgeh
             description: Organizational unit
           - name: otype
             description: Object type
+          - name: pernr
+            description: Personnel number
           - name: persg
             description: Employee group
           - name: persk
@@ -1185,51 +2693,47 @@ sources:
             description: Administrator for time recording
           - name: sbmod
             description: Administrator group
+          - name: seqnr
+            description: Number of infotype record with same key
           - name: sgmnt
             description: Segment for segmental reporting
           - name: sname
             description: Employee's name (Sortable by LAST NAME FIRST NAME)
+          - name: sprps
+            description: Lock indicator for HR master data record
           - name: stell
             description: Job
+          - name: subty
+            description: Subtype
           - name: uname
             description: Name of person who changed object
           - name: vdsk1
             description: Organizational key
           - name: werks
             description: Personnel area
-
       - name: pa0007
-        identifier: "{{ var('sap_pa0007_identifier', 'pa0007')}}"
+        identifier: "{{ var('sap_pa0007_identifier', 'pa0007') }}"
         config:
           enabled: "{{ var('sap_using_pa0007', true) }}"
         description: HR master record--infotype 0007 (planned working time)
         columns:
-          - name: mandt
-            description: Client
-          - name: pernr
-            description: Personnel number
-          - name: subty
-            description: Subtype
-          - name: objps
-            description: Object identification
-          - name: sprps
-            description: Lock indicator for HR master data record
-          - name: begda
-            description: Start date
-          - name: endda
-            description: End date
-          - name: seqnr
-            description: Number of infotype record with same key
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: aedtm
             description: Changed on
           - name: arbst
             description: Daily working hours
           - name: awtyp
             description: Reference transaction
+          - name: begda
+            description: Start date
           - name: dysch
             description: Create daily work schedule dynamically
           - name: empct
             description: Employment percentage
+          - name: endda
+            description: End date
           - name: flag1
             description: Reserved field/unused field
           - name: flag2
@@ -1250,6 +2754,8 @@ sources:
             description: Annual working hours
           - name: kztim
             description: Additional indicator for time management
+          - name: mandt
+            description: Client
           - name: maxja
             description: Maximum number of working hours per year
           - name: maxmo
@@ -1268,8 +2774,12 @@ sources:
             description: Minimum weekly working hours
           - name: mostd
             description: Monthly hours
+          - name: objps
+            description: Object identification
           - name: ordex
             description: Confirmation fields exist
+          - name: pernr
+            description: Personnel number
           - name: preas
             description: Reason for changing master data
           - name: refex
@@ -1280,6 +2790,12 @@ sources:
             description: Reserved field/unused field of length 2
           - name: schkz
             description: Work schedule rule
+          - name: seqnr
+            description: Number of infotype record with same key
+          - name: sprps
+            description: Lock indicator for HR master data record
+          - name: subty
+            description: Subtype
           - name: teilk
             description: Indicator part-time employee
           - name: uname
@@ -1292,29 +2808,15 @@ sources:
             description: Working week
           - name: zterf
             description: Employee time management status
-
       - name: pa0008
-        identifier: "{{ var('sap_pa0008_identifier', 'pa0008')}}"
+        identifier: "{{ var('sap_pa0008_identifier', 'pa0008') }}"
         config:
           enabled: "{{ var('sap_using_pa0008', true) }}"
         description: HR master record--infotype 0008 (basic pay)
         columns:
-          - name: mandt
-            description: Client
-          - name: pernr
-            description: Personnel number
-          - name: subty
-            description: Subtype
-          - name: objps
-            description: Object identification
-          - name: sprps
-            description: Lock indicator for HR master data record
-          - name: begda
-            description: Start date
-          - name: endda
-            description: End date
-          - name: seqnr
-            description: Number of infotype record with same key
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: aedtm
             description: Changed on
           - name: ancur
@@ -1401,6 +2903,8 @@ sources:
             description: Number/unit
           - name: anz40
             description: Number/unit
+          - name: begda
+            description: Start date
           - name: bet01
             description: Wage type amount for payments
           - name: bet02
@@ -1567,6 +3071,8 @@ sources:
             description: Time/measurement unit
           - name: ein40
             description: Time/measurement unit
+          - name: endda
+            description: End date
           - name: falgk
             description: Case group catalog
           - name: falgr
@@ -1749,6 +3255,10 @@ sources:
             description: Wage type
           - name: lga40
             description: Wage type
+          - name: mandt
+            description: Client
+          - name: objps
+            description: Object identification
           - name: opk01
             description: Operation indicator for wage types
           - name: opk02
@@ -1835,6 +3345,8 @@ sources:
             description: Cost of living allowance level
           - name: partn
             description: Partnership
+          - name: pernr
+            description: Personnel number
           - name: preas
             description: Reason for changing master data
           - name: refex
@@ -1843,8 +3355,14 @@ sources:
             description: Reserved field/unused field of length 2
           - name: rese2
             description: Reserved field/unused field of length 2
+          - name: seqnr
+            description: Number of infotype record with same key
+          - name: sprps
+            description: Lock indicator for HR master data record
           - name: stvor
             description: Date of next increase
+          - name: subty
+            description: Subtype
           - name: trfar
             description: Pay scale type
           - name: trfgb
@@ -1867,31 +3385,21 @@ sources:
             description: Comparison pay scale type
           - name: waers
             description: Currency key
-
       - name: pa0031
-        identifier: "{{ var('sap_pa0031_identifier', 'pa0031')}}"
+        identifier: "{{ var('sap_pa0031_identifier', 'pa0031') }}"
         config:
           enabled: "{{ var('sap_using_pa0031', true) }}"
         description: HR master record--infotype 0031 (Reference personnel numbers)
         columns:
-          - name: mandt
-            description: Client
-          - name: pernr
-            description: Personnel number
-          - name: subty
-            description: Subtype
-          - name: objps
-            description: Object information
-          - name: sprps
-            description: Lock indicator for HR master data record
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: aedtm
+            description: Changed on
           - name: begda
             description: Start date
           - name: endda
             description: End date
-          - name: seqnr
-            description: Number of infotype record with same key
-          - name: aedtm
-            description: Changed on
           - name: flag1
             description: Reserved field/unused field
           - name: flag2
@@ -1908,8 +3416,14 @@ sources:
             description: Infotype screen control
           - name: itxex
             description: Text exists for infotype
+          - name: mandt
+            description: Client
+          - name: objps
+            description: Object information
           - name: ordex
             description: Confirmation fields exist
+          - name: pernr
+            description: Personnel number
           - name: preas
             description: Reason for changing master data
           - name: refex
@@ -1958,37 +3472,50 @@ sources:
             description: Reference personnel number
           - name: rfp20
             description: Reference personnel number
+          - name: seqnr
+            description: Number of infotype record with same key
+          - name: sprps
+            description: Lock indicator for HR master data record
+          - name: subty
+            description: Subtype
           - name: uname
             description: Name of person who changed object
-
       - name: ska1
-        identifier: "{{ var('sap_ska1_identifier', 'ska1')}}"
+        identifier: "{{ var('sap_ska1_identifier', 'ska1') }}"
         config:
           enabled: "{{ var('sap_using_ska1', true) }}"
         description: G/L Account Master (Chart of Accounts)
         columns:
-          - name: mandt
-            description: Client
-          - name: ktopl
-            description: Chart of accounts
-          - name: saknr
-            description: G/L account number
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: bilkt
             description: Group account number
-          - name: gvtyp
-            description: P&L statement account type
-          - name: vbund
-            description: Company id of tradiing partner
-          - name: xbilk
-            description: Indicator (account is a balance sheet account?)
-          - name: sakan
-            description: G/L account number, significant length
           - name: erdat
             description: Date on which the record was created
           - name: ernam
             description: Name of person who created the object
+          - name: func_area
+            description: Functional area
+          - name: gvtyp
+            description: P&L statement account type
           - name: ktoks
             description: G/L account group
+          - name: ktopl
+            description: Chart of accounts
+          - name: mandt
+            description: Client
+          - name: mcod1
+          - name: mustr
+            description: Number of the sample account
+          - name: sakan
+            description: G/L account number, significant length
+          - name: saknr
+            description: G/L account number
+          - name: vbund
+            description: Company id of tradiing partner
+          - name: xbilk
+            description: Indicator (account is a balance sheet account?)
           - name: xloev
             description: Indicator (account marked for deletion?)
           - name: xspea
@@ -1997,51 +3524,432 @@ sources:
             description: Indicator (Is account blocked for posting?)
           - name: xspep
             description: Indicator (Account blocked for planning?)
-          - name: func_area
-            description: Functional area
-          - name: mustr
-            description: Number of the sample account
-
-
       - name: t001
-        identifier: "{{ var('sap_t001_identifier', 't001')}}"
+        identifier: "{{ var('sap_t001_identifier', 't001') }}"
         config:
           enabled: "{{ var('sap_using_t001', true) }}"
         description: Company codes
         columns:
-          - name: mandt
-            description: Client
-          - name: waers
-            description: Currency key
-          - name: periv
-            description: Fiscal year variant
-          - name: ktopl
-            description: Chart of accounts
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: adrnr
+          - name: bapovar
           - name: bukrs
             description: Company code
-          - name: land1
-            description: Country key
-          - name: kkber
-            description: Credit control area
-          - name: rcomp
-            description: Company
+          - name: bukrs_glob
           - name: butxt
             description: Name of company code or company
+          - name: buvar
+          - name: dkweg
+          - name: dtamtc
+          - name: dtaxr
+          - name: dtprov
+          - name: dttaxc
+          - name: dttdsp
+          - name: ebukr
+          - name: fdbuk
+          - name: fikrs
+          - name: fm_derive_acc
+          - name: fmhrdate
+          - name: fstva
+          - name: fstvare
+          - name: impda
+          - name: infmt
+          - name: kkber
+            description: Credit control area
+          - name: kokfi
+          - name: kopim
+          - name: ktop2
+          - name: ktopl
+            description: Chart of accounts
+          - name: land1
+            description: Country key
+          - name: mandt
+            description: Client
+          - name: mregl
+          - name: mwska
+          - name: mwskv
+          - name: offsacct
+          - name: opvar
+          - name: ort01
+          - name: periv
+            description: Fiscal year variant
+          - name: pp_pdate
+          - name: pst_per_var
+          - name: rcomp
+            description: Company
           - name: spras
             description: Language key
-
+          - name: stceg
+          - name: surccm
+          - name: txjcd
+          - name: txkrs
+          - name: umkrs
+          - name: waabw
+          - name: waers
+            description: Currency key
+          - name: wfvar
+          - name: wt_newwt
+          - name: xbbba
+          - name: xbbbe
+          - name: xbbbf
+          - name: xbbko
+          - name: xbbsc
+          - name: xcession
+          - name: xcos
+          - name: xcovr
+          - name: xeink
+          - name: xextb
+          - name: xfdis
+          - name: xfdmm
+          - name: xfdsd
+          - name: xfmca
+          - name: xfmcb
+          - name: xfmco
+          - name: xgjrv
+          - name: xgsbe
+          - name: xjvaa
+          - name: xkdft
+          - name: xkkbi
+          - name: xmwsn
+          - name: xnegp
+          - name: xprod
+          - name: xskfn
+          - name: xslta
+          - name: xsplt
+          - name: xstdt
+          - name: xvalv
+          - name: xvatdate
+          - name: xvvwa
+      - name: t001w
+        identifier: "{{ var('sap_t001w_identifier', 't001w') }}"
+        config:
+          enabled: "{{ var('sap_using_t001w', true) }}"
+        description: Plants/Branches
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: achvm
+          - name: adrnr
+          - name: awsls
+          - name: bapovar
+          - name: bedpl
+          - name: betol
+          - name: bukrs
+          - name: bukrs_glob
+          - name: butxt
+          - name: buvar
+          - name: bwkey
+          - name: bzirk
+          - name: bzqhl
+          - name: chazv
+          - name: chazv_old
+          - name: cityc
+          - name: counc
+          - name: dep_store
+          - name: dkweg
+          - name: dtamtc
+          - name: dtaxr
+          - name: dtprov
+          - name: dttaxc
+          - name: dttdsp
+          - name: dvsart
+          - name: ebukr
+          - name: ekorg
+          - name: fabkl
+          - name: fdbuk
+          - name: fikrs
+          - name: fm_derive_acc
+          - name: fmhrdate
+          - name: fprfw
+          - name: fsh_bom_maintenance
+          - name: fsh_mg_arun_req
+          - name: fsh_seaim
+          - name: fstva
+          - name: fstvare
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: impda
+          - name: infmt
+          - name: iwerk
+          - name: j_1bbranch
+          - name: kkber
+          - name: kkowk
+          - name: kokfi
+          - name: kopim
+          - name: kordb
+          - name: ktop2
+          - name: ktopl
+          - name: kunnr
+          - name: land1
+          - name: let01
+          - name: let02
+          - name: let03
+          - name: lifnr
+          - name: mandt
+            description: Client
+          - name: mgvlareval
+          - name: mgvlaupd
+          - name: mgvupd
+          - name: misch
+          - name: mregl
+          - name: mwska
+          - name: mwskv
+          - name: name1
+          - name: name2
+          - name: nodetype
+          - name: nschema
+          - name: offsacct
+          - name: oihcredipi
+          - name: oihvtype
+          - name: oilival
+          - name: opvar
+          - name: ort01
+          - name: periv
+          - name: pfach
+          - name: pkosa
+          - name: pp_pdate
+          - name: pst_per_var
+          - name: pstlz
+          - name: rcomp
+          - name: regio
+          - name: sourcing
+          - name: spart
+          - name: spras
+          - name: stceg
+          - name: storetype
+          - name: stras
+          - name: surccm
+          - name: taxiw
+          - name: txjcd
+          - name: txkrs
+          - name: txnam_ma1
+          - name: txnam_ma2
+          - name: txnam_ma3
+          - name: umkrs
+          - name: vkorg
+          - name: vlfkz
+          - name: vstel
+          - name: vtbfi
+          - name: vtweg
+          - name: waabw
+          - name: waers
+          - name: werks
+            description: Plant
+          - name: wfvar
+          - name: wksop
+          - name: wt_newwt
+          - name: xbbba
+          - name: xbbbe
+          - name: xbbbf
+          - name: xbbko
+          - name: xbbsc
+          - name: xcession
+          - name: xcos
+          - name: xcovr
+          - name: xeink
+          - name: xextb
+          - name: xfdis
+          - name: xfdmm
+          - name: xfdsd
+          - name: xfmca
+          - name: xfmcb
+          - name: xfmco
+          - name: xgjrv
+          - name: xgsbe
+          - name: xjvaa
+          - name: xkdft
+          - name: xkkbi
+          - name: xmwsn
+          - name: xnegp
+          - name: xprod
+          - name: xskfn
+          - name: xslta
+          - name: xsplt
+          - name: xstdt
+          - name: xvalv
+          - name: xvatdate
+          - name: xvvwa
+          - name: zone1
+      - name: t024
+        identifier: "{{ var('sap_t024_identifier', 't024') }}"
+        config:
+          enabled: "{{ var('sap_using_t024', true) }}"
+        description: Purchasing groups
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: ekgrp
+            description: Purchasing group
+          - name: eknam
+          - name: ektel
+          - name: ldest
+          - name: mandt
+          - name: smtp_addr
+          - name: tel_extens
+          - name: tel_number
+          - name: telfx
+      - name: t134
+        identifier: "{{ var('sap_t134_identifier', 't134') }}"
+        config:
+          enabled: "{{ var('sap_using_t134', true) }}"
+        description: Material types
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: aranz
+          - name: ardel
+          - name: begru
+          - name: bsext
+          - name: bsint
+          - name: cchis
+          - name: chneu
+          - name: class
+          - name: ctype
+          - name: ekalr
+          - name: envop
+          - name: flref
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: izust
+          - name: kkref
+          - name: kzgrp
+          - name: kzkfg
+          - name: kzmpn
+          - name: kzpip
+          - name: kzprc
+          - name: kzrac
+          - name: kzvpr
+          - name: mandt
+          - name: mbref
+          - name: mstae
+          - name: mtart
+            description: Material type
+          - name: mtref
+          - name: numke
+          - name: numki
+          - name: prdru
+          - name: pstat
+          - name: vmtpo
+          - name: vnumke
+          - name: vnumki
+          - name: vprsv
+          - name: vtype
+          - name: wmakg
+      - name: t134t
+        identifier: "{{ var('sap_t134t_identifier', 't134t') }}"
+        config:
+          enabled: "{{ var('sap_using_t134t', true) }}"
+        description: Material type descriptions
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: mandt
+          - name: mtart
+            description: Material type
+          - name: mtbez
+          - name: spras
+      - name: t161
+        identifier: "{{ var('sap_t161_identifier', 't161') }}"
+        config:
+          enabled: "{{ var('sap_using_t161', true) }}"
+        description: Purchasing document types
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: _sapmp_atnam
+          - name: _sapmp_ceact
+          - name: _sapmp_gauf
+          - name: _sapmp_pausw
+          - name: _sapmp_pdact
+          - name: _sapmp_pprot
+          - name: _sapmp_puser
+          - name: abgebot
+          - name: abvor
+          - name: ar_object
+          - name: brefn
+          - name: bsakz
+          - name: bsart
+            description: Document type
+          - name: bstyp
+            description: Document category
+          - name: cp_aktive
+          - name: cptype
+          - name: fls_rsto
+          - name: fsh_dpr_detpro
+          - name: fsh_excl_return
+          - name: fsh_po_idoc
+          - name: fsh_var_kalsm
+          - name: fsh_vas_act
+          - name: fsh_vas_del
+          - name: fsh_vas_detdt
+          - name: fsh_vas_kalsm
+          - name: gsfrg
+          - name: hityp
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: koako
+          - name: koett
+          - name: kornr
+          - name: kzale
+          - name: lphis
+          - name: mandt
+          - name: mill_omkz
+          - name: msr_active
+          - name: numka
+          - name: numkc
+          - name: numke
+          - name: numki
+          - name: oicsegi
+          - name: oirfqreq
+          - name: pargr
+          - name: pincr
+          - name: rdp_profile
+          - name: refba
+          - name: shenq
+          - name: stafo
+          - name: stako
+          - name: tolsl
+          - name: umlif
+          - name: upinc
+          - name: variante
+          - name: wrf_enable_dateline
+          - name: wvvkz
+          - name: xlokz
+      - name: t161t
+        identifier: "{{ var('sap_t161t_identifier', 't161t') }}"
+        config:
+          enabled: "{{ var('sap_using_t161t', true) }}"
+        description: Purchasing doc type texts
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: batxt
+            description: Description
+          - name: bsart
+            description: Document type
+          - name: bstyp
+            description: Document category
+          - name: mandt
+          - name: spras
       - name: t503
-        identifier: "{{ var('sap_t503_identifier', 't503')}}"
+        identifier: "{{ var('sap_t503_identifier', 't503') }}"
         config:
           enabled: "{{ var('sap_using_t503', true) }}"
         description: Employee group/subgroup
         columns:
-          - name: mandt
-            description: Client
-          - name: persg
-            description: Employee group
-          - name: persk
-            description: Employee subgroup
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: abart
             description: Employee subgroup grouping for personnel calculation rule
           - name: abtyp
@@ -2060,242 +3968,791 @@ sources:
             description: Participation in incentive wages
           - name: konty
             description: Employee subgroup grouping for time quota types
+          - name: mandt
+            description: Client
           - name: molga
             description: Reserved field/unused field of length 2
+          - name: persg
+            description: Employee group
+          - name: persk
+            description: Employee subgroup
           - name: trfkz
             description: ES grouping for collective agreement provision
           - name: typsz
             description: Single-character indicator
           - name: zeity
             description: Employee subgroup grouping for work schedules
-
       - name: t880
-        identifier: "{{ var('sap_t880_identifier', 't880')}}"
+        identifier: "{{ var('sap_t880_identifier', 't880') }}"
         config:
           enabled: "{{ var('sap_using_t880', true) }}"
         description: Global company data (for KONS Ledger)
         columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
+          - name: city
+          - name: cntry
+          - name: curr
+          - name: glsip
+          - name: indpo
+          - name: langu
+          - name: lccomp
           - name: mandt
             description: Client
-          - name: rcomp
-            description: Company
-          - name: city
-            description: City where company is located
-          - name: cntry
-            description: Country of company
-          - name: curr
-            description: Local currency
-          - name: glsip
-            description: Write line items
-          - name: indpo
-            description: Read purchase order
-          - name: langu
-            description: Language key
-          - name: lccomp
-            description: Consolidation company indicator
           - name: mclnt
-            description: Master data client
           - name: mcomp
-            description: Master data company code
           - name: modcp
-            description: Global company grouping code
           - name: name1
             description: Company name
           - name: name2
-            description: Name of company 2
           - name: pobox
-            description: Post office box of the company
           - name: pstlc
-            description: Global company zip code
+          - name: rcomp
+            description: Company
           - name: resta
-            description: Legal status of company
           - name: rform
-            description: Legal form of company
           - name: stret
-            description: Street address of the company
           - name: strt2
-            description: Street of company 2
           - name: zweig
-            description: Industrial sector
-
-      - name: dd07l
-        identifier: "{{ var('sap_dd07l_identifier', 'dd07l')}}"
-        config:
-          enabled: "{{ var('sap_using_dd07l', true) }}"
-        description: Domain values
-        columns:
-          - name: domname
-            description: Domain name
-          - name: domvalue_l
-            description: Value of domain
-          - name: as4vers
-            description: Active version
-
-      - name: dd07t
-        identifier: "{{ var('sap_dd07t_identifier', 'dd07t')}}"
-        config:
-          enabled: "{{ var('sap_using_dd07t', true) }}"
-        description: Texts for domain values
-        columns:
-          - name: domname
-            description: Domain name
-          - name: domvalue_l
-            description: Domain value
-          - name: as4vers
-            description: Active version
-          - name: ddlanguage
-            description: Language key
-          - name: ddtext
-            description: Text
-
-      - name: ekbe
-        identifier: "{{ var('sap_ekbe_identifier', 'ekbe')}}"
-        config:
-          enabled: "{{ var('sap_using_ekbe', true) }}"
-      - name: eket
-        identifier: "{{ var('sap_eket_identifier', 'eket')}}"
-        config:
-          enabled: "{{ var('sap_using_eket', true) }}"
-      - name: ekpo
-        identifier: "{{ var('sap_ekpo_identifier', 'ekpo')}}"
-        config:
-          enabled: "{{ var('sap_using_ekpo', true) }}"
-      - name: makt
-        identifier: "{{ var('sap_makt_identifier', 'makt')}}"
-        config:
-          enabled: "{{ var('sap_using_makt', true) }}"
-      - name: vbak
-        identifier: "{{ var('sap_vbak_identifier', 'vbak')}}"
-        config:
-          enabled: "{{ var('sap_using_vbak', true) }}"
-      - name: vbap
-        identifier: "{{ var('sap_vbap_identifier', 'vbap')}}"
-        config:
-          enabled: "{{ var('sap_using_vbap', true) }}"
-      - name: vbuk
-        identifier: "{{ var('sap_vbuk_identifier', 'vbuk')}}"
-        config:
-          enabled: "{{ var('sap_using_vbuk', true) }}"
-      - name: vbup
-        identifier: "{{ var('sap_vbup_identifier', 'vbup')}}"
-        config:
-          enabled: "{{ var('sap_using_vbup', true) }}"
-
-      - name: ekko
-        identifier: "{{ var('sap_ekko_identifier', 'ekko')}}"
-        config:
-          enabled: "{{ var('sap_using_ekko', true) }}"
-        description: Purchasing document header
-        columns:
-          - name: mandt
-            description: Client
-          - name: ebeln
-            description: Purchasing document number
-          - name: bukrs
-            description: Company code
-          - name: bstyp
-            description: Document category
-          - name: bsart
-            description: Document type
-          - name: lifnr
-            description: Vendor account number
-
-      - name: t001w
-        identifier: "{{ var('sap_t001w_identifier', 't001w')}}"
-        config:
-          enabled: "{{ var('sap_using_t001w', true) }}"
-        description: Plants/Branches
-        columns:
-          - name: mandt
-            description: Client
-          - name: werks
-            description: Plant
-          - name: name1
-            description: Name 1
-          - name: land1
-            description: Country key
-
-      - name: t024
-        identifier: "{{ var('sap_t024_identifier', 't024')}}"
-        config:
-          enabled: "{{ var('sap_using_t024', true) }}"
-        description: Purchasing groups
-        columns:
-          - name: ekgrp
-            description: Purchasing group
-          - name: eknam
-            description: Description
-
-      - name: t134
-        identifier: "{{ var('sap_t134_identifier', 't134')}}"
-        config:
-          enabled: "{{ var('sap_using_t134', true) }}"
-        description: Material types
-        columns:
-          - name: mtart
-            description: Material type
-
-      - name: t134t
-        identifier: "{{ var('sap_t134t_identifier', 't134t')}}"
-        config:
-          enabled: "{{ var('sap_using_t134t', true) }}"
-        description: Material type descriptions
-        columns:
-          - name: mtart
-            description: Material type
-          - name: mttxt
-            description: Description
-
-      - name: t161
-        identifier: "{{ var('sap_t161_identifier', 't161')}}"
-        config:
-          enabled: "{{ var('sap_using_t161', true) }}"
-        description: Purchasing document types
-        columns:
-          - name: bstyp
-            description: Document category
-          - name: bsart
-            description: Document type
-
-      - name: t161t
-        identifier: "{{ var('sap_t161t_identifier', 't161t')}}"
-        config:
-          enabled: "{{ var('sap_using_t161t', true) }}"
-        description: Descriptions for purchasing document types
-        columns:
-          - name: bstyp
-            description: Document category
-          - name: bsart
-            description: Document type
-          - name: spras
-            description: Language key
-          - name: batxt
-            description: Description
-
       - name: tvag
-        identifier: "{{ var('sap_tvag_identifier', 'tvag')}}"
+        identifier: "{{ var('sap_tvag_identifier', 'tvag') }}"
         config:
           enabled: "{{ var('sap_using_tvag', true) }}"
         description: Sales document rejection reasons
         columns:
-          - name: mandt
-            description: Client
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: abgru
             description: Reason code
           - name: dragr
-            description: Not relevant for printing
-
+          - name: ep_off
+          - name: fk_erl
+          - name: fsh_pqr_spec
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: kowrr
+          - name: mandt
       - name: tvagt
-        identifier: "{{ var('sap_tvagt_identifier', 'tvagt')}}"
+        identifier: "{{ var('sap_tvagt_identifier', 'tvagt') }}"
         config:
           enabled: "{{ var('sap_using_tvagt', true) }}"
         description: Rejection reason texts
         columns:
-          - name: mandt
-            description: Client
+          - name: _fivetran_deleted
+          - name: _fivetran_rowid
+          - name: _fivetran_synced
           - name: abgru
             description: Reason code
-          - name: spras
-            description: Language key
           - name: bezei
             description: Description
+          - name: mandt
+          - name: spras
+      - name: vbak
+        identifier: "{{ var('sap_vbak_identifier', 'vbak') }}"
+        config:
+          enabled: "{{ var('sap_using_vbak', true) }}"
+        description:
+        columns:
+          - name: _dataaging
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: _xlso_catalog_id
+          - name: _xlso_payment_op
+          - name: _xlso_so_vald_fm
+          - name: _xlso_so_vald_to
+          - name: _xlso_trans_ctxt
+          - name: _xlso_variant_id
+          - name: abdis
+          - name: abhob
+          - name: abhod
+          - name: abhov
+          - name: abruf_part
+          - name: abrvw
+          - name: aedat
+          - name: agrzr
+          - name: amtbl
+          - name: angdt
+          - name: auart
+          - name: audat
+          - name: aufnr
+          - name: augru
+          - name: autlf
+          - name: awahr
+          - name: betc
+          - name: bname
+          - name: bnddt
+          - name: bpn
+          - name: bsark
+          - name: bstdk
+          - name: bstnk
+          - name: bstzd
+          - name: bukrs_vf
+          - name: cancel_allow
+          - name: cmfre
+          - name: cmngv
+          - name: cmnup
+          - name: cmwae
+          - name: cont_dg
+          - name: crm_guid
+          - name: ctlpc
+          - name: dat_fzau
+          - name: enqueue_grp
+          - name: erdat
+          - name: ernam
+          - name: erzet
+          - name: faksk
+          - name: fkara
+          - name: fmbdat
+          - name: fsh_candate
+          - name: fsh_cq_check
+          - name: fsh_kvgr10
+          - name: fsh_kvgr6
+          - name: fsh_kvgr7
+          - name: fsh_kvgr8
+          - name: fsh_kvgr9
+          - name: fsh_os_stg_change
+          - name: fsh_rereg
+          - name: fsh_ss
+          - name: fsh_transaction
+          - name: fsh_vas_cg
+          - name: fsh_vrsn_status
+          - name: grupp
+          - name: gsber
+          - name: gskst
+          - name: guebg
+          - name: gueen
+          - name: gwldt
+          - name: handle
+          - name: handoverloc
+          - name: hb_cont_reason
+          - name: hb_expdate
+          - name: hb_resdate
+          - name: hityp_pr
+          - name: ihrez
+          - name: kalcd
+          - name: kalsm
+          - name: kalsm_ch
+          - name: kkber
+          - name: knkli
+          - name: knuma
+          - name: knumv
+          - name: kokrs
+          - name: kostl
+          - name: ktext
+          - name: kunnr
+          - name: kurst
+          - name: kvgr1
+          - name: kvgr2
+          - name: kvgr3
+          - name: kvgr4
+          - name: kvgr5
+          - name: landtx
+          - name: lifsk
+          - name: logsysb
+          - name: mahdt
+          - name: mahza
+          - name: mandt
+          - name: mill_appl_id
+          - name: mod_allow
+          - name: msr_id
+          - name: mtlaur
+          - name: multi
+          - name: netwr
+          - name: objnr
+          - name: pay_method
+          - name: phase
+          - name: proli
+          - name: ps_psp_pnr
+          - name: psm_budat
+          - name: qmnum
+          - name: rep_freq
+          - name: rplnr
+          - name: sbgrp
+          - name: scheme_grp
+          - name: smenr
+          - name: spart
+          - name: sppaym
+          - name: stafo
+          - name: stage
+          - name: stceg_l
+          - name: stwae
+          - name: submi
+          - name: swenr
+          - name: tas
+          - name: taxk1
+          - name: taxk2
+          - name: taxk3
+          - name: taxk4
+          - name: taxk5
+          - name: taxk6
+          - name: taxk7
+          - name: taxk8
+          - name: taxk9
+          - name: telf1
+          - name: tm_ctrl_key
+          - name: trvog
+          - name: upd_tmstmp
+          - name: vbeln
+          - name: vbeln_grp
+          - name: vbkla
+          - name: vbklt
+          - name: vbtyp
+          - name: vdatu
+          - name: vgbel
+          - name: vgtyp
+          - name: vkbur
+          - name: vkgrp
+          - name: vkorg
+          - name: vprgr
+          - name: vsbed
+          - name: vsnmr_v
+          - name: vtweg
+          - name: vzeit
+          - name: waerk
+          - name: wtysc_clm_hdr
+          - name: xblnr
+          - name: xegdr
+          - name: zuonr
+      - name: vbap
+        identifier: "{{ var('sap_vbap_identifier', 'vbap') }}"
+        config:
+          enabled: "{{ var('sap_using_vbap', true) }}"
+        description:
+        columns:
+          - name: _accgo_is_co_rel
+          - name: _accgo_tx_p
+          - name: _bev1_srfund
+          - name: _dataaging
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: _slce_inst_guid
+          - name: _slce_single_conf_done
+          - name: _slce_single_conf_reqired
+          - name: _slce_sol_cuobj
+          - name: _slce_sol_ext_guid
+          - name: _slce_sol_matnr
+          - name: _slce_sol_posnr
+          - name: _xlso_course_bda
+          - name: _xlso_course_eda
+          - name: _xlso_course_id
+          - name: abdat
+          - name: abfor
+          - name: abges
+          - name: abgrs
+          - name: abgru
+          - name: ablfz
+          - name: absfz
+          - name: aedat
+          - name: antlf
+          - name: anzsn
+          - name: aplzl_oaa
+          - name: aplzl_olc
+          - name: arktx
+          - name: arsnum
+          - name: arspos
+          - name: atpkz
+          - name: aufnr
+          - name: aufpl_oaa
+          - name: aufpl_olc
+          - name: awahr
+          - name: bedae
+          - name: berid
+          - name: betc
+          - name: bonus
+          - name: bpn
+          - name: brgew
+          - name: budget_pd
+          - name: bwtar
+          - name: bwtex
+          - name: cancel_allow
+          - name: cepok
+          - name: charg
+          - name: chmvs
+          - name: chspl
+          - name: clint
+          - name: cmeth
+          - name: cmkua
+          - name: cmpnt
+          - name: cmpre
+          - name: cmpre_flt
+          - name: cmtfg
+          - name: cpd_updat
+          - name: cuobj
+          - name: cuobj_ch
+          - name: ean11
+          - name: eannr
+          - name: erdat
+          - name: erlre
+          - name: ernam
+          - name: erzet
+          - name: exart
+          - name: faksp
+          - name: ferc_ind
+          - name: fiscal_incentive
+          - name: fiscal_incentive_id
+          - name: fistl
+          - name: fixmg
+          - name: fkber
+          - name: fkrel
+          - name: fmeng
+          - name: fmfgus_key
+          - name: fonds
+          - name: fsh_candate
+          - name: fsh_collection
+          - name: fsh_crsd
+          - name: fsh_grid_cond_rec
+          - name: fsh_item
+          - name: fsh_item_group
+          - name: fsh_pqr_uepos
+          - name: fsh_psm_pfm_split
+          - name: fsh_searef
+          - name: fsh_season
+          - name: fsh_season_year
+          - name: fsh_theme
+          - name: fsh_transaction
+          - name: fsh_vas_prnt_id
+          - name: fsh_vas_rel
+          - name: fsh_vasref
+          - name: gewei
+          - name: grant_nbr
+          - name: grkor
+          - name: grpos
+          - name: gsber
+          - name: handoverdate
+          - name: handoverloc
+          - name: handovertime
+          - name: iuid_relevant
+          - name: j_1bcfop
+          - name: j_1btaxlw1
+          - name: j_1btaxlw2
+          - name: j_1btaxlw3
+          - name: j_1btaxlw4
+          - name: j_1btaxlw5
+          - name: j_1btxsdc
+          - name: kalnr
+          - name: kalsm_k
+          - name: kalvar
+          - name: kannr
+          - name: kbmeng
+          - name: kbver
+          - name: kdmat
+          - name: kever
+          - name: klmeng
+          - name: klvar
+          - name: kmein
+          - name: kmpmg
+          - name: knttp
+          - name: knuma_ag
+          - name: knuma_pi
+          - name: knumh
+          - name: kondm
+          - name: kosch
+          - name: kostl
+          - name: koupd
+          - name: kowrr
+          - name: kpein
+          - name: ktgrm
+          - name: kwmeng
+          - name: kzbws
+          - name: kzfme
+          - name: kztlf
+          - name: kzvbr
+          - name: kzwi1
+          - name: kzwi2
+          - name: kzwi3
+          - name: kzwi4
+          - name: kzwi5
+          - name: kzwi6
+          - name: lfmng
+          - name: lfrel
+          - name: lgort
+          - name: logsys_ext
+          - name: lprio
+          - name: lsmeng
+          - name: lstanr
+          - name: magrv
+          - name: mandt
+          - name: manual_tc_reason
+          - name: matkl
+          - name: matnr
+          - name: matwa
+          - name: meins
+          - name: mfrgr
+          - name: mill_se_gposn
+          - name: mod_allow
+          - name: mprok
+          - name: msr_approv_block
+          - name: msr_refund_code
+          - name: msr_ret_reason
+          - name: mtvfp
+          - name: mvgr1
+          - name: mvgr2
+          - name: mvgr3
+          - name: mvgr4
+          - name: mvgr5
+          - name: mwsbp
+          - name: nachl
+          - name: netpr
+          - name: netwr
+          - name: nrab_knumh
+          - name: ntgew
+          - name: objnr
+          - name: oia_baselo
+          - name: oibasprod
+          - name: oibwtar_ex
+          - name: oibwtar_im
+          - name: oibypass
+          - name: oic_adestn
+          - name: oic_aorgin
+          - name: oic_dcityc
+          - name: oic_dcounc
+          - name: oic_dland1
+          - name: oic_drcreg
+          - name: oic_drctry
+          - name: oic_dregio
+          - name: oic_kmpos
+          - name: oic_lifnr
+          - name: oic_mot
+          - name: oic_ocityc
+          - name: oic_ocounc
+          - name: oic_oland1
+          - name: oic_oregio
+          - name: oic_pbatch
+          - name: oic_pdestn
+          - name: oic_porgin
+          - name: oic_ptrip
+          - name: oic_truckn
+          - name: oicertf1
+          - name: oicertf1_ex
+          - name: oicontnr
+          - name: oid_extbol
+          - name: oid_miscdl
+          - name: oid_ship
+          - name: oidmsg_dat
+          - name: oidmsg_prd
+          - name: oidmsg_qty
+          - name: oidmsg_shp
+          - name: oidmsg_trm
+          - name: oidmsg_uom
+          - name: oidrc
+          - name: oiedbal
+          - name: oiedbal_ex
+          - name: oiedbal_im
+          - name: oiedbalm
+          - name: oiedbalm_ex
+          - name: oiedbalm_im
+          - name: oiedok
+          - name: oiexgnum
+          - name: oiexgtyp
+          - name: oifeech
+          - name: oifeedt
+          - name: oifeetot
+          - name: oignrule
+          - name: oih_folqty
+          - name: oih_folqty_ex
+          - name: oih_lcfol
+          - name: oih_lcfol_ex
+          - name: oih_licin
+          - name: oih_licin_ex
+          - name: oih_lictp
+          - name: oih_lictp_ex
+          - name: oihantyp
+          - name: oihantyp_ex
+          - name: oihantyp_im
+          - name: oihcotdisch
+          - name: oihnotlgort
+          - name: oihnotwerks
+          - name: oihtaxrcp_ex
+          - name: oiinex
+          - name: oiinex_ex
+          - name: oimetind
+          - name: oinetcyc
+          - name: oioilcon
+          - name: oipipeval
+          - name: oiplantd
+          - name: oipricie
+          - name: oipricie_ex
+          - name: oipricie_im
+          - name: oipsdrc
+          - name: oisbrel
+          - name: oislf
+          - name: oitaxfrom
+          - name: oitaxfrom_ex
+          - name: oitaxfrom_im
+          - name: oitaxgrp
+          - name: oitaxgrp_ex
+          - name: oitaxgrp_im
+          - name: oitaxto
+          - name: oitaxto_ex
+          - name: oitaxto_im
+          - name: oiwap
+          - name: paobjnr
+          - name: pargb
+          - name: pay_method
+          - name: pctrf
+          - name: plavo
+          - name: pmatn
+          - name: posar
+          - name: posex
+          - name: posnr
+          - name: posnv
+          - name: prbme
+          - name: prctr
+          - name: prefe
+          - name: prodh
+          - name: prosa
+          - name: provg
+          - name: prs_objnr
+          - name: prs_sd_spsnr
+          - name: prs_work_period
+          - name: prsok
+          - name: ps_psp_pnr
+          - name: pstyv
+          - name: rep_freq
+          - name: revacc_refid
+          - name: revacc_reftype
+          - name: rkfkf
+          - name: route
+          - name: serail
+          - name: sernr
+          - name: sgt_rcat
+          - name: shkzg
+          - name: skopf
+          - name: sktof
+          - name: sloctype
+          - name: smeng
+          - name: sobkz
+          - name: spart
+          - name: spcsto
+          - name: sposn
+          - name: stadat
+          - name: stafo
+          - name: stcur
+          - name: stdat
+          - name: stkey
+          - name: stlkn
+          - name: stlnr
+          - name: stlty
+          - name: stman
+          - name: stockloc
+          - name: stpos
+          - name: stpoz
+          - name: sugrd
+          - name: sumbd
+          - name: tas
+          - name: tax_subject_st
+          - name: taxm1
+          - name: taxm2
+          - name: taxm3
+          - name: taxm4
+          - name: taxm5
+          - name: taxm6
+          - name: taxm7
+          - name: taxm8
+          - name: taxm9
+          - name: tc_aut_det
+          - name: techs
+          - name: trmrisk_relevant
+          - name: uebtk
+          - name: uebto
+          - name: uepos
+          - name: uepvw
+          - name: ukonm
+          - name: umref
+          - name: umvkn
+          - name: umvkz
+          - name: umzin
+          - name: umziz
+          - name: untto
+          - name: upflu
+          - name: upmat
+          - name: vbeaf
+          - name: vbeav
+          - name: vbeln
+          - name: vbelv
+          - name: vgbel
+          - name: vgpos
+          - name: vgref
+          - name: vgtyp
+          - name: vkaus
+          - name: vkgru
+          - name: voleh
+          - name: volum
+          - name: voref
+          - name: vpmat
+          - name: vpwrk
+          - name: vpzuo
+          - name: vrkme
+          - name: vstel
+          - name: waerk
+          - name: wavwr
+          - name: werks
+          - name: wgru1
+          - name: wgru2
+          - name: wktnr
+          - name: wktps
+          - name: wrf_charstc1
+          - name: wrf_charstc2
+          - name: wrf_charstc3
+          - name: wtysc_clmitem
+          - name: xchar
+          - name: xchpf
+          - name: z_prs_bill_flag
+          - name: z_prs_chargelevl
+          - name: z_prs_country
+          - name: z_prs_offshore
+          - name: zieme
+          - name: zmeng
+          - name: zschl_k
+          - name: zwert
+          - name: zzdea_license
+          - name: zzdea_schedule
+      - name: vbuk
+        identifier: "{{ var('sap_vbuk_identifier', 'vbuk') }}"
+        config:
+          enabled: "{{ var('sap_using_vbuk', true) }}"
+        description:
+        columns:
+          - name: abstk
+          - name: aedat
+          - name: bestk
+          - name: block
+          - name: buchk
+          - name: cmgst
+          - name: cmps0
+          - name: cmps1
+          - name: cmps2
+          - name: cmps_cm
+          - name: cmps_te
+          - name: cmpsa
+          - name: cmpsb
+          - name: cmpsc
+          - name: cmpsd
+          - name: cmpse
+          - name: cmpsf
+          - name: cmpsg
+          - name: cmpsh
+          - name: cmpsi
+          - name: cmpsj
+          - name: cmpsk
+          - name: cmpsl
+          - name: cmpsm
+          - name: costa
+          - name: dcstk
+          - name: fkivk
+          - name: fksak
+          - name: fkstk
+          - name: fmstk
+          - name: fsh_ar_stat_hdr
+          - name: fsstk
+          - name: gbstk
+          - name: hdall
+          - name: hdals
+          - name: hvr_change_time
+          - name: hvr_is_deleted
+          - name: koquk
+          - name: kostk
+          - name: lfgsk
+          - name: lfstk
+          - name: lsstk
+          - name: lvstk
+          - name: mandt
+          - name: manek
+          - name: pdstk
+          - name: pkstk
+          - name: relik
+          - name: rfgsk
+          - name: rfstk
+          - name: rrsta
+          - name: saprl
+          - name: spe_tmpid
+          - name: spstg
+          - name: trsta
+          - name: uvall
+          - name: uvals
+          - name: uvfak
+          - name: uvfas
+          - name: uvgek
+          - name: uvk01
+          - name: uvk02
+          - name: uvk03
+          - name: uvk04
+          - name: uvk05
+          - name: uvpak
+          - name: uvpas
+          - name: uvpik
+          - name: uvpis
+          - name: uvprs
+          - name: uvs01
+          - name: uvs02
+          - name: uvs03
+          - name: uvs04
+          - name: uvs05
+          - name: uvvlk
+          - name: uvvls
+          - name: uvwak
+          - name: uvwas
+          - name: vbeln
+          - name: vbobj
+          - name: vbtyp
+          - name: vbtyp_ext
+          - name: vestk
+          - name: vlstk
+          - name: wbstk
+      - name: vbup
+        identifier: "{{ var('sap_vbup_identifier', 'vbup') }}"
+        config:
+          enabled: "{{ var('sap_using_vbup', true) }}"
+        description:
+        columns:
+          - name: _fivetran_deleted
+          - name: _fivetran_sap_archived
+          - name: _fivetran_synced
+          - name: absta
+          - name: besta
+          - name: cmppi
+          - name: cmppj
+          - name: costa
+          - name: dcsta
+          - name: fkivp
+          - name: fksaa
+          - name: fksta
+          - name: fsh_ar_stat_itm
+          - name: fssta
+          - name: gbsta
+          - name: hdall
+          - name: koqua
+          - name: kosta
+          - name: lfgsa
+          - name: lfsta
+          - name: lssta
+          - name: ltsps
+          - name: lvsta
+          - name: mandt
+          - name: manek
+          - name: mill_vs_vssta
+          - name: pdsta
+          - name: pksta
+          - name: posnr
+          - name: rfgsa
+          - name: rfsta
+          - name: rrsta
+          - name: uvall
+          - name: uvfak
+          - name: uvp01
+          - name: uvp02
+          - name: uvp03
+          - name: uvp04
+          - name: uvp05
+          - name: uvpak
+          - name: uvpik
+          - name: uvprs
+          - name: uvvlk
+          - name: uvwak
+          - name: vbeln
+          - name: vlstp
+          - name: wbsta
