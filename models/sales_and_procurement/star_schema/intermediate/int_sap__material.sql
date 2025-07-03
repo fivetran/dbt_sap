@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_mara', True) and var('sap_using_makt', True))) }}
+
 with mara as (
     select *
     from {{ ref('stg_sap__mara') }}

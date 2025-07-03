@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_t161', True) and var('sap_using_t161t', True))) }}
+
 with t161 as (
     select *
     from {{ ref('stg_sap__t161') }}

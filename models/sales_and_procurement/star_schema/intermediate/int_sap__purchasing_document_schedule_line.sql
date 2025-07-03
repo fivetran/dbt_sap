@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_eket', True)) }}
+
 select
     mandt as client_id,
     ebeln as purchasing_document_id,

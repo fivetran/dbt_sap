@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_dd07l', True) and var('sap_using_dd07t', True))) }}
+
 with dd07l as (
     select *
     from {{ ref('stg_sap__dd07l') }}

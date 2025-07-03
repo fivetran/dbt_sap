@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_vbap', True)) }}
+
 select
     mandt as client_id,
     posnr as sales_document_item_id,

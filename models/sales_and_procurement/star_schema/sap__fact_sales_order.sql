@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_vbak', True) and var('sap_using_vbap', True) and var('sap_using_vbuk', True) and var('sap_using_vbup', True))) }}
+
 with sales_document_header as (
     select *
     from {{ ref('int_sap__sales_document_header') }}

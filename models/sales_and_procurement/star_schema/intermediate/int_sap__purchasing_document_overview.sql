@@ -1,4 +1,6 @@
-select 
+{{ config(enabled=var('sap_using_ekbe', True)) }}
+
+select
     purchasing_document_id,
     purchasing_document_item_id,
     max(delivery_completed) delivery_completed,

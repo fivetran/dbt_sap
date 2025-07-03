@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_vbup', True)) }}
+
 select
     mandt as client_id,
     posnr as sd_item_id,

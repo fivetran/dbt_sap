@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_tvag', True) and var('sap_using_tvagt', True))) }}
+
 with tvag as (
     select *
     from {{ ref('stg_sap__tvag') }}
