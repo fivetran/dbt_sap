@@ -4070,183 +4070,183 @@ models:
       - name: objnr
         description: Object number
       - name: oia_baselo
-        description: 
+        description: OIL base location
       - name: oibasprod
-        description: 
+        description: OIL base product
       - name: oibwtar_ex
-        description: 
+        description: External valuation type for OIL
       - name: oibwtar_im
-        description: 
+        description: Internal valuation type for OIL
       - name: oibypass
-        description: 
+        description: Bypass indicator for OIL
       - name: oic_adestn
-        description: 
+        description: Destination address (OIL)
       - name: oic_aorgin
-        description: 
+        description: Origin address (OIL)
       - name: oic_dcityc
-        description: 
+        description: Destination city code
       - name: oic_dcounc
-        description: 
+        description: Destination country code
       - name: oic_dland1
-        description: 
+        description: Destination country
       - name: oic_drcreg
-        description: 
+        description: Destination region code
       - name: oic_drctry
-        description: 
+        description: Destination region country
       - name: oic_dregio
-        description: 
+        description: Destination region
       - name: oic_kmpos
-        description: 
+        description: OIL line item number
       - name: oic_lifnr
-        description: 
+        description: Vendor number (OIL)
       - name: oic_mot
-        description: 
+        description: Mode of transport
       - name: oic_ocityc
-        description: 
+        description: Origin city code
       - name: oic_ocounc
-        description: 
+        description: Origin country code
       - name: oic_oland1
-        description: 
+        description: Origin country
       - name: oic_oregio
-        description: 
+        description: Origin region
       - name: oic_pbatch
-        description: 
+        description: Planned batch
       - name: oic_pdestn
-        description: 
+        description: Planned destination
       - name: oic_porgin
-        description: 
+        description: Planned origin
       - name: oic_ptrip
-        description: 
+        description: Planned trip number
       - name: oic_truckn
-        description: 
+        description: Truck number
       - name: oicertf1_ex
-        description: 
+        description: External certificate ID
       - name: oicertf1
-        description: 
+        description: Certificate number
       - name: oicontnr
-        description: 
+        description: Container number
       - name: oid_extbol
-        description: 
+        description: External bill of lading number
       - name: oid_miscdl
-        description: 
+        description: Miscellaneous delivery ID
       - name: oid_ship
-        description: 
+        description: Shipment number
       - name: oidmsg_dat
-        description: 
+        description: Message date
       - name: oidmsg_prd
-        description: 
+        description: Message product
       - name: oidmsg_qty
-        description: 
+        description: Message quantity
       - name: oidmsg_shp
-        description: 
+        description: Message shipment
       - name: oidmsg_trm
-        description: 
+        description: Message transport mode
       - name: oidmsg_uom
-        description: 
+        description: Unit of measure (message)
       - name: oidrc
-        description: 
+        description: Message reconciliation code
       - name: oiedbal_ex
-        description: 
+        description: External opening balance
       - name: oiedbal_im
-        description: 
+        description: Internal opening balance
       - name: oiedbal
-        description: 
+        description: Opening inventory balance
       - name: oiedbalm_ex
-        description: 
+        description: External opening measured balance
       - name: oiedbalm_im
-        description: 
+        description: Internal opening measured balance
       - name: oiedbalm
-        description: 
+        description: Opening measured balance
       - name: oiedok
-        description: 
+        description: Document number for opening inventory
       - name: oiexgnum
-        description: 
+        description: Exchange agreement number
       - name: oiexgtyp
-        description: 
+        description: Exchange type
       - name: oifeech
-        description: 
+        description: Fee charge code
       - name: oifeedt
-        description: 
+        description: Fee effective date
       - name: oifeetot
-        description: 
+        description: Total fee amount
       - name: oignrule
-        description: 
+        description: Gain/loss rule
       - name: oih_folqty_ex
-        description: 
+        description: External follow-on quantity
       - name: oih_folqty
-        description: 
+        description: Follow-on quantity
       - name: oih_lcfol_ex
-        description: 
+        description: External local follow-on quantity
       - name: oih_lcfol
-        description: 
+        description: Local follow-on quantity
       - name: oih_licin_ex
-        description: 
+        description: External license in
       - name: oih_licin
-        description: 
+        description: License in
       - name: oih_lictp_ex
-        description: 
+        description: External license type
       - name: oih_lictp
-        description: 
+        description: License type
       - name: oihantyp_ex
-        description: 
+        description: External handling type
       - name: oihantyp_im
-        description: 
+        description: Internal handling type
       - name: oihantyp
-        description: 
+        description: Handling type
       - name: oihcotdisch
-        description: 
+        description: Discharge indicator
       - name: oihnotlgort
-        description: 
+        description: Not relevant storage location
       - name: oihnotwerks
-        description: 
+        description: Not relevant plant
       - name: oihtaxrcp_ex
-        description: 
+        description: External tax recipient
       - name: oiinex_ex
-        description: 
+        description: External include/exclude indicator
       - name: oiinex
-        description: 
+        description: Include/exclude indicator
       - name: oimetind
-        description: 
+        description: Measurement indicator
       - name: oinetcyc
-        description: 
+        description: Netting cycle
       - name: oioilcon
-        description: 
+        description: Oil content
       - name: oipipeval
-        description: 
+        description: Pipeline value
       - name: oiplantd
-        description: 
+        description: Destination plant
       - name: oipricie_ex
-        description: 
+        description: External price inclusive indicator
       - name: oipricie_im
-        description: 
+        description: Internal price inclusive indicator
       - name: oipricie
-        description: 
+        description: Price inclusive indicator
       - name: oipsdrc
-        description: 
+        description: Source of pricing
       - name: oisbrel
-        description: 
+        description: Subsequent billing release
       - name: oislf
-        description: 
+        description: Subsequent document reference
       - name: oitaxfrom_ex
-        description: 
+        description: External tax origin
       - name: oitaxfrom_im
-        description: 
+        description: Internal tax origin
       - name: oitaxfrom
-        description: 
+        description: Tax origin
       - name: oitaxgrp_ex
-        description: 
+        description: External tax group
       - name: oitaxgrp_im
-        description: 
+        description: Internal tax group
       - name: oitaxgrp
-        description: 
+        description: Tax group
       - name: oitaxto_ex
-        description: 
+        description: External tax destination
       - name: oitaxto_im
-        description: 
+        description: Internal tax destination
       - name: oitaxto
-        description: 
+        description: Tax destination
       - name: oiwap
-        description: 
+        description: Weighted average price
       - name: paobjnr
         description: Profitability segment number
       - name: pargb
