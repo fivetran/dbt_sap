@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_ekpo', True) and var('sap_using_ekko', True) and var('sap_using_t001w', True) and var('sap_using_ekbe', True) and var('sap_using_eket', True))) }}
+
 with purchasing_document_item as (
     select *
     from {{ ref('int_sap__purchasing_document_item') }}

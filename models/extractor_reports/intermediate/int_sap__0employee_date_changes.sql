@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_pa0000', True) and var('sap_using_pa0001', True) and var('sap_using_pa0007', True) and var('sap_using_pa0008', True) and var('sap_using_pa0031', True))) }}
+
 {% set employee_models = ['pa0000', 'pa0001', 'pa0007', 'pa0008', 'pa0031'] %}
 
 with

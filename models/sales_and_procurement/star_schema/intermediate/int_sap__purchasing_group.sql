@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_t024', True)) }}
+
 select
     ekgrp as purchasing_group_id,
     mandt as client_id,

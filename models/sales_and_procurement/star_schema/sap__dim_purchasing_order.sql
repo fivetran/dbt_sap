@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_ekko', True) and var('sap_using_dd07l', True) and var('sap_using_dd07t', True) and var('sap_using_t161', True) and var('sap_using_t161t', True) and var('sap_using_t024', True))) }}
+
 with purchasing_document_header as (
     select *
     from {{ ref('int_sap__purchasing_document_header') }}

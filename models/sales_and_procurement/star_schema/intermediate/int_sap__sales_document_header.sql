@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_vbak', True)) }}
+
 select
 	mandt as client_id,
     vbeln as sales_document_id,

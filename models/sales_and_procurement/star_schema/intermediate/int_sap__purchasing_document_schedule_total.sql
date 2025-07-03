@@ -1,4 +1,6 @@
-select 
+{{ config(enabled=var('sap_using_eket', True)) }}
+
+select
     purchasing_document_id, 
     purchasing_document_item_id, 
     max(item_delivery_date) as lastest_scheduled_delivery_date,

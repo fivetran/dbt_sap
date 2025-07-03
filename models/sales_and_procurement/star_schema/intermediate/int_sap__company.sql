@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_t001w', True)) }}
+
 select
     mandt as client_id,
     bukrs as company_code_id,

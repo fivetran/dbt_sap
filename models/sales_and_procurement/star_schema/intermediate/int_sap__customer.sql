@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_kna1', True)) }}
+
 select
     kunnr as customer_id,
     mandt as client_id,

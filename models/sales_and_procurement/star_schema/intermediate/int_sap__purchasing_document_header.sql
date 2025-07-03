@@ -1,3 +1,5 @@
+{{ config(enabled=var('sap_using_ekko', True)) }}
+
 select
     mandt as client_id,
     ebeln as purchasing_document_id,

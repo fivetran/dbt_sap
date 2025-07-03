@@ -1,3 +1,5 @@
+{{ config(enabled=(var('sap_using_mara', True) and var('sap_using_makt', True) and var('sap_using_t134', True) and var('sap_using_t134t', True))) }}
+
 with material as (
     select *
     from {{ ref('int_sap__material') }}
