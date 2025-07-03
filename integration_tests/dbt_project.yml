@@ -444,6 +444,8 @@ seeds:
         _fivetran_rowid: numeric
 
     sap_kna1_data:
+      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
+      +quote_columns: true
       +column_types:
         adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bbbnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -462,12 +464,24 @@ seeds:
         umjah: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         updat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         uptim: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_i_no_lyr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_uld_side: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_load_pref: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_i_no_lyr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_uld_side: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_load_pref: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_palhgt: numeric
+        umsa1: numeric
+        umsat: numeric
+    sap_kna1_data_bigquery:
+      +enabled: "{{ true if target.type == 'bigquery' else false }}"
+      +quote_columns: true
+      +alias: sap_kna1_data
+      +column_types:
         _vso_r_palhgt: numeric
         umsa1: numeric
         umsat: numeric
+    sap_kna1_data_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +quote_columns: true
+      +alias: sap_kna1_data
 
     sap_lfa1_data:
       +column_types:

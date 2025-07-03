@@ -1,8 +1,10 @@
 {{ config(enabled=var('sap_using_kna1', True)) }}
 
+{% set source_columns = adapter.get_columns_in_relation(ref('stg_sap__kna1_tmp')) %}
+
 with base as (
 
-    select * 
+    select {{ remove_slashes_from_col_names(source_columns) }}
     from {{ ref('stg_sap__kna1_tmp') }}
 ),
 
@@ -11,7 +13,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_sap__kna1_tmp')),
+                source_columns=source_columns,
                 staging_columns=get_kna1_columns()
             )
         }}

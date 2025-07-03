@@ -383,26 +383,12 @@
     {"name": "zwert", "datatype": dbt.type_string()},
     {"name": "_fivetran_deleted", "datatype": "boolean"},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
-    {"name": "_fivetran_sap_archived", "datatype": dbt.type_string()}
+    {"name": "_fivetran_sap_archived", "datatype": dbt.type_string()},
+    {"name": "_accgo_is_co_rel", "datatype": dbt.type_string()},
+    {"name": "_bev1_nedepfree", "datatype": dbt.type_string()},
+    {"name": "_bev1_negen_item", "datatype": dbt.type_string()},
+    {"name": "_bev1_nestruccat", "datatype": dbt.type_string()}
 ] %}
-
-{% if target.type == 'bigquery' %}
-    {% set forward_slash_columns = [
-        {"name": "_accgo_is_co_rel", "datatype": dbt.type_string()},
-        {"name": "_bev1_nedepfree", "datatype": dbt.type_string()},
-        {"name": "_bev1_negen_item", "datatype": dbt.type_string()},
-        {"name": "_bev1_nestruccat", "datatype": dbt.type_string()}
-    ] %}
-{% else %}
-    {% set forward_slash_columns = [
-        {"name": "/accgo/is_co_rel", "datatype": dbt.type_string(), "alias": "_accgo_is_co_rel", "quote": true},
-        {"name": "/bev1/nedepfree", "datatype": dbt.type_string(), "alias": "_bev1_nedepfree", "quote": true},
-        {"name": "/bev1/negen_item", "datatype": dbt.type_string(), "alias": "_bev1_negen_item", "quote": true},
-        {"name": "/bev1/nestruccat", "datatype": dbt.type_string(), "alias": "_bev1_nestruccat", "quote": true}
-    ] %}
-{% endif %}
-
-{%- do columns.extend(forward_slash_columns) -%}
 
 {{ return(columns) }}
 
