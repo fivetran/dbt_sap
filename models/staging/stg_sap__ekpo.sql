@@ -11,7 +11,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.source_columns,
+                source_columns=source_columns,
                 staging_columns=get_ekpo_columns()
             )
         }}
