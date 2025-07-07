@@ -21,7 +21,7 @@ fields as (
 final as (
     select
         ekorg,
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         ekotx,
         txfus,
         txgru,
