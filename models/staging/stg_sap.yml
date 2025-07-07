@@ -310,6 +310,10 @@ models:
       - name: domvalue_l
         description: Domain value
 
+      - name: as4vers
+        description: ''
+      - name: hvr_change_time
+        description: ''
   - name: stg_sap__dd07t
     description: Domain text values
     columns:
@@ -320,6 +324,12 @@ models:
       - name: domvalue_l
         description: Domain value
 
+      - name: as4vers
+        description: ''
+      - name: ddtext
+        description: ''
+      - name: hvr_change_time
+        description: ''
   - name: stg_sap__ekbe
     description: Purchasing document history
     columns:
@@ -672,6 +682,282 @@ models:
       - name: mandt
         description: Client
 
+      - name: abgru
+        description: ''
+      - name: absgr
+        description: ''
+      - name: addnr
+        description: ''
+      - name: adrnr
+        description: ''
+      - name: aedat
+        description: ''
+      - name: angdt
+        description: ''
+      - name: angnr
+        description: ''
+      - name: aurel_allow
+        description: ''
+      - name: ausnr
+        description: ''
+      - name: autlf
+        description: ''
+      - name: bedat
+        description: ''
+      - name: bnddt
+        description: ''
+      - name: bsakz
+        description: ''
+      - name: bsart
+        description: ''
+      - name: bstyp
+        description: ''
+      - name: budg_type
+        description: ''
+      - name: bukrs
+        description: ''
+      - name: bwbdt
+        description: ''
+      - name: check_type
+        description: ''
+      - name: con_distr_lev
+        description: ''
+      - name: con_otb_req
+        description: ''
+      - name: con_prebook_lev
+        description: ''
+      - name: contract_allow
+        description: ''
+      - name: delper_allow
+        description: ''
+      - name: description
+        description: ''
+      - name: dpamt
+        description: ''
+      - name: dpdat
+        description: ''
+      - name: dppct
+        description: ''
+      - name: dptyp
+        description: ''
+      - name: eindt
+        description: ''
+      - name: eindt_allow
+        description: ''
+      - name: ekgrp
+        description: ''
+      - name: ekgrp_allow
+        description: ''
+      - name: ekorg
+        description: ''
+      - name: eq_eindt
+        description: ''
+      - name: eq_werks
+        description: ''
+      - name: ernam
+        description: ''
+      - name: exnum
+        description: ''
+      - name: fixpo
+        description: ''
+      - name: fixpo_allow
+        description: ''
+      - name: force_cnt
+        description: ''
+      - name: force_id
+        description: ''
+      - name: frggr
+        description: ''
+      - name: frgke
+        description: ''
+      - name: frgrl
+        description: ''
+      - name: frgsx
+        description: ''
+      - name: frgzu
+        description: ''
+      - name: fsh_item_group
+        description: ''
+      - name: fsh_os_stg_change
+        description: ''
+      - name: fsh_snst_status
+        description: ''
+      - name: fsh_transaction
+        description: ''
+      - name: fsh_vas_last_item
+        description: ''
+      - name: gwldt
+        description: ''
+      - name: handoverloc
+        description: ''
+      - name: hierarchy_exists
+        description: ''
+      - name: hvr_change_time
+        description: ''
+      - name: hvr_is_deleted
+        description: ''
+      - name: ihran
+        description: ''
+      - name: ihrez
+        description: ''
+      - name: inco1
+        description: ''
+      - name: inco2
+        description: ''
+      - name: inco2_l
+        description: ''
+      - name: inco3_l
+        description: ''
+      - name: incov
+        description: ''
+      - name: kalsm
+        description: ''
+      - name: kdatb
+        description: ''
+      - name: kdate
+        description: ''
+      - name: key_id
+        description: ''
+      - name: key_id_allow
+        description: ''
+      - name: knumv
+        description: ''
+      - name: konnr
+        description: ''
+      - name: kornr
+        description: ''
+      - name: ktwrt
+        description: ''
+      - name: kufix
+        description: ''
+      - name: kunnr
+        description: ''
+      - name: lands
+        description: ''
+      - name: lblif
+        description: ''
+      - name: legal_contract
+        description: ''
+      - name: lifnr
+        description: ''
+      - name: lifre
+        description: ''
+      - name: llief
+        description: ''
+      - name: loekz
+        description: ''
+      - name: logsy
+        description: ''
+      - name: lphis
+        description: ''
+      - name: lponr
+        description: ''
+      - name: ltsnr_allow
+        description: ''
+      - name: memory
+        description: ''
+      - name: memorytype
+        description: ''
+      - name: msr_id
+        description: ''
+      - name: otb_cond_type
+        description: ''
+      - name: otb_curr
+        description: ''
+      - name: otb_level
+        description: ''
+      - name: otb_reason
+        description: ''
+      - name: otb_res_value
+        description: ''
+      - name: otb_spec_value
+        description: ''
+      - name: otb_status
+        description: ''
+      - name: otb_value
+        description: ''
+      - name: pincr
+        description: ''
+      - name: pohf_type
+        description: ''
+      - name: procstat
+        description: ''
+      - name: pstyp_allow
+        description: ''
+      - name: reason_code
+        description: ''
+      - name: release_date
+        description: ''
+      - name: reloc_id
+        description: ''
+      - name: reloc_seq_id
+        description: ''
+      - name: reswk
+        description: ''
+      - name: retpc
+        description: ''
+      - name: rettp
+        description: ''
+      - name: revno
+        description: ''
+      - name: rlwrt
+        description: ''
+      - name: scmproc
+        description: ''
+      - name: shipcond
+        description: ''
+      - name: source_logsys
+        description: ''
+      - name: spr_rsn_profile
+        description: ''
+      - name: spras
+        description: ''
+      - name: stafo
+        description: ''
+      - name: stako
+        description: ''
+      - name: statu
+        description: ''
+      - name: stceg
+        description: ''
+      - name: stceg_l
+        description: ''
+      - name: submi
+        description: ''
+      - name: telf1
+        description: ''
+      - name: threshold_exists
+        description: ''
+      - name: unsez
+        description: ''
+      - name: upinc
+        description: ''
+      - name: verkf
+        description: ''
+      - name: vsart
+        description: ''
+      - name: vzskz
+        description: ''
+      - name: waers
+        description: ''
+      - name: weakt
+        description: ''
+      - name: werks_allow
+        description: ''
+      - name: wkurs
+        description: ''
+      - name: zbd1p
+        description: ''
+      - name: zbd1t
+        description: ''
+      - name: zbd2p
+        description: ''
+      - name: zbd2t
+        description: ''
+      - name: zbd3t
+        description: ''
+      - name: zterm
+        description: ''
   - name: stg_sap__ekpo
     description: Purchasing document item
     columns:
@@ -1551,6 +1837,8 @@ models:
       - name: wsl
         description: Value in original transaction currency
 
+      - name: _fivetran_synced
+        description: ''
   - name: stg_sap__faglflext
     description: General ledger (Totals)
     tests:
@@ -1785,6 +2073,12 @@ models:
       - name: zzspreg
         description: Special region
 
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_rowid
+        description: ''
+      - name: _fivetran_synced
+        description: ''
   - name: stg_sap__kna1
     description: General Data in Customer Master
     tests:
@@ -1872,6 +2166,322 @@ models:
       - name: xcpdk
         description: Indictoar (Is the account a one-time account?)
 
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_sap_archived
+        description: ''
+      - name: _fivetran_synced
+        description: ''
+      - name: _vso_r_dpoint
+        description: ''
+      - name: _vso_r_i_no_lyr
+        description: ''
+      - name: _vso_r_load_pref
+        description: ''
+      - name: _vso_r_matpal
+        description: ''
+      - name: _vso_r_one_mat
+        description: ''
+      - name: _vso_r_one_sort
+        description: ''
+      - name: _vso_r_pal_ul
+        description: ''
+      - name: _vso_r_palhgt
+        description: ''
+      - name: _vso_r_pk_mat
+        description: ''
+      - name: _vso_r_uld_side
+        description: ''
+      - name: _xlso_client
+        description: ''
+      - name: _xlso_customer
+        description: ''
+      - name: _xlso_partner
+        description: ''
+      - name: _xlso_pref_pay
+        description: ''
+      - name: _xlso_sysid
+        description: ''
+      - name: adrnr
+        description: ''
+      - name: alc
+        description: ''
+      - name: anred
+        description: ''
+      - name: aufsd
+        description: ''
+      - name: bahne
+        description: ''
+      - name: bahns
+        description: ''
+      - name: bbbnr
+        description: ''
+      - name: bbsnr
+        description: ''
+      - name: begru
+        description: ''
+      - name: bubkz
+        description: ''
+      - name: cassd
+        description: ''
+      - name: ccc01
+        description: ''
+      - name: ccc02
+        description: ''
+      - name: ccc03
+        description: ''
+      - name: ccc04
+        description: ''
+      - name: cfopc
+        description: ''
+      - name: cityc
+        description: ''
+      - name: civve
+        description: ''
+      - name: cnae
+        description: ''
+      - name: comsize
+        description: ''
+      - name: confs
+        description: ''
+      - name: crtn
+        description: ''
+      - name: cvp_xblck
+        description: ''
+      - name: datlt
+        description: ''
+      - name: dear1
+        description: ''
+      - name: dear2
+        description: ''
+      - name: dear3
+        description: ''
+      - name: dear4
+        description: ''
+      - name: dear5
+        description: ''
+      - name: decregpc
+        description: ''
+      - name: dtams
+        description: ''
+      - name: dtaws
+        description: ''
+      - name: duefl
+        description: ''
+      - name: duns
+        description: ''
+      - name: duns4
+        description: ''
+      - name: ekont
+        description: ''
+      - name: erdat
+        description: ''
+      - name: ernam
+        description: ''
+      - name: etikg
+        description: ''
+      - name: exabl
+        description: ''
+      - name: exp
+        description: ''
+      - name: faksd
+        description: ''
+      - name: fee_schedule
+        description: ''
+      - name: fiskn
+        description: ''
+      - name: fityp
+        description: ''
+      - name: gform
+        description: ''
+      - name: hzuor
+        description: ''
+      - name: icmstaxpay
+        description: ''
+      - name: indtyp
+        description: ''
+      - name: inspatdebi
+        description: ''
+      - name: inspbydebi
+        description: ''
+      - name: j_1kfrepre
+        description: ''
+      - name: j_1kftbus
+        description: ''
+      - name: j_1kftind
+        description: ''
+      - name: jmjah
+        description: ''
+      - name: jmzah
+        description: ''
+      - name: katr1
+        description: ''
+      - name: katr10
+        description: ''
+      - name: katr2
+        description: ''
+      - name: katr3
+        description: ''
+      - name: katr4
+        description: ''
+      - name: katr5
+        description: ''
+      - name: katr6
+        description: ''
+      - name: katr7
+        description: ''
+      - name: katr8
+        description: ''
+      - name: katr9
+        description: ''
+      - name: kdkg1
+        description: ''
+      - name: kdkg2
+        description: ''
+      - name: kdkg3
+        description: ''
+      - name: kdkg4
+        description: ''
+      - name: kdkg5
+        description: ''
+      - name: knazk
+        description: ''
+      - name: knrza
+        description: ''
+      - name: knurl
+        description: ''
+      - name: konzs
+        description: ''
+      - name: ktocd
+        description: ''
+      - name: legalnat
+        description: ''
+      - name: lifsd
+        description: ''
+      - name: locco
+        description: ''
+      - name: lzone
+        description: ''
+      - name: mcod1
+        description: ''
+      - name: mcod2
+        description: ''
+      - name: mcod3
+        description: ''
+      - name: milve
+        description: ''
+      - name: name4
+        description: ''
+      - name: nodel
+        description: ''
+      - name: oid_poreqd
+        description: ''
+      - name: oidrc
+        description: ''
+      - name: oipbl
+        description: ''
+      - name: pmt_office
+        description: ''
+      - name: psofg
+        description: ''
+      - name: psohs
+        description: ''
+      - name: psois
+        description: ''
+      - name: pson1
+        description: ''
+      - name: pson2
+        description: ''
+      - name: pson3
+        description: ''
+      - name: psoo1
+        description: ''
+      - name: psoo2
+        description: ''
+      - name: psoo3
+        description: ''
+      - name: psoo4
+        description: ''
+      - name: psoo5
+        description: ''
+      - name: psost
+        description: ''
+      - name: psotl
+        description: ''
+      - name: psovn
+        description: ''
+      - name: rg
+        description: ''
+      - name: rgdate
+        description: ''
+      - name: ric
+        description: ''
+      - name: rne
+        description: ''
+      - name: rnedate
+        description: ''
+      - name: rpmkr
+        description: ''
+      - name: sperr
+        description: ''
+      - name: sperz
+        description: ''
+      - name: stcd4
+        description: ''
+      - name: stcd5
+        description: ''
+      - name: stcdt
+        description: ''
+      - name: stceg
+        description: ''
+      - name: stkza
+        description: ''
+      - name: stkzn
+        description: ''
+      - name: stkzu
+        description: ''
+      - name: suframa
+        description: ''
+      - name: tdt
+        description: ''
+      - name: telbx
+        description: ''
+      - name: telf2
+        description: ''
+      - name: teltx
+        description: ''
+      - name: telx1
+        description: ''
+      - name: txjcd
+        description: ''
+      - name: txlw1
+        description: ''
+      - name: txlw2
+        description: ''
+      - name: uf
+        description: ''
+      - name: umjah
+        description: ''
+      - name: umsa1
+        description: ''
+      - name: umsat
+        description: ''
+      - name: updat
+        description: ''
+      - name: uptim
+        description: ''
+      - name: uwaer
+        description: ''
+      - name: xicms
+        description: ''
+      - name: xknza
+        description: ''
+      - name: xsubt
+        description: ''
+      - name: xxipi
+        description: ''
+      - name: xzemp
+        description: ''
   - name: stg_sap__lfa1
     description: Vendor master (General section)
     tests:
@@ -2216,6 +2826,244 @@ models:
       - name: zeivr
         description: Document version (without document management system)
 
+      - name: _accgo_assgd_uom
+        description: ''
+      - name: _bev1_luldegrp
+        description: ''
+      - name: _bev1_luleinh
+        description: ''
+      - name: _bev1_nestruccat
+        description: ''
+      - name: _dsd_sl_toltyp
+        description: ''
+      - name: _dsd_sv_cnt_grp
+        description: ''
+      - name: _dsd_vc_group
+        description: ''
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_rowid
+        description: ''
+      - name: _fivetran_sap_archived
+        description: ''
+      - name: _fivetran_synced
+        description: ''
+      - name: _sttpec_country_ref
+        description: ''
+      - name: _sttpec_prdcat
+        description: ''
+      - name: _sttpec_sertype
+        description: ''
+      - name: _sttpec_syncact
+        description: ''
+      - name: _sttpec_syncchg
+        description: ''
+      - name: _sttpec_synctime
+        description: ''
+      - name: _vso_r_bot_ind
+        description: ''
+      - name: _vso_r_kzgvh_ind
+        description: ''
+      - name: _vso_r_no_p_gvh
+        description: ''
+      - name: _vso_r_pal_b_ht
+        description: ''
+      - name: _vso_r_pal_ind
+        description: ''
+      - name: _vso_r_pal_min_h
+        description: ''
+      - name: _vso_r_pal_ovr_d
+        description: ''
+      - name: _vso_r_pal_ovr_w
+        description: ''
+      - name: _vso_r_quan_unit
+        description: ''
+      - name: _vso_r_stack_ind
+        description: ''
+      - name: _vso_r_stack_no
+        description: ''
+      - name: _vso_r_tilt_ind
+        description: ''
+      - name: _vso_r_tol_b_ht
+        description: ''
+      - name: _vso_r_top_ind
+        description: ''
+      - name: adprof
+        description: ''
+      - name: adspc_spc
+        description: ''
+      - name: allow_pmat_igno
+        description: ''
+      - name: animal_origin
+        description: ''
+      - name: anp
+        description: ''
+      - name: bbtyp
+        description: ''
+      - name: brand_id
+        description: ''
+      - name: bstat
+        description: ''
+      - name: care_code
+        description: ''
+      - name: cmrel
+        description: ''
+      - name: cobjid
+        description: ''
+      - name: color
+        description: ''
+      - name: color_atinn
+        description: ''
+      - name: commodity
+        description: ''
+      - name: cotype
+        description: ''
+      - name: cwqproc
+        description: ''
+      - name: cwqrel
+        description: ''
+      - name: cwqtolgr
+        description: ''
+      - name: dg_pack_status
+        description: ''
+      - name: fashgrd
+        description: ''
+      - name: fiber_code1
+        description: ''
+      - name: fiber_code2
+        description: ''
+      - name: fiber_code3
+        description: ''
+      - name: fiber_code4
+        description: ''
+      - name: fiber_code5
+        description: ''
+      - name: fiber_part1
+        description: ''
+      - name: fiber_part2
+        description: ''
+      - name: fiber_part3
+        description: ''
+      - name: fiber_part4
+        description: ''
+      - name: fiber_part5
+        description: ''
+      - name: free_char
+        description: ''
+      - name: fsh_mg_at1
+        description: ''
+      - name: fsh_mg_at2
+        description: ''
+      - name: fsh_mg_at3
+        description: ''
+      - name: fsh_sc_mid
+        description: ''
+      - name: fsh_seaim
+        description: ''
+      - name: fsh_sealv
+        description: ''
+      - name: gds_relevant
+        description: ''
+      - name: gennr
+        description: ''
+      - name: gtin_variant
+        description: ''
+      - name: hazmat
+        description: ''
+      - name: herkl
+        description: ''
+      - name: hndlcode
+        description: ''
+      - name: hutyp
+        description: ''
+      - name: hutyp_dflt
+        description: ''
+      - name: imatn
+        description: ''
+      - name: ipmipproduct
+        description: ''
+      - name: loglev_reto
+        description: ''
+      - name: logunit
+        description: ''
+      - name: matfi
+        description: ''
+      - name: maxb
+        description: ''
+      - name: maxc
+        description: ''
+      - name: maxc_tol
+        description: ''
+      - name: maxdim_uom
+        description: ''
+      - name: maxh
+        description: ''
+      - name: maxl
+        description: ''
+      - name: mcond
+        description: ''
+      - name: medium
+        description: ''
+      - name: mfrgr
+        description: ''
+      - name: oigroupnam
+        description: ''
+      - name: oihmtxgr
+        description: ''
+      - name: oitrind
+        description: ''
+      - name: packcode
+        description: ''
+      - name: picnum
+        description: ''
+      - name: pilferable
+        description: ''
+      - name: ps_smartform
+        description: ''
+      - name: psm_code
+        description: ''
+      - name: qgrp
+        description: ''
+      - name: qqtime
+        description: ''
+      - name: qqtimeuom
+        description: ''
+      - name: retdelc
+        description: ''
+      - name: rmatp
+        description: ''
+      - name: serial
+        description: ''
+      - name: sgt_covsa
+        description: ''
+      - name: sgt_csgr
+        description: ''
+      - name: sgt_rel
+        description: ''
+      - name: sgt_scope
+        description: ''
+      - name: sgt_stat
+        description: ''
+      - name: size1
+        description: ''
+      - name: size1_atinn
+        description: ''
+      - name: size2
+        description: ''
+      - name: size2_atinn
+        description: ''
+      - name: sled_bbd
+        description: ''
+      - name: tare_var
+        description: ''
+      - name: textile_comp_ind
+        description: ''
+      - name: weora
+        description: ''
+      - name: whmatgr
+        description: ''
+      - name: whstc
+        description: ''
   - name: stg_sap__pa0000
     description: HR master record--infotype 0000 (Actions)
     tests:
@@ -3237,6 +4085,12 @@ models:
       - name: xspep
         description: Indicator (Account blocked for planning?)
 
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_rowid
+        description: ''
+      - name: _fivetran_synced
+        description: ''
   - name: stg_sap__t001
     description: Company codes
     tests:
@@ -3274,12 +4128,320 @@ models:
       - name: werks
         description: Plant
 
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_rowid
+        description: ''
+      - name: _fivetran_sap_archived
+        description: ''
+      - name: _fivetran_synced
+        description: ''
+      - name: achvm
+        description: ''
+      - name: adrnr
+        description: ''
+      - name: awsls
+        description: ''
+      - name: bapovar
+        description: ''
+      - name: bedpl
+        description: ''
+      - name: betol
+        description: ''
+      - name: bukrs
+        description: ''
+      - name: bukrs_glob
+        description: ''
+      - name: butxt
+        description: ''
+      - name: buvar
+        description: ''
+      - name: bwkey
+        description: ''
+      - name: bzirk
+        description: ''
+      - name: bzqhl
+        description: ''
+      - name: chazv
+        description: ''
+      - name: chazv_old
+        description: ''
+      - name: cityc
+        description: ''
+      - name: counc
+        description: ''
+      - name: dep_store
+        description: ''
+      - name: dkweg
+        description: ''
+      - name: dtamtc
+        description: ''
+      - name: dtaxr
+        description: ''
+      - name: dtprov
+        description: ''
+      - name: dttaxc
+        description: ''
+      - name: dttdsp
+        description: ''
+      - name: dvsart
+        description: ''
+      - name: ebukr
+        description: ''
+      - name: ekorg
+        description: ''
+      - name: fabkl
+        description: ''
+      - name: fdbuk
+        description: ''
+      - name: fikrs
+        description: ''
+      - name: fm_derive_acc
+        description: ''
+      - name: fmhrdate
+        description: ''
+      - name: fprfw
+        description: ''
+      - name: fsh_bom_maintenance
+        description: ''
+      - name: fsh_mg_arun_req
+        description: ''
+      - name: fsh_seaim
+        description: ''
+      - name: fstva
+        description: ''
+      - name: fstvare
+        description: ''
+      - name: hvr_change_time
+        description: ''
+      - name: hvr_is_deleted
+        description: ''
+      - name: impda
+        description: ''
+      - name: infmt
+        description: ''
+      - name: iwerk
+        description: ''
+      - name: j_1bbranch
+        description: ''
+      - name: kkber
+        description: ''
+      - name: kkowk
+        description: ''
+      - name: kokfi
+        description: ''
+      - name: kopim
+        description: ''
+      - name: kordb
+        description: ''
+      - name: ktop2
+        description: ''
+      - name: ktopl
+        description: ''
+      - name: kunnr
+        description: ''
+      - name: land1
+        description: ''
+      - name: let01
+        description: ''
+      - name: let02
+        description: ''
+      - name: let03
+        description: ''
+      - name: lifnr
+        description: ''
+      - name: mgvlareval
+        description: ''
+      - name: mgvlaupd
+        description: ''
+      - name: mgvupd
+        description: ''
+      - name: misch
+        description: ''
+      - name: mregl
+        description: ''
+      - name: mwska
+        description: ''
+      - name: mwskv
+        description: ''
+      - name: name1
+        description: ''
+      - name: name2
+        description: ''
+      - name: nodetype
+        description: ''
+      - name: nschema
+        description: ''
+      - name: offsacct
+        description: ''
+      - name: oihcredipi
+        description: ''
+      - name: oihvtype
+        description: ''
+      - name: oilival
+        description: ''
+      - name: opvar
+        description: ''
+      - name: ort01
+        description: ''
+      - name: periv
+        description: ''
+      - name: pfach
+        description: ''
+      - name: pkosa
+        description: ''
+      - name: pp_pdate
+        description: ''
+      - name: pst_per_var
+        description: ''
+      - name: pstlz
+        description: ''
+      - name: rcomp
+        description: ''
+      - name: regio
+        description: ''
+      - name: sourcing
+        description: ''
+      - name: spart
+        description: ''
+      - name: spras
+        description: ''
+      - name: stceg
+        description: ''
+      - name: storetype
+        description: ''
+      - name: stras
+        description: ''
+      - name: surccm
+        description: ''
+      - name: taxiw
+        description: ''
+      - name: txjcd
+        description: ''
+      - name: txkrs
+        description: ''
+      - name: txnam_ma1
+        description: ''
+      - name: txnam_ma2
+        description: ''
+      - name: txnam_ma3
+        description: ''
+      - name: umkrs
+        description: ''
+      - name: vkorg
+        description: ''
+      - name: vlfkz
+        description: ''
+      - name: vstel
+        description: ''
+      - name: vtbfi
+        description: ''
+      - name: vtweg
+        description: ''
+      - name: waabw
+        description: ''
+      - name: waers
+        description: ''
+      - name: wfvar
+        description: ''
+      - name: wksop
+        description: ''
+      - name: wt_newwt
+        description: ''
+      - name: xbbba
+        description: ''
+      - name: xbbbe
+        description: ''
+      - name: xbbbf
+        description: ''
+      - name: xbbko
+        description: ''
+      - name: xbbsc
+        description: ''
+      - name: xcession
+        description: ''
+      - name: xcos
+        description: ''
+      - name: xcovr
+        description: ''
+      - name: xeink
+        description: ''
+      - name: xextb
+        description: ''
+      - name: xfdis
+        description: ''
+      - name: xfdmm
+        description: ''
+      - name: xfdsd
+        description: ''
+      - name: xfmca
+        description: ''
+      - name: xfmcb
+        description: ''
+      - name: xfmco
+        description: ''
+      - name: xgjrv
+        description: ''
+      - name: xgsbe
+        description: ''
+      - name: xjvaa
+        description: ''
+      - name: xkdft
+        description: ''
+      - name: xkkbi
+        description: ''
+      - name: xmwsn
+        description: ''
+      - name: xnegp
+        description: ''
+      - name: xprod
+        description: ''
+      - name: xskfn
+        description: ''
+      - name: xslta
+        description: ''
+      - name: xsplt
+        description: ''
+      - name: xstdt
+        description: ''
+      - name: xvalv
+        description: ''
+      - name: xvatdate
+        description: ''
+      - name: xvvwa
+        description: ''
+      - name: zone1
+        description: ''
   - name: stg_sap__t024
     description: Purchasing groups
     columns:
       - name: ekgrp
         description: Purchasing group
 
+      - name: _fivetran_deleted
+        description: ''
+      - name: _fivetran_rowid
+        description: ''
+      - name: _fivetran_sap_archived
+        description: ''
+      - name: _fivetran_synced
+        description: ''
+      - name: eknam
+        description: ''
+      - name: ektel
+        description: ''
+      - name: ldest
+        description: ''
+      - name: mandt
+        description: ''
+      - name: smtp_addr
+        description: ''
+      - name: tel_extens
+        description: ''
+      - name: tel_number
+        description: ''
+      - name: telfx
+        description: ''
   - name: stg_sap__t024e
     description: Purchasing organization text
     columns:
@@ -3320,6 +4482,80 @@ models:
       - name: mtart
         description: Material type
 
+      - name: aranz
+        description: ''
+      - name: ardel
+        description: ''
+      - name: begru
+        description: ''
+      - name: bsext
+        description: ''
+      - name: bsint
+        description: ''
+      - name: cchis
+        description: ''
+      - name: chneu
+        description: ''
+      - name: class
+        description: ''
+      - name: ctype
+        description: ''
+      - name: ekalr
+        description: ''
+      - name: envop
+        description: ''
+      - name: flref
+        description: ''
+      - name: hvr_change_time
+        description: ''
+      - name: hvr_is_deleted
+        description: ''
+      - name: izust
+        description: ''
+      - name: kkref
+        description: ''
+      - name: kzgrp
+        description: ''
+      - name: kzkfg
+        description: ''
+      - name: kzmpn
+        description: ''
+      - name: kzpip
+        description: ''
+      - name: kzprc
+        description: ''
+      - name: kzrac
+        description: ''
+      - name: kzvpr
+        description: ''
+      - name: mandt
+        description: ''
+      - name: mbref
+        description: ''
+      - name: mstae
+        description: ''
+      - name: mtref
+        description: ''
+      - name: numke
+        description: ''
+      - name: numki
+        description: ''
+      - name: prdru
+        description: ''
+      - name: pstat
+        description: ''
+      - name: vmtpo
+        description: ''
+      - name: vnumke
+        description: ''
+      - name: vnumki
+        description: ''
+      - name: vprsv
+        description: ''
+      - name: vtype
+        description: ''
+      - name: wmakg
+        description: ''
   - name: stg_sap__t134t
     description: Material type descriptions
     columns:
@@ -3328,6 +4564,12 @@ models:
       - name: mttxt
         description: Description
 
+      - name: mandt
+        description: ''
+      - name: mtbez
+        description: ''
+      - name: spras
+        description: ''
   - name: stg_sap__t161
     description: Purchasing document types
     columns:
@@ -3336,6 +4578,116 @@ models:
       - name: bstyp
         description: Document category
 
+      - name: _sapmp_atnam
+        description: ''
+      - name: _sapmp_ceact
+        description: ''
+      - name: _sapmp_gauf
+        description: ''
+      - name: _sapmp_pausw
+        description: ''
+      - name: _sapmp_pdact
+        description: ''
+      - name: _sapmp_pprot
+        description: ''
+      - name: _sapmp_puser
+        description: ''
+      - name: abgebot
+        description: ''
+      - name: abvor
+        description: ''
+      - name: ar_object
+        description: ''
+      - name: brefn
+        description: ''
+      - name: bsakz
+        description: ''
+      - name: cp_aktive
+        description: ''
+      - name: cptype
+        description: ''
+      - name: fls_rsto
+        description: ''
+      - name: fsh_dpr_detpro
+        description: ''
+      - name: fsh_excl_return
+        description: ''
+      - name: fsh_po_idoc
+        description: ''
+      - name: fsh_var_kalsm
+        description: ''
+      - name: fsh_vas_act
+        description: ''
+      - name: fsh_vas_del
+        description: ''
+      - name: fsh_vas_detdt
+        description: ''
+      - name: fsh_vas_kalsm
+        description: ''
+      - name: gsfrg
+        description: ''
+      - name: hityp
+        description: ''
+      - name: hvr_change_time
+        description: ''
+      - name: hvr_is_deleted
+        description: ''
+      - name: koako
+        description: ''
+      - name: koett
+        description: ''
+      - name: kornr
+        description: ''
+      - name: kzale
+        description: ''
+      - name: lphis
+        description: ''
+      - name: mandt
+        description: ''
+      - name: mill_omkz
+        description: ''
+      - name: msr_active
+        description: ''
+      - name: numka
+        description: ''
+      - name: numkc
+        description: ''
+      - name: numke
+        description: ''
+      - name: numki
+        description: ''
+      - name: oicsegi
+        description: ''
+      - name: oirfqreq
+        description: ''
+      - name: pargr
+        description: ''
+      - name: pincr
+        description: ''
+      - name: rdp_profile
+        description: ''
+      - name: refba
+        description: ''
+      - name: shenq
+        description: ''
+      - name: stafo
+        description: ''
+      - name: stako
+        description: ''
+      - name: tolsl
+        description: ''
+      - name: umlif
+        description: ''
+      - name: upinc
+        description: ''
+      - name: variante
+        description: ''
+      - name: wrf_enable_dateline
+        description: ''
+      - name: wvvkz
+        description: ''
+      - name: xlokz
+        description: ''
   - name: stg_sap__t161t
     description: Purchasing doc type texts
     columns:
@@ -3346,6 +4698,10 @@ models:
       - name: bstyp
         description: Document category
 
+      - name: mandt
+        description: ''
+      - name: spras
+        description: ''
   - name: stg_sap__t503
     description: Employee group/subgroup
     tests:
@@ -3409,6 +4765,22 @@ models:
       - name: abgru
         description: Reason code
 
+      - name: dragr
+        description: ''
+      - name: ep_off
+        description: ''
+      - name: fk_erl
+        description: ''
+      - name: fsh_pqr_spec
+        description: ''
+      - name: hvr_change_time
+        description: ''
+      - name: hvr_is_deleted
+        description: ''
+      - name: kowrr
+        description: ''
+      - name: mandt
+        description: ''
   - name: stg_sap__tvagt
     description: Sales document rejection reason text
     columns:
@@ -3417,6 +4789,10 @@ models:
       - name: bezei
         description: Description
 
+      - name: mandt
+        description: ''
+      - name: spras
+        description: ''
   - name: stg_sap__vbak
     description: Sales document header data
     columns:
