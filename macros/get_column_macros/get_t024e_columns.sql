@@ -6,7 +6,7 @@
     {"name": "ekotx", "datatype": dbt.type_string()},
     {"name": "txfus", "datatype": dbt.type_string()},
     {"name": "txgru", "datatype": dbt.type_string()},
-    {"name": "bpeff", "datatype": dbt.type_date()},
+    {"name": "bpeff", "datatype": dbt.type_string()},
     {"name": "txkop", "datatype": dbt.type_string()},
     {"name": "kalse", "datatype": dbt.type_string()},
     {"name": "txadr", "datatype": dbt.type_string()},
