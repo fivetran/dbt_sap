@@ -1,4 +1,6 @@
-<p align="center">
+# SAP Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_sap/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_sap/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -9,8 +11,6 @@
     <a alt="PRs">
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
-
-# SAP Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_sap/))
 
 ## What does this dbt package do?
 - Provides recreations of the SAP extractor models to enable you to better understand your SAP data. The package achieves this by performing the following:
@@ -28,17 +28,29 @@ The following table provides a detailed list of all tables materialized within t
 
 | **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  This model is used for loading company code attributes, extracting from the t001 data source.                              |
-| [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  This model is used for loading company code text information, extracting from the t001 data source.   |
-| [sap__0company_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0company_text) |  This model is used for loading customer text data, extracting from the t880 data source.   |
-| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  This model is used for loading customer master data, originating from the kna1 source.                               |
+| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  This model is used for loading company code attributes, extracting from the `t001` data source.                              |
+| [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  This model is used for loading company code text information, extracting from the `t001` data source.   |
+| [sap__0company_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0company_text) |  This model is used for loading customer text data, extracting from the `t880` data source.   |
+| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  This model is used for loading customer master data, originating from the `kna1` source.                               |
 | [sap__0employee_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0employee_attr)    | This model contains information that concerns the employee's work relationship, extracting master data from the personnel administration tables. |
 | [sap__0fi_gl_10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10)    | This model extracts the transaction figures from the leading ledger in the new General Ledger.  |
 | [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | This model extracts line items from the leading ledger in new General Ledger Accounting.                                                                |
-| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |   This model is used for loading G/L Account Number master data, originating from the ska1 source.                 |
-| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the mara source.                                                           |
-| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the lfa1 source.                           |
-| [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the lfa1 source.     |
+| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |   This model is used for loading G/L Account Number master data, originating from the `ska1` source.                 |
+| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the `mara` source.                                                           |
+| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
+| [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
+
+| [sap__dim_customer](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_customer) | Represents customer dimension data from the `kna1` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_material](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_material) | Provides enriched material and material type data by combining attributes from the `mara`, `makt`, `t134`, and `t134t` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_plant](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_plant) | Delivers plant-level dimension data from the `t001w` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_purchasing_order) | Provides enriched purchase order data by combining attributes from the `ekko`, `dd07l`, `dd07t`, `t024`, and `t161` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_purchasing_organization](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_purchasing_organization) | Provides enriched purchasing organization data by combining attributes from the `t024e`, `t024et`, and related sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_rejection_reason](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_rejection_reason) | Provides enriched sales rejection reason data by combining attributes from the `tvag` and `tvagt` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__fact_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_purchasing_order) | Consolidates purchase order fact data from the `ekbe`, `eket`, `ekko`, `ekpo`, and `t001w` sources, representing transactional procurement activity across line items and orders. SAP field names are mapped to English readable column names. |
+| [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
+
+
+
 
 ### Materialized Models
 Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.

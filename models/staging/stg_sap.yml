@@ -2197,6 +2197,40 @@ models:
       - name: ekgrp
         description: Purchasing group
 
+  - name: stg_sap__t024e
+    description: Purchasing organization text
+    columns:
+      - name: ekorg
+        description: Purchasing organization
+      - name: mandt
+        description: Client
+      - name: ekotx
+        description: Description of the purchasing organization
+      - name: txfus
+        description: Function for text determination
+      - name: txgru
+        description: Text group
+      - name: bpeff
+        description: Effective date of text
+      - name: txkop
+        description: Copying rule for text
+      - name: kalse
+        description: Access sequence number
+      - name: txadr
+        description: Text address number
+      - name: mkals
+        description: Sequence for access
+      - name: bukrs
+        description: Company code
+      - name: bukrs_ntr
+        description: Company code description (non-translation ready)
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+
   - name: stg_sap__t134
     description: Material types
     columns:
@@ -2242,6 +2276,7 @@ models:
         description: Reason code
       - name: bezei
         description: Description
+
   - name: stg_sap__makt
     description: Material Descriptions
     columns:

@@ -4695,6 +4695,43 @@ sources:
           - name: telfx
             description: Fax number
 
+      - name: t024e
+        identifier: "{{ var('sap_t024e_identifier', 't024e') }}"
+        config:
+          enabled: "{{ var('sap_using_t024e', true) }}"
+        description: Purchasing organization text
+        columns:
+          - name: ekorg
+            description: Purchasing organization
+          - name: mandt
+            description: Client
+          - name: ekotx
+            description: Description of the purchasing organization
+          - name: txfus
+            description: Function for text determination
+          - name: txgru
+            description: Text group
+          - name: bpeff
+            description: Effective date of text
+          - name: txkop
+            description: Copying rule for text
+          - name: kalse
+            description: Access sequence number
+          - name: txadr
+            description: Text address number
+          - name: mkals
+            description: Sequence for access
+          - name: bukrs
+            description: Company code
+          - name: bukrs_ntr
+            description: Company code description (non-translation ready)
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
+
       - name: t134
         identifier: "{{ var('sap_t134_identifier', 't134') }}"
         config:

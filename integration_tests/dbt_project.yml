@@ -28,6 +28,7 @@ vars:
     sap_makt_identifier: "sap_makt_data"
     sap_t001w_identifier: "sap_t001w_data"
     sap_t024_identifier: "sap_t024_data"
+    sap_t024e_identifier: "sap_t024e_data"
     sap_t134_identifier: "sap_t134_data"
     sap_t134t_identifier: "sap_t134t_data"
     sap_t161_identifier: "sap_t161_data"

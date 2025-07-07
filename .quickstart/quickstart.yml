@@ -51,6 +51,8 @@ table_variables:
     - t001w
   sap_using_t024:
     - t024
+  sap_using_t024e:
+    - t024e
   sap_using_t134:
     - t134
   sap_using_t134t:

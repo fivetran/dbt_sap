@@ -13,7 +13,7 @@
     {"name": "smtp_addr", "datatype": dbt.type_string()},
     {"name": "tel_extens", "datatype": dbt.type_string()},
     {"name": "tel_number", "datatype": dbt.type_string()},
-    {"name": "telfx", "datatype": dbt.type_string()},
+    {"name": "telfx", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}
