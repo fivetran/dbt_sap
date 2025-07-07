@@ -3,3 +3,196 @@ version: 2
 models:
   - name: sap__dim_customer
     description: ""
+    columns:
+      - name: customer_number
+      - name: country_key_id
+      - name: customer_name
+      - name: city
+      - name: customer_id
+
+  - name: sap__dim_material
+    description: ""
+    columns:
+      - name: material_number
+      - name: material_description
+      - name: material_type_id
+      - name: material_type_description
+      - name: base_uom_id
+      - name: gross_weight
+      - name: weight_uom_id
+      - name: material_id
+
+  - name: sap__dim_plant
+    description: ""
+    columns:
+      - name: client_id
+      - name: plant_id
+      - name: order_allocation_run
+      - name: tax_indicator_plant_id
+      - name: city_code_id
+      - name: region_id
+      - name: factory_calendar_id
+      - name: actual_activities_updated
+      - name: mixed_costing
+      - name: vendor_type
+      - name: purchasing_organization_id
+      - name: node_type_supply_chain_network_id
+      - name: store_cat
+      - name: distrib_channel_id
+      - name: text_1st_dunning
+      - name: ipi_credit_allowed
+      - name: customer_number_plant_id
+      - name: name
+      - name: season_active_in_inventory_management
+      - name: address_id
+      - name: sales_district_id
+      - name: language_key_id
+      - name: street_and_house_number
+      - name: supply_region_region_supplied_id
+      - name: sales_organization_id
+      - name: structure_name_formation_id
+      - name: superior_department_store_id
+      - name: activating_requirements_planning
+      - name: vendor_number_plant_id
+      - name: po_box
+      - name: int_co_billing_div_id
+      - name: _3rd_reminder_exped
+      - name: exchange_valuation_indicator
+      - name: af_srce_det_via_atp
+      - name: sop_plant
+      - name: source_list
+      - name: county_code_id
+      - name: shipping_point_id
+      - name: text_3rd_dunning
+      - name: _2nd_reminder_exped
+      - name: batch_type_dms_used
+      - name: postal_code
+      - name: take_regular_vendor_into_account
+      - name: actual_costing
+      - name: cost_obj_controlling
+      - name: batch_status_mgmt
+      - name: tax_jurisdiction_id
+      - name: variance_key_id
+      - name: chazv_old
+      - name: control_credit_cost_centers
+      - name: valuation_area_id
+      - name: plant_category
+      - name: _1st_reminder_exped
+      - name: text_2nd_dunning
+      - name: control_bom
+      - name: conds_at_plant_level
+      - name: business_place_id
+      - name: po_tolerance
+      - name: sales_area_detrm
+      - name: name_2
+      - name: country_key_id
+      - name: archiving_marker
+      - name: distrib_profile_plant_id
+      - name: city
+      - name: maintenance_planning_plant_id
+      - name: _fivetran_deleted
+      - name: _fivetran_synced
+      - name: _fivetran_sap_archived
+
+  - name: sap__dim_purchasing_order
+    description: ""
+    columns:
+      - name: purchasing_document_id
+      - name: purchasing_document_category
+      - name: purchasing_document_category_txt
+      - name: purchasing_document_type_id
+      - name: purchasing_document_type_text
+      - name: purchasing_group_id
+      - name: description_purchasing_group
+      - name: purchasing_document_status
+      - name: purchasing_document_status_txt
+      - name: payment_terms
+      - name: reason_cancellation_id
+      - name: company_code_id
+
+  - name: sap__dim_purchasing_organization
+    description: ""
+    columns:
+      - name: company_code_id
+      - name: purchasing_organization_id
+      - name: description
+
+  - name: sap__dim_rejection_reason
+    description: ""
+    columns:
+      - name: reason_rejection_id
+      - name: rejection_reason_description
+
+  - name: sap__fact_purchasing_order
+    description: ""
+    columns:
+      - name: purchasing_document_id
+      - name: purchasing_document_item_id
+      - name: company_code_id
+      - name: currency_id
+      - name: material_id
+      - name: plant_id
+      - name: purchasing_group_id
+      - name: purchasing_organization_id
+      - name: vendor_id
+      - name: order_uom_id
+      - name: purchasing_document_date
+      - name: scheduled_delivery_date
+      - name: purchase_deliver_late_days
+      - name: purchase_late_lead_days
+      - name: purchase_order_quantity
+      - name: purchase_open_quantity
+      - name: purchasing_delivered_quantity
+      - name: purchase_late_quantity
+      - name: cancel_purchase_quantity
+      - name: purchase_order_amount
+      - name: purchasing_document_currency_amount
+      - name: document_currency_id
+      - name: purchase_open_amount
+      - name: purchase_delivered_amount
+      - name: cancel_purchase_amount
+      - name: purchase_late_amount
+      - name: purchase_invoiced_amount
+      - name: purchase_order_item_count
+      - name: purchase_item_late_count
+      - name: purchase_item_open_count
+      - name: purchase_item_closed_count
+
+  - name: sap__fact_sales_order
+    description: ""
+    columns:
+      - name: sales_document_number
+      - name: sales_document_item
+      - name: sd_document_category
+      - name: sales_document_type_id
+      - name: order_reason_id
+      - name: delivery_block_id
+      - name: sales_organization_id
+      - name: distribution_channel_id
+      - name: division_id
+      - name: plant_id
+      - name: document_date
+      - name: requested_delivery_date
+      - name: sold_to_customer_id
+      - name: sales_document_id
+      - name: material_id
+      - name: material_group_id
+      - name: sales_document_item_category_id
+      - name: product_hierarchy_id
+      - name: base_uom_id
+      - name: order_quantity
+      - name: sales_uom_id
+      - name: net_value
+      - name: net_price
+      - name: sd_document_currency_id
+      - name: gross_weight
+      - name: weight_uom_id
+      - name: created_date
+      - name: returns_item
+      - name: reason_rejection_id
+      - name: delivery_status
+      - name: overall_status
+      - name: item_delivery_status
+      - name: created_by
+      - name: _fivetran_deleted
+      - name: _fivetran_synced
