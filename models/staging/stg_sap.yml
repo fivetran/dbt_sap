@@ -311,9 +311,9 @@ models:
         description: Domain value
 
       - name: as4vers
-        description: ''
+        description: Active version
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
   - name: stg_sap__dd07t
     description: Domain text values
     columns:
@@ -325,11 +325,11 @@ models:
         description: Domain value
 
       - name: as4vers
-        description: ''
+        description: Active version
       - name: ddtext
-        description: ''
+        description: Text
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
   - name: stg_sap__ekbe
     description: Purchasing document history
     columns:
@@ -683,281 +683,281 @@ models:
         description: Client
 
       - name: abgru
-        description: ''
+        description: Reason for rejection
       - name: absgr
-        description: ''
+        description: Reason code
       - name: addnr
-        description: ''
+        description: Address number
       - name: adrnr
-        description: ''
+        description: Vendor address number
       - name: aedat
-        description: ''
+        description: Document change date
       - name: angdt
-        description: ''
+        description: Quotation date
       - name: angnr
-        description: ''
+        description: Quotation number
       - name: aurel_allow
-        description: ''
+        description: Allow automatic release
       - name: ausnr
-        description: ''
+        description: Authorization number
       - name: autlf
-        description: ''
+        description: Complete delivery indicator
       - name: bedat
-        description: ''
+        description: Purchasing document date
       - name: bnddt
-        description: ''
+        description: Deadline for submission
       - name: bsakz
-        description: ''
+        description: Collective number indicator
       - name: bsart
-        description: ''
+        description: Purchasing document type
       - name: bstyp
-        description: ''
+        description: Purchasing document category
       - name: budg_type
-        description: ''
+        description: Budget type
       - name: bukrs
-        description: ''
+        description: Company code
       - name: bwbdt
-        description: ''
+        description: Start of validity
       - name: check_type
-        description: ''
+        description: Type of check
       - name: con_distr_lev
-        description: ''
+        description: Contract distribution level
       - name: con_otb_req
-        description: ''
+        description: OTB check required
       - name: con_prebook_lev
-        description: ''
+        description: Prebook level for contract
       - name: contract_allow
-        description: ''
+        description: Contract type allowed
       - name: delper_allow
-        description: ''
+        description: Partial delivery allowed
       - name: description
-        description: ''
+        description: Header description
       - name: dpamt
-        description: ''
+        description: Down payment amount
       - name: dpdat
-        description: ''
+        description: Down payment date
       - name: dppct
-        description: ''
+        description: Down payment percentage
       - name: dptyp
-        description: ''
+        description: Down payment category
       - name: eindt
-        description: ''
+        description: Delivery date
       - name: eindt_allow
-        description: ''
+        description: Allow delivery date changes
       - name: ekgrp
-        description: ''
+        description: Purchasing group
       - name: ekgrp_allow
-        description: ''
+        description: Purchasing group allowed
       - name: ekorg
-        description: ''
+        description: Purchasing organization
       - name: eq_eindt
-        description: ''
+        description: Equal delivery date
       - name: eq_werks
-        description: ''
+        description: Equal plant
       - name: ernam
-        description: ''
+        description: Created by
       - name: exnum
-        description: ''
+        description: Export/import number
       - name: fixpo
-        description: ''
+        description: Fixed vendor indicator
       - name: fixpo_allow
-        description: ''
+        description: Fixed vendor allowed
       - name: force_cnt
-        description: ''
+        description: Forced confirmation count
       - name: force_id
-        description: ''
+        description: Forced confirmation ID
       - name: frggr
-        description: ''
+        description: Release group
       - name: frgke
-        description: ''
+        description: Release code
       - name: frgrl
-        description: ''
+        description: Release strategy
       - name: frgsx
-        description: ''
+        description: Release status
       - name: frgzu
-        description: ''
+        description: Release indicator
       - name: fsh_item_group
-        description: ''
+        description: Item group (fashion)
       - name: fsh_os_stg_change
-        description: ''
+        description: One-step stage change
       - name: fsh_snst_status
-        description: ''
+        description: Seasonal status
       - name: fsh_transaction
-        description: ''
+        description: Fashion transaction type
       - name: fsh_vas_last_item
-        description: ''
+        description: Last VAS item
       - name: gwldt
-        description: ''
+        description: Valid-to date
       - name: handoverloc
-        description: ''
+        description: Handover location
       - name: hierarchy_exists
-        description: ''
+        description: Document hierarchy exists
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
       - name: hvr_is_deleted
-        description: ''
+        description: HVR deletion flag
       - name: ihran
-        description: ''
+        description: Vendor internal reference
       - name: ihrez
-        description: ''
+        description: Vendor quotation number
       - name: inco1
-        description: ''
+        description: Incoterms (part 1)
       - name: inco2
-        description: ''
+        description: Incoterms (part 2)
       - name: inco2_l
-        description: ''
+        description: Incoterms long text 2
       - name: inco3_l
-        description: ''
+        description: Incoterms long text 3
       - name: incov
-        description: ''
+        description: Incoterms version
       - name: kalsm
-        description: ''
+        description: Calculation schema
       - name: kdatb
-        description: ''
+        description: Valid-from date
       - name: kdate
-        description: ''
+        description: Pricing date
       - name: key_id
-        description: ''
+        description: Key ID
       - name: key_id_allow
-        description: ''
+        description: Allow changes to key ID
       - name: knumv
-        description: ''
+        description: Document condition number
       - name: konnr
-        description: ''
+        description: Contract number
       - name: kornr
-        description: ''
+        description: Outline agreement item
       - name: ktwrt
-        description: ''
+        description: Total value of items
       - name: kufix
-        description: ''
+        description: Exchange rate fixed
       - name: kunnr
-        description: ''
+        description: Customer number
       - name: lands
-        description: ''
+        description: Country key
       - name: lblif
-        description: ''
+        description: Vendor delivery completed
       - name: legal_contract
-        description: ''
+        description: Legal contract ID
       - name: lifnr
-        description: ''
+        description: Vendor account number
       - name: lifre
-        description: ''
+        description: Subcontractor number
       - name: llief
-        description: ''
+        description: Main vendor
       - name: loekz
-        description: ''
+        description: Deletion indicator in purchasing document
       - name: logsy
-        description: ''
+        description: Logical system
       - name: lphis
-        description: ''
+        description: Change history
       - name: lponr
-        description: ''
+        description: Last PO number
       - name: ltsnr_allow
-        description: ''
+        description: Allowed supplier route
       - name: memory
-        description: ''
+        description: Buffer memory setting
       - name: memorytype
-        description: ''
+        description: Buffer memory type
       - name: msr_id
-        description: ''
+        description: Material substitution rule
       - name: otb_cond_type
-        description: ''
+        description: OTB condition type
       - name: otb_curr
-        description: ''
+        description: OTB currency
       - name: otb_level
-        description: ''
+        description: OTB level
       - name: otb_reason
-        description: ''
+        description: Reason for OTB block
       - name: otb_res_value
-        description: ''
+        description: Released value OTB
       - name: otb_spec_value
-        description: ''
+        description: Special release value OTB
       - name: otb_status
-        description: ''
+        description: OTB check status
       - name: otb_value
-        description: ''
+        description: OTB value
       - name: pincr
-        description: ''
+        description: Price increase percentage
       - name: pohf_type
-        description: ''
+        description: Purchase order history flag type
       - name: procstat
-        description: ''
+        description: Processing status
       - name: pstyp_allow
-        description: ''
+        description: Item category allowed
       - name: reason_code
-        description: ''
+        description: Rejection reason
       - name: release_date
-        description: ''
+        description: Release date
       - name: reloc_id
-        description: ''
+        description: Relocation ID
       - name: reloc_seq_id
-        description: ''
+        description: Relocation sequence ID
       - name: reswk
-        description: ''
+        description: Supplying plant
       - name: retpc
-        description: ''
+        description: Return percentage
       - name: rettp
-        description: ''
+        description: Return type
       - name: revno
-        description: ''
+        description: Revision number
       - name: rlwrt
-        description: ''
+        description: Release value
       - name: scmproc
-        description: ''
+        description: SCM process type
       - name: shipcond
-        description: ''
+        description: Shipping conditions
       - name: source_logsys
-        description: ''
+        description: Source logical system
       - name: spr_rsn_profile
-        description: ''
+        description: Delivery date reason profile
       - name: spras
-        description: ''
+        description: Language key
       - name: stafo
-        description: ''
+        description: Item status
       - name: stako
-        description: ''
+        description: Header status
       - name: statu
-        description: ''
+        description: Processing status
       - name: stceg
-        description: ''
+        description: VAT registration number
       - name: stceg_l
-        description: ''
+        description: VAT registration number (long)
       - name: submi
-        description: ''
+        description: Subcontracting indicator
       - name: telf1
-        description: ''
+        description: Telephone number
       - name: threshold_exists
-        description: ''
+        description: Threshold value exists
       - name: unsez
-        description: ''
+        description: Non-deductible input tax indicator
       - name: upinc
-        description: ''
+        description: Price update indicator
       - name: verkf
-        description: ''
+        description: Salesperson at vendor
       - name: vsart
-        description: ''
+        description: Shipping type
       - name: vzskz
-        description: ''
+        description: Payment card plan
       - name: waers
-        description: ''
+        description: Currency key
       - name: weakt
-        description: ''
+        description: Goods receipt indicator
       - name: werks_allow
-        description: ''
+        description: Plant allowed
       - name: wkurs
-        description: ''
+        description: Exchange rate
       - name: zbd1p
-        description: ''
+        description: Cash discount percentage 1
       - name: zbd1t
-        description: ''
+        description: Cash discount days 1
       - name: zbd2p
-        description: ''
+        description: Cash discount percentage 2
       - name: zbd2t
-        description: ''
+        description: Cash discount days 2
       - name: zbd3t
-        description: ''
+        description: Net payment terms period
       - name: zterm
-        description: ''
+        description: Terms of payment key
   - name: stg_sap__ekpo
     description: Purchasing document item
     columns:
@@ -1838,7 +1838,7 @@ models:
         description: Value in original transaction currency
 
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
   - name: stg_sap__faglflext
     description: General ledger (Totals)
     tests:
@@ -2074,11 +2074,11 @@ models:
         description: Special region
 
       - name: _fivetran_deleted
-        description: ''
+        description: Fivetran deletion marker
       - name: _fivetran_rowid
-        description: ''
+        description: Fivetran unique row ID
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
   - name: stg_sap__kna1
     description: General Data in Customer Master
     tests:
@@ -2167,321 +2167,321 @@ models:
         description: Indictoar (Is the account a one-time account?)
 
       - name: _fivetran_deleted
-        description: ''
+        description: Fivetran deletion marker
       - name: _fivetran_sap_archived
-        description: ''
+        description: Fivetran SAP archive marker
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
       - name: _vso_r_dpoint
-        description: ''
+        description: Rounding point
       - name: _vso_r_i_no_lyr
-        description: ''
+        description: Layer item number
       - name: _vso_r_load_pref
-        description: ''
+        description: Loading preference
       - name: _vso_r_matpal
-        description: ''
+        description: Material pallet type
       - name: _vso_r_one_mat
-        description: ''
+        description: Single material load
       - name: _vso_r_one_sort
-        description: ''
+        description: Single sort load
       - name: _vso_r_pal_ul
-        description: ''
+        description: Pallet unit load
       - name: _vso_r_palhgt
-        description: ''
+        description: Pallet height
       - name: _vso_r_pk_mat
-        description: ''
+        description: Package material
       - name: _vso_r_uld_side
-        description: ''
+        description: Loading side
       - name: _xlso_client
-        description: ''
+        description: XL system client
       - name: _xlso_customer
-        description: ''
+        description: XL system customer
       - name: _xlso_partner
-        description: ''
+        description: XL system partner
       - name: _xlso_pref_pay
-        description: ''
+        description: XL preferred payment
       - name: _xlso_sysid
-        description: ''
+        description: XL system ID
       - name: adrnr
-        description: ''
+        description: Address number
       - name: alc
-        description: ''
+        description: Alternate license classification
       - name: anred
-        description: ''
+        description: Title
       - name: aufsd
-        description: ''
+        description: Sales data authorization group
       - name: bahne
-        description: ''
+        description: Train station
       - name: bahns
-        description: ''
+        description: Train station (ship-to)
       - name: bbbnr
-        description: ''
+        description: International location number (part 1)
       - name: bbsnr
-        description: ''
+        description: International location number (part 2)
       - name: begru
-        description: ''
+        description: Authorization group
       - name: bubkz
-        description: ''
+        description: Interest calculation flag
       - name: cassd
-        description: ''
+        description: Cash security indicator
       - name: ccc01
-        description: ''
+        description: Credit card 1
       - name: ccc02
-        description: ''
+        description: Credit card 2
       - name: ccc03
-        description: ''
+        description: Credit card 3
       - name: ccc04
-        description: ''
+        description: Credit card 4
       - name: cfopc
-        description: ''
+        description: CFO approval code
       - name: cityc
-        description: ''
+        description: City code
       - name: civve
-        description: ''
+        description: Civil status
       - name: cnae
-        description: ''
+        description: Economic activity classification
       - name: comsize
-        description: ''
+        description: Company size indicator
       - name: confs
-        description: ''
+        description: Confirmation suppression
       - name: crtn
-        description: ''
+        description: Creation time
       - name: cvp_xblck
-        description: ''
+        description: Business partner block flag
       - name: datlt
-        description: ''
+        description: Date of last transaction
       - name: dear1
-        description: ''
+        description: Form of address 1
       - name: dear2
-        description: ''
+        description: Form of address 2
       - name: dear3
-        description: ''
+        description: Form of address 3
       - name: dear4
-        description: ''
+        description: Form of address 4
       - name: dear5
-        description: ''
+        description: Form of address 5
       - name: decregpc
-        description: ''
+        description: Declaration region
       - name: dtams
-        description: ''
+        description: Data amended status
       - name: dtaws
-        description: ''
+        description: Date of address update
       - name: duefl
-        description: ''
+        description: Dunning block
       - name: duns
-        description: ''
+        description: D-U-N-S number
       - name: duns4
-        description: ''
+        description: D-U-N-S+4 number
       - name: ekont
-        description: ''
+        description: Account number at vendor
       - name: erdat
-        description: ''
+        description: Record creation date
       - name: ernam
-        description: ''
+        description: Name of person who created object
       - name: etikg
-        description: ''
+        description: Weight unit
       - name: exabl
-        description: ''
+        description: One-time account indicator
       - name: exp
-        description: ''
+        description: Export indicator
       - name: faksd
-        description: ''
+        description: Invoice scheduling indicator
       - name: fee_schedule
-        description: ''
+        description: Fee schedule ID
       - name: fiskn
-        description: ''
+        description: Tax number key
       - name: fityp
-        description: ''
+        description: Business type
       - name: gform
-        description: ''
+        description: Legal form
       - name: hzuor
-        description: ''
+        description: Payment reference
       - name: icmstaxpay
-        description: ''
+        description: ICMS tax payer flag
       - name: indtyp
-        description: ''
+        description: Industry type
       - name: inspatdebi
-        description: ''
+        description: Inspection party (debtor)
       - name: inspbydebi
-        description: ''
+        description: Inspected by (debtor)
       - name: j_1kfrepre
-        description: ''
+        description: Fiscal representative
       - name: j_1kftbus
-        description: ''
+        description: Type of business
       - name: j_1kftind
-        description: ''
+        description: Type of industry
       - name: jmjah
-        description: ''
+        description: Year of last change
       - name: jmzah
-        description: ''
+        description: Number of changes made
       - name: katr1
-        description: ''
+        description: Attribute 1
       - name: katr10
-        description: ''
+        description: Attribute 10
       - name: katr2
-        description: ''
+        description: Attribute 2
       - name: katr3
-        description: ''
+        description: Attribute 3
       - name: katr4
-        description: ''
+        description: Attribute 4
       - name: katr5
-        description: ''
+        description: Attribute 5
       - name: katr6
-        description: ''
+        description: Attribute 6
       - name: katr7
-        description: ''
+        description: Attribute 7
       - name: katr8
-        description: ''
+        description: Attribute 8
       - name: katr9
-        description: ''
+        description: Attribute 9
       - name: kdkg1
-        description: ''
+        description: Customer condition group 1
       - name: kdkg2
-        description: ''
+        description: Customer condition group 2
       - name: kdkg3
-        description: ''
+        description: Customer condition group 3
       - name: kdkg4
-        description: ''
+        description: Customer condition group 4
       - name: kdkg5
-        description: ''
+        description: Customer condition group 5
       - name: knazk
-        description: ''
+        description: Reference customer
       - name: knrza
-        description: ''
+        description: Central customer number
       - name: knurl
-        description: ''
+        description: Customer URL
       - name: konzs
-        description: ''
+        description: Consolidation indicator
       - name: ktocd
-        description: ''
+        description: Account number of head office
       - name: legalnat
-        description: ''
+        description: Legal nature
       - name: lifsd
-        description: ''
+        description: Delivery account number
       - name: locco
-        description: ''
+        description: Local company code
       - name: lzone
-        description: ''
+        description: Transportation zone
       - name: mcod1
-        description: ''
+        description: Search term 1
       - name: mcod2
-        description: ''
+        description: Search term 2
       - name: mcod3
-        description: ''
+        description: Search term 3
       - name: milve
-        description: ''
+        description: Military supply indicator
       - name: name4
-        description: ''
+        description: Name 4
       - name: nodel
-        description: ''
+        description: Deletion lock indicator
       - name: oid_poreqd
-        description: ''
+        description: Purchase order required flag
       - name: oidrc
-        description: ''
+        description: OID reconciliation flag
       - name: oipbl
-        description: ''
+        description: OID payment block
       - name: pmt_office
-        description: ''
+        description: Payment office
       - name: psofg
-        description: ''
+        description: Fund group
       - name: psohs
-        description: ''
+        description: Fund source
       - name: psois
-        description: ''
+        description: Fund indicator
       - name: pson1
-        description: ''
+        description: Fund segment 1
       - name: pson2
-        description: ''
+        description: Fund segment 2
       - name: pson3
-        description: ''
+        description: Fund segment 3
       - name: psoo1
-        description: ''
+        description: Fund assignment 1
       - name: psoo2
-        description: ''
+        description: Fund assignment 2
       - name: psoo3
-        description: ''
+        description: Fund assignment 3
       - name: psoo4
-        description: ''
+        description: Fund assignment 4
       - name: psoo5
-        description: ''
+        description: Fund assignment 5
       - name: psost
-        description: ''
+        description: Status of fund
       - name: psotl
-        description: ''
+        description: Fund transfer limit
       - name: psovn
-        description: ''
+        description: Fund version
       - name: rg
-        description: ''
+        description: Company headquarters
       - name: rgdate
-        description: ''
+        description: Registration date
       - name: ric
-        description: ''
+        description: Retail indicator code
       - name: rne
-        description: ''
+        description: Regional economic region
       - name: rnedate
-        description: ''
+        description: Regional economic date
       - name: rpmkr
-        description: ''
+        description: Repricing marker
       - name: sperr
-        description: ''
+        description: Central posting block
       - name: sperz
-        description: ''
+        description: Central deletion indicator
       - name: stcd4
-        description: ''
+        description: Tax number 4
       - name: stcd5
-        description: ''
+        description: Tax number 5
       - name: stcdt
-        description: ''
+        description: Tax type
       - name: stceg
-        description: ''
+        description: VAT registration number
       - name: stkza
-        description: ''
+        description: Indicator (head office)
       - name: stkzn
-        description: ''
+        description: Indicator (branch)
       - name: stkzu
-        description: ''
+        description: Indicator (subsidiary)
       - name: suframa
-        description: ''
+        description: SUFRAMA code
       - name: tdt
-        description: ''
+        description: Transportation planning date
       - name: telbx
-        description: ''
+        description: Telebox number
       - name: telf2
-        description: ''
+        description: Second telephone number
       - name: teltx
-        description: ''
+        description: Teletex number
       - name: telx1
-        description: ''
+        description: Telex number
       - name: txjcd
-        description: ''
+        description: Tax jurisdiction code
       - name: txlw1
-        description: ''
+        description: Local tax classification 1
       - name: txlw2
-        description: ''
+        description: Local tax classification 2
       - name: uf
-        description: ''
+        description: Federal unit code
       - name: umjah
-        description: ''
+        description: Year of last update
       - name: umsa1
-        description: ''
+        description: Reason for update
       - name: umsat
-        description: ''
+        description: Date of last update
       - name: updat
-        description: ''
+        description: Update date
       - name: uptim
-        description: ''
+        description: Update time
       - name: uwaer
-        description: ''
+        description: Currency
       - name: xicms
-        description: ''
+        description: ICMS exemption indicator
       - name: xknza
-        description: ''
+        description: Indicator (duplicate customer)
       - name: xsubt
-        description: ''
+        description: Subcontractor flag
       - name: xxipi
-        description: ''
+        description: IPI exemption indicator
       - name: xzemp
-        description: ''
+        description: Temporary customer indicator
   - name: stg_sap__lfa1
     description: Vendor master (General section)
     tests:
@@ -2827,243 +2827,243 @@ models:
         description: Document version (without document management system)
 
       - name: _accgo_assgd_uom
-        description: ''
+        description: Assigned unit of measure (Accruals)
       - name: _bev1_luldegrp
-        description: ''
+        description: Beverage logistics unloading group
       - name: _bev1_luleinh
-        description: ''
+        description: Unloading unit of measure
       - name: _bev1_nestruccat
-        description: ''
+        description: Beverage structure category
       - name: _dsd_sl_toltyp
-        description: ''
+        description: Tolerance type for settlement
       - name: _dsd_sv_cnt_grp
-        description: ''
+        description: Service count group
       - name: _dsd_vc_group
-        description: ''
+        description: Visit control group
       - name: _fivetran_deleted
-        description: ''
+        description: Fivetran deletion marker
       - name: _fivetran_rowid
-        description: ''
+        description: Fivetran unique row ID
       - name: _fivetran_sap_archived
-        description: ''
+        description: Fivetran SAP archive marker
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
       - name: _sttpec_country_ref
-        description: ''
+        description: Country of reference (Product environmental compliance)
       - name: _sttpec_prdcat
-        description: ''
+        description: Product category (STTPEC)
       - name: _sttpec_sertype
-        description: ''
+        description: Certificate type (STTPEC)
       - name: _sttpec_syncact
-        description: ''
+        description: Synchronization action (STTPEC)
       - name: _sttpec_syncchg
-        description: ''
+        description: Change type in sync (STTPEC)
       - name: _sttpec_synctime
-        description: ''
+        description: Last sync time (STTPEC)
       - name: _vso_r_bot_ind
-        description: ''
+        description: Bottom layer indicator (Retail VSO)
       - name: _vso_r_kzgvh_ind
-        description: ''
+        description: Closed packaging indicator (Retail VSO)
       - name: _vso_r_no_p_gvh
-        description: ''
+        description: No packaging material group (Retail VSO)
       - name: _vso_r_pal_b_ht
-        description: ''
+        description: Pallet base height (Retail VSO)
       - name: _vso_r_pal_ind
-        description: ''
+        description: Pallet indicator (Retail VSO)
       - name: _vso_r_pal_min_h
-        description: ''
+        description: Minimum pallet height (Retail VSO)
       - name: _vso_r_pal_ovr_d
-        description: ''
+        description: Pallet overhang depth (Retail VSO)
       - name: _vso_r_pal_ovr_w
-        description: ''
+        description: Pallet overhang width (Retail VSO)
       - name: _vso_r_quan_unit
-        description: ''
+        description: Quantity unit (Retail VSO)
       - name: _vso_r_stack_ind
-        description: ''
+        description: Stackable indicator (Retail VSO)
       - name: _vso_r_stack_no
-        description: ''
+        description: Maximum stacking number (Retail VSO)
       - name: _vso_r_tilt_ind
-        description: ''
+        description: Tilt indicator (Retail VSO)
       - name: _vso_r_tol_b_ht
-        description: ''
+        description: Tolerance for base height (Retail VSO)
       - name: _vso_r_top_ind
-        description: ''
+        description: Top layer indicator (Retail VSO)
       - name: adprof
-        description: ''
+        description: Profile for advertising materials
       - name: adspc_spc
-        description: ''
+        description: Ad space specification
       - name: allow_pmat_igno
-        description: ''
+        description: Allow packaging material ignore flag
       - name: animal_origin
-        description: ''
+        description: Indicator (Material of animal origin)
       - name: anp
-        description: ''
+        description: Assembly item indicator
       - name: bbtyp
-        description: ''
+        description: Base unit type
       - name: brand_id
-        description: ''
+        description: Brand identification number
       - name: bstat
-        description: ''
+        description: Material status at plant level
       - name: care_code
         description: ''
       - name: cmrel
-        description: ''
+        description: Commodity relevant
       - name: cobjid
-        description: ''
+        description: Object ID (Product Compliance)
       - name: color
-        description: ''
+        description: Color description
       - name: color_atinn
-        description: ''
+        description: Internal characteristic number for color
       - name: commodity
-        description: ''
+        description: Commodity code
       - name: cotype
-        description: ''
+        description: Configuration type
       - name: cwqproc
-        description: ''
+        description: Catch weight processing procedure
       - name: cwqrel
-        description: ''
+        description: Catch weight relevance
       - name: cwqtolgr
-        description: ''
+        description: Catch weight tolerance group
       - name: dg_pack_status
-        description: ''
+        description: Dangerous goods packaging status
       - name: fashgrd
-        description: ''
+        description: Fashion grade
       - name: fiber_code1
-        description: ''
+        description: Fiber code 1
       - name: fiber_code2
-        description: ''
+        description: Fiber code 2
       - name: fiber_code3
-        description: ''
+        description: Fiber code 3
       - name: fiber_code4
-        description: ''
+        description: Fiber code 4
       - name: fiber_code5
-        description: ''
+        description: Fiber code 5
       - name: fiber_part1
-        description: ''
+        description: Fiber content part 1
       - name: fiber_part2
-        description: ''
+        description: Fiber content part 2
       - name: fiber_part3
-        description: ''
+        description: Fiber content part 3
       - name: fiber_part4
-        description: ''
+        description: Fiber content part 4
       - name: fiber_part5
-        description: ''
+        description: Fiber content part 5
       - name: free_char
-        description: ''
+        description: Free characteristics
       - name: fsh_mg_at1
-        description: ''
+        description: Fashion material group attribute 1
       - name: fsh_mg_at2
-        description: ''
+        description: Fashion material group attribute 2
       - name: fsh_mg_at3
-        description: ''
+        description: Fashion material group attribute 3
       - name: fsh_sc_mid
-        description: ''
+        description: Fashion supply chain merchandise category
       - name: fsh_seaim
-        description: ''
+        description: Fashion season indicator
       - name: fsh_sealv
-        description: ''
+        description: Fashion season level
       - name: gds_relevant
-        description: ''
+        description: GDS relevant indicator
       - name: gennr
-        description: ''
+        description: Generic material number
       - name: gtin_variant
-        description: ''
+        description: GTIN variant ID
       - name: hazmat
-        description: ''
+        description: Hazardous material indicator
       - name: herkl
-        description: ''
+        description: Country of origin
       - name: hndlcode
-        description: ''
+        description: Handling code
       - name: hutyp
-        description: ''
+        description: Handling unit type
       - name: hutyp_dflt
-        description: ''
+        description: Default HU type
       - name: imatn
-        description: ''
+        description: Material number used by vendor
       - name: ipmipproduct
-        description: ''
+        description: Intellectual Property-managed product
       - name: loglev_reto
-        description: ''
+        description: Logistics level for returns
       - name: logunit
-        description: ''
+        description: Logical unit
       - name: matfi
-        description: ''
+        description: Material status for FI
       - name: maxb
-        description: ''
+        description: Maximum length
       - name: maxc
-        description: ''
+        description: Maximum width
       - name: maxc_tol
-        description: ''
+        description: Tolerance for width
       - name: maxdim_uom
-        description: ''
+        description: Unit of measure for max dimensions
       - name: maxh
-        description: ''
+        description: Maximum height
       - name: maxl
-        description: ''
+        description: Maximum pallet layer
       - name: mcond
         description: ''
       - name: medium
-        description: ''
+        description: Medium type
       - name: mfrgr
-        description: ''
+        description: Material freight group
       - name: oigroupnam
-        description: ''
+        description: OIL group name
       - name: oihmtxgr
-        description: ''
+        description: OIL material text group
       - name: oitrind
-        description: ''
+        description: OIL transport indicator
       - name: packcode
-        description: ''
+        description: Packaging code
       - name: picnum
-        description: ''
+        description: Picture number
       - name: pilferable
-        description: ''
+        description: Pilferable indicator
       - name: ps_smartform
-        description: ''
+        description: Smartform for product safety
       - name: psm_code
-        description: ''
+        description: Product stewardship code
       - name: qgrp
-        description: ''
+        description: QM control key
       - name: qqtime
-        description: ''
+        description: Quarantine time
       - name: qqtimeuom
-        description: ''
+        description: Quarantine time unit of measure
       - name: retdelc
-        description: ''
+        description: Returns deletion flag
       - name: rmatp
-        description: ''
+        description: Relevant for material availability check
       - name: serial
-        description: ''
+        description: Serial number profile
       - name: sgt_covsa
-        description: ''
+        description: Segmentation coverage scenario
       - name: sgt_csgr
-        description: ''
+        description: Segmentation strategy
       - name: sgt_rel
-        description: ''
+        description: Segmentation relevance
       - name: sgt_scope
-        description: ''
+        description: Segmentation scope
       - name: sgt_stat
-        description: ''
+        description: Segmentation status
       - name: size1
-        description: ''
+        description: Size 1 (numeric or text)
       - name: size1_atinn
-        description: ''
+        description: Internal characteristic number for size1
       - name: size2
-        description: ''
+        description: Size 2 (numeric or text)
       - name: size2_atinn
-        description: ''
+        description: Internal characteristic number for size2
       - name: sled_bbd
-        description: ''
+        description: Shelf life expiration or best-before date
       - name: tare_var
-        description: ''
+        description: Variable tare weight indicator
       - name: textile_comp_ind
-        description: ''
+        description: Textile composition indicator
       - name: weora
-        description: ''
+        description: Time of goods receipt
       - name: whmatgr
-        description: ''
+        description: Material group for warehouse mgmt
       - name: whstc
-        description: ''
+        description: Warehouse storage condition
   - name: stg_sap__pa0000
     description: HR master record--infotype 0000 (Actions)
     tests:
@@ -4086,11 +4086,11 @@ models:
         description: Indicator (Account blocked for planning?)
 
       - name: _fivetran_deleted
-        description: ''
+        description: Fivetran deletion marker
       - name: _fivetran_rowid
-        description: ''
+        description: Fivetran unique row ID
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
   - name: stg_sap__t001
     description: Company codes
     tests:
@@ -4137,281 +4137,281 @@ models:
       - name: _fivetran_synced
         description: ''
       - name: achvm
-        description: ''
+        description: Material status in plant
       - name: adrnr
-        description: ''
+        description: Address number
       - name: awsls
-        description: ''
+        description: Sales organization distribution channel
       - name: bapovar
-        description: ''
+        description: BAPI variant for plant
       - name: bedpl
-        description: ''
+        description: MRP area
       - name: betol
-        description: ''
+        description: Tolerance group
       - name: bukrs
-        description: ''
+        description: Company code
       - name: bukrs_glob
-        description: ''
+        description: Global company code
       - name: butxt
-        description: ''
+        description: Company name
       - name: buvar
-        description: ''
+        description: Posting period variant
       - name: bwkey
-        description: ''
+        description: Valuation area
       - name: bzirk
-        description: ''
+        description: Sales district
       - name: bzqhl
-        description: ''
+        description: Plant-specific rounding profile
       - name: chazv
-        description: ''
+        description: Batch status for plant
       - name: chazv_old
-        description: ''
+        description: Old batch status
       - name: cityc
-        description: ''
+        description: City code
       - name: counc
-        description: ''
+        description: County code
       - name: dep_store
-        description: ''
+        description: Store department indicator
       - name: dkweg
-        description: ''
+        description: Payment method allowed
       - name: dtamtc
-        description: ''
+        description: Automatic tax determination
       - name: dtaxr
-        description: ''
+        description: Tax region
       - name: dtprov
-        description: ''
+        description: Withholding tax provider
       - name: dttaxc
-        description: ''
+        description: Withholding tax code
       - name: dttdsp
-        description: ''
+        description: Display withholding tax data
       - name: dvsart
-        description: ''
+        description: Document category
       - name: ebukr
-        description: ''
+        description: Central company code
       - name: ekorg
-        description: ''
+        description: Purchasing organization
       - name: fabkl
-        description: ''
+        description: Factory calendar
       - name: fdbuk
-        description: ''
+        description: Head office company code
       - name: fikrs
-        description: ''
+        description: Financial management area
       - name: fm_derive_acc
-        description: ''
+        description: FM derive account assignment
       - name: fmhrdate
-        description: ''
+        description: Budget check date
       - name: fprfw
-        description: ''
+        description: Pricing profile for warehouse
       - name: fsh_bom_maintenance
-        description: ''
+        description: Fashion BOM maintenance
       - name: fsh_mg_arun_req
-        description: ''
+        description: ARUN requirement for fashion allocation
       - name: fsh_seaim
-        description: ''
+        description: Fashion season indicator
       - name: fstva
-        description: ''
+        description: Financial statement version
       - name: fstvare
-        description: ''
+        description: Financial statement version for reporting
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
       - name: hvr_is_deleted
-        description: ''
+        description: HVR deletion flag
       - name: impda
-        description: ''
+        description: Import date
       - name: infmt
-        description: ''
+        description: Invoice format
       - name: iwerk
-        description: ''
+        description: Maintenance planning plant
       - name: j_1bbranch
-        description: ''
+        description: Branch for Brazil localization
       - name: kkber
-        description: ''
+        description: Credit control area
       - name: kkowk
-        description: ''
+        description: Order type
       - name: kokfi
-        description: ''
+        description: FI indicator
       - name: kopim
-        description: ''
+        description: Payment methods copied
       - name: kordb
-        description: ''
+        description: Order backlog
       - name: ktop2
-        description: ''
+        description: Alternative chart of accounts
       - name: ktopl
-        description: ''
+        description: Chart of accounts
       - name: kunnr
-        description: ''
+        description: Customer number
       - name: land1
-        description: ''
+        description: Country key
       - name: let01
-        description: ''
+        description: Indicator for letter 1
       - name: let02
-        description: ''
+        description: Indicator for letter 2
       - name: let03
-        description: ''
+        description: Indicator for letter 3
       - name: lifnr
-        description: ''
+        description: Vendor number
       - name: mgvlareval
-        description: ''
+        description: Legal valuation update indicator
       - name: mgvlaupd
-        description: ''
+        description: Material group valuation update
       - name: mgvupd
-        description: ''
+        description: Material valuation update indicator
       - name: misch
-        description: ''
+        description: Mixed storage indicator
       - name: mregl
-        description: ''
+        description: EU tax reporting country
       - name: mwska
-        description: ''
+        description: Default sales tax code
       - name: mwskv
-        description: ''
+        description: Default purchase tax code
       - name: name1
-        description: ''
+        description: Plant name 1
       - name: name2
-        description: ''
+        description: Plant name 2
       - name: nodetype
-        description: ''
+        description: Node type
       - name: nschema
-        description: ''
+        description: Pricing procedure schema
       - name: offsacct
-        description: ''
+        description: Offset account
       - name: oihcredipi
-        description: ''
+        description: Credit indicator for OIL
       - name: oihvtype
-        description: ''
+        description: Handling unit type (OIL)
       - name: oilival
-        description: ''
+        description: OIL inbound valuation indicator
       - name: opvar
-        description: ''
+        description: Open item management variant
       - name: ort01
-        description: ''
+        description: City
       - name: periv
-        description: ''
+        description: Fiscal year variant
       - name: pfach
-        description: ''
+        description: PO Box
       - name: pkosa
-        description: ''
+        description: Planning strategy group
       - name: pp_pdate
-        description: ''
+        description: Planned posting date
       - name: pst_per_var
-        description: ''
+        description: Posting period variant
       - name: pstlz
-        description: ''
+        description: Postal code
       - name: rcomp
-        description: ''
+        description: Company
       - name: regio
-        description: ''
+        description: Region (state/province)
       - name: sourcing
-        description: ''
+        description: Sourcing indicator
       - name: spart
-        description: ''
+        description: Division
       - name: spras
-        description: ''
+        description: Language key
       - name: stceg
-        description: ''
+        description: VAT registration number
       - name: storetype
-        description: ''
+        description: Store type
       - name: stras
-        description: ''
+        description: Street and house number
       - name: surccm
-        description: ''
+        description: Surrogate company code mapping
       - name: taxiw
-        description: ''
+        description: Tax indicator for plant
       - name: txjcd
-        description: ''
+        description: Tax jurisdiction code
       - name: txkrs
-        description: ''
+        description: Currency translation key
       - name: txnam_ma1
-        description: ''
+        description: Tax name master 1
       - name: txnam_ma2
-        description: ''
+        description: Tax name master 2
       - name: txnam_ma3
-        description: ''
+        description: Tax name master 3
       - name: umkrs
-        description: ''
+        description: Intercompany clearing indicator
       - name: vkorg
-        description: ''
+        description: Sales organization
       - name: vlfkz
-        description: ''
+        description: Delivery split indicator
       - name: vstel
-        description: ''
+        description: Shipping point
       - name: vtbfi
-        description: ''
+        description: Treasury company indicator
       - name: vtweg
-        description: ''
+        description: Distribution channel
       - name: waabw
-        description: ''
+        description: Default exchange rate type
       - name: waers
-        description: ''
+        description: Currency key
       - name: wfvar
-        description: ''
+        description: Workflow variant
       - name: wksop
-        description: ''
+        description: Store opening planning profile
       - name: wt_newwt
-        description: ''
+        description: New withholding tax indicator
       - name: xbbba
-        description: ''
+        description: Business area is mandatory
       - name: xbbbe
-        description: ''
+        description: Business area from plant
       - name: xbbbf
-        description: ''
+        description: Business area from profit center
       - name: xbbko
-        description: ''
+        description: Business area from cost object
       - name: xbbsc
-        description: ''
+        description: Business area from sales order
       - name: xcession
-        description: ''
+        description: Tax exemption indicator
       - name: xcos
-        description: ''
+        description: Cost of sales accounting active
       - name: xcovr
-        description: ''
+        description: Commitment item required
       - name: xeink
-        description: ''
+        description: Purchasing active
       - name: xextb
-        description: ''
+        description: External business partner required
       - name: xfdis
-        description: ''
+        description: Fixed discount allowed
       - name: xfdmm
-        description: ''
+        description: Materials management active
       - name: xfdsd
-        description: ''
+        description: Sales and distribution active
       - name: xfmca
-        description: ''
+        description: Funds management (cash-based)
       - name: xfmcb
-        description: ''
+        description: Funds management (budget-based)
       - name: xfmco
-        description: ''
+        description: Funds management (commitment-based)
       - name: xgjrv
-        description: ''
+        description: Journal voucher active
       - name: xgsbe
-        description: ''
+        description: Business area financials active
       - name: xjvaa
-        description: ''
+        description: Joint venture accounting active
       - name: xkdft
-        description: ''
+        description: Default tax indicator
       - name: xkkbi
-        description: ''
+        description: Credit management active
       - name: xmwsn
-        description: ''
+        description: New tax procedure active
       - name: xnegp
-        description: ''
+        description: Negative postings allowed
       - name: xprod
-        description: ''
+        description: Product costing active
       - name: xskfn
-        description: ''
+        description: Reconciliation account required
       - name: xslta
-        description: ''
+        description: SLA transfer active
       - name: xsplt
-        description: ''
+        description: Document splitting active
       - name: xstdt
-        description: ''
+        description: Use statistics date
       - name: xvalv
-        description: ''
+        description: Use valuation view
       - name: xvatdate
-        description: ''
+        description: VAT date active
       - name: xvvwa
-        description: ''
+        description: Vendor withholding tax active
       - name: zone1
-        description: ''
+        description: Zone key
   - name: stg_sap__t024
     description: Purchasing groups
     columns:
@@ -4419,29 +4419,29 @@ models:
         description: Purchasing group
 
       - name: _fivetran_deleted
-        description: ''
+        description: Fivetran deletion marker
       - name: _fivetran_rowid
-        description: ''
+        description: Fivetran unique row ID
       - name: _fivetran_sap_archived
-        description: ''
+        description: Fivetran SAP archive marker
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
       - name: eknam
-        description: ''
+        description: Name of purchasing group
       - name: ektel
-        description: ''
+        description: Telephone number
       - name: ldest
-        description: ''
+        description: Logical destination
       - name: mandt
-        description: ''
+        description: Client
       - name: smtp_addr
-        description: ''
+        description: Email address
       - name: tel_extens
-        description: ''
+        description: Telephone extension
       - name: tel_number
-        description: ''
+        description: Telephone number
       - name: telfx
-        description: ''
+        description: Fax number
   - name: stg_sap__t024e
     description: Purchasing organization text
     columns:
@@ -4483,79 +4483,79 @@ models:
         description: Material type
 
       - name: aranz
-        description: ''
+        description: Layout indicator for material master
       - name: ardel
-        description: ''
+        description: Flag for deletion of layout
       - name: begru
-        description: ''
+        description: Authorization group
       - name: bsext
-        description: ''
+        description: External number assignment allowed
       - name: bsint
-        description: ''
+        description: Internal number assignment allowed
       - name: cchis
-        description: ''
+        description: Change document indicator
       - name: chneu
-        description: ''
+        description: Indicator (New entries allowed)
       - name: class
-        description: ''
+        description: Material type class
       - name: ctype
-        description: ''
+        description: Classification type
       - name: ekalr
-        description: ''
+        description: Costing indicator
       - name: envop
-        description: ''
+        description: Environmentally relevant
       - name: flref
-        description: ''
+        description: Material type references another
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
       - name: hvr_is_deleted
-        description: ''
+        description: HVR deletion flag
       - name: izust
-        description: ''
+        description: Status for inventory management
       - name: kkref
-        description: ''
+        description: Reference key for variant configuration
       - name: kzgrp
-        description: ''
+        description: Group material type
       - name: kzkfg
-        description: ''
+        description: Configurable material indicator
       - name: kzmpn
-        description: ''
+        description: Manufacturer part number allowed
       - name: kzpip
-        description: ''
+        description: Pipeline material indicator
       - name: kzprc
-        description: ''
+        description: Pricing allowed indicator
       - name: kzrac
-        description: ''
+        description: Returnable packaging indicator
       - name: kzvpr
-        description: ''
+        description: Valuation allowed indicator
       - name: mandt
-        description: ''
+        description: Client
       - name: mbref
-        description: ''
+        description: Material type reference
       - name: mstae
-        description: ''
+        description: Cross-plant material status
       - name: mtref
-        description: ''
+        description: Reference material type
       - name: numke
-        description: ''
+        description: External number range key
       - name: numki
-        description: ''
+        description: Internal number range key
       - name: prdru
-        description: ''
+        description: Period indicator for price determination
       - name: pstat
-        description: ''
+        description: Maintenance status
       - name: vmtpo
-        description: ''
+        description: Group material type for variants
       - name: vnumke
-        description: ''
+        description: External number range (variant)
       - name: vnumki
-        description: ''
+        description: Internal number range (variant)
       - name: vprsv
-        description: ''
+        description: Price control indicator
       - name: vtype
-        description: ''
+        description: Variant type
       - name: wmakg
-        description: ''
+        description: Weight unit group
   - name: stg_sap__t134t
     description: Material type descriptions
     columns:
@@ -4565,11 +4565,11 @@ models:
         description: Description
 
       - name: mandt
-        description: ''
+        description: Client
       - name: mtbez
-        description: ''
+        description: Description of material type
       - name: spras
-        description: ''
+        description: Language key
   - name: stg_sap__t161
     description: Purchasing document types
     columns:
@@ -4579,115 +4579,115 @@ models:
         description: Document category
 
       - name: _sapmp_atnam
-        description: ''
+        description: SAP MP attribute name
       - name: _sapmp_ceact
-        description: ''
+        description: SAP MP change evaluation active
       - name: _sapmp_gauf
-        description: ''
+        description: SAP MP default value indicator
       - name: _sapmp_pausw
-        description: ''
+        description: SAP MP pause switch
       - name: _sapmp_pdact
-        description: ''
+        description: SAP MP document active
       - name: _sapmp_pprot
-        description: ''
+        description: SAP MP processing type
       - name: _sapmp_puser
-        description: ''
+        description: SAP MP user field
       - name: abgebot
-        description: ''
+        description: Quotation indicator
       - name: abvor
-        description: ''
+        description: Quotation required before order
       - name: ar_object
-        description: ''
+        description: Archiving object
       - name: brefn
-        description: ''
+        description: Reference profile for external system
       - name: bsakz
-        description: ''
+        description: Collective number indicator
       - name: cp_aktive
-        description: ''
+        description: Central contract active
       - name: cptype
-        description: ''
+        description: Central contract type
       - name: fls_rsto
-        description: ''
+        description: Release strategy origin
       - name: fsh_dpr_detpro
-        description: ''
+        description: Detail profile for demand prioritization
       - name: fsh_excl_return
-        description: ''
+        description: Exclude returns indicator
       - name: fsh_po_idoc
-        description: ''
+        description: Fashion PO outbound IDoc active
       - name: fsh_var_kalsm
-        description: ''
+        description: Pricing procedure for variants
       - name: fsh_vas_act
-        description: ''
+        description: Value-added services active
       - name: fsh_vas_del
-        description: ''
+        description: VAS delivery mode
       - name: fsh_vas_detdt
-        description: ''
+        description: VAS determination date
       - name: fsh_vas_kalsm
-        description: ''
+        description: VAS pricing procedure
       - name: gsfrg
-        description: ''
+        description: Release group
       - name: hityp
-        description: ''
+        description: History type
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
       - name: hvr_is_deleted
-        description: ''
+        description: HVR deletion flag
       - name: koako
-        description: ''
+        description: Account assignment mandatory
       - name: koett
-        description: ''
+        description: Item category mandatory
       - name: kornr
-        description: ''
+        description: Reference document number
       - name: kzale
-        description: ''
+        description: Collective agreement allowed
       - name: lphis
-        description: ''
+        description: Change history required
       - name: mandt
-        description: ''
+        description: Client
       - name: mill_omkz
-        description: ''
+        description: Industry solution flag (Mill)
       - name: msr_active
-        description: ''
+        description: MSR active flag
       - name: numka
-        description: ''
+        description: Number range for internal assignment
       - name: numkc
-        description: ''
+        description: Number range for contract
       - name: numke
-        description: ''
+        description: Number range for external assignment
       - name: numki
-        description: ''
+        description: Number range for inquiries
       - name: oicsegi
-        description: ''
+        description: OIL segment indicator
       - name: oirfqreq
-        description: ''
+        description: RFQ required indicator
       - name: pargr
-        description: ''
+        description: Partner role group
       - name: pincr
-        description: ''
+        description: Price increase indicator
       - name: rdp_profile
-        description: ''
+        description: RDP profile
       - name: refba
-        description: ''
+        description: Reference purchase doc type
       - name: shenq
-        description: ''
+        description: Incompletion check indicator
       - name: stafo
-        description: ''
+        description: Follow-on doc status
       - name: stako
-        description: ''
+        description: Header status
       - name: tolsl
-        description: ''
+        description: Tolerance key for limit
       - name: umlif
-        description: ''
+        description: Goods recipient required
       - name: upinc
-        description: ''
+        description: Update indicator
       - name: variante
-        description: ''
+        description: Variant control
       - name: wrf_enable_dateline
-        description: ''
+        description: Enable dateline function
       - name: wvvkz
-        description: ''
+        description: Shipping instruction
       - name: xlokz
-        description: ''
+        description: Delivery block indicator
   - name: stg_sap__t161t
     description: Purchasing doc type texts
     columns:
@@ -4699,9 +4699,9 @@ models:
         description: Document category
 
       - name: mandt
-        description: ''
+        description: Client
       - name: spras
-        description: ''
+        description: Language key
   - name: stg_sap__t503
     description: Employee group/subgroup
     tests:
@@ -4766,21 +4766,21 @@ models:
         description: Reason code
 
       - name: dragr
-        description: ''
+        description: Item is relevant for delivery scheduling
       - name: ep_off
-        description: ''
+        description: EDI partner-specific flag
       - name: fk_erl
-        description: ''
+        description: Billing block active
       - name: fsh_pqr_spec
-        description: ''
+        description: PQR specification (Fashion)
       - name: hvr_change_time
-        description: ''
+        description: HVR change timestamp
       - name: hvr_is_deleted
-        description: ''
+        description: HVR deletion flag
       - name: kowrr
-        description: ''
+        description: Net value relevant
       - name: mandt
-        description: ''
+        description: Client
   - name: stg_sap__tvagt
     description: Sales document rejection reason text
     columns:
@@ -4790,9 +4790,9 @@ models:
         description: Description
 
       - name: mandt
-        description: ''
+        description: Client
       - name: spras
-        description: ''
+        description: Language key
   - name: stg_sap__vbak
     description: Sales document header data
     columns:
