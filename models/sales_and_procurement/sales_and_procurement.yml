@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: sap__dim_customer
+    description: ""

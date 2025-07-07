@@ -309,11 +309,11 @@ models:
         description: Domain name
       - name: domvalue_l
         description: Domain value
-
       - name: as4vers
         description: Active version
       - name: hvr_change_time
         description: HVR change timestamp
+
   - name: stg_sap__dd07t
     description: Domain text values
     columns:
@@ -323,13 +323,13 @@ models:
         description: Domain name
       - name: domvalue_l
         description: Domain value
-
       - name: as4vers
         description: Active version
       - name: ddtext
         description: Text
       - name: hvr_change_time
         description: HVR change timestamp
+
   - name: stg_sap__ekbe
     description: Purchasing document history
     columns:
