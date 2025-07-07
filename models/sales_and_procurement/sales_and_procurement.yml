@@ -2,197 +2,361 @@ version: 2
 
 models:
   - name: sap__dim_customer
-    description: ""
+    description: Customer dimension table
     columns:
       - name: customer_number
+        description: Unique identifier of the customer in SAP
       - name: country_key_id
+        description: Country key associated with the customer
       - name: customer_name
+        description: Full name of the customer
       - name: city
+        description: Customer’s city of residence
       - name: customer_id
+        description: Surrogate key for the customer
 
   - name: sap__dim_material
-    description: ""
+    description: Material master dimension table
     columns:
       - name: material_number
+        description: Unique identifier for the material
       - name: material_description
+        description: Text description of the material
       - name: material_type_id
+        description: Identifier for material type (e.g., finished goods)
       - name: material_type_description
+        description: Description of the material type
       - name: base_uom_id
+        description: Base unit of measure for the material
       - name: gross_weight
+        description: Gross weight of the material
       - name: weight_uom_id
+        description: Unit of measure for weight
       - name: material_id
+        description: Surrogate key for the material
 
   - name: sap__dim_plant
-    description: ""
+    description: Plant/branch dimension table
     columns:
       - name: client_id
+        description: SAP client ID
       - name: plant_id
+        description: Unique identifier for the plant
       - name: order_allocation_run
+        description: Order allocation run setting
       - name: tax_indicator_plant_id
+        description: Tax indicator specific to plant
       - name: city_code_id
+        description: City code of the plant
       - name: region_id
+        description: Region identifier
       - name: factory_calendar_id
+        description: Factory calendar ID
       - name: actual_activities_updated
+        description: Indicator if actual activities were updated
       - name: mixed_costing
+        description: Mixed costing indicator
       - name: vendor_type
+        description: Vendor type associated with the plant
       - name: purchasing_organization_id
+        description: Purchasing organization responsible for the plant
       - name: node_type_supply_chain_network_id
+        description: Node type in the supply chain network
       - name: store_cat
+        description: Store category
       - name: distrib_channel_id
+        description: Distribution channel ID
       - name: text_1st_dunning
+        description: Text for first dunning notice
       - name: ipi_credit_allowed
+        description: IPI credit allowed flag
       - name: customer_number_plant_id
+        description: Customer number specific to plant
       - name: name
+        description: Name of the plant
       - name: season_active_in_inventory_management
+        description: Seasonality active flag for inventory
       - name: address_id
+        description: Address ID for the plant
       - name: sales_district_id
+        description: Sales district ID
       - name: language_key_id
+        description: Language key identifier
       - name: street_and_house_number
+        description: Street and house number of the plant
       - name: supply_region_region_supplied_id
+        description: Region supplied by the plant
       - name: sales_organization_id
+        description: Sales organization ID
       - name: structure_name_formation_id
+        description: Organizational structure ID
       - name: superior_department_store_id
+        description: Superior department store ID
       - name: activating_requirements_planning
+        description: Requirements planning activation flag
       - name: vendor_number_plant_id
+        description: Vendor number for the plant
       - name: po_box
+        description: PO box of the plant
       - name: int_co_billing_div_id
+        description: Internal billing division ID
       - name: _3rd_reminder_exped
+        description: Third reminder expedited
       - name: exchange_valuation_indicator
+        description: Exchange valuation setting
       - name: af_srce_det_via_atp
+        description: Source determination via ATP
       - name: sop_plant
+        description: Sales and operations planning plant flag
       - name: source_list
+        description: Source list indicator
       - name: county_code_id
+        description: County code ID
       - name: shipping_point_id
+        description: Shipping point ID
       - name: text_3rd_dunning
+        description: Text for third dunning notice
       - name: _2nd_reminder_exped
+        description: Second reminder expedited
       - name: batch_type_dms_used
+        description: Batch type for document management system
       - name: postal_code
+        description: Postal code of the plant
       - name: take_regular_vendor_into_account
+        description: Indicator to consider regular vendor
       - name: actual_costing
+        description: Actual costing indicator
       - name: cost_obj_controlling
+        description: Cost object controlling setting
       - name: batch_status_mgmt
+        description: Batch status management indicator
       - name: tax_jurisdiction_id
+        description: Tax jurisdiction identifier
       - name: variance_key_id
+        description: Variance key ID
       - name: chazv_old
+        description: Old batch status flag
       - name: control_credit_cost_centers
+        description: Credit control for cost centers
       - name: valuation_area_id
+        description: Valuation area ID
       - name: plant_category
+        description: Category of the plant
       - name: _1st_reminder_exped
+        description: First reminder expedited
       - name: text_2nd_dunning
+        description: Text for second dunning notice
       - name: control_bom
+        description: Bill of materials control flag
       - name: conds_at_plant_level
+        description: Conditions at plant level
       - name: business_place_id
+        description: Business place ID
       - name: po_tolerance
+        description: Purchase order tolerance
       - name: sales_area_detrm
+        description: Sales area determination
       - name: name_2
+        description: Secondary plant name
       - name: country_key_id
+        description: Country key
       - name: archiving_marker
+        description: Archiving marker indicator
       - name: distrib_profile_plant_id
+        description: Distribution profile for plant
       - name: city
+        description: City of the plant
       - name: maintenance_planning_plant_id
+        description: Maintenance planning plant ID
       - name: _fivetran_deleted
+        description: Fivetran deletion marker
       - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: _fivetran_sap_archived
+        description: Fivetran SAP archive flag
 
   - name: sap__dim_purchasing_order
-    description: ""
+    description: Purchasing document header attributes
     columns:
       - name: purchasing_document_id
+        description: Unique ID of the purchasing document
       - name: purchasing_document_category
+        description: Category code of the purchasing document
       - name: purchasing_document_category_txt
+        description: Description of the document category
       - name: purchasing_document_type_id
+        description: Document type code (e.g. NB, FO)
       - name: purchasing_document_type_text
+        description: Description of the purchasing document type
       - name: purchasing_group_id
+        description: ID of the purchasing group
       - name: description_purchasing_group
+        description: Description of the purchasing group
       - name: purchasing_document_status
+        description: Status code of the purchasing document
       - name: purchasing_document_status_txt
+        description: Description of document status
       - name: payment_terms
+        description: Terms of payment key
       - name: reason_cancellation_id
+        description: Reason code for cancellation
       - name: company_code_id
+        description: Company code associated with the document
 
   - name: sap__dim_purchasing_organization
-    description: ""
+    description: Purchasing organization dimension
     columns:
       - name: company_code_id
+        description: Company code assigned to the organization
       - name: purchasing_organization_id
+        description: ID of the purchasing organization
       - name: description
+        description: Description of the purchasing organization
 
   - name: sap__dim_rejection_reason
-    description: ""
+    description: Reasons for purchase/sales document rejections
     columns:
       - name: reason_rejection_id
+        description: Code for rejection reason
       - name: rejection_reason_description
+        description: Description of the rejection reason
 
   - name: sap__fact_purchasing_order
-    description: ""
+    description: Line-level metrics for purchasing documents
     columns:
       - name: purchasing_document_id
+        description: ID of the purchasing document
       - name: purchasing_document_item_id
+        description: Item number in the purchasing document
       - name: company_code_id
+        description: Company code that created the order
       - name: currency_id
+        description: Currency used in the transaction
       - name: material_id
+        description: Foreign key to the material master
       - name: plant_id
+        description: Plant where the goods are delivered
       - name: purchasing_group_id
+        description: Responsible purchasing group
       - name: purchasing_organization_id
+        description: Responsible purchasing organization
       - name: vendor_id
+        description: Vendor supplying the goods
       - name: order_uom_id
+        description: Unit of measure for the order
       - name: purchasing_document_date
+        description: Creation date of the purchasing document
       - name: scheduled_delivery_date
+        description: Planned date of delivery
       - name: purchase_deliver_late_days
+        description: Days the delivery was late
       - name: purchase_late_lead_days
+        description: Days past lead time
       - name: purchase_order_quantity
+        description: Quantity ordered
       - name: purchase_open_quantity
+        description: Quantity yet to be delivered
       - name: purchasing_delivered_quantity
+        description: Quantity delivered
       - name: purchase_late_quantity
+        description: Quantity delivered late
       - name: cancel_purchase_quantity
+        description: Quantity canceled
       - name: purchase_order_amount
+        description: Total order value
       - name: purchasing_document_currency_amount
+        description: Order value in document currency
       - name: document_currency_id
+        description: Currency code for the order
       - name: purchase_open_amount
+        description: Value of undelivered quantity
       - name: purchase_delivered_amount
+        description: Value of delivered quantity
       - name: cancel_purchase_amount
+        description: Value of canceled quantity
       - name: purchase_late_amount
+        description: Value of late-delivered quantity
       - name: purchase_invoiced_amount
+        description: Invoiced amount
       - name: purchase_order_item_count
+        description: Number of line items in the order
       - name: purchase_item_late_count
+        description: Number of items delivered late
       - name: purchase_item_open_count
+        description: Number of open (undelivered) items
       - name: purchase_item_closed_count
+        description: Number of closed/completed items
 
   - name: sap__fact_sales_order
-    description: ""
+    description: Line-level sales order facts and metrics
     columns:
       - name: sales_document_number
+        description: Sales document number
       - name: sales_document_item
+        description: Sales document item number
       - name: sd_document_category
+        description: Sales document category (e.g. order, quote)
       - name: sales_document_type_id
+        description: Type of sales document
       - name: order_reason_id
+        description: Reason code for sales order
       - name: delivery_block_id
+        description: Delivery block reason code
       - name: sales_organization_id
+        description: Sales organization responsible for the sale
       - name: distribution_channel_id
+        description: Distribution channel (e.g. online, retail)
       - name: division_id
+        description: Product division
       - name: plant_id
+        description: Plant fulfilling the order
       - name: document_date
+        description: Date the sales document was created
       - name: requested_delivery_date
+        description: Requested delivery date
       - name: sold_to_customer_id
+        description: Customer placing the order
       - name: sales_document_id
+        description: Unique ID of the sales document
       - name: material_id
+        description: ID of the material or product sold
       - name: material_group_id
+        description: Grouping of similar materials
       - name: sales_document_item_category_id
+        description: Sales item category (e.g. standard, service)
       - name: product_hierarchy_id
+        description: Product hierarchy classification
       - name: base_uom_id
+        description: Base unit of measure for the material
       - name: order_quantity
+        description: Quantity ordered
       - name: sales_uom_id
+        description: Sales unit of measure
       - name: net_value
+        description: Net value of the sales order item
       - name: net_price
+        description: Net price per unit
       - name: sd_document_currency_id
+        description: Currency of the sales document
       - name: gross_weight
+        description: Gross weight of the item
       - name: weight_uom_id
+        description: Unit of measure for weight
       - name: created_date
+        description: Date the order was created
       - name: returns_item
+        description: Flag indicating if this is a returns item
       - name: reason_rejection_id
+        description: Reason for item rejection
       - name: delivery_status
+        description: Delivery status of the item
       - name: overall_status
+        description: Overall status of the sales order
       - name: item_delivery_status
+        description: Status of item delivery
       - name: created_by
+        description: User who created the sales document
       - name: _fivetran_deleted
+        description: Fivetran deletion marker
       - name: _fivetran_synced
+        description: Fivetran sync timestamp
