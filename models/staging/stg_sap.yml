@@ -304,6 +304,13 @@ models:
 
   - name: stg_sap__dd07l
     description: Domain values
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - as4vers
+          - valpos
+          - as4local
+          - domname
     columns:
       - name: domname
         description: Domain name
@@ -316,6 +323,14 @@ models:
 
   - name: stg_sap__dd07t
     description: Domain text values
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - as4vers
+          - valpos
+          - as4local
+          - domname
+          - ddlanguage
     columns:
       - name: ddlanguage
         description: Language key
@@ -332,6 +347,17 @@ models:
 
   - name: stg_sap__ekbe
     description: Purchasing document history
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - zekkn
+          - gjahr
+          - belnr
+          - vgabe
+          - ebelp
+          - ebeln
+          - mandt
+          - buzei
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -516,6 +542,13 @@ models:
 
   - name: stg_sap__eket
     description: Schedule lines for purchasing document
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - etenr
+          - ebelp
+          - ebeln
+          - mandt
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -676,12 +709,16 @@ models:
 
   - name: stg_sap__ekko
     description: Purchasing document header
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - mandt
+          - ebeln
     columns:
       - name: ebeln
         description: Purchasing document number
       - name: mandt
         description: Client
-
       - name: abgru
         description: Reason for rejection
       - name: absgr
@@ -958,8 +995,15 @@ models:
         description: Net payment terms period
       - name: zterm
         description: Terms of payment key
+
   - name: stg_sap__ekpo
     description: Purchasing document item
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - mandt
+          - ebelp
+          - ebeln
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator
@@ -1839,6 +1883,7 @@ models:
 
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+
   - name: stg_sap__faglflext
     description: General ledger (Totals)
     tests:
@@ -2072,13 +2117,13 @@ models:
         description: Balance carried forward in transaction currency
       - name: zzspreg
         description: Special region
-
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_rowid
         description: Fivetran unique row ID
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+
   - name: stg_sap__kna1
     description: General Data in Customer Master
     tests:
@@ -2482,6 +2527,7 @@ models:
         description: IPI exemption indicator
       - name: xzemp
         description: Temporary customer indicator
+
   - name: stg_sap__lfa1
     description: Vendor master (General section)
     tests:
@@ -2549,6 +2595,12 @@ models:
 
   - name: stg_sap__makt
     description: Material Descriptions
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - matnr
+          - mandt
+          - spras
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -3064,6 +3116,7 @@ models:
         description: Material group for warehouse mgmt
       - name: whstc
         description: Warehouse storage condition
+
   - name: stg_sap__pa0000
     description: HR master record--infotype 0000 (Actions)
     tests:
@@ -4091,6 +4144,7 @@ models:
         description: Fivetran unique row ID
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+
   - name: stg_sap__t001
     description: Company codes
     tests:
@@ -4122,6 +4176,11 @@ models:
 
   - name: stg_sap__t001w
     description: Plants/Branches
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - werks
+            - mandt
     columns:
       - name: mandt
         description: Client
@@ -4412,12 +4471,19 @@ models:
         description: Vendor withholding tax active
       - name: zone1
         description: Zone key
+
   - name: stg_sap__t024
     description: Purchasing groups
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ekgrp
+            - mandt
     columns:
       - name: ekgrp
         description: Purchasing group
-
+      - name: mandt
+        description: Client
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_rowid
@@ -4432,8 +4498,6 @@ models:
         description: Telephone number
       - name: ldest
         description: Logical destination
-      - name: mandt
-        description: Client
       - name: smtp_addr
         description: Email address
       - name: tel_extens
@@ -4442,8 +4506,14 @@ models:
         description: Telephone number
       - name: telfx
         description: Fax number
+
   - name: stg_sap__t024e
     description: Purchasing organization text
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - ekorg
+            - mandt
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -4478,10 +4548,16 @@ models:
 
   - name: stg_sap__t134
     description: Material types
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mtart
+            - mandt
     columns:
       - name: mtart
         description: Material type
-
+      - name: mandt
+        description: Client
       - name: aranz
         description: Layout indicator for material master
       - name: ardel
@@ -4528,8 +4604,6 @@ models:
         description: Returnable packaging indicator
       - name: kzvpr
         description: Valuation allowed indicator
-      - name: mandt
-        description: Client
       - name: mbref
         description: Material type reference
       - name: mstae
@@ -4556,28 +4630,40 @@ models:
         description: Variant type
       - name: wmakg
         description: Weight unit group
+
   - name: stg_sap__t134t
     description: Material type descriptions
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mtart
+            - mandt
+            - spras
     columns:
       - name: mtart
         description: Material type
       - name: mttxt
         description: Description
-
       - name: mandt
         description: Client
       - name: mtbez
         description: Description of material type
       - name: spras
         description: Language key
+
   - name: stg_sap__t161
     description: Purchasing document types
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - bstyp
+            - bsart
+            - mandt
     columns:
       - name: bsart
         description: Document type
       - name: bstyp
         description: Document category
-
       - name: _sapmp_atnam
         description: SAP MP attribute name
       - name: _sapmp_ceact
@@ -4688,8 +4774,16 @@ models:
         description: Shipping instruction
       - name: xlokz
         description: Delivery block indicator
+
   - name: stg_sap__t161t
     description: Purchasing doc type texts
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - bstyp
+            - bsart
+            - mandt
+            - spras
     columns:
       - name: batxt
         description: Description
@@ -4697,11 +4791,11 @@ models:
         description: Document type
       - name: bstyp
         description: Document category
-
       - name: mandt
         description: Client
       - name: spras
         description: Language key
+
   - name: stg_sap__t503
     description: Employee group/subgroup
     tests:
@@ -4761,10 +4855,14 @@ models:
 
   - name: stg_sap__tvag
     description: Sales document rejection reasons
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - abgru
+            - mandt
     columns:
       - name: abgru
         description: Reason code
-
       - name: dragr
         description: Item is relevant for delivery scheduling
       - name: ep_off
@@ -4781,20 +4879,32 @@ models:
         description: Net value relevant
       - name: mandt
         description: Client
+
   - name: stg_sap__tvagt
     description: Sales document rejection reason text
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - abgru
+            - mandt
+            - spras
     columns:
       - name: abgru
         description: Reason code
       - name: bezei
         description: Description
-
       - name: mandt
         description: Client
       - name: spras
         description: Language key
+
   - name: stg_sap__vbak
     description: Sales document header data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - vbeln
+            - mandt
     columns:
       - name: _dataaging
         description: Data aging timestamp
@@ -5121,6 +5231,12 @@ models:
 
   - name: stg_sap__vbap
     description: Sales document item data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - posnr
+            - vbeln
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator (Accruals)
@@ -5903,6 +6019,11 @@ models:
 
   - name: stg_sap__vbuk
     description: Sales document status (header)
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - vbeln
     columns:
       - name: abstk
         description: Rejection status
@@ -6079,6 +6200,12 @@ models:
 
   - name: stg_sap__vbup
     description: Sales document status (item level)
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - mandt
+            - posnr
+            - vbeln
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
