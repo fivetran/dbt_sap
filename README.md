@@ -132,6 +132,8 @@ vars:
     faglflext_rclnt_var: 'value9' # The client in the `sap__0fi_gl_10` model, this filter allows you to parse down to one client's records.
     faglflext_rldnr_var: 'value10' # The ledger account field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one ledger account's records.
     faglflext_ryear_var: 'value11' # The fiscal year in the `sap__0fi_gl_10` model, this filter allows you to parse down to one fiscal year.
+
+    sales_and_procurement_mandt_var: ('800') 
 ```  
 
 #### Change the build schema

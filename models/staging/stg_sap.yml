@@ -306,11 +306,11 @@ models:
     description: Domain values
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - as4vers
-          - valpos
-          - as4local
-          - domname
+          combination_of_columns:
+            - as4vers
+            - valpos
+            - as4local
+            - domname
     columns:
       - name: domname
         description: Domain name
@@ -325,12 +325,12 @@ models:
     description: Domain text values
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - as4vers
-          - valpos
-          - as4local
-          - domname
-          - ddlanguage
+          combination_of_columns:
+            - as4vers
+            - valpos
+            - as4local
+            - domname
+            - ddlanguage
     columns:
       - name: ddlanguage
         description: Language key
@@ -349,15 +349,15 @@ models:
     description: Purchasing document history
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - zekkn
-          - gjahr
-          - belnr
-          - vgabe
-          - ebelp
-          - ebeln
-          - mandt
-          - buzei
+          combination_of_columns:
+            - zekkn
+            - gjahr
+            - belnr
+            - vgabe
+            - ebelp
+            - ebeln
+            - mandt
+            - buzei
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -544,11 +544,11 @@ models:
     description: Schedule lines for purchasing document
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - etenr
-          - ebelp
-          - ebeln
-          - mandt
+          combination_of_columns:
+            - etenr
+            - ebelp
+            - ebeln
+            - mandt
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -711,9 +711,9 @@ models:
     description: Purchasing document header
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - mandt
-          - ebeln
+          combination_of_columns:
+            - mandt
+            - ebeln
     columns:
       - name: ebeln
         description: Purchasing document number
@@ -1000,10 +1000,10 @@ models:
     description: Purchasing document item
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - mandt
-          - ebelp
-          - ebeln
+          combination_of_columns:
+            - mandt
+            - ebelp
+            - ebeln
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator
@@ -2597,10 +2597,10 @@ models:
     description: Material Descriptions
     tests:
       - dbt_utils.unique_combination_of_columns:
-        combination_of_columns:
-          - matnr
-          - mandt
-          - spras
+          combination_of_columns:
+            - matnr
+            - mandt
+            - spras
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker

@@ -74,7 +74,7 @@ with t161 as (
         and t161.bsart = t161t.bsart
         and t161.bstyp = t161t.bstyp
         and t161t.spras = 'e'
-    where t161.mandt in ('800')
+    where t161.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 
 select *

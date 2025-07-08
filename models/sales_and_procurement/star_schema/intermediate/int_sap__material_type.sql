@@ -54,7 +54,7 @@ with t134 as (
         on t134.mandt = t134t.mandt
         and t134.mtart = t134t.mtart
         and t134t.spras = 'e'
-    where t134.mandt in ('800')
+    where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 
 select *

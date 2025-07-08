@@ -260,7 +260,7 @@ with mara as (
         on mara.mandt = makt.mandt
         and mara.matnr = makt.matnr
         and makt.spras = 'e'
-    where mara.mandt in ('800')
+    where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 
 select *

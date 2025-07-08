@@ -25,7 +25,7 @@ with tvag as (
         on tvag.mandt = tvagt.mandt
         and tvag.abgru = tvagt.abgru
         and tvagt.spras = 'e'
-    where tvag.mandt in ('800')
+    where tvag.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 
 select *
