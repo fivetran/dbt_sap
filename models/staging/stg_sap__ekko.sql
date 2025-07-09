@@ -159,7 +159,10 @@ final as (
         zbd2p,
         zbd2t,
         zbd3t,
-        zterm
+        zterm,
+        _fivetran_sap_archived,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

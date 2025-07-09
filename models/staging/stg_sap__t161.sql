@@ -78,7 +78,10 @@ final as (
         _sapmp_pdact,
         _sapmp_pprot,
         _sapmp_puser,
-        _sapmp_pausw
+        _sapmp_pausw,
+        _fivetran_deleted,
+        _fivetran_synced,
+        _fivetran_rowid
     from fields
 )
 

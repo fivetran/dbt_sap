@@ -1,12 +1,15 @@
-{{ config(enabled=(var('sap_using_t161', True) and var('sap_using_t161t', True))) }}
+{{ config(enabled=var('sap_using_t161', True)) }}
 
 with t161 as (
     select *
     from {{ ref('stg_sap__t161') }}
 
+{% set using_t161t = var('sap_using_t161t', True) %}
+{% if using_t161t %}
 ), t161t as (
     select *
     from {{ ref('stg_sap__t161t') }}
+{% endif %}
 
 ), final as (
     select
@@ -66,14 +69,21 @@ with t161 as (
         t161.mill_omkz as use_ref_characteristics,
         t161.wrf_enable_dateline as enable_dateline,
         t161.hvr_is_deleted as hvr_is_deleted,
-        t161.hvr_change_time as hvr_change_time,
-        t161t.batxt as doc_type_descript
+        t161.hvr_change_time as hvr_change_time
+
+        {% if using_t161t %}
+        , t161t.batxt as doc_type_descript
+        {% endif %}
     from t161
+
+    {% if using_t161t %}
     left join t161t
         on t161.mandt = t161t.mandt
         and t161.bsart = t161t.bsart
         and t161.bstyp = t161t.bstyp
         and t161t.spras = 'e'
+    {% endif %}
+
     where t161.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 

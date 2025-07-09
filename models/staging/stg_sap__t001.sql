@@ -25,14 +25,17 @@ final as (
     select
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
-        waers,
-        periv,
-        ktopl, 
-        land1, 
-        kkber,
-        rcomp,
         butxt,
-        spras
+        kkber,
+        ktopl,
+        land1,
+        periv,
+        rcomp,
+        spras,
+        waers,
+        _fivetran_rowid,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

@@ -715,6 +715,12 @@ models:
             - mandt
             - ebeln
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: ebeln
         description: Purchasing document number
       - name: mandt
@@ -2877,7 +2883,6 @@ models:
         description: Document number (without document management system)
       - name: zeivr
         description: Document version (without document management system)
-
       - name: _accgo_assgd_uom
         description: Assigned unit of measure (Accruals)
       - name: _bev1_luldegrp
@@ -2957,7 +2962,7 @@ models:
       - name: bstat
         description: Material status at plant level
       - name: care_code
-        description: ''
+        description: Classification code used to identify special handling or care instructions for a material, such as temperature control, fragility, or hazard levels.
       - name: cmrel
         description: Commodity relevant
       - name: cobjid
@@ -3053,7 +3058,7 @@ models:
       - name: maxl
         description: Maximum pallet layer
       - name: mcond
-        description: ''
+        description: Material condition group used for pricing determination.
       - name: medium
         description: Medium type
       - name: mfrgr
@@ -4153,6 +4158,12 @@ models:
             - mandt
             - bukrs
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: bukrs
         description: Company code
       - name: butxt
@@ -4186,15 +4197,14 @@ models:
         description: Client
       - name: werks
         description: Plant
-
-      - name: _fivetran_deleted
-        description: ''
       - name: _fivetran_rowid
-        description: ''
-      - name: _fivetran_sap_archived
-        description: ''
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
       - name: _fivetran_synced
-        description: ''
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
       - name: achvm
         description: Material status in plant
       - name: adrnr
@@ -4554,6 +4564,12 @@ models:
             - mtart
             - mandt
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: mtart
         description: Material type
       - name: mandt
@@ -4640,10 +4656,14 @@ models:
             - mandt
             - spras
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: mtart
         description: Material type
-      - name: mttxt
-        description: Description
       - name: mandt
         description: Client
       - name: mtbez
@@ -4660,6 +4680,12 @@ models:
             - bsart
             - mandt
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: bsart
         description: Document type
       - name: bstyp
@@ -4785,6 +4811,12 @@ models:
             - mandt
             - spras
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: batxt
         description: Description
       - name: bsart
@@ -4805,6 +4837,12 @@ models:
             - persg
             - persk
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: abart
         description: Employee subgroup grouping for personnel calculation rule
       - name: abtyp
@@ -4846,12 +4884,54 @@ models:
             - mandt
             - rcomp
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: city
+        description: City
+      - name: cntry
+        description: Country key
+      - name: curr
+        description: Currency key
+      - name: glsip
+        description: Global ledger posting indicator
+      - name: indpo
+        description: Indicator purchase order relevant
+      - name: langu
+        description: Language key
+      - name: lccomp
+        description: Local company number
       - name: mandt
         description: Client
+      - name: mclnt
+        description: Client in local company
+      - name: mcomp
+        description: Consolidated company number
+      - name: modcp
+        description: Consolidation module
       - name: name1
         description: Company name
+      - name: name2
+        description: Company name 2
+      - name: pobox
+        description: PO box
+      - name: pstlc
+        description: Postal code
       - name: rcomp
         description: Company
+      - name: resta
+        description: Region/state
+      - name: rform
+        description: Legal form
+      - name: stret
+        description: Street
+      - name: strt2
+        description: Street 2
+      - name: zweig
+        description: Branch number
 
   - name: stg_sap__tvag
     description: Sales document rejection reasons
@@ -4861,6 +4941,12 @@ models:
             - abgru
             - mandt
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: abgru
         description: Reason code
       - name: dragr
@@ -4871,10 +4957,6 @@ models:
         description: Billing block active
       - name: fsh_pqr_spec
         description: PQR specification (Fashion)
-      - name: hvr_change_time
-        description: HVR change timestamp
-      - name: hvr_is_deleted
-        description: HVR deletion flag
       - name: kowrr
         description: Net value relevant
       - name: mandt
@@ -4889,6 +4971,12 @@ models:
             - mandt
             - spras
     columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: abgru
         description: Reason code
       - name: bezei
@@ -6025,6 +6113,12 @@ models:
             - mandt
             - vbeln
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: abstk
         description: Rejection status
       - name: aedat

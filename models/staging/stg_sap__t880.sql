@@ -23,9 +23,30 @@ fields as (
 final as (
 
     select
+        _fivetran_deleted,
+        _fivetran_rowid,
+        _fivetran_synced,
+        city,
+        cntry,
+        curr,
+        glsip,
+        indpo,
+        langu,
+        lccomp,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
+        mclnt,
+        mcomp,
+        modcp,
+        name1,
+        name2,
+        pobox,
+        pstlc,
         rcomp,
-        name1
+        resta,
+        rform,
+        stret,
+        strt2,
+        zweig
     from fields
 )
 

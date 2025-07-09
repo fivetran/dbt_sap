@@ -4240,6 +4240,12 @@ sources:
           enabled: "{{ var('sap_using_t001', true) }}"
         description: Company codes
         columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
           - name: adrnr
             description: Address number
           - name: bapovar
@@ -6086,6 +6092,12 @@ sources:
           enabled: "{{ var('sap_using_vbuk', true) }}"
         description: Sales document status (header)
         columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
           - name: abstk
             description: Rejection status
           - name: aedat

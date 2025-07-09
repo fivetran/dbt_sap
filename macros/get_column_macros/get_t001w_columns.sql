@@ -144,7 +144,7 @@
     {"name": "xvalv", "datatype": dbt.type_string()},
     {"name": "xvatdate", "datatype": dbt.type_string()},
     {"name": "xvvwa", "datatype": dbt.type_string()},
-    {"name": "zone1", "datatype": dbt.type_string()},
+    {"name": "zone1", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}

@@ -41,7 +41,7 @@
     {"name": "vnumki", "datatype": dbt.type_string()},
     {"name": "vprsv", "datatype": dbt.type_string()},
     {"name": "vtype", "datatype": dbt.type_string()},
-    {"name": "wmakg", "datatype": dbt.type_string()},
+    {"name": "wmakg", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}

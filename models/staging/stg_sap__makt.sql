@@ -23,7 +23,10 @@ final as (
         maktx,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(matnr as {{ dbt.type_string() }}) as matnr,
-        spras
+        spras,
+        _fivetran_rowid,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

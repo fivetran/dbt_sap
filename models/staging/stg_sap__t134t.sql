@@ -23,7 +23,10 @@ final as (
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         mtart,
         mtbez,
-        spras
+        spras,
+        _fivetran_deleted,
+        _fivetran_synced,
+        _fivetran_rowid
     from fields
 )
 

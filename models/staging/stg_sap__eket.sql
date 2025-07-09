@@ -94,7 +94,10 @@ final as (
         wadat,
         wamng,
         wauhr,
-        wemng
+        wemng,
+        _fivetran_sap_archived,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

@@ -106,7 +106,10 @@ final as (
         xunpl,
         xwoff,
         xwsbr,
-        zekkn
+        zekkn,
+        _fivetran_sap_archived,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

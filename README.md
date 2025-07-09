@@ -133,7 +133,7 @@ vars:
     faglflext_rldnr_var: 'value10' # The ledger account field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one ledger account's records.
     faglflext_ryear_var: 'value11' # The fiscal year in the `sap__0fi_gl_10` model, this filter allows you to parse down to one fiscal year.
 
-    sales_and_procurement_mandt_var: ['800', '200', '300'] # default is '800'
+    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is '800', but a list of allowable values can be passed.
 ```  
 
 #### Change the build schema

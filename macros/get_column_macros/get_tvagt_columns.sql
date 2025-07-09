@@ -7,7 +7,7 @@
     {"name": "abgru", "datatype": dbt.type_string()},
     {"name": "bezei", "datatype": dbt.type_string()},
     {"name": "mandt", "datatype": dbt.type_string()},
-    {"name": "spras", "datatype": dbt.type_string()},
+    {"name": "spras", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}

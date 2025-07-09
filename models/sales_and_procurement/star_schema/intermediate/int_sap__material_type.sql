@@ -1,12 +1,15 @@
-{{ config(enabled=(var('sap_using_t134', True) and var('sap_using_t134t', True))) }}
+{{ config(enabled=var('sap_using_t134', True)) }}
 
 with t134 as (
     select *
     from {{ ref('stg_sap__t134') }}
 
+{% set using_t134t = var('sap_using_t134t', True) %}
+{% if using_t134t %}
 ), t134t as (
     select *
     from {{ ref('stg_sap__t134t') }}
+{% endif %}
 
 ), final as (
     select
@@ -48,12 +51,20 @@ with t134 as (
         t134.kzrac as mand_rp_logistics,
         t134.hvr_is_deleted as hvr_is_deleted,
         t134.hvr_change_time as hvr_change_time,
+
+{% if using_t134t %}
         t134t.mtbez as description_material_type
+{% endif %}
+
     from t134
+
+{% if using_t134t %}
     left join t134t
         on t134.mandt = t134t.mandt
         and t134.mtart = t134t.mtart
         and t134t.spras = 'e'
+{% endif %}
+
     where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 

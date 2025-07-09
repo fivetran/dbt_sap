@@ -1,12 +1,15 @@
-{{ config(enabled=(var('sap_using_mara', True) and var('sap_using_makt', True))) }}
+{{ config(enabled=var('sap_using_mara', True)) }}
 
 with mara as (
     select *
     from {{ ref('stg_sap__mara') }}
 
+{% set using_makt = var('sap_using_makt', True) %}
+{% if using_makt %}
 ), makt as (
     select *
     from {{ ref('stg_sap__makt') }}
+{% endif %}
 
 ), final as (
     select
@@ -253,13 +256,20 @@ with mara as (
         mara.zeifo as page_format,
         mara._fivetran_deleted as _fivetran_deleted,
         mara._fivetran_synced as _fivetran_synced,
-        mara._fivetran_sap_archived as _fivetran_sap_archived,
-        makt.maktx as material_description
+        mara._fivetran_sap_archived as _fivetran_sap_archived
+        
+        {% if using_makt %}
+        , makt.maktx as material_description
+        {% endif %}
     from mara
+
+    {% if using_makt %}
     left join makt
         on mara.mandt = makt.mandt
         and mara.matnr = makt.matnr
         and makt.spras = 'e'
+    {% endif %}
+
     where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
 )
 

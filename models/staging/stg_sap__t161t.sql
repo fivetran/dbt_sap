@@ -24,7 +24,10 @@ final as (
         bsart,
         bstyp,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
-        spras
+        spras,
+        _fivetran_deleted,
+        _fivetran_synced,
+        _fivetran_rowid
     from fields
 )
 

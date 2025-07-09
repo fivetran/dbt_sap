@@ -87,6 +87,9 @@
     {"name": "fsh_ar_stat_hdr", "datatype": dbt.type_string()},
     {"name": "hvr_is_deleted", "datatype": dbt.type_int()},
     {"name": "hvr_change_time", "datatype": dbt.type_string()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
+    {"name": "_fivetran_rowid", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}

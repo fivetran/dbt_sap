@@ -1,4 +1,4 @@
-{{ config(enabled=(var('sap_using_tvag', True) and var('sap_using_tvagt', True))) }}
+{{ config(enabled=var('sap_using_tvag', True)) }}
 
 select
 	reason_rejection_id, 
