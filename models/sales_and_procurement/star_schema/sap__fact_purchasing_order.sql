@@ -42,7 +42,6 @@ with purchasing_document_item as (
         purchasing_document_item.plant_id,
         purchasing_document_item.order_uom_id,
         purchasing_document_item.returns_item,
-        purchasing_document_item.delivery_completed,
         purchasing_document_item.rejection_indicator,
         purchasing_document_item.net_order_po_currency_val as purchasing_document_currency_amount,
         case 
@@ -104,7 +103,7 @@ with purchasing_document_item as (
                 or purchasing_document_overview.received_quantity >= purchasing_document_item.purchase_order_quantity
                 then cast(1 as {{ dbt.type_numeric() }})
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_item_closed_count
+        end as purchase_item_closed_count,
         {% endif %}
 
         {% if using_purchasing_document_header and using_purchasing_document_overview %}
