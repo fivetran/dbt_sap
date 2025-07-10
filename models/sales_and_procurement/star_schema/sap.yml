@@ -156,6 +156,16 @@ models:
         description: Number of open (undelivered) items
       - name: purchase_item_closed_count
         description: Number of closed/completed items
+      - name: returns_item
+        description: Indicates if the item is a return ('' if not a return)
+      - name: rejection_indicator
+        description: Flag indicating whether the item has been rejected
+      - name: exchange_rate
+        description: Exchange rate between the document currency and local currency
+      - name: latest_goods_receive_date
+        description: Most recent goods receipt date recorded
+      - name: delivery_completed
+        description: Flag indicating whether delivery for the item is complete
 
   - name: sap__fact_sales_order
     description: Line-level sales order facts and metrics

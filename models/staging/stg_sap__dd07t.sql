@@ -27,7 +27,10 @@ final as (
         domname,
         domvalue_l,
         valpos,
-        hvr_change_time
+        hvr_change_time,
+        _fivetran_deleted,
+        _fivetran_rowid,
+        _fivetran_synced
     from fields
 )
 

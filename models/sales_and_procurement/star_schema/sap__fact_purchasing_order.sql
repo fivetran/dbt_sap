@@ -50,7 +50,7 @@ with purchasing_document_item as (
             else -1 * purchasing_document_item.purchase_order_quantity
         end as purchase_order_quantity,
         case 
-            when purchasing_document_item.rejection_indicator = 'x'
+            when lower(purchasing_document_item.rejection_indicator) = 'x'
                 then purchasing_document_item.purchase_order_quantity
             else cast(0 as {{ dbt.type_numeric() }})
         end as cancel_purchase_quantity,
@@ -71,6 +71,16 @@ with purchasing_document_item as (
                 else purchasing_document_header.exchange_rate
             end as {{ dbt.type_numeric() }}
         ) as purchase_order_amount,
+        case 
+            when lower(purchasing_document_item.rejection_indicator) = 'x'
+                then cast(purchasing_document_item.net_order_po_currency_val * case 
+                    when purchasing_document_header.exchange_rate < 0
+                        then - 1 / purchasing_document_header.exchange_rate
+                    else purchasing_document_header.exchange_rate
+                    end as {{ dbt.type_numeric() }}
+                    )
+            else cast(0 as {{ dbt.type_numeric() }})
+		end as cancel_purchase_amount,
         {% endif %}
 
         {% if using_company %}
@@ -84,7 +94,7 @@ with purchasing_document_item as (
         {% if using_purchasing_document_overview %}
         purchasing_document_overview.latest_goods_receive_date,
         purchasing_document_overview.received_quantity as purchasing_delivered_quantity,
-        purchasing_document_overview.received_value_in_local_curr,
+        purchasing_document_overview.received_value_in_local_curr as purchase_delivered_amount,
         purchasing_document_overview.invoice_value_local_curr as purchase_invoiced_amount,
         purchasing_document_overview.delivery_completed,
         case

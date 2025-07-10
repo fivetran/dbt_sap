@@ -327,6 +327,8 @@ models:
         description: Active version
       - name: hvr_change_time
         description: HVR change timestamp
+      - name: valpos
+        description: Value position within the domain
 
   - name: stg_sap__dd07t
     description: Domain text values
@@ -4984,6 +4986,10 @@ models:
         description: Billing block active
       - name: fsh_pqr_spec
         description: PQR specification (Fashion)
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
       - name: kowrr
         description: Net value relevant
       - name: mandt
