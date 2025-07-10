@@ -406,6 +406,7 @@ final as (
         zwert,
         _fivetran_sap_archived,
         _fivetran_deleted,
+        _fivetran_rowid,
         _fivetran_synced
     from fields
 )

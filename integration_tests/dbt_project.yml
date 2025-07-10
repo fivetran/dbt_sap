@@ -292,19 +292,10 @@ seeds:
         eq_eindt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_ekpo_data:
-      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
-      +quote_columns: true
-    sap_ekpo_data_bigquery:
-      +alias: sap_ekpo_data
-      +enabled: "{{ true if target.type == 'bigquery' else false }}"
-      +quote_columns: true
       +column_types:
+        abftz: numeric
         abmng: numeric
-        brtwr: numeric     
-    sap_ekpo_data_snowflake:
-      +alias: sap_ekpo_data
-      +enabled: "{{ true if target.type == 'snowflake' else false }}"
-      +quote_columns: true
+        brtwr: numeric
 
     sap_faglflexa_data:
       +column_types:
@@ -1066,22 +1057,6 @@ seeds:
         mttxt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t161_data:
-      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
-      +quote_columns: true
-      +column_types:
-        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-    sap_t161_data_bigquery:
-      +enabled: "{{ true if target.type == 'bigquery' else false }}"
-      +quote_columns: true
-      +alias: sap_t161_data
-      +column_types:
-        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-    sap_t161_data_snowflake:
-      +enabled: "{{ true if target.type == 'snowflake' else false }}"
-      +quote_columns: true
-      +alias: sap_t161_data
       +column_types:
         bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1147,7 +1122,6 @@ seeds:
         cmpre: numeric
         cpd_updat: numeric
         hvr_is_deleted: numeric
-        hvr_rowid: numeric
         kbmeng: numeric
         kbver: numeric
         kever: numeric

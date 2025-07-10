@@ -1272,6 +1272,8 @@ sources:
             description: Fivetran SAP archive marker
           - name: _fivetran_synced
             description: Fivetran sync timestamp
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
           - name: abdat
             description: Delivery date
           - name: abeln
