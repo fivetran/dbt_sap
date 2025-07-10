@@ -20,11 +20,13 @@ fields as (
 
 final as (
     select
-        domname,
-        domvalue_l,
+        as4local,
         as4vers,
         ddlanguage,
         ddtext,
+        domname,
+        domvalue_l,
+        valpos,
         hvr_change_time
     from fields
 )

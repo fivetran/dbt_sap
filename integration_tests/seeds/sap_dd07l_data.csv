@@ -1,4 +1,4 @@
-_fivetran_deleted,_fivetran_rowid,_fivetran_synced,domvalue_l,domname,as4vers,hvr_change_time
-true,1,2023-01-01 12:00:00,A,text1,val1,2023-01-01 12:00:00
-false,2,2023-01-02 12:00:00,B,text2,val2,2023-01-02 12:00:00
-false,3,2023-01-03 12:00:00,C,text3,val3,2023-01-03 12:00:00
+_fivetran_deleted,_fivetran_rowid,_fivetran_synced,domvalue_l,domname,as4vers,hvr_change_time,valpos
+true,1,2023-01-01 12:00:00,A,text1,val1,2023-01-01 12:00:00,0001
+false,2,2023-01-02 12:00:00,B,text2,val2,2023-01-02 12:00:00,0001
+false,3,2023-01-03 12:00:00,C,text3,val3,2023-01-03 12:00:00,0001

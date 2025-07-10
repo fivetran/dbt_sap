@@ -592,6 +592,8 @@ sources:
             description: Fivetran unique row ID
           - name: _fivetran_synced
             description: Fivetran sync timestamp
+          - name: as4local
+            description: Indicator of local object (not transported between systems)
           - name: as4vers
             description: Active version
           - name: ddlanguage
@@ -604,6 +606,8 @@ sources:
             description: Domain value
           - name: hvr_change_time
             description: HVR change timestamp
+          - name: valpos
+            description: Value position within the domain
 
       - name: ekbe
         identifier: "{{ var('sap_ekbe_identifier', 'ekbe') }}"

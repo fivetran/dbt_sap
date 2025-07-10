@@ -4,7 +4,7 @@ profile: 'integration_tests'
 config-version: 2
 
 vars:
-  sap_schema: sap_integration_tests
+  sap_schema: zz_sap #sap_integration_tests
   sap:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bseg_identifier: "sap_bseg_data"
@@ -42,7 +42,10 @@ vars:
     sap_vbap_identifier: "sap_vbap_data"
     sap_vbuk_identifier: "sap_vbuk_data"
     sap_vbup_identifier: "sap_vbup_data"
-  
+
+models:
+  +schema: "sap_{{ var('directed_schema','dev') }}"
+
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']

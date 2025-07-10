@@ -311,7 +311,14 @@ models:
             - valpos
             - as4local
             - domname
+            - hvr_change_time
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: domname
         description: Domain name
       - name: domvalue_l
@@ -326,24 +333,35 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - as4vers
-            - valpos
             - as4local
-            - domname
+            - as4vers
             - ddlanguage
+            - domname
+            - valpos
+            - hvr_change_time
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: as4local
+        description: Indicator of local object (not transported between systems)
+      - name: as4vers
+        description: Active version
       - name: ddlanguage
         description: Language key
+      - name: ddtext
+        description: Text
       - name: domname
         description: Domain name
       - name: domvalue_l
         description: Domain value
-      - name: as4vers
-        description: Active version
-      - name: ddtext
-        description: Text
       - name: hvr_change_time
         description: HVR change timestamp
+      - name: valpos
+        description: Value position within the domain
 
   - name: stg_sap__ekbe
     description: Purchasing document history
@@ -358,6 +376,7 @@ models:
             - ebeln
             - mandt
             - buzei
+            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -549,6 +568,7 @@ models:
             - ebelp
             - ebeln
             - mandt
+            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -714,6 +734,7 @@ models:
           combination_of_columns:
             - mandt
             - ebeln
+            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -1010,6 +1031,7 @@ models:
             - mandt
             - ebelp
             - ebeln
+            - hvr_change_time
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator
@@ -4192,6 +4214,7 @@ models:
           combination_of_columns:
             - werks
             - mandt
+            - hvr_change_time
     columns:
       - name: mandt
         description: Client
@@ -4563,6 +4586,7 @@ models:
           combination_of_columns:
             - mtart
             - mandt
+            - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -4679,6 +4703,7 @@ models:
             - bstyp
             - bsart
             - mandt
+            - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -6112,6 +6137,7 @@ models:
           combination_of_columns:
             - mandt
             - vbeln
+            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
