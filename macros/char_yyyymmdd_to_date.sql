@@ -4,7 +4,7 @@
 {%- endmacro %}
 
 {% macro default__char_yyyymmdd_to_date(date_string) %}
-    to_date(cast{{ date_string }} as {{ dbt.type_string() }}), 'YYYYMMDD')
+    to_date(cast({{ date_string }} as {{ dbt.type_string() }}), 'YYYYMMDD')
 {% endmacro %}
 
 {% macro bigquery__char_yyyymmdd_to_date(date_string) %}

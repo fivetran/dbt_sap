@@ -70,7 +70,7 @@ with t161 as (
         t161.wrf_enable_dateline as enable_dateline,
         t161.hvr_is_deleted as hvr_is_deleted,
         t161.hvr_change_time as hvr_change_time,
-        {{ 't161t.batxt' if using_t161t else 'cast(null as {{ dbt.type_string() }})' }} as doc_type_descript
+        {{ 't161t.batxt' if using_t161t else 'cast(null as ' ~ dbt.type_string() ~ ')' }} as doc_type_descript
     from t161
 
     {% if using_t161t %}
