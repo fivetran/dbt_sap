@@ -14,12 +14,8 @@ with dd07l as (
 ), final as (
     select 
         dd07l.domvalue_l as purchasing_document_category_id,
-        dd07l.hvr_change_time as hvr_change_time
-
-        {% if using_dd07t %}
-        , dd07t.ddtext as purchasing_document_category_txt
-        {% endif %}
-
+        dd07l.hvr_change_time as hvr_change_time,
+        {{ 'dd07t.ddtext' if using_dd07t else 'cast(null as {{ dbt.type_string() }})' }} as purchasing_document_category_txt
     from dd07l
 
     {% if using_dd07t %}

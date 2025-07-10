@@ -22,12 +22,8 @@ with tvag as (
         tvag.kowrr as statistical_values,
         tvag.fsh_pqr_spec as relevant_partial_quantity_rejection,
         tvag.hvr_is_deleted as hvr_is_deleted,
-        tvag.hvr_change_time as hvr_change_time
-
-        {% if using_tvagt %}
-        , tvagt.bezei as description
-        {% endif %}
-
+        tvag.hvr_change_time as hvr_change_time,
+        {{ 'tvagt.bezei' if using_tvagt else 'cast(null as {{ dbt.type_string() }})' }} as description
     from tvag
 
     {% if using_tvagt %}
