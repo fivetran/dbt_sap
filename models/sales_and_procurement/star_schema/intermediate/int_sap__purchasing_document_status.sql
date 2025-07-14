@@ -1,13 +1,34 @@
-  Select 
-    dd07l.DOMVALUE_L as Document_status_id, 
-    dd07t.DDTEXT as Document_status_txt , 
-    dd07l.hvr_change_time as hvr_change_time 
-  from {{ ref('stg_sap__dd07l') }}
-  left join {{ ref('stg_sap__dd07t') }} on
-  dd07l.DOMNAME = dd07t.DOMNAME
-  and dd07l.DOMVALUE_L = dd07t.DOMVALUE_L
-  and dd07l.AS4VERS = dd07t.AS4VERS
-  and dd07t.DDLANGUAGE in ('E')
-  where 
-  dd07l.DOMNAME = 'STATV' 
-  and dd07l.AS4VERS = '0000'
+{{ config(enabled=var('sap_using_dd07l', True)) }}
+
+with dd07l as (
+    select *
+    from {{ ref('stg_sap__dd07l') }}
+
+{% set using_dd07t = var('sap_using_dd07t', True) %}
+{% if using_dd07t %}
+), dd07t as (
+    select *
+    from {{ ref('stg_sap__dd07t') }}
+{% endif %}
+
+), final as (
+    select 
+        dd07l.domvalue_l as document_status_id,
+        dd07l.hvr_change_time as hvr_change_time,
+        {{ 'dd07t.ddtext' if using_dd07t else 'cast(null as ' ~ dbt.type_string() ~ ')' }} as document_status_txt
+    from dd07l
+
+    {% if using_dd07t %}
+    left join dd07t
+        on dd07l.domname = dd07t.domname
+        and dd07l.domvalue_l = dd07t.domvalue_l
+        and dd07l.as4vers = dd07t.as4vers
+        and dd07t.ddlanguage in ('e')
+    {% endif %}
+
+    where dd07l.domname = 'statv'
+        and dd07l.as4vers = '0000'
+)
+
+select *
+from final

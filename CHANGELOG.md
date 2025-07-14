@@ -1,6 +1,7 @@
 # dbt_sap v0.2.0
 
 ## Schema Changes
+- sales and procurement models
 
 ## Documentation
 - Added Quickstart model counts to README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))

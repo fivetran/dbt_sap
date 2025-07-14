@@ -1,0 +1,3 @@
+_fivetran_deleted,_fivetran_rowid,_fivetran_synced,abgru,dragr,ep_off,fk_erl,fsh_pqr_spec,hvr_change_time,hvr_is_deleted,kowrr,mandt
+false,ROW001,2025-06-01 12:00:00,AGR1,DRA1,true,false,PQR1,2025-06-01 12:01:00,0,KWR001,100
+true,ROW002,2025-06-01 12:02:00,AGR2,DRA2,false,true,PQR2,2025-06-01 12:03:00,1,KWR002,200

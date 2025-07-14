@@ -1,8 +1,10 @@
 {{ config(enabled=var('sap_using_t001', True)) }}
 
+{% set source_columns = adapter.get_columns_in_relation(ref('stg_sap__t001_tmp')) %}
+
 with base as (
 
-    select * 
+    select {{ remove_slashes_from_col_names(source_columns) }}
     from {{ ref('stg_sap__t001_tmp') }}
 ),
 
@@ -11,7 +13,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_sap__t001_tmp')),
+                source_columns=source_columns,
                 staging_columns=get_t001_columns()
             )
         }}
@@ -23,14 +25,17 @@ final as (
     select
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
-        waers,
-        periv,
-        ktopl, 
-        land1, 
-        kkber,
-        rcomp,
         butxt,
-        spras
+        kkber,
+        ktopl,
+        land1,
+        periv,
+        rcomp,
+        spras,
+        waers,
+        _fivetran_rowid,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
 )
 

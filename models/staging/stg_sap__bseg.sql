@@ -1,8 +1,10 @@
 {{ config(enabled=var('sap_using_bseg', True)) }}
 
+{% set source_columns = adapter.get_columns_in_relation(ref('stg_sap__bseg_tmp')) %}
+
 with base as (
 
-    select * 
+    select {{ remove_slashes_from_col_names(source_columns) }}
     from {{ ref('stg_sap__bseg_tmp') }}
 ),
 
@@ -11,7 +13,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_sap__bseg_tmp')),
+                source_columns=source_columns,
                 staging_columns=get_bseg_columns()
             )
         }}
@@ -31,8 +33,8 @@ final as (
         aufnr,
         augbl,
         augdt,
-        ebeln,
-        ebelp,
+        cast(ebeln as {{ dbt.type_string() }}) as ebeln,
+        cast(ebelp as {{ dbt.type_string() }}) as ebelp,
         eten2, 
         filkd,
         gsber, 
@@ -52,7 +54,7 @@ final as (
         rebzg,
         samnr,
         sgtxt,
-        shkzg,
+        cast(shkzg as {{ dbt.type_string() }}) as shkzg,
         skfbt,
         wskto,
         sknto, 
@@ -61,7 +63,7 @@ final as (
         uzawe,
         valut,
         vbel2,
-        vbeln,
+        cast(vbeln as {{ dbt.type_string() }}) as vbeln,
         vbewa,
         vbund,
         vertn,
@@ -119,10 +121,10 @@ final as (
         fkber_long,
         imkey,
         kstar,
-        kunnr,
+        cast(kunnr as {{ dbt.type_string() }}) as kunnr,
         lifnr,
         meins,
-        menge,
+        cast(menge as {{ dbt.type_numeric() }}) as menge,
         pargb, 
         pfkber, 
         pprct, 

@@ -1,121 +1,184 @@
-SELECT T1."Purchasing_Document_Id"
-	,t1."Purchasing_Document_Item_Id"
-	,T2."Company_Code_Id"
-	,T3."Currency_Id"
-	,T1."Material_Id"
-	,T1."Plant_Id"
-	,T2."Purchasing_Group_Id"
-	,T2."Purchasing_Organization_Id"
-	,T2."Vendor_Id"
-	,T1."Order_Uom_Id"
-	,T2."Purchasing_Document_Date"
-	,t5."Lastest_Scheduled_Delivery_Date" AS "Scheduled_Delivery_Date"
-	,CAST((T4.LATEST_GOODS_RECEIVE_DATE - T2."Purchasing_Document_Date") AS DECIMAL(15, 2)) AS "Purchase_Deliver_Late_Days"
-	,CAST((T4.LATEST_GOODS_RECEIVE_DATE - T5."Lastest_Scheduled_Delivery_Date") AS DECIMAL(15, 2)) AS "Purchase_Late_Lead_Days"
-	,
-	--  CAST((T4.LATEST_GOODS_RECEIVE_DATE - T5."Lastest_Scheduled_Delivery_Date") as DECIMAL(15,2)) AS PURCHASE_LATE_ORIG_LEAD_DAYS,
-	CASE 
-		WHEN t1."Returns_Item" = ''
-			THEN T1."Purchase_Order_Quantity"
-		ELSE - 1 * T1."Purchase_Order_Quantity"
-		END AS "Purchase_Order_Quantity"
-	,CASE 
-		WHEN T1."Delivery_Completed" <> ''
-			THEN CAST(0 AS DECIMAL(15, 3))
-		ELSE (T1."Purchase_Order_Quantity" - COALESCE(T4.RECEIVED_QUANTITY,0))
-		END AS "Purchase_Open_Quantity"
-	,T4.RECEIVED_QUANTITY AS "Purchasing_Delivered_Quantity"
-	,
-	--  CASE
-	--   WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE
-	--    THEN T4.RECEIVED_QUANTITY
-	--    ELSE CAST(0 as DECIMAL(15,3))
-	--  END AS PURCHASE_ORIG_LATE_QUANTITY,
-	CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN T4.RECEIVED_QUANTITY
-		ELSE CAST(0 AS DECIMAL(15, 3))
-		END AS "Purchase_Late_Quantity"
-	,CASE 
-		WHEN T1."Rejection_Indicator" = 'X'
-			THEN T1."Purchase_Order_Quantity"
-		ELSE CAST(0 AS DECIMAL(15, 3))
-		END AS "Cancel_Purchase_Quantity"
-	,CAST(T1."Net_Order_Po_Currency_Val" * CASE 
-			WHEN T2."Exchange_Rate" < 0
-				THEN - 1 / T2."Exchange_Rate"
-			ELSE T2."Exchange_Rate"
-			END AS DECIMAL(15, 2)) AS "Purchase_Order_Amount"
-	,T1."Net_Order_Po_Currency_Val" "Purchasing_Document_Currency_Amount"
-	,t2."Currency_Id" "Document_Currency_Id"
-	,CASE 
-		WHEN T4."Delivery_Completed" IS NOT NULL
-			THEN CAST(0 AS DECIMAL(15, 2))
-		ELSE (
-				T1."Net_Order_Po_Currency_Val"  * (
-					CASE 
-						WHEN T2."Exchange_Rate" < 0
-							THEN - 1 / T2."Exchange_Rate"
-						ELSE T2."Exchange_Rate"
-						END
-					)
-				) - T4.RECEIVED_VALUE_IN_LOCAL_CURR
-		END AS "Purchase_Open_Amount"
-	,T4.RECEIVED_VALUE_IN_LOCAL_CURR AS "Purchase_Delivered_Amount"
-	,CASE 
-		WHEN T1."Rejection_Indicator" = 'X'
-			THEN (
-					CAST(T1."Net_Order_Po_Currency_Val" * CASE 
-							WHEN T2."Exchange_Rate" < 0
-								THEN - 1 / T2."Exchange_Rate"
-							ELSE T2."Exchange_Rate"
-							END AS DECIMAL(15, 2))
-					)
-		ELSE CAST(0 AS DECIMAL(15, 2))
-		END AS "Cancel_Purchase_Amount"
-	,CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN T4.RECEIVED_VALUE_IN_LOCAL_CURR
-		ELSE CAST(0 AS DECIMAL(15, 2))
-		END AS "Purchase_Late_Amount"
-	,
-	-- CASE
-	--   WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE
-	--   THEN T4.RECEIVED_VALUE_IN_LOCAL_CURR
-	--   ELSE CAST(0 as DECIMAL(15,2))
-	-- END AS PURCHASE_LATE_ORIG_AMOUNT,
-	-- T4.RECEIVED_VALUE_IN_LOCAL_CURR - COALESCE(CAST((T1.NET_VALUE * T2.EXCHANGE_RATE) AS DECIMAL (15,2)), 0) AS PURCH_INVOICE_VARIANCE_AMOUNT,
-	T4.INVOICE_VALUE_LOCAL_CURR AS "Purchase_Invoiced_Amount"
-	,CAST(1 AS DECIMAL(15, 0)) AS "Purchase_Order_Item_Count"
-	,CASE 
-		WHEN T4.LATEST_GOODS_RECEIVE_DATE > T5."Lastest_Scheduled_Delivery_Date"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END "Purchase_Item_Late_Count"
-	,
-	-- CASE
-	--  WHEN T4.LATEST_GOODS_RECEIVE_DATE > T1.ORIGINAL_LATEST_SCHED_DEL_DATE 
-	--  THEN CAST(1 as DECIMAL(15,0))
-	--  ELSE CAST(0 as DECIMAL(15,0))
-	-- END AS PURCHASE_ITEM_ORG_LATE_COUNT,
-	CASE 
-		WHEN COALESCE(T4."Delivery_Completed", 'N') <> ' '
-			AND COALESCE (T4.RECEIVED_QUANTITY,0) < T1."Purchase_Order_Quantity"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END AS PURCHASE_ITEM_OPEN_COUNT
-	,CASE 
-		WHEN COALESCE(T4."Delivery_Completed", 'N') <> ' '
-			OR T4.RECEIVED_QUANTITY >= T1."Purchase_Order_Quantity"
-			THEN CAST(1 AS DECIMAL(15, 0))
-		ELSE CAST(0 AS DECIMAL(15, 0))
-		END AS PURCHASE_ITEM_CLOSED_COUNT
-FROM {{ ref('vw_purchasing_document_item') }} T1
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_header') }} T2 ON T2."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
-LEFT OUTER JOIN {{ ref('vw_company') }} T3 ON T3."Company_Code_Id" = T2."Company_Code_Id"
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_overview') }} T4 ON T4."Purchasing_Document_Id" = T1."Purchasing_Document_Id"
-	AND T4."Purchasing_Document_Item_Id" = T1."Purchasing_Document_Item_Id"
---WHERE COALESCE (T1."Deletion_Indicator") , '#') IN ('#','S')
---  AND COALESCE (T2."Hvr_Is_Deleted" , 'Y') <> 'X'
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_schedule_total') }} T5 ON T1."Purchasing_Document_Id" = T5."Purchasing_Document_Id"
-	AND T1."Purchasing_Document_Item_Id" = T5."Purchasing_Document_Item_Id"
+{% set using_purchasing_document_item = var('sap_using_ekpo', True) %}
+{% set using_purchasing_document_header = var('sap_using_ekko', True) %}
+{% set using_company = var('sap_using_t001w', True) %}
+{% set using_purchasing_document_overview = var('sap_using_ekbe', True) %}
+{% set using_purchasing_document_schedule_total = var('sap_using_eket', True) %}
+
+{{ config(enabled=using_purchasing_document_item) }}
+
+with purchasing_document_item as (
+    select *
+    from {{ ref('int_sap__purchasing_document_item') }}
+
+{% if using_purchasing_document_header %}
+), purchasing_document_header as (
+    select *
+    from {{ ref('int_sap__purchasing_document_header') }}
+{% endif %}
+
+{% if using_company %}
+), company as (
+    select *
+    from {{ ref('int_sap__company') }}
+{% endif %}
+
+{% if using_purchasing_document_overview %}
+), purchasing_document_overview as (
+    select *
+    from {{ ref('int_sap__purchasing_document_overview') }}
+{% endif %}
+
+{% if using_purchasing_document_schedule_total %}
+), purchasing_document_schedule_total as (
+    select *
+    from {{ ref('int_sap__purchasing_document_schedule_total') }}
+{% endif %}
+
+), final as (
+    select
+        purchasing_document_item.purchasing_document_id,
+        purchasing_document_item.purchasing_document_item_id,
+        purchasing_document_item.material_id,
+        purchasing_document_item.plant_id,
+        purchasing_document_item.order_uom_id,
+        purchasing_document_item.returns_item,
+        purchasing_document_item.rejection_indicator,
+        purchasing_document_item.net_order_po_currency_val as purchasing_document_currency_amount,
+        case 
+            when purchasing_document_item.returns_item = ''
+                then purchasing_document_item.purchase_order_quantity
+            else -1 * purchasing_document_item.purchase_order_quantity
+        end as purchase_order_quantity,
+        case 
+            when lower(purchasing_document_item.rejection_indicator) = 'x'
+                then purchasing_document_item.purchase_order_quantity
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as cancel_purchase_quantity,
+
+        {% if using_purchasing_document_header %}
+        purchasing_document_header.company_code_id,
+        purchasing_document_header.purchasing_group_id,
+        purchasing_document_header.purchasing_organization_id,
+        purchasing_document_header.vendor_id,
+        purchasing_document_header.purchasing_document_date,
+        purchasing_document_header.exchange_rate,
+        purchasing_document_header.currency_id as document_currency_id,
+        cast(
+            purchasing_document_item.net_order_po_currency_val *
+            case 
+                when purchasing_document_header.exchange_rate < 0
+                    then -1 / purchasing_document_header.exchange_rate
+                else purchasing_document_header.exchange_rate
+            end as {{ dbt.type_numeric() }}
+        ) as purchase_order_amount,
+        case 
+            when lower(purchasing_document_item.rejection_indicator) = 'x'
+                then cast(purchasing_document_item.net_order_po_currency_val * case 
+                    when purchasing_document_header.exchange_rate < 0
+                        then - 1 / purchasing_document_header.exchange_rate
+                    else purchasing_document_header.exchange_rate
+                    end as {{ dbt.type_numeric() }}
+                    )
+            else cast(0 as {{ dbt.type_numeric() }})
+		end as cancel_purchase_amount,
+        {% endif %}
+
+        {% if using_company %}
+        company.currency_id,
+        {% endif %}
+
+        {% if using_purchasing_document_schedule_total %}
+        purchasing_document_schedule_total.lastest_scheduled_delivery_date as scheduled_delivery_date,
+        {% endif %}
+
+        {% if using_purchasing_document_overview %}
+        purchasing_document_overview.latest_goods_receive_date,
+        purchasing_document_overview.received_quantity as purchasing_delivered_quantity,
+        purchasing_document_overview.received_value_in_local_curr as purchase_delivered_amount,
+        purchasing_document_overview.invoice_value_local_curr as purchase_invoiced_amount,
+        purchasing_document_overview.delivery_completed,
+        case
+            when purchasing_document_item.delivery_completed <> ''
+                then cast(0 as {{ dbt.type_numeric() }})
+            else (purchasing_document_item.purchase_order_quantity - coalesce(purchasing_document_overview.received_quantity, 0))
+        end as purchase_open_quantity,
+        case 
+            when coalesce(purchasing_document_overview.delivery_completed, 'n') <> ' '
+                and coalesce(purchasing_document_overview.received_quantity, 0) < purchasing_document_item.purchase_order_quantity
+                then cast(1 as {{ dbt.type_numeric() }})
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as purchase_item_open_count,
+        case 
+            when coalesce(purchasing_document_overview.delivery_completed, 'n') <> ' '
+                or purchasing_document_overview.received_quantity >= purchasing_document_item.purchase_order_quantity
+                then cast(1 as {{ dbt.type_numeric() }})
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as purchase_item_closed_count,
+        {% endif %}
+
+        {% if using_purchasing_document_header and using_purchasing_document_overview %}
+        {{ dbt.datediff("purchasing_document_header.purchasing_document_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_deliver_late_days,
+        case
+            when purchasing_document_overview.delivery_completed is not null
+                then cast(0 as {{ dbt.type_numeric() }})
+            else (
+                purchasing_document_item.net_order_po_currency_val * 
+                (
+                    case 
+                        when purchasing_document_header.exchange_rate < 0
+                            then -1 / purchasing_document_header.exchange_rate
+                        else purchasing_document_header.exchange_rate
+                    end
+                )
+            ) - purchasing_document_overview.received_value_in_local_curr
+        end as purchase_open_amount,
+        {% endif %}
+
+        {% if using_purchasing_document_overview and using_purchasing_document_schedule_total %}
+        {{ dbt.datediff("purchasing_document_schedule_total.lastest_scheduled_delivery_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_late_lead_days,
+        case 
+            when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
+                then purchasing_document_overview.received_quantity
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as purchase_late_quantity,
+        case 
+            when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
+                then purchasing_document_overview.received_value_in_local_curr
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as purchase_late_amount,
+        case 
+            when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
+                then cast(1 as {{ dbt.type_numeric() }})
+            else cast(0 as {{ dbt.type_numeric() }})
+        end as purchase_item_late_count,
+        {% endif %}
+
+        cast(1 as {{ dbt.type_numeric() }}) as purchase_order_item_count
+
+    from purchasing_document_item
+
+    {% if using_purchasing_document_header %}
+    left join purchasing_document_header
+        on purchasing_document_header.purchasing_document_id = purchasing_document_item.purchasing_document_id
+    {% endif %}
+
+    {% if using_company %}
+    left join company
+        on company.company_code_id = purchasing_document_header.company_code_id
+    {% endif %}
+
+    {% if using_purchasing_document_overview %}
+    left join purchasing_document_overview
+        on purchasing_document_overview.purchasing_document_id = purchasing_document_item.purchasing_document_id
+        and purchasing_document_overview.purchasing_document_item_id = purchasing_document_item.purchasing_document_item_id
+    {% endif %}
+
+    {% if using_purchasing_document_schedule_total %}
+    left join purchasing_document_schedule_total
+        on purchasing_document_schedule_total.purchasing_document_id = purchasing_document_item.purchasing_document_id
+        and purchasing_document_schedule_total.purchasing_document_item_id = purchasing_document_item.purchasing_document_item_id
+    {% endif %}
+)
+
+select *
+from final

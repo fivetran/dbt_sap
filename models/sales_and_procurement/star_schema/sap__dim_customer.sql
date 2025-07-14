@@ -1,7 +1,9 @@
-select	
-	LTRIM(T1."Customer_Id" , '0' ) as Customer_Number
-,	T1."Country_Key_Id" 
-,	T1."Name" AS "Customer_Name"
-,	T1."City" 
-,   T1."Customer_Id" 	
-FROM {{ ref('vw_customer') }} T1
+{{ config(enabled=var('sap_using_kna1', True)) }}
+
+select
+	ltrim(customer_id, '0' ) as customer_number,
+	country_key_id,
+	name as customer_name,
+	city,
+	customer_id 	
+from {{ ref('int_sap__customer') }}

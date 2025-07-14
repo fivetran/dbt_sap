@@ -1,0 +1,3 @@
+ekorg,mandt,ekotx,txfus,txgru,bpeff,txkop,kalse,txadr,mkals,bukrs,bukrs_ntr,_fivetran_deleted,_fivetran_synced,_fivetran_sap_archived
+1000,100,North America Procurement,FUNC1,GRP01,2025-01-01,RULE01,SEQ01,ADDR01,MSEQ01,US01,United States,false,2025-06-01 12:00:00,0
+2000,200,EMEA Purchasing,FUNC2,GRP02,2025-02-01,RULE02,SEQ02,ADDR02,MSEQ02,DE02,Germany,true,2025-06-01 12:05:00,1

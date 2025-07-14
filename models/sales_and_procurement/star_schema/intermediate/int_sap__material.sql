@@ -1,253 +1,277 @@
-Select
-MARA."MANDT" as "Client_Id"
-,MARA."MATNR" as "Material_Id"
-,MARA."RETDELC" as "Return_Code_Id"
-,MARA."_STTPEC_SYNCCHG" as "_Sttpec_Syncchg"
-,MARA."SGT_COVSA" as "Segmentation_Strategy_Id"
-,MARA."_STTPEC_SYNCTIME" as "_Sttpec_Synctime"
-,MARA."SIZE2" as "Second_Size"
-,MARA."BWSCL" as "Source_Supply_Id"
-,MARA."LIQDT" as "Deletion_Date"
-,MARA."COMPL" as "Material_Completion_Level_Id"
-,MARA."WHSTC" as "Warehouse_Storage_Condition_Id"
-,MARA."MAXC_TOL" as "Overcapacity_Toler"
-,MARA."ERGEW" as "Allowed_Packaging_Weight"
-,MARA."_STTPEC_PRDCAT" as "_Sttpec_Prdcat"
-,MARA."KZWSM" as "Units_Measure_Usage"
-,MARA."COTYPE" as "Object_Type_Id"
-,MARA."BBTYP" as "Assortment_List_Type_Id"
-,MARA."LAEDA" as "Last_Change_Date"
-,MARA."ERSDA" as "Created_Date"
-,MARA."RDMHD" as "Rounding_Rule_Sled"
-,MARA."PICNUM" as "Supersession_Chain_Number"
-,MARA."HERKL" as "Country_Of_Origin_Id"
-,MARA."_VSO_R_TOP_IND" as "_Vso_R_Top_Ind"
-,MARA."MAGRV" as "Matl_Grp_Pack_Matls_Id"
-,MARA."QGRP" as "Quality_Inspection_Group_Id"
-,MARA."FSH_SC_MID" as "Material_Conv_Id"
-,MARA."BEHVO" as "Container_Requirements_Id"
-,MARA."BRGEW" as "Gross_Weight"
-,MARA."MFRPN" as "Manufacturer_Part_Number"
-,MARA."COLOR_ATINN" as "Int_Char_Number_Id"
-,MARA."KUNNR" as "Competitor_Id"
-,MARA."QMPUR" as "Qm_In_Procurement_Is_Active"
-,MARA."IPMIPPRODUCT" as "Intellectual_Property"
-,MARA."FERTH" as "Production_Inspection_Memo"
-,MARA."VOLEH" as "Volume_Uom_Id"
-,MARA."_VSO_R_NO_P_GVH" as "_Vso_R_No_P_Gvh"
-,MARA."MSTAV" as "X_Distr_Chain_Status_Id"
-,MARA."MTPOS_MARA" as "Item_Category_Group_Id"
-,MARA."KZUMW" as "Environmentally_Relevant"
-,MARA."KZGVH" as "Closed"
-,MARA."FREE_CHAR" as "Free_Charact_Value"
-,MARA."FIBER_PART1" as "Percentage_Share_1"
-,MARA."EANNR" as "Ean_Number"
-,MARA."BRAND_ID" as "Brand_Id"
-,MARA."AESZN" as "Document_Change_No"
-,MARA."FIBER_PART2" as "Percentage_Share_2"
-,MARA."IHIVI" as "Indicator_Highly_Viscous"
-,MARA."HUTYP_DFLT" as "Standard_Hu_Type_Id"
-,MARA."MBRSH" as "Industry_Sector_Id"
-,MARA."TEXTILE_COMP_IND" as "Textile_Composition_Maintenance_Active"
-,MARA."FIBER_PART3" as "Percentage_Share_3"
-,MARA."DG_PACK_STATUS" as "Dangerous_Goods_Packaging_Status_Id"
-,MARA."FIBER_PART4" as "Percentage_Share_4"
-,MARA."_VSO_R_TILT_IND" as "_Vso_R_Tilt_Ind"
-,MARA."MCOND" as "Material_Condition_Management"
-,MARA."_VSO_R_TOL_B_HT" as "_Vso_R_Tol_B_Ht"
-,MARA."FSH_MG_AT2" as "Fashion_Information_Field_2"
-,MARA."FIBER_PART5" as "Percentage_Share_5"
-,MARA."ADPROF" as "Adjustment_Profile_Id"
-,MARA."MSTDE" as "Valid_From_Date"
-,MARA."VOLTO" as "Excess_Volume_Tol"
-,MARA."GTIN_VARIANT" as "Global_Trade_Item_Number_Variant"
-,MARA."SAISJ" as "Season_Year"
-,MARA."ZEIAR" as "Document_Type"
-,MARA."PRDHA" as "Product_Hierarchy_Id"
-,MARA."MAXH" as "Max_Pack_Height"
-,MARA."INHAL" as "Net_Contents"
-,MARA."BWVOR" as "Procurement_Rule_Id"
-,MARA."GROES" as "Size_Dimensions"
-,MARA."BFLME" as "Logistical_Variants"
-,MARA."VOLUM" as "Volume"
-,MARA."SGT_STAT" as "Segmentation_Status"
-,MARA."CADKZ" as "Cad_Indicator"
-,MARA."QQTIME" as "Quarantine_Period"
-,MARA."_VSO_R_PAL_OVR_W" as "_Vso_R_Pal_Ovr_W"
-,MARA."FIBER_CODE3" as "Component_3_Id"
-,MARA."FIBER_CODE2" as "Component_2_Id"
-,MARA."SPROF" as "Pricing_Profile_Variants"
-,MARA."FIBER_CODE4" as "Component_4_Id"
-,MARA."CWQTOLGR" as "Cw_Tolerance_Group_Id"
-,MARA."KOSCH" as "Product_Allocation_Id"
-,MARA."FIBER_CODE5" as "Component_5_Id"
-,MARA."XGCHP" as "Appr_Batch_Rec_Req"
-,MARA."LOGUNIT" as "Logistics_Uom_Id"
-,MARA."LVORM" as "Df_At_Client_Level"
-,MARA."HOEHE" as "Height"
-,MARA."ERGEI" as "Weight_Uom_Id"
-,MARA."BEGRU" as "Authorization_Group"
-,MARA."EKWSL" as "Purchasing_Value_Key_Id"
-,MARA."GDS_RELEVANT" as "Gds_Relevant"
-,MARA."TAKLV" as "Tax_Classification_Id"
-,MARA."DATAB" as "DATAB"
-,MARA."XCHPF" as "Batch_Management"
-,MARA."CARE_CODE" as "Care_Code"
-,MARA."MHDRZ" as "Minimum_Remaining_Shelf_Life"
-,MARA."OITRIND" as "Transfer_Sign"
-,MARA."OIHMTXGR" as "Material_Tax_Group_Id"
-,MARA."SAITY" as "Rollout_In_Season_Id"
-,MARA."IPRKZ" as "Period_Ind_Sled"
-,MARA."_STTPEC_COUNTRY_REF" as "_Sttpec_Country_Ref"
-,MARA."NORMT" as "Industry_Std_Desc"
-,MARA."SERLV" as "Serialization_Level"
-,MARA."KZKUP" as "Co_Product"
-,MARA."MSTDV" as "MSTDV"
-,MARA."ATTYP" as "Material_Category"
-,MARA."_DSD_SV_CNT_GRP" as "_Dsd_Sv_Cnt_Grp"
-,MARA."STFAK" as "Stacking_Factor"
-,MARA."TARE_VAR" as "Variable_Tare_Weight"
-,MARA."MFRNR" as "Manufacturer_Number_Id"
-,MARA."ALLOW_PMAT_IGNO" as "Variant_Price_Allowed"
-,MARA."IMATN" as "Fff_Class"
-,MARA."PROFL" as "Dg_Indicator_Profile_Id"
-,MARA."TRAGR" as "Transportation_Group_Id"
-,MARA."HUTYP" as "Handling_Unit_Type_Id"
-,MARA."MEINS" as "Base_Uom_Id"
-,MARA."BSTME" as "Order_Uom_Id"
-,MARA."_VSO_R_STACK_NO" as "_Vso_R_Stack_No"
-,MARA."CWQPROC" as "Cw_Profile_Cw_Qty_Id"
-,MARA."PSM_CODE" as "Protected_Species_Management_Code_Id"
-,MARA."BLATT" as "Page_Number"
-,MARA."_VSO_R_PAL_B_HT" as "_Vso_R_Pal_B_Ht"
-,MARA."_BEV1_LULDEGRP" as "_Bev1_Luldegrp"
-,MARA."_BEV1_LULEINH" as "_Bev1_Luleinh"
-,MARA."SIZE1" as "Main_Size"
-,MARA."MAXC" as "Maximum_Capacity"
-,MARA."NTGEW" as "Net_Weight"
-,MARA."SAISO" as "Season_Category_Id"
-,MARA."COMMODITY" as "Physical_Commodity_Id"
-,MARA."PRZUS" as "Product_Composition"
-,MARA."COBJID" as "Object_Id"
-,MARA."_VSO_R_KZGVH_IND" as "_Vso_R_Kzgvh_Ind"
-,MARA."ANP" as "Anp_Code_Id"
-,MARA."MPROF" as "Mfr_Part_Profile_Id"
-,MARA."FSH_MG_AT3" as "Fashion_Information_Field_3"
-,MARA."SPART" as "Division_Id"
-,MARA."FSH_SEAIM" as "Season_Active_In_Inventory_Management"
-,MARA."FORMT" as "Page_Format_Production_Memo"
-,MARA."WHMATGR" as "Warehouse_Material_Group_Id"
-,MARA."SLED_BBD" as "Expiration_Date"
-,MARA."GENNR" as "Generic_Material_Id"
-,MARA."MAXL" as "Max_Pack_Length"
-,MARA."MATKL" as "Material_Group_Id"
-,MARA."NRFHG" as "Qual_F_Freegoodsdis"
-,MARA."SERIAL" as "Serial_Number_Profile_Id"
-,MARA."MATFI" as "Material_Is_Locked"
-,MARA."QQTIMEUOM" as "Time_Quarantine_Period_Uom_Id"
-,MARA."VPREH" as "Comparison_Price_Unit"
-,MARA."ZEIVR" as "Doc_Version"
-,MARA."BMATN" as "Int_Material_Number_Id"
-,MARA."SIZE1_ATINN" as "SIZE1_ATINN"
-,MARA."LOGLEV_RETO" as "Return_To_Logistics_Level_Id"
-,MARA."FUELG" as "Maximum_Level_By_Volume"
-,MARA."PILFERABLE" as "Pilferable"
-,MARA."KZREV" as "Revision_Level_Assgd"
-,MARA."_STTPEC_SERTYPE" as "_Sttpec_Sertype"
-,MARA."_VSO_R_PAL_IND" as "_Vso_R_Pal_Ind"
-,MARA."SGT_SCOPE" as "Segmentation_Strategy_Scope"
-,MARA."MAXDIM_UOM" as "Ment_Uom_Id"
-,MARA."NSNID" as "Nato_Item_Identification_Number"
-,MARA."ETIAR" as "Label_Type_Id"
-,MARA."FSH_MG_AT1" as "Fashion_Information_Field_1"
-,MARA."ERVOL" as "Allowed_Packaging_Volume"
-,MARA."SATNR" as "Cross_Plant_Cm_Id"
-,MARA."SGT_CSGR" as "Segmentation_Structure_Id"
-,MARA."BLANZ" as "Number_Sheets"
-,MARA."MTART" as "Material_Type_Id"
-,MARA."ETIAG" as "Labeling_Matl_Grpg_Id"
-,MARA."FIBER_CODE1" as "Component_1_Id"
-,MARA."MFRGR" as "Material_Freight_Group_Id"
-,MARA."_VSO_R_STACK_IND" as "_Vso_R_Stack_Ind"
-,MARA."ZEINR" as "Document"
-,MARA."MEDIUM" as "Medium_Id"
-,MARA."CWQREL" as "Catch_Weight_Relevant"
-,MARA."MHDHB" as "Total_Shelf_Life"
-,MARA."VPSTA" as "Compl_Maint_Status"
-,MARA."WRKST" as "Basic_Material_Id"
-,MARA."AEKLK" as "Net_Change_Costing"
-,MARA."STOFF" as "Hazardous_Material_Number_Id"
-,MARA."PACKCODE" as "Packaging_Code_Id"
-,MARA."SGT_REL" as "Segmentation_Relevant"
-,MARA."_VSO_R_BOT_IND" as "_Vso_R_Bot_Ind"
-,MARA."BREIT" as "Width"
-,MARA."ADSPC_SPC" as "Spare_Part_Class_Code"
-,MARA."SIZE2_ATINN" as "SIZE2_ATINN"
-,MARA."WEORA" as "Acceptance_At_Origin"
-,MARA."INHBR" as "Gross_Contents"
-,MARA."FSH_SEALV" as "Indicator_Use_Season"
-,MARA."KZEFF" as "Assign_Effect_Vals"
-,MARA."PLGTP" as "Price_Band_Category_Id"
-,MARA."PMATA" as "Pricing_Reference_Material_Id"
-,MARA."RBNRM" as "Catalog_Profile_Id"
-,MARA."MEABM" as "Dimension_Uom_Id"
-,MARA."CUOBF" as "Internal_Object_Number"
-,MARA."_BEV1_NESTRUCCAT" as "_Bev1_Nestruccat"
-,MARA."INHME" as "Content_Uom_Id"
-,MARA."KZNFM" as "Follow_Up_Material"
-,MARA."HAZMAT" as "Rel_Hs"
-,MARA."MLGUT" as "Empties_Bill_Material"
-,MARA."WESCH" as "Number_Gr_Slips"
-,MARA."_VSO_R_PAL_MIN_H" as "_Vso_R_Pal_Min_H"
-,MARA."OIGROUPNAM" as "Td_Product_Group_Id"
-,MARA."MAXB" as "Max_Pack_Width"
-,MARA."BISMT" as "Old_Material_Number"
-,MARA."DISST" as "Low_Level_Code"
-,MARA."_STTPEC_SYNCACT" as "_Sttpec_Syncact"
-,MARA."BSTAT" as "Creation_Status_Id"
-,MARA."ANIMAL_ORIGIN" as "Cont_Non_Textile_Parts_Animal_Origin"
-,MARA."ETIFO" as "Label_Form_Id"
-,MARA."KZKFG" as "Configurable_Material"
-,MARA."_DSD_SL_TOLTYP" as "_Dsd_Sl_Toltyp"
-,MARA."FASHGRD" as "Fashion_Grade_Id"
-,MARA."CMETH" as "Quantity_Conversion_Method"
-,MARA."RMATP" as "Reference_Matl_Packing_Id"
-,MARA."VHART" as "Packaging_Material_Type_Id"
-,MARA."MHDLP" as "Storage_Percentage"
-,MARA."ERVOE" as "ERVOE"
-,MARA."TEMPB" as "Temperature_Conditions_Indicator_Id"
-,MARA."EAN11" as "Ean"
-,MARA."_ACCGO_ASSGD_UOM" as "_Accgo_Assgd_Uom"
-,MARA."_VSO_R_QUAN_UNIT" as "_Vso_R_Quan_Unit"
-,MARA."ERNAM" as "Created_By"
-,MARA."GEWTO" as "Excess_Wt_Tolerance"
-,MARA."NUMTP" as "Ean_Category_Id"
-,MARA."LABOR" as "Laboratory_Design_Office_Id"
-,MARA."ILOOS" as "Indicator_In_Bulk_Liquid"
-,MARA."CMREL" as "Relevant_Cm"
-,MARA."_DSD_VC_GROUP" as "_Dsd_Vc_Group"
-,MARA."RAUBE" as "Storage_Conditions_Id"
-,MARA."EXTWG" as "External_Material_Group_Id"
-,MARA."VABME" as "Variable_Purchase_Order_Unit"
-,MARA."LAENG" as "Length"
-,MARA."HNDLCODE" as "Handling_Indicator_Id"
-,MARA."_VSO_R_PAL_OVR_D" as "_Vso_R_Pal_Ovr_D"
-,MARA."PS_SMARTFORM" as "Form_Name_Id"
-,MARA."ENTAR" as "Deactivated_Id"
-,MARA."PSTAT" as "Maintenance_Status"
-,MARA."COLOR" as "Color"
-,MARA."GEWEI" as "GEWEI"
-,MARA."AENAM" as "Changed_By"
-,MARA."MSTAE" as "Cross_Plant_Material_Status_Id"
-,MARA."ZEIFO" as "Page_Format"
-,MARA."_FIVETRAN_DELETED" as "_Fivetran_Deleted"
-,MARA."_FIVETRAN_SYNCED" as "_Fivetran_Synced"
-,MARA."_FIVETRAN_SAP_ARCHIVED" as "_Fivetran_Sap_Archived"
-, MAKT."MAKTX" as Material_Description
-from {{ ref('stg_sap__mara') }}
-Left Join {{ ref('stg_sap__makt') }} on 
-    MARA.MANDT = MAKT.MANDT
-    AND MARA.MATNR = MAKT.MATNR
-and MAKT."SPRAS"= 'E'
-where
-MARA."MANDT" in ('800')
+{{ config(enabled=var('sap_using_mara', True)) }}
+
+with mara as (
+    select *
+    from {{ ref('stg_sap__mara') }}
+
+{% set using_makt = var('sap_using_makt', True) %}
+{% if using_makt %}
+), makt as (
+    select *
+    from {{ ref('stg_sap__makt') }}
+{% endif %}
+
+), final as (
+    select
+        mara.mandt as client_id,
+        mara.matnr as material_id,
+        mara.retdelc as return_code_id,
+        mara._sttpec_syncchg as _sttpec_syncchg,
+        mara.sgt_covsa as segmentation_strategy_id,
+        mara._sttpec_synctime as _sttpec_synctime,
+        mara.size2 as second_size,
+        mara.bwscl as source_supply_id,
+        mara.liqdt as deletion_date,
+        mara.compl as material_completion_level_id,
+        mara.whstc as warehouse_storage_condition_id,
+        mara.maxc_tol as overcapacity_toler,
+        mara.ergew as allowed_packaging_weight,
+        mara._sttpec_prdcat as _sttpec_prdcat,
+        mara.kzwsm as units_measure_usage,
+        mara.cotype as object_type_id,
+        mara.bbtyp as assortment_list_type_id,
+        mara.laeda as last_change_date,
+        mara.ersda as created_date,
+        mara.rdmhd as rounding_rule_sled,
+        mara.picnum as supersession_chain_number,
+        mara.herkl as country_of_origin_id,
+        mara._vso_r_top_ind as _vso_r_top_ind,
+        mara.magrv as matl_grp_pack_matls_id,
+        mara.qgrp as quality_inspection_group_id,
+        mara.fsh_sc_mid as material_conv_id,
+        mara.behvo as container_requirements_id,
+        mara.brgew as gross_weight,
+        mara.mfrpn as manufacturer_part_number,
+        mara.color_atinn as int_char_number_id,
+        mara.kunnr as competitor_id,
+        mara.qmpur as qm_in_procurement_is_active,
+        mara.ipmipproduct as intellectual_property,
+        mara.ferth as production_inspection_memo,
+        mara.voleh as volume_uom_id,
+        mara._vso_r_no_p_gvh as _vso_r_no_p_gvh,
+        mara.mstav as x_distr_chain_status_id,
+        mara.mtpos_mara as item_category_group_id,
+        mara.kzumw as environmentally_relevant,
+        mara.kzgvh as closed,
+        mara.free_char as free_charact_value,
+        mara.fiber_part1 as percentage_share_1,
+        mara.eannr as ean_number,
+        mara.brand_id as brand_id,
+        mara.aeszn as document_change_no,
+        mara.fiber_part2 as percentage_share_2,
+        mara.ihivi as indicator_highly_viscous,
+        mara.hutyp_dflt as standard_hu_type_id,
+        mara.mbrsh as industry_sector_id,
+        mara.textile_comp_ind as textile_composition_maintenance_active,
+        mara.fiber_part3 as percentage_share_3,
+        mara.dg_pack_status as dangerous_goods_packaging_status_id,
+        mara.fiber_part4 as percentage_share_4,
+        mara._vso_r_tilt_ind as _vso_r_tilt_ind,
+        mara.mcond as material_condition_management,
+        mara._vso_r_tol_b_ht as _vso_r_tol_b_ht,
+        mara.fsh_mg_at2 as fashion_information_field_2,
+        mara.fiber_part5 as percentage_share_5,
+        mara.adprof as adjustment_profile_id,
+        mara.mstde as valid_from_date,
+        mara.volto as excess_volume_tol,
+        mara.gtin_variant as global_trade_item_number_variant,
+        mara.saisj as season_year,
+        mara.zeiar as document_type,
+        mara.prdha as product_hierarchy_id,
+        mara.maxh as max_pack_height,
+        mara.inhal as net_contents,
+        mara.bwvor as procurement_rule_id,
+        mara.groes as size_dimensions,
+        mara.bflme as logistical_variants,
+        mara.volum as volume,
+        mara.sgt_stat as segmentation_status,
+        mara.cadkz as cad_indicator,
+        mara.qqtime as quarantine_period,
+        mara._vso_r_pal_ovr_w as _vso_r_pal_ovr_w,
+        mara.fiber_code3 as component_3_id,
+        mara.fiber_code2 as component_2_id,
+        mara.sprof as pricing_profile_variants,
+        mara.fiber_code4 as component_4_id,
+        mara.cwqtolgr as cw_tolerance_group_id,
+        mara.kosch as product_allocation_id,
+        mara.fiber_code5 as component_5_id,
+        mara.xgchp as appr_batch_rec_req,
+        mara.logunit as logistics_uom_id,
+        mara.lvorm as df_at_client_level,
+        mara.hoehe as height,
+        mara.ergei as weight_uom_id,
+        mara.begru as authorization_group,
+        mara.ekwsl as purchasing_value_key_id,
+        mara.gds_relevant as gds_relevant,
+        mara.taklv as tax_classification_id,
+        mara.datab as datab,
+        mara.xchpf as batch_management,
+        mara.care_code as care_code,
+        mara.mhdrz as minimum_remaining_shelf_life,
+        mara.oitrind as transfer_sign,
+        mara.oihmtxgr as material_tax_group_id,
+        mara.saity as rollout_in_season_id,
+        mara.iprkz as period_ind_sled,
+        mara._sttpec_country_ref as _sttpec_country_ref,
+        mara.normt as industry_std_desc,
+        mara.serlv as serialization_level,
+        mara.kzkup as co_product,
+        mara.mstdv as mstdv,
+        mara.attyp as material_category,
+        mara._dsd_sv_cnt_grp as _dsd_sv_cnt_grp,
+        mara.stfak as stacking_factor,
+        mara.tare_var as variable_tare_weight,
+        mara.mfrnr as manufacturer_number_id,
+        mara.allow_pmat_igno as variant_price_allowed,
+        mara.imatn as fff_class,
+        mara.profl as dg_indicator_profile_id,
+        mara.tragr as transportation_group_id,
+        mara.hutyp as handling_unit_type_id,
+        mara.meins as base_uom_id,
+        mara.bstme as order_uom_id,
+        mara._vso_r_stack_no as _vso_r_stack_no,
+        mara.cwqproc as cw_profile_cw_qty_id,
+        mara.psm_code as protected_species_management_code_id,
+        mara.blatt as page_number,
+        mara._vso_r_pal_b_ht as _vso_r_pal_b_ht,
+        mara._bev1_luldegrp as _bev1_luldegrp,
+        mara._bev1_luleinh as _bev1_luleinh,
+        mara.size1 as main_size,
+        mara.maxc as maximum_capacity,
+        mara.ntgew as net_weight,
+        mara.saiso as season_category_id,
+        mara.commodity as physical_commodity_id,
+        mara.przus as product_composition,
+        mara.cobjid as object_id,
+        mara._vso_r_kzgvh_ind as _vso_r_kzgvh_ind,
+        mara.anp as anp_code_id,
+        mara.mprof as mfr_part_profile_id,
+        mara.fsh_mg_at3 as fashion_information_field_3,
+        mara.spart as division_id,
+        mara.fsh_seaim as season_active_in_inventory_management,
+        mara.formt as page_format_production_memo,
+        mara.whmatgr as warehouse_material_group_id,
+        mara.sled_bbd as expiration_date,
+        mara.gennr as generic_material_id,
+        mara.maxl as max_pack_length,
+        mara.matkl as material_group_id,
+        mara.nrfhg as qual_f_freegoodsdis,
+        mara.serial as serial_number_profile_id,
+        mara.matfi as material_is_locked,
+        mara.qqtimeuom as time_quarantine_period_uom_id,
+        mara.vpreh as comparison_price_unit,
+        mara.zeivr as doc_version,
+        mara.bmatn as int_material_number_id,
+        mara.size1_atinn as size1_atinn,
+        mara.loglev_reto as return_to_logistics_level_id,
+        mara.fuelg as maximum_level_by_volume,
+        mara.pilferable as pilferable,
+        mara.kzrev as revision_level_assgd,
+        mara._sttpec_sertype as _sttpec_sertype,
+        mara._vso_r_pal_ind as _vso_r_pal_ind,
+        mara.sgt_scope as segmentation_strategy_scope,
+        mara.maxdim_uom as ment_uom_id,
+        mara.nsnid as nato_item_identification_number,
+        mara.etiar as label_type_id,
+        mara.fsh_mg_at1 as fashion_information_field_1,
+        mara.ervol as allowed_packaging_volume,
+        mara.satnr as cross_plant_cm_id,
+        mara.sgt_csgr as segmentation_structure_id,
+        mara.blanz as number_sheets,
+        mara.mtart as material_type_id,
+        mara.etiag as labeling_matl_grpg_id,
+        mara.fiber_code1 as component_1_id,
+        mara.mfrgr as material_freight_group_id,
+        mara._vso_r_stack_ind as _vso_r_stack_ind,
+        mara.zeinr as document,
+        mara.medium as medium_id,
+        mara.cwqrel as catch_weight_relevant,
+        mara.mhdhb as total_shelf_life,
+        mara.vpsta as compl_maint_status,
+        mara.wrkst as basic_material_id,
+        mara.aeklk as net_change_costing,
+        mara.stoff as hazardous_material_number_id,
+        mara.packcode as packaging_code_id,
+        mara.sgt_rel as segmentation_relevant,
+        mara._vso_r_bot_ind as _vso_r_bot_ind,
+        mara.breit as width,
+        mara.adspc_spc as spare_part_class_code,
+        mara.size2_atinn as size2_atinn,
+        mara.weora as acceptance_at_origin,
+        mara.inhbr as gross_contents,
+        mara.fsh_sealv as indicator_use_season,
+        mara.kzeff as assign_effect_vals,
+        mara.plgtp as price_band_category_id,
+        mara.pmata as pricing_reference_material_id,
+        mara.rbnrm as catalog_profile_id,
+        mara.meabm as dimension_uom_id,
+        mara.cuobf as internal_object_number,
+        mara._bev1_nestruccat as _bev1_nestruccat,
+        mara.inhme as content_uom_id,
+        mara.kznfm as follow_up_material,
+        mara.hazmat as rel_hs,
+        mara.mlgut as empties_bill_material,
+        mara.wesch as number_gr_slips,
+        mara._vso_r_pal_min_h as _vso_r_pal_min_h,
+        mara.oigroupnam as td_product_group_id,
+        mara.maxb as max_pack_width,
+        mara.bismt as old_material_number,
+        mara.disst as low_level_code,
+        mara._sttpec_syncact as _sttpec_syncact,
+        mara.bstat as creation_status_id,
+        mara.animal_origin as cont_non_textile_parts_animal_origin,
+        mara.etifo as label_form_id,
+        mara.kzkfg as configurable_material,
+        mara._dsd_sl_toltyp as _dsd_sl_toltyp,
+        mara.fashgrd as fashion_grade_id,
+        mara.cmeth as quantity_conversion_method,
+        mara.rmatp as reference_matl_packing_id,
+        mara.vhart as packaging_material_type_id,
+        mara.mhdlp as storage_percentage,
+        mara.ervoe as ervoe,
+        mara.tempb as temperature_conditions_indicator_id,
+        mara.ean11 as ean,
+        mara._accgo_assgd_uom as _accgo_assgd_uom,
+        mara._vso_r_quan_unit as _vso_r_quan_unit,
+        mara.ernam as created_by,
+        mara.gewto as excess_wt_tolerance,
+        mara.numtp as ean_category_id,
+        mara.labor as laboratory_design_office_id,
+        mara.iloos as indicator_in_bulk_liquid,
+        mara.cmrel as relevant_cm,
+        mara._dsd_vc_group as _dsd_vc_group,
+        mara.raube as storage_conditions_id,
+        mara.extwg as external_material_group_id,
+        mara.vabme as variable_purchase_order_unit,
+        mara.laeng as length,
+        mara.hndlcode as handling_indicator_id,
+        mara._vso_r_pal_ovr_d as _vso_r_pal_ovr_d,
+        mara.ps_smartform as form_name_id,
+        mara.entar as deactivated_id,
+        mara.pstat as maintenance_status,
+        mara.color as color,
+        mara.gewei as gewei,
+        mara.aenam as changed_by,
+        mara.mstae as cross_plant_material_status_id,
+        mara.zeifo as page_format,
+        mara._fivetran_deleted as _fivetran_deleted,
+        mara._fivetran_synced as _fivetran_synced,
+        mara._fivetran_sap_archived as _fivetran_sap_archived
+        
+        {% if using_makt %}
+        , makt.maktx as material_description
+        {% endif %}
+    from mara
+
+    {% if using_makt %}
+    left join makt
+        on mara.mandt = makt.mandt
+        and mara.matnr = makt.matnr
+        and makt.spras = 'e'
+    {% endif %}
+
+    where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+)
+
+select *
+from final

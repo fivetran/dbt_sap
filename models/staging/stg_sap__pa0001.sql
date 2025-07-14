@@ -1,8 +1,10 @@
 {{ config(enabled=var('sap_using_pa0001', True)) }}
 
+{% set source_columns = adapter.get_columns_in_relation(ref('stg_sap__pa0001_tmp')) %}
+
 with base as (
 
-    select * 
+    select {{ remove_slashes_from_col_names(source_columns) }}
     from {{ ref('stg_sap__pa0001_tmp') }}
 ),
 
@@ -11,7 +13,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_sap__pa0001_tmp')),
+                source_columns=source_columns,
                 staging_columns=get_pa0001_columns()
             )
         }}
@@ -21,7 +23,7 @@ fields as (
 final as (
     
     select
-        mandt,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
         pernr,
         subty,
         objps,
@@ -34,7 +36,7 @@ final as (
         ansvh,
         btrtl,
         budget_pd,
-        bukrs,
+        cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         ename,
         fistl,
         fkber,

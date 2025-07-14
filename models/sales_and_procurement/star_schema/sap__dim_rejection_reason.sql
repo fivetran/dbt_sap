@@ -1,4 +1,6 @@
-select 
-	t1."Reason_Rejection_Id", 
-	t1.description  as Rejection_Reason_Description
-from  {{ ref('vw_sales_documents_rejection_reason') }}  t1
+{{ config(enabled=var('sap_using_tvag', True)) }}
+
+select
+	reason_rejection_id, 
+	description  as rejection_reason_description
+from {{ ref('int_sap__sales_document_rejection_reason') }}

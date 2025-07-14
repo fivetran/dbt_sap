@@ -1,55 +1,105 @@
-select 		
-	ltrim(t1."Sales_Document_Id" , '0') 	as	sales_document_number
-,	ltrim(t2."Sales_Document_Item_Id"  , '0')     as	sales_document_item
-,	t1."Sd_Document_Category" 
-,	t1."Sales_Document_Type_Id" 
-,	t1."Order_Reason_Id" 
-,	t1."Delivery_Block_Document_Header_Id" 	as	delivery_block_id
-,	t1."Sales_Organization_Id" 
-,	t1."Distribution_Channel_Id" 
-,	t1."Division_Id" 
-,	t2."Plant_Own_Or_External_Id" AS Plant_Id
-, t1."Document_Date" 
-, t1."Requested_Delivery_Date" 
-,	t1."Sold_To_Party_Id" AS Sold_To_Customer_Id
-,	t1."Sales_Document_Id" 
-,	t2."Material_Id" 
-,	t2."Material_Group_Id" 
-,	t2."Sales_Document_Item_Category_Id" 
-,	t2."Product_Hierarchy_Id" 
-,	t2."Base_Uom_Id" 
--- ,	vbap.kwmeng	as	orderquantitysalesunits
-,	case when t1."Sd_Document_Category"  = 'C' then 
-        t2."Order_Quantity"  
-        else
-        t2."Order_Quantity"  * -1
-    end  as Order_Quantity
-,	t2."Sales_Uom_Id" 
--- ,	vbap.netwr	as	netvalue
-,	case when t1."Sd_Document_Category"  = 'C' then 
-        t2."Net_Val" 	
-        else
-        t2."Net_Val"  * -1
-    end  as net_value
-,	t2."Net_Price_Val" 	as	net_price
-,	t2."Sd_Document_Currency_Id" 
-,	t2."Gross_Weight_The_Item" as	gross_weight
-,	t2."Weight_Uom_Id" 
-,	t1."Created_Date" 
-,	t2."Returns_Item" 
-,   t2."Reason_Rejection_Id" 
-,	t3."Delivery_Status" 
-,	t3."Overall_Status" 
-,	t4."Delivery_Status" AS "Item_Delivery_Status"
-, t1."Created_By" 
-, t2."_Fivetran_Deleted"
-, t2."_Fivetran_Synced" 
-from {{ ref('vw_sales_document_header') }}  t1
-inner join {{ ref('vw_sales_document_item') }}  t2
-ON t1."Sales_Document_Id" = t2."Sales_Document_Id" 
-inner join {{ ref('vw_sales_document_header_status') }}  t3
-on t1."Sales_Document_Id" = t3."Sales_Document_Id" 
-inner join {{ ref('vw_sales_document_item_status') }}  t4
-on t2."Sales_Document_Id" = t4."Sales_Document_Id" 
-AND t2."Sales_Document_Item_Id" = t4."Sd_Item_Id"  
-and t1."Sd_Document_Category"  in ('C', 'H')  -- c = orders h returns;
+{% set using_sales_document_header = var('sap_using_vbak', True) %}
+{% set using_sales_document_item = var('sap_using_vbap', True) %}
+{% set using_sales_document_header_status = var('sap_using_vbuk', True) %}
+{% set using_sales_document_item_status = var('sap_using_vbup', True) %}
+
+{{ config(enabled=using_sales_document_header) }}
+
+with sales_document_header as (
+    select *
+    from {{ ref('int_sap__sales_document_header') }}
+
+{% if using_sales_document_item %}
+), sales_document_item as (
+    select *
+    from {{ ref('int_sap__sales_document_item') }}
+{% endif %}
+
+{% if using_sales_document_header_status %}
+), sales_document_header_status as (
+    select *
+    from {{ ref('int_sap__sales_document_header_status') }}
+{% endif %}
+
+{% if using_sales_document_item_status %}
+), sales_document_item_status as (
+    select *
+    from {{ ref('int_sap__sales_document_item_status') }}
+{% endif %}
+
+), final as (
+    select
+        ltrim(sales_document_header.sales_document_id, '0') as sales_document_number,
+        sales_document_header.sd_document_category,
+        sales_document_header.sales_document_type_id,
+        sales_document_header.order_reason_id,
+        sales_document_header.delivery_block_document_header_id as delivery_block_id,
+        sales_document_header.sales_organization_id,
+        sales_document_header.distribution_channel_id,
+        sales_document_header.division_id,
+        sales_document_header.document_date,
+        sales_document_header.requested_delivery_date,
+        sales_document_header.sold_to_party_id as sold_to_customer_id,
+        sales_document_header.sales_document_id,
+        sales_document_header.created_date,
+        sales_document_header.created_by,
+
+        {% if using_sales_document_item %}
+        ltrim(sales_document_item.sales_document_item_id, '0') as sales_document_item,
+        sales_document_item.plant_own_or_external_id as plant_id,
+        sales_document_item.material_id,
+        sales_document_item.material_group_id,
+        sales_document_item.sales_document_item_category_id,
+        sales_document_item.product_hierarchy_id,
+        sales_document_item.base_uom_id,
+        case 
+            when sales_document_header.sd_document_category = 'c' then sales_document_item.order_quantity
+            else sales_document_item.order_quantity * -1
+        end as order_quantity,
+        sales_document_item.sales_uom_id,
+        case 
+            when sales_document_header.sd_document_category = 'c' then sales_document_item.net_val
+            else sales_document_item.net_val * -1
+        end as net_value,
+        sales_document_item.net_price_val as net_price,
+        sales_document_item.sd_document_currency_id,
+        sales_document_item.gross_weight_the_item as gross_weight,
+        sales_document_item.weight_uom_id,
+        sales_document_item.returns_item,
+        sales_document_item.reason_rejection_id,
+        sales_document_item._fivetran_deleted,
+        sales_document_item._fivetran_synced,
+        {% endif %}
+
+        {% if using_sales_document_header_status %}
+        sales_document_header_status.delivery_status,
+        sales_document_header_status.overall_status,
+        {% endif %}
+
+        {% if using_sales_document_item_status %}
+        sales_document_item_status.delivery_status as item_delivery_status
+        {% endif %}
+
+    from sales_document_header
+
+    {% if using_sales_document_item %}
+    inner join sales_document_item
+        on sales_document_header.sales_document_id = sales_document_item.sales_document_id
+    {% endif %}
+
+    {% if using_sales_document_header_status %}
+    inner join sales_document_header_status
+        on sales_document_header.sales_document_id = sales_document_header_status.sales_document_id
+    {% endif %}
+
+    {% if using_sales_document_item_status %}
+    inner join sales_document_item_status
+        on sales_document_item.sales_document_id = sales_document_item_status.sales_document_id
+        and sales_document_item.sales_document_item_id = sales_document_item_status.sd_item_id
+    {% endif %}
+
+    where sales_document_header.sd_document_category in ('c', 'h')
+)
+
+select *
+from final

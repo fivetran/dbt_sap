@@ -6,7 +6,7 @@ with sums as (
 	from {{ ref('int_sap__0fi_gl_10_sums') }}
 ),
 
-{% if target.name == 'postgres' %}
+{% if target.type == 'postgres' %}
 final as (
 
   	select
@@ -250,7 +250,7 @@ final as (
 			else 0 
 			end as turnover
     from sums
-	{% if target.name == 'databricks' %}
+	{% if target.type == 'databricks' %}
 	 	lateral view
    			stack(136,
       			'hslvt', hslvt,

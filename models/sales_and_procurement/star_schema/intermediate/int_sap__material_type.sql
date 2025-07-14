@@ -1,46 +1,72 @@
-Select
-T134."MANDT" as "Client_Id"
-,T134."MTART" as "Material_Type_Id"
-,T134."MTREF" as "Reference_Material_Type"
-,T134."MBREF" as "Sref_Material_Type"
-,T134."FLREF" as "Field_Reference_Id"
-,T134."NUMKI" as "Number_Range"
-,T134."NUMKE" as "NUMKE"
-,T134."ENVOP" as "External_No_Assignment_W_O_Check"
-,T134."BSEXT" as "External_Purchase_Orders_Allowed"
-,T134."BSINT" as "Internal_Purchase_Orders_Allowed"
-,T134."PSTAT" as "Maintenance_Status"
-,T134."KKREF" as "Account_Category_Reference_Id"
-,T134."VPRSV" as "Price_Control"
-,T134."KZVPR" as "Price_Control_Mandatory"
-,T134."VMTPO" as "Item_Category_Group_Id"
-,T134."EKALR" as "With_Qty_Structure"
-,T134."KZGRP" as "Grouping_Indicator"
-,T134."KZKFG" as "Configurable_Material"
-,T134."BEGRU" as "Authorization_Group_Id"
-,T134."KZPRC" as "Material_F_Process"
-,T134."KZPIP" as "Pipeline_Handling_Mandatory"
-,T134."PRDRU" as "Print_Price"
-,T134."ARANZ" as "Display_Material"
-,T134."WMAKG" as "WMAKG"
-,T134."IZUST" as "Initial_Status_New_Batch"
-,T134."ARDEL" as "Time_Till_Deleted"
-,T134."KZMPN" as "Manufacturer_Part"
-,T134."MSTAE" as "Cross_Plant_Material_Status_Id"
-,T134."CCHIS" as "History_Reqmt"
-,T134."CTYPE" as "Class_Type_Id"
-,T134."CLASS" as "Class_Number"
-,T134."CHNEU" as "Create_New_Batch"
-,T134."VTYPE" as "Version_Category_Id"
-,T134."VNUMKI" as "VNUMKI"
-,T134."VNUMKE" as "VNUMKE"
-,T134."KZRAC" as "Mand_Rp_Logistics"
-,T134."HVR_IS_DELETED" as "Hvr_Is_Deleted"
-,T134."HVR_CHANGE_TIME" as "Hvr_Change_Time"
-, T134T."MTBEZ" as Description_Material_Type
-from {{ ref('stg_sap__t134') }}
-Left Join {{ ref('stg_sap__t134t') }} on 
-    T134.MANDT = T134T.MANDT
-    AND T134.MTART = T134T.MTART
-and T134T."SPRAS"= 'E'
-where T134."MANDT" in ('800')
+{{ config(enabled=var('sap_using_t134', True)) }}
+
+with t134 as (
+    select *
+    from {{ ref('stg_sap__t134') }}
+
+{% set using_t134t = var('sap_using_t134t', True) %}
+{% if using_t134t %}
+), t134t as (
+    select *
+    from {{ ref('stg_sap__t134t') }}
+{% endif %}
+
+), final as (
+    select
+        t134.mandt as client_id,
+        t134.mtart as material_type_id,
+        t134.mtref as reference_material_type,
+        t134.mbref as sref_material_type,
+        t134.flref as field_reference_id,
+        t134.numki as number_range,
+        t134.numke as numke,
+        t134.envop as external_no_assignment_w_o_check,
+        t134.bsext as external_purchase_orders_allowed,
+        t134.bsint as internal_purchase_orders_allowed,
+        t134.pstat as maintenance_status,
+        t134.kkref as account_category_reference_id,
+        t134.vprsv as price_control,
+        t134.kzvpr as price_control_mandatory,
+        t134.vmtpo as item_category_group_id,
+        t134.ekalr as with_qty_structure,
+        t134.kzgrp as grouping_indicator,
+        t134.kzkfg as configurable_material,
+        t134.begru as authorization_group_id,
+        t134.kzprc as material_f_process,
+        t134.kzpip as pipeline_handling_mandatory,
+        t134.prdru as print_price,
+        t134.aranz as display_material,
+        t134.wmakg as wmakg,
+        t134.izust as initial_status_new_batch,
+        t134.ardel as time_till_deleted,
+        t134.kzmpn as manufacturer_part,
+        t134.mstae as cross_plant_material_status_id,
+        t134.cchis as history_reqmt,
+        t134.ctype as class_type_id,
+        t134.class as class_number,
+        t134.chneu as create_new_batch,
+        t134.vtype as version_category_id,
+        t134.vnumki as vnumki,
+        t134.vnumke as vnumke,
+        t134.kzrac as mand_rp_logistics,
+        t134.hvr_is_deleted as hvr_is_deleted,
+        t134.hvr_change_time as hvr_change_time,
+
+{% if using_t134t %}
+        t134t.mtbez as description_material_type
+{% endif %}
+
+    from t134
+
+{% if using_t134t %}
+    left join t134t
+        on t134.mandt = t134t.mandt
+        and t134.mtart = t134t.mtart
+        and t134t.spras = 'e'
+{% endif %}
+
+    where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+)
+
+select *
+from final

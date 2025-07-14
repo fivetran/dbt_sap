@@ -1,0 +1,4 @@
+_fivetran_deleted,_fivetran_rowid,_fivetran_synced,mandt,mtart,mtbez,spras
+true,1,2023-01-01 12:00:00,val1,val1,val1,val1
+false,2,2023-01-02 12:00:00,val2,val2,val2,val2
+false,3,2023-01-03 12:00:00,val3,val3,val3,val3

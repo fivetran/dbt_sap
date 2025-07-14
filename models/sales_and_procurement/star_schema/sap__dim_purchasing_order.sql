@@ -1,23 +1,94 @@
-SELECT
-  T1."Purchasing_Document_Id" ,
-  T1."Purchasing_Document_Category" ,
-  T2.PURCHASING_DOCUMENT_CATEGORY_TXT, 
-  T1."Purchasing_Document_Type_Id", 
-  T3.DOC_TYPE_DESCRIPT "Purchasing_Document_Type_Text",
-  T1."Purchasing_Group_Id" ,
-  T4."Description_Purchasing_Group" ,
-  T1."Status_Purchasing_Document" AS "Purchasing_Document_Status",
-  T5.PURCHASING_DOCUMENT_STATUS_TXT, 
-  T1."Payment_Terms" ,
-  T1."Reason_Cancellation_Id" ,
-  T1."Company_Code_Id" 
-FROM {{ ref('vw_purchasing_document_header') }} T1
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_category') }} T2 on
-  T1."Purchasing_Document_Category" = T2.PURCHASING_DOCUMENT_CATEGORY_ID  
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_type') }} T3 on
- T1."Purchasing_Document_Type_Id" = t3."Purchasing_Document_Type_Id" 
-  AND T3."Purch_Doc_Category_Id"  = T1."Purchasing_Document_Category" 
-LEFT OUTER JOIN {{ ref('vw_purchasing_group') }} T4 on
- T4."Purchasing_Group_Id"  = T1."Purchasing_Group_Id" 
-LEFT OUTER JOIN {{ ref('vw_purchasing_document_status') }} T5 on
- T5.PURCHASING_DOCUMENT_STATUS_ID  = T1."Status_Purchasing_Document"
+{% set using_purchasing_document_header = var('sap_using_ekko', True) %}
+{% set using_purchasing_document_category = var('sap_using_dd07l', True) %}
+{% set using_purchasing_document_type = var('sap_using_t161', True) %}
+{% set using_purchasing_group = var('sap_using_t024', True) %}
+{% set using_purchasing_document_status = var('sap_using_dd07l', True) %}
+
+{{ config(enabled=using_purchasing_document_header) }}
+
+with purchasing_document_header as (
+    select *
+    from {{ ref('int_sap__purchasing_document_header') }}
+)
+
+{% if using_purchasing_document_category %}
+, purchasing_document_category as (
+    select *
+    from {{ ref('int_sap__purchasing_document_category') }}
+)
+{% endif %}
+
+{% if using_purchasing_document_type %}
+, purchasing_document_type as (
+    select *
+    from {{ ref('int_sap__purchasing_document_type') }}
+)
+{% endif %}
+
+{% if using_purchasing_group %}
+, purchasing_group as (
+    select *
+    from {{ ref('int_sap__purchasing_group') }}
+)
+{% endif %}
+
+{% if using_purchasing_document_status %}
+, purchasing_document_status as (
+    select *
+    from {{ ref('int_sap__purchasing_document_status') }}
+)
+{% endif %}
+
+, final as (
+    select
+        purchasing_document_header.purchasing_document_id,
+        purchasing_document_header.purchasing_document_category,
+        purchasing_document_header.purchasing_document_type_id,
+        purchasing_document_header.purchasing_group_id,
+        purchasing_document_header.status_purchasing_document as purchasing_document_status,
+        purchasing_document_header.payment_terms,
+        purchasing_document_header.reason_cancellation_id,
+        purchasing_document_header.company_code_id
+
+        {% if using_purchasing_document_category %}
+        , purchasing_document_category.purchasing_document_category_txt
+        {% endif %}
+
+        {% if using_purchasing_document_type %}
+        , purchasing_document_type.doc_type_descript as purchasing_document_type_text
+        {% endif %}
+
+        {% if using_purchasing_group %}
+        , purchasing_group.description_purchasing_group
+        {% endif %}
+
+        {% if using_purchasing_document_status %}
+        , purchasing_document_status.document_status_txt as purchasing_document_status_txt
+        {% endif %}
+
+    from purchasing_document_header
+
+    {% if using_purchasing_document_category %}
+    left join purchasing_document_category
+        on purchasing_document_header.purchasing_document_category = purchasing_document_category.purchasing_document_category_id  
+    {% endif %}
+
+    {% if using_purchasing_document_type %}
+    left join purchasing_document_type
+        on purchasing_document_header.purchasing_document_type_id = purchasing_document_type.purchasing_document_type_id 
+        and purchasing_document_type.purch_doc_category_id = purchasing_document_header.purchasing_document_category 
+    {% endif %}
+
+    {% if using_purchasing_group %}
+    left join purchasing_group
+        on purchasing_group.purchasing_group_id = purchasing_document_header.purchasing_group_id 
+    {% endif %}
+
+    {% if using_purchasing_document_status %}
+    left join purchasing_document_status
+        on purchasing_document_status.document_status_id = purchasing_document_header.status_purchasing_document
+    {% endif %}
+)
+
+select *
+from final
