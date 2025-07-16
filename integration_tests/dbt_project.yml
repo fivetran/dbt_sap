@@ -28,6 +28,8 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
+  +docs:
+    show: False
   sap_integration_tests:
     +column_types:
       _fivetran_rowid: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -949,3 +951,6 @@ seeds:
         mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         rcomp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         name1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True
