@@ -386,4 +386,4 @@ select
     hvr_is_deleted as hvr_is_deleted,
     hvr_change_time as hvr_change_time
 from {{ ref('stg_sap__ekpo') }}
-where mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')

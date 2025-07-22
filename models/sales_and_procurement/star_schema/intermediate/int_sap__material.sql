@@ -257,10 +257,7 @@ with mara as (
         mara._fivetran_deleted as _fivetran_deleted,
         mara._fivetran_synced as _fivetran_synced,
         mara._fivetran_sap_archived as _fivetran_sap_archived
-        
-        {% if using_makt %}
-        , makt.maktx as material_description
-        {% endif %}
+        {{ 'makt.maktx' if using_makt else 'cast(null as ' ~ dbt.type_string() ~ ')' }} as material_description
     from mara
 
     {% if using_makt %}
@@ -270,7 +267,7 @@ with mara as (
         and makt.spras = 'e'
     {% endif %}
 
-    where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+    where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *
