@@ -4,7 +4,7 @@ profile: 'integration_tests'
 config-version: 2
 
 vars:
-  sap_schema: sap_integration_tests
+  sap_schema: zz_sap #sap_integration_tests
   sap:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bseg_identifier: "sap_bseg_data"

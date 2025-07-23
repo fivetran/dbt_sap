@@ -4248,14 +4248,18 @@ sources:
         columns:
           - name: _fivetran_deleted
             description: Fivetran deletion marker
-          - name: _fivetran_rowid
-            description: Fivetran unique row ID
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
           - name: _fivetran_synced
             description: Fivetran sync timestamp
           - name: adrnr
             description: Address number
           - name: bapovar
             description: BAPI variant for company code
+          - name: bukrs
+            description: Company code
+          - name: butxt
+            description: Company name
           - name: bukrs_glob
             description: Global company code
           - name: buvar
@@ -4290,12 +4294,20 @@ sources:
             description: Import date
           - name: infmt
             description: Invoice format key
+          - name: kkber
+            description: Credit control area
           - name: kokfi
             description: FI system indicator
           - name: kopim
             description: Payment methods copied
           - name: ktop2
             description: Alternative chart of accounts
+          - name: ktopl
+            description: Chart of accounts
+          - name: land1
+            description: Country key
+          - name: mandt
+            description: Client
           - name: mregl
             description: Tax reporting country for EU
           - name: mwska
@@ -4308,10 +4320,16 @@ sources:
             description: Open item clearing variant
           - name: ort01
             description: City
+          - name: periv
+            description: Fiscal year variant
           - name: pp_pdate
             description: Planned posting date
           - name: pst_per_var
             description: Posting period variant
+          - name: rcomp
+            description: Company
+          - name: spras
+            description: Language key
           - name: stceg
             description: VAT registration number
           - name: surccm
@@ -4324,6 +4342,8 @@ sources:
             description: Intercompany clearing account
           - name: waabw
             description: Default exchange rate type
+          - name: waers
+            description: Currency key
           - name: wfvar
             description: Workflow variant
           - name: wt_newwt

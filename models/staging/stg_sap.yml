@@ -4184,32 +4184,170 @@ models:
             - mandt
             - bukrs
     columns:
-      - name: _fivetran_rowid
-        description: Fivetran unique row ID
       - name: _fivetran_deleted
         description: Fivetran deletion marker
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+      - name: adrnr
+        description: Address number
+      - name: bapovar
+        description: BAPI variant for company code
       - name: bukrs
         description: Company code
       - name: butxt
-        description: Name of company code or company
+        description: Company name
+      - name: bukrs_glob
+        description: Global company code
+      - name: buvar
+        description: Posting period variant
+      - name: dkweg
+        description: Payment methods permitted
+      - name: dtamtc
+        description: Automatic tax calculation procedure
+      - name: dtaxr
+        description: Tax reporting country
+      - name: dtprov
+        description: Withholding tax provider
+      - name: dttaxc
+        description: Withholding tax code
+      - name: dttdsp
+        description: Display withholding tax data
+      - name: ebukr
+        description: Central company code
+      - name: fdbuk
+        description: Head office company code
+      - name: fikrs
+        description: Financial management area
+      - name: fm_derive_acc
+        description: FM derive account assignment
+      - name: fmhrdate
+        description: Date for FM budget check
+      - name: fstva
+        description: Financial statement version
+      - name: fstvare
+        description: Financial statement version (retirement)
+      - name: impda
+        description: Import date
+      - name: infmt
+        description: Invoice format key
       - name: kkber
         description: Credit control area
+      - name: kokfi
+        description: FI system indicator
+      - name: kopim
+        description: Payment methods copied
+      - name: ktop2
+        description: Alternative chart of accounts
       - name: ktopl
         description: Chart of accounts
       - name: land1
         description: Country key
       - name: mandt
         description: Client
+      - name: mregl
+        description: Tax reporting country for EU
+      - name: mwska
+        description: Default tax code for sales
+      - name: mwskv
+        description: Default tax code for purchases
+      - name: offsacct
+        description: Offset account
+      - name: opvar
+        description: Open item clearing variant
+      - name: ort01
+        description: City
       - name: periv
         description: Fiscal year variant
+      - name: pp_pdate
+        description: Planned posting date
+      - name: pst_per_var
+        description: Posting period variant
       - name: rcomp
         description: Company
       - name: spras
         description: Language key
+      - name: stceg
+        description: VAT registration number
+      - name: surccm
+        description: Surrogate company code mapping
+      - name: txjcd
+        description: Tax jurisdiction code
+      - name: txkrs
+        description: Currency translation key
+      - name: umkrs
+        description: Intercompany clearing account
+      - name: waabw
+        description: Default exchange rate type
       - name: waers
         description: Currency key
+      - name: wfvar
+        description: Workflow variant
+      - name: wt_newwt
+        description: Withholding tax changeover indicator
+      - name: xbbba
+        description: Business area is mandatory
+      - name: xbbbe
+        description: Business area derived from profit center
+      - name: xbbbf
+        description: Derivation of business area from plant
+      - name: xbbko
+        description: Business area derived from cost object
+      - name: xbbsc
+        description: Business area derived from sales order
+      - name: xcession
+        description: Tax-exempt company indicator
+      - name: xcos
+        description: Cost of sales accounting active
+      - name: xcovr
+        description: Commitment item is required
+      - name: xeink
+        description: Purchasing data maintained
+      - name: xextb
+        description: External business partner required
+      - name: xfdis
+        description: Discount is fixed
+      - name: xfdmm
+        description: Materials management active
+      - name: xfdsd
+        description: Sales and distribution active
+      - name: xfmca
+        description: FM active (cash-based)
+      - name: xfmcb
+        description: FM active (budget-based)
+      - name: xfmco
+        description: FM active (commitment-based)
+      - name: xgjrv
+        description: Journal voucher active
+      - name: xgsbe
+        description: Business area financials active
+      - name: xjvaa
+        description: JV accounting active
+      - name: xkdft
+        description: Default tax indicator
+      - name: xkkbi
+        description: Credit management active
+      - name: xmwsn
+        description: New tax procedure active
+      - name: xnegp
+        description: Negative postings allowed
+      - name: xprod
+        description: Product costing active
+      - name: xskfn
+        description: Reconciliation accounts required
+      - name: xslta
+        description: SLA transfer active
+      - name: xsplt
+        description: Document splitting active
+      - name: xstdt
+        description: Statistics date usage
+      - name: xvalv
+        description: Use valuation view
+      - name: xvatdate
+        description: VAT date active
+      - name: xvvwa
+        description: Vendor withholding tax active
 
   - name: stg_sap__t001w
     description: Plants/Branches
