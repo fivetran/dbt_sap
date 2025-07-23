@@ -267,7 +267,7 @@ with mara as (
         and makt.spras = 'e'
     {% endif %}
 
-    where mara.mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
+where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *

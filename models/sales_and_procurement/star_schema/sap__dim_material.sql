@@ -1,5 +1,5 @@
 {% set using_material = var('sap_using_mara', True) %}
-{% set using_material_type =  var('sap_using_t134', True) %}
+{% set using_material_type = var('sap_using_t134', True) %}
 
 {{ config(enabled=using_material) }}
 

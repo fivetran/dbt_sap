@@ -19,6 +19,15 @@ Before marking this PR as "ready for review":
 **Summary of changes:**  
 <!-- 1-2 sentences describing PR changes. -->
 
+- 
+
+**This PR addresses the following Issue/Feature(s):**
+<!-- Add Issue # or internal ticket reference -->
+- 
+
+**Summary of changes:**  
+<!-- 1-2 sentences describing PR changes. -->
+- 
 
 ### Submission Checklist  
 - [ ] Alignment meeting with the reviewer (if needed)  
@@ -34,5 +43,3 @@ Before marking this PR as "ready for review":
 "Draft a changelog entry based on the following notes." -->
 - [ ] Draft changelog for PR  
 - [ ] Final changelog for release review
-
-add a bullet to check existing open PRs.

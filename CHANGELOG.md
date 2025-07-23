@@ -37,7 +37,6 @@
 | `int_sap__sales_document_rejection_reason` | New model |  |  | Intermediate model for sales rejection reasons (`tvakz`). |
 
 ## Features
-
 - **Added `sap_using_*` variables for modular staging**  
   - The package now supports `sap_using_*` variables to enable or disable individual staging tables. This allows you to control which raw tables are processed based on the data available in your SAP extract. Example usage in `dbt_project.yml`:
   ```yaml
@@ -58,7 +57,6 @@
 - **Consolidated `dbt_sap_source` into this package**  
   - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
   > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
-
 
 [PR #26](https://github.com/fivetran/dbt_sap/pull/26) includes the following updates:
 

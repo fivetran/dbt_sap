@@ -62,7 +62,7 @@ with t134 as (
         and t134t.spras = 'e'
 {% endif %}
 
-    where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
+where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *
