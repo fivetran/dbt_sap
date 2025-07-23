@@ -9,7 +9,7 @@
 | `sap__dim_customer` | New model |  |  | Dimension model for SAP customers (`kna1`). |
 | `sap__dim_material` | New model |  |  | Dimension model for SAP materials (`mara`). |
 | `sap__dim_plant` | New model |  |  | Dimension model for SAP plants (`t001w`). |
-| `sap__dim_purchasing_order` | New model |  |  | Dimension model for purchasing orders (`ekko`, `ekpo`). |
+| `sap__dim_purchasing_order` | New model |  |  | Dimension model for purchasing orders (`ekko`). |
 | `sap__dim_purchasing_organization` | New model |  |  | Dimension model for purchasing organizations (`t024e`). |
 | `sap__dim_rejection_reason` | New model |  |  | Dimension model for sales order rejection reasons (`tvag`). |
 | `sap__fact_purchasing_order` | New model |  |  | Fact model for purchasing order data (`ekko`, `ekpo`, `eket`). |
@@ -55,6 +55,26 @@
 | `stg_sap__vbap` | New model |  |  | Staging model for sales document items (`vbap`). |
 | `stg_sap__vbuk` | New model |  |  | Staging model for sales document header status (`vbuk`). |
 | `stg_sap__vbup` | New model |  |  | Staging model for sales document item status (`vbup`). |
+| `stg_sap__dd07l_tmp` | New model |  |  | Temporary model for domain values (`dd07l`). |
+| `stg_sap__dd07t_tmp` | New model |  |  | Temporary model for domain value descriptions (`dd07t`). |
+| `stg_sap__ekbe_tmp` | New model |  |  | Temporary model for purchasing document history (`ekbe`). |
+| `stg_sap__eket_tmp` | New model |  |  | Temporary model for purchasing schedule lines (`eket`). |
+| `stg_sap__ekko_tmp` | New model |  |  | Temporary model for purchasing document headers (`ekko`). |
+| `stg_sap__ekpo_tmp` | New model |  |  | Temporary model for purchasing document items (`ekpo`). |
+| `stg_sap__makt_tmp` | New model |  |  | Temporary model for material descriptions (`makt`). |
+| `stg_sap__t001w_tmp` | New model |  |  | Temporary model for plants (`t001w`). |
+| `stg_sap__t024_tmp` | New model |  |  | Temporary model for purchasing groups (`t024`). |
+| `stg_sap__t024e_tmp` | New model |  |  | Temporary model for purchasing organizations (`t024e`). |
+| `stg_sap__t134_tmp` | New model |  |  | Temporary model for material types (`t134`). |
+| `stg_sap__t134t_tmp` | New model |  |  | Temporary model for material type descriptions (`t134t`). |
+| `stg_sap__t161_tmp` | New model |  |  | Temporary model for purchasing document types (`t161`). |
+| `stg_sap__t161t_tmp` | New model |  |  | Temporary model for purchasing document type descriptions (`t161t`). |
+| `stg_sap__tvag_tmp` | New model |  |  | Temporary model for sales document rejection reasons (`tvag`). |
+| `stg_sap__tvagt_tmp` | New model |  |  | Temporary model for rejection reason descriptions (`tvagt`). |
+| `stg_sap__vbak_tmp` | New model |  |  | Temporary model for sales document headers (`vbak`). |
+| `stg_sap__vbap_tmp` | New model |  |  | Temporary model for sales document items (`vbap`). |
+| `stg_sap__vbuk_tmp` | New model |  |  | Temporary model for sales document header status (`vbuk`). |
+| `stg_sap__vbup_tmp` | New model |  |  | Temporary model for sales document item status (`vbup`). |
 
 ## Breaking Change
 - **Consolidated `dbt_sap_source` into this package**  

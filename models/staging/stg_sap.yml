@@ -2242,7 +2242,6 @@ models:
         description: Plant
       - name: xcpdk
         description: Indictoar (Is the account a one-time account?)
-
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_sap_archived
