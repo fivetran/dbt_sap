@@ -1,6 +1,6 @@
 {% set using_purchasing_document_item = var('sap_using_ekpo', True) %}
 {% set using_purchasing_document_header = var('sap_using_ekko', True) %}
-{% set using_company = var('sap_using_t001w', True) %}
+{% set using_company = var('sap_using_t001', True) %}
 {% set using_purchasing_document_overview = var('sap_using_ekbe', True) %}
 {% set using_purchasing_document_schedule_total = var('sap_using_eket', True) %}
 
