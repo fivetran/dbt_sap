@@ -94,5 +94,13 @@ public_models: [
   "sap__0customer_attr",
   "sap__0comp_code_text",
   "sap__0comp_code_attr",
-  "sap__0vendor_text"
+  "sap__0vendor_text",
+  "sap__dim_customer",
+  "sap__dim_material",
+  "sap__dim_plant",
+  "sap__dim_purchasing_order",
+  "sap__dim_purchasing_organization",
+  "sap__dim_rejection_reason",
+  "sap__fact_purchasing_order",
+  "sap__fact_sales_order"
 ]
