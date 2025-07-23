@@ -82,5 +82,5 @@ select
     fm_derive_acc as activate_aa_derivation,
     hvr_is_deleted as hvr_is_deleted,
     hvr_change_time as hvr_change_time
-from {{ ref('stg_sap__t001w') }}
+from {{ ref('stg_sap__t001') }}
 where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
