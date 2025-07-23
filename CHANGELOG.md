@@ -11,17 +11,13 @@
   - Standardized Quickstart-compatible badge set
   - Left-aligned and positioned below the H1 title.
 - Updated Python image version to `3.10.13` in `pipeline.yml`.
-- Added `CI_DATABRICKS_DBT_CATALOG` to:
-  - `.buildkite/hooks/pre-command` (as an export)
-  - `pipeline.yml` (under the `environment` block, after `CI_DATABRICKS_DBT_TOKEN`)
-- Added `certifi==2025.1.31` to `requirements.txt` (if missing).
 - Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
 
-# dbt_sap version.version
+[PR #10](https://github.com/fivetran/dbt_sap/pull/10) includes the following updates:
 
 ## Documentation
-- Added Quickstart model counts to README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
-- Corrected references to connectors and connections in the README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
+- Added Quickstart model counts to README. 
+- Corrected references to connectors and connections in the README.
 
 
 # dbt_sap v0.1.0  
