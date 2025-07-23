@@ -1,11 +1,30 @@
 # dbt_sap v0.2.0
 
+[PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
+
 ## Schema Changes
 - sales and procurement models
 
+[PR #26](https://github.com/fivetran/dbt_sap/pull/26) includes the following updates:
+
+### Under the Hood - July 2025 Updates
+
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `.github/workflows/generate-docs.yml`.
+- Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
+- Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
+- Updated `maintainer_pull_request_template.md` with improved checklist.
+- Refreshed README tag block:
+  - Standardized Quickstart-compatible badge set
+  - Left-aligned and positioned below the H1 title.
+- Updated Python image version to `3.10.13` in `pipeline.yml`.
+- Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
+
+[PR #10](https://github.com/fivetran/dbt_sap/pull/10) includes the following updates:
+
 ## Documentation
-- Added Quickstart model counts to README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
-- Corrected references to connectors and connections in the README. ([#10](https://github.com/fivetran/dbt_sap/pull/10))
+- Added Quickstart model counts to README. 
+- Corrected references to connectors and connections in the README.
 
 
 # dbt_sap v0.1.0  
