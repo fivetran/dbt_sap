@@ -2,10 +2,14 @@
 [PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
 
 ## Schema & Data Updates
-**71 total changes • 0 possible breaking changes.**
+**75 total changes • 4 possible breaking changes.**
 
 | Data Model | Change Type | Old Name | New Name | Notes |
 | --- | --- | --- | --- | --- |
+| [`stg_sap__lfa1`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__lfa1) | New columns |  |  | Refer to the linked documentation for the full column list. |
+| [`stg_sap__mara`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__mara) | New columns |  |  | Refer to the linked documentation for the full column list. |
+| [`stg_sap__t001`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001) | New columns |  |  | Refer to the linked documentation for the full column list. |
+| [`stg_sap__t001w`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001w) | New columns |  |  | Refer to the linked documentation for the full column list. |
 | `sap__dim_customer` | New model |  |  | Dimension model for SAP customers (`kna1`). |
 | `sap__dim_material` | New model |  |  | Dimension model for SAP materials (`mara`). |
 | `sap__dim_plant` | New model |  |  | Dimension model for SAP plants (`t001w`). |
@@ -77,9 +81,6 @@
 | `stg_sap__vbap_tmp` | New model |  |  | Temporary model for sales document items (`vbap`). |
 | `stg_sap__vbuk_tmp` | New model |  |  | Temporary model for sales document header status (`vbuk`). |
 | `stg_sap__vbup_tmp` | New model |  |  | Temporary model for sales document item status (`vbup`). |
-| [`stg_sap__lfa1`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__lfa1) | New columns |  |  | Refer to the linked documentation for the full column list. |
-| [`stg_sap__t001`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001) | New columns |  |  | Refer to the linked documentation for the full column list. |
-| [`stg_sap__t001w`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001w) | New columns |  |  | Refer to the linked documentation for the full column list. |
 
 ## Breaking Change
 - **Consolidated `dbt_sap_source` into this package**  
