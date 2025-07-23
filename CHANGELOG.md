@@ -2,7 +2,7 @@
 [PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
 
 ## Schema & Data Updates
-**49 total changes • 0 possible breaking changes.**
+**71 total changes • 0 possible breaking changes.**
 
 | Data Model | Change Type | Old Name | New Name | Notes |
 | --- | --- | --- | --- | --- |
@@ -12,6 +12,7 @@
 | `sap__dim_purchasing_order` | New model |  |  | Dimension model for purchasing orders (`ekko`). |
 | `sap__dim_purchasing_organization` | New model |  |  | Dimension model for purchasing organizations (`t024e`). |
 | `sap__dim_rejection_reason` | New model |  |  | Dimension model for sales order rejection reasons (`tvag`). |
+| `sap__dim_vendor` | New model |  |  | Dimension model for vendors (`lfa1`). |
 | `sap__fact_purchasing_order` | New model |  |  | Fact model for purchasing order data (`ekko`, `ekpo`, `eket`). |
 | `sap__fact_sales_order` | New model |  |  | Fact model for sales order data (`vbak`, `vbap`). |
 | `int_sap__company` | New model |  |  | Intermediate model for companies (`t001`). |
@@ -35,6 +36,7 @@
 | `int_sap__sales_document_item` | New model |  |  | Intermediate model for sales document items (`vbap`). |
 | `int_sap__sales_document_item_status` | New model |  |  | Intermediate model for sales doc item statuses (`vbup`). |
 | `int_sap__sales_document_rejection_reason` | New model |  |  | Intermediate model for sales rejection reasons (`tvag`). |
+| `int_sap__vendor` | New model |  |  | Intermediate model for vendors (`lfa1`). |
 | `stg_sap__dd07l` | New model |  |  | Staging model for domain values (`dd07l`). |
 | `stg_sap__dd07t` | New model |  |  | Staging model for domain value descriptions (`dd07t`). |
 | `stg_sap__ekbe` | New model |  |  | Staging model for purchasing document history (`ekbe`). |

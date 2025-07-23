@@ -91,6 +91,30 @@ models:
       - name: rejection_reason_description
         description: Description of the rejection reason
 
+  - name: sap__dim_vendor
+    description: Vendor dimension table.
+    columns:
+      - name: vendor_id
+        description: ID of the vendor
+      - name: country_key_id
+        description: Country key of the vendor
+      - name: name
+        description: Vendor name (line 1)
+      - name: name_2
+        description: Vendor name (line 2)
+      - name: city
+        description: Vendor city
+      - name: sort_field
+        description: Sort field for vendor
+      - name: authorization_group_id
+        description: Authorization group ID
+      - name: industry_key_id
+        description: Industry classification key
+      - name: group_key
+        description: Grouping key for vendors
+      - name: vendor_account_group_id
+        description: Account group ID for the vendor
+
   - name: sap__fact_purchasing_order
     description: Line-level metrics for purchasing documents
     columns:

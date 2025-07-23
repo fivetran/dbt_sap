@@ -2731,128 +2731,212 @@ sources:
           enabled: "{{ var('sap_using_lfa1', true) }}"
         description: Vendor master (General section)
         columns:
-          - name: actss
-            description: Activity status
-          - name: adrnr
-            description: Address number
-          - name: alc
-            description: Alternate license classification
-          - name: anred
-            description: Title
-          - name: bahns
-            description: Train station
-          - name: bbbnr
-            description: International location number (part 1)
-          - name: bbsnr
-            description: International location number (part 2)
-          - name: begru
-            description: Authorization group
-          - name: bubkz
-            description: Interest calculation flag
-          - name: carrier_conf
-            description: Carrier confirmation indicator
-          - name: cnae
-            description: Economic activity classification
-          - name: comsize
-            description: Company size indicator
-          - name: confs
-            description: Confirmation suppression
-          - name: crc_num
-            description: Credit rating number
-          - name: crtn
-            description: Creation time
-          - name: cvp_xblck
-            description: Business partner block flag
-          - name: datlt
-            description: Date of last transaction
-          - name: decregpc
-            description: Declaration region
-          - name: dlgrp
-            description: Deletion group
-          - name: dtams
-            description: Data amended status
-          - name: dtaws
-            description: Date of address update
-          - name: duefl
-            description: Dunning block
-          - name: emnfr
-            description: Manufacturer number
-          - name: erdat
-            description: Record creation date
-          - name: ernam
-            description: Name of person who created object
-          - name: esrnr
-            description: ESR number (payment)
-          - name: exp
-            description: Export indicator
+          - name: mandt
+            description: Client
+          - name: lifnr
+            description: Vendor ID
+          - name: land1
+            description: Country key
+          - name: name1
+            description: Name (line 1)
+          - name: name2
+            description: Name (line 2)
+          - name: name3
+            description: Name (line 3)
+          - name: name4
+            description: Name (line 4)
+          - name: ort01
+            description: City
+          - name: ort02
+            description: District
+          - name: pfach
+            description: PO box
+          - name: pstl2
+            description: PO box postal code
+          - name: pstlz
+            description: Postal code
+          - name: regio
+            description: Region
+          - name: sortl
+            description: Sort field
+          - name: stras
+            description: Street
+          - name: telbx
+            description: Telebox number
+          - name: telf1
+            description: Telephone 1
+          - name: telf2
+            description: Telephone 2
+          - name: telfx
+            description: Fax number
+          - name: teltx
+            description: Teletex number
+          - name: telx1
+            description: Telex number
+          - name: xcpdk
+            description: CPD indicator
+          - name: xzemp
+            description: Temporary vendor indicator
+          - name: vbund
+            description: Company code group
           - name: fiskn
             description: Tax number key
-          - name: fisku
-            description: Tax region
-          - name: fityp
-            description: Business type
-          - name: gbdat
-            description: Date of birth
+          - name: spras
+            description: Language key
+          - name: stcd1
+            description: Tax number 1
+          - name: stcd2
+            description: Tax number 2
+          - name: stkza
+            description: Head office indicator
+          - name: stkzu
+            description: Subsidiary indicator
+          - name: stceg
+            description: VAT registration number
+          - name: stkzn
+            description: Branch indicator
+          - name: sperq
+            description: Request block
           - name: gbort
             description: Place of birth
-          - name: icmstaxpay
-            description: ICMS tax payer flag
-          - name: indtyp
-            description: Industry type
+          - name: gbdat
+            description: Date of birth
+          - name: sexkz
+            description: Gender key
+          - name: kraus
+            description: Creditor authorization
+          - name: revdb
+            description: Revenue district
+          - name: qssys
+            description: Quality system
+          - name: ktock
+            description: Head office vendor
+          - name: pfort
+            description: Gate
+          - name: werks
+            description: Plant
+          - name: ltsna
+            description: Sub-range
+          - name: werkr
+            description: Place of production
+          - name: plkal
+            description: Pricing procedure
+          - name: duefl
+            description: Dunning block
+          - name: txjcd
+            description: Tax jurisdiction
+          - name: sperz
+            description: Central deletion flag
+          - name: scacd
+            description: Service agent ID
+          - name: sfrgr
+            description: Freight group
+          - name: lzone
+            description: Transport zone
+          - name: xlfza
+            description: Tax exemption flag
+          - name: dlgrp
+            description: Deletion group
+          - name: fityp
+            description: Business type
+          - name: stcdt
+            description: Tax type
+          - name: regss
+            description: Region segment
+          - name: actss
+            description: Activity status
+          - name: stcd3
+            description: Tax number 3
+          - name: stcd4
+            description: Tax number 4
+          - name: stcd5
+            description: Tax number 5
           - name: ipisp
-            description: Social insurance provider
+            description: Insurance provider
+          - name: taxbs
+            description: Tax base
+          - name: profs
+            description: Profession
+          - name: stgdl
+            description: Staging deadline
+          - name: emnfr
+            description: Manufacturer number
+          - name: lfurl
+            description: Vendor URL
           - name: j_1kfrepre
             description: Fiscal representative
           - name: j_1kftbus
             description: Type of business
           - name: j_1kftind
             description: Type of industry
-          - name: j_sc_capital
-            description: Capital value
-          - name: j_sc_currency
-            description: Capital currency
-          - name: konzs
-            description: Consolidation indicator
-          - name: ktock
-            description: Head office account number
-          - name: kunnr
-            description: Customer number
-          - name: legalnat
-            description: Legal nature
-          - name: lfurl
-            description: Vendor URL
-          - name: lnrza
-            description: Central vendor number
-          - name: ltsna
-            description: Sub-range indicator
-          - name: lzone
-            description: Transportation zone
-          - name: mcod1
-            description: Search term 1
-          - name: mcod2
-            description: Search term 2
-          - name: mcod3
-            description: Search term 3
-          - name: min_comp
-            description: Minority company indicator
-          - name: name4
-            description: Name 4
+          - name: confs
+            description: Confirmation suppression
+          - name: updat
+            description: Update date
+          - name: uptim
+            description: Update time
           - name: nodel
-            description: Deletion lock indicator
-          - name: plkal
-            description: Price calculation schema
-          - name: pmt_office
-            description: Payment office
+            description: Deletion lock
+          - name: qssysdat
+            description: Quality system date
           - name: podkzb
             description: POD indicator
+          - name: fisku
+            description: Tax region
+          - name: stenr
+            description: Street number
+          - name: carrier_conf
+            description: Carrier confirmation
+          - name: min_comp
+            description: Minority company
+          - name: term_li
+            description: Terms of liability
+          - name: crc_num
+            description: Credit rating number
+          - name: cvp_xblck
+            description: Vendor block flag
+          - name: rg
+            description: Company headquarters
+          - name: exp
+            description: Export indicator
+          - name: uf
+            description: Federal unit
+          - name: rgdate
+            description: Registration date
+          - name: ric
+            description: Retail code
+          - name: rne
+            description: Regional code
+          - name: rnedate
+            description: Regional date
+          - name: cnae
+            description: Economic activity
+          - name: legalnat
+            description: Legal nature
+          - name: crtn
+            description: Creation time
+          - name: icmstaxpay
+            description: ICMS tax payer
+          - name: indtyp
+            description: Industry type
+          - name: tdt
+            description: Transport plan date
+          - name: comsize
+            description: Company size
+          - name: decregpc
+            description: Declaration region
+          - name: j_sc_capital
+            description: Capital
+          - name: j_sc_currency
+            description: Capital currency
+          - name: alc
+            description: License classification
+          - name: pmt_office
+            description: Payment office
           - name: ppa_relevant
-            description: Public partner agreement relevant
-          - name: profs
-            description: Profession
+            description: PPA relevant flag
           - name: psofg
             description: Fund group
-          - name: psohs
-            description: Fund source
           - name: psois
             description: Fund indicator
           - name: pson1
@@ -2861,98 +2945,76 @@ sources:
             description: Fund segment 2
           - name: pson3
             description: Fund segment 3
-          - name: psost
-            description: Status of fund
-          - name: psotl
-            description: Fund transfer limit
           - name: psovn
             description: Fund version
-          - name: qssys
-            description: Quality system
-          - name: qssysdat
-            description: Quality system date
-          - name: regss
-            description: Region segment
-          - name: revdb
-            description: Revenue district
-          - name: rg
-            description: Company headquarters
-          - name: rgdate
-            description: Registration date
-          - name: ric
-            description: Retail indicator code
-          - name: rne
-            description: Regional economic region
-          - name: rnedate
-            description: Regional economic date
-          - name: scacd
-            description: Service agent ID
-          - name: scheduling_type
-            description: Scheduling type
-          - name: sexkz
-            description: Gender key
-          - name: sfrgr
-            description: Freight group
-          - name: sperm
-            description: Posting block
-          - name: sperq
-            description: Request block
-          - name: sperr
-            description: Central posting block
-          - name: sperz
-            description: Central deletion indicator
-          - name: staging_time
-            description: Staging time
-          - name: stcd4
-            description: Tax number 4
-          - name: stcd5
-            description: Tax number 5
-          - name: stcdt
-            description: Tax type
-          - name: stceg
-            description: VAT registration number
-          - name: stenr
-            description: Street number
-          - name: stgdl
-            description: Staging deadline
-          - name: stkza
-            description: Indicator (head office)
-          - name: stkzn
-            description: Indicator (branch)
-          - name: stkzu
-            description: Indicator (subsidiary)
-          - name: submi_relevant
-            description: Subcontracting relevant
-          - name: taxbs
-            description: Tax base amount
-          - name: tdt
-            description: Transportation planning date
-          - name: telbx
-            description: Telebox number
-          - name: telf2
-            description: Second telephone number
-          - name: teltx
-            description: Teletex number
-          - name: telx1
-            description: Telex number
-          - name: term_li
-            description: Terms of liability
+          - name: psotl
+            description: Fund transfer limit
+          - name: psohs
+            description: Fund source
+          - name: psost
+            description: Fund status
           - name: transport_chain
             description: Transport chain
-          - name: txjcd
-            description: Tax jurisdiction code
-          - name: uf
-            description: Federal unit code
-          - name: updat
-            description: Update date
-          - name: uptim
-            description: Update time
-          - name: werkr
-            description: Place of production
-          - name: xlfza
-            description: Tax exemption indicator
-          - name: xzemp
-            description: Temporary vendor indicator
+          - name: staging_time
+            description: Staging time
+          - name: scheduling_type
+            description: Scheduling type
+          - name: submi_relevant
+            description: Subcontracting relevant
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: adrnr
+            description: Address number
+          - name: mcod1
+            description: Search term 1
+          - name: mcod2
+            description: Search term 2
+          - name: mcod3
+            description: Search term 3
+          - name: anred
+            description: Title
+          - name: bahns
+            description: Train station
+          - name: bbbnr
+            description: Location number (part 1)
+          - name: bbsnr
+            description: Location number (part 2)
+          - name: begru
+            description: Authorization group
+          - name: brsch
+            description: Industry key
+          - name: bubkz
+            description: Interest calculation flag
+          - name: datlt
+            description: Last transaction date
+          - name: dtams
+            description: Amendment status
+          - name: dtaws
+            description: Address update date
+          - name: erdat
+            description: Record creation date
+          - name: ernam
+            description: Created by user
+          - name: esrnr
+            description: ESR number
+          - name: konzs
+            description: Consolidation indicator
+          - name: ktokk
+            description: Account group
+          - name: kunnr
+            description: Customer number
+          - name: lnrza
+            description: Central vendor number
+          - name: loevm
+            description: Deletion flag
+          - name: sperr
+            description: Central block
+          - name: sperm
+            description: Posting block
 
       - name: makt
         identifier: "{{ var('sap_makt_identifier', 'makt') }}"
