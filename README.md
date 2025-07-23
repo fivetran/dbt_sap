@@ -175,7 +175,7 @@ The Fivetran team maintaining this package _only_ maintains the latest version o
 
 ### Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
-3
+
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) to learn how to contribute to a dbt package.
 
 ## Are there any resources available?
