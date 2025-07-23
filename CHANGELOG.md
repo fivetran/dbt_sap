@@ -1,3 +1,10 @@
+# dbt_sap v0.2.0
+
+[PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
+
+## Schema Changes
+- sales and procurement models
+
 [PR #26](https://github.com/fivetran/dbt_sap/pull/26) includes the following updates:
 
 ### Under the Hood - July 2025 Updates

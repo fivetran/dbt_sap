@@ -1,0 +1,150 @@
+{{ config(enabled=var('sap_using_bseg', True)) }}
+
+{% set source_columns = adapter.get_columns_in_relation(ref('stg_sap__bseg_tmp')) %}
+
+with base as (
+
+    select {{ remove_slashes_from_col_names(source_columns) }}
+    from {{ ref('stg_sap__bseg_tmp') }}
+),
+
+fields as (
+
+    select
+        {{
+            fivetran_utils.fill_staging_columns(
+                source_columns=source_columns,
+                staging_columns=get_bseg_columns()
+            )
+        }}
+    from base
+),
+
+final as (
+
+    select
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
+        cast(bukrs as {{ dbt.type_string() }}) as bukrs,
+        cast(belnr as {{ dbt.type_string() }}) as belnr,
+        cast(gjahr as {{ dbt.type_string() }}) as gjahr,
+        cast(buzei as {{ dbt.type_string() }}) as buzei,
+        anln1,
+        anln2,
+        aufnr,
+        augbl,
+        augdt,
+        cast(ebeln as {{ dbt.type_string() }}) as ebeln,
+        cast(ebelp as {{ dbt.type_string() }}) as ebelp,
+        eten2, 
+        filkd,
+        gsber, 
+        koart, 
+        kostl,
+        maber,
+        madat,
+
+        mansp,
+        manst,
+        mschl,
+        mwskz,
+        posn2,
+        qbshb,
+        qsfbt,
+        qsshb,
+        rebzg,
+        samnr,
+        sgtxt,
+        cast(shkzg as {{ dbt.type_string() }}) as shkzg,
+        skfbt,
+        wskto,
+        sknto, 
+        umsks,
+        umskz,
+        uzawe,
+        valut,
+        vbel2,
+        cast(vbeln as {{ dbt.type_string() }}) as vbeln,
+        vbewa,
+        vbund,
+        vertn,
+        vertt, 
+        werks, 
+        wverw, 
+        xzahl, 
+        zbd1p,
+        zbd1t,
+        zbd2p,
+        zbd2t,
+        zbd3t,
+        zfbdt, 
+        zlsch,
+        zlspr,
+        zterm,
+        zuonr,
+        xref1,
+        xref2, 
+        rstgr,  
+        rebzt,
+        pswsl,
+        pswbt,
+        hkont,
+        xnegp,
+        zbfix,
+        rfzei,
+        ccbtc,
+        kkber,
+        xref3,
+        dtws1,
+        dtws2,
+        dtws3,
+        dtws4,
+        absbt, 
+        projk,
+        xpypr,
+        kidno, 
+        bupla,
+        secco, 
+        pycur,
+        pyamt, 
+        xragl,
+        cession_kz,
+        buzid,
+        auggj,
+        agzei, 
+        bdiff,
+        bdif2,
+        bdif3,
+        bewar,
+        dabrz,
+        dmbtr,
+        fkber,
+        fkber_long,
+        imkey,
+        kstar,
+        cast(kunnr as {{ dbt.type_string() }}) as kunnr,
+        lifnr,
+        meins,
+        cast(menge as {{ dbt.type_numeric() }}) as menge,
+        pargb, 
+        pfkber, 
+        pprct, 
+        saknr,
+        wrbtr,
+        xopvw,
+        xlgclr,
+        zzspreg,
+        zzbuspartn,
+        zzproduct,
+        zzloca,
+        zzchan,
+        zzlob, 
+        zzuserfld1,
+        zzuserfld2,
+        zzuserfld3,
+        zzregion,
+        zzstate
+    from fields
+)
+
+select *
+from final

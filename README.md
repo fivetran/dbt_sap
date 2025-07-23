@@ -1,4 +1,3 @@
-
 # SAP Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_sap/))
 
 <p align="left">
@@ -31,17 +30,29 @@ The following table provides a detailed list of all tables materialized within t
 
 | **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  This model is used for loading company code attributes, extracting from the t001 data source.                              |
-| [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  This model is used for loading company code text information, extracting from the t001 data source.   |
-| [sap__0company_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0company_text) |  This model is used for loading customer text data, extracting from the t880 data source.   |
-| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  This model is used for loading customer master data, originating from the kna1 source.                               |
+| [sap__0comp_code_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_attr)    |  This model is used for loading company code attributes, extracting from the `t001` data source.                              |
+| [sap__0comp_code_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0comp_code_text)    |  This model is used for loading company code text information, extracting from the `t001` data source.   |
+| [sap__0company_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0company_text) |  This model is used for loading customer text data, extracting from the `t880` data source.   |
+| [sap__0customer_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0customer_attr)    |  This model is used for loading customer master data, originating from the `kna1` source.                               |
 | [sap__0employee_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0employee_attr)    | This model contains information that concerns the employee's work relationship, extracting master data from the personnel administration tables. |
 | [sap__0fi_gl_10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10)    | This model extracts the transaction figures from the leading ledger in the new General Ledger.  |
 | [sap__0fi_gl_14](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_14)  | This model extracts line items from the leading ledger in new General Ledger Accounting.                                                                |
-| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |   This model is used for loading G/L Account Number master data, originating from the ska1 source.                 |
-| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the mara source.                                                           |
-| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the lfa1 source.                           |
-| [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the lfa1 source.     |
+| [sap__0gl_account_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0gl_account_attr)    |   This model is used for loading G/L Account Number master data, originating from the `ska1` source.                 |
+| [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the `mara` source.                                                           |
+| [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
+| [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
+
+| [sap__dim_customer](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_customer) | Represents customer dimension data from the `kna1` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_material](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_material) | Provides enriched material and material type data by combining attributes from the `mara`, `makt`, `t134`, and `t134t` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_plant](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_plant) | Delivers plant-level dimension data from the `t001w` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_purchasing_order) | Provides enriched purchase order data by combining attributes from the `ekko`, `dd07l`, `dd07t`, `t024`, and `t161` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_purchasing_organization](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_purchasing_organization) | Provides enriched purchasing organization data by combining attributes from the `t024e`, `t024et`, and related sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__dim_rejection_reason](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_rejection_reason) | Provides enriched sales rejection reason data by combining attributes from the `tvag` and `tvagt` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
+| [sap__fact_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_purchasing_order) | Consolidates purchase order fact data from the `ekbe`, `eket`, `ekko`, `ekpo`, and `t001w` sources, representing transactional procurement activity across line items and orders. SAP field names are mapped to English readable column names. |
+| [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
+
+
+
 
 ### Materialized Models
 Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
@@ -87,7 +98,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 ```
 
 It's our recommendation that you do not include the `sap_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -123,6 +134,8 @@ vars:
     faglflext_rclnt_var: 'value9' # The client in the `sap__0fi_gl_10` model, this filter allows you to parse down to one client's records.
     faglflext_rldnr_var: 'value10' # The ledger account field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one ledger account's records.
     faglflext_ryear_var: 'value11' # The fiscal year in the `sap__0fi_gl_10` model, this filter allows you to parse down to one fiscal year.
+
+    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is '800', but a list of allowable values can be passed.
 ```  
 
 #### Change the build schema
@@ -159,9 +172,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
 ```yml
 packages:
-    - package: fivetran/sap_source
-      version: [">=0.1.0", "<0.2.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 
