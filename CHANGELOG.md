@@ -2,7 +2,7 @@
 [PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
 
 ## Schema & Data Updates
-**29 total changes • 0 possible breaking changes.**
+**49 total changes • 0 possible breaking changes.**
 
 | Data Model | Change Type | Old Name | New Name | Notes |
 | --- | --- | --- | --- | --- |
@@ -19,14 +19,14 @@
 | `int_sap__material` | New model |  |  | Intermediate model for materials (`mara`). |
 | `int_sap__material_type` | New model |  |  | Intermediate model for material types (`t134`). |
 | `int_sap__plant` | New model |  |  | Intermediate model for plants (`t001w`). |
-| `int_sap__purchasing_document_category` | New model |  |  | Intermediate model for purchasing doc categories (`t161`). |
+| `int_sap__purchasing_document_category` | New model |  |  | Intermediate model for purchasing doc categories (`dd07l`). |
 | `int_sap__purchasing_document_header` | New model |  |  | Intermediate model for purchasing document headers (`ekko`). |
 | `int_sap__purchasing_document_history` | New model |  |  | Intermediate model for purchasing document history (`ekbe`). |
 | `int_sap__purchasing_document_item` | New model |  |  | Intermediate model for purchasing document items (`ekpo`). |
-| `int_sap__purchasing_document_overview` | New model |  |  | Intermediate model combining header/item/schedule (`ekko`, `ekpo`, `eket`). |
+| `int_sap__purchasing_document_overview` | New model |  |  | Intermediate model building on `int_sap__purchasing_document_history`. |
 | `int_sap__purchasing_document_schedule_line` | New model |  |  | Intermediate model for purchasing schedules (`eket`). |
 | `int_sap__purchasing_document_schedule_total` | New model |  |  | Intermediate model for rollup of scheduled purchasing quantities. |
-| `int_sap__purchasing_document_status` | New model |  |  | Intermediate model for purchasing document statuses (`ekes`, inferred). |
+| `int_sap__purchasing_document_status` | New model |  |  | Intermediate model for purchasing document statuses (`dd07l`). |
 | `int_sap__purchasing_document_type` | New model |  |  | Intermediate model for purchasing doc types (`t161`). |
 | `int_sap__purchasing_group` | New model |  |  | Intermediate model for purchasing groups (`t024`). |
 | `int_sap__purchasing_organization` | New model |  |  | Intermediate model for purchasing organizations (`t024e`). |
@@ -35,6 +35,31 @@
 | `int_sap__sales_document_item` | New model |  |  | Intermediate model for sales document items (`vbap`). |
 | `int_sap__sales_document_item_status` | New model |  |  | Intermediate model for sales doc item statuses (`vbup`). |
 | `int_sap__sales_document_rejection_reason` | New model |  |  | Intermediate model for sales rejection reasons (`tvag`). |
+| `stg_sap__dd07l` | New model |  |  | Staging model for domain values (`dd07l`). |
+| `stg_sap__dd07t` | New model |  |  | Staging model for domain value descriptions (`dd07t`). |
+| `stg_sap__ekbe` | New model |  |  | Staging model for purchasing document history (`ekbe`). |
+| `stg_sap__eket` | New model |  |  | Staging model for purchasing schedule lines (`eket`). |
+| `stg_sap__ekko` | New model |  |  | Staging model for purchasing document headers (`ekko`). |
+| `stg_sap__ekpo` | New model |  |  | Staging model for purchasing document items (`ekpo`). |
+| `stg_sap__makt` | New model |  |  | Staging model for material descriptions (`makt`). |
+| `stg_sap__t001w` | New model |  |  | Staging model for plants (`t001w`). |
+| `stg_sap__t024` | New model |  |  | Staging model for purchasing groups (`t024`). |
+| `stg_sap__t024e` | New model |  |  | Staging model for purchasing organizations (`t024e`). |
+| `stg_sap__t134` | New model |  |  | Staging model for material types (`t134`). |
+| `stg_sap__t134t` | New model |  |  | Staging model for material type descriptions (`t134t`). |
+| `stg_sap__t161` | New model |  |  | Staging model for purchasing document types (`t161`). |
+| `stg_sap__t161t` | New model |  |  | Staging model for purchasing document type descriptions (`t161t`). |
+| `stg_sap__tvag` | New model |  |  | Staging model for sales document rejection reasons (`tvag`). |
+| `stg_sap__tvagt` | New model |  |  | Staging model for rejection reason descriptions (`tvagt`). |
+| `stg_sap__vbak` | New model |  |  | Staging model for sales document headers (`vbak`). |
+| `stg_sap__vbap` | New model |  |  | Staging model for sales document items (`vbap`). |
+| `stg_sap__vbuk` | New model |  |  | Staging model for sales document header status (`vbuk`). |
+| `stg_sap__vbup` | New model |  |  | Staging model for sales document item status (`vbup`). |
+
+## Breaking Change
+- **Consolidated `dbt_sap_source` into this package**  
+  - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
+  > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
 
 ## Features
 - **Added `sap_using_*` variables for modular staging**  
@@ -53,10 +78,6 @@
     sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is ['800'].
   ```
   - See the [README](https://github.com/fivetran/dbt_sap/blob/main/README.md#filter-the-data-you-bring-in-with-field-variable-conditionals) for more details.
-
-- **Consolidated `dbt_sap_source` into this package**  
-  - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
-  > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
 
 [PR #26](https://github.com/fivetran/dbt_sap/pull/26) includes the following updates:
 
@@ -78,7 +99,6 @@
 ## Documentation
 - Added Quickstart model counts to README. 
 - Corrected references to connectors and connections in the README.
-
 
 # dbt_sap v0.1.0  
 🎉 This is the initial release of this package! 🎉
