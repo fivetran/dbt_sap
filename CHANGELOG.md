@@ -31,9 +31,9 @@
 | `int_sap__purchasing_group` | New model |  |  | Intermediate model for purchasing groups (`t024`). |
 | `int_sap__purchasing_organization` | New model |  |  | Intermediate model for purchasing organizations (`t024e`). |
 | `int_sap__sales_document_header` | New model |  |  | Intermediate model for sales document headers (`vbak`). |
-| `int_sap__sales_document_header_status` | New model |  |  | Intermediate model for sales doc header statuses (`vbak`, inferred). |
+| `int_sap__sales_document_header_status` | New model |  |  | Intermediate model for sales doc header statuses (`vbuk`). |
 | `int_sap__sales_document_item` | New model |  |  | Intermediate model for sales document items (`vbap`). |
-| `int_sap__sales_document_item_status` | New model |  |  | Intermediate model for sales doc item statuses (`vbap`, inferred). |
+| `int_sap__sales_document_item_status` | New model |  |  | Intermediate model for sales doc item statuses (`vbup`). |
 | `int_sap__sales_document_rejection_reason` | New model |  |  | Intermediate model for sales rejection reasons (`tvakz`). |
 
 ## Features
