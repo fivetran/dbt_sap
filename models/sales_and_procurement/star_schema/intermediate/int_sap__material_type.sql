@@ -55,14 +55,14 @@ with t134 as (
 
     from t134
 
-{% if using_t134t %}
+    {% if using_t134t %}
     left join t134t
         on t134.mandt = t134t.mandt
         and t134.mtart = t134t.mtart
         and t134t.spras = 'e'
-{% endif %}
+    {% endif %}
 
-where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
+    where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *
