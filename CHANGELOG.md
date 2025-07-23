@@ -1,9 +1,62 @@
 # dbt_sap v0.2.0
-
 [PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
 
-## Schema Changes
-- sales and procurement models
+## Schema & Data Updates
+**29 total changes • 0 possible breaking changes. 
+
+| Data Model | Change Type | Old Name | New Name | Notes |
+| --- | --- | --- | --- | --- |
+| `sap__dim_customer` | New model |  |  | Dimension model for SAP customers (`kna1`). |
+| `sap__dim_material` | New model |  |  | Dimension model for SAP materials (`mara`). |
+| `sap__dim_plant` | New model |  |  | Dimension model for SAP plants (`t001w`). |
+| `sap__dim_purchasing_order` | New model |  |  | Dimension model for purchasing orders (`ekko`, `ekpo`). |
+| `sap__dim_purchasing_organization` | New model |  |  | Dimension model for purchasing organizations (`t024e`). |
+| `sap__dim_rejection_reason` | New model |  |  | Dimension model for sales order rejection reasons (`tvakz`). |
+| `sap__fact_purchasing_order` | New model |  |  | Fact model for purchasing order data (`ekko`, `ekpo`, `eket`). |
+| `sap__fact_sales_order` | New model |  |  | Fact model for sales order data (`vbak`, `vbap`). |
+| `int_sap__company` | New model |  |  | Intermediate model for companies (`t001`). |
+| `int_sap__customer` | New model |  |  | Intermediate model for customers (`kna1`). |
+| `int_sap__material` | New model |  |  | Intermediate model for materials (`mara`). |
+| `int_sap__material_type` | New model |  |  | Intermediate model for material types (`t134`). |
+| `int_sap__plant` | New model |  |  | Intermediate model for plants (`t001w`). |
+| `int_sap__purchasing_document_category` | New model |  |  | Intermediate model for purchasing doc categories (`t161`). |
+| `int_sap__purchasing_document_header` | New model |  |  | Intermediate model for purchasing document headers (`ekko`). |
+| `int_sap__purchasing_document_history` | New model |  |  | Intermediate model for purchasing document history (`ekbe`). |
+| `int_sap__purchasing_document_item` | New model |  |  | Intermediate model for purchasing document items (`ekpo`). |
+| `int_sap__purchasing_document_overview` | New model |  |  | Intermediate model combining header/item/schedule (`ekko`, `ekpo`, `eket`). |
+| `int_sap__purchasing_document_schedule_line` | New model |  |  | Intermediate model for purchasing schedules (`eket`). |
+| `int_sap__purchasing_document_schedule_total` | New model |  |  | Intermediate model for rollup of scheduled purchasing quantities. |
+| `int_sap__purchasing_document_status` | New model |  |  | Intermediate model for purchasing document statuses (`ekes`, inferred). |
+| `int_sap__purchasing_document_type` | New model |  |  | Intermediate model for purchasing doc types (`t161`). |
+| `int_sap__purchasing_group` | New model |  |  | Intermediate model for purchasing groups (`t024`). |
+| `int_sap__purchasing_organization` | New model |  |  | Intermediate model for purchasing organizations (`t024e`). |
+| `int_sap__sales_document_header` | New model |  |  | Intermediate model for sales document headers (`vbak`). |
+| `int_sap__sales_document_header_status` | New model |  |  | Intermediate model for sales doc header statuses (`vbak`, inferred). |
+| `int_sap__sales_document_item` | New model |  |  | Intermediate model for sales document items (`vbap`). |
+| `int_sap__sales_document_item_status` | New model |  |  | Intermediate model for sales doc item statuses (`vbap`, inferred). |
+| `int_sap__sales_document_rejection_reason` | New model |  |  | Intermediate model for sales rejection reasons (`tvakz`). |
+
+## Features
+- **Added `sap_using_*` variables for modular staging**  
+  - The package now supports `sap_using_*` variables to enable or disable individual staging tables. This allows you to control which raw tables are processed based on the data available in your SAP extract. Example usage in `dbt_project.yml`:
+  ```yaml
+  vars:
+    sap_using_vbap: true
+    sap_using_ekko: false
+  ```
+  - See the [README](https://github.com/fivetran/dbt_sap/blob/main/README.md#disable-individual-sources) for more details.
+
+- **Added variable `sales_and_procurement_mandt_var` to filter by client**  
+  - This new variable `sales_and_procurement_mandt_var` enables filtering the new fact and dimension models (such as sales and purchasing documents) by SAP client (`mandt`). This is useful in multi-client SAP systems to isolate records for a specific client. Example usage:
+  ```yaml
+  vars:
+    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is ['800'].
+  ```
+  - See the [README](https://github.com/fivetran/dbt_sap/blob/main/README.md#filter-the-data-you-bring-in-with-field-variable-conditionals) for more details.
+
+- **Consolidated `dbt_sap_source` into this package**  
+  - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
+  > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
 
 [PR #26](https://github.com/fivetran/dbt_sap/pull/26) includes the following updates:
 

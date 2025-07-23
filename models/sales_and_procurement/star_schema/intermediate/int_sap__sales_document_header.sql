@@ -163,4 +163,4 @@ select
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__vbak') }}
-where mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')

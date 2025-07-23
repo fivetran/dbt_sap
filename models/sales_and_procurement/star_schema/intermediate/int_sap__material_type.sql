@@ -51,10 +51,7 @@ with t134 as (
         t134.kzrac as mand_rp_logistics,
         t134.hvr_is_deleted as hvr_is_deleted,
         t134.hvr_change_time as hvr_change_time,
-
-{% if using_t134t %}
-        t134t.mtbez as description_material_type
-{% endif %}
+        {{ 't134t.mtbez ' if using_t134t else 'cast(null as ' ~ dbt.type_string() ~ ')' }} as description_material_type
 
     from t134
 
@@ -65,7 +62,7 @@ with t134 as (
         and t134t.spras = 'e'
 {% endif %}
 
-    where t134.mandt in ('{{ var("sales_and_procurement_mandt_var", "800") }}')
+where mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *

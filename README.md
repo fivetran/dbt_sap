@@ -16,10 +16,11 @@
 </p>
 
 ## What does this dbt package do?
-- Provides recreations of the SAP extractor models to enable you to better understand your SAP data. The package achieves this by performing the following:
+- Recreates common SAP extractor reports and provides a star schema for analyzing sales and purchase orders.
     - Brings in essential master attribute tables like Company Code (`sap__0comp_code_attr`), Customer Master (`sap__0customer_attr`), Employee (`sap__0employee_attr`), G/L Account Number (`sap__0gl_account_attr`), Material Data (`sap__0material_attr`), and Vendor Number (`sap__0vendor_attr`).
     - Brings in general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
     - Brings in master text models like Company Code (`sap__0comp_code_text`), Company (`sap__0company_text`), and Vendor (`sap__0vendor_text`).
+    - Provides sales and procurement models including facts and dimensions for purchase and sales orders.
 - Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
@@ -51,9 +52,6 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__fact_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_purchasing_order) | Consolidates purchase order fact data from the `ekbe`, `eket`, `ekko`, `ekpo`, and `t001w` sources, representing transactional procurement activity across line items and orders. SAP field names are mapped to English readable column names. |
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
 
-
-
-
 ### Materialized Models
 Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
@@ -61,27 +59,10 @@ Each Quickstart transformation job run materializes 46 models if all components 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran of the following SAP connectors:
+- At least one Fivetran SAP connection:
    - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
    - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
    - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana)
-- Within the connection, syncing the following respective tables into your destination:
-   - bkpf
-   - bseg
-   - faglflexa
-   - faglflext
-   - kna1
-   - lfa1
-   - mara
-   - pa0000
-   - pa0001
-   - pa0007
-   - pa0008
-   - pa0031
-   - ska1
-   - t001
-   - t503
-   - t880
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks** destination.
 
 #### Databricks Dispatch Configuration
@@ -101,8 +82,6 @@ packages:
     version: [">=0.2.0", "<0.3.0"]
 ```
 
-It's our recommendation that you do not include the `sap_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
-
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `sap` schema. If this is not where your sap data is (for example, if your sap schema is named `sap_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
@@ -113,8 +92,19 @@ vars:
 ```
 
 ### (Optional) Step 4: Additional configurations
-<details><summary>Expand to view details</summary>
+<details open><summary>Expand/collapse details</summary>
 <br>
+
+#### Disable individual sources
+Disable any source table by setting its `sap_using_*` variable to `false` in your `dbt_project.yml`. Example usage:
+
+```yml
+vars:
+    sap_using_vbak: false # default is true.
+    sap_using_vbap: false # default is true.
+    sap_using_ekko: false # default is true.
+    # ...additional sap_using_* variables
+```
 
 #### Filter the data you bring in with field variable conditionals
 By default, these models are set to bring in all your data from SAP, but you may be interested in bringing in only a smaller sample of data given the relative size of the SAP source tables.
@@ -123,6 +113,7 @@ We have set up where conditions in our data to allow you to bring in only the da
 
 ```yml
 vars:
+    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is '800', but a list of allowable values can be passed.
     bkpf_mandt_var: 'value1' # The client field in the `sap__0fi_gl_14` model, this filter allows you to parse down to one client's records.
     kna1_mandt_var: 'value2' # The client field in the `sap__0customer_attr` model, this filter allows you to parse down to one client's records.
     lfa1_mandt_var: 'value3' # The client field in the `sap__0vendor_attr` model, this filter allows you to parse down to one client's records.
@@ -134,9 +125,7 @@ vars:
     faglflext_rclnt_var: 'value9' # The client in the `sap__0fi_gl_10` model, this filter allows you to parse down to one client's records.
     faglflext_rldnr_var: 'value10' # The ledger account field in the `sap__0fi_gl_10` model, this filter allows you to parse down to one ledger account's records.
     faglflext_ryear_var: 'value11' # The fiscal year in the `sap__0fi_gl_10` model, this filter allows you to parse down to one fiscal year.
-
-    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is '800', but a list of allowable values can be passed.
-```  
+```
 
 #### Change the build schema
 By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `stg_sap`) and the SAP final models within a schema titled (<target_schema> + `_sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
@@ -145,13 +134,11 @@ By default, this package builds the SAP staging models within a schema titled (`
 models:
     sap:
       +schema: my_new_schema_name # leave blank for just the target_schema
-    sap_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
-> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_sap_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_sap/blob/main/dbt_project.yml) variable declarations to see the expected names.
 
 ```yml
 vars:
@@ -188,7 +175,7 @@ The Fivetran team maintaining this package _only_ maintains the latest version o
 
 ### Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
-
+3
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) to learn how to contribute to a dbt package.
 
 ## Are there any resources available?
