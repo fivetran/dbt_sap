@@ -101,6 +101,7 @@ public_models: [
   "sap__dim_purchasing_order",
   "sap__dim_purchasing_organization",
   "sap__dim_rejection_reason",
+  "sap__dim_vendor",
   "sap__fact_purchasing_order",
   "sap__fact_sales_order"
 ]
