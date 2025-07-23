@@ -77,6 +77,9 @@
 | `stg_sap__vbap_tmp` | New model |  |  | Temporary model for sales document items (`vbap`). |
 | `stg_sap__vbuk_tmp` | New model |  |  | Temporary model for sales document header status (`vbuk`). |
 | `stg_sap__vbup_tmp` | New model |  |  | Temporary model for sales document item status (`vbup`). |
+| [`stg_sap__lfa1`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__lfa1) | New columns |  |  | Refer to the linked documentation for the full column list. |
+| [`stg_sap__t001`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001) | New columns |  |  | Refer to the linked documentation for the full column list. |
+| [`stg_sap__t001w`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t001w) | New columns |  |  | Refer to the linked documentation for the full column list. |
 
 ## Breaking Change
 - **Consolidated `dbt_sap_source` into this package**  
