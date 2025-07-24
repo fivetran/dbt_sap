@@ -86,6 +86,7 @@
 - **Consolidated `dbt_sap_source` into this package**  
   - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
   > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
+- New columns were added to existing staging models, which may introduce breaking changes depending on your use case.
 
 ## Features
 - **Added `sap_using_*` variables for modular staging**  
