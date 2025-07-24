@@ -97,7 +97,7 @@ vars:
 <br>
 
 #### Disable individual sources
-Disable any source table by setting its `sap_using_*` variable to `false` in your `dbt_project.yml`. Example usage:
+All source tables are enabled by default, but you can disable any of them by setting their `sap_using_*` variable to `false` in your `dbt_project.yml`. Example usage:
 
 ```yml
 vars:

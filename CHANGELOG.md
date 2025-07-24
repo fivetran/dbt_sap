@@ -89,10 +89,10 @@
 
 ## Features
 - **Added `sap_using_*` variables for modular staging**  
-  - The package now supports `sap_using_*` variables to enable or disable individual staging tables. This allows you to control which raw tables are processed based on the data available in your SAP extract. Example usage in `dbt_project.yml`:
+  - The package now supports `sap_using_*` variables, which are set to true by default, that will allow you to disable individual staging tables. This allows you to control which raw tables are processed based on the data available in your SAP extract. Example usage in `dbt_project.yml`:
   ```yaml
   vars:
-    sap_using_vbap: true
+    sap_using_vbap: false
     sap_using_ekko: false
   ```
   - See the [README](https://github.com/fivetran/dbt_sap/blob/main/README.md#disable-individual-sources) for more details.
