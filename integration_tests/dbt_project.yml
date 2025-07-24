@@ -1,11 +1,11 @@
 name: 'sap_integration_tests'
-version: '0.1.0'
+version: '0.2.0'
 profile: 'integration_tests'
 config-version: 2
 
 vars:
   sap_schema: sap_integration_tests
-  sap_source:
+  sap:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bseg_identifier: "sap_bseg_data"
     sap_faglflexa_identifier: "sap_faglflexa_data"
@@ -22,26 +22,51 @@ vars:
     sap_t001_identifier: "sap_t001_data"
     sap_t503_identifier: "sap_t503_data"
     sap_t880_identifier: "sap_t880_data"
-  
+    sap_dd07l_identifier: "sap_dd07l_data"
+    sap_dd07t_identifier: "sap_dd07t_data"
+    sap_ekko_identifier: "sap_ekko_data"
+    sap_makt_identifier: "sap_makt_data"
+    sap_t001w_identifier: "sap_t001w_data"
+    sap_t024_identifier: "sap_t024_data"
+    sap_t024e_identifier: "sap_t024e_data"
+    sap_t134_identifier: "sap_t134_data"
+    sap_t134t_identifier: "sap_t134t_data"
+    sap_t161_identifier: "sap_t161_data"
+    sap_t161t_identifier: "sap_t161t_data"
+    sap_tvag_identifier: "sap_tvag_data"
+    sap_tvagt_identifier: "sap_tvagt_data"
+    sap_eket_identifier: "sap_eket_data"
+    sap_ekbe_identifier: "sap_ekbe_data"
+    sap_ekpo_identifier: "sap_ekpo_data"
+    sap_vbak_identifier: "sap_vbak_data"
+    sap_vbap_identifier: "sap_vbap_data"
+    sap_vbuk_identifier: "sap_vbuk_data"
+    sap_vbup_identifier: "sap_vbup_data"
+
+models:
+  +schema: "sap_{{ var('directed_schema','dev') }}"
+
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
+  +docs:
+    show: False
   sap_integration_tests:
     +column_types:
-      _fivetran_rowid: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+      _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
       _fivetran_synced: timestamp
 
     sap_bkpf_data:
       +column_types:
-        aedat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        awkey: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bldat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        cpudt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        cputm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        awkey: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bldat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cpudt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cputm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ctxkrs: numeric
         frath: numeric
         kursf: numeric
@@ -51,41 +76,41 @@ seeds:
         kur2x: numeric
         kur3x: numeric
         kzkrs: numeric
-        reindat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stodt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        reindat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stodt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         txkrs: numeric
-        upddt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        wwert: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        upddt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wwert: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_bseg_data:
       +column_types:
-        abper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         absbt: numeric
-        agzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        altkt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        anfae: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        anfbj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        aplzl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        aufpl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        augcp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        augdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        auggj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        agzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        altkt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anfae: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anfbj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aplzl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aufpl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        augcp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        augdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        auggj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bdiff: numeric
         bdif2: numeric
         bdif3: numeric
-        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         blnbt: numeric
         blnpz: numeric
         bonfb: numeric
         bpmng: numeric
-        bschl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bschl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bualt: numeric
-        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        buzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bzdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dabrz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        disbj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        disbz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        buzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bzdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dabrz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disbj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disbz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         dmbe2: numeric
         dmb21: numeric
         dmb22: numeric
@@ -98,42 +123,42 @@ seeds:
         dmbt2: numeric
         dmbt3: numeric
         dmbtr: numeric
-        dtws1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dtws2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dtws3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dtws4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ebelp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dtws4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebelp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         erfmg: numeric
-        eten2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fdtag: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        eten2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fdtag: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
         fdwbt: numeric
-        fipos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fkber_long: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fkont: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fmxdocln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fmxyear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fipos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fkber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fkber_long: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fkont: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmxdocln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmxyear: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         fwbas: numeric
         fwzuz: numeric
         gbetr: numeric
-        gjahr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        gsber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        hkont: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gjahr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gsber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hkont: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hwbas: numeric
         hwzus: numeric
         hwzuz: numeric
-        kblpos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kblpos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         klibt: numeric
-        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kostl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kostl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         kzbtr: numeric
         kursr: numeric
-        linfv: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lnran: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lokkt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        madat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        manst: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        linfv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lnran: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lokkt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        madat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        manst: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         menge: numeric
         mwst2: numeric
         mwst3: numeric
@@ -144,55 +169,55 @@ seeds:
         navh3: numeric
         nebtr: numeric
         nprei: numeric
-        obzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        paobjnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pasubnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        obzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        paobjnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pasubnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         penfc: numeric
         penlc1: numeric
         penlc2: numeric
         penlc3: numeric
-        peinh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        perop_beg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        perop_end: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        posn2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        peinh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        perop_beg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        perop_end: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        posn2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         popts: numeric
         ppdiff: numeric
         ppdif2: numeric
         ppdif3: numeric
-        prctr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        prodper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        projk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prctr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prodper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        projk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         pswbt: numeric
         pyamt: numeric
         qbshb: numeric
         qsfbt: numeric
         qsshb: numeric
-        rebzj: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rebzz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rebzj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rebzz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rdiff: numeric
         rdif2: numeric
         rdif3: numeric
         rewrt: numeric
         rewwr: numeric
-        rfzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rpacq: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        samnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rpacq: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        samnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         sctax: numeric
         skfbt: numeric
         sknto: numeric
         sknt2: numeric
         sknt3: numeric
         sttax: numeric
-        taxps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        taxps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         txbfw: numeric
         txbhw: numeric
         txbh2: numeric
         txbh3: numeric
-        txdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        txgrp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        valut: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vrsdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txgrp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        valut: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vrsdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         wmwst: numeric
         wrbt1: numeric
         wrbt2: numeric
@@ -200,46 +225,494 @@ seeds:
         wrbtr: numeric
         wskto: numeric
         zbd1p: numeric
-        zbd1t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zbd1t: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         zbd2p: numeric
-        zbd2t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zbd3t: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zekkn: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zfbdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zolld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zuonr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zbd2t: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zbd3t: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zekkn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zfbdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zolld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zuonr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07l_data:
+      +column_types:
+        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_dd07t_data:
+      +column_types:
+        domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddlanguage: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ddtext: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_ekbe_data:
+      +column_types:
+        dmbtr: numeric
+        dmbtr_pop: numeric
+        retamt_fc: numeric
+        retamt_lc: numeric
+        retamtp_fc: numeric
+        retamtp_lc: numeric
+        wrbtr: numeric
+        wrbtr_pop: numeric
+
+    sap_eket_data:
+      +column_types:
+        otb_res_value: numeric
+        otb_spec_value: numeric
+        otb_value: numeric
+
+    sap_ekko_data:
+      +column_types:
+        dpamt: numeric
+        dppct: numeric
+        ktwrt: numeric
+        otb_res_value: numeric
+        otb_spec_value: numeric
+        otb_value: numeric
+        rlwrt: numeric
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lifnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdatb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bwbdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        angdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bnddt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gwldt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ihran: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dpdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        release_date: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eq_eindt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_ekpo_data:
+      +column_types:
+        abdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abelp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abftz: numeric
+        abmng: numeric
+        abskz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abueb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        adrn2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        advcode: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        afnam: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        agdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        agmem: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aktnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anfnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anfps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        anzpu: numeric
+        anzsn: numeric
+        apoms: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        arsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        arsps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        attyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aurel: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        banfn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bednr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        berid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        blk_reason_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        blk_reason_txt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bnfpo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bonba: numeric
+        bonus: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bprme: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bpumn: numeric
+        bpumz: numeric
+        brgew: numeric
+        brtwr: numeric
+        bsgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bstae: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budget_pd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bwtar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bwtty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ccomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        chg_fplnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        chg_srv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cmpl_dlv_itm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cnfm_qty: numeric
+        cons_order: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cqu_sar: numeric
+        cuobj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        diff_invoice: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_kunnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_owner: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_posnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_pspnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_sobkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        disub_vbeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dpamt: numeric
+        dpdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dppct: numeric
+        dptyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        drdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        druhr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        drunr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ean11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebeln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebelp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebon2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebon3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ebonf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        effwr: numeric
+        eglkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ehtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eildt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ekkol: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        elikz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ematn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        emlif: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        emnfr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        empst: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erekz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        etdrk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        etfz1: numeric
+        etfz2: numeric
+        evers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        excpe: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        exlin: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        exsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ext_rfx_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ext_rfx_number: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ext_rfx_system: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fabkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ffzhi: numeric
+        fipos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fiscal_incentive: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fiscal_incentive_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fistl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fixmg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fkber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fls_rsto: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmfgus_key: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fplnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_atp_date: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_collection: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_grid_cond_rec: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_item_group: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_psm_pfm_split: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_season: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_season_year: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_ss: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_theme: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_transaction: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_vas_prnt_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fsh_vas_rel: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        geber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gewei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gnetwr: numeric
+        grant_nbr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        handoverloc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hvr_change_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hvr_is_deleted: numeric
+        idnlf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inco1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inco2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inco2_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inco3_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        infnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        insmk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        insnc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        iprkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itcons: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        iuid_relevant: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1aidatep: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1aindxp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1bindust: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1bmatorg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1bmatuse: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1bnbm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        j_1bownpro: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kanba: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kblnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kblpos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        knttp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ko_gsber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ko_pargb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ko_pprctr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ko_prctr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kolif: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        konnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ktmng: numeric
+        ktpnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kunnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzabs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzbws: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzfme: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzkfg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzstu: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kztlf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzvbr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kzwi1: numeric
+        kzwi2: numeric
+        kzwi3: numeric
+        kzwi4: numeric
+        kzwi5: numeric
+        kzwi6: numeric
+        labnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lblkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lebre: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lewed: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lfret: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lgort: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lmein: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        loekz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ltsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mahn1: numeric
+        mahn2: numeric
+        mahn3: numeric
+        mahnz: numeric
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        manual_tc_reason: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matkl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        meins: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        menge: numeric
+        meprf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mfrgr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mfrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mfrpn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mfzhi: numeric
+        mhdrz: numeric
+        mlmaa: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mprof: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mrpind: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mtart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mwskz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        navnw: numeric
+        netpr: numeric
+        netwr: numeric
+        nfabd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        nlabd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        notkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        novet: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        nrfhg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ntgew: numeric
+        oia_baselo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oia_ipmvat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oia_spltiv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oibasprod: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_adestn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_aorgin: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_dcityc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_dcounc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_dland1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_dregio: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_lifnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_mot: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_ocityc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_ocounc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_oland1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_oregio: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_pbatch: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_pdestn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_porgin: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_ptrip: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oic_truckn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oicertf1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oicertf1_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oid_extbol: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oid_miscdl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oidatfm1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oidatfm1_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oidatto1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oidatto1_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedbal: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedbal_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedbalm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedbalm_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedok: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiedok_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiexgnum: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiexgtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiextnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oifeech: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oifeedt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oifeetot: numeric
+        oiferp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiftind: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oighndl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_folqty: numeric
+        oih_folqty_gi: numeric
+        oih_lcfol: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_lcfol_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_licin: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_licin_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_lictp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oih_lictp_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oihantyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oihantyp_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiinex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiinex_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oiitmnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oimatcyc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oinetcyc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oioilcon: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oipipeval: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oipricie: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oipriop: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oisbrel: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitaxcon: numeric
+        oitaxfrom: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitaxgrp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitaxgrp_gi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitaxto: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitrind: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitrkjr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitrknr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oitxcon1: numeric
+        oitxcon2: numeric
+        oitxcon3: numeric
+        oitxcon4: numeric
+        oitxcon5: numeric
+        oitxcon6: numeric
+        oiumbar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        oivatf: numeric
+        oivath: numeric
+        packno: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        peinh: numeric
+        plifz: numeric
+        pol_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prio_req: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prio_urg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prsdr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        punei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        put_back: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rdprf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        reason_code: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ref_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refsite: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        repos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        reslo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        retpc: numeric
+        retpo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        revlv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        saisj: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        saiso: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        satnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        schpr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sernp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        serru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sf_txjcd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sgt_rcat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sgt_scat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sikgr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sktof: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sobkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        source_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        source_key: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_chng_sys: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_cq_ctrltype: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_cq_nocq: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_crm_fkrel: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_crm_ref_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_crm_ref_so: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_crm_so: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_crm_so_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_ewm_dtc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spe_insmk_src: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spinf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        srm_contract_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        srm_contract_itm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        srv_bas_com: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ssqss: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stafo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stapo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        statu: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        status: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        tax_subject_st: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        tc_aut_det: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        techs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trmrisk_relevant: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        twrkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txjcd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        txz01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        tzonrc: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uebpo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uebtk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uebto: numeric
+        umren: numeric
+        umrez: numeric
+        umsok: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        untto: numeric
+        uptyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        upvor: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        usequ: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        voleh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        volum: numeric
+        vorab: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vrtkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wabwe: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        webaz: numeric
+        webre: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        weora: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wepos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        werks: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        weunb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wrf_charstc1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wrf_charstc2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wrf_charstc3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        xconditions: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        xersy: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        xoblr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zgtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zwert: numeric
+        _fivetran_rowid: numeric
+        _fivetran_sap_archived: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _accgo_is_co_rel: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _bev1_nedepfree: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _bev1_negen_item: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _bev1_nestruccat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_faglflexa_data:
       +column_types:
-        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bschl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        buzei: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        gjahr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bschl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        buzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gjahr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hsl: numeric
-        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ksl: numeric
         msl: numeric
         osl: numeric
-        poper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rbukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rcnlt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        poper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        racct: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcnlt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rrcty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rvers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ryear: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         timestamp: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         tsl: numeric
         wsl: numeric
 
     sap_faglflext_data:
       +column_types:
-        belnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        budat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        docln: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        docnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docln: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        docnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hslvt: numeric
         hsl01: numeric
         hsl02: numeric
@@ -257,7 +730,7 @@ seeds:
         hsl14: numeric
         hsl15: numeric
         hsl16: numeric       
-        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         kslvt: numeric
         ksl01: numeric
         ksl02: numeric
@@ -292,15 +765,15 @@ seeds:
         msl14: numeric
         msl15: numeric
         msl16: numeric
-        objnr00: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objnr08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr00: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objnr08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         oslvt: numeric
         osl01: numeric
         osl02: numeric
@@ -318,18 +791,18 @@ seeds:
         osl14: numeric
         osl15: numeric
         osl16: numeric       
-        prctr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        racct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rbukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rbusa: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"  
-        rfarea: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rclnt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rcntr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfarea: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rpmax: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rrcty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rvers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ryear: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        prctr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        racct: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rbusa: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"  
+        rfarea: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rclnt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcntr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfarea: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rpmax: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rrcty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rvers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ryear: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         tslvt: numeric
         tsl01: numeric
         tsl02: numeric
@@ -351,73 +824,94 @@ seeds:
         _fivetran_rowid: numeric
 
     sap_kna1_data:
+      +enabled: "{{ false if target.type in ('snowflake', 'bigquery') else true }}"
+      +quote_columns: true
       +column_types:
-        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bbbnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bbsnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        hzuor: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        jmjah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        jmzah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        legalnat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"  
-        pestle: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        regio: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rgdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rnedate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ric: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        umjah: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        updat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uptim: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_i_no_lyr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_uld_side: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _vso_r_load_pref: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbbnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hzuor: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        jmjah: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        jmzah: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        legalnat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"  
+        pestle: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        regio: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rgdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rnedate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ric: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        umjah: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        updat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uptim: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_i_no_lyr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_uld_side: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_load_pref: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        /vso/r_palhgt: numeric
+        umsa1: numeric
+        umsat: numeric
+    sap_kna1_data_bigquery:
+      +enabled: "{{ true if target.type == 'bigquery' else false }}"
+      +quote_columns: true
+      +alias: sap_kna1_data
+      +column_types:
         _vso_r_palhgt: numeric
         umsa1: numeric
         umsat: numeric
+    sap_kna1_data_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +quote_columns: true
+      +alias: sap_kna1_data
 
     sap_lfa1_data:
       +column_types:
-        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bbbnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bbsnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bubkz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        gbdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        legalnat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pstlz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        qssysdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        revdb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rgdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ric: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rnedate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        taxbs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        txjcd: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        updat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        uptim: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbbnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bbsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bubkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gbdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        legalnat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pstlz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        qssysdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        revdb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rgdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ric: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rnedate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        taxbs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        txjcd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        updat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        uptim: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         j_sc_capital: numeric
         staging_time: numeric
 
+    sap_makt_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        maktx: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
     sap_mara_data:
       +column_types:
-        blanz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        compl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        cuobf: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        datab: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ersda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fuelg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        laeda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        liqdt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        matnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mhdhb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mhdlp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mhdrz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mstde: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mstdv: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stfak: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vpreh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        blanz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        compl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cuobf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        datab: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ersda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fuelg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        laeda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        liqdt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdhb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdlp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mhdrz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mstde: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mstdv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stfak: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vpreh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         breit: numeric
         brgew: numeric
         ergew: numeric
@@ -434,110 +928,110 @@ seeds:
 
     sap_pa0000_data:
       +column_types:
-        aedtm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        begda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        endda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grpvl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        histo: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itbld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itxex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        massg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        massn: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ordex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        preas: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        refex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        seqnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sprps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stat1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stat2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stat3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        subty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grpvl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        histo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itbld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itxex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        massg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        massn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ordex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        seqnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sprps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stat1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stat2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stat3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        subty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_pa0001_data:
       +column_types: 
-        abkrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        aedtm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ansvh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        begda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        btrtl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        budget_pd: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ename: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        endda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fistl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        geber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grant_nbr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grpvl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        gsber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        histo: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itbld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itxex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        juper: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kokrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kostl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mstbr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ordex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        orgeh: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        otype: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        plans: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        preas: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        refex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sacha: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sachp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sachz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sbmod: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        seqnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sgmnt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sprps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stell: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        subty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vdsk1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        werks: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abkrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ansvh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        btrtl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        budget_pd: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ename: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fistl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fkber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        geber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grant_nbr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grpvl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        gsber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        histo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itbld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itxex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        juper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kostl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mstbr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ordex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        orgeh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        otype: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        plans: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sacha: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sachp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sachz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sbmod: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        seqnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sgmnt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sprps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stell: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        subty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vdsk1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        werks: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_pa0007_data:
       +column_types:
-        aedtm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         arbst: numeric
-        awtyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        begda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        dysch: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        awtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dysch: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         empct: numeric
-        endda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grpvl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        histo: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itbld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itxex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grpvl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        histo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itbld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itxex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         jrstd: numeric
-        kztim: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kztim: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         maxja: numeric
         maxmo: numeric
         maxta: numeric
@@ -547,28 +1041,28 @@ seeds:
         minta: numeric
         minwo: numeric
         mostd: numeric
-        objps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ordex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        preas: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        refex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        schkz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        seqnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sprps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        subty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        teilk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ordex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        schkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        seqnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sprps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        subty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        teilk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         wkwdy: numeric
         wostd: numeric
-        wweek: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zterf: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wweek: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zterf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_pa0008_data:
       +column_types:
-        aedtm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ancur: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ancur: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ansal: numeric
         anz01: numeric
         anz02: numeric
@@ -610,7 +1104,7 @@ seeds:
         anz38: numeric
         anz39: numeric
         anz40: numeric
-        begda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bet01: numeric 
         bet02: numeric
         bet03: numeric
@@ -652,300 +1146,404 @@ seeds:
         bet39: numeric
         bet40: numeric
         bsgrd: numeric
-        cpind: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        cpind: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         divgv: numeric
-        ein01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        ein02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein09: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein10: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein11: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein12: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein13: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein14: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein15: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein16: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein17: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein18: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein19: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein20: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein21: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein22: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein23: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein24: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein25: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein26: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein27: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein28: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein29: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein30: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein31: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein32: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein33: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein34: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein35: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein36: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein37: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein38: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein39: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ein40: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        endda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        falgk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        falgr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flaga: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grpvl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        histo: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind09: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind10: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind11: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind12: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind13: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind14: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind15: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind16: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind17: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind18: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind19: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind20: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind21: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind22: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind23: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind24: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind25: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind26: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind27: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind28: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind29: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind30: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind31: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind32: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind33: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind34: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind35: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind36: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind37: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind38: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind39: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ind40: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itbld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itxex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga09: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga10: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga11: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga12: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga13: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga14: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga15: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga16: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga17: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga18: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga19: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga20: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga21: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga22: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga23: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga24: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga25: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga26: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga27: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga28: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga29: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga30: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga31: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga32: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga33: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga34: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga35: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga36: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga37: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga38: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga39: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        lga40: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk09: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk10: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk11: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk12: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk13: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk14: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk15: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk16: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk17: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk18: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk19: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk20: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk21: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk22: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk23: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk24: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk25: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk26: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk27: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk28: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk29: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk30: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk31: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk32: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk33: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk34: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk35: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk36: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk37: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk38: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk39: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opk40: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ordex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        orzst: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        partn: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        preas: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        refex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        seqnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sprps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        stvor: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        subty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfgb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfgr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfst: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vglgb: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vglgr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vglst: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vglsv: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        vglta: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        waers: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        ein02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein09: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein10: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein12: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein13: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein14: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein15: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein16: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein17: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein18: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein19: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein20: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein21: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein22: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein23: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein24: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein25: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein26: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein27: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein28: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein29: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein30: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein31: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein32: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein33: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein34: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein35: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein36: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein37: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein38: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein39: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ein40: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        falgk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        falgr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flaga: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grpvl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        histo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind09: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind10: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind12: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind13: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind14: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind15: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind16: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind17: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind18: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind19: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind20: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind21: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind22: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind23: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind24: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind25: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind26: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind27: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind28: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind29: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind30: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind31: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind32: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind33: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind34: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind35: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind36: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind37: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind38: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind39: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ind40: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itbld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itxex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga09: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga10: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga12: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga13: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga14: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga15: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga16: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga17: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga18: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga19: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga20: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga21: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga22: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga23: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga24: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga25: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga26: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga27: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga28: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga29: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga30: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga31: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga32: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga33: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga34: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga35: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga36: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga37: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga38: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga39: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lga40: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk09: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk10: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk12: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk13: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk14: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk15: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk16: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk17: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk18: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk19: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk20: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk21: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk22: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk23: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk24: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk25: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk26: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk27: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk28: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk29: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk30: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk31: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk32: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk33: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk34: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk35: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk36: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk37: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk38: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk39: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opk40: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ordex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        orzst: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        partn: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        seqnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sprps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        stvor: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        subty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfgb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfgr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfst: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vglgb: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vglgr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vglst: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vglsv: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        vglta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        waers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_pa0031_data:
       +column_types: 
-        aedtm: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        begda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        endda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag3: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        flag4: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        grpvl: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        histo: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itbld: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        itxex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        objps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ordex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        pernr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        preas: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        refex: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rese2: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp01: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp02: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp03: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp04: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp05: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp06: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp07: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp08: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp09: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp10: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp11: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp12: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp13: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp14: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp15: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp16: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp17: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp18: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp19: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfp20: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        seqnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sprps: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        subty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        uname: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag3: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        flag4: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        grpvl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        histo: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itbld: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        itxex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        objps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ordex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rese2: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp01: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp02: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp03: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp04: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp05: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp06: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp07: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp08: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp09: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp10: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp11: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp12: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp13: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp14: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp15: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp16: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp17: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp18: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp19: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rfp20: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        seqnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sprps: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        subty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        uname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_ska1_data:
       +column_types:
-        erdat: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        sakan: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        saknr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        erdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        sakan: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        saknr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t001_data:
       +column_types:
-        adrnr: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        bukrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        buvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fikrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        fmhrdate: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        fstva: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        impda: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kkber: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        kokfi: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        offsacct: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        opvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rcomp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        umkrs: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        waabw: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        wfvar: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        xcos: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        buvar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fikrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        fmhrdate: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        fstva: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        impda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kkber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        kokfi: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        offsacct: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        opvar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        umkrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        waabw: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        wfvar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        xcos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t001w_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        werks: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        land1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t024_data:
+      +column_types:
+        ekgrp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        eknam: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t134_data:
+      +column_types:
+        wmakg: numeric
+        mtart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t134t_data:
+      +column_types:
+        mtart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mttxt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t161_data:
+      +column_types:
+        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_t161t_data:
+      +column_types:
+        bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        batxt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t503_data:
       +column_types:
-        abart: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}" 
-        abtyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        aksta: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        ansta: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        antyp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        austa: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        burkz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        inwid: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        konty: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        molga: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persg: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persk: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        trfkz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        typsz: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        zeity: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
+        abtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        aksta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        ansta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        antyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        austa: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        burkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        inwid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        konty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        molga: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        trfkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        typsz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        zeity: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_t880_data:
       +column_types:
-        mandt: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rcomp: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
-        name1: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        rcomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_tvag_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        dragr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_tvagt_data:
+      +column_types:
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        bezei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+
+    sap_vbak_data:
+      +column_types:
+        cmngv: numeric
+        netwr: numeric
+
+    sap_vbap_data:
+      +column_types:
+        ablfz: numeric
+        absfz: numeric
+        anltf: numeric
+        anzsn: numeric
+        brgew: numeric
+        cmkua: numeric
+        cmpre: numeric
+        cpd_updat: numeric
+        hvr_is_deleted: numeric
+        kbmeng: numeric
+        kbver: numeric
+        kever: numeric
+        klmeng: numeric
+        kpein: numeric
+        kwmeng: numeric
+        kzwi1: numeric
+        kzwi2: numeric
+        kzwi3: numeric
+        kzwi4: numeric
+        kzwi5: numeric
+        kzwi6: numeric
+        lfmng: numeric
+        lsmeng: numeric
+        netpr: numeric
+        netwr: numeric
+        ntgew: numeric
+        oifeetot: numeric
+        oih_folqty: numeric
+        oih_folqty_ex: numeric
+        oioilcon: numeric
+        smeng: numeric
+        stcur: numeric
+        stpos: numeric
+        uebto: numeric
+        umvkn: numeric
+        umvkz: numeric
+        umzim: numeric
+        umziz: numeric
+        untto: numeric
+        vbeaf: numeric
+        vbeav: numeric
+        volum: numeric
+        wavwr: numeric
+        zmeng: numeric
+        zwert: numeric
+
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True

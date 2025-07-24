@@ -1,0 +1,266 @@
+version: 2
+
+models:
+  - name: sap__dim_customer
+    description: Customer dimension table
+    columns:
+      - name: customer_number
+        description: Unique identifier of the customer in SAP
+      - name: country_key_id
+        description: Country key associated with the customer
+      - name: customer_name
+        description: Full name of the customer
+      - name: city
+        description: Customer’s city of residence
+      - name: customer_id
+        description: Surrogate key for the customer
+
+  - name: sap__dim_material
+    description: Material master dimension table
+    columns:
+      - name: material_number
+        description: Unique identifier for the material
+      - name: material_description
+        description: Text description of the material
+      - name: material_type_id
+        description: Identifier for material type (e.g., finished goods)
+      - name: material_type_description
+        description: Description of the material type
+      - name: base_uom_id
+        description: Base unit of measure for the material
+      - name: gross_weight
+        description: Gross weight of the material
+      - name: weight_uom_id
+        description: Unit of measure for weight
+      - name: material_id
+        description: Surrogate key for the material
+
+  - name: sap__dim_plant
+    description: Plant/branch dimension table
+    columns:
+      - name: plant_id
+        description: Unique identifier for the plant
+      - name: plant_name
+        description: Name of the plant
+      - name: country_key_id
+        description: Country key
+
+  - name: sap__dim_purchasing_order
+    description: Purchasing document header attributes
+    columns:
+      - name: purchasing_document_id
+        description: Unique ID of the purchasing document
+      - name: purchasing_document_category
+        description: Category code of the purchasing document
+      - name: purchasing_document_category_txt
+        description: Description of the document category
+      - name: purchasing_document_type_id
+        description: Document type code (e.g. NB, FO)
+      - name: purchasing_document_type_text
+        description: Description of the purchasing document type
+      - name: purchasing_group_id
+        description: ID of the purchasing group
+      - name: description_purchasing_group
+        description: Description of the purchasing group
+      - name: purchasing_document_status
+        description: Status code of the purchasing document
+      - name: purchasing_document_status_txt
+        description: Description of document status
+      - name: payment_terms
+        description: Terms of payment key
+      - name: reason_cancellation_id
+        description: Reason code for cancellation
+      - name: company_code_id
+        description: Company code associated with the document
+
+  - name: sap__dim_purchasing_organization
+    description: Purchasing organization dimension
+    columns:
+      - name: company_code_id
+        description: Company code assigned to the organization
+      - name: purchasing_organization_id
+        description: ID of the purchasing organization
+      - name: description
+        description: Description of the purchasing organization
+
+  - name: sap__dim_rejection_reason
+    description: Reasons for purchase/sales document rejections
+    columns:
+      - name: reason_rejection_id
+        description: Code for rejection reason
+      - name: rejection_reason_description
+        description: Description of the rejection reason
+
+  - name: sap__dim_vendor
+    description: Vendor dimension table.
+    columns:
+      - name: vendor_id
+        description: ID of the vendor
+      - name: country_key_id
+        description: Country key of the vendor
+      - name: name
+        description: Vendor name (line 1)
+      - name: name_2
+        description: Vendor name (line 2)
+      - name: city
+        description: Vendor city
+      - name: sort_field
+        description: Sort field for vendor
+      - name: authorization_group_id
+        description: Authorization group ID
+      - name: industry_key_id
+        description: Industry classification key
+      - name: group_key
+        description: Grouping key for vendors
+      - name: vendor_account_group_id
+        description: Account group ID for the vendor
+
+  - name: sap__fact_purchasing_order
+    description: Line-level metrics for purchasing documents
+    columns:
+      - name: purchasing_document_id
+        description: ID of the purchasing document
+      - name: purchasing_document_item_id
+        description: Item number in the purchasing document
+      - name: company_code_id
+        description: Company code that created the order
+      - name: currency_id
+        description: Currency used in the transaction
+      - name: material_id
+        description: Foreign key to the material master
+      - name: plant_id
+        description: Plant where the goods are delivered
+      - name: purchasing_group_id
+        description: Responsible purchasing group
+      - name: purchasing_organization_id
+        description: Responsible purchasing organization
+      - name: vendor_id
+        description: Vendor supplying the goods
+      - name: order_uom_id
+        description: Unit of measure for the order
+      - name: purchasing_document_date
+        description: Creation date of the purchasing document
+      - name: scheduled_delivery_date
+        description: Planned date of delivery
+      - name: purchase_deliver_late_days
+        description: Days the delivery was late
+      - name: purchase_late_lead_days
+        description: Days past lead time
+      - name: purchase_order_quantity
+        description: Quantity ordered
+      - name: purchase_open_quantity
+        description: Quantity yet to be delivered
+      - name: purchasing_delivered_quantity
+        description: Quantity delivered
+      - name: purchase_late_quantity
+        description: Quantity delivered late
+      - name: cancel_purchase_quantity
+        description: Quantity canceled
+      - name: purchase_order_amount
+        description: Total order value
+      - name: purchasing_document_currency_amount
+        description: Order value in document currency
+      - name: document_currency_id
+        description: Currency code for the order
+      - name: purchase_open_amount
+        description: Value of undelivered quantity
+      - name: purchase_delivered_amount
+        description: Value of delivered quantity
+      - name: cancel_purchase_amount
+        description: Value of canceled quantity
+      - name: purchase_late_amount
+        description: Value of late-delivered quantity
+      - name: purchase_invoiced_amount
+        description: Invoiced amount
+      - name: purchase_order_item_count
+        description: Number of line items in the order
+      - name: purchase_item_late_count
+        description: Number of items delivered late
+      - name: purchase_item_open_count
+        description: Number of open (undelivered) items
+      - name: purchase_item_closed_count
+        description: Number of closed/completed items
+      - name: returns_item
+        description: Indicates if the item is a return ('' if not a return)
+      - name: rejection_indicator
+        description: Flag indicating whether the item has been rejected
+      - name: exchange_rate
+        description: Exchange rate between the document currency and local currency
+      - name: latest_goods_receive_date
+        description: Most recent goods receipt date recorded
+      - name: delivery_completed
+        description: Flag indicating whether delivery for the item is complete
+
+  - name: sap__fact_sales_order
+    description: Line-level sales order facts and metrics
+    columns:
+      - name: sales_document_number
+        description: Sales document number
+      - name: sales_document_item
+        description: Sales document item number
+      - name: sd_document_category
+        description: Sales document category (e.g. order, quote)
+      - name: sales_document_type_id
+        description: Type of sales document
+      - name: order_reason_id
+        description: Reason code for sales order
+      - name: delivery_block_id
+        description: Delivery block reason code
+      - name: sales_organization_id
+        description: Sales organization responsible for the sale
+      - name: distribution_channel_id
+        description: Distribution channel (e.g. online, retail)
+      - name: division_id
+        description: Product division
+      - name: plant_id
+        description: Plant fulfilling the order
+      - name: document_date
+        description: Date the sales document was created
+      - name: requested_delivery_date
+        description: Requested delivery date
+      - name: sold_to_customer_id
+        description: Customer placing the order
+      - name: sales_document_id
+        description: Unique ID of the sales document
+      - name: material_id
+        description: ID of the material or product sold
+      - name: material_group_id
+        description: Grouping of similar materials
+      - name: sales_document_item_category_id
+        description: Sales item category (e.g. standard, service)
+      - name: product_hierarchy_id
+        description: Product hierarchy classification
+      - name: base_uom_id
+        description: Base unit of measure for the material
+      - name: order_quantity
+        description: Quantity ordered
+      - name: sales_uom_id
+        description: Sales unit of measure
+      - name: net_value
+        description: Net value of the sales order item
+      - name: net_price
+        description: Net price per unit
+      - name: sd_document_currency_id
+        description: Currency of the sales document
+      - name: gross_weight
+        description: Gross weight of the item
+      - name: weight_uom_id
+        description: Unit of measure for weight
+      - name: created_date
+        description: Date the order was created
+      - name: returns_item
+        description: Flag indicating if this is a returns item
+      - name: reason_rejection_id
+        description: Reason for item rejection
+      - name: delivery_status
+        description: Delivery status of the item
+      - name: overall_status
+        description: Overall status of the sales order
+      - name: item_delivery_status
+        description: Status of item delivery
+      - name: created_by
+        description: User who created the sales document
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
