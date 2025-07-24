@@ -82,7 +82,7 @@
 | [`stg_sap__vbuk_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__vbuk_tmp) | New model |  |  | Temporary model for sales document header status (`vbuk`). |
 | [`stg_sap__vbup_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__vbup_tmp) | New model |  |  | Temporary model for sales document item status (`vbup`). |
 
-## Breaking Change
+## Breaking Changes
 - **Consolidated `dbt_sap_source` into this package**  
   - All functionality from the [`dbt_sap_source`](https://github.com/fivetran/dbt_sap_source) package has been merged into this transformation package. The source package remains available but is no longer required when using this package.  
   > **If you have any reference to `fivetran/sap_source` in your `packages.yml`, it should be removed.**
