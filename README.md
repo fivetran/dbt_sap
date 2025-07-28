@@ -80,7 +80,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: "v0.2.1-a1"
+    version: [">=0.2.0", "<0.3.0"]
 ```
 
 ### Step 3: Define database and schema variables
