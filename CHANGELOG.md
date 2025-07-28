@@ -1,3 +1,15 @@
+# dbt_sap v0.2.1
+[PR #28](https://github.com/fivetran/dbt_sap/pull/28) includes the following updates:
+
+## Under the Hood
+- Updated the `table_variables` to uppercase source names, aligning with how they're represented in the Fivetran connector schema. This ensures the variables resolve correctly.
+
+# dbt_sap v0.2.1-a1
+[PR #28](https://github.com/fivetran/dbt_sap/pull/28) includes the following updates:
+
+## Under the Hood
+- Updated `table_variables` to capitalize source names, aligning with how they're represented in the connector schema. This ensures the variables resolve correctly.
+
 # dbt_sap v0.2.0
 [PR #25](https://github.com/fivetran/dbt_sap/pull/25) includes the following updates:
 

@@ -5,77 +5,77 @@ dbt_versions: ">=1.3.0 <2.0.0"
 
 table_variables:
   sap_using_bkpf:
-    - bkpf
+    - BKPF
   sap_using_bseg:
-    - bseg
+    - BSEG
   sap_using_dd07l:
-    - dd07l
+    - DD07L
   sap_using_dd07t:
-    - dd07t
+    - DD07T
   sap_using_ekbe:
-    - ekbe
+    - EKBE
   sap_using_eket:
-    - eket
+    - EKET
   sap_using_ekko:
-    - ekko
+    - EKKO
   sap_using_ekpo:
-    - ekpo
+    - EKPO
   sap_using_faglflexa:
-    - faglflexa
+    - FAGLFLEXA
   sap_using_faglflext:
-    - faglflext
+    - FAGLFLEXT
   sap_using_kna1:
-    - kna1
+    - KNA1
   sap_using_lfa1:
-    - lfa1
+    - LFA1
   sap_using_makt:
-    - makt
+    - MAKT
   sap_using_mara:
-    - mara
+    - MARA
   sap_using_pa0000:
-    - pa0000
+    - PA0000
   sap_using_pa0001:
-    - pa0001
+    - PA0001
   sap_using_pa0007:
-    - pa0007
+    - PA0007
   sap_using_pa0008:
-    - pa0008
+    - PA0008
   sap_using_pa0031:
-    - pa0031
+    - PA0031
   sap_using_ska1:
-    - ska1
+    - SKA1
   sap_using_t001:
-    - t001
+    - T001
   sap_using_t001w:
-    - t001w
+    - T001W
   sap_using_t024:
-    - t024
+    - T024
   sap_using_t024e:
-    - t024e
+    - T024E
   sap_using_t134:
-    - t134
+    - T134
   sap_using_t134t:
-    - t134t
+    - T134T
   sap_using_t161:
-    - t161
+    - T161
   sap_using_t161t:
-    - t161t
+    - T161T
   sap_using_t503:
-    - t503
+    - T503
   sap_using_t880:
-    - t880
+    - T880
   sap_using_tvag:
-    - tvag
+    - TVAG
   sap_using_tvagt:
-    - tvagt
+    - TVAGT
   sap_using_vbak:
-    - vbak
+    - VBAK
   sap_using_vbap:
-    - vbap
+    - VBAP
   sap_using_vbuk:
-    - vbuk
+    - VBUK
   sap_using_vbup:
-    - vbup
+    - VBUP
 
 destination_configurations:
   databricks:
