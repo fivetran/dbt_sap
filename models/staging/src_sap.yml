@@ -9,6 +9,90 @@ sources:
     loaded_at_field: _fivetran_synced
 
     tables:
+      - name: acdoca
+        identifier: "{{ var('sap_acdoca_identifier', 'acdoca') }}"
+        config:
+          enabled: "{{ var('sap_using_acdoca', true) }}"
+        description: add docs here
+
+      - name: finsc_cmp_versnd
+        identifier: "{{ var('sap_finsc_cmp_versnd_identifier', 'finsc_cmp_versndseg') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_cmp_versnd', true) }}"
+        description: add docs here
+
+      - name: tj01
+        identifier: "{{ var('sap_tj01_identifier', 'tj01') }}"
+        config:
+          enabled: "{{ var('sap_using_tj01', true) }}"
+        description: add docs here
+
+      - name: marc
+        identifier: "{{ var('sap_marc_identifier', 'marc') }}"
+        config:
+          enabled: "{{ var('sap_using_marc', true) }}"
+        description: add docs here
+
+      - name: mchb
+        identifier: "{{ var('sap_mchb_identifier', 'mchb') }}"
+        config:
+          enabled: "{{ var('sap_using_mchb', true) }}"
+        description: add docs here
+
+      - name: tka01
+        identifier: "{{ var('sap_tka01_identifier', 'tka01') }}"
+        config:
+          enabled: "{{ var('sap_using_tka01', true) }}"
+        description: add docs here
+
+      - name: t000
+        identifier: "{{ var('sap_t000_identifier', 't000') }}"
+        config:
+          enabled: "{{ var('sap_using_t000', true) }}"
+        description: add docs here
+
+      - name: matdoc
+        identifier: "{{ var('sap_matdoc_identifier', 'matdoc') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc', true) }}"
+        description: add docs here
+
+      - name: matdoc_extract
+        identifier: "{{ var('sap_matdoc_extract_identifier', 'matdoc_extract') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc_extract', true) }}"
+        description: add docs here
+
+      - name: _sapsll_tunos
+        identifier: "{{ var('sap__sapsll_tunos_identifier', '_sapsll_tunos') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_tunos', true) }}"
+        description: add docs here
+
+      - name: _sapsll_nosca
+        identifier: "{{ var('sap__sapsll_nosca_identifier', '_sapsll_nosca') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_nosca', true) }}"
+        description: add docs here
+
+      - name: _sapsll_clsnr
+        identifier: "{{ var('sap__sapsll_clsnr_identifier', '_sapsll_clsnr') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_clsnr', true) }}"
+        description: add docs here
+
+      - name: finsc_ledger_rep
+        identifier: "{{ var('sap_finsc_ledger_rep_identifier', 'finsc_ledger_rep') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ledger_rep', true) }}"
+        description: add docs here
+
+      - name: finsc_ld_cmp
+        identifier: "{{ var('sap_finsc_ld_cmp_identifier', 'finsc_ld_cmp') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ld_cmp', true) }}"
+        description: add docs here
+
       - name: bkpf
         identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
         config:

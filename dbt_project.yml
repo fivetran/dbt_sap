@@ -7,6 +7,9 @@ models:
   sap:
     +materialized: table
     +schema: sap 
+    
+    compatibility_views:
+      +schema: comp_views
 
 vars:
   sap:
