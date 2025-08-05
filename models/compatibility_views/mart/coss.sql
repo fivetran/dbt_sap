@@ -1,1742 +1,1587 @@
-with SQ_COSS_WDV_1 as
-(SELECT
-	 "A"."RCLNT" AS "MANDT",
-	 '00' AS "LEDNR",
-	 "A"."OBJNR" AS "OBJNR",
-	 "A"."RYEAR" AS "GJAHR",
-	 CASE WHEN NOT ( "A"."ACCASTY" ='' ) 
-	THEN '04' 
-	ELSE '11' 
-	END AS "WRTTP",
-	 "V"."VERSN" AS "VERSN",
-	 "A"."RACCT" AS "KSTAR",
-	 "A"."HRKFT" AS "HRKFT",
-	 "A"."VRGNG" AS "VRGNG",
-	 CASE WHEN "A"."PAROBSRC" = '1' 
-	THEN "A"."PAROB1" 
-	ELSE ( CASE WHEN "A"."PAROBSRC" = '2' 
-		THEN "A"."PACCASTY" 
-		ELSE '' 
-		END ) 
-	END AS "PAROB",
-	 "A"."USPOB" AS "USPOB",
-	 "A"."CO_BEKNZ" AS "BEKNZ",
-	 "A"."RWCUR" AS "TWAER",
-	 CASE WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI' 
-	THEN "A"."CO_BUZEI" WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI1' 
-	THEN "A"."CO_BUZEI1" WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI2' 
-	THEN "A"."CO_BUZEI2" WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI5' 
-	THEN "A"."CO_BUZEI5" WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI6' 
-	THEN "A"."CO_BUZEI6" WHEN "V"."FIELD_NAME_BUZEI" = 'CO_BUZEI7' 
-	THEN "A"."CO_BUZEI7" 
-	ELSE "A"."CO_BUZEI" 
-	END AS "BUZEI",
-	 "A"."RLDNR" AS "RLDNR",
-	 "A"."POPER" AS "PERIO",
-	 "A"."CO_MEINH" AS "MEINH",
-	 CASE "V"."FIELD_NAME_WTGBTR_ADD" WHEN 'WSL' 
-	THEN "A"."WSL" WHEN 'WSL2' 
-	THEN "A"."WSL2" WHEN 'WSL3' 
-	THEN "A"."WSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WTGBTR_ADD",
-	 CASE "V"."FIELD_NAME_WTGBTR_SUBTRACT" WHEN 'WSL' 
-	THEN "A"."WSL" WHEN 'WSL2' 
-	THEN "A"."WSL2" WHEN 'WSL3' 
-	THEN "A"."WSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WTGBTR_SUBTRACT",
-	 CASE WHEN "V"."SET_TO_ZERO" ='X' 
-	THEN 0 WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='CO_OSL' 
-	THEN "A"."CO_OSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='HSL' 
-	THEN "A"."HSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='OSL' 
-	THEN "A"."OSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='VSL' 
-	THEN "A"."VSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='BSL' 
-	THEN "A"."BSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='CSL' 
-	THEN "A"."CSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='DSL' 
-	THEN "A"."DSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='ESL' 
-	THEN "A"."ESL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='FSL' 
-	THEN "A"."FSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='GSL' 
-	THEN "A"."GSL" WHEN "V"."FIELD_NAME_WOGBTR_ADD" ='KSL' 
-	THEN "A"."KSL" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WOGBTR_ADD",
-	 CASE "V"."FIELD_NAME_WOGBTR_SUBTRACT" WHEN 'HSL' 
-	THEN "A"."HSL" WHEN 'OSL' 
-	THEN "A"."OSL" WHEN 'CO_OSL' 
-	THEN "A"."CO_OSL" WHEN 'VSL' 
-	THEN "A"."VSL" WHEN 'BSL' 
-	THEN "A"."BSL" WHEN 'CSL' 
-	THEN "A"."CSL" WHEN 'DSL' 
-	THEN "A"."DSL" WHEN 'ESL' 
-	THEN "A"."ESL" WHEN 'FSL' 
-	THEN "A"."FSL" WHEN 'GSL' 
-	THEN "A"."GSL" WHEN 'KSL' 
-	THEN "A"."KSL" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WOGBTR_SUBTRACT",
-	 CASE "V"."FIELD_NAME_WKGBTR_ADD" WHEN 'KSL' 
-	THEN "A"."KSL" WHEN 'OSL' 
-	THEN "A"."OSL" WHEN 'VSL' 
-	THEN "A"."VSL" WHEN 'BSL' 
-	THEN "A"."BSL" WHEN 'CSL' 
-	THEN "A"."CSL" WHEN 'DSL' 
-	THEN "A"."DSL" WHEN 'ESL' 
-	THEN "A"."ESL" WHEN 'FSL' 
-	THEN "A"."FSL" WHEN 'GSL' 
-	THEN "A"."GSL" WHEN 'HSL' 
-	THEN "A"."HSL" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WKGBTR_ADD",
-	 CASE "V"."FIELD_NAME_WKGBTR_SUBTRACT" WHEN 'KSL' 
-	THEN "A"."KSL" WHEN 'OSL' 
-	THEN "A"."OSL" WHEN 'VSL' 
-	THEN "A"."VSL" WHEN 'BSL' 
-	THEN "A"."BSL" WHEN 'CSL' 
-	THEN "A"."CSL" WHEN 'DSL' 
-	THEN "A"."DSL" WHEN 'ESL' 
-	THEN "A"."ESL" WHEN 'FSL' 
-	THEN "A"."FSL" WHEN 'GSL' 
-	THEN "A"."GSL" WHEN 'HSL' 
-	THEN "A"."HSL" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WKGBTR_SUBTRACT",
-	 CASE "V"."FIELD_NAME_WKFBTR_ADD" WHEN 'KFSL' 
-	THEN "A"."KFSL" WHEN 'KFSL2' 
-	THEN "A"."KFSL2" WHEN 'KFSL3' 
-	THEN "A"."KFSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WKFBTR_ADD",
-	 CASE "V"."FIELD_NAME_WKFBTR_SUBTRACT" WHEN 'KFSL' 
-	THEN "A"."KFSL" WHEN 'KFSL2' 
-	THEN "A"."KFSL2" WHEN 'KFSL3' 
-	THEN "A"."KFSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "WKFBTR_SUBTRACT",
-	 CASE "V"."FIELD_NAME_PAGBTR_ADD" WHEN 'PSL' 
-	THEN "A"."PSL" WHEN 'PSL2' 
-	THEN "A"."PSL2" WHEN 'PSL3' 
-	THEN "A"."PSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "PAGBTR_ADD",
-	 CASE "V"."FIELD_NAME_PAGBTR_SUBTRACT" WHEN 'PSL' 
-	THEN "A"."PSL" WHEN 'PSL2' 
-	THEN "A"."PSL2" WHEN 'PSL3' 
-	THEN "A"."PSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "PAGBTR_SUBTRACT",
-	 CASE "V"."FIELD_NAME_PAFBTR_ADD" WHEN 'PFSL' 
-	THEN "A"."PFSL" WHEN 'PFSL2' 
-	THEN "A"."PFSL2" WHEN 'PFSL3' 
-	THEN "A"."PFSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "PAFBTR_ADD",
-	 CASE "V"."FIELD_NAME_PAFBTR_SUBTRACT" WHEN 'PFSL' 
-	THEN "A"."PFSL" WHEN 'PFSL2' 
-	THEN "A"."PFSL2" WHEN 'PFSL3' 
-	THEN "A"."PFSL3" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "PAFBTR_SUBTRACT",
-	 CASE WHEN ( NOT ( "V"."VERSN" ='000' ) 
-		OR "V"."SET_TO_ZERO" ='X' ) 
-	THEN 0 
-	ELSE "A"."CO_MEGBTR" 
-	END AS "MEGBTR",
-	 CASE WHEN ( NOT ( "V"."VERSN" ='000' ) 
-		OR "V"."SET_TO_ZERO" ='X' ) 
-	THEN 0 
-	ELSE "A"."CO_MEFBTR" 
-	END AS "MEFBTR",
-	 CASE WHEN ( NOT ( "V"."VERSN" ='000' ) 
-		OR "V"."SET_TO_ZERO" ='X' ) 
-	THEN 0 
-	ELSE "A"."MSL" 
-	END AS "MBGBTR",
-	 CASE WHEN ( NOT ( "V"."VERSN" ='000' ) 
-		OR "V"."SET_TO_ZERO" ='X' ) 
-	THEN 0 
-	ELSE "A"."MFSL" 
-	END AS "MBFBTR",
-	 CAST( "A"."MUVFLG" AS TINYINT ) AS "MUVFLG",
-	 "A"."BELTP" AS "BELTP",
-	 "A"."RBUKRS" AS "BUKRS",
-	 "A"."RFAREA" AS "FKBER",
-	 "A"."SEGMENT" AS "SEGMENT",
-	 "A"."RFUND" AS "GEBER",
-	 "A"."RGRANT_NBR" AS "GRANT_NBR",
-	 "A"."RBUDGET_PD" AS "BUDGET_PD",
-	 "A"."MIG_SOURCE" AS "MIG_SOURCE",
-	 "A"."BSTAT" AS "BSTAT",
-	 "A"."TIMESTAMP" 
-	FROM ( ( ( {{ source('raw_tables', 'acdoca') }} "A" 
-				INNER JOIN {{ source('raw_tables', 'finsc_cmp_versnd') }} "V" ON ( "V"."MANDT" = "A"."RCLNT" 
-					AND "V"."BUKRS" = "A"."RBUKRS" 
-					AND "V"."RLDNR" = "A"."RLDNR" 
-					AND "A"."RCLNT" = "V"."MANDT" ) ) 
-			INNER JOIN {{ source('raw_tables', 'tj01') }} "T" ON ( "T"."VRGNG" = "A"."VRGNG" 
-				AND "T"."XCOSP" ='' 
-				AND "T"."XCOSS" ='X' ) ) 
-		INNER JOIN {{ source('raw_tables', 'tka01') }} "TK" ON ( "TK"."MANDT" = "A"."RCLNT" 
-			AND "TK"."KOKRS" = "A"."KOKRS" 
-			AND "A"."RCLNT" = "TK"."MANDT" ) ) 
-	INNER JOIN {{ source('raw_tables', 't000') }} "S" ON ( "S"."MANDT" = "A"."RCLNT" 
-		AND ( "S"."LOGSYS" = "A"."LOGSYSO" 
-			OR "A"."LOGSYSO" ='' 
-			OR ( ( "A"."ACCASTY" ='KS' 
-					OR "A"."ACCASTY" ='KL' ) 
-				AND ( "S"."LOGSYS" = "TK"."LOGSYSTEM" 
-					OR "TK"."LOGSYSTEM" ='' ) ) ) ) 
-	WHERE ( ( ( NOT ( "A"."CO_BUZEI" ='000' ) 
-				AND NOT ( "A"."ACCASTY" ='' ) ) 
-			OR ( "A"."MIG_SOURCE" ='C' 
-				AND "A"."BSTAT" ='C' ) ) 
-		AND NOT ( "A"."OBJNR" ='' ) )
+with
+sq_coss_wdv_1 as (
+  select
+    a.rclnt as mandt,
+    '00' as lednr,
+    a.objnr as objnr,
+    a.ryear as gjahr,
+    case
+      when a.accasty != '' then '04'
+      else '11'
+    end as wrttp,
+    v.versn as versn,
+    a.racct as kstar,
+    a.hrkft as hrkft,
+    a.vrgng as vrgng,
+    case
+      when a.parobsrc = '1' then a.parob1
+      when a.parobsrc = '2' then a.paccasty
+      else ''
+    end as parob,
+    a.uspob as uspob,
+    a.co_beknz as beknz,
+    a.rwcur as twaer,
+    case
+      when v.field_name_buzei = 'co_buzei' then a.co_buzei
+      when v.field_name_buzei = 'co_buzei1' then a.co_buzei1
+      when v.field_name_buzei = 'co_buzei2' then a.co_buzei2
+      when v.field_name_buzei = 'co_buzei5' then a.co_buzei5
+      when v.field_name_buzei = 'co_buzei6' then a.co_buzei6
+      when v.field_name_buzei = 'co_buzei7' then a.co_buzei7
+      else a.co_buzei
+    end as buzei,
+    a.rldnr as rldnr,
+    a.poper as perio,
+    a.co_meinh as meinh,
+    case v.field_name_wtgbtr_add
+      when 'wsl' then a.wsl
+      when 'wsl2' then a.wsl2
+      when 'wsl3' then a.wsl3
+      else cast(0 as decimal(23, 0))
+    end as wtgbtr_add,
+    case v.field_name_wtgbtr_subtract
+      when 'wsl' then a.wsl
+      when 'wsl2' then a.wsl2
+      when 'wsl3' then a.wsl3
+      else cast(0 as decimal(23, 0))
+    end as wtgbtr_subtract,
+    case
+      when v.set_to_zero = 'x' then 0
+      when v.field_name_wogbtr_add = 'co_osl' then a.co_osl
+      when v.field_name_wogbtr_add = 'hsl' then a.hsl
+      when v.field_name_wogbtr_add = 'osl' then a.osl
+      when v.field_name_wogbtr_add = 'vsl' then a.vsl
+      when v.field_name_wogbtr_add = 'bsl' then a.bsl
+      when v.field_name_wogbtr_add = 'csl' then a.csl
+      when v.field_name_wogbtr_add = 'dsl' then a.dsl
+      when v.field_name_wogbtr_add = 'esl' then a.esl
+      when v.field_name_wogbtr_add = 'fsl' then a.fsl
+      when v.field_name_wogbtr_add = 'gsl' then a.gsl
+      when v.field_name_wogbtr_add = 'ksl' then a.ksl
+      else cast(0 as decimal(23, 0))
+    end as wogbtr_add,
+    case v.field_name_wogbtr_subtract
+      when 'hsl' then a.hsl
+      when 'osl' then a.osl
+      when 'co_osl' then a.co_osl
+      when 'vsl' then a.vsl
+      when 'bsl' then a.bsl
+      when 'csl' then a.csl
+      when 'dsl' then a.dsl
+      when 'esl' then a.esl
+      when 'fsl' then a.fsl
+      when 'gsl' then a.gsl
+      when 'ksl' then a.ksl
+      else cast(0 as decimal(23, 0))
+    end as wogbtr_subtract,
+    case v.field_name_wkgbtr_add
+      when 'ksl' then a.ksl
+      when 'osl' then a.osl
+      when 'vsl' then a.vsl
+      when 'bsl' then a.bsl
+      when 'csl' then a.csl
+      when 'dsl' then a.dsl
+      when 'esl' then a.esl
+      when 'fsl' then a.fsl
+      when 'gsl' then a.gsl
+      when 'hsl' then a.hsl
+      else cast(0 as decimal(23, 0))
+    end as wkgbtr_add,
+    case v.field_name_wkgbtr_subtract
+      when 'ksl' then a.ksl
+      when 'osl' then a.osl
+      when 'vsl' then a.vsl
+      when 'bsl' then a.bsl
+      when 'csl' then a.csl
+      when 'dsl' then a.dsl
+      when 'esl' then a.esl
+      when 'fsl' then a.fsl
+      when 'gsl' then a.gsl
+      when 'hsl' then a.hsl
+      else cast(0 as decimal(23, 0))
+    end as wkgbtr_subtract,
+    case v.field_name_wkfbtr_add
+      when 'kfsl' then a.kfsl
+      when 'kfsl2' then a.kfsl2
+      when 'kfsl3' then a.kfsl3
+      else cast(0 as decimal(23, 0))
+    end as wkfbtr_add,
+    case v.field_name_wkfbtr_subtract
+      when 'kfsl' then a.kfsl
+      when 'kfsl2' then a.kfsl2
+      when 'kfsl3' then a.kfsl3
+      else cast(0 as decimal(23, 0))
+    end as wkfbtr_subtract,
+    case v.field_name_pagbtr_add
+      when 'psl' then a.psl
+      when 'psl2' then a.psl2
+      when 'psl3' then a.psl3
+      else cast(0 as decimal(23, 0))
+    end as pagbtr_add,
+    case v.field_name_pagbtr_subtract
+      when 'psl' then a.psl
+      when 'psl2' then a.psl2
+      when 'psl3' then a.psl3
+      else cast(0 as decimal(23, 0))
+    end as pagbtr_subtract,
+    case v.field_name_pafbtr_add
+      when 'pfsl' then a.pfsl
+      when 'pfsl2' then a.pfsl2
+      when 'pfsl3' then a.pfsl3
+      else cast(0 as decimal(23, 0))
+    end as pafbtr_add,
+    case v.field_name_pafbtr_subtract
+      when 'pfsl' then a.pfsl
+      when 'pfsl2' then a.pfsl2
+      when 'pfsl3' then a.pfsl3
+      else cast(0 as decimal(23, 0))
+    end as pafbtr_subtract,
+    case
+      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      else a.co_megbtr
+    end as megbtr,
+    case
+      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      else a.co_mefbtr
+    end as mefbtr,
+    case
+      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      else a.msl
+    end as mbgbtr,
+    case
+      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      else a.mfsl
+    end as mbfbtr,
+    cast(a.muvflg as tinyint) as muvflg,
+    a.beltp as beltp,
+    a.rbukrs as bukrs,
+    a.rfarea as fkber,
+    a.segment as segment,
+    a.rfund as geber,
+    a.rgrant_nbr as grant_nbr,
+    a.rbudget_pd as budget_pd,
+    a.mig_source as mig_source,
+    a.bstat as bstat,
+    a.timestamp
+  from
+    {{ ref('acdoca') }} a
+    inner join {{ ref('finsc_cmp_versnd') }} v on v.mandt = a.rclnt
+    and v.bukrs = a.rbukrs
+    and v.rldnr = a.rldnr
+    and a.rclnt = v.mandt
+    inner join {{ ref('tj01') }} t on t.vrgng = a.vrgng
+    and t.xcosp = ''
+    and t.xcoss = 'x'
+    inner join {{ ref('tka01') }} tk on tk.mandt = a.rclnt
+    and tk.kokrs = a.kokrs
+    and a.rclnt = tk.mandt
+    inner join {{ ref('t000') }} s on s.mandt = a.rclnt
+    and (
+      s.logsys = a.logsyso
+      or a.logsyso = ''
+      or (
+        (
+          a.accasty = 'ks'
+          or a.accasty = 'kl'
+        )
+        and (
+          s.logsys = tk.logsystem
+          or tk.logsystem = ''
+        )
+      )
+    )
+  where
+    (
+      (
+        a.co_buzei != '000'
+        and a.accasty != ''
+      )
+      or (
+        a.mig_source = 'c'
+        and a.bstat = 'c'
+      )
+    )
+    and a.objnr != ''
 ),
-SQ_COSS_WDV_2 as
-(
-SELECT
-	 "V_COSS_WDV_1"."MANDT",
-	 "V_COSS_WDV_1"."LEDNR",
-	 "V_COSS_WDV_1"."OBJNR",
-	 "V_COSS_WDV_1"."GJAHR",
-	 "V_COSS_WDV_1"."WRTTP",
-	 "V_COSS_WDV_1"."VERSN",
-	 "V_COSS_WDV_1"."KSTAR",
-	 "V_COSS_WDV_1"."HRKFT",
-	 "V_COSS_WDV_1"."VRGNG",
-	 "V_COSS_WDV_1"."PAROB",
-	 "V_COSS_WDV_1"."USPOB",
-	 "V_COSS_WDV_1"."BEKNZ",
-	 "V_COSS_WDV_1"."TWAER",
-	 "V_COSS_WDV_1"."RLDNR",
-	 "V_COSS_WDV_1"."PERIO",
-	 "V_COSS_WDV_1"."MEINH",
-	 CAST( ( "V_COSS_WDV_1"."WTGBTR_ADD" - "V_COSS_WDV_1"."WTGBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "WTGBTR",
-	 CAST( ( "V_COSS_WDV_1"."WOGBTR_ADD" - "V_COSS_WDV_1"."WOGBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "WOGBTR",
-	 CAST( ( "V_COSS_WDV_1"."WKGBTR_ADD" - "V_COSS_WDV_1"."WKGBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "WKGBTR",
-	 CAST( ( "V_COSS_WDV_1"."WKFBTR_ADD" - "V_COSS_WDV_1"."WKFBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "WKFBTR",
-	 CAST( ( "V_COSS_WDV_1"."PAGBTR_ADD" - "V_COSS_WDV_1"."PAGBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "PAGBTR",
-	 CAST( ( "V_COSS_WDV_1"."PAFBTR_ADD" - "V_COSS_WDV_1"."PAFBTR_SUBTRACT") AS DECIMAL( 000024,
-	000002) ) AS "PAFBTR",
-	 "V_COSS_WDV_1"."MEGBTR",
-	 "V_COSS_WDV_1"."MEFBTR",
-	 "V_COSS_WDV_1"."MUVFLG",
-	 "V_COSS_WDV_1"."BELTP",
-	 "V_COSS_WDV_1"."BUKRS",
-	 "V_COSS_WDV_1"."FKBER",
-	 "V_COSS_WDV_1"."SEGMENT",
-	 "V_COSS_WDV_1"."GEBER",
-	 "V_COSS_WDV_1"."GRANT_NBR",
-	 "V_COSS_WDV_1"."BUDGET_PD",
-	 "V_COSS_WDV_1"."TIMESTAMP" 
-	FROM SQ_COSS_WDV_1 "V_COSS_WDV_1"
-	),
-SQ_COSS_WDV_4 as
-(	
-	SELECT
-	 "V_COSS_WDV_2"."MANDT",
-	 "V_COSS_WDV_2"."LEDNR",
-	 "V_COSS_WDV_2"."OBJNR",
-	 "V_COSS_WDV_2"."GJAHR",
-	 "V_COSS_WDV_2"."WRTTP",
-	 "V_COSS_WDV_2"."VERSN",
-	 "V_COSS_WDV_2"."KSTAR",
-	 "V_COSS_WDV_2"."HRKFT",
-	 "V_COSS_WDV_2"."VRGNG",
-	 "V_COSS_WDV_2"."PAROB",
-	 "V_COSS_WDV_2"."USPOB",
-	 "V_COSS_WDV_2"."BEKNZ",
-	 "V_COSS_WDV_2"."TWAER",
-	 "V_COSS_WDV_2"."PERIO",
-	 "V_COSS_WDV_2"."MEINH",
-	 "V_COSS_WDV_2"."WTGBTR",
-	 "V_COSS_WDV_2"."WOGBTR",
-	 "V_COSS_WDV_2"."WKGBTR",
-	 "V_COSS_WDV_2"."WKFBTR",
-	 "V_COSS_WDV_2"."PAGBTR",
-	 "V_COSS_WDV_2"."PAFBTR",
-	 "V_COSS_WDV_2"."MEGBTR",
-	 "V_COSS_WDV_2"."MEFBTR",
-	 "V_COSS_WDV_2"."MUVFLG",
-	 "V_COSS_WDV_2"."BELTP",
-	 "V_COSS_WDV_2"."BUKRS",
-	 "V_COSS_WDV_2"."FKBER",
-	 "V_COSS_WDV_2"."SEGMENT",
-	 "V_COSS_WDV_2"."GEBER",
-	 "V_COSS_WDV_2"."GRANT_NBR",
-	 "V_COSS_WDV_2"."BUDGET_PD",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 1,
-	 4 ) ) ) 
-	ELSE '0000' 
-	END AS "TSGJAHR",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 5,
-	 2 ) ) ) 
-	ELSE '00' 
-	END AS "TSMONTH",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 7,
-	 2 ) ) ) 
-	ELSE '00' 
-	END AS "TSDAY",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 9,
-	 2 ) ) ) 
-	ELSE '00' 
-	END AS "TSHOUR",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 11,
-	 2 ) ) ) 
-	ELSE '00' 
-	END AS "TSMINUTE",
-	 CASE WHEN "V_COSS_WDV_2"."TIMESTAMP" > 0 
-	THEN ( RTRIM( SUBSTRING( CAST( "V_COSS_WDV_2"."TIMESTAMP" AS NVARCHAR( 000019) ),
-	 13,
-	 2 ) ) ) 
-	ELSE '00' 
-	END AS "TSSECOND" 
-	FROM SQ_COSS_WDV_2 "V_COSS_WDV_2"	 
+sq_coss_wdv_2 as (
+  select
+    v_coss_wdv_1.mandt,
+    v_coss_wdv_1.lednr,
+    v_coss_wdv_1.objnr,
+    v_coss_wdv_1.gjahr,
+    v_coss_wdv_1.wrttp,
+    v_coss_wdv_1.versn,
+    v_coss_wdv_1.kstar,
+    v_coss_wdv_1.hrkft,
+    v_coss_wdv_1.vrgng,
+    v_coss_wdv_1.parob,
+    v_coss_wdv_1.uspob,
+    v_coss_wdv_1.beknz,
+    v_coss_wdv_1.twaer,
+    v_coss_wdv_1.rldnr,
+    v_coss_wdv_1.perio,
+    v_coss_wdv_1.meinh,
+    cast(
+      v_coss_wdv_1.wtgbtr_add - v_coss_wdv_1.wtgbtr_subtract as decimal(24, 2)
+    ) as wtgbtr,
+    cast(
+      v_coss_wdv_1.wogbtr_add - v_coss_wdv_1.wogbtr_subtract as decimal(24, 2)
+    ) as wogbtr,
+    cast(
+      v_coss_wdv_1.wkgbtr_add - v_coss_wdv_1.wkgbtr_subtract as decimal(24, 2)
+    ) as wkgbtr,
+    cast(
+      v_coss_wdv_1.wkfbtr_add - v_coss_wdv_1.wkfbtr_subtract as decimal(24, 2)
+    ) as wkfbtr,
+    cast(
+      v_coss_wdv_1.pagbtr_add - v_coss_wdv_1.pagbtr_subtract as decimal(24, 2)
+    ) as pagbtr,
+    cast(
+      v_coss_wdv_1.pafbtr_add - v_coss_wdv_1.pafbtr_subtract as decimal(24, 2)
+    ) as pafbtr,
+    v_coss_wdv_1.megbtr,
+    v_coss_wdv_1.mefbtr,
+    v_coss_wdv_1.muvflg,
+    v_coss_wdv_1.beltp,
+    v_coss_wdv_1.bukrs,
+    v_coss_wdv_1.fkber,
+    v_coss_wdv_1.segment,
+    v_coss_wdv_1.geber,
+    v_coss_wdv_1.grant_nbr,
+    v_coss_wdv_1.budget_pd,
+    v_coss_wdv_1.timestamp
+  from
+    sq_coss_wdv_1 as v_coss_wdv_1
+),
+sq_coss_wdv_4 as (
+  select
+    v_coss_wdv_2.mandt,
+    v_coss_wdv_2.lednr,
+    v_coss_wdv_2.objnr,
+    v_coss_wdv_2.gjahr,
+    v_coss_wdv_2.wrttp,
+    v_coss_wdv_2.versn,
+    v_coss_wdv_2.kstar,
+    v_coss_wdv_2.hrkft,
+    v_coss_wdv_2.vrgng,
+    v_coss_wdv_2.parob,
+    v_coss_wdv_2.uspob,
+    v_coss_wdv_2.beknz,
+    v_coss_wdv_2.twaer,
+    v_coss_wdv_2.perio,
+    v_coss_wdv_2.meinh,
+    v_coss_wdv_2.wtgbtr,
+    v_coss_wdv_2.wogbtr,
+    v_coss_wdv_2.wkgbtr,
+    v_coss_wdv_2.wkfbtr,
+    v_coss_wdv_2.pagbtr,
+    v_coss_wdv_2.pafbtr,
+    v_coss_wdv_2.megbtr,
+    v_coss_wdv_2.mefbtr,
+    v_coss_wdv_2.muvflg,
+    v_coss_wdv_2.beltp,
+    v_coss_wdv_2.bukrs,
+    v_coss_wdv_2.fkber,
+    v_coss_wdv_2.segment,
+    v_coss_wdv_2.geber,
+    v_coss_wdv_2.grant_nbr,
+    v_coss_wdv_2.budget_pd,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 1, 4))
+      else '0000'
+    end as tsgjahr,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 5, 2))
+      else '00'
+    end as tsmonth,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 7, 2))
+      else '00'
+    end as tsday,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 9, 2))
+      else '00'
+    end as tshour,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 11, 2))
+      else '00'
+    end as tsminute,
+    case
+      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as nvarchar(19)), 13, 2))
+      else '00'
+    end as tssecond
+  from
+    sq_coss_wdv_2 as v_coss_wdv_2
+),
+sq_coss_wdv_5 as (
+  select
+    v_coss_wdv_4.mandt,
+    v_coss_wdv_4.lednr,
+    v_coss_wdv_4.objnr,
+    v_coss_wdv_4.gjahr,
+    v_coss_wdv_4.wrttp,
+    v_coss_wdv_4.versn,
+    v_coss_wdv_4.kstar,
+    v_coss_wdv_4.hrkft,
+    v_coss_wdv_4.vrgng,
+    v_coss_wdv_4.parob,
+    v_coss_wdv_4.uspob,
+    v_coss_wdv_4.beknz,
+    v_coss_wdv_4.twaer,
+    v_coss_wdv_4.perio,
+    v_coss_wdv_4.meinh,
+    v_coss_wdv_4.wtgbtr,
+    v_coss_wdv_4.wogbtr,
+    v_coss_wdv_4.wkgbtr,
+    v_coss_wdv_4.wkfbtr,
+    v_coss_wdv_4.pagbtr,
+    v_coss_wdv_4.pafbtr,
+    v_coss_wdv_4.megbtr,
+    v_coss_wdv_4.mefbtr,
+    v_coss_wdv_4.muvflg,
+    v_coss_wdv_4.beltp,
+    v_coss_wdv_4.bukrs,
+    v_coss_wdv_4.fkber,
+    v_coss_wdv_4.segment,
+    v_coss_wdv_4.geber,
+    v_coss_wdv_4.grant_nbr,
+    v_coss_wdv_4.budget_pd,
+    cast(v_coss_wdv_4.tsgjahr as int) as tsgjahr0,
+    cast(v_coss_wdv_4.tsmonth as int) as tsmonth0,
+    cast(v_coss_wdv_4.tsday as int) as tsday0,
+    cast(v_coss_wdv_4.tshour as int) as tshour0,
+    cast(v_coss_wdv_4.tsminute as int) as tsminute0,
+    cast(v_coss_wdv_4.tssecond as int) as tssecond0
+  from
+    sq_coss_wdv_4 as v_coss_wdv_4
+),
+sq_coss_wdv_6 as (
+  select
+    v_coss_wdv_5.mandt,
+    v_coss_wdv_5.lednr,
+    v_coss_wdv_5.objnr,
+    v_coss_wdv_5.gjahr,
+    v_coss_wdv_5.wrttp,
+    v_coss_wdv_5.versn,
+    v_coss_wdv_5.kstar,
+    v_coss_wdv_5.hrkft,
+    v_coss_wdv_5.vrgng,
+    v_coss_wdv_5.parob,
+    v_coss_wdv_5.uspob,
+    v_coss_wdv_5.beknz,
+    v_coss_wdv_5.twaer,
+    v_coss_wdv_5.perio,
+    v_coss_wdv_5.meinh,
+    v_coss_wdv_5.wtgbtr,
+    v_coss_wdv_5.wogbtr,
+    v_coss_wdv_5.wkgbtr,
+    v_coss_wdv_5.wkfbtr,
+    v_coss_wdv_5.pagbtr,
+    v_coss_wdv_5.pafbtr,
+    v_coss_wdv_5.megbtr,
+    v_coss_wdv_5.mefbtr,
+    v_coss_wdv_5.muvflg,
+    v_coss_wdv_5.beltp,
+    v_coss_wdv_5.bukrs,
+    v_coss_wdv_5.fkber,
+    v_coss_wdv_5.segment,
+    v_coss_wdv_5.geber,
+    v_coss_wdv_5.grant_nbr,
+    v_coss_wdv_5.budget_pd,
+    case
+      when v_coss_wdv_5.tsgjahr0 > 2040
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2040
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(13 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2036
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2036
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(12 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2032
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2032
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(11 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2028
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2028
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(10 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2024
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2024
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(9 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2020
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2020
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(8 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2016
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2016
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(7 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2012
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2012
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(6 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2008
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2008
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(5 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2004
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2004
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(4 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 2000
+      or (
+        v_coss_wdv_5.tsgjahr0 = 2000
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(3 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 1996
+      or (
+        v_coss_wdv_5.tsgjahr0 = 1996
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(2 * 60 * 60 * 24 as int)
+      when v_coss_wdv_5.tsgjahr0 > 1992
+      or (
+        v_coss_wdv_5.tsgjahr0 = 1992
+        and v_coss_wdv_5.tsmonth0 > 2
+      ) then cast(1 * 60 * 60 * 24 as int)
+      else 0
+    end as tsgjahradd,
+    case
+      when v_coss_wdv_5.tsgjahr0 = 0 then 0
+      else cast(
+        (v_coss_wdv_5.tsgjahr0 - 1990) * 365 * 24 * 60 * 60 as decimal(16, 0)
+      )
+    end as tsgjahr1,
+    case
+      when v_coss_wdv_5.tsmonth0 = 1 then 0
+      when v_coss_wdv_5.tsmonth0 = 2 then cast(31 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 3 then cast(59 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 4 then cast(90 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 5 then cast(120 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 6 then cast(151 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 7 then cast(181 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 8 then cast(212 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 9 then cast(243 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 10 then cast(273 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 11 then cast(304 * 24 * 60 * 60 as int)
+      when v_coss_wdv_5.tsmonth0 = 12 then cast(334 * 24 * 60 * 60 as int)
+      else 0
+    end as tsmonth1,
+    case
+      when v_coss_wdv_5.tsday0 = 0 then 0
+      else cast((v_coss_wdv_5.tsday0 - 1) * 24 * 60 * 60 as int)
+    end as tsday1,
+    cast(v_coss_wdv_5.tshour0 * 60 * 60 as int) as tshour1,
+    cast(v_coss_wdv_5.tsminute0 * 60 as int) as tsminute1,
+    v_coss_wdv_5.tssecond0 as tssecond1
+  from
+    sq_coss_wdv_5 as v_coss_wdv_5
+),
+sq_coss_wdv_7 as (
+  select
+    v_coss_wdv_6.mandt,
+    v_coss_wdv_6.lednr,
+    v_coss_wdv_6.objnr,
+    v_coss_wdv_6.gjahr,
+    v_coss_wdv_6.wrttp,
+    v_coss_wdv_6.versn,
+    v_coss_wdv_6.kstar,
+    v_coss_wdv_6.hrkft,
+    v_coss_wdv_6.vrgng,
+    v_coss_wdv_6.parob,
+    v_coss_wdv_6.uspob,
+    v_coss_wdv_6.beknz,
+    v_coss_wdv_6.twaer,
+    v_coss_wdv_6.perio,
+    v_coss_wdv_6.meinh,
+    v_coss_wdv_6.wtgbtr,
+    v_coss_wdv_6.wogbtr,
+    v_coss_wdv_6.wkgbtr,
+    v_coss_wdv_6.wkfbtr,
+    v_coss_wdv_6.pagbtr,
+    v_coss_wdv_6.pafbtr,
+    v_coss_wdv_6.megbtr,
+    v_coss_wdv_6.mefbtr,
+    v_coss_wdv_6.muvflg,
+    v_coss_wdv_6.beltp,
+    v_coss_wdv_6.bukrs,
+    v_coss_wdv_6.fkber,
+    v_coss_wdv_6.segment,
+    v_coss_wdv_6.geber,
+    v_coss_wdv_6.grant_nbr,
+    v_coss_wdv_6.budget_pd,
+    cast(
+      v_coss_wdv_6.tsgjahradd + cast(v_coss_wdv_6.tsgjahr1 * 60 as decimal(19, 0)) + v_coss_wdv_6.tsmonth1 + v_coss_wdv_6.tsday1 + v_coss_wdv_6.tshour1 + v_coss_wdv_6.tsminute1 + v_coss_wdv_6.tssecond1 as decimal(25, 0)
+    ) as tstotalsec
+  from
+    sq_coss_wdv_6 as v_coss_wdv_6
+),
+sq_coss_wdv_8 as (
+  select
+    v_coss_wdv_7.mandt,
+    v_coss_wdv_7.lednr,
+    v_coss_wdv_7.objnr,
+    v_coss_wdv_7.gjahr,
+    v_coss_wdv_7.wrttp,
+    v_coss_wdv_7.versn,
+    v_coss_wdv_7.kstar,
+    v_coss_wdv_7.hrkft,
+    v_coss_wdv_7.vrgng,
+    v_coss_wdv_7.parob,
+    v_coss_wdv_7.uspob,
+    v_coss_wdv_7.beknz,
+    v_coss_wdv_7.twaer,
+    v_coss_wdv_7.perio,
+    v_coss_wdv_7.meinh,
+    v_coss_wdv_7.wtgbtr,
+    v_coss_wdv_7.wogbtr,
+    v_coss_wdv_7.wkgbtr,
+    v_coss_wdv_7.wkfbtr,
+    v_coss_wdv_7.pagbtr,
+    v_coss_wdv_7.pafbtr,
+    v_coss_wdv_7.megbtr,
+    v_coss_wdv_7.mefbtr,
+    v_coss_wdv_7.muvflg,
+    v_coss_wdv_7.beltp,
+    v_coss_wdv_7.bukrs,
+    v_coss_wdv_7.fkber,
+    v_coss_wdv_7.segment,
+    v_coss_wdv_7.geber,
+    v_coss_wdv_7.grant_nbr,
+    v_coss_wdv_7.budget_pd,
+    cast(
+      cast(v_coss_wdv_7.tstotalsec as decimal(16, 0)) * 10000 as decimal(21, 0)
+    ) as timestmp
+  from
+    sq_coss_wdv_7 as v_coss_wdv_7
+),
+sq_coss_wdv_10 as (
+  select
+    v_coss_wdv_9.mandt,
+    v_coss_wdv_9.lednr,
+    v_coss_wdv_9.objnr,
+    v_coss_wdv_9.gjahr,
+    v_coss_wdv_9.wrttp,
+    v_coss_wdv_9.versn,
+    v_coss_wdv_9.kstar,
+    v_coss_wdv_9.hrkft,
+    v_coss_wdv_9.vrgng,
+    v_coss_wdv_9.parob,
+    v_coss_wdv_9.uspob,
+    v_coss_wdv_9.beknz,
+    v_coss_wdv_9.twaer,
+    '016' as perbl,
+    v_coss_wdv_9.meinh,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.wtgbtr
+      else cast(0 as decimal(24, 0))
+    end as wtg016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.wogbtr
+      else cast(0 as decimal(24, 0))
+    end as wog016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.wkgbtr
+      else cast(0 as decimal(24, 0))
+    end as wkg016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.wkfbtr
+      else cast(0 as decimal(24, 0))
+    end as wkf016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.pagbtr
+      else cast(0 as decimal(24, 0))
+    end as pag016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.pafbtr
+      else cast(0 as decimal(24, 0))
+    end as paf016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.megbtr
+      else cast(0 as decimal(23, 0))
+    end as meg016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.mefbtr
+      else cast(0 as decimal(23, 0))
+    end as mef016,
+    case
+      when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.muvflg
+      else 0
+    end as i001,
+    case
+      when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.muvflg
+      else 0
+    end as i002,
+    case
+      when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.muvflg
+      else 0
+    end as i003,
+    case
+      when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.muvflg
+      else 0
+    end as i004,
+    case
+      when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.muvflg
+      else 0
+    end as i005,
+    case
+      when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.muvflg
+      else 0
+    end as i006,
+    case
+      when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.muvflg
+      else 0
+    end as i007,
+    case
+      when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.muvflg
+      else 0
+    end as i008,
+    case
+      when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.muvflg
+      else 0
+    end as i009,
+    case
+      when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.muvflg
+      else 0
+    end as i010,
+    case
+      when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.muvflg
+      else 0
+    end as i011,
+    case
+      when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.muvflg
+      else 0
+    end as i012,
+    case
+      when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.muvflg
+      else 0
+    end as i013,
+    case
+      when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.muvflg
+      else 0
+    end as i014,
+    case
+      when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.muvflg
+      else 0
+    end as i015,
+    case
+      when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.muvflg
+      else 0
+    end as i016,
+    v_coss_wdv_9.beltp,
+    v_coss_wdv_9.timestmp,
+    v_coss_wdv_9.bukrs,
+    v_coss_wdv_9.fkber,
+    v_coss_wdv_9.segment,
+    v_coss_wdv_9.geber,
+    v_coss_wdv_9.grant_nbr,
+    v_coss_wdv_9.budget_pd
+  from
+    sq_coss_wdv_8 as v_coss_wdv_9
+),
+sq_coss_wdv_11 as (
+  select
+    v_coss_wdv_10.mandt,
+    v_coss_wdv_10.lednr,
+    v_coss_wdv_10.objnr,
+    v_coss_wdv_10.gjahr,
+    v_coss_wdv_10.wrttp,
+    v_coss_wdv_10.versn,
+    v_coss_wdv_10.kstar,
+    v_coss_wdv_10.hrkft,
+    v_coss_wdv_10.vrgng,
+    v_coss_wdv_10.parob,
+    v_coss_wdv_10.uspob,
+    v_coss_wdv_10.beknz,
+    v_coss_wdv_10.twaer,
+    v_coss_wdv_10.perbl,
+    v_coss_wdv_10.meinh,
+    sum(v_coss_wdv_10.wtg001) as wtg001,
+    sum(v_coss_wdv_10.wtg002) as wtg002,
+    sum(v_coss_wdv_10.wtg003) as wtg003,
+    sum(v_coss_wdv_10.wtg004) as wtg004,
+    sum(v_coss_wdv_10.wtg005) as wtg005,
+    sum(v_coss_wdv_10.wtg006) as wtg006,
+    sum(v_coss_wdv_10.wtg007) as wtg007,
+    sum(v_coss_wdv_10.wtg008) as wtg008,
+    sum(v_coss_wdv_10.wtg009) as wtg009,
+    sum(v_coss_wdv_10.wtg010) as wtg010,
+    sum(v_coss_wdv_10.wtg011) as wtg011,
+    sum(v_coss_wdv_10.wtg012) as wtg012,
+    sum(v_coss_wdv_10.wtg013) as wtg013,
+    sum(v_coss_wdv_10.wtg014) as wtg014,
+    sum(v_coss_wdv_10.wtg015) as wtg015,
+    sum(v_coss_wdv_10.wtg016) as wtg016,
+    sum(v_coss_wdv_10.wog001) as wog001,
+    sum(v_coss_wdv_10.wog002) as wog002,
+    sum(v_coss_wdv_10.wog003) as wog003,
+    sum(v_coss_wdv_10.wog004) as wog004,
+    sum(v_coss_wdv_10.wog005) as wog005,
+    sum(v_coss_wdv_10.wog006) as wog006,
+    sum(v_coss_wdv_10.wog007) as wog007,
+    sum(v_coss_wdv_10.wog008) as wog008,
+    sum(v_coss_wdv_10.wog009) as wog009,
+    sum(v_coss_wdv_10.wog010) as wog010,
+    sum(v_coss_wdv_10.wog011) as wog011,
+    sum(v_coss_wdv_10.wog012) as wog012,
+    sum(v_coss_wdv_10.wog013) as wog013,
+    sum(v_coss_wdv_10.wog014) as wog014,
+    sum(v_coss_wdv_10.wog015) as wog015,
+    sum(v_coss_wdv_10.wog016) as wog016,
+    sum(v_coss_wdv_10.wkg001) as wkg001,
+    sum(v_coss_wdv_10.wkg002) as wkg002,
+    sum(v_coss_wdv_10.wkg003) as wkg003,
+    sum(v_coss_wdv_10.wkg004) as wkg004,
+    sum(v_coss_wdv_10.wkg005) as wkg005,
+    sum(v_coss_wdv_10.wkg006) as wkg006,
+    sum(v_coss_wdv_10.wkg007) as wkg007,
+    sum(v_coss_wdv_10.wkg008) as wkg008,
+    sum(v_coss_wdv_10.wkg009) as wkg009,
+    sum(v_coss_wdv_10.wkg010) as wkg010,
+    sum(v_coss_wdv_10.wkg011) as wkg011,
+    sum(v_coss_wdv_10.wkg012) as wkg012,
+    sum(v_coss_wdv_10.wkg013) as wkg013,
+    sum(v_coss_wdv_10.wkg014) as wkg014,
+    sum(v_coss_wdv_10.wkg015) as wkg015,
+    sum(v_coss_wdv_10.wkg016) as wkg016,
+    sum(v_coss_wdv_10.wkf001) as wkf001,
+    sum(v_coss_wdv_10.wkf002) as wkf002,
+    sum(v_coss_wdv_10.wkf003) as wkf003,
+    sum(v_coss_wdv_10.wkf004) as wkf004,
+    sum(v_coss_wdv_10.wkf005) as wkf005,
+    sum(v_coss_wdv_10.wkf006) as wkf006,
+    sum(v_coss_wdv_10.wkf007) as wkf007,
+    sum(v_coss_wdv_10.wkf008) as wkf008,
+    sum(v_coss_wdv_10.wkf009) as wkf009,
+    sum(v_coss_wdv_10.wkf010) as wkf010,
+    sum(v_coss_wdv_10.wkf011) as wkf011,
+    sum(v_coss_wdv_10.wkf012) as wkf012,
+    sum(v_coss_wdv_10.wkf013) as wkf013,
+    sum(v_coss_wdv_10.wkf014) as wkf014,
+    sum(v_coss_wdv_10.wkf015) as wkf015,
+    sum(v_coss_wdv_10.wkf016) as wkf016,
+    sum(v_coss_wdv_10.pag001) as pag001,
+    sum(v_coss_wdv_10.pag002) as pag002,
+    sum(v_coss_wdv_10.pag003) as pag003,
+    sum(v_coss_wdv_10.pag004) as pag004,
+    sum(v_coss_wdv_10.pag005) as pag005,
+    sum(v_coss_wdv_10.pag006) as pag006,
+    sum(v_coss_wdv_10.pag007) as pag007,
+    sum(v_coss_wdv_10.pag008) as pag008,
+    sum(v_coss_wdv_10.pag009) as pag009,
+    sum(v_coss_wdv_10.pag010) as pag010,
+    sum(v_coss_wdv_10.pag011) as pag011,
+    sum(v_coss_wdv_10.pag012) as pag012,
+    sum(v_coss_wdv_10.pag013) as pag013,
+    sum(v_coss_wdv_10.pag014) as pag014,
+    sum(v_coss_wdv_10.pag015) as pag015,
+    sum(v_coss_wdv_10.pag016) as pag016,
+    sum(v_coss_wdv_10.paf001) as paf001,
+    sum(v_coss_wdv_10.paf002) as paf002,
+    sum(v_coss_wdv_10.paf003) as paf003,
+    sum(v_coss_wdv_10.paf004) as paf004,
+    sum(v_coss_wdv_10.paf005) as paf005,
+    sum(v_coss_wdv_10.paf006) as paf006,
+    sum(v_coss_wdv_10.paf007) as paf007,
+    sum(v_coss_wdv_10.paf008) as paf008,
+    sum(v_coss_wdv_10.paf009) as paf009,
+    sum(v_coss_wdv_10.paf010) as paf010,
+    sum(v_coss_wdv_10.paf011) as paf011,
+    sum(v_coss_wdv_10.paf012) as paf012,
+    sum(v_coss_wdv_10.paf013) as paf013,
+    sum(v_coss_wdv_10.paf014) as paf014,
+    sum(v_coss_wdv_10.paf015) as paf015,
+    sum(v_coss_wdv_10.paf016) as paf016,
+    sum(v_coss_wdv_10.meg001) as meg001,
+    sum(v_coss_wdv_10.meg002) as meg002,
+    sum(v_coss_wdv_10.meg003) as meg003,
+    sum(v_coss_wdv_10.meg004) as meg004,
+    sum(v_coss_wdv_10.meg005) as meg005,
+    sum(v_coss_wdv_10.meg006) as meg006,
+    sum(v_coss_wdv_10.meg007) as meg007,
+    sum(v_coss_wdv_10.meg008) as meg008,
+    sum(v_coss_wdv_10.meg009) as meg009,
+    sum(v_coss_wdv_10.meg010) as meg010,
+    sum(v_coss_wdv_10.meg011) as meg011,
+    sum(v_coss_wdv_10.meg012) as meg012,
+    sum(v_coss_wdv_10.meg013) as meg013,
+    sum(v_coss_wdv_10.meg014) as meg014,
+    sum(v_coss_wdv_10.meg015) as meg015,
+    sum(v_coss_wdv_10.meg016) as meg016,
+    sum(v_coss_wdv_10.mef001) as mef001,
+    sum(v_coss_wdv_10.mef002) as mef002,
+    sum(v_coss_wdv_10.mef003) as mef003,
+    sum(v_coss_wdv_10.mef004) as mef004,
+    sum(v_coss_wdv_10.mef005) as mef005,
+    sum(v_coss_wdv_10.mef006) as mef006,
+    sum(v_coss_wdv_10.mef007) as mef007,
+    sum(v_coss_wdv_10.mef008) as mef008,
+    sum(v_coss_wdv_10.mef009) as mef009,
+    sum(v_coss_wdv_10.mef010) as mef010,
+    sum(v_coss_wdv_10.mef011) as mef011,
+    sum(v_coss_wdv_10.mef012) as mef012,
+    sum(v_coss_wdv_10.mef013) as mef013,
+    sum(v_coss_wdv_10.mef014) as mef014,
+    sum(v_coss_wdv_10.mef015) as mef015,
+    sum(v_coss_wdv_10.mef016) as mef016,
+    max(v_coss_wdv_10.i001) as i001,
+    max(v_coss_wdv_10.i002) as i002,
+    max(v_coss_wdv_10.i003) as i003,
+    max(v_coss_wdv_10.i004) as i004,
+    max(v_coss_wdv_10.i005) as i005,
+    max(v_coss_wdv_10.i006) as i006,
+    max(v_coss_wdv_10.i007) as i007,
+    max(v_coss_wdv_10.i008) as i008,
+    max(v_coss_wdv_10.i009) as i009,
+    max(v_coss_wdv_10.i010) as i010,
+    max(v_coss_wdv_10.i011) as i011,
+    max(v_coss_wdv_10.i012) as i012,
+    max(v_coss_wdv_10.i013) as i013,
+    max(v_coss_wdv_10.i014) as i014,
+    max(v_coss_wdv_10.i015) as i015,
+    max(v_coss_wdv_10.i016) as i016,
+    v_coss_wdv_10.beltp,
+    max(v_coss_wdv_10.timestmp) as timestmp,
+    v_coss_wdv_10.bukrs,
+    v_coss_wdv_10.fkber,
+    v_coss_wdv_10.segment,
+    v_coss_wdv_10.geber,
+    v_coss_wdv_10.grant_nbr,
+    v_coss_wdv_10.budget_pd
+  from
+    sq_coss_wdv_10 as v_coss_wdv_10
+  group by
+    v_coss_wdv_10.mandt,
+    v_coss_wdv_10.lednr,
+    v_coss_wdv_10.objnr,
+    v_coss_wdv_10.gjahr,
+    v_coss_wdv_10.wrttp,
+    v_coss_wdv_10.versn,
+    v_coss_wdv_10.kstar,
+    v_coss_wdv_10.hrkft,
+    v_coss_wdv_10.vrgng,
+    v_coss_wdv_10.parob,
+    v_coss_wdv_10.uspob,
+    v_coss_wdv_10.beknz,
+    v_coss_wdv_10.twaer,
+    v_coss_wdv_10.perbl,
+    v_coss_wdv_10.meinh,
+    v_coss_wdv_10.beltp,
+    v_coss_wdv_10.bukrs,
+    v_coss_wdv_10.fkber,
+    v_coss_wdv_10.segment,
+    v_coss_wdv_10.geber,
+    v_coss_wdv_10.grant_nbr,
+    v_coss_wdv_10.budget_pd
 )
-,SQ_COSS_WDV_5 as
-(
-SELECT
-	 "V_COSS_WDV_4"."MANDT",
-	 "V_COSS_WDV_4"."LEDNR",
-	 "V_COSS_WDV_4"."OBJNR",
-	 "V_COSS_WDV_4"."GJAHR",
-	 "V_COSS_WDV_4"."WRTTP",
-	 "V_COSS_WDV_4"."VERSN",
-	 "V_COSS_WDV_4"."KSTAR",
-	 "V_COSS_WDV_4"."HRKFT",
-	 "V_COSS_WDV_4"."VRGNG",
-	 "V_COSS_WDV_4"."PAROB",
-	 "V_COSS_WDV_4"."USPOB",
-	 "V_COSS_WDV_4"."BEKNZ",
-	 "V_COSS_WDV_4"."TWAER",
-	 "V_COSS_WDV_4"."PERIO",
-	 "V_COSS_WDV_4"."MEINH",
-	 "V_COSS_WDV_4"."WTGBTR",
-	 "V_COSS_WDV_4"."WOGBTR",
-	 "V_COSS_WDV_4"."WKGBTR",
-	 "V_COSS_WDV_4"."WKFBTR",
-	 "V_COSS_WDV_4"."PAGBTR",
-	 "V_COSS_WDV_4"."PAFBTR",
-	 "V_COSS_WDV_4"."MEGBTR",
-	 "V_COSS_WDV_4"."MEFBTR",
-	 "V_COSS_WDV_4"."MUVFLG",
-	 "V_COSS_WDV_4"."BELTP",
-	 "V_COSS_WDV_4"."BUKRS",
-	 "V_COSS_WDV_4"."FKBER",
-	 "V_COSS_WDV_4"."SEGMENT",
-	 "V_COSS_WDV_4"."GEBER",
-	 "V_COSS_WDV_4"."GRANT_NBR",
-	 "V_COSS_WDV_4"."BUDGET_PD",
-	 CAST( "V_COSS_WDV_4"."TSGJAHR" AS INTEGER ) AS "TSGJAHR0",
-	 CAST( "V_COSS_WDV_4"."TSMONTH" AS INTEGER ) AS "TSMONTH0",
-	 CAST( "V_COSS_WDV_4"."TSDAY" AS INTEGER ) AS "TSDAY0",
-	 CAST( "V_COSS_WDV_4"."TSHOUR" AS INTEGER ) AS "TSHOUR0",
-	 CAST( "V_COSS_WDV_4"."TSMINUTE" AS INTEGER ) AS "TSMINUTE0",
-	 CAST( "V_COSS_WDV_4"."TSSECOND" AS INTEGER ) AS "TSSECOND0" 
-	FROM SQ_COSS_WDV_4 "V_COSS_WDV_4"
-)
-, SQ_COSS_WDV_6 as
-(
-SELECT
-	 "V_COSS_WDV_5"."MANDT",
-	 "V_COSS_WDV_5"."LEDNR",
-	 "V_COSS_WDV_5"."OBJNR",
-	 "V_COSS_WDV_5"."GJAHR",
-	 "V_COSS_WDV_5"."WRTTP",
-	 "V_COSS_WDV_5"."VERSN",
-	 "V_COSS_WDV_5"."KSTAR",
-	 "V_COSS_WDV_5"."HRKFT",
-	 "V_COSS_WDV_5"."VRGNG",
-	 "V_COSS_WDV_5"."PAROB",
-	 "V_COSS_WDV_5"."USPOB",
-	 "V_COSS_WDV_5"."BEKNZ",
-	 "V_COSS_WDV_5"."TWAER",
-	 "V_COSS_WDV_5"."PERIO",
-	 "V_COSS_WDV_5"."MEINH",
-	 "V_COSS_WDV_5"."WTGBTR",
-	 "V_COSS_WDV_5"."WOGBTR",
-	 "V_COSS_WDV_5"."WKGBTR",
-	 "V_COSS_WDV_5"."WKFBTR",
-	 "V_COSS_WDV_5"."PAGBTR",
-	 "V_COSS_WDV_5"."PAFBTR",
-	 "V_COSS_WDV_5"."MEGBTR",
-	 "V_COSS_WDV_5"."MEFBTR",
-	 "V_COSS_WDV_5"."MUVFLG",
-	 "V_COSS_WDV_5"."BELTP",
-	 "V_COSS_WDV_5"."BUKRS",
-	 "V_COSS_WDV_5"."FKBER",
-	 "V_COSS_WDV_5"."SEGMENT",
-	 "V_COSS_WDV_5"."GEBER",
-	 "V_COSS_WDV_5"."GRANT_NBR",
-	 "V_COSS_WDV_5"."BUDGET_PD",
-	 CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2040 
-		OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2040 
-			AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-	THEN ( CAST( ( CAST( ( CAST( ( 13 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-	ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2036 
-			OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2036 
-				AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-		THEN ( CAST( ( CAST( ( CAST( ( 12 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-		ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2032 
-				OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2032 
-					AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-			THEN ( CAST( ( CAST( ( CAST( ( 11 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-			ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2028 
-					OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2028 
-						AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-				THEN ( CAST( ( CAST( ( CAST( ( 10 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-				ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2024 
-						OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2024 
-							AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-					THEN ( CAST( ( CAST( ( CAST( ( 9 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-					ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2020 
-							OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2020 
-								AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-						THEN ( CAST( ( CAST( ( CAST( ( 8 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-						ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2016 
-								OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2016 
-									AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-							THEN ( CAST( ( CAST( ( CAST( ( 7 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-							ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2012 
-									OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2012 
-										AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-								THEN ( CAST( ( CAST( ( CAST( ( 6 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-								ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2008 
-										OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2008 
-											AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-									THEN ( CAST( ( CAST( ( CAST( ( 5 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-									ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2004 
-											OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2004 
-												AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-										THEN ( CAST( ( CAST( ( CAST( ( 4 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-										ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 2000 
-												OR ( "V_COSS_WDV_5"."TSGJAHR0" = 2000 
-													AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-											THEN ( CAST( ( CAST( ( CAST( ( 3 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-											ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 1996 
-													OR ( "V_COSS_WDV_5"."TSGJAHR0" = 1996 
-														AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-												THEN ( CAST( ( CAST( ( CAST( ( 2 * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-												ELSE ( CASE WHEN ( "V_COSS_WDV_5"."TSGJAHR0" > 1992 
-														OR ( "V_COSS_WDV_5"."TSGJAHR0" = 1992 
-															AND "V_COSS_WDV_5"."TSMONTH0" > 2 ) ) 
-													THEN ( CAST( ( CAST( ( CAST( ( 1 * 60) AS TINYINT ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-													ELSE 0 
-													END ) 
-												END ) 
-											END ) 
-										END ) 
-									END ) 
-								END ) 
-							END ) 
-						END ) 
-					END ) 
-				END ) 
-			END ) 
-		END ) 
-	END AS "TSGJAHRADD",
-	 CASE WHEN "V_COSS_WDV_5"."TSGJAHR0" = 0000 
-	THEN 0 
-	ELSE ( CAST( CAST( ( CAST( ( CAST( ( CAST( ( "V_COSS_WDV_5"."TSGJAHR0" - 1990) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) * 365) AS INTEGER ) AS DECIMAL( 000016,
-	000000) ) ) 
-	END AS "TSGJAHR1",
-	 CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 1 
-	THEN 0 
-	ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 2 
-		THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 31) AS INTEGER ) ) 
-		ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 3 
-			THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 59) AS INTEGER ) ) 
-			ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 4 
-				THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 90) AS INTEGER ) ) 
-				ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 5 
-					THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 120) AS INTEGER ) ) 
-					ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 6 
-						THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 151) AS INTEGER ) ) 
-						ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 7 
-							THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 181) AS INTEGER ) ) 
-							ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 8 
-								THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 212) AS INTEGER ) ) 
-								ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 9 
-									THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 243) AS INTEGER ) ) 
-									ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 10 
-										THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 273) AS INTEGER ) ) 
-										ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 11 
-											THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 304) AS INTEGER ) ) 
-											ELSE ( CASE WHEN "V_COSS_WDV_5"."TSMONTH0" = 12 
-												THEN ( CAST( ( CAST( ( CAST( ( 60 * 60) AS INTEGER ) * 24) AS INTEGER ) * 334) AS INTEGER ) ) 
-												ELSE 0 
-												END ) 
-											END ) 
-										END ) 
-									END ) 
-								END ) 
-							END ) 
-						END ) 
-					END ) 
-				END ) 
-			END ) 
-		END ) 
-	END AS "TSMONTH1",
-	 CASE WHEN "V_COSS_WDV_5"."TSDAY0" = 00 
-	THEN 0 
-	ELSE ( CAST( ( CAST( ( CAST( ( CAST( ( "V_COSS_WDV_5"."TSDAY0" - 1) AS INTEGER ) * 60) AS INTEGER ) * 60) AS INTEGER ) * 24) AS INTEGER ) ) 
-	END AS "TSDAY1",
-	 CAST( ( CAST( ( "V_COSS_WDV_5"."TSHOUR0" * 60) AS INTEGER ) * 60) AS INTEGER ) AS "TSHOUR1",
-	 CAST( ( "V_COSS_WDV_5"."TSMINUTE0" * 60) AS INTEGER ) AS "TSMINUTE1",
-	 "V_COSS_WDV_5"."TSSECOND0" AS "TSSECOND1" 
-	FROM SQ_COSS_WDV_5 "V_COSS_WDV_5"
-)
-,SQ_COSS_WDV_7 as
-(
-SELECT
-	 "V_COSS_WDV_6"."MANDT",
-	 "V_COSS_WDV_6"."LEDNR",
-	 "V_COSS_WDV_6"."OBJNR",
-	 "V_COSS_WDV_6"."GJAHR",
-	 "V_COSS_WDV_6"."WRTTP",
-	 "V_COSS_WDV_6"."VERSN",
-	 "V_COSS_WDV_6"."KSTAR",
-	 "V_COSS_WDV_6"."HRKFT",
-	 "V_COSS_WDV_6"."VRGNG",
-	 "V_COSS_WDV_6"."PAROB",
-	 "V_COSS_WDV_6"."USPOB",
-	 "V_COSS_WDV_6"."BEKNZ",
-	 "V_COSS_WDV_6"."TWAER",
-	 "V_COSS_WDV_6"."PERIO",
-	 "V_COSS_WDV_6"."MEINH",
-	 "V_COSS_WDV_6"."WTGBTR",
-	 "V_COSS_WDV_6"."WOGBTR",
-	 "V_COSS_WDV_6"."WKGBTR",
-	 "V_COSS_WDV_6"."WKFBTR",
-	 "V_COSS_WDV_6"."PAGBTR",
-	 "V_COSS_WDV_6"."PAFBTR",
-	 "V_COSS_WDV_6"."MEGBTR",
-	 "V_COSS_WDV_6"."MEFBTR",
-	 "V_COSS_WDV_6"."MUVFLG",
-	 "V_COSS_WDV_6"."BELTP",
-	 "V_COSS_WDV_6"."BUKRS",
-	 "V_COSS_WDV_6"."FKBER",
-	 "V_COSS_WDV_6"."SEGMENT",
-	 "V_COSS_WDV_6"."GEBER",
-	 "V_COSS_WDV_6"."GRANT_NBR",
-	 "V_COSS_WDV_6"."BUDGET_PD",
-	 CAST( ( CAST( ( CAST( ( CAST( ( CAST( ( CAST( ( "V_COSS_WDV_6"."TSGJAHRADD" + CAST( ( "V_COSS_WDV_6"."TSGJAHR1" * 60) AS DECIMAL( 000019,
-	000000) )) AS DECIMAL( 000020,
-	000000) ) + "V_COSS_WDV_6"."TSMONTH1") AS DECIMAL( 000021,
-	000000) ) + "V_COSS_WDV_6"."TSDAY1") AS DECIMAL( 000022,
-	000000) ) + "V_COSS_WDV_6"."TSHOUR1") AS DECIMAL( 000023,
-	000000) ) + "V_COSS_WDV_6"."TSMINUTE1") AS DECIMAL( 000024,
-	000000) ) + "V_COSS_WDV_6"."TSSECOND1") AS DECIMAL( 000025,
-	000000) ) AS "TSTOTALSEC" 
-	FROM SQ_COSS_WDV_6 "V_COSS_WDV_6"
-)
-, SQ_COSS_WDV_8 as 
-(SELECT
-	 "V_COSS_WDV_7"."MANDT",
-	 "V_COSS_WDV_7"."LEDNR",
-	 "V_COSS_WDV_7"."OBJNR",
-	 "V_COSS_WDV_7"."GJAHR",
-	 "V_COSS_WDV_7"."WRTTP",
-	 "V_COSS_WDV_7"."VERSN",
-	 "V_COSS_WDV_7"."KSTAR",
-	 "V_COSS_WDV_7"."HRKFT",
-	 "V_COSS_WDV_7"."VRGNG",
-	 "V_COSS_WDV_7"."PAROB",
-	 "V_COSS_WDV_7"."USPOB",
-	 "V_COSS_WDV_7"."BEKNZ",
-	 "V_COSS_WDV_7"."TWAER",
-	 "V_COSS_WDV_7"."PERIO",
-	 "V_COSS_WDV_7"."MEINH",
-	 "V_COSS_WDV_7"."WTGBTR",
-	 "V_COSS_WDV_7"."WOGBTR",
-	 "V_COSS_WDV_7"."WKGBTR",
-	 "V_COSS_WDV_7"."WKFBTR",
-	 "V_COSS_WDV_7"."PAGBTR",
-	 "V_COSS_WDV_7"."PAFBTR",
-	 "V_COSS_WDV_7"."MEGBTR",
-	 "V_COSS_WDV_7"."MEFBTR",
-	 "V_COSS_WDV_7"."MUVFLG",
-	 "V_COSS_WDV_7"."BELTP",
-	 "V_COSS_WDV_7"."BUKRS",
-	 "V_COSS_WDV_7"."FKBER",
-	 "V_COSS_WDV_7"."SEGMENT",
-	 "V_COSS_WDV_7"."GEBER",
-	 "V_COSS_WDV_7"."GRANT_NBR",
-	 "V_COSS_WDV_7"."BUDGET_PD",
-	 CAST( ( CAST( "V_COSS_WDV_7"."TSTOTALSEC" AS DECIMAL( 000016,
-	000000) ) * 10000) AS DECIMAL( 000021,
-	000000) ) AS "TIMESTMP" 
-	FROM SQ_COSS_WDV_7 "V_COSS_WDV_7"
-)
-, SQ_COSS_WDV_10 as 
-(
-SELECT
-	 "V_COSS_WDV_9"."MANDT",
-	 "V_COSS_WDV_9"."LEDNR",
-	 "V_COSS_WDV_9"."OBJNR",
-	 "V_COSS_WDV_9"."GJAHR",
-	 "V_COSS_WDV_9"."WRTTP",
-	 "V_COSS_WDV_9"."VERSN",
-	 "V_COSS_WDV_9"."KSTAR",
-	 "V_COSS_WDV_9"."HRKFT",
-	 "V_COSS_WDV_9"."VRGNG",
-	 "V_COSS_WDV_9"."PAROB",
-	 "V_COSS_WDV_9"."USPOB",
-	 "V_COSS_WDV_9"."BEKNZ",
-	 "V_COSS_WDV_9"."TWAER",
-	 '016' AS "PERBL",
-	 "V_COSS_WDV_9"."MEINH",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."WTGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WTG016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."WOGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WOG016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."WKGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKG016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."WKFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "WKF016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."PAGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAG016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."PAFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000024,
-	000000)) 
-	END AS "PAF016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."MEGBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEG016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."MEFBTR" 
-	ELSE CAST( 0 AS DECIMAL( 000023,
-	000000)) 
-	END AS "MEF016",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '001' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I001",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '002' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I002",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '003' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I003",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '004' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I004",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '005' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I005",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '006' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I006",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '007' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I007",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '008' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I008",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '009' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I009",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '010' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I010",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '011' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I011",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '012' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I012",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '013' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I013",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '014' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I014",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '015' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I015",
-	 CASE "V_COSS_WDV_9"."PERIO" WHEN '016' 
-	THEN "V_COSS_WDV_9"."MUVFLG" 
-	ELSE 0 
-	END AS "I016",
-	 "V_COSS_WDV_9"."BELTP",
-	 "V_COSS_WDV_9"."TIMESTMP",
-	 "V_COSS_WDV_9"."BUKRS",
-	 "V_COSS_WDV_9"."FKBER",
-	 "V_COSS_WDV_9"."SEGMENT",
-	 "V_COSS_WDV_9"."GEBER",
-	 "V_COSS_WDV_9"."GRANT_NBR",
-	 "V_COSS_WDV_9"."BUDGET_PD" 
-	FROM SQ_COSS_WDV_8 "V_COSS_WDV_9"
-)
-, SQ_COSS_WDV_11 as
-(
-SELECT
-	 "V_COSS_WDV_10"."MANDT",
-	 "V_COSS_WDV_10"."LEDNR",
-	 "V_COSS_WDV_10"."OBJNR",
-	 "V_COSS_WDV_10"."GJAHR",
-	 "V_COSS_WDV_10"."WRTTP",
-	 "V_COSS_WDV_10"."VERSN",
-	 "V_COSS_WDV_10"."KSTAR",
-	 "V_COSS_WDV_10"."HRKFT",
-	 "V_COSS_WDV_10"."VRGNG",
-	 "V_COSS_WDV_10"."PAROB",
-	 "V_COSS_WDV_10"."USPOB",
-	 "V_COSS_WDV_10"."BEKNZ",
-	 "V_COSS_WDV_10"."TWAER",
-	 "V_COSS_WDV_10"."PERBL",
-	 "V_COSS_WDV_10"."MEINH",
-	 SUM( "V_COSS_WDV_10"."WTG001" ) AS "WTG001",
-	 SUM( "V_COSS_WDV_10"."WTG002" ) AS "WTG002",
-	 SUM( "V_COSS_WDV_10"."WTG003" ) AS "WTG003",
-	 SUM( "V_COSS_WDV_10"."WTG004" ) AS "WTG004",
-	 SUM( "V_COSS_WDV_10"."WTG005" ) AS "WTG005",
-	 SUM( "V_COSS_WDV_10"."WTG006" ) AS "WTG006",
-	 SUM( "V_COSS_WDV_10"."WTG007" ) AS "WTG007",
-	 SUM( "V_COSS_WDV_10"."WTG008" ) AS "WTG008",
-	 SUM( "V_COSS_WDV_10"."WTG009" ) AS "WTG009",
-	 SUM( "V_COSS_WDV_10"."WTG010" ) AS "WTG010",
-	 SUM( "V_COSS_WDV_10"."WTG011" ) AS "WTG011",
-	 SUM( "V_COSS_WDV_10"."WTG012" ) AS "WTG012",
-	 SUM( "V_COSS_WDV_10"."WTG013" ) AS "WTG013",
-	 SUM( "V_COSS_WDV_10"."WTG014" ) AS "WTG014",
-	 SUM( "V_COSS_WDV_10"."WTG015" ) AS "WTG015",
-	 SUM( "V_COSS_WDV_10"."WTG016" ) AS "WTG016",
-	 SUM( "V_COSS_WDV_10"."WOG001" ) AS "WOG001",
-	 SUM( "V_COSS_WDV_10"."WOG002" ) AS "WOG002",
-	 SUM( "V_COSS_WDV_10"."WOG003" ) AS "WOG003",
-	 SUM( "V_COSS_WDV_10"."WOG004" ) AS "WOG004",
-	 SUM( "V_COSS_WDV_10"."WOG005" ) AS "WOG005",
-	 SUM( "V_COSS_WDV_10"."WOG006" ) AS "WOG006",
-	 SUM( "V_COSS_WDV_10"."WOG007" ) AS "WOG007",
-	 SUM( "V_COSS_WDV_10"."WOG008" ) AS "WOG008",
-	 SUM( "V_COSS_WDV_10"."WOG009" ) AS "WOG009",
-	 SUM( "V_COSS_WDV_10"."WOG010" ) AS "WOG010",
-	 SUM( "V_COSS_WDV_10"."WOG011" ) AS "WOG011",
-	 SUM( "V_COSS_WDV_10"."WOG012" ) AS "WOG012",
-	 SUM( "V_COSS_WDV_10"."WOG013" ) AS "WOG013",
-	 SUM( "V_COSS_WDV_10"."WOG014" ) AS "WOG014",
-	 SUM( "V_COSS_WDV_10"."WOG015" ) AS "WOG015",
-	 SUM( "V_COSS_WDV_10"."WOG016" ) AS "WOG016",
-	 SUM( "V_COSS_WDV_10"."WKG001" ) AS "WKG001",
-	 SUM( "V_COSS_WDV_10"."WKG002" ) AS "WKG002",
-	 SUM( "V_COSS_WDV_10"."WKG003" ) AS "WKG003",
-	 SUM( "V_COSS_WDV_10"."WKG004" ) AS "WKG004",
-	 SUM( "V_COSS_WDV_10"."WKG005" ) AS "WKG005",
-	 SUM( "V_COSS_WDV_10"."WKG006" ) AS "WKG006",
-	 SUM( "V_COSS_WDV_10"."WKG007" ) AS "WKG007",
-	 SUM( "V_COSS_WDV_10"."WKG008" ) AS "WKG008",
-	 SUM( "V_COSS_WDV_10"."WKG009" ) AS "WKG009",
-	 SUM( "V_COSS_WDV_10"."WKG010" ) AS "WKG010",
-	 SUM( "V_COSS_WDV_10"."WKG011" ) AS "WKG011",
-	 SUM( "V_COSS_WDV_10"."WKG012" ) AS "WKG012",
-	 SUM( "V_COSS_WDV_10"."WKG013" ) AS "WKG013",
-	 SUM( "V_COSS_WDV_10"."WKG014" ) AS "WKG014",
-	 SUM( "V_COSS_WDV_10"."WKG015" ) AS "WKG015",
-	 SUM( "V_COSS_WDV_10"."WKG016" ) AS "WKG016",
-	 SUM( "V_COSS_WDV_10"."WKF001" ) AS "WKF001",
-	 SUM( "V_COSS_WDV_10"."WKF002" ) AS "WKF002",
-	 SUM( "V_COSS_WDV_10"."WKF003" ) AS "WKF003",
-	 SUM( "V_COSS_WDV_10"."WKF004" ) AS "WKF004",
-	 SUM( "V_COSS_WDV_10"."WKF005" ) AS "WKF005",
-	 SUM( "V_COSS_WDV_10"."WKF006" ) AS "WKF006",
-	 SUM( "V_COSS_WDV_10"."WKF007" ) AS "WKF007",
-	 SUM( "V_COSS_WDV_10"."WKF008" ) AS "WKF008",
-	 SUM( "V_COSS_WDV_10"."WKF009" ) AS "WKF009",
-	 SUM( "V_COSS_WDV_10"."WKF010" ) AS "WKF010",
-	 SUM( "V_COSS_WDV_10"."WKF011" ) AS "WKF011",
-	 SUM( "V_COSS_WDV_10"."WKF012" ) AS "WKF012",
-	 SUM( "V_COSS_WDV_10"."WKF013" ) AS "WKF013",
-	 SUM( "V_COSS_WDV_10"."WKF014" ) AS "WKF014",
-	 SUM( "V_COSS_WDV_10"."WKF015" ) AS "WKF015",
-	 SUM( "V_COSS_WDV_10"."WKF016" ) AS "WKF016",
-	 SUM( "V_COSS_WDV_10"."PAG001" ) AS "PAG001",
-	 SUM( "V_COSS_WDV_10"."PAG002" ) AS "PAG002",
-	 SUM( "V_COSS_WDV_10"."PAG003" ) AS "PAG003",
-	 SUM( "V_COSS_WDV_10"."PAG004" ) AS "PAG004",
-	 SUM( "V_COSS_WDV_10"."PAG005" ) AS "PAG005",
-	 SUM( "V_COSS_WDV_10"."PAG006" ) AS "PAG006",
-	 SUM( "V_COSS_WDV_10"."PAG007" ) AS "PAG007",
-	 SUM( "V_COSS_WDV_10"."PAG008" ) AS "PAG008",
-	 SUM( "V_COSS_WDV_10"."PAG009" ) AS "PAG009",
-	 SUM( "V_COSS_WDV_10"."PAG010" ) AS "PAG010",
-	 SUM( "V_COSS_WDV_10"."PAG011" ) AS "PAG011",
-	 SUM( "V_COSS_WDV_10"."PAG012" ) AS "PAG012",
-	 SUM( "V_COSS_WDV_10"."PAG013" ) AS "PAG013",
-	 SUM( "V_COSS_WDV_10"."PAG014" ) AS "PAG014",
-	 SUM( "V_COSS_WDV_10"."PAG015" ) AS "PAG015",
-	 SUM( "V_COSS_WDV_10"."PAG016" ) AS "PAG016",
-	 SUM( "V_COSS_WDV_10"."PAF001" ) AS "PAF001",
-	 SUM( "V_COSS_WDV_10"."PAF002" ) AS "PAF002",
-	 SUM( "V_COSS_WDV_10"."PAF003" ) AS "PAF003",
-	 SUM( "V_COSS_WDV_10"."PAF004" ) AS "PAF004",
-	 SUM( "V_COSS_WDV_10"."PAF005" ) AS "PAF005",
-	 SUM( "V_COSS_WDV_10"."PAF006" ) AS "PAF006",
-	 SUM( "V_COSS_WDV_10"."PAF007" ) AS "PAF007",
-	 SUM( "V_COSS_WDV_10"."PAF008" ) AS "PAF008",
-	 SUM( "V_COSS_WDV_10"."PAF009" ) AS "PAF009",
-	 SUM( "V_COSS_WDV_10"."PAF010" ) AS "PAF010",
-	 SUM( "V_COSS_WDV_10"."PAF011" ) AS "PAF011",
-	 SUM( "V_COSS_WDV_10"."PAF012" ) AS "PAF012",
-	 SUM( "V_COSS_WDV_10"."PAF013" ) AS "PAF013",
-	 SUM( "V_COSS_WDV_10"."PAF014" ) AS "PAF014",
-	 SUM( "V_COSS_WDV_10"."PAF015" ) AS "PAF015",
-	 SUM( "V_COSS_WDV_10"."PAF016" ) AS "PAF016",
-	 SUM( "V_COSS_WDV_10"."MEG001" ) AS "MEG001",
-	 SUM( "V_COSS_WDV_10"."MEG002" ) AS "MEG002",
-	 SUM( "V_COSS_WDV_10"."MEG003" ) AS "MEG003",
-	 SUM( "V_COSS_WDV_10"."MEG004" ) AS "MEG004",
-	 SUM( "V_COSS_WDV_10"."MEG005" ) AS "MEG005",
-	 SUM( "V_COSS_WDV_10"."MEG006" ) AS "MEG006",
-	 SUM( "V_COSS_WDV_10"."MEG007" ) AS "MEG007",
-	 SUM( "V_COSS_WDV_10"."MEG008" ) AS "MEG008",
-	 SUM( "V_COSS_WDV_10"."MEG009" ) AS "MEG009",
-	 SUM( "V_COSS_WDV_10"."MEG010" ) AS "MEG010",
-	 SUM( "V_COSS_WDV_10"."MEG011" ) AS "MEG011",
-	 SUM( "V_COSS_WDV_10"."MEG012" ) AS "MEG012",
-	 SUM( "V_COSS_WDV_10"."MEG013" ) AS "MEG013",
-	 SUM( "V_COSS_WDV_10"."MEG014" ) AS "MEG014",
-	 SUM( "V_COSS_WDV_10"."MEG015" ) AS "MEG015",
-	 SUM( "V_COSS_WDV_10"."MEG016" ) AS "MEG016",
-	 SUM( "V_COSS_WDV_10"."MEF001" ) AS "MEF001",
-	 SUM( "V_COSS_WDV_10"."MEF002" ) AS "MEF002",
-	 SUM( "V_COSS_WDV_10"."MEF003" ) AS "MEF003",
-	 SUM( "V_COSS_WDV_10"."MEF004" ) AS "MEF004",
-	 SUM( "V_COSS_WDV_10"."MEF005" ) AS "MEF005",
-	 SUM( "V_COSS_WDV_10"."MEF006" ) AS "MEF006",
-	 SUM( "V_COSS_WDV_10"."MEF007" ) AS "MEF007",
-	 SUM( "V_COSS_WDV_10"."MEF008" ) AS "MEF008",
-	 SUM( "V_COSS_WDV_10"."MEF009" ) AS "MEF009",
-	 SUM( "V_COSS_WDV_10"."MEF010" ) AS "MEF010",
-	 SUM( "V_COSS_WDV_10"."MEF011" ) AS "MEF011",
-	 SUM( "V_COSS_WDV_10"."MEF012" ) AS "MEF012",
-	 SUM( "V_COSS_WDV_10"."MEF013" ) AS "MEF013",
-	 SUM( "V_COSS_WDV_10"."MEF014" ) AS "MEF014",
-	 SUM( "V_COSS_WDV_10"."MEF015" ) AS "MEF015",
-	 SUM( "V_COSS_WDV_10"."MEF016" ) AS "MEF016",
-	 MAX( "V_COSS_WDV_10"."I001" ) AS "I001",
-	 MAX( "V_COSS_WDV_10"."I002" ) AS "I002",
-	 MAX( "V_COSS_WDV_10"."I003" ) AS "I003",
-	 MAX( "V_COSS_WDV_10"."I004" ) AS "I004",
-	 MAX( "V_COSS_WDV_10"."I005" ) AS "I005",
-	 MAX( "V_COSS_WDV_10"."I006" ) AS "I006",
-	 MAX( "V_COSS_WDV_10"."I007" ) AS "I007",
-	 MAX( "V_COSS_WDV_10"."I008" ) AS "I008",
-	 MAX( "V_COSS_WDV_10"."I009" ) AS "I009",
-	 MAX( "V_COSS_WDV_10"."I010" ) AS "I010",
-	 MAX( "V_COSS_WDV_10"."I011" ) AS "I011",
-	 MAX( "V_COSS_WDV_10"."I012" ) AS "I012",
-	 MAX( "V_COSS_WDV_10"."I013" ) AS "I013",
-	 MAX( "V_COSS_WDV_10"."I014" ) AS "I014",
-	 MAX( "V_COSS_WDV_10"."I015" ) AS "I015",
-	 MAX( "V_COSS_WDV_10"."I016" ) AS "I016",
-	 "V_COSS_WDV_10"."BELTP",
-	 MAX( "V_COSS_WDV_10"."TIMESTMP" ) AS "TIMESTMP",
-	 "V_COSS_WDV_10"."BUKRS",
-	 "V_COSS_WDV_10"."FKBER",
-	 "V_COSS_WDV_10"."SEGMENT",
-	 "V_COSS_WDV_10"."GEBER",
-	 "V_COSS_WDV_10"."GRANT_NBR",
-	 "V_COSS_WDV_10"."BUDGET_PD" 
-	FROM SQ_COSS_WDV_10 "V_COSS_WDV_10" 
-	GROUP BY "V_COSS_WDV_10"."MANDT",
-	 "V_COSS_WDV_10"."LEDNR",
-	 "V_COSS_WDV_10"."OBJNR",
-	 "V_COSS_WDV_10"."GJAHR",
-	 "V_COSS_WDV_10"."WRTTP",
-	 "V_COSS_WDV_10"."VERSN",
-	 "V_COSS_WDV_10"."KSTAR",
-	 "V_COSS_WDV_10"."HRKFT",
-	 "V_COSS_WDV_10"."VRGNG",
-	 "V_COSS_WDV_10"."PAROB",
-	 "V_COSS_WDV_10"."USPOB",
-	 "V_COSS_WDV_10"."BEKNZ",
-	 "V_COSS_WDV_10"."TWAER",
-	 "V_COSS_WDV_10"."PERBL",
-	 "V_COSS_WDV_10"."MEINH",
-	 "V_COSS_WDV_10"."BELTP",
-	 "V_COSS_WDV_10"."BUKRS",
-	 "V_COSS_WDV_10"."FKBER",
-	 "V_COSS_WDV_10"."SEGMENT",
-	 "V_COSS_WDV_10"."GEBER",
-	 "V_COSS_WDV_10"."GRANT_NBR",
-	 "V_COSS_WDV_10"."BUDGET_PD"
-)
-SELECT
-	 "V_COSS_WDV_11"."MANDT",
-	 "V_COSS_WDV_11"."LEDNR",
-	 "V_COSS_WDV_11"."OBJNR",
-	 "V_COSS_WDV_11"."GJAHR",
-	 "V_COSS_WDV_11"."WRTTP",
-	 "V_COSS_WDV_11"."VERSN",
-	 "V_COSS_WDV_11"."KSTAR",
-	 "V_COSS_WDV_11"."HRKFT",
-	 "V_COSS_WDV_11"."VRGNG",
-	 "V_COSS_WDV_11"."PAROB",
-	 "V_COSS_WDV_11"."USPOB",
-	 "V_COSS_WDV_11"."BEKNZ",
-	 "V_COSS_WDV_11"."TWAER",
-	 "V_COSS_WDV_11"."PERBL",
-	 "V_COSS_WDV_11"."MEINH",
-	 "V_COSS_WDV_11"."WTG001",
-	 "V_COSS_WDV_11"."WTG002",
-	 "V_COSS_WDV_11"."WTG003",
-	 "V_COSS_WDV_11"."WTG004",
-	 "V_COSS_WDV_11"."WTG005",
-	 "V_COSS_WDV_11"."WTG006",
-	 "V_COSS_WDV_11"."WTG007",
-	 "V_COSS_WDV_11"."WTG008",
-	 "V_COSS_WDV_11"."WTG009",
-	 "V_COSS_WDV_11"."WTG010",
-	 "V_COSS_WDV_11"."WTG011",
-	 "V_COSS_WDV_11"."WTG012",
-	 "V_COSS_WDV_11"."WTG013",
-	 "V_COSS_WDV_11"."WTG014",
-	 "V_COSS_WDV_11"."WTG015",
-	 "V_COSS_WDV_11"."WTG016",
-	 "V_COSS_WDV_11"."WOG001",
-	 "V_COSS_WDV_11"."WOG002",
-	 "V_COSS_WDV_11"."WOG003",
-	 "V_COSS_WDV_11"."WOG004",
-	 "V_COSS_WDV_11"."WOG005",
-	 "V_COSS_WDV_11"."WOG006",
-	 "V_COSS_WDV_11"."WOG007",
-	 "V_COSS_WDV_11"."WOG008",
-	 "V_COSS_WDV_11"."WOG009",
-	 "V_COSS_WDV_11"."WOG010",
-	 "V_COSS_WDV_11"."WOG011",
-	 "V_COSS_WDV_11"."WOG012",
-	 "V_COSS_WDV_11"."WOG013",
-	 "V_COSS_WDV_11"."WOG014",
-	 "V_COSS_WDV_11"."WOG015",
-	 "V_COSS_WDV_11"."WOG016",
-	 "V_COSS_WDV_11"."WKG001",
-	 "V_COSS_WDV_11"."WKG002",
-	 "V_COSS_WDV_11"."WKG003",
-	 "V_COSS_WDV_11"."WKG004",
-	 "V_COSS_WDV_11"."WKG005",
-	 "V_COSS_WDV_11"."WKG006",
-	 "V_COSS_WDV_11"."WKG007",
-	 "V_COSS_WDV_11"."WKG008",
-	 "V_COSS_WDV_11"."WKG009",
-	 "V_COSS_WDV_11"."WKG010",
-	 "V_COSS_WDV_11"."WKG011",
-	 "V_COSS_WDV_11"."WKG012",
-	 "V_COSS_WDV_11"."WKG013",
-	 "V_COSS_WDV_11"."WKG014",
-	 "V_COSS_WDV_11"."WKG015",
-	 "V_COSS_WDV_11"."WKG016",
-	 "V_COSS_WDV_11"."WKF001",
-	 "V_COSS_WDV_11"."WKF002",
-	 "V_COSS_WDV_11"."WKF003",
-	 "V_COSS_WDV_11"."WKF004",
-	 "V_COSS_WDV_11"."WKF005",
-	 "V_COSS_WDV_11"."WKF006",
-	 "V_COSS_WDV_11"."WKF007",
-	 "V_COSS_WDV_11"."WKF008",
-	 "V_COSS_WDV_11"."WKF009",
-	 "V_COSS_WDV_11"."WKF010",
-	 "V_COSS_WDV_11"."WKF011",
-	 "V_COSS_WDV_11"."WKF012",
-	 "V_COSS_WDV_11"."WKF013",
-	 "V_COSS_WDV_11"."WKF014",
-	 "V_COSS_WDV_11"."WKF015",
-	 "V_COSS_WDV_11"."WKF016",
-	 "V_COSS_WDV_11"."PAG001",
-	 "V_COSS_WDV_11"."PAG002",
-	 "V_COSS_WDV_11"."PAG003",
-	 "V_COSS_WDV_11"."PAG004",
-	 "V_COSS_WDV_11"."PAG005",
-	 "V_COSS_WDV_11"."PAG006",
-	 "V_COSS_WDV_11"."PAG007",
-	 "V_COSS_WDV_11"."PAG008",
-	 "V_COSS_WDV_11"."PAG009",
-	 "V_COSS_WDV_11"."PAG010",
-	 "V_COSS_WDV_11"."PAG011",
-	 "V_COSS_WDV_11"."PAG012",
-	 "V_COSS_WDV_11"."PAG013",
-	 "V_COSS_WDV_11"."PAG014",
-	 "V_COSS_WDV_11"."PAG015",
-	 "V_COSS_WDV_11"."PAG016",
-	 "V_COSS_WDV_11"."PAF001",
-	 "V_COSS_WDV_11"."PAF002",
-	 "V_COSS_WDV_11"."PAF003",
-	 "V_COSS_WDV_11"."PAF004",
-	 "V_COSS_WDV_11"."PAF005",
-	 "V_COSS_WDV_11"."PAF006",
-	 "V_COSS_WDV_11"."PAF007",
-	 "V_COSS_WDV_11"."PAF008",
-	 "V_COSS_WDV_11"."PAF009",
-	 "V_COSS_WDV_11"."PAF010",
-	 "V_COSS_WDV_11"."PAF011",
-	 "V_COSS_WDV_11"."PAF012",
-	 "V_COSS_WDV_11"."PAF013",
-	 "V_COSS_WDV_11"."PAF014",
-	 "V_COSS_WDV_11"."PAF015",
-	 "V_COSS_WDV_11"."PAF016",
-	 "V_COSS_WDV_11"."MEG001",
-	 "V_COSS_WDV_11"."MEG002",
-	 "V_COSS_WDV_11"."MEG003",
-	 "V_COSS_WDV_11"."MEG004",
-	 "V_COSS_WDV_11"."MEG005",
-	 "V_COSS_WDV_11"."MEG006",
-	 "V_COSS_WDV_11"."MEG007",
-	 "V_COSS_WDV_11"."MEG008",
-	 "V_COSS_WDV_11"."MEG009",
-	 "V_COSS_WDV_11"."MEG010",
-	 "V_COSS_WDV_11"."MEG011",
-	 "V_COSS_WDV_11"."MEG012",
-	 "V_COSS_WDV_11"."MEG013",
-	 "V_COSS_WDV_11"."MEG014",
-	 "V_COSS_WDV_11"."MEG015",
-	 "V_COSS_WDV_11"."MEG016",
-	 "V_COSS_WDV_11"."MEF001",
-	 "V_COSS_WDV_11"."MEF002",
-	 "V_COSS_WDV_11"."MEF003",
-	 "V_COSS_WDV_11"."MEF004",
-	 "V_COSS_WDV_11"."MEF005",
-	 "V_COSS_WDV_11"."MEF006",
-	 "V_COSS_WDV_11"."MEF007",
-	 "V_COSS_WDV_11"."MEF008",
-	 "V_COSS_WDV_11"."MEF009",
-	 "V_COSS_WDV_11"."MEF010",
-	 "V_COSS_WDV_11"."MEF011",
-	 "V_COSS_WDV_11"."MEF012",
-	 "V_COSS_WDV_11"."MEF013",
-	 "V_COSS_WDV_11"."MEF014",
-	 "V_COSS_WDV_11"."MEF015",
-	 "V_COSS_WDV_11"."MEF016",
-	 CASE "V_COSS_WDV_11"."I001" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV001",
-	 CASE "V_COSS_WDV_11"."I002" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV002",
-	 CASE "V_COSS_WDV_11"."I003" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV003",
-	 CASE "V_COSS_WDV_11"."I004" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV004",
-	 CASE "V_COSS_WDV_11"."I005" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV005",
-	 CASE "V_COSS_WDV_11"."I006" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV006",
-	 CASE "V_COSS_WDV_11"."I007" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV007",
-	 CASE "V_COSS_WDV_11"."I008" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV008",
-	 CASE "V_COSS_WDV_11"."I009" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV009",
-	 CASE "V_COSS_WDV_11"."I010" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV010",
-	 CASE "V_COSS_WDV_11"."I011" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV011",
-	 CASE "V_COSS_WDV_11"."I012" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV012",
-	 CASE "V_COSS_WDV_11"."I013" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV013",
-	 CASE "V_COSS_WDV_11"."I014" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV014",
-	 CASE "V_COSS_WDV_11"."I015" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV015",
-	 CASE "V_COSS_WDV_11"."I016" WHEN 0 
-			THEN '' 
-			ELSE 'X' 
-			END AS "MUV016",
-	 "V_COSS_WDV_11"."BELTP",
-	 "V_COSS_WDV_11"."TIMESTMP",
-	 "V_COSS_WDV_11"."BUKRS",
-	 "V_COSS_WDV_11"."FKBER",
-	 "V_COSS_WDV_11"."SEGMENT",
-	 "V_COSS_WDV_11"."GEBER",
-	 "V_COSS_WDV_11"."GRANT_NBR",
-	 "V_COSS_WDV_11"."BUDGET_PD" 
-			FROM SQ_COSS_WDV_11 "V_COSS_WDV_11" 
-			WHERE ( "V_COSS_WDV_11"."WRTTP" = '04' 
-				OR "V_COSS_WDV_11"."WRTTP" = '11' )
+select
+  v_coss_wdv_11.mandt,
+  v_coss_wdv_11.lednr,
+  v_coss_wdv_11.objnr,
+  v_coss_wdv_11.gjahr,
+  v_coss_wdv_11.wrttp,
+  v_coss_wdv_11.versn,
+  v_coss_wdv_11.kstar,
+  v_coss_wdv_11.hrkft,
+  v_coss_wdv_11.vrgng,
+  v_coss_wdv_11.parob,
+  v_coss_wdv_11.uspob,
+  v_coss_wdv_11.beknz,
+  v_coss_wdv_11.twaer,
+  v_coss_wdv_11.perbl,
+  v_coss_wdv_11.meinh,
+  v_coss_wdv_11.wtg001,
+  v_coss_wdv_11.wtg002,
+  v_coss_wdv_11.wtg003,
+  v_coss_wdv_11.wtg004,
+  v_coss_wdv_11.wtg005,
+  v_coss_wdv_11.wtg006,
+  v_coss_wdv_11.wtg007,
+  v_coss_wdv_11.wtg008,
+  v_coss_wdv_11.wtg009,
+  v_coss_wdv_11.wtg010,
+  v_coss_wdv_11.wtg011,
+  v_coss_wdv_11.wtg012,
+  v_coss_wdv_11.wtg013,
+  v_coss_wdv_11.wtg014,
+  v_coss_wdv_11.wtg015,
+  v_coss_wdv_11.wtg016,
+  v_coss_wdv_11.wog001,
+  v_coss_wdv_11.wog002,
+  v_coss_wdv_11.wog003,
+  v_coss_wdv_11.wog004,
+  v_coss_wdv_11.wog005,
+  v_coss_wdv_11.wog006,
+  v_coss_wdv_11.wog007,
+  v_coss_wdv_11.wog008,
+  v_coss_wdv_11.wog009,
+  v_coss_wdv_11.wog010,
+  v_coss_wdv_11.wog011,
+  v_coss_wdv_11.wog012,
+  v_coss_wdv_11.wog013,
+  v_coss_wdv_11.wog014,
+  v_coss_wdv_11.wog015,
+  v_coss_wdv_11.wog016,
+  v_coss_wdv_11.wkg001,
+  v_coss_wdv_11.wkg002,
+  v_coss_wdv_11.wkg003,
+  v_coss_wdv_11.wkg004,
+  v_coss_wdv_11.wkg005,
+  v_coss_wdv_11.wkg006,
+  v_coss_wdv_11.wkg007,
+  v_coss_wdv_11.wkg008,
+  v_coss_wdv_11.wkg009,
+  v_coss_wdv_11.wkg010,
+  v_coss_wdv_11.wkg011,
+  v_coss_wdv_11.wkg012,
+  v_coss_wdv_11.wkg013,
+  v_coss_wdv_11.wkg014,
+  v_coss_wdv_11.wkg015,
+  v_coss_wdv_11.wkg016,
+  v_coss_wdv_11.wkf001,
+  v_coss_wdv_11.wkf002,
+  v_coss_wdv_11.wkf003,
+  v_coss_wdv_11.wkf004,
+  v_coss_wdv_11.wkf005,
+  v_coss_wdv_11.wkf006,
+  v_coss_wdv_11.wkf007,
+  v_coss_wdv_11.wkf008,
+  v_coss_wdv_11.wkf009,
+  v_coss_wdv_11.wkf010,
+  v_coss_wdv_11.wkf011,
+  v_coss_wdv_11.wkf012,
+  v_coss_wdv_11.wkf013,
+  v_coss_wdv_11.wkf014,
+  v_coss_wdv_11.wkf015,
+  v_coss_wdv_11.wkf016,
+  v_coss_wdv_11.pag001,
+  v_coss_wdv_11.pag002,
+  v_coss_wdv_11.pag003,
+  v_coss_wdv_11.pag004,
+  v_coss_wdv_11.pag005,
+  v_coss_wdv_11.pag006,
+  v_coss_wdv_11.pag007,
+  v_coss_wdv_11.pag008,
+  v_coss_wdv_11.pag009,
+  v_coss_wdv_11.pag010,
+  v_coss_wdv_11.pag011,
+  v_coss_wdv_11.pag012,
+  v_coss_wdv_11.pag013,
+  v_coss_wdv_11.pag014,
+  v_coss_wdv_11.pag015,
+  v_coss_wdv_11.pag016,
+  v_coss_wdv_11.paf001,
+  v_coss_wdv_11.paf002,
+  v_coss_wdv_11.paf003,
+  v_coss_wdv_11.paf004,
+  v_coss_wdv_11.paf005,
+  v_coss_wdv_11.paf006,
+  v_coss_wdv_11.paf007,
+  v_coss_wdv_11.paf008,
+  v_coss_wdv_11.paf009,
+  v_coss_wdv_11.paf010,
+  v_coss_wdv_11.paf011,
+  v_coss_wdv_11.paf012,
+  v_coss_wdv_11.paf013,
+  v_coss_wdv_11.paf014,
+  v_coss_wdv_11.paf015,
+  v_coss_wdv_11.paf016,
+  v_coss_wdv_11.meg001,
+  v_coss_wdv_11.meg002,
+  v_coss_wdv_11.meg003,
+  v_coss_wdv_11.meg004,
+  v_coss_wdv_11.meg005,
+  v_coss_wdv_11.meg006,
+  v_coss_wdv_11.meg007,
+  v_coss_wdv_11.meg008,
+  v_coss_wdv_11.meg009,
+  v_coss_wdv_11.meg010,
+  v_coss_wdv_11.meg011,
+  v_coss_wdv_11.meg012,
+  v_coss_wdv_11.meg013,
+  v_coss_wdv_11.meg014,
+  v_coss_wdv_11.meg015,
+  v_coss_wdv_11.meg016,
+  v_coss_wdv_11.mef001,
+  v_coss_wdv_11.mef002,
+  v_coss_wdv_11.mef003,
+  v_coss_wdv_11.mef004,
+  v_coss_wdv_11.mef005,
+  v_coss_wdv_11.mef006,
+  v_coss_wdv_11.mef007,
+  v_coss_wdv_11.mef008,
+  v_coss_wdv_11.mef009,
+  v_coss_wdv_11.mef010,
+  v_coss_wdv_11.mef011,
+  v_coss_wdv_11.mef012,
+  v_coss_wdv_11.mef013,
+  v_coss_wdv_11.mef014,
+  v_coss_wdv_11.mef015,
+  v_coss_wdv_11.mef016,
+  case
+    when v_coss_wdv_11.i001 = 0 then ''
+    else 'x'
+  end as muv001,
+  case
+    when v_coss_wdv_11.i002 = 0 then ''
+    else 'x'
+  end as muv002,
+  case
+    when v_coss_wdv_11.i003 = 0 then ''
+    else 'x'
+  end as muv003,
+  case
+    when v_coss_wdv_11.i004 = 0 then ''
+    else 'x'
+  end as muv004,
+  case
+    when v_coss_wdv_11.i005 = 0 then ''
+    else 'x'
+  end as muv005,
+  case
+    when v_coss_wdv_11.i006 = 0 then ''
+    else 'x'
+  end as muv006,
+  case
+    when v_coss_wdv_11.i007 = 0 then ''
+    else 'x'
+  end as muv007,
+  case
+    when v_coss_wdv_11.i008 = 0 then ''
+    else 'x'
+  end as muv008,
+  case
+    when v_coss_wdv_11.i009 = 0 then ''
+    else 'x'
+  end as muv009,
+  case
+    when v_coss_wdv_11.i010 = 0 then ''
+    else 'x'
+  end as muv010,
+  case
+    when v_coss_wdv_11.i011 = 0 then ''
+    else 'x'
+  end as muv011,
+  case
+    when v_coss_wdv_11.i012 = 0 then ''
+    else 'x'
+  end as muv012,
+  case
+    when v_coss_wdv_11.i013 = 0 then ''
+    else 'x'
+  end as muv013,
+  case
+    when v_coss_wdv_11.i014 = 0 then ''
+    else 'x'
+  end as muv014,
+  case
+    when v_coss_wdv_11.i015 = 0 then ''
+    else 'x'
+  end as muv015,
+  case
+    when v_coss_wdv_11.i016 = 0 then ''
+    else 'x'
+  end as muv016,
+  v_coss_wdv_11.beltp,
+  v_coss_wdv_11.timestmp,
+  v_coss_wdv_11.bukrs,
+  v_coss_wdv_11.fkber,
+  v_coss_wdv_11.segment,
+  v_coss_wdv_11.geber,
+  v_coss_wdv_11.grant_nbr,
+  v_coss_wdv_11.budget_pd
+from
+  sq_coss_wdv_11 as v_coss_wdv_11
+where
+  v_coss_wdv_11.wrttp = '04'
+  or v_coss_wdv_11.wrttp = '11'
