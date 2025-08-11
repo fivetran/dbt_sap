@@ -1,450 +1,568 @@
-with NSDM_V_MARC_AGG AS	(
-SELECT	
-MATDOC_EXTRACT.MANDT,	
-MATDOC_EXTRACT.MATBF AS MATNR,	
-MATDOC_EXTRACT.WERKS,	
-MATDOC_EXTRACT.LBBSA_SID AS LBBSA,	
-SUM( MATDOC_EXTRACT.STOCK_QTY_L2 ) AS STOCK_QTY,	
-SUM( MATDOC_EXTRACT._CWM_STOCK_QTY_L2 ) AS _CWM_STOCK_QTY,	
-SUM( MATDOC_EXTRACT.STOCK_VKWRT_L2 ) AS STOCK_VKWRT,	
-MAX( MATDOC_EXTRACT.GJPER_CURR_PER ) AS GJPER_MAX	
-FROM {{ source('raw_tables', 'matdoc_extract') }} MATDOC_EXTRACT	
-WHERE	
-( MATDOC_EXTRACT.STOCK_IND_L2 = ''	
-AND ( MATDOC_EXTRACT.SOBKZ = ''	
-AND ( MATDOC_EXTRACT.LBBSA_SID = '05'	
-OR MATDOC_EXTRACT.LBBSA_SID = '06'	
-OR MATDOC_EXTRACT.LBBSA_SID = '09'	
-OR MATDOC_EXTRACT.LBBSA_SID = '10' ) ) )	
-GROUP BY MATDOC_EXTRACT.MANDT,	
-MATDOC_EXTRACT.MATBF,	
-MATDOC_EXTRACT.WERKS,	
-MATDOC_EXTRACT.LBBSA_SID	
+with nsdm_v_marc_agg as (
+  select
+    matdoc_extract.mandt,
+    matdoc_extract.matbf as matnr,
+    matdoc_extract.werks,
+    matdoc_extract.lbbsa_sid as lbbsa,
+    sum(matdoc_extract.stock_qty_l2) as stock_qty,
+    sum(matdoc_extract._cwm_stock_qty_l2) as _cwm_stock_qty,
+    sum(matdoc_extract.stock_vkwrt_l2) as stock_vkwrt,
+    max(matdoc_extract.gjper_curr_per) as gjper_max
+  from
+    {{ ref('stg_sap__matdoc_extract') }} matdoc_extract
+  where
+    (
+      matdoc_extract.stock_ind_l2 = ''
+      and (
+        matdoc_extract.sobkz = ''
+        and (
+          matdoc_extract.lbbsa_sid = '05'
+          or matdoc_extract.lbbsa_sid = '06'
+          or matdoc_extract.lbbsa_sid = '09'
+          or matdoc_extract.lbbsa_sid = '10'
+        )
+      )
+    )
+  group by
+    matdoc_extract.mandt,
+    matdoc_extract.matbf,
+    matdoc_extract.werks,
+    matdoc_extract.lbbsa_sid
+),
+nsdm_v_marc_diff as (
+  select
+    nsdm_v_marc_agg.mandt,
+    nsdm_v_marc_agg.matnr,
+    nsdm_v_marc_agg.werks,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '05'
+        then nsdm_v_marc_agg.stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as umlmc,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '06'
+        then nsdm_v_marc_agg.stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as trame,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '05'
+        then nsdm_v_marc_agg.stock_vkwrt
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as vkumc,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '06'
+        then nsdm_v_marc_agg.stock_vkwrt
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as vktrw,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '09'
+        then nsdm_v_marc_agg.stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as glgmg,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '09'
+        then nsdm_v_marc_agg.stock_vkwrt
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as vkglg,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '10'
+        then nsdm_v_marc_agg.stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as bwesb,
+    max(nsdm_v_marc_agg.gjper_max) as gjper,
+    'x' as mcrue,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '05'
+        then nsdm_v_marc_agg._cwm_stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as _cwm_umlmc,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '06'
+        then nsdm_v_marc_agg._cwm_stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as _cwm_trame,
+    sum(
+      case
+        nsdm_v_marc_agg.lbbsa
+        when '10'
+        then nsdm_v_marc_agg._cwm_stock_qty
+        else cast(
+          0 as decimal(13, 0)
+        )
+      end
+    ) as _cwm_bwesb
+  from
+    nsdm_v_marc_agg nsdm_v_marc_agg
+  group by
+    nsdm_v_marc_agg.mandt,
+    nsdm_v_marc_agg.matnr,
+    nsdm_v_marc_agg.werks
 )
-,
-
-NSDM_V_MARC_DIFF AS	(
-SELECT	
-NSDM_V_MARC_AGG.MANDT,	
-NSDM_V_MARC_AGG.MATNR,	
-NSDM_V_MARC_AGG.WERKS,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '05' THEN NSDM_V_MARC_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS UMLMC,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '06' THEN NSDM_V_MARC_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS TRAME,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '05' THEN NSDM_V_MARC_AGG.STOCK_VKWRT	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS VKUMC,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '06' THEN NSDM_V_MARC_AGG.STOCK_VKWRT	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS VKTRW,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '09' THEN NSDM_V_MARC_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS GLGMG,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '09' THEN NSDM_V_MARC_AGG.STOCK_VKWRT	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS VKGLG,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '10' THEN NSDM_V_MARC_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS BWESB,	
-MAX( NSDM_V_MARC_AGG.GJPER_MAX ) AS GJPER,	
-'X' AS MCRUE,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '05' THEN NSDM_V_MARC_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_UMLMC,	
-SUM(		
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '06' THEN NSDM_V_MARC_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_TRAME ,	
-SUM(	
-CASE NSDM_V_MARC_AGG.LBBSA	
-WHEN '10' THEN NSDM_V_MARC_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_BWESB	
-FROM NSDM_V_MARC_AGG NSDM_V_MARC_AGG	
-GROUP BY NSDM_V_MARC_AGG.MANDT,	
-NSDM_V_MARC_AGG.MATNR,	
-NSDM_V_MARC_AGG.WERKS
-)
-
-SELECT	
-T.MANDT,	
-T.MATNR,	
-T.WERKS,	
-T.PSTAT,	
-T.LVORM,	
-T.BWTTY,	
-T.XCHAR,	
-T.MMSTA,	
-T.MMSTD,	
-T.MAABC,	
-T.KZKRI,	
-T.EKGRP,	
-T.AUSME,	
-T.DISPR,	
-T.DISMM,	
-T.DISPO,	
-T.KZDIE,	
-T.PLIFZ,	
-T.WEBAZ,	
-T.PERKZ,	
-T.AUSSS,	
-T.DISLS,	
-T.BESKZ,	
-T.SOBSL,	
-T.MINBE,	
-T.EISBE,	
-T.BSTMI,	
-T.BSTMA,	
-T.BSTFE,	
-T.BSTRF,	
-T.MABST,	
-T.LOSFX,	
-T.SBDKZ,	
-T.LAGPR,	
-T.ALTSL,	
-T.KZAUS,	
-T.AUSDT,	
-T.NFMAT,	
-T.KZBED,	
-T.MISKZ,	
-T.FHORI,	
-T.PFREI,	
-T.FFREI,	
-T.RGEKZ,	
-T.FEVOR,	
-T.BEARZ,	
-T.RUEZT,	
-T.TRANZ,	
-T.BASMG,	
-T.DZEIT,	
-T.MAXLZ,	
-T.LZEIH,	
-T.KZPRO,	
-T.GPMKZ,	
-T.UEETO,	
-T.UEETK,	
-T.UNETO,	
-T.WZEIT,	
-T.ATPKZ,	
-T.VZUSL,	
-T.HERBL,	
-T.INSMK,	
-T.SPROZ,	
-T.QUAZT,	
-T.SSQSS,	
-T.MPDAU,	
-T.KZPPV,	
-T.KZDKZ,	
-T.WSTGH,	
-T.PRFRQ,	
-T.NKMPR,	
-CASE	
-WHEN  M.UMLMC IS NULL THEN 0	
-ELSE M.UMLMC END AS UMLMC,	
-T.LADGR,	
-T.XCHPF,	
-T.USEQU,	
-T.LGRAD,	
-T.AUFTL,	
-T.PLVAR,	
-T.OTYPE,	
-T.OBJID,	
-T.MTVFP,	
-T.PERIV,	
-T.KZKFK,	
-T.VRVEZ,	
-T.VBAMG,	
-T.VBEAZ,	
-T.LIZYK,	
-T.BWSCL,	
-T.KAUTB,	
-T.KORDB,	
-CASE	
-WHEN  MATERIALTRADECLASSIFICATION.CCNGN IS NULL THEN ''	
-ELSE ( RTRIM( SUBSTRING( MATERIALTRADECLASSIFICATION.CCNGN, 1, 17 ) ) ) END
-AS STAWN,	
-T.HERKL,	
-T.HERKR,	
-MATERIALTRADEUNIT.BEMEH AS EXPME,	
-T.MTVER,	
-T.PRCTR,	
-CASE	
-WHEN  M.TRAME IS NULL THEN 0	
-ELSE M.TRAME END AS TRAME,	
-T.MRPPP,	
-T.SAUFT,	
-T.FXHOR,	
-T.VRMOD,	
-T.VINT1,	
-T.VINT2,	
-T.VERKZ,	
-T.STLAL,	
-T.STLAN,	
-T.PLNNR,	
-T.APLAL,	
-T.LOSGR,	
-T.SOBSK,	
-T.FRTME,	
-T.LGPRO,	
-T.DISGR,	
-T.KAUSF,	
-T.QZGTP,	
-T.QMATV,	
-T.TAKZT,	
-T.RWPRO,	
-T.COPAM,	
-T.ABCIN,	
-T.AWSLS,	
-T.SERNP,	
-T.CUOBJ,	
-T.STDPD,	
-T.SFEPR,	
-T.XMCNG,	
-T.QSSYS,	
-T.LFRHY,	
-T.RDPRF,	
-T.VRBMT,	
-T.VRBWK,	
-T.VRBDT,	
-T.VRBFK,	
-T.AUTRU,	
-T.PREFE,	
-T.PRENC,	
-T.PRENO,	
-T.PREND,	
-T.PRENE,	
-T.PRENG,	
-T.ITARK,	
-T.SERVG,	
-T.KZKUP,	
-T.STRGR,	
-T.CUOBV,	
-T.LGFSB,	
-T.SCHGT,	
-T.CCFIX,	
-T.EPRIO,	
-T.QMATA,	
-T.RESVP,	
-T.PLNTY,	
-T.UOMGR,	
-T.UMRSL,	
-T.ABFAC,	
-T.SFCPF,	
-T.SHFLG,	
-T.SHZET,	
-T.MDACH,	
-T.KZECH,	
-T.MEGRU,	
-T.MFRGR,	
-T.PROFIL,	
-CASE	
-WHEN  M.VKUMC IS NULL THEN 0	
-ELSE M.VKUMC END AS VKUMC,	
-CASE	
-WHEN  M.VKTRW IS NULL THEN 0	
-ELSE M.VKTRW END AS VKTRW,	
-T.KZAGL,	
-T.FVIDK,		
-T.FXPRU,	
-T.LOGGR,	
-T.FPRFM,	
-CASE	
-WHEN  M.GLGMG IS NULL THEN 0	
-ELSE M.GLGMG END AS GLGMG,	
-CASE	
-WHEN  M.VKGLG IS NULL THEN 0	
-ELSE M.VKGLG END AS VKGLG,	
-T.INDUS,	
-T.MOWNR,	
-T.MOGRU,	
-T.CASNR,	
-T.GPNUM,	
-T.STEUC,	
-T.FABKZ,	
-T.MATGR,	
-T.VSPVB,	
-T.DPLFS,	
-T.DPLPU,	
-T.DPLHO,	
-T.MINLS,	
-T.MAXLS,	
-T.FIXLS,	
-T.LTINC,	
-T.COMPL,	
-T.CONVT,	
-T.SHPRO,	
-T.AHDIS,	
-T.DIBER,	
-T.KZPSP,	
-T.OCMPF,	
-T.APOKZ,	
-'X' AS MCRUE,	
-CASE	
-WHEN  ( M.GJPER = '0000000'	
-OR M.GJPER IS NULL )  THEN T.LFMON	
-ELSE ( RTRIM( SUBSTRING( M.GJPER, 6, 2 ) ) ) END AS LFMON,	
-CASE	
-WHEN  ( M.GJPER = '0000000'	
-OR M.GJPER IS NULL )  THEN T.LFGJA	
-ELSE ( RTRIM( SUBSTRING( M.GJPER, 1, 4 ) ) ) END AS LFGJA,	
-T.EISLO,	
-T.NCOST,	
-T.ROTATION_DATE,	
-T.UCHKZ,	
-T.UCMAT,	
-CASE	
-WHEN  M.BWESB IS NULL THEN 0	
-ELSE M.BWESB END AS BWESB,	
-T.SGT_COVS,	
-T.SGT_STATC,	
-T.SGT_SCOPE,	
-'' AS SGT_MRPSI,	
-'' AS SGT_PRCM,	
-'' AS SGT_CHINT,	
-'' AS SGT_STK_PRT,	
-T.SGT_DEFSC,	
-'' AS SGT_MRP_ATP_STATUS,	
-T.SGT_MMSTD,	
-T.FSH_MG_ARUN_REQ,	
-'' AS FSH_SEAIM,	
-T.FSH_VAR_GROUP,	
-'' AS FSH_KZECH,	
-T.FSH_CALENDAR_GROUP,	
-T.ARUN_FIX_BATCH,	
-T.PPSKZ,	
-T.CONS_PROCG,	
-T.GI_PR_TIME,	
-T.MULTIPLE_EKGRP,	
-T.REF_SCHEMA,	
-T.MIN_TROC,	
-T.MAX_TROC,	
-T.TARGET_STOCK,	
-T.NF_FLAG,	
-CASE	
-WHEN  M._CWM_UMLMC IS NULL THEN 0	
-ELSE M._CWM_UMLMC END AS _CWM_UMLMC,	
-CASE	
-WHEN  M._CWM_TRAME  IS NULL THEN 0	
-ELSE M._CWM_TRAME  END AS _CWM_TRAME ,	
-CASE	
-WHEN  M._CWM_BWESB IS NULL THEN 0	
-ELSE M._CWM_BWESB END AS _CWM_BWESB,	
-T.SCM_MATLOCID_GUID16,	
-T.SCM_MATLOCID_GUID22,	
-T.SCM_GRPRT,	
-T.SCM_GIPRT,	
-T.SCM_SCOST,	
-T.SCM_RELDT,	
-T.SCM_RRP_TYPE,	
-T.SCM_HEUR_ID,	
-T.SCM_PACKAGE_ID,	
-T.SCM_SSPEN,	
-T.SCM_GET_ALERTS,	
-T.SCM_RES_NET_NAME,	
-T.SCM_CONHAP,	
-T.SCM_HUNIT,	
-T.SCM_CONHAP_OUT,	
-T.SCM_HUNIT_OUT,	
-T.SCM_SHELF_LIFE_LOC,	
-T.SCM_SHELF_LIFE_DUR,	
-T.SCM_MATURITY_DUR,	
-T.SCM_SHLF_LFE_REQ_MIN,	
-T.SCM_SHLF_LFE_REQ_MAX,	
-T.SCM_LSUOM,	
-T.SCM_REORD_DUR,	
-T.SCM_TARGET_DUR,	
-T.SCM_TSTRID,	
-T.SCM_STRA1,	
-T.SCM_PEG_PAST_ALERT,	
-T.SCM_PEG_FUTURE_ALERT,	
-T.SCM_PEG_STRATEGY,	
-T.SCM_PEG_WO_ALERT_FST,	
-T.SCM_FIXPEG_PROD_SET,	
-T.SCM_WHATBOM,	
-T.DUMMY_PLNT_INCL_EEW_PS,	
-T.SCM_RRP_SEL_GROUP,	
-T.SCM_INTSRC_PROF,	
-T.SCM_PRIO,	
-T.SCM_MIN_PASS_AMOUNT,	
-T.SCM_PROFID,	
-T.SCM_GES_MNG_USE,	
-T.SCM_GES_BST_USE,	
-T.ESPPFLG,	
-T.SCM_THRUPUT_TIME,	
-T.SCM_TPOP,	
-T.SCM_SAFTY_V,	
-T.SCM_PPSAFTYSTK,	
-T.SCM_PPSAFTYSTK_V,	
-T.SCM_REPSAFTY,	
-T.SCM_REPSAFTY_V,	
-T.SCM_REORD_V,	
-T.SCM_MAXSTOCK_V,	
-T.SCM_SCOST_PRCNT,	
-T.SCM_PROC_COST,	
-T.SCM_NDCOSTWA,	
-T.SCM_NDCOSTWE,	
-T.EXCISE_TAX_RLVNCE,	
-T.SCM_CONINP,	
-T.CONF_GMSYNC,	
-T.SCM_IUNIT,	
-T.SCM_SFT_LOCK,	
-T.SFTY_STK_METH,	
-T.TEMP_CTRL_MIN,	
-T.TEMP_CTRL_MAX,	
-T.TEMP_UOM,	
-T.JITPRODNCONFPROFILE,	
-T._SAPMP_TOLPRPL,	
-T._SAPMP_TOLPRMI,	
-T._STTPEC_SERVALID,	
-T._VSO_R_PKGRP,	
-T._VSO_R_LANE_NUM,	
-T._VSO_R_PAL_VEND,	
-T._VSO_R_FORK_DIR,	
-T.IUID_RELEVANT,	
-T.IUID_TYPE,	
-T.UID_IEA,	
-T.DPCBT	
-FROM {{ source('raw_tables', 'marc') }} T	
-LEFT OUTER JOIN {{ source('raw_tables', 't001w') }} PLANT	
-ON ( PLANT.MANDT = T.MANDT	
-AND PLANT.WERKS = T.WERKS	
-AND T.MANDT = PLANT.MANDT )
-LEFT OUTER JOIN {{ source('raw_tables', '_sapsll_tunos') }} NUMBERSCEMEUSAGE	
-ON ( PLANT.MANDT = NUMBERSCEMEUSAGE.MANDT	
-AND PLANT.LAND1 = NUMBERSCEMEUSAGE.LAND1	
-AND NUMBERSCEMEUSAGE.CTSTY = '01'	
-AND T.MANDT = NUMBERSCEMEUSAGE.MANDT )	
-LEFT OUTER JOIN	{{ source('raw_tables', '_sapsll_maritc') }} MATERIALTRADECLASSIFICATION	
-ON ( MATERIALTRADECLASSIFICATION.MANDT = T.MANDT	
-AND MATERIALTRADECLASSIFICATION.MATNR = T.MATNR	
-AND MATERIALTRADECLASSIFICATION.STCTS = NUMBERSCEMEUSAGE.STCTS	
-AND MATERIALTRADECLASSIFICATION.DATAB <= to_char(current_date(), 'yyyyMMdd')
-AND MATERIALTRADECLASSIFICATION.DATBI >= to_char(current_date(), 'yyyyMMdd')
-AND T.MANDT = MATERIALTRADECLASSIFICATION.MANDT )
-LEFT OUTER JOIN	{{ source('raw_tables', '_sapsll_nosca') }} NUMBERSCHEMECONTENT	
-ON ( NUMBERSCHEMECONTENT.STCTS = NUMBERSCEMEUSAGE.STCTS	
-AND NUMBERSCHEMECONTENT.DATAB <= to_char(current_date(), 'yyyyMMdd')	
-AND NUMBERSCHEMECONTENT.DATBI >= to_char(current_date(), 'yyyyMMdd')	
-AND T.MANDT = NUMBERSCHEMECONTENT.MANDT )
-LEFT OUTER JOIN {{ source('raw_tables', '_sapsll_clsnr') }} MATERIALTRADEUNIT	
-ON ( MATERIALTRADEUNIT.NOSCT = NUMBERSCHEMECONTENT.NOSCT	
-AND MATERIALTRADEUNIT.CCNGN = MATERIALTRADECLASSIFICATION.CCNGN	
-AND MATERIALTRADEUNIT.DATAB <= to_char(current_date(), 'yyyyMMdd')	
-AND MATERIALTRADEUNIT.DATBI >= to_char(current_date(), 'yyyyMMdd')	
-AND T.MANDT = MATERIALTRADEUNIT.MANDT )	
-LEFT OUTER JOIN NSDM_V_MARC_DIFF M	
-ON ( T.MANDT = M.MANDT	
-AND T.MATNR = M.MATNR	
-AND T.WERKS = M.WERKS	
-AND T.MANDT = M.MANDT )
-
+select
+  t.mandt,
+  t.matnr,
+  t.werks,
+  t.pstat,
+  t.lvorm,
+  t.bwtty,
+  t.xchar,
+  t.mmsta,
+  t.mmstd,
+  t.maabc,
+  t.kzkri,
+  t.ekgrp,
+  t.ausme,
+  t.dispr,
+  t.dismm,
+  t.dispo,
+  t.kzdie,
+  t.plifz,
+  t.webaz,
+  t.perkz,
+  t.ausss,
+  t.disls,
+  t.beskz,
+  t.sobsl,
+  t.minbe,
+  t.eisbe,
+  t.bstmi,
+  t.bstma,
+  t.bstfe,
+  t.bstrf,
+  t.mabst,
+  t.losfx,
+  t.sbdkz,
+  t.lagpr,
+  t.altsl,
+  t.kzaus,
+  t.ausdt,
+  t.nfmat,
+  t.kzbed,
+  t.miskz,
+  t.fhori,
+  t.pfrei,
+  t.ffrei,
+  t.rgekz,
+  t.fevor,
+  t.bearz,
+  t.ruezt,
+  t.tranz,
+  t.basmg,
+  t.dezeit,
+  t.maxlz,
+  t.lzeih,
+  t.kzpro,
+  t.gpmkz,
+  t.ueeto,
+  t.ueetk,
+  t.uneto,
+  t.wzeit,
+  t.atpkz,
+  t.vzusl,
+  t.herbl,
+  t.insmk,
+  t.sproz,
+  t.quazt,
+  t.ssqss,
+  t.mpdau,
+  t.kzppv,
+  t.kzdkz,
+  t.wstgh,
+  t.prfrq,
+  t.nkmpr,
+  case
+    when m.umlmc is null
+    then 0
+    else m.umlmc
+  end as umlmc,
+  t.ladgr,
+  t.xchpf,
+  t.usequ,
+  t.lgrad,
+  t.auftl,
+  t.plvar,
+  t.otype,
+  t.objid,
+  t.mtvfp,
+  t.periv,
+  t.kzkfk,
+  t.vrvez,
+  t.vbamg,
+  t.vbeaz,
+  t.lizyk,
+  t.bwscl,
+  t.kautb,
+  t.kordb,
+  case
+    when materialtradeclassification.ccngn is null
+    then ''
+    else (
+      rtrim(
+        substring(
+          materialtradeclassification.ccngn,
+          1,
+          17
+        )
+      )
+    )
+  end as stawn,
+  t.herkl,
+  t.herkr,
+  materialtradeunit.bemeh as expme,
+  t.mtver,
+  t.prctr,
+  case
+    when m.trame is null
+    then 0
+    else m.trame
+  end as trame,
+  t.mrppp,
+  t.sauft,
+  t.fxhor,
+  t.vrmod,
+  t.vint1,
+  t.vint2,
+  t.verkz,
+  t.stlal,
+  t.stlan,
+  t.plnnr,
+  t.aplal,
+  t.losgr,
+  t.sobsk,
+  t.frtme,
+  t.lgpro,
+  t.disgr,
+  t.kausf,
+  t.qztp,
+  t.qmatv,
+  t.takzt,
+  t.rwpro,
+  t.copam,
+  t.abcin,
+  t.awsls,
+  t.sernp,
+  t.cuobj,
+  t.stdpd,
+  t.sfepr,
+  t.xmcng,
+  t.qssys,
+  t.lfrhy,
+  t.rdprf,
+  t.vrbmt,
+  t.vrbwk,
+  t.vrbdt,
+  t.vrbfk,
+  t.autru,
+  t.prefe,
+  t.prenc,
+  t.preno,
+  t.prend,
+  t.prene,
+  t.preng,
+  t.itark,
+  t.servg,
+  t.kzkup,
+  t.strgr,
+  t.cuobv,
+  t.lgfsb,
+  t.schgt,
+  t.ccfix,
+  t.eprio,
+  t.qmata,
+  t.resvp,
+  t.plnty,
+  t.uomgr,
+  t.umrsl,
+  t.abfac,
+  t.sfcpf,
+  t.shflg,
+  t.shzet,
+  t.mdach,
+  t.kzech,
+  t.megru,
+  t.mfrgr,
+  t.profil,
+  case
+    when m.vkumc is null
+    then 0
+    else m.vkumc
+  end as vkumc,
+  case
+    when m.vktrw is null
+    then 0
+    else m.vktrw
+  end as vktrw,
+  t.kzagl,
+  t.fvidk,
+  t.fxpru,
+  t.loggr,
+  t.fprfm,
+  case
+    when m.glgmg is null
+    then 0
+    else m.glgmg
+  end as glgmg,
+  case
+    when m.vkglg is null
+    then 0
+    else m.vkglg
+  end as vkglg,
+  t.indus,
+  t.mownr,
+  t.mogru,
+  t.casnr,
+  t.gpnum,
+  t.steuc,
+  t.fabkz,
+  t.matgr,
+  t.vspvb,
+  t.dplfs,
+  t.dplpu,
+  t.dplho,
+  t.minls,
+  t.maxls,
+  t.fixls,
+  t.ltinc,
+  t.compl,
+  t.convt,
+  t.shpro,
+  t.ahdis,
+  t.diber,
+  t.kzpsp,
+  t.ocmpf,
+  t.apokz,
+  'x' as mcrue,
+  case
+    when (
+      m.gjper = '0000000'
+      or m.gjper is null
+    )
+    then t.lfmon
+    else (
+      rtrim(
+        substring(m.gjper, 6, 2)
+      )
+    )
+  end as lfmon,
+  case
+    when (
+      m.gjper = '0000000'
+      or m.gjper is null
+    )
+    then t.lfgja
+    else (
+      rtrim(
+        substring(m.gjper, 1, 4)
+      )
+    )
+  end as lfgja,
+  t.eislo,
+  t.ncost,
+  t.rotation_date,
+  t.uchkz,
+  t.ucmat,
+  case
+    when m.bwesb is null
+    then 0
+    else m.bwesb
+  end as bwesb,
+  t.sgt_covs,
+  t.sgt_statc,
+  t.sgt_scope,
+  '' as sgt_mrpsi,
+  '' as sgt_prcm,
+  '' as sgt_chint,
+  '' as sgt_stk_prt,
+  t.sgt_defsc,
+  '' as sgt_mrp_atp_status,
+  t.sgt_mmstd,
+  t.fsh_mg_arun_req,
+  '' as fsh_seaim,
+  t.fsh_var_group,
+  '' as fsh_kzech,
+  t.fsh_calendar_group,
+  t.arun_fix_batch,
+  t.ppskz,
+  t.cons_procg,
+  t.gi_pr_time,
+  t.multiple_ekgrp,
+  t.ref_schema,
+  t.min_troc,
+  t.max_troc,
+  t.target_stock,
+  t.nf_flag,
+  case
+    when m._cwm_umlmc is null
+    then 0
+    else m._cwm_umlmc
+  end as _cwm_umlmc,
+  case
+    when m._cwm_trame is null
+    then 0
+    else m._cwm_trame
+  end as _cwm_trame,
+  case
+    when m._cwm_bwesb is null
+    then 0
+    else m._cwm_bwesb
+  end as _cwm_bwesb,
+  t.scm_matlocid_guid16,
+  t.scm_matlocid_guid22,
+  t.scm_grprt,
+  t.scm_giprt,
+  t.scm_scost,
+  t.scm_reldt,
+  t.scm_rrp_type,
+  t.scm_heur_id,
+  t.scm_package_id,
+  t.scm_sspen,
+  t.scm_get_alerts,
+  t.scm_res_net_name,
+  t.scm_conhap,
+  t.scm_hunit,
+  t.scm_conhap_out,
+  t.scm_hunit_out,
+  t.scm_shelf_life_loc,
+  t.scm_shelf_life_dur,
+  t.scm_maturity_dur,
+  t.scm_shlf_lfe_req_min,
+  t.scm_shlf_lfe_req_max,
+  t.scm_lsuom,
+  t.scm_reord_dur,
+  t.scm_target_dur,
+  t.scm_tstrid,
+  t.scm_stra1,
+  t.scm_peg_past_alert,
+  t.scm_peg_future_alert,
+  t.scm_peg_strategy,
+  t.scm_peg_wo_alert_fst,
+  t.scm_fixpeg_prod_set,
+  t.scm_whatbom,
+  t.dummy_plnt_incl_eew_ps,
+  t.scm_rrp_sel_group,
+  t.scm_intsrc_prof,
+  t.scm_prio,
+  t.scm_min_pass_amount,
+  t.scm_profid,
+  t.scm_ges_mng_use,
+  t.scm_ges_bst_use,
+  t.esppflg,
+  t.scm_thruput_time,
+  t.scm_tpop,
+  t.scm_safty_v,
+  t.scm_ppsafystk,
+  t.scm_ppsafystk_v,
+  t.scm_repsafty,
+  t.scm_repsafty_v,
+  t.scm_reord_v,
+  t.scm_maxstock_v,
+  t.scm_scost_prcnt,
+  t.scm_proc_cost,
+  t.scm_ndcostwa,
+  t.scm_ndcostwe,
+  t.excise_tax_rlvnce,
+  t.scm_coninp,
+  t.conf_gmsync,
+  t.scm_iunit,
+  t.scm_sft_lock,
+  t.sfty_stk_meth,
+  t.temp_ctrl_min,
+  t.temp_ctrl_max,
+  t.temp_uom,
+  t.jitprodnconfprofile,
+  t._sapmp_tolprpl,
+  t._sapmp_tolprmi,
+  t._sttpec_servalid,
+  t._vso_r_pkgrp,
+  t._vso_r_lane_num,
+  t._vso_r_pal_vend,
+  t._vso_r_fork_dir,
+  t.iuid_relevant,
+  t.iuid_type,
+  t.uid_iea,
+  t.dpcbt
+from
+  {{ ref('stg_sap__marc') }} t
+  left outer join {{ ref('stg_sap__t001w') }} plant on (
+    plant.mandt = t.mandt
+    and plant.werks = t.werks
+    and t.mandt = plant.mandt
+  )
+  left outer join {{ ref('stg_sap___sapsll_tunos') }} numberscemeusage on (
+    plant.mandt = numberscemeusage.mandt
+    and plant.land1 = numberscemeusage.land1
+    and numberscemeusage.ctsty = '01'
+    and t.mandt = numberscemeusage.mandt
+  )
+  left outer join {{ ref('stg_sap___sapsll_maritc') }} materialtradeclassification on (
+    materialtradeclassification.mandt = t.mandt
+    and materialtradeclassification.matnr = t.matnr
+    and materialtradeclassification.stcts = numberscemeusage.stcts
+    and materialtradeclassification.datab <= to_char(current_date(), 'yyyymmdd')
+    and materialtradeclassification.datbi >= to_char(current_date(), 'yyyymmdd')
+    and t.mandt = materialtradeclassification.mandt
+  )
+  left outer join {{ ref('stg_sap___sapsll_nosca') }} numberschemecontent on (
+    numberschemecontent.stcts = numberscemeusage.stcts
+    and numberschemecontent.datab <= to_char(current_date(), 'yyyymmdd')
+    and numberschemecontent.datbi >= to_char(current_date(), 'yyyymmdd')
+    and t.mandt = numberschemecontent.mandt
+  )
+  left outer join {{ ref('stg_sap___sapsll_clsnr') }} materialtradeunit on (
+    materialtradeunit.nosct = numberschemecontent.nosct
+    and materialtradeunit.ccngn = materialtradeclassification.ccngn
+    and materialtradeunit.datab <= to_char(current_date(), 'yyyymmdd')
+    and materialtradeunit.datbi >= to_char(current_date(), 'yyyymmdd')
+    and t.mandt = materialtradeunit.mandt
+  )
+  left outer join nsdm_v_marc_diff m on (
+    t.mandt = m.mandt
+    and t.matnr = m.matnr
+    and t.werks = m.werks
+    and t.mandt = m.mandt
+  )

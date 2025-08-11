@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: sap
-    schema: "{{ var('sap_schema', 'sap') }}"
+    schema: "{{ var('sap_schema', 'sap_cds_compatibility_views_saphanadb') }}"
     database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
 
     loader: fivetran
@@ -16,7 +16,7 @@ sources:
         description: add docs here
 
       - name: finsc_cmp_versnd
-        identifier: "{{ var('sap_finsc_cmp_versnd_identifier', 'finsc_cmp_versndseg') }}"
+        identifier: "{{ var('sap_finsc_cmp_versnd_identifier', 'finsc_cmp_versnd') }}"
         config:
           enabled: "{{ var('sap_using_finsc_cmp_versnd', true) }}"
         description: add docs here
@@ -37,6 +37,12 @@ sources:
         identifier: "{{ var('sap_mchb_identifier', 'mchb') }}"
         config:
           enabled: "{{ var('sap_using_mchb', true) }}"
+        description: add docs here
+
+      - name: mchp
+        identifier: "{{ var('sap_mchp_identifier', 'mchp') }}"
+        config:
+          enabled: "{{ var('sap_using_mchp', true) }}"
         description: add docs here
 
       - name: tka01
@@ -67,6 +73,12 @@ sources:
         identifier: "{{ var('sap__sapsll_tunos_identifier', '_sapsll_tunos') }}"
         config:
           enabled: "{{ var('sap_using__sapsll_tunos', true) }}"
+        description: add docs here
+
+      - name: _sapsll_maritc
+        identifier: "{{ var('sap__sapsll_maritc_identifier', '_sapsll_maritc') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_maritc', true) }}"
         description: add docs here
 
       - name: _sapsll_nosca

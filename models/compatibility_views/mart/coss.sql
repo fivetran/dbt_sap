@@ -164,18 +164,18 @@ sq_coss_wdv_1 as (
     a.bstat as bstat,
     a.timestamp
   from
-    {{ ref('acdoca') }} a
-    inner join {{ ref('finsc_cmp_versnd') }} v on v.mandt = a.rclnt
+    {{ ref('stg_sap__acdoca') }} a
+    inner join {{ ref('stg_sap__finsc_cmp_versnd') }} v on v.mandt = a.rclnt
     and v.bukrs = a.rbukrs
     and v.rldnr = a.rldnr
     and a.rclnt = v.mandt
-    inner join {{ ref('tj01') }} t on t.vrgng = a.vrgng
+    inner join {{ ref('stg_sap__tj01') }} t on t.vrgng = a.vrgng
     and t.xcosp = ''
     and t.xcoss = 'x'
-    inner join {{ ref('tka01') }} tk on tk.mandt = a.rclnt
+    inner join {{ ref('stg_sap__tka01') }} tk on tk.mandt = a.rclnt
     and tk.kokrs = a.kokrs
     and a.rclnt = tk.mandt
-    inner join {{ ref('t000') }} s on s.mandt = a.rclnt
+    inner join {{ ref('stg_sap__t000') }} s on s.mandt = a.rclnt
     and (
       s.logsys = a.logsyso
       or a.logsyso = ''

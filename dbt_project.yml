@@ -2,7 +2,7 @@ config-version: 2
 name: 'sap'
 version: '0.2.1'
 require-dbt-version: [">=1.3.0", "<2.0.0"]
-
+profile: 'dbt_production'
 models:
   sap:
     +materialized: table
@@ -13,6 +13,7 @@ models:
 
 vars:
   sap:
+    acdoca: "{{ source('sap', 'acdoca') }}"
     bkpf: "{{ source('sap', 'bkpf') }}"
     bseg: "{{ source('sap', 'bseg') }}"
     dd07l: "{{ source('sap', 'dd07l') }}"
@@ -23,16 +24,25 @@ vars:
     ekpo: "{{ source('sap', 'ekpo') }}"
     faglflexa: "{{ source('sap', 'faglflexa') }}"
     faglflext: "{{ source('sap', 'faglflext') }}"
+    finsc_cmp_versnd: "{{ source('sap', 'finsc_cmp_versnd') }}"
+    finsc_ledger_rep: "{{ source('sap', 'finsc_ledger_rep') }}"
+    finsc_ld_cmp: "{{ source('sap', 'finsc_ld_cmp') }}"
     kna1: "{{ source('sap', 'kna1') }}"
     lfa1: "{{ source('sap', 'lfa1') }}"
     makt: "{{ source('sap', 'makt') }}"
     mara: "{{ source('sap', 'mara') }}"
+    marc: "{{ source('sap', 'marc') }}"
+    matdoc: "{{ source('sap', 'matdoc') }}"
+    matdoc_extract: "{{ source('sap', 'matdoc_extract') }}"
+    mchb: "{{ source('sap', 'mchb') }}"
+    mchp: "{{ source('sap', 'mchp') }}"
     pa0000: "{{ source('sap', 'pa0000') }}"
     pa0001: "{{ source('sap', 'pa0001') }}"
     pa0007: "{{ source('sap', 'pa0007') }}"
     pa0008: "{{ source('sap', 'pa0008') }}"
     pa0031: "{{ source('sap', 'pa0031') }}" 
     ska1: "{{ source('sap', 'ska1') }}"
+    t000: "{{ source('sap', 't000') }}"
     t001: "{{ source('sap', 't001') }}"
     t001w: "{{ source('sap', 't001w') }}"
     t024: "{{ source('sap', 't024') }}"
@@ -43,9 +53,15 @@ vars:
     t161t: "{{ source('sap', 't161t') }}"
     t503: "{{ source('sap', 't503') }}"
     t880: "{{ source('sap', 't880') }}"
+    tj01: "{{ source('sap', 'tj01') }}"
+    tka01: "{{ source('sap', 'tka01') }}"
     tvag: "{{ source('sap', 'tvag') }}"
     tvagt: "{{ source('sap', 'tvagt') }}"
     vbak: "{{ source('sap', 'vbak') }}"
     vbap: "{{ source('sap', 'vbap') }}"
     vbuk: "{{ source('sap', 'vbuk') }}"
     vbup: "{{ source('sap', 'vbup') }}"
+    _sapsll_clsnr: "{{ source('sap', '_sapsll_clsnr') }}"
+    _sapsll_maritc: "{{ source('sap', '_sapsll_maritc') }}"
+    _sapsll_nosca: "{{ source('sap', '_sapsll_nosca') }}"
+    _sapsll_tunos: "{{ source('sap', '_sapsll_tunos') }}"

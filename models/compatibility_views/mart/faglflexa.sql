@@ -1,124 +1,164 @@
-SELECT
-A.RCLNT,
-A.RYEAR,
-A.BELNR AS DOCNR,
-LR.RLDNR AS RLDNR,
-A.RBUKRS,
-A.DOCLN,
-(A.BTTYPE) AS ACTIV,
-A.RMVCT,
-A.RTCUR,
-A.RUNIT,
-A.AWTYP,
-A.RRCTY,
-'001' AS RVERS,
-A.AWSYS AS LOGSYS,
-A.RACCT,
-CASE WHEN NOT ( A.CO_BUZEI = '000' ) 
-THEN A.RACCT 
-ELSE '' 
-END AS COST_ELEM,
-A.RCNTR,
-A.PRCTR,
-A.RFAREA,
-A.RBUSA,
-A.KOKRS,
-A.SEGMENT,
-A.SCNTR,
-A.PPRCTR,
-A.SFAREA,
-A.SBUSA,
-A.RASSC,
-A.PSEGMENT,
-A.TSL,
-A.HSL,
-CASE WHEN LC.CURPOSK = '2' 
-THEN A.KSL WHEN LC.CURPOSO = '2' 
-THEN A.OSL WHEN LC.CURPOSV = '2' 
-THEN A.VSL WHEN LC.CURPOSB = '2' 
-THEN A.BSL WHEN LC.CURPOSC = '2' 
-THEN A.CSL WHEN LC.CURPOSD = '2' 
-THEN A.DSL WHEN LC.CURPOSE = '2' 
-THEN A.ESL WHEN LC.CURPOSF = '2' 
-THEN A.FSL WHEN LC.CURPOSG = '2' 
-THEN A.GSL 
-ELSE CAST( 0 AS DECIMAL( 000023,
-000000)) 
-END AS KSL,
-CASE WHEN LC.CURPOSO = '3' 
-THEN A.OSL WHEN LC.CURPOSK = '3' 
-THEN A.KSL WHEN LC.CURPOSV = '3' 
-THEN A.VSL WHEN LC.CURPOSB = '3' 
-THEN A.BSL WHEN LC.CURPOSC = '3' 
-THEN A.CSL WHEN LC.CURPOSD = '3' 
-THEN A.DSL WHEN LC.CURPOSE = '3' 
-THEN A.ESL WHEN LC.CURPOSF = '3' 
-THEN A.FSL WHEN LC.CURPOSG = '3' 
-THEN A.GSL 
-ELSE CAST( 0 AS DECIMAL( 000023,000000)) 	END AS OSL,
-A.MSL,
-A.WSL,
-A.FSL,
-A.VSL,
-A.DRCRK,
-A.POPER,
-A.RWCUR,
-A.GJAHR,
-A.BUDAT,
-A.BELNR,
-A.BUZEI,
-A.BSCHL,
-A.BSTAT,
-A.LINETYPE,
-A.XSPLITMOD,
-A.USNAM,
-A.TIMESTAMP,
-A._DATAAGING,
-A.FIKRS,
-A.RFUND,
-A.RGRANT_NBR,
-A.RBUDGET_PD,
-A.SFUND,
-A.SGRANT_NBR,
-A.SBUDGET_PD,
-A.RE_BUKRS,
-A.RE_ACCOUNT,
-A.VNAME,
-A.EGRUP,
-A.RECID,
-A.MIG_SOURCE,
-A.MIG_DOCLN,
-A.RHCUR,
-A.RFCUR,
-A.RVCUR,
-A.FCSL,
-A.RFCCUR,
-CASE WHEN LC.CURPOSK = '2' 
-THEN A.RKCUR WHEN LC.CURPOSO = '2' 
-THEN A.ROCUR WHEN LC.CURPOSV = '2' 
-THEN A.RVCUR 
-ELSE '' 
-END AS RKCUR,
-CASE WHEN LC.CURPOSO = '3' 
-THEN A.ROCUR WHEN LC.CURPOSK = '3' 
-THEN A.RKCUR WHEN LC.CURPOSV = '3' 
-THEN A.RVCUR 
-ELSE '' 
-END AS ROCUR 
-FROM {{ source('raw_tables', 'acdoca') }} A 
-INNER JOIN {{ source('raw_tables', 'finsc_ledger_rep') }} LR 
-    ON ( LR.MANDT = A.RCLNT 
-    AND LR.RLDNR_PERS = A.RLDNR 
-    AND A.RCLNT = LR.MANDT )
-INNER JOIN {{ source('raw_tables', 'finsc_ld_cmp') }} LC 
-    ON ( LC.MANDT = A.RCLNT 
-    AND LC.BUKRS = A.RBUKRS 
-    AND LC.RLDNR = LR.RLDNR 
-    AND A.RCLNT = LC.MANDT )
-where ( A.BSTAT = '' 
-    OR A.BSTAT = 'L' 
-    OR A.BSTAT = 'U' 
-    OR A.BSTAT = 'J' 
-    OR A.BSTAT = 'T' 
-    OR ( A.BSTAT = 'C' 
-        AND A.POPER = '000' ) )
+select
+  a.rclnt,
+  a.ryear,
+  a.belnr as docnr,
+  lr.rldnr as rldnr,
+  a.rbukrs,
+  a.docln,
+  (a.bttype) as activ,
+  a.rmvct,
+  a.rtcur,
+  a.runit,
+  a.awtyp,
+  a.rrcty,
+  '001' as rvers,
+  a.awsys as logsys,
+  a.racct,
+  case
+    when not (a.co_buzei = '000')
+    then a.racct
+    else ''
+  end as cost_elem,
+  a.rcntr,
+  a.prctr,
+  a.rfarea,
+  a.rbusa,
+  a.kokrs,
+  a.segment,
+  a.scntr,
+  a.pprctr,
+  a.sfarea,
+  a.sbusa,
+  a.rassc,
+  a.psegment,
+  a.tsl,
+  a.hsl,
+  case
+    when lc.curposk = '2'
+    then a.ksl
+    when lc.curposo = '2'
+    then a.osl
+    when lc.curposv = '2'
+    then a.vsl
+    when lc.curposb = '2'
+    then a.bsl
+    when lc.curposc = '2'
+    then a.csl
+    when lc.curposd = '2'
+    then a.dsl
+    when lc.curpose = '2'
+    then a.esl
+    when lc.curposf = '2'
+    then a.fsl
+    when lc.curposg = '2'
+    then a.gsl
+    else cast(
+      0 as decimal(
+        000023,
+        000000
+      )
+    )
+  end as ksl,
+  case
+    when lc.curposo = '3'
+    then a.osl
+    when lc.curposk = '3'
+    then a.ksl
+    when lc.curposv = '3'
+    then a.vsl
+    when lc.curposb = '3'
+    then a.bsl
+    when lc.curposc = '3'
+    then a.csl
+    when lc.curposd = '3'
+    then a.dsl
+    when lc.curpose = '3'
+    then a.esl
+    when lc.curposf = '3'
+    then a.fsl
+    when lc.curposg = '3'
+    then a.gsl
+    else cast(
+      0 as decimal(000023, 000000)
+    )
+  end as osl,
+  a.msl,
+  a.wsl,
+  a.fsl,
+  a.vsl,
+  a.drcrk,
+  a.poper,
+  a.rwcur,
+  a.gjahr,
+  a.budat,
+  a.belnr,
+  a.buzei,
+  a.bschl,
+  a.bstat,
+  a.linetype,
+  a.xsplitmod,
+  a.usnam,
+  a.timestamp,
+  a._dataaging,
+  a.fikrs,
+  a.rfund,
+  a.rgrant_nbr,
+  a.rbudget_pd,
+  a.sfund,
+  a.sgrant_nbr,
+  a.sbudget_pd,
+  a.re_bukrs,
+  a.re_account,
+  a.vname,
+  a.egrup,
+  a.recid,
+  a.mig_source,
+  a.mig_docln,
+  a.rhcur,
+  a.rfcur,
+  a.rvcur,
+  a.fcsl,
+  a.rfccur,
+  case
+    when lc.curposk = '2'
+    then a.rkcur
+    when lc.curposo = '2'
+    then a.rocur
+    when lc.curposv = '2'
+    then a.rvcur
+    else ''
+  end as rkcur,
+  case
+    when lc.curposo = '3'
+    then a.rocur
+    when lc.curposk = '3'
+    then a.rkcur
+    when lc.curposv = '3'
+    then a.rvcur
+    else ''
+  end as rocur
+from
+  {{ ref('stg_sap__acdoca') }} a
+  inner join {{ ref('stg_sap__finsc_ledger_rep') }} lr on (
+    lr.mandt = a.rclnt
+    and lr.rldnr_pers = a.rldnr
+    and a.rclnt = lr.mandt
+  )
+  inner join {{ ref('stg_sap__finsc_ld_cmp') }} lc on (
+    lc.mandt = a.rclnt
+    and lc.bukrs = a.rbukrs
+    and lc.rldnr = lr.rldnr
+    and a.rclnt = lc.mandt
+  )
+where
+  (
+    a.bstat = ''
+    or a.bstat = 'l'
+    or a.bstat = 'u'
+    or a.bstat = 'j'
+    or a.bstat = 't'
+    or (
+      a.bstat = 'c'
+      and a.poper = '000'
+    )
+  )
