@@ -1,3 +1,13 @@
+# dbt_sap v0.3.0
+[PR #](https://github.com/fivetran/dbt_sap/pull/) includes the following updates:
+
+**97 total changes • 94 possible breaking changes**
+| **Data Model** | **Change type** | **Old** | **New** | **Notes** |
+| -------------- | --------------- | ------------ | ------------ | --------- |
+|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. This is correcting an issue where the models were incorrectly materialized as tables in a previous release. We therefore recommend manually dropping all sap data model staging tables as they will no longer be updated.|
+| [int_*](https://github.com/fivetran/dbt_sap/tree/main/models/sales_and_procurement/star_schema/intermediate) (all sales and procurement intermediate models: 22) | Materialization | Table | Ephemeral |  These intermediate models are now views. This is correcting an issue where the models were incorrectly materialized as tables in a previous release. We therefore recommend manually dropping all sap data model sales and procurment intermediate tables as they will no longer be updated.|
+
+
 # dbt_sap v0.2.1
 [PR #28](https://github.com/fivetran/dbt_sap/pull/28) includes the following updates:
 

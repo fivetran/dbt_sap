@@ -4,9 +4,18 @@ version: '0.2.1'
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 
 models:
-  sap:
-    +materialized: table
-    +schema: sap 
+ sap:
+   +materialized: table
+   +schema: sap
+   staging:
+     +materialized: view
+   extractor_reports:
+     intermediate:
+       +materialized: table
+   sales_and_procurement:
+     star_schema:
+       intermediate:
+         +materialized: ephemeral
 
 vars:
   sap:
