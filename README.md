@@ -21,7 +21,7 @@
     - Brings in general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
     - Brings in master text models like Company Code (`sap__0comp_code_text`), Company (`sap__0company_text`), and Vendor (`sap__0vendor_text`).
     - Provides sales and procurement models including facts and dimensions for purchase and sales orders.
-- Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
+- Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
 <!--section=“sap_transformation_model"-->
@@ -129,12 +129,14 @@ vars:
 ```
 
 #### Change the build schema
-By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `stg_sap`) and the SAP final models within a schema titled (<target_schema> + `_sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `sap_source`) and the SAP final models within a schema titled (<target_schema> + `sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
     sap:
       +schema: my_new_schema_name # leave blank for just the target_schema
+      staging:
+        +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
 #### Change the source table references
@@ -143,7 +145,7 @@ If an individual source table has a different name than the package expects, add
 
 ```yml
 vars:
-    sap_<default_source_table_name>_identifier: your_table_name 
+    sap_<default_source_table_name>_identifier: your_table_name
 ```
 
 </details>
