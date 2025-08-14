@@ -1,5 +1,5 @@
 # dbt_sap v0.3.0
-[PR #](https://github.com/fivetran/dbt_sap/pull/) includes the following updates:
+[PR #34](https://github.com/fivetran/dbt_sap/pull/34) includes the following updates:
 
 **97 total changes • 94 possible breaking changes**
 | **Data Model** | **Change type** | **Old** | **New** | **Notes** |
