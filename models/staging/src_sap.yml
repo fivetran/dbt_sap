@@ -11,7 +11,6 @@ sources:
       - name: bkpf
         identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
         config:
-          loaded_at_field: _fivetran_synced
           enabled: "{{ var('sap_using_bkpf', true) }}"
         description: Accounting document header
         columns:
