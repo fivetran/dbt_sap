@@ -6,7 +6,7 @@
 **97 total changes • 94 of which are breaking in the form of materialization updates**
 | **Data Model** | **Change type** | **Old** | **New** | **Notes** |
 | -------------- | --------------- | ------------ | ------------ | --------- |
-|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. We therefore recommend manually dropping all sap data model staging tables as they will no longer be updated in favor of the materialized views.|
+|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. Upon full refresh, the package should automatically drop the tables and recreate them as views. However, we recommend reviewing your schema and manually dropping any remaining staging models materialized as tables as they will no longer be updated in favor of the materialized views.|
 | [int_*](https://github.com/fivetran/dbt_sap/tree/main/models/sales_and_procurement/star_schema/intermediate) (all sales and procurement intermediate models: 22) | Materialization | Table | Ephemeral |  These intermediate models are now views. We therefore recommend manually dropping all sap data model sales and procurement intermediate tables as they will no longer be updated in favor of the materialized views.|
 
 ## dbt Fusion Compatibility Updates
