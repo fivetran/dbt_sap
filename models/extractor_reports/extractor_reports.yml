@@ -3,11 +3,6 @@ version: 2
 models:
   - name: sap__0comp_code_attr
     description: This model is used for loading company code attributes, extracting from the t001 data source.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
     columns:
       - name: mandt
         description: Client
@@ -30,11 +25,6 @@ models:
 
   - name: sap__0comp_code_text
     description: This model is used for loading company code text information, extracting from the t001 data source. 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
     columns: 
       - name: mandt
         description: Client
@@ -47,11 +37,6 @@ models:
 
   - name: sap__0company_text
     description: This model is used for loading customer text data, extracting from the t880 data source. 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - rcomp
     columns: 
       - name: mandt 
         description: Client
@@ -62,11 +47,6 @@ models:
 
   - name: sap__0customer_attr
     description: This model is used for loading customer master data, originating from the kna1 source.      
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - kunnr    
     columns:
       - name: mandt 
         description: Client
@@ -131,12 +111,6 @@ models:
 
   - name: sap__0employee_attr
     description: This model contains information that concerns the employee's work relationship, extracting master data from the personnel administration tables.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - pernr
-            - begda
-            - endda
     columns:
       - name: begda
         description: Vaild from date
@@ -611,12 +585,6 @@ models:
 
   - name: sap__0gl_account_attr
     description: This model is used for loading G/L Account Number master data, originating from the ska1 source.  
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - ktopl
-            - saknr
     columns:
       - name: mandt
         description: Client
@@ -655,11 +623,6 @@ models:
 
   - name: sap__0material_attr
     description: This model is used to display material attribute information, originating from the mara source. 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - matnr
     columns:
       - name: mandt
         description: Client
@@ -916,11 +879,6 @@ models:
 
   - name: sap__0vendor_attr
     description: This model is used to display vendor attributes, originating from the lfa1 source.  
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - lifnr
     columns:
       - name: mandt 
         description: Client
@@ -981,11 +939,6 @@ models:
 
   - name: sap__0vendor_text
     description: This model is used to display vendor text, originating from the lfa1 source.  
-    tests: 
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - lifnr
     columns:
       - name: mandt
         description: Client

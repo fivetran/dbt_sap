@@ -1,3 +1,20 @@
+# dbt_sap v0.3.0
+
+[PR #34](https://github.com/fivetran/dbt_sap/pull/34) includes the following updates:
+
+## Schema and Data Changes **(--full-refresh required after upgrading)**
+**97 total changes • 94 of which are breaking in the form of materialization updates**
+| **Data Model** | **Change type** | **Old** | **New** | **Notes** |
+| -------------- | --------------- | ------------ | ------------ | --------- |
+|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. Upon full refresh, the package should automatically drop the tables and recreate them as views. However, we recommend reviewing your schema and manually dropping any remaining staging models materialized as tables as they will no longer be updated in favor of the materialized views.|
+| [int_*](https://github.com/fivetran/dbt_sap/tree/main/models/sales_and_procurement/star_schema/intermediate) (all sales and procurement intermediate models: 22) | Materialization | Table | Ephemeral |  These intermediate models are now views. We therefore recommend manually dropping all sap data model sales and procurement intermediate tables as they will no longer be updated in favor of the materialized views.|
+
+## dbt Fusion Compatibility Updates
+- Updated package to maintain compatibility with dbt-core versions both before and after v1.10.6, which introduced a breaking change to multi-argument test syntax (e.g., `unique_combination_of_columns`).
+- Temporarily removed unsupported tests to avoid errors and ensure smoother upgrades across different dbt-core versions. These tests will be reintroduced once a safe migration path is available.
+  - Removed all `dbt_utils.unique_combination_of_columns` tests.
+  - Moved `loaded_at_field: _fivetran_synced` under the `config:` block in `src_sap.yml`
+
 # dbt_sap v0.2.1
 [PR #28](https://github.com/fivetran/dbt_sap/pull/28) includes the following updates:
 

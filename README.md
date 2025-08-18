@@ -21,7 +21,7 @@
     - Brings in general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
     - Brings in master text models like Company Code (`sap__0comp_code_text`), Company (`sap__0company_text`), and Vendor (`sap__0vendor_text`).
     - Provides sales and procurement models including facts and dimensions for purchase and sales orders.
-- Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana) and build off the output of our [SAP source package](https://github.com/fivetran/dbt_sap_source).
+- Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
 <!--section=“sap_transformation_model"-->
@@ -42,7 +42,6 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the `mara` source.                                                           |
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
-
 | [sap__dim_customer](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_customer) | Represents customer dimension data from the `kna1` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_material](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_material) | Provides enriched material and material type data by combining attributes from the `mara`, `makt`, `t134`, and `t134t` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_plant](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_plant) | Delivers plant-level dimension data from the `t001w` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
@@ -54,7 +53,7 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
 
 ### Materialized Models
-Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 95 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -129,12 +128,14 @@ vars:
 ```
 
 #### Change the build schema
-By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `stg_sap`) and the SAP final models within a schema titled (<target_schema> + `_sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the SAP staging models within a schema titled (`<target_schema>` + `sap_source`) and the SAP final models within a schema titled (<target_schema> + `sap`) in your target database. If this is not where you would like your modeled sap data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
     sap:
       +schema: my_new_schema_name # leave blank for just the target_schema
+      staging:
+        +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
 #### Change the source table references
@@ -143,7 +144,7 @@ If an individual source table has a different name than the package expects, add
 
 ```yml
 vars:
-    sap_<default_source_table_name>_identifier: your_table_name 
+    sap_<default_source_table_name>_identifier: your_table_name
 ```
 
 </details>
