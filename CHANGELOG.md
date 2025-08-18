@@ -2,12 +2,12 @@
 
 [PR #34](https://github.com/fivetran/dbt_sap/pull/34) includes the following updates:
 
-## Schema and Data Changes
-**97 total changes • 94 possible breaking changes**
+## Schema and Data Changes **(--full-refresh required after upgrading)**
+**97 total changes • 94 of which are breaking in the form of materialization updates**
 | **Data Model** | **Change type** | **Old** | **New** | **Notes** |
 | -------------- | --------------- | ------------ | ------------ | --------- |
-|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. This is correcting an issue where the models were incorrectly materialized as tables in a previous release. We therefore recommend manually dropping all sap data model staging tables as they will no longer be updated.|
-| [int_*](https://github.com/fivetran/dbt_sap/tree/main/models/sales_and_procurement/star_schema/intermediate) (all sales and procurement intermediate models: 22) | Materialization | Table | Ephemeral |  These intermediate models are now views. This is correcting an issue where the models were incorrectly materialized as tables in a previous release. We therefore recommend manually dropping all sap data model sales and procurment intermediate tables as they will no longer be updated.|
+|[stg_* ](https://github.com/fivetran/dbt_sap/tree/main/models/staging)(all staging models: 72)| Materialization | Table | View | These staging models are now views. We therefore recommend manually dropping all sap data model staging tables as they will no longer be updated in favor of the materialized views.|
+| [int_*](https://github.com/fivetran/dbt_sap/tree/main/models/sales_and_procurement/star_schema/intermediate) (all sales and procurement intermediate models: 22) | Materialization | Table | Ephemeral |  These intermediate models are now views. We therefore recommend manually dropping all sap data model sales and procurement intermediate tables as they will no longer be updated in favor of the materialized views.|
 
 ## dbt Fusion Compatibility Updates
 - Updated package to maintain compatibility with dbt-core versions both before and after v1.10.6, which introduced a breaking change to multi-argument test syntax (e.g., `unique_combination_of_columns`).
