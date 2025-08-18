@@ -42,7 +42,6 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the `mara` source.                                                           |
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
-
 | [sap__dim_customer](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_customer) | Represents customer dimension data from the `kna1` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_material](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_material) | Provides enriched material and material type data by combining attributes from the `mara`, `makt`, `t134`, and `t134t` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_plant](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_plant) | Delivers plant-level dimension data from the `t001w` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
@@ -54,7 +53,7 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
 
 ### Materialized Models
-Each Quickstart transformation job run materializes 46 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 95 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
