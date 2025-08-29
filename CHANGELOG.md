@@ -1,6 +1,6 @@
 # dbt_sap v0.3.1
 
-[PR #](https://github.com/fivetran/dbt_sap/pull/) includes the following updates:
+[PR #36](https://github.com/fivetran/dbt_sap/pull/36) includes the following updates:
 
 ## Documentation ##
 - Updated extrator_reports.yml column descriptions for debit_amount, credit_amount, accumulated_balance, and turnover fields in the sap_0fi_gl10 model
