@@ -227,13 +227,13 @@ models:
       - name: fiscal_period
         description: Fiscal year/period
       - name: debit_amount
-        description: Total debit postings
+        description: Total debit postings, derived from a balance carried forward field, will match accumulated balance and turnover amounts if the carryover was designated a debit
       - name: credit_amount
-        description: Total credit postings
+        description: Total credit postings, derived from a balance carried forward field, will match accumulated balance and turnover amounts if the carryover was designated a credit
       - name: accumulated_balance
-        description: Cumulated balance
+        description: accumulated balance of the period, derived from a balance carried forward field, will match either debit or credit amount, depending on designation
       - name: turnover
-        description: Sales of the period
+        description: Sales of the period, derived from a balance carried forward field, will match accumulated balance amount and either credit or debit amount, depending on designation
 
   - name: sap__0fi_gl_14
     description: This model extracts line items from the leading ledger in new General Ledger Accounting.
