@@ -23,9 +23,7 @@ final as (
         vrgng,
         xcosp,
         xcoss,
-        hvr_change_time,
         _fivetran_deleted,
-        _fivetran_rowid,
         _fivetran_synced
         from
         fields

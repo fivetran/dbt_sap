@@ -22,9 +22,7 @@ final as (
     select
         mandt,
         logsys,
-        hvr_change_time,
         _fivetran_deleted,
-        _fivetran_rowid,
         _fivetran_synced
         from
         fields

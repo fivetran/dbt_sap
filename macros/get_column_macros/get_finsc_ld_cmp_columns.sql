@@ -1,0 +1,50 @@
+{% macro get_finsc_ld_cmp_columns() %}
+
+{% set columns = [
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
+    {"name": "_fivetran_sap_archived", "datatype": dbt.type_boolean()},
+    {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
+    {"name": "acc_principle", "datatype": dbt.type_string()},
+    {"name": "bukrs", "datatype": dbt.type_string()},
+    {"name": "curposb", "datatype": dbt.type_string()},
+    {"name": "curposc", "datatype": dbt.type_string()},
+    {"name": "curposd", "datatype": dbt.type_string()},
+    {"name": "curpose", "datatype": dbt.type_string()},
+    {"name": "curposf", "datatype": dbt.type_string()},
+    {"name": "curposg", "datatype": dbt.type_string()},
+    {"name": "curposk", "datatype": dbt.type_string()},
+    {"name": "curposo", "datatype": dbt.type_string()},
+    {"name": "curposv", "datatype": dbt.type_string()},
+    {"name": "curtpb", "datatype": dbt.type_string()},
+    {"name": "curtpc", "datatype": dbt.type_string()},
+    {"name": "curtpd", "datatype": dbt.type_string()},
+    {"name": "curtpe", "datatype": dbt.type_string()},
+    {"name": "curtpf", "datatype": dbt.type_string()},
+    {"name": "curtpg", "datatype": dbt.type_string()},
+    {"name": "curtph", "datatype": dbt.type_string()},
+    {"name": "curtpk", "datatype": dbt.type_string()},
+    {"name": "curtpo", "datatype": dbt.type_string()},
+    {"name": "curtpv", "datatype": dbt.type_string()},
+    {"name": "functional_currency", "datatype": dbt.type_string()},
+    {"name": "mandt", "datatype": dbt.type_string()},
+    {"name": "mlrelindb", "datatype": dbt.type_string()},
+    {"name": "mlrelindc", "datatype": dbt.type_string()},
+    {"name": "mlrelindd", "datatype": dbt.type_string()},
+    {"name": "mlrelinde", "datatype": dbt.type_string()},
+    {"name": "mlrelindf", "datatype": dbt.type_string()},
+    {"name": "mlrelindg", "datatype": dbt.type_string()},
+    {"name": "mlrelindh", "datatype": dbt.type_string()},
+    {"name": "mlrelindk", "datatype": dbt.type_string()},
+    {"name": "mlrelindo", "datatype": dbt.type_string()},
+    {"name": "mlrelindv", "datatype": dbt.type_string()},
+    {"name": "opvar", "datatype": dbt.type_string()},
+    {"name": "parglaccts", "datatype": dbt.type_string()},
+    {"name": "periv", "datatype": dbt.type_string()},
+    {"name": "rldnr", "datatype": dbt.type_string()},
+    {"name": "toyear", "datatype": dbt.type_string()},
+    {"name": "write_docnr_ld", "datatype": dbt.type_string()}
+] %}
+
+{{ return(columns) }}
+
+{% endmacro %}
