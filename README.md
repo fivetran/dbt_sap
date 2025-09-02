@@ -45,7 +45,7 @@ The following tables provide a detailed list of all tables materialized within t
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
 
-## Sales and Procurement ##
+## Sales and Procurement
 
 | **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
