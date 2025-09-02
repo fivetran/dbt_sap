@@ -231,9 +231,9 @@ models:
       - name: credit_amount
         description: Total credit postings
       - name: accumulated_balance
-        description: Cumulated balance
+        description: accumulated balance from the previous fiscal period. Value initially derived from hslvt, tslvt, kslvt, or oslvt fields. Will match turnover at the beginning of the first fiscal period of the year
       - name: turnover
-        description: Sales of the period
+        description: Turnover amount from the previous fiscal period. Value initially derived from aliased hslvt, tslvt, kslvt, or oslvt fields (hsmvt/tsmvt/ksmvt/osmvt). Will match accumulated_value at the beginning of the first fiscal period of the year
 
   - name: sap__0fi_gl_14
     description: This model extracts line items from the leading ledger in new General Ledger Accounting.

@@ -26,8 +26,10 @@
 
 <!--section=“sap_transformation_model"-->
 
-The following table provides a detailed list of all tables materialized within this package by default.
+The following tables provide a detailed list of all tables materialized within this package by default.
 > TIP: See more details about these tables in the package's [dbt docs site](https://fivetran.github.io/dbt_sap/#!/overview?g_v=1).
+
+## Extractor Reports
 
 | **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,6 +44,11 @@ The following table provides a detailed list of all tables materialized within t
 | [sap__0material_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)    |  This model is used to display material attribute information, originating from the `mara` source.                                                           |
 | [sap__0vendor_attr](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_attr)    |  This model is used to display vendor attributes, originating from the `lfa1` source.                           |
 | [sap__0vendor_text](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0vendor_text) |  This model is used to display vendor text, originating from the `lfa1` source.     |
+
+## Sales and Procurement
+
+| **Table**                         | **Description**                                                                                                                                                                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [sap__dim_customer](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_customer) | Represents customer dimension data from the `kna1` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_material](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_material) | Provides enriched material and material type data by combining attributes from the `mara`, `makt`, `t134`, and `t134t` sources to support dimensional reporting. SAP field names are mapped to English readable column names. |
 | [sap__dim_plant](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_plant) | Delivers plant-level dimension data from the `t001w` source to support dimensional reporting. SAP field names are mapped to English readable column names. |
