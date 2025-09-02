@@ -4,8 +4,8 @@
 
 ## Documentation
 - Updated the following column descriptions within the [sap__0fi_gl10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10) model: `accumulated_balance` and `turnover`. 
-  - `accumulated_balance` and `turnover` are both initially derived from the hslvt, tslvt, kslvt, and oslvt fields, representing the balance carried forward from the previous fiscal year and will be identical at the beginning of the first fiscal period of the year, diverging with subsequent transactions
-  - hslvt, tslvt, kslvt, and oslvt are intentionally duplicated and aliased as hsmvt, tsmvt, ksmvt, and osmvt for legacy compatibility purposes
+  - `accumulated_balance` and `turnover` are both initially derived from the hslvt, tslvt, kslvt, and oslvt fields. They represent the balance carried forward from the previous fiscal year and are identical at the beginning of the first fiscal period. However, they diverge as subsequent transactions occur.
+  - hslvt, tslvt, kslvt, and oslvt are intentionally duplicated and aliased as hsmvt, tsmvt, ksmvt, and osmvt for legacy compatibility purposes.
 
 # dbt_sap v0.3.0
 
