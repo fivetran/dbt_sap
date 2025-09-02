@@ -3,9 +3,9 @@
 [PR #36](https://github.com/fivetran/dbt_sap/pull/36) includes the following updates:
 
 ## Documentation
-- Updated extrator_reports.yml column descriptions for debit_amount, credit_amount, accumulated_balance, and turnover fields in the sap_0fi_gl10 model
-- accumulated_balance and turnover are both derived from the same source field, "balance carried forward" in a specific currency and will be identical amounts in the end model, as well as matching either the credit_amount or debit_amount depending on the credit/debit designation in the source
-- This duplication is deliberate and protects both legacy systems and downstream analytics
+- Updated the following column descriptions within the [sap__0fi_gl10](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0fi_gl_10) model: `debit_amount`, `credit_amount`, `accumulated_balance`, `turnover`. 
+  - `accumulated_balance` and `turnover` are both derived from the same source field, "balance carried forward" in a specific currency and will be identical amounts in the end model, as well as matching either the `credit_amount` or `debit_amount` depending on the credit/debit designation in the source.
+  - This duplication is deliberate and protects both legacy systems and downstream analytics.
 
 # dbt_sap v0.3.0
 
