@@ -26,7 +26,7 @@
 
 <!--section=“sap_transformation_model"-->
 
-The following table provides a detailed list of all tables materialized within this package by default.
+The following tables provide a detailed list of all tables materialized within this package by default.
 > TIP: See more details about these tables in the package's [dbt docs site](https://fivetran.github.io/dbt_sap/#!/overview?g_v=1).
 
 ## Extractor Reports ##
