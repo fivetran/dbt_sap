@@ -74,6 +74,13 @@ seeds:
       _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
       _fivetran_synced: timestamp
 
+    sap_acdoca_data:
+      +column_types:
+        acrrefobj_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+    sap_sapsll_maritc_data:
+      +column_types:
+        crea_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        lchg_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
     sap_bkpf_data:
       +column_types:
         aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
