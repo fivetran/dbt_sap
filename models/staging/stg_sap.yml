@@ -3,13 +3,6 @@ version: 2
 models:
   - name: stg_sap__bkpf
     description: Accounting document header
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
-            - belnr
-            - gjahr
     columns:
       - name: awkey
         description: Reference key
@@ -54,14 +47,6 @@ models:
 
   - name: stg_sap__bseg
     description: Accounting document segment
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
-            - belnr
-            - gjahr
-            - buzei
     columns:
       - name: absbt
         description: Credit management (Hedged amount)
@@ -304,14 +289,6 @@ models:
 
   - name: stg_sap__dd07l
     description: Domain values
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - as4vers
-            - valpos
-            - as4local
-            - domname
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -332,15 +309,6 @@ models:
 
   - name: stg_sap__dd07t
     description: Domain text values
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - as4local
-            - as4vers
-            - ddlanguage
-            - domname
-            - valpos
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -367,18 +335,6 @@ models:
 
   - name: stg_sap__ekbe
     description: Purchasing document history
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - zekkn
-            - gjahr
-            - belnr
-            - vgabe
-            - ebelp
-            - ebeln
-            - mandt
-            - buzei
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -563,14 +519,6 @@ models:
 
   - name: stg_sap__eket
     description: Schedule lines for purchasing document
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - etenr
-            - ebelp
-            - ebeln
-            - mandt
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -731,12 +679,6 @@ models:
 
   - name: stg_sap__ekko
     description: Purchasing document header
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - ebeln
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -1027,13 +969,6 @@ models:
 
   - name: stg_sap__ekpo
     description: Purchasing document item
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - ebelp
-            - ebeln
-            - hvr_change_time
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator
@@ -1814,15 +1749,6 @@ models:
 
   - name: stg_sap__faglflexa
     description: General ledger (Actual line items)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - rclnt
-            - ryear
-            - docnr
-            - rldnr
-            - rbukrs
-            - docln
     columns:
       - name: activ
         description: FI-SL business transaction
@@ -1918,22 +1844,6 @@ models:
 
   - name: stg_sap__faglflext
     description: General ledger (Totals)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - rclnt
-            - ryear
-            - objnr00
-            - objnr01
-            - objnr02
-            - objnr03
-            - objnr04
-            - objnr05
-            - objnr06
-            - objnr07
-            - objnr08
-            - drcrk
-            - rpmax
     columns:
       - name: activ
         description: FI-SL business transaction
@@ -2158,11 +2068,6 @@ models:
 
   - name: stg_sap__kna1
     description: General Data in Customer Master
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - kunnr
     columns:
       - name: abrvw
         description: Usage indicator
@@ -2561,11 +2466,6 @@ models:
 
   - name: stg_sap__lfa1
     description: Vendor master (General section)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - lifnr
     columns:
       - name: mandt
         description: Client
@@ -2854,12 +2754,6 @@ models:
 
   - name: stg_sap__makt
     description: Material Descriptions
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - matnr
-            - mandt
-            - spras
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -2878,11 +2772,6 @@ models:
 
   - name: stg_sap__mara
     description: General material data 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - matnr
     columns:
       - name: aeklk
         description: Stock transfer net change costing
@@ -3377,17 +3266,6 @@ models:
 
   - name: stg_sap__pa0000
     description: HR master record--infotype 0000 (Actions)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - pernr
-            - subty
-            - objps
-            - sprps
-            - endda
-            - begda
-            - seqnr
     columns:
       - name: aedtm
         description: Last changed on
@@ -3448,17 +3326,6 @@ models:
 
   - name: stg_sap__pa0001
     description: HR master record--infotype 0001 (org. assignment)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - pernr
-            - subty
-            - objps
-            - sprps
-            - endda
-            - begda
-            - seqnr
     columns:
       - name: abkrs
         description: Payroll area
@@ -3567,17 +3434,6 @@ models:
 
   - name: stg_sap__pa0007
     description: HR master record--infotype 0007 (planned working time)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - pernr
-            - subty
-            - objps
-            - sprps
-            - endda
-            - begda
-            - seqnr
     columns:
       - name: aedtm
         description: Changed on
@@ -3670,17 +3526,6 @@ models:
 
   - name: stg_sap__pa0008
     description: HR master record--infotype 0008 (basic pay)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - pernr
-            - subty
-            - objps
-            - sprps
-            - endda
-            - begda
-            - seqnr
     columns:
       - name: aedtm
         description: Changed on
@@ -4253,17 +4098,6 @@ models:
 
   - name: stg_sap__pa0031
     description: HR master record--infotype 0031 (Reference personnel numbers)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - pernr
-            - subty
-            - objps
-            - sprps
-            - endda
-            - begda
-            - seqnr
     columns:
       - name: aedtm
         description: Changed on
@@ -4354,12 +4188,6 @@ models:
 
   - name: stg_sap__ska1
     description: G/L Account Master (Chart of Accounts)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - ktopl
-            - saknr
     columns:
       - name: bilkt
         description: Group account number
@@ -4405,11 +4233,6 @@ models:
 
   - name: stg_sap__t001
     description: Company codes
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - bukrs
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -4578,12 +4401,6 @@ models:
 
   - name: stg_sap__t001w
     description: Plants/Branches
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - werks
-            - mandt
-            - hvr_change_time
     columns:
       - name: mandt
         description: Client
@@ -4876,11 +4693,6 @@ models:
 
   - name: stg_sap__t024
     description: Purchasing groups
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - ekgrp
-            - mandt
     columns:
       - name: ekgrp
         description: Purchasing group
@@ -4911,11 +4723,6 @@ models:
 
   - name: stg_sap__t024e
     description: Purchasing organization text
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - ekorg
-            - mandt
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -4950,12 +4757,6 @@ models:
 
   - name: stg_sap__t134
     description: Material types
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mtart
-            - mandt
-            - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5042,12 +4843,6 @@ models:
 
   - name: stg_sap__t134t
     description: Material type descriptions
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mtart
-            - mandt
-            - spras
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -5066,13 +4861,6 @@ models:
 
   - name: stg_sap__t161
     description: Purchasing document types
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - bstyp
-            - bsart
-            - mandt
-            - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5197,13 +4985,6 @@ models:
 
   - name: stg_sap__t161t
     description: Purchasing doc type texts
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - bstyp
-            - bsart
-            - mandt
-            - spras
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5224,12 +5005,6 @@ models:
 
   - name: stg_sap__t503
     description: Employee group/subgroup
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - persg
-            - persk
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5272,11 +5047,6 @@ models:
 
   - name: stg_sap__t880
     description: Global company data (for KONS Ledger)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - rcomp
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -5329,11 +5099,6 @@ models:
 
   - name: stg_sap__tvag
     description: Sales document rejection reasons
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - abgru
-            - mandt
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5362,12 +5127,6 @@ models:
 
   - name: stg_sap__tvagt
     description: Sales document rejection reason text
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - abgru
-            - mandt
-            - spras
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID
@@ -5386,11 +5145,6 @@ models:
 
   - name: stg_sap__vbak
     description: Sales document header data
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - vbeln
-            - mandt
     columns:
       - name: _dataaging
         description: Data aging timestamp
@@ -5717,12 +5471,6 @@ models:
 
   - name: stg_sap__vbap
     description: Sales document item data
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - posnr
-            - vbeln
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator (Accruals)
@@ -6505,12 +6253,6 @@ models:
 
   - name: stg_sap__vbuk
     description: Sales document status (header)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - vbeln
-            - hvr_change_time
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -6693,12 +6435,6 @@ models:
 
   - name: stg_sap__vbup
     description: Sales document status (item level)
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - mandt
-            - posnr
-            - vbeln
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
