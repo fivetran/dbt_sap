@@ -188,7 +188,7 @@ sq_coss_wdv_1 as (
     a.rbudget_pd as budget_pd,
     a.mig_source as mig_source,
     a.bstat as bstat,
-    a.timestamp_at_at
+    a.timestamp_at
   from stg_sap__acdoca as a
 
   inner join stg_sap__finsc_cmp_versnd as v 
@@ -246,7 +246,7 @@ sq_coss_wdv_2 as (
     v_coss_wdv_1.geber,
     v_coss_wdv_1.grant_nbr,
     v_coss_wdv_1.budget_pd,
-    v_coss_wdv_1.timestamp_at_at
+    v_coss_wdv_1.timestamp_at
   from sq_coss_wdv_1 as v_coss_wdv_1
 ),
 
@@ -284,7 +284,7 @@ sq_coss_wdv_4 as (
     v_coss_wdv_2.grant_nbr,
     v_coss_wdv_2.budget_pd,
     case
-      when v_coss_wdv_2.timestamp_at_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 1, 4))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 1, 4))
       else '0000'
     end as tsgjahr,
     case
