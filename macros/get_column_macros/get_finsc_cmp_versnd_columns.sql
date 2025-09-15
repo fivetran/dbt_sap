@@ -10,7 +10,6 @@
     {"name": "field_name_pafbtr_subtract", "datatype": dbt.type_string()},
     {"name": "field_name_pagbtr_add", "datatype": dbt.type_string()},
     {"name": "field_name_pagbtr_subtract", "datatype": dbt.type_string()},
-    {"name": "field_name_refbz", "datatype": dbt.type_string()},
     {"name": "field_name_wkfbtr_add", "datatype": dbt.type_string()},
     {"name": "field_name_wkfbtr_subtract", "datatype": dbt.type_string()},
     {"name": "field_name_wkgbtr_add", "datatype": dbt.type_string()},

@@ -76,6 +76,38 @@ table_variables:
     - VBUK
   sap_using_vbup:
     - VBUP
+  sap_using_sapsll_clsnr:
+    - _SAPSLL_CLSNR
+  sap_using_sapsll_maritc:
+    - _SAPSLL_MARITC
+  sap_using_sapsll_nosca:
+    - _SAPSLL_NOSCA
+  sap_using_sapsll_tunos:
+    - _SAPSLL_TUNOS
+  sap_using_acdoca:
+    - ACDOCA
+  sap_using_finsc_cmp_versnd:
+    - FINSC_CMP_VERSND
+  sap_using_finsc_ld_cmp:
+    - FINSC_LD_CMP
+  sap_using_finsc_ledger_rep:
+    - FINSC_LEDGER_REP
+  sap_using_marc:
+    - MARC
+  sap_using_matdoc:
+    - MATDOC
+  sap_using_matdoc_extract:
+    - MATDOC_EXTRACT
+  sap_using_mchb:
+    - MCHB
+  sap_using_mchp:
+    - MCHP
+  sap_using_t000:
+    - T000
+  sap_using_tj01:
+    - TJ01
+  sap_using_tka01:
+    - TKA01
 
 destination_configurations:
   databricks:
@@ -103,5 +135,11 @@ public_models: [
   "sap__dim_rejection_reason",
   "sap__dim_vendor",
   "sap__fact_purchasing_order",
-  "sap__fact_sales_order"
+  "sap__fact_sales_order",
+  "coss",
+  "faglflexa",
+  "marc",
+  "mchb",
+  "mkpf",
+  "mseg"
 ]

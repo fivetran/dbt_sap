@@ -1,15 +1,25 @@
 config-version: 2
 name: 'sap'
-version: '0.2.1'
+version: '0.4.0'
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 profile: 'dbt_production'
+
 models:
   sap:
     +materialized: table
-    +schema: sap 
-    
+    +schema: sap
+    staging:
+      +materialized: view
+    extractor_reports:
+      intermediate:
+        +materialized: table
+    sales_and_procurement:
+      star_schema:
+        intermediate:
+          +materialized: ephemeral
     compatibility_views:
-      +schema: comp_views
+      +schema: sap_comp_views
+      +materialized: view
 
 vars:
   sap:
@@ -61,7 +71,7 @@ vars:
     vbap: "{{ source('sap', 'vbap') }}"
     vbuk: "{{ source('sap', 'vbuk') }}"
     vbup: "{{ source('sap', 'vbup') }}"
-    _sapsll_clsnr: "{{ source('sap', '_sapsll_clsnr') }}"
-    _sapsll_maritc: "{{ source('sap', '_sapsll_maritc') }}"
-    _sapsll_nosca: "{{ source('sap', '_sapsll_nosca') }}"
-    _sapsll_tunos: "{{ source('sap', '_sapsll_tunos') }}"
+    sapsll_clsnr: "{{ source('sap', 'sapsll_clsnr') }}"
+    sapsll_maritc: "{{ source('sap', 'sapsll_maritc') }}"
+    sapsll_nosca: "{{ source('sap', 'sapsll_nosca') }}"
+    sapsll_tunos: "{{ source('sap', 'sapsll_tunos') }}"

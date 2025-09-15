@@ -1,225 +1,272 @@
-with NSDM_V_MCHB_AGG AS	(
-SELECT	
-MATDOC_EXTRACT.MANDT,	
-MATDOC_EXTRACT.MATBF AS MATNR,	
-MATDOC_EXTRACT.WERKS,	
-MATDOC_EXTRACT.LGORT_SID AS LGORT,	
-MATDOC_EXTRACT.CHARG_SID AS CHARG,	
-MATDOC_EXTRACT.LBBSA_SID AS LBBSA,	
-SUM( MATDOC_EXTRACT.STOCK_QTY_L1 ) AS STOCK_QTY,	
-SUM( MATDOC_EXTRACT._CWM_STOCK_QTY_L1 ) AS _CWM_STOCK_QTY,	
-MAX( MATDOC_EXTRACT.GJPER_CURR_PER ) AS GJPER_MAX	
-FROM {{ ref('stg_sap__matdoc_extract') }} MATDOC_EXTRACT	
-WHERE	
-( NOT ( MATDOC_EXTRACT.CHARG_SID = '' )	
-AND ( MATDOC_EXTRACT.SOBKZ = ''	
-AND ( MATDOC_EXTRACT.LBBSA_SID = '01'	
-OR MATDOC_EXTRACT.LBBSA_SID = '02'	
-OR MATDOC_EXTRACT.LBBSA_SID = '03'	
-OR MATDOC_EXTRACT.LBBSA_SID = '04'	
-OR MATDOC_EXTRACT.LBBSA_SID = '07'	
-OR MATDOC_EXTRACT.LBBSA_SID = '08' ) ) )	
-GROUP BY MATDOC_EXTRACT.MANDT,	
-MATDOC_EXTRACT.MATBF,	
-MATDOC_EXTRACT.WERKS,	
-MATDOC_EXTRACT.LGORT_SID,	
-MATDOC_EXTRACT.CHARG_SID,	
-MATDOC_EXTRACT.LBBSA_SID
-)
-, 
+{{ config(enabled=var('sap_using_matdoc_extract', True) and var('sap_using_mchb', True)) }}
 
-NSDM_V_MCHB_DIFF AS	(
-SELECT	
-NSDM_V_MCHB_AGG.MANDT,	
-NSDM_V_MCHB_AGG.MATNR,	
-NSDM_V_MCHB_AGG.WERKS,	
-NSDM_V_MCHB_AGG.LGORT,	
-NSDM_V_MCHB_AGG.CHARG,	
-MAX( NSDM_V_MCHB_AGG.GJPER_MAX ) AS GJPER,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '01' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CLABS,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '04' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CUMLM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '02' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CINSM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '08' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CEINM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '07' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CSPEM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '03' THEN NSDM_V_MCHB_AGG.STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS CRETM,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMLA,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMUM,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMIN,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMEI,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMSP,	
-CAST( 0 AS DECIMAL(13,3) ) AS CVMRE,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '01' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CLABS,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '04' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CUMLM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '02' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CINSM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '08' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CEINM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '07' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CSPEM,	
-SUM(	
-CASE NSDM_V_MCHB_AGG.LBBSA	
-WHEN '03' THEN NSDM_V_MCHB_AGG._CWM_STOCK_QTY	
-ELSE CAST( 0 AS DECIMAL(13,0)) END ) AS _CWM_CRETM,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMLA,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMUM,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMIN,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMEI,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMSP,	
-CAST( 0 AS DECIMAL(13,3) ) AS _CWM_CVMRE,	
-'X' AS CHRUE	
-FROM NSDM_V_MCHB_AGG NSDM_V_MCHB_AGG	
-GROUP BY NSDM_V_MCHB_AGG.MANDT,	
-NSDM_V_MCHB_AGG.MATNR,	
-NSDM_V_MCHB_AGG.WERKS,	
-NSDM_V_MCHB_AGG.LGORT,	
-NSDM_V_MCHB_AGG.CHARG
+with stg_sap__matdoc_extract as (
+  select *
+  from {{ ref('stg_sap__matdoc_extract') }}
+),
+
+stg_sap__mchb as (
+  select *
+  from {{ ref('stg_sap__mchb') }}
+),
+
+nsdm_v_mchb_agg as (
+  select
+    matdoc_extract.mandt,
+    matdoc_extract.matbf as matnr,
+    matdoc_extract.werks,
+    matdoc_extract.lgort_sid as lgort,
+    matdoc_extract.charg_sid as charg,
+    matdoc_extract.lbbsa_sid as lbbsa,
+    sum(matdoc_extract.stock_qty_l1) as stock_qty,
+    sum(matdoc_extract._cwm_stock_qty_l1) as _cwm_stock_qty,
+    max(matdoc_extract.gjper_curr_per) as gjper_max
+  from stg_sap__matdoc_extract as matdoc_extract
+  where (not (matdoc_extract.charg_sid = '')
+      and (matdoc_extract.sobkz = ''and (
+          matdoc_extract.lbbsa_sid = '01'
+          or matdoc_extract.lbbsa_sid = '02'
+          or matdoc_extract.lbbsa_sid = '03'
+          or matdoc_extract.lbbsa_sid = '04'
+          or matdoc_extract.lbbsa_sid = '07'
+          or matdoc_extract.lbbsa_sid = '08'
+        )
+      )
+    )
+  group by 1,2,3,4,5,6
+),
+
+nsdm_v_mchb_diff as (
+  select
+    nsdm_v_mchb_agg.mandt,
+    nsdm_v_mchb_agg.matnr,
+    nsdm_v_mchb_agg.werks,
+    nsdm_v_mchb_agg.lgort,
+    nsdm_v_mchb_agg.charg,
+    max(nsdm_v_mchb_agg.gjper_max) as gjper,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '01' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as clabs,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '04' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as cumlm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '02' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as cinsm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '08' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as ceinm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '07' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as cspem,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '03' then nsdm_v_mchb_agg.stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as cretm,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmla,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmum,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmin,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmei,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmsp,
+    cast(0 as {{ dbt.type_numeric() }}) as cvmre,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '01' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_clabs,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '04' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_cumlm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '02' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_cinsm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '08' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_ceinm,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '07' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_cspem,
+    sum(
+      case nsdm_v_mchb_agg.lbbsa
+        when '03' then nsdm_v_mchb_agg._cwm_stock_qty
+        else cast(0 as {{ dbt.type_numeric() }})
+      end
+    ) as _cwm_cretm,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmla,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmum,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmin,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmei,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmsp,
+    cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmre,
+    'x' as chrue
+  from nsdm_v_mchb_agg
+  group by 1,2,3,4,5
 )
 
-SELECT	
-T.MANDT,	
-T.MATNR,	
-T.WERKS,	
-T.LGORT,	
-T.CHARG,	
-T.LVORM,	
-T.ERSDA,	
-T.ERNAM,	
-T.LAEDA,	
-T.AENAM,	
-CASE	
-WHEN  ( M.GJPER = '0000000'	
-OR M.GJPER IS NULL )  THEN T.LFGJA	
-ELSE ( RTRIM( SUBSTRING( M.GJPER, 1, 4 ) ) ) END AS LFGJA,	
-CASE	
-WHEN  ( M.GJPER = '0000000'	
-OR M.GJPER IS NULL )  THEN T.LFMON	
-ELSE ( RTRIM( SUBSTRING( M.GJPER, 6, 2 ) ) ) END AS LFMON,
-T.SPERC,	
-CASE	
-WHEN  M.CLABS IS NULL THEN 0	
-ELSE M.CLABS END AS CLABS,	
-CASE	
-WHEN  M.CUMLM IS NULL THEN 0	
-ELSE M.CUMLM END AS CUMLM,	
-CASE	
-WHEN  M.CINSM IS NULL THEN 0	
-ELSE M.CINSM END AS CINSM,	
-CASE	
-WHEN  M.CEINM IS NULL THEN 0	
-ELSE M.CEINM END AS CEINM,	
-CASE	
-WHEN  M.CSPEM IS NULL THEN 0	
-ELSE M.CSPEM END AS CSPEM,	
-CASE	
-WHEN  M.CRETM IS NULL THEN 0	
-ELSE M.CRETM END AS CRETM,	
-CASE	
-WHEN  M.CVMLA IS NULL THEN 0	
-ELSE M.CVMLA END AS CVMLA,	
-CASE	
-WHEN  M.CVMUM IS NULL THEN 0	
-ELSE M.CVMUM END AS CVMUM,	
-CASE	
-WHEN  M.CVMIN IS NULL THEN 0	
-ELSE M.CVMIN END AS CVMIN,	
-CASE	
-WHEN  M.CVMEI IS NULL THEN 0	
-ELSE M.CVMEI END AS CVMEI,	
-CASE	
-WHEN  M.CVMSP IS NULL THEN 0	
-ELSE M.CVMSP END AS CVMSP,	
-CASE	
-WHEN  M.CVMRE IS NULL THEN 0	
-ELSE M.CVMRE END AS CVMRE,	
-T.KZICL,	
-T.KZICQ,	
-T.KZICE,	
-T.KZICS,	
-T.KZVCL,	
-T.KZVCQ,	
-T.KZVCE,	
-T.KZVCS,	
-T.HERKL,	
-T.CHDLL,	
-T.CHJIN,	
-'X' AS CHRUE,	
-T.SGT_SCAT,	
-'' AS FSH_SEASON_YEAR,	
-'' AS FSH_SEASON,	
-'' AS FSH_COLLECTION,	
-'' AS FSH_THEME,	
-T.FSH_SALLOC_QTY,	
-CASE	
-WHEN  M._CWM_CLABS IS NULL THEN 0	
-ELSE M._CWM_CLABS END AS _CWM_CLABS,	
-CASE	
-WHEN  M._CWM_CINSM IS NULL THEN 0	
-ELSE M._CWM_CINSM END AS _CWM_CINSM,	
-CASE	
-WHEN  M._CWM_CEINM IS NULL THEN 0	
-ELSE M._CWM_CEINM END AS _CWM_CEINM,	
-CASE	
-WHEN  M._CWM_CSPEM IS NULL THEN 0	
-ELSE M._CWM_CSPEM END AS _CWM_CSPEM,	
-CASE	
-WHEN  M._CWM_CRETM IS NULL THEN 0	
-ELSE M._CWM_CRETM END AS _CWM_CRETM,	
-CASE	
-WHEN  M._CWM_CUMLM IS NULL THEN 0	
-ELSE M._CWM_CUMLM END AS _CWM_CUMLM,	
-CASE	
-WHEN  M._CWM_CVMLA IS NULL THEN 0	
-ELSE M._CWM_CVMLA END AS _CWM_CVMLA,	
-CASE	
-WHEN  M._CWM_CVMIN IS NULL THEN 0	
-ELSE M._CWM_CVMIN END AS _CWM_CVMIN,	
-CASE	
-WHEN  M._CWM_CVMEI IS NULL THEN 0	
-ELSE M._CWM_CVMEI END AS _CWM_CVMEI,	
-CASE	
-WHEN  M._CWM_CVMSP IS NULL THEN 0	
-ELSE M._CWM_CVMSP END AS _CWM_CVMSP,	
-CASE	
-WHEN  M._CWM_CVMRE IS NULL THEN 0	
-ELSE M._CWM_CVMRE END AS _CWM_CVMRE,	
-CASE	
-WHEN  M._CWM_CVMUM IS NULL THEN 0	
-ELSE M._CWM_CVMUM END AS _CWM_CVMUM	
-FROM {{ ref('stg_sap__mchb') }} T	
-LEFT OUTER JOIN NSDM_V_MCHB_DIFF M	
-ON ( T.MANDT = M.MANDT	
-AND T.MATNR = M.MATNR	
-AND T.WERKS = M.WERKS	
-AND T.LGORT = M.LGORT	
-AND T.CHARG = M.CHARG	
-AND T.MANDT = M.MANDT )
+select
+  t.mandt,
+  t.matnr,
+  t.werks,
+  t.lgort,
+  t.charg,
+  t.lvorm,
+  t.ersda,
+  t.ernam,
+  t.laeda,
+  t.aenam,
+  case
+    when (m.gjper = '0000000' or m.gjper is null) then t.lfgja
+    else (rtrim(substring(m.gjper, 1, 4)))
+  end as lfgja,
+  case
+    when (m.gjper = '0000000' or m.gjper is null) then t.lfmon
+    else (rtrim(substring(m.gjper, 6, 2)))
+  end as lfmon,
+  t.sperc,
+  case
+    when m.clabs is null then 0
+    else m.clabs
+  end as clabs,
+  case
+    when m.cumlm is null then 0
+    else m.cumlm
+  end as cumlm,
+  case
+    when m.cinsm is null then 0
+    else m.cinsm
+  end as cinsm,
+  case
+    when m.ceinm is null then 0
+    else m.ceinm
+  end as ceinm,
+  case
+    when m.cspem is null then 0
+    else m.cspem
+  end as cspem,
+  case
+    when m.cretm is null then 0
+    else m.cretm
+  end as cretm,
+  case
+    when m.cvmla is null then 0
+    else m.cvmla
+  end as cvmla,
+  case
+    when m.cvmum is null then 0
+    else m.cvmum
+  end as cvmum,
+  case
+    when m.cvmin is null then 0
+    else m.cvmin
+  end as cvmin,
+  case
+    when m.cvmei is null then 0
+    else m.cvmei
+  end as cvmei,
+  case
+    when m.cvmsp is null then 0
+    else m.cvmsp
+  end as cvmsp,
+  case
+    when m.cvmre is null then 0
+    else m.cvmre
+  end as cvmre,
+  t.kzicl,
+  t.kzicq,
+  t.kzice,
+  t.kzics,
+  t.kzvcl,
+  t.kzvcq,
+  t.kzvce,
+  t.kzvcs,
+  t.herkl,
+  t.chdll,
+  t.chjin,
+  'x' as chrue,
+  t.sgt_scat,
+  '' as fsh_season_year,
+  '' as fsh_season,
+  '' as fsh_collection,
+  '' as fsh_theme,
+  t.fsh_salloc_qty,
+  case
+    when m._cwm_clabs is null then 0
+    else m._cwm_clabs
+  end as _cwm_clabs,
+  case
+    when m._cwm_cinsm is null then 0
+    else m._cwm_cinsm
+  end as _cwm_cinsm,
+  case
+    when m._cwm_ceinm is null then 0
+    else m._cwm_ceinm
+  end as _cwm_ceinm,
+  case
+    when m._cwm_cspem is null then 0
+    else m._cwm_cspem
+  end as _cwm_cspem,
+  case
+    when m._cwm_cretm is null then 0
+    else m._cwm_cretm
+  end as _cwm_cretm,
+  case
+    when m._cwm_cumlm is null then 0
+    else m._cwm_cumlm
+  end as _cwm_cumlm,
+  case
+    when m._cwm_cvmla is null then 0
+    else m._cwm_cvmla
+  end as _cwm_cvmla,
+  case
+    when m._cwm_cvmin is null then 0
+    else m._cwm_cvmin
+  end as _cwm_cvmin,
+  case
+    when m._cwm_cvmei is null then 0
+    else m._cwm_cvmei
+  end as _cwm_cvmei,
+  case
+    when m._cwm_cvmsp is null then 0
+    else m._cwm_cvmsp
+  end as _cwm_cvmsp,
+  case
+    when m._cwm_cvmre is null then 0
+    else m._cwm_cvmre
+  end as _cwm_cvmre,
+  case
+    when m._cwm_cvmum is null then 0
+    else m._cwm_cvmum
+  end as _cwm_cvmum
+from stg_sap__mchb as t
+left outer join nsdm_v_mchb_diff as m 
+  on (t.mandt = m.mandt and t.matnr = m.matnr and t.werks = m.werks and t.lgort = m.lgort and t.charg = m.charg)

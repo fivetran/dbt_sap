@@ -1,4 +1,41 @@
-with nsdm_v_marc_agg as (
+{{ config(enabled=var('sap_using_matdoc_extract', True) and var('sap_using_marc', True) and var('sap_using_t001w', True) and var('sap_using_sapsll_tunos', True) and var('sap_using_sapsll_maritc', True) and var('sap_using_sapsll_nosca', True) and var('sap_using_sapsll_clsnr', True)) }}
+
+with stg_sap__matdoc_extract as (
+  select *
+  from {{ ref('stg_sap__matdoc_extract') }}
+),
+
+stg_sap__marc as (
+  select *
+  from {{ ref('stg_sap__marc') }}
+),
+
+stg_sap__t001w as (
+  select *
+  from {{ ref('stg_sap__t001w') }}
+),
+
+stg_sap__sapsll_tunos as (
+  select *
+  from {{ ref('stg_sap__sapsll_tunos') }}
+),
+
+stg_sap__sapsll_maritc as (
+  select *
+  from {{ ref('stg_sap__sapsll_maritc') }}
+),
+
+stg_sap__sapsll_nosca as (
+  select *
+  from {{ ref('stg_sap__sapsll_nosca') }}
+),
+
+stg_sap__sapsll_clsnr as (
+  select *
+  from {{ ref('stg_sap__sapsll_clsnr') }}
+),
+
+nsdm_v_marc_agg as (
   select
     matdoc_extract.mandt,
     matdoc_extract.matbf as matnr,
@@ -8,27 +45,17 @@ with nsdm_v_marc_agg as (
     sum(matdoc_extract._cwm_stock_qty_l2) as _cwm_stock_qty,
     sum(matdoc_extract.stock_vkwrt_l2) as stock_vkwrt,
     max(matdoc_extract.gjper_curr_per) as gjper_max
-  from
-    {{ ref('stg_sap__matdoc_extract') }} matdoc_extract
-  where
-    (
-      matdoc_extract.stock_ind_l2 = ''
-      and (
-        matdoc_extract.sobkz = ''
-        and (
-          matdoc_extract.lbbsa_sid = '05'
-          or matdoc_extract.lbbsa_sid = '06'
-          or matdoc_extract.lbbsa_sid = '09'
-          or matdoc_extract.lbbsa_sid = '10'
-        )
+  from stg_sap__matdoc_extract as matdoc_extract
+
+  where (matdoc_extract.stock_ind_l2 = '' 
+    and (matdoc_extract.sobkz = ''
+      and (matdoc_extract.lbbsa_sid = '05' or matdoc_extract.lbbsa_sid = '06' or matdoc_extract.lbbsa_sid = '09' or matdoc_extract.lbbsa_sid = '10')
       )
     )
-  group by
-    matdoc_extract.mandt,
-    matdoc_extract.matbf,
-    matdoc_extract.werks,
-    matdoc_extract.lbbsa_sid
+
+  group by 1,2,3,4
 ),
+
 nsdm_v_marc_diff as (
   select
     nsdm_v_marc_agg.mandt,
@@ -39,9 +66,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '05'
         then nsdm_v_marc_agg.stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as umlmc,
     sum(
@@ -49,9 +74,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '06'
         then nsdm_v_marc_agg.stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as trame,
     sum(
@@ -59,9 +82,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '05'
         then nsdm_v_marc_agg.stock_vkwrt
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as vkumc,
     sum(
@@ -69,9 +90,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '06'
         then nsdm_v_marc_agg.stock_vkwrt
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as vktrw,
     sum(
@@ -79,9 +98,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '09'
         then nsdm_v_marc_agg.stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as glgmg,
     sum(
@@ -89,9 +106,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '09'
         then nsdm_v_marc_agg.stock_vkwrt
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as vkglg,
     sum(
@@ -99,21 +114,17 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '10'
         then nsdm_v_marc_agg.stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as bwesb,
-    max(nsdm_v_marc_agg.gjper_max) as gjper,
+    cast(max(nsdm_v_marc_agg.gjper_max) as {{ dbt.type_string() }}) as gjper,
     'x' as mcrue,
     sum(
       case
         nsdm_v_marc_agg.lbbsa
         when '05'
         then nsdm_v_marc_agg._cwm_stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as _cwm_umlmc,
     sum(
@@ -121,9 +132,7 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '06'
         then nsdm_v_marc_agg._cwm_stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as _cwm_trame,
     sum(
@@ -131,17 +140,11 @@ nsdm_v_marc_diff as (
         nsdm_v_marc_agg.lbbsa
         when '10'
         then nsdm_v_marc_agg._cwm_stock_qty
-        else cast(
-          0 as decimal(13, 0)
-        )
+        else cast(0 as {{ dbt.type_numeric() }})
       end
     ) as _cwm_bwesb
-  from
-    nsdm_v_marc_agg nsdm_v_marc_agg
-  group by
-    nsdm_v_marc_agg.mandt,
-    nsdm_v_marc_agg.matnr,
-    nsdm_v_marc_agg.werks
+  from nsdm_v_marc_agg nsdm_v_marc_agg
+  group by 1,2,3
 )
 select
   t.mandt,
@@ -193,7 +196,7 @@ select
   t.ruezt,
   t.tranz,
   t.basmg,
-  t.dezeit,
+  t.dzeit,
   t.maxlz,
   t.lzeih,
   t.kzpro,
@@ -278,7 +281,7 @@ select
   t.lgpro,
   t.disgr,
   t.kausf,
-  t.qztp,
+  t.qzgtp,
   t.qmatv,
   t.takzt,
   t.rwpro,
@@ -495,8 +498,8 @@ select
   t.scm_thruput_time,
   t.scm_tpop,
   t.scm_safty_v,
-  t.scm_ppsafystk,
-  t.scm_ppsafystk_v,
+  t.scm_ppsaftystk,
+  t.scm_ppsaftystk_v,
   t.scm_repsafty,
   t.scm_repsafty_v,
   t.scm_reord_v,
@@ -526,43 +529,42 @@ select
   t.iuid_type,
   t.uid_iea,
   t.dpcbt
-from
-  {{ ref('stg_sap__marc') }} t
-  left outer join {{ ref('stg_sap__t001w') }} plant on (
-    plant.mandt = t.mandt
-    and plant.werks = t.werks
-    and t.mandt = plant.mandt
-  )
-  left outer join {{ ref('stg_sap___sapsll_tunos') }} numberscemeusage on (
-    plant.mandt = numberscemeusage.mandt
-    and plant.land1 = numberscemeusage.land1
-    and numberscemeusage.ctsty = '01'
-    and t.mandt = numberscemeusage.mandt
-  )
-  left outer join {{ ref('stg_sap___sapsll_maritc') }} materialtradeclassification on (
-    materialtradeclassification.mandt = t.mandt
-    and materialtradeclassification.matnr = t.matnr
-    and materialtradeclassification.stcts = numberscemeusage.stcts
-    and materialtradeclassification.datab <= to_char(current_date(), 'yyyymmdd')
-    and materialtradeclassification.datbi >= to_char(current_date(), 'yyyymmdd')
-    and t.mandt = materialtradeclassification.mandt
-  )
-  left outer join {{ ref('stg_sap___sapsll_nosca') }} numberschemecontent on (
-    numberschemecontent.stcts = numberscemeusage.stcts
-    and numberschemecontent.datab <= to_char(current_date(), 'yyyymmdd')
-    and numberschemecontent.datbi >= to_char(current_date(), 'yyyymmdd')
-    and t.mandt = numberschemecontent.mandt
-  )
-  left outer join {{ ref('stg_sap___sapsll_clsnr') }} materialtradeunit on (
-    materialtradeunit.nosct = numberschemecontent.nosct
-    and materialtradeunit.ccngn = materialtradeclassification.ccngn
-    and materialtradeunit.datab <= to_char(current_date(), 'yyyymmdd')
-    and materialtradeunit.datbi >= to_char(current_date(), 'yyyymmdd')
-    and t.mandt = materialtradeunit.mandt
-  )
-  left outer join nsdm_v_marc_diff m on (
-    t.mandt = m.mandt
-    and t.matnr = m.matnr
-    and t.werks = m.werks
-    and t.mandt = m.mandt
-  )
+from stg_sap__marc as t
+left outer join stg_sap__t001w as plant on (
+  plant.mandt = t.mandt
+  and plant.werks = t.werks
+  and t.mandt = plant.mandt
+)
+left outer join stg_sap__sapsll_tunos as numberscemeusage on (
+  plant.mandt = numberscemeusage.mandt
+  and plant.land1 = numberscemeusage.land1
+  and numberscemeusage.ctsty = '01'
+  and t.mandt = numberscemeusage.mandt
+)
+left outer join stg_sap__sapsll_maritc as materialtradeclassification on (
+  materialtradeclassification.mandt = t.mandt
+  and materialtradeclassification.matnr = t.matnr
+  and materialtradeclassification.stcts = numberscemeusage.stcts
+  and materialtradeclassification.datab <= {{ sap.date_to_yyyymmdd("current_date") }}
+  and materialtradeclassification.datbi >= {{ sap.date_to_yyyymmdd("current_date") }}
+  and t.mandt = materialtradeclassification.mandt
+)
+left outer join stg_sap__sapsll_nosca as numberschemecontent on (
+  numberschemecontent.stcts = numberscemeusage.stcts
+  and numberschemecontent.datab <= {{ sap.date_to_yyyymmdd("current_date") }}
+  and numberschemecontent.datbi >= {{ sap.date_to_yyyymmdd("current_date") }}
+  and t.mandt = numberschemecontent.mandt
+)
+left outer join stg_sap__sapsll_clsnr as materialtradeunit on (
+  materialtradeunit.nosct = numberschemecontent.nosct
+  and materialtradeunit.ccngn = materialtradeclassification.ccngn
+  and materialtradeunit.datab <= {{ sap.date_to_yyyymmdd("current_date") }}
+  and materialtradeunit.datbi >= {{ sap.date_to_yyyymmdd("current_date") }}
+  and t.mandt = materialtradeunit.mandt
+)
+left outer join nsdm_v_marc_diff as m on (
+  t.mandt = m.mandt
+  and t.matnr = m.matnr
+  and t.werks = m.werks
+  and t.mandt = m.mandt
+)

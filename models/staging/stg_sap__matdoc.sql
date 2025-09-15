@@ -281,7 +281,9 @@ final as (
         fls_rsto,	
         msr_active,	
         knumv,	
-        xcompl
+        xcompl,
+        cast(record_type as {{ dbt.type_string() }}) as record_type,
+        cast(header_counter as {{ dbt.type_numeric() }}) as header_counter
     from fields
 )
 

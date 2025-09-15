@@ -29,9 +29,9 @@ final as (
         curpose,
         curposf,
         curposg,
-        mandt,
-        bukrs,
-        rldnr
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
+        cast(bukrs as {{ dbt.type_string() }}) as bukrs,
+        cast(rldnr as {{ dbt.type_string() }}) as rldnr
     from fields
 )
 

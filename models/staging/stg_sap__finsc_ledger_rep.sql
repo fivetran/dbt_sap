@@ -20,9 +20,9 @@ fields as (
 
 final as (
     select
-        rldnr,
-        mandt,
-        rldnr_pers,
+        cast(rldnr as {{ dbt.type_string() }}) as rldnr,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
+        cast(rldnr_pers as {{ dbt.type_string() }}) as rldnr_pers
     from fields
 )
 

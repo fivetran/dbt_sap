@@ -1,3 +1,20 @@
+{{ config(enabled=var('sap_using_acdoca', True) and var('sap_using_finsc_ledger_rep', True) and var('sap_using_finsc_ld_cmp', True)) }}
+
+with stg_sap__acdoca as (
+  select *
+  from {{ ref('stg_sap__acdoca') }}
+),
+
+stg_sap__finsc_ledger_rep as (
+  select *
+  from {{ ref('stg_sap__finsc_ledger_rep') }}
+),
+
+stg_sap__finsc_ld_cmp as (
+  select *
+  from {{ ref('stg_sap__finsc_ld_cmp') }}
+)
+
 select
   a.rclnt,
   a.ryear,
@@ -52,12 +69,7 @@ select
     then a.fsl
     when lc.curposg = '2'
     then a.gsl
-    else cast(
-      0 as decimal(
-        000023,
-        000000
-      )
-    )
+    else cast(0 as {{ dbt.type_numeric() }})
   end as ksl,
   case
     when lc.curposo = '3'
@@ -78,9 +90,7 @@ select
     then a.fsl
     when lc.curposg = '3'
     then a.gsl
-    else cast(
-      0 as decimal(000023, 000000)
-    )
+    else cast(0 as {{ dbt.type_numeric() }})
   end as osl,
   a.msl,
   a.wsl,
@@ -137,28 +147,12 @@ select
     then a.rvcur
     else ''
   end as rocur
-from
-  {{ ref('stg_sap__acdoca') }} a
-  inner join {{ ref('stg_sap__finsc_ledger_rep') }} lr on (
-    lr.mandt = a.rclnt
-    and lr.rldnr_pers = a.rldnr
-    and a.rclnt = lr.mandt
-  )
-  inner join {{ ref('stg_sap__finsc_ld_cmp') }} lc on (
-    lc.mandt = a.rclnt
-    and lc.bukrs = a.rbukrs
-    and lc.rldnr = lr.rldnr
-    and a.rclnt = lc.mandt
-  )
-where
-  (
-    a.bstat = ''
-    or a.bstat = 'l'
-    or a.bstat = 'u'
-    or a.bstat = 'j'
-    or a.bstat = 't'
-    or (
-      a.bstat = 'c'
-      and a.poper = '000'
-    )
-  )
+from stg_sap__acdoca as a
+  inner join stg_sap__finsc_ledger_rep as lr 
+    on (lr.mandt = a.rclnt and lr.rldnr_pers = a.rldnr)
+
+  inner join stg_sap__finsc_ld_cmp as lc 
+    on (lc.mandt = a.rclnt and lc.bukrs = a.rbukrs and lc.rldnr = lr.rldnr)
+
+where (a.bstat = '' or a.bstat = 'l' or a.bstat = 'u' or a.bstat = 'j' or a.bstat = 't'
+    or (a.bstat = 'c' and a.poper = '000'))

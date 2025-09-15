@@ -20,7 +20,22 @@ fields as (
 
 final as (
     select
-    *
+        charg,
+        dokar,
+        doknr,
+        doktl,
+        dokvr,
+        ebrid,
+        ebrstatus,
+        mandt,
+        matnr,
+        valdat,
+        vers_stat,
+        version,
+        werks,
+        _fivetran_deleted,
+        _fivetran_sap_archived,
+        _fivetran_synced
     from fields
 )
 

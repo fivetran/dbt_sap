@@ -204,6 +204,7 @@
     {"name": "scm_intsrc_prof", "datatype": dbt.type_string()},
     {"name": "scm_iunit", "datatype": dbt.type_string()},
     {"name": "scm_lsuom", "datatype": dbt.type_string()},
+    {"name": "scm_matlocid_guid16", "datatype": dbt.type_string()},
     {"name": "scm_matlocid_guid22", "datatype": dbt.type_string()},
     {"name": "scm_maturity_dur", "datatype": dbt.type_numeric()},
     {"name": "scm_maxstock_v", "datatype": dbt.type_numeric()},

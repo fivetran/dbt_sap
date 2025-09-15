@@ -6794,3 +6794,445 @@ models:
         description: Delivery status (partial)
       - name: wbsta
         description: Goods issue status (item)
+
+  - name: stg_sap__sapsll_clsnr
+    description: SAP Special Ledger classification
+    columns:
+      - name: nosct
+        description: Number of special cost classification
+      - name: ccngn
+        description: Currency number generation
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: mandt
+        description: Client
+      - name: bemeh
+        description: Reference unit
+
+  - name: stg_sap__sapsll_maritc
+    description: SAP Special Ledger material items
+    columns:
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: stcts
+        description: Statistical number
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: ccngn
+        description: Currency number generation
+
+  - name: stg_sap__sapsll_nosca
+    description: SAP Special Ledger non-scalable data
+    columns:
+      - name: stcts
+        description: Statistical number
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: mandt
+        description: Client
+      - name: nosct
+        description: Number of special cost classification
+
+  - name: stg_sap__sapsll_tunos
+    description: SAP Special Ledger transaction numbers
+    columns:
+      - name: mandt
+        description: Client
+      - name: land1
+        description: Country key
+      - name: ctsty
+        description: Transaction type
+      - name: stcts
+        description: Statistical number
+
+  - name: stg_sap__acdoca
+    description: Universal journal entry line items
+    columns:
+      - name: rclnt
+        description: Client
+      - name: ryear
+        description: Fiscal year
+      - name: belnr
+        description: Document number
+      - name: rbukrs
+        description: Company code
+      - name: bttype
+        description: Business transaction type
+      - name: rmvct
+        description: Movement type
+      - name: rtcur
+        description: Transaction currency
+      - name: runit
+        description: Unit of measure
+      - name: awtyp
+        description: Reference transaction
+      - name: rrcty
+        description: Record type
+      - name: awsys
+        description: Logical system
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for segment reporting
+      - name: scntr
+        description: Sender cost center
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Functional area of partner
+      - name: sbusa
+        description: Business area of business partner
+      - name: rassc
+        description: Company ID of trading partner
+      - name: psegment
+        description: Partner segment for segment reporting
+      - name: tsl
+        description: Amount in transaction currency
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: gjahr
+        description: Fiscal year
+      - name: budat
+        description: Posting date
+      - name: buzei
+        description: Line item number
+      - name: bschl
+        description: Posting key
+      - name: bstat
+        description: Document status
+      - name: linetype
+        description: Line type
+      - name: xsplitmod
+        description: Split posting indicator
+      - name: usnam
+        description: User name
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: fikrs
+        description: Financial management area
+      - name: sfund
+        description: Fund
+      - name: sgrant_nbr
+        description: Grant number
+      - name: sbudget_pd
+        description: Budget period
+      - name: re_bukrs
+        description: Real estate company code
+      - name: re_account
+        description: Real estate account
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: recid
+        description: Recovery indicator
+      - name: mig_source
+        description: Migration source
+      - name: docln
+        description: Six-character posting row
+      - name: mig_docln
+        description: Migration document line number
+      - name: rhcur
+        description: Currency of amount in third local currency
+      - name: rfcur
+        description: Currency for foreign currency amount
+      - name: rvcur
+        description: Currency of amount in fourth local currency
+      - name: fcsl
+        description: Amount in foreign currency
+      - name: rfccur
+        description: Foreign currency
+      - name: rkcur
+        description: Currency of amount in second local currency
+      - name: rocur
+        description: Currency of amount in fifth local currency
+      - name: objnr
+        description: Object number
+      - name: accasty
+        description: Controlling account assignment category
+      - name: racct
+        description: Account number
+      - name: hrkft
+        description: Origin of account assignment
+      - name: vrgng
+        description: Business transaction
+      - name: parobsrc
+        description: Partner object source
+      - name: parob1
+        description: Partner object 1
+      - name: paccasty
+        description: Partner account assignment category
+      - name: uspob
+        description: Statistical posting object
+      - name: co_beknz
+        description: Reference procedure
+      - name: rwcur
+        description: Currency for amount fields in transaction
+      - name: co_buzei
+        description: Reference line
+      - name: co_buzei1
+        description: Reference line 1
+      - name: co_buzei2
+        description: Reference line 2
+      - name: co_buzei5
+        description: Reference line 5
+      - name: co_buzei6
+        description: Reference line 6
+      - name: co_buzei7
+        description: Reference line 7
+      - name: rldnr
+        description: Ledger
+      - name: poper
+        description: Posting period
+      - name: co_meinh
+        description: Unit of measure
+      - name: wsl
+        description: Amount in document currency
+      - name: wsl2
+        description: Amount in second document currency
+      - name: wsl3
+        description: Amount in third document currency
+      - name: co_osl
+        description: Amount in object currency
+      - name: hsl
+        description: Amount in local currency
+      - name: osl
+        description: Amount in controlling area currency
+      - name: vsl
+        description: Amount in fifth local currency
+      - name: bsl
+        description: Amount in second local currency
+      - name: csl
+        description: Amount in third local currency
+      - name: dsl
+        description: Amount in fourth local currency
+      - name: esl
+        description: Amount in sixth local currency
+      - name: fsl
+        description: Amount in seventh local currency
+      - name: gsl
+        description: Amount in eighth local currency
+      - name: ksl
+        description: Amount in ninth local currency
+      - name: kfsl
+        description: Amount in fixed currency
+      - name: kfsl2
+        description: Amount in second fixed currency
+      - name: kfsl3
+        description: Amount in third fixed currency
+      - name: psl
+        description: Amount in parallel currency
+      - name: psl2
+        description: Amount in second parallel currency
+      - name: psl3
+        description: Amount in third parallel currency
+      - name: pfsl
+        description: Amount in parallel fixed currency
+      - name: pfsl2
+        description: Amount in second parallel fixed currency
+      - name: pfsl3
+        description: Amount in third parallel fixed currency
+      - name: co_megbtr
+        description: Quantity in base unit of measure
+      - name: co_mefbtr
+        description: Quantity in unit of entry
+      - name: msl
+        description: Quantity
+      - name: mfsl
+        description: Quantity in alternative unit
+      - name: muvflg
+        description: Manual reposting flag
+      - name: beltp
+        description: Document category
+      - name: rfarea
+        description: Functional area
+      - name: rfund
+        description: Fund
+      - name: rgrant_nbr
+        description: Grant number
+      - name: rbudget_pd
+        description: Budget period
+      - name: timestamp
+        description: UTC timestamp
+      - name: logsyso
+        description: Logical system of source
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__finsc_cmp_versnd
+    description: Financial SCM component version data
+    columns:
+      - name: mandt
+        description: Client
+      - name: bukrs
+        description: Company code
+      - name: rldnr
+        description: Ledger
+      - name: versn
+        description: Version
+      - name: field_name_buzei
+        description: Field name for line item
+      - name: field_name_wtgbtr_add
+        description: Field name for transaction currency amount to add
+      - name: field_name_wtgbtr_subtract
+        description: Field name for transaction currency amount to subtract
+      - name: set_to_zero
+        description: Set to zero indicator
+      - name: field_name_wogbtr_add
+        description: Field name for object currency amount to add
+      - name: field_name_wogbtr_subtract
+        description: Field name for object currency amount to subtract
+      - name: field_name_wkgbtr_add
+        description: Field name for controlling area currency amount to add
+      - name: field_name_wkgbtr_subtract
+        description: Field name for controlling area currency amount to subtract
+      - name: field_name_wkfbtr_add
+        description: Field name for controlling area fixed amount to add
+      - name: field_name_wkfbtr_subtract
+        description: Field name for controlling area fixed amount to subtract
+      - name: field_name_pagbtr_add
+        description: Field name for parallel currency amount to add
+      - name: field_name_pagbtr_subtract
+        description: Field name for parallel currency amount to subtract
+      - name: field_name_pafbtr_add
+        description: Field name for parallel fixed amount to add
+      - name: field_name_pafbtr_subtract
+        description: Field name for parallel fixed amount to subtract
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__finsc_ld_cmp
+    description: Financial SCM lead component data
+    columns:
+      - name: curposk
+        description: Currency position K
+      - name: curposo
+        description: Currency position O
+      - name: curposv
+        description: Currency position V
+      - name: curposb
+        description: Currency position B
+      - name: curposc
+        description: Currency position C
+      - name: curposd
+        description: Currency position D
+      - name: curpose
+        description: Currency position E
+      - name: curposf
+        description: Currency position F
+      - name: curposg
+        description: Currency position G
+      - name: mandt
+        description: Client
+      - name: bukrs
+        description: Company code
+      - name: rldnr
+        description: Ledger
+
+  - name: stg_sap__finsc_ledger_rep
+    description: Financial SCM ledger reporting data
+    columns:
+      - name: rldnr
+        description: Ledger
+      - name: mandt
+        description: Client
+      - name: rldnr_pers
+        description: Personal ledger number
+
+  - name: stg_sap__marc
+    description: Plant/storage view material master
+    columns:
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: werks
+        description: Plant
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__matdoc
+    description: Material document header
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__matdoc_extract
+    description: Material document extract data
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__mchb
+    description: Batch stocks
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__mchp
+    description: Batch master (plant level)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__t000
+    description: Clients
+    columns:
+      - name: mandt
+        description: Client
+      - name: logsys
+        description: Logical system
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__tj01
+    description: System status
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+
+  - name: stg_sap__tka01
+    description: Controlling area
+    columns:
+      - name: mandt
+        description: Client
+      - name: kokrs
+        description: Controlling area
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

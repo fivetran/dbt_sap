@@ -20,13 +20,12 @@ fields as (
 
 final as (
     select
-        mandt,
-        kokrs,
+        cast(mandt as {{ dbt.type_string() }}) as mandt,
+        cast(kokrs as {{ dbt.type_string() }}) as kokrs,
         logsystem,
         _fivetran_deleted,
         _fivetran_synced
-        from
-        fields
+    from fields
 )
 
 select *

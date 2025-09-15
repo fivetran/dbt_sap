@@ -20,13 +20,12 @@ fields as (
 
 final as (
     select
-        vrgng,
-        xcosp,
-        xcoss,
+        cast(vrgng as {{ dbt.type_string() }}) as vrgng,
+        cast(xcosp as {{ dbt.type_string() }}) as xcosp,
+        cast(xcoss as {{ dbt.type_string() }}) as xcoss,
         _fivetran_deleted,
         _fivetran_synced
-        from
-        fields
+    from fields
 )
 
 select *

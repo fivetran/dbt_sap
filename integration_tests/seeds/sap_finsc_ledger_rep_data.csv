@@ -1,0 +1,4 @@
+_fivetran_deleted,_fivetran_sap_archived,_fivetran_synced,mandt,rldnr,rldnr_pers
+false,false,2025-09-09 17:20:00,eccbc87e4b5ce2fe28308fd9f2a7baf3,4e732ced3463d06de0ca9a15b6153677,a87ff679a2f3e71d9181a67b7542122c
+true,false,2025-09-09 17:21:00,c20ad4d76fe97759aa27a0c99bff6710,70efdf2ec9b086079795c442636b55fb,d3d9446802a44259755d38e6d163e820
+false,true,2025-09-09 17:22:00,8f14e45fceea167a5a36dedd4bea2543,1679091c5a880faf6fb5e6087eb1b2dc,1f0e3dad99908345f7439f8ffabdffc4
