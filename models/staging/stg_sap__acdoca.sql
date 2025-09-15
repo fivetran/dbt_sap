@@ -125,7 +125,7 @@ final as (
         rfund,
         rgrant_nbr,
         rbudget_pd,
-        timestamp,
+        timestamp_at,
         cast(logsyso as {{ dbt.type_string() }}) as logsyso,
         _fivetran_deleted,
         _fivetran_synced

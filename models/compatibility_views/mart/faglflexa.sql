@@ -108,7 +108,7 @@ select
   a.linetype,
   a.xsplitmod,
   a.usnam,
-  a.timestamp,
+  a.timestamp_at,
   a._dataaging,
   a.fikrs,
   a.rfund,

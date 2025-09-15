@@ -438,7 +438,7 @@ models:
         description: Splitting indicator
       - name: usnam
         description: User name who posted the document
-      - name: timestamp
+      - name: timestamp_at
         description: Time stamp for last change
       - name: _dataaging
         description: Data aging timestamp

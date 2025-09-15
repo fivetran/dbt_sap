@@ -99,7 +99,7 @@
     {"name": "sfarea", "datatype": dbt.type_string()},
     {"name": "sfund", "datatype": dbt.type_string()},
     {"name": "sgrant_nbr", "datatype": dbt.type_string()},
-    {"name": "timestamp", "datatype": dbt.type_numeric()},
+    {"name": "timestamp", "datatype": dbt.type_numeric(), "alias": "timestamp_at"},
     {"name": "tsl", "datatype": dbt.type_numeric()},
     {"name": "usnam", "datatype": dbt.type_string()},
     {"name": "uspob", "datatype": dbt.type_string()},

@@ -188,7 +188,7 @@ sq_coss_wdv_1 as (
     a.rbudget_pd as budget_pd,
     a.mig_source as mig_source,
     a.bstat as bstat,
-    a.timestamp
+    a.timestamp_at_at
   from stg_sap__acdoca as a
 
   inner join stg_sap__finsc_cmp_versnd as v 
@@ -246,9 +246,8 @@ sq_coss_wdv_2 as (
     v_coss_wdv_1.geber,
     v_coss_wdv_1.grant_nbr,
     v_coss_wdv_1.budget_pd,
-    v_coss_wdv_1.timestamp
-  from
-    sq_coss_wdv_1 as v_coss_wdv_1
+    v_coss_wdv_1.timestamp_at_at
+  from sq_coss_wdv_1 as v_coss_wdv_1
 ),
 
 sq_coss_wdv_4 as (
@@ -285,27 +284,27 @@ sq_coss_wdv_4 as (
     v_coss_wdv_2.grant_nbr,
     v_coss_wdv_2.budget_pd,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 1, 4))
+      when v_coss_wdv_2.timestamp_at_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 1, 4))
       else '0000'
     end as tsgjahr,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 5, 2))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 5, 2))
       else '00'
     end as tsmonth,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 7, 2))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 7, 2))
       else '00'
     end as tsday,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 9, 2))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 9, 2))
       else '00'
     end as tshour,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 11, 2))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 11, 2))
       else '00'
     end as tsminute,
     case
-      when v_coss_wdv_2.timestamp > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp as {{ dbt.type_string() }}), 13, 2))
+      when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 13, 2))
       else '00'
     end as tssecond
   from
