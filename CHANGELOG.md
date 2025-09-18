@@ -3,6 +3,7 @@
 
 ## Feature and Schema/Data Changes
 Introduced 6 new compatibility view models that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports. Additionally, added support for new upstream staging models used to support the compatibility view end models.
+
 **36 total changes • 0 possible breaking changes**
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
