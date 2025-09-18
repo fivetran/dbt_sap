@@ -28,7 +28,7 @@ stg_sap__t000 as (
 sq_coss_wdv_1 as (
   select
     a.rclnt as mandt,
-    '00' as lednr,
+    cast('00' as {{ dbt.type_string() }}) as lednr,
     a.objnr as objnr,
     a.ryear as gjahr,
     case
@@ -163,19 +163,19 @@ sq_coss_wdv_1 as (
       else cast(0 as {{ dbt.type_numeric() }})
     end as pafbtr_subtract,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
       else a.co_megbtr
     end as megbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
       else a.co_mefbtr
     end as mefbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
       else a.msl
     end as mbgbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then 0
+      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
       else a.mfsl
     end as mbfbtr,
     cast(a.muvflg as {{ dbt.type_int() }}) as muvflg,
@@ -285,31 +285,31 @@ sq_coss_wdv_4 as (
     v_coss_wdv_2.budget_pd,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 1, 4))
-      else '0000'
+      else cast('0000' as {{ dbt.type_string() }})
     end as tsgjahr,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 5, 2))
-      else '00'
+      else cast('00' as {{ dbt.type_string() }})
     end as tsmonth,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 7, 2))
-      else '00'
+      else cast('00' as {{ dbt.type_string() }})
     end as tsday,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 9, 2))
-      else '00'
+      else cast('00' as {{ dbt.type_string() }})
     end as tshour,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 11, 2))
-      else '00'
+      else cast('00' as {{ dbt.type_string() }})
     end as tsminute,
     case
       when v_coss_wdv_2.timestamp_at > 0 then rtrim(substring(cast(v_coss_wdv_2.timestamp_at as {{ dbt.type_string() }}), 13, 2))
-      else '00'
+      else cast('00' as {{ dbt.type_string() }})
     end as tssecond
-  from
-    sq_coss_wdv_2 as v_coss_wdv_2
+  from sq_coss_wdv_2 as v_coss_wdv_2
 ),
+
 sq_coss_wdv_5 as (
   select
     v_coss_wdv_4.mandt,
@@ -352,6 +352,7 @@ sq_coss_wdv_5 as (
   from
     sq_coss_wdv_4 as v_coss_wdv_4
 ),
+
 sq_coss_wdv_6 as (
   select
     v_coss_wdv_5.mandt,
@@ -451,16 +452,16 @@ sq_coss_wdv_6 as (
         v_coss_wdv_5.tsgjahr0 = 1992
         and v_coss_wdv_5.tsmonth0 > 2
       ) then cast(1 * 60 * 60 * 24 as {{ dbt.type_int() }})
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as tsgjahradd,
     case
-      when v_coss_wdv_5.tsgjahr0 = 0 then 0
+      when v_coss_wdv_5.tsgjahr0 = 0 then cast(0 as {{ dbt.type_numeric() }})
       else cast(
         (v_coss_wdv_5.tsgjahr0 - 1990) * 365 * 24 * 60 * 60 as decimal(16, 0)
       )
     end as tsgjahr1,
     case
-      when v_coss_wdv_5.tsmonth0 = 1 then 0
+      when v_coss_wdv_5.tsmonth0 = 1 then cast(0 as {{ dbt.type_numeric() }})
       when v_coss_wdv_5.tsmonth0 = 2 then cast(31 * 24 * 60 * 60 as {{ dbt.type_int() }})
       when v_coss_wdv_5.tsmonth0 = 3 then cast(59 * 24 * 60 * 60 as {{ dbt.type_int() }})
       when v_coss_wdv_5.tsmonth0 = 4 then cast(90 * 24 * 60 * 60 as {{ dbt.type_int() }})
@@ -472,10 +473,10 @@ sq_coss_wdv_6 as (
       when v_coss_wdv_5.tsmonth0 = 10 then cast(273 * 24 * 60 * 60 as {{ dbt.type_int() }})
       when v_coss_wdv_5.tsmonth0 = 11 then cast(304 * 24 * 60 * 60 as {{ dbt.type_int() }})
       when v_coss_wdv_5.tsmonth0 = 12 then cast(334 * 24 * 60 * 60 as {{ dbt.type_int() }})
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as tsmonth1,
     case
-      when v_coss_wdv_5.tsday0 = 0 then 0
+      when v_coss_wdv_5.tsday0 = 0 then cast(0 as {{ dbt.type_numeric() }})
       else cast((v_coss_wdv_5.tsday0 - 1) * 24 * 60 * 60 as {{ dbt.type_int() }})
     end as tsday1,
     cast(v_coss_wdv_5.tshour0 * 60 * 60 as {{ dbt.type_int() }}) as tshour1,
@@ -483,6 +484,7 @@ sq_coss_wdv_6 as (
     v_coss_wdv_5.tssecond0 as tssecond1
   from sq_coss_wdv_5 as v_coss_wdv_5
 ),
+
 sq_coss_wdv_7 as (
   select
     v_coss_wdv_6.mandt,
@@ -572,7 +574,7 @@ sq_coss_wdv_10 as (
     v_coss_wdv_9.uspob,
     v_coss_wdv_9.beknz,
     v_coss_wdv_9.twaer,
-    '016' as perbl,
+    cast('016' as {{ dbt.type_string() }}) as perbl,
     v_coss_wdv_9.meinh,
     case
       when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.wtgbtr
@@ -1088,67 +1090,67 @@ sq_coss_wdv_10 as (
     end as mef016,
     case
       when v_coss_wdv_9.perio = '001' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i001,
     case
       when v_coss_wdv_9.perio = '002' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i002,
     case
       when v_coss_wdv_9.perio = '003' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i003,
     case
       when v_coss_wdv_9.perio = '004' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i004,
     case
       when v_coss_wdv_9.perio = '005' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i005,
     case
       when v_coss_wdv_9.perio = '006' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i006,
     case
       when v_coss_wdv_9.perio = '007' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i007,
     case
       when v_coss_wdv_9.perio = '008' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i008,
     case
       when v_coss_wdv_9.perio = '009' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i009,
     case
       when v_coss_wdv_9.perio = '010' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i010,
     case
       when v_coss_wdv_9.perio = '011' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i011,
     case
       when v_coss_wdv_9.perio = '012' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i012,
     case
       when v_coss_wdv_9.perio = '013' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i013,
     case
       when v_coss_wdv_9.perio = '014' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i014,
     case
       when v_coss_wdv_9.perio = '015' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i015,
     case
       when v_coss_wdv_9.perio = '016' then v_coss_wdv_9.muvflg
-      else 0
+      else cast(0 as {{ dbt.type_numeric() }})
     end as i016,
     v_coss_wdv_9.beltp,
     v_coss_wdv_9.timestmp,
@@ -1158,9 +1160,9 @@ sq_coss_wdv_10 as (
     v_coss_wdv_9.geber,
     v_coss_wdv_9.grant_nbr,
     v_coss_wdv_9.budget_pd
-  from
-    sq_coss_wdv_8 as v_coss_wdv_9
+  from sq_coss_wdv_8 as v_coss_wdv_9
 ),
+
 sq_coss_wdv_11 as (
   select
     v_coss_wdv_10.mandt,
