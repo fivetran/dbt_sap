@@ -4,7 +4,7 @@
 ## Feature and Schema/Data Changes
 Introduced 6 new compatibility view models that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports. Additionally, added support for new upstream staging models used to support the compatibility view end models.
 
-**36 total changes • 0 possible breaking changes**
+**38 total changes • 0 possible breaking changes**
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
 | [`coss`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | New model |  |  | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents. |
@@ -50,6 +50,9 @@ Introduced 6 new compatibility view models that replicate the structure and data
 - Updated `quickstart.yml` to include all new staging model variables with proper uppercase source table names.
 - Added all compatibility view models to the `public_models` configuration in `quickstart.yml`.
 - Updated README documentation with new "Compatibility Views" section detailing all compatibility view models.
+       - Added 16 new `get_*_columns` macro files to support the new staging models.
+       - Created integration test seed files for all new staging models.
+       - Enhanced `src_sap.yml` and `stg_sap.yml` with documentation for new source tables and staging models.
 
 ## Contributors
 [@fivetran-jacklowery](https://github.com/fivetran-jacklowery) ([PR #29](https://github.com/fivetran/dbt_sap/pull/29))
