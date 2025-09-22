@@ -1,0 +1,2524 @@
+version: 2
+
+models:
+  - name: coss
+    description: Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: lednr
+        description: Ledger number - identifier for different ledgers in financial accounting
+      - name: objnr
+        description: Object number - unique identifier for the cost object
+      - name: gjahr
+        description: Fiscal year
+      - name: wrttp
+        description: Value type - distinguishes between plan data (04) and actual data (11)
+      - name: versn
+        description: Version - identifies different planning versions
+      - name: kstar
+        description: Cost element - general ledger account used for cost accounting
+      - name: hrkft
+        description: Origin of cost element - indicates source system or posting logic
+      - name: vrgng
+        description: Business transaction - identifies the type of posting transaction
+      - name: parob
+        description: Partner object - related cost object for internal cost postings
+      - name: uspob
+        description: User-defined partner object for additional assignment
+      - name: beknz
+        description: Debit/credit indicator for postings
+      - name: twaer
+        description: Transaction currency
+      - name: perbl
+        description: Number of periods - indicates fiscal year structure
+      - name: meinh
+        description: Unit of measure for quantities
+      - name: wtg001
+        description: Transaction currency amount for period 001
+      - name: wtg002
+        description: Transaction currency amount for period 002
+      - name: wtg003
+        description: Transaction currency amount for period 003
+      - name: wtg004
+        description: Transaction currency amount for period 004
+      - name: wtg005
+        description: Transaction currency amount for period 005
+      - name: wtg006
+        description: Transaction currency amount for period 006
+      - name: wtg007
+        description: Transaction currency amount for period 007
+      - name: wtg008
+        description: Transaction currency amount for period 008
+      - name: wtg009
+        description: Transaction currency amount for period 009
+      - name: wtg010
+        description: Transaction currency amount for period 010
+      - name: wtg011
+        description: Transaction currency amount for period 011
+      - name: wtg012
+        description: Transaction currency amount for period 012
+      - name: wtg013
+        description: Transaction currency amount for period 013
+      - name: wtg014
+        description: Transaction currency amount for period 014
+      - name: wtg015
+        description: Transaction currency amount for period 015
+      - name: wtg016
+        description: Transaction currency amount for period 016
+      - name: wog001
+        description: Object currency amount for period 001
+      - name: wog002
+        description: Object currency amount for period 002
+      - name: wog003
+        description: Object currency amount for period 003
+      - name: wog004
+        description: Object currency amount for period 004
+      - name: wog005
+        description: Object currency amount for period 005
+      - name: wog006
+        description: Object currency amount for period 006
+      - name: wog007
+        description: Object currency amount for period 007
+      - name: wog008
+        description: Object currency amount for period 008
+      - name: wog009
+        description: Object currency amount for period 009
+      - name: wog010
+        description: Object currency amount for period 010
+      - name: wog011
+        description: Object currency amount for period 011
+      - name: wog012
+        description: Object currency amount for period 012
+      - name: wog013
+        description: Object currency amount for period 013
+      - name: wog014
+        description: Object currency amount for period 014
+      - name: wog015
+        description: Object currency amount for period 015
+      - name: wog016
+        description: Object currency amount for period 016
+      - name: wkg001
+        description: Controlling area currency amount for period 001
+      - name: wkg002
+        description: Controlling area currency amount for period 002
+      - name: wkg003
+        description: Controlling area currency amount for period 003
+      - name: wkg004
+        description: Controlling area currency amount for period 004
+      - name: wkg005
+        description: Controlling area currency amount for period 005
+      - name: wkg006
+        description: Controlling area currency amount for period 006
+      - name: wkg007
+        description: Controlling area currency amount for period 007
+      - name: wkg008
+        description: Controlling area currency amount for period 008
+      - name: wkg009
+        description: Controlling area currency amount for period 009
+      - name: wkg010
+        description: Controlling area currency amount for period 010
+      - name: wkg011
+        description: Controlling area currency amount for period 011
+      - name: wkg012
+        description: Controlling area currency amount for period 012
+      - name: wkg013
+        description: Controlling area currency amount for period 013
+      - name: wkg014
+        description: Controlling area currency amount for period 014
+      - name: wkg015
+        description: Controlling area currency amount for period 015
+      - name: wkg016
+        description: Controlling area currency amount for period 016
+      - name: wkf001
+        description: Fixed amount in controlling area currency for period 001
+      - name: wkf002
+        description: Fixed amount in controlling area currency for period 002
+      - name: wkf003
+        description: Fixed amount in controlling area currency for period 003
+      - name: wkf004
+        description: Fixed amount in controlling area currency for period 004
+      - name: wkf005
+        description: Fixed amount in controlling area currency for period 005
+      - name: wkf006
+        description: Fixed amount in controlling area currency for period 006
+      - name: wkf007
+        description: Fixed amount in controlling area currency for period 007
+      - name: wkf008
+        description: Fixed amount in controlling area currency for period 008
+      - name: wkf009
+        description: Fixed amount in controlling area currency for period 009
+      - name: wkf010
+        description: Fixed amount in controlling area currency for period 010
+      - name: wkf011
+        description: Fixed amount in controlling area currency for period 011
+      - name: wkf012
+        description: Fixed amount in controlling area currency for period 012
+      - name: wkf013
+        description: Fixed amount in controlling area currency for period 013
+      - name: wkf014
+        description: Fixed amount in controlling area currency for period 014
+      - name: wkf015
+        description: Fixed amount in controlling area currency for period 015
+      - name: wkf016
+        description: Fixed amount in controlling area currency for period 016
+      - name: pag001
+        description: Plan amount in group currency for period 001
+      - name: pag002
+        description: Plan amount in group currency for period 002
+      - name: pag003
+        description: Plan amount in group currency for period 003
+      - name: pag004
+        description: Plan amount in group currency for period 004
+      - name: pag005
+        description: Plan amount in group currency for period 005
+      - name: pag006
+        description: Plan amount in group currency for period 006
+      - name: pag007
+        description: Plan amount in group currency for period 007
+      - name: pag008
+        description: Plan amount in group currency for period 008
+      - name: pag009
+        description: Plan amount in group currency for period 009
+      - name: pag010
+        description: Plan amount in group currency for period 010
+      - name: pag011
+        description: Plan amount in group currency for period 011
+      - name: pag012
+        description: Plan amount in group currency for period 012
+      - name: pag013
+        description: Plan amount in group currency for period 013
+      - name: pag014
+        description: Plan amount in group currency for period 014
+      - name: pag015
+        description: Plan amount in group currency for period 015
+      - name: pag016
+        description: Plan amount in group currency for period 016
+      - name: paf001
+        description: Plan fixed amount in group currency for period 001
+      - name: paf002
+        description: Plan fixed amount in group currency for period 002
+      - name: paf003
+        description: Plan fixed amount in group currency for period 003
+      - name: paf004
+        description: Plan fixed amount in group currency for period 004
+      - name: paf005
+        description: Plan fixed amount in group currency for period 005
+      - name: paf006
+        description: Plan fixed amount in group currency for period 006
+      - name: paf007
+        description: Plan fixed amount in group currency for period 007
+      - name: paf008
+        description: Plan fixed amount in group currency for period 008
+      - name: paf009
+        description: Plan fixed amount in group currency for period 009
+      - name: paf010
+        description: Plan fixed amount in group currency for period 010
+      - name: paf011
+        description: Plan fixed amount in group currency for period 011
+      - name: paf012
+        description: Plan fixed amount in group currency for period 012
+      - name: paf013
+        description: Plan fixed amount in group currency for period 013
+      - name: paf014
+        description: Plan fixed amount in group currency for period 014
+      - name: paf015
+        description: Plan fixed amount in group currency for period 015
+      - name: paf016
+        description: Plan fixed amount in group currency for period 016
+      - name: meg001
+        description: Quantity in unit of measure for period 001
+      - name: meg002
+        description: Quantity in unit of measure for period 002
+      - name: meg003
+        description: Quantity in unit of measure for period 003
+      - name: meg004
+        description: Quantity in unit of measure for period 004
+      - name: meg005
+        description: Quantity in unit of measure for period 005
+      - name: meg006
+        description: Quantity in unit of measure for period 006
+      - name: meg007
+        description: Quantity in unit of measure for period 007
+      - name: meg008
+        description: Quantity in unit of measure for period 008
+      - name: meg009
+        description: Quantity in unit of measure for period 009
+      - name: meg010
+        description: Quantity in unit of measure for period 010
+      - name: meg011
+        description: Quantity in unit of measure for period 011
+      - name: meg012
+        description: Quantity in unit of measure for period 012
+      - name: meg013
+        description: Quantity in unit of measure for period 013
+      - name: meg014
+        description: Quantity in unit of measure for period 014
+      - name: meg015
+        description: Quantity in unit of measure for period 015
+      - name: meg016
+        description: Quantity in unit of measure for period 016
+      - name: mef001
+        description: Fixed quantity in unit of measure for period 001
+      - name: mef002
+        description: Fixed quantity in unit of measure for period 002
+      - name: mef003
+        description: Fixed quantity in unit of measure for period 003
+      - name: mef004
+        description: Fixed quantity in unit of measure for period 004
+      - name: mef005
+        description: Fixed quantity in unit of measure for period 005
+      - name: mef006
+        description: Fixed quantity in unit of measure for period 006
+      - name: mef007
+        description: Fixed quantity in unit of measure for period 007
+      - name: mef008
+        description: Fixed quantity in unit of measure for period 008
+      - name: mef009
+        description: Fixed quantity in unit of measure for period 009
+      - name: mef010
+        description: Fixed quantity in unit of measure for period 010
+      - name: mef011
+        description: Fixed quantity in unit of measure for period 011
+      - name: mef012
+        description: Fixed quantity in unit of measure for period 012
+      - name: mef013
+        description: Fixed quantity in unit of measure for period 013
+      - name: mef014
+        description: Fixed quantity in unit of measure for period 014
+      - name: mef015
+        description: Fixed quantity in unit of measure for period 015
+      - name: mef016
+        description: Fixed quantity in unit of measure for period 016
+      - name: muv001
+        description: Manual update flag for period 001 (X=manual update)
+      - name: muv002
+        description: Manual update flag for period 002 (X=manual update)
+      - name: muv003
+        description: Manual update flag for period 003 (X=manual update)
+      - name: muv004
+        description: Manual update flag for period 004 (X=manual update)
+      - name: muv005
+        description: Manual update flag for period 005 (X=manual update)
+      - name: muv006
+        description: Manual update flag for period 006 (X=manual update)
+      - name: muv007
+        description: Manual update flag for period 007 (X=manual update)
+      - name: muv008
+        description: Manual update flag for period 008 (X=manual update)
+      - name: muv009
+        description: Manual update flag for period 009 (X=manual update)
+      - name: muv010
+        description: Manual update flag for period 010 (X=manual update)
+      - name: muv011
+        description: Manual update flag for period 011 (X=manual update)
+      - name: muv012
+        description: Manual update flag for period 012 (X=manual update)
+      - name: muv013
+        description: Manual update flag for period 013 (X=manual update)
+      - name: muv014
+        description: Manual update flag for period 014 (X=manual update)
+      - name: muv015
+        description: Manual update flag for period 015 (X=manual update)
+      - name: muv016
+        description: Manual update flag for period 016 (X=manual update)
+      - name: beltp
+        description: Document type for line item posting
+      - name: timestmp
+        description: Timestamp for last change to the record
+      - name: bukrs
+        description: Company code
+      - name: fkber
+        description: Functional area for cost assignment
+      - name: segment
+        description: Segment for profitability analysis
+      - name: geber
+        description: Fund for public sector accounting
+      - name: grant_nbr
+        description: Grant number for grant management
+      - name: budget_pd
+        description: Budget period for budget management
+
+  - name: faglflexa
+    description: Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents
+    columns:
+      - name: rclnt
+        description: Client (mandant) identifier
+      - name: ryear
+        description: Fiscal year of the posting
+      - name: docnr
+        description: Document number
+      - name: rldnr
+        description: Ledger for general ledger accounting
+      - name: rbukrs
+        description: Company code
+      - name: docln
+        description: Document line number
+      - name: activ
+        description: Activity type - identifies the type of posting activity
+      - name: rmvct
+        description: Record type for document line
+      - name: rtcur
+        description: Transaction currency
+      - name: runit
+        description: Unit of measure
+      - name: awtyp
+        description: Reference procedure for determining source application
+      - name: rrcty
+        description: Record category for line item
+      - name: rvers
+        description: Version number
+      - name: logsys
+        description: Logical system
+      - name: racct
+        description: General ledger account number
+      - name: cost_elem
+        description: Cost element - used in controlling when CO line items exist
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rfarea
+        description: Functional area
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for profitability analysis
+      - name: scntr
+        description: Sending cost center for cross-company postings
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Sending functional area
+      - name: sbusa
+        description: Sending business area
+      - name: rassc
+        description: Asset class for fixed asset postings
+      - name: psegment
+        description: Partner segment
+      - name: tsl
+        description: Amount in transaction currency
+      - name: hsl
+        description: Amount in local currency
+      - name: ksl
+        description: Amount in second local currency
+      - name: osl
+        description: Amount in third local currency
+      - name: msl
+        description: Amount in group currency
+      - name: wsl
+        description: Amount in global currency
+      - name: fsl
+        description: Amount in freely defined currency 1
+      - name: vsl
+        description: Amount in freely defined currency 2
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: poper
+        description: Posting period
+      - name: rwcur
+        description: Currency key
+      - name: gjahr
+        description: Fiscal year
+      - name: budat
+        description: Posting date
+      - name: belnr
+        description: Document number
+      - name: buzei
+        description: Line item number
+      - name: bschl
+        description: Posting key
+      - name: bstat
+        description: Document status
+      - name: linetype
+        description: Line item type
+      - name: xsplitmod
+        description: Splitting indicator
+      - name: usnam
+        description: User name who posted the document
+      - name: timestamp_at
+        description: Time stamp for last change
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: fikrs
+        description: Financial management area
+      - name: rfund
+        description: Fund
+      - name: rgrant_nbr
+        description: Grant number
+      - name: rbudget_pd
+        description: Budget period
+      - name: sfund
+        description: Sending fund
+      - name: sgrant_nbr
+        description: Sending grant number
+      - name: sbudget_pd
+        description: Sending budget period
+      - name: re_bukrs
+        description: Real estate company code
+      - name: re_account
+        description: Real estate account
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: recid
+        description: Recovery ID
+      - name: mig_source
+        description: Migration source system
+      - name: mig_docln
+        description: Migration document line number
+      - name: rhcur
+        description: Group currency
+      - name: rfcur
+        description: Freely defined currency 1
+      - name: rvcur
+        description: Freely defined currency 2
+      - name: fcsl
+        description: Amount in freely defined currency 1
+      - name: rfccur
+        description: Freely defined currency code
+      - name: rkcur
+        description: Second local currency
+      - name: rocur
+        description: Third local currency
+
+  - name: marc
+    description: Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: matnr
+        description: Material number
+      - name: werks
+        description: Plant
+      - name: pstat
+        description: Maintenance status
+      - name: lvorm
+        description: Flag for deletion at plant level
+      - name: bwtty
+        description: Valuation type
+      - name: xchar
+        description: Batch management requirement indicator
+      - name: mmsta
+        description: Plant-specific material status
+      - name: mmstd
+        description: Date from which plant-specific material status is valid
+      - name: maabc
+        description: ABC indicator
+      - name: kzkri
+        description: Critical part indicator
+      - name: ekgrp
+        description: Purchasing group
+      - name: ausme
+        description: Unit of issue
+      - name: dispr
+        description: MRP profile
+      - name: dismm
+        description: MRP type
+      - name: dispo
+        description: MRP controller
+      - name: kzdie
+        description: Discontinuation indicator
+      - name: plifz
+        description: Planned delivery time in days
+      - name: webaz
+        description: Goods receipt processing time in days
+      - name: perkz
+        description: Period indicator
+      - name: ausss
+        description: Assembly scrap percentage
+      - name: disls
+        description: Lot size key
+      - name: beskz
+        description: Procurement type
+      - name: sobsl
+        description: Special procurement type
+      - name: minbe
+        description: Reorder point
+      - name: eisbe
+        description: Safety stock
+      - name: bstmi
+        description: Minimum lot size
+      - name: bstma
+        description: Maximum lot size
+      - name: bstfe
+        description: Fixed lot size
+      - name: bstrf
+        description: Rounding value
+      - name: mabst
+        description: Maximum stock level
+      - name: losfx
+        description: Lot size-dependent costs
+      - name: sbdkz
+        description: Dependent requirements indicator
+      - name: lagpr
+        description: Storage costs indicator
+      - name: altsl
+        description: Alternative BOM selection method
+      - name: kzaus
+        description: Discontinuation indicator
+      - name: ausdt
+        description: Effective-out date
+      - name: nfmat
+        description: Follow-up material
+      - name: kzbed
+        description: Requirements grouping indicator
+      - name: miskz
+        description: Mixed MRP indicator
+      - name: fhori
+        description: Firming horizon in days
+      - name: pfrei
+        description: Release for costing
+      - name: ffrei
+        description: Production release
+      - name: rgekz
+        description: Backflush indicator
+      - name: fevor
+        description: Production scheduler
+      - name: bearz
+        description: Processing time
+      - name: ruezt
+        description: Setup time
+      - name: tranz
+        description: Interoperation time
+      - name: basmg
+        description: Base quantity
+      - name: dezeit
+        description: Default storage location
+      - name: maxlz
+        description: Maximum lot size
+      - name: lzeih
+        description: Unit for maximum lot size
+      - name: kzpro
+        description: Issue storage location
+      - name: gpmkz
+        description: Backflush indicator
+      - name: ueeto
+        description: Overdelivery tolerance
+      - name: ueetk
+        description: Overdelivery tolerance key
+      - name: uneto
+        description: Underdelivery tolerance
+      - name: wzeit
+        description: Float before production
+      - name: atpkz
+        description: Replacement part indicator
+      - name: vzusl
+        description: Consumption mode
+      - name: herbl
+        description: Period block for consumption
+      - name: insmk
+        description: Quality inspection indicator
+      - name: sproz
+        description: Splitting indicator
+      - name: quazt
+        description: Quarantine period
+      - name: ssqss
+        description: QS control key
+      - name: mpdau
+        description: Mean inspection duration
+      - name: kzppv
+        description: Inspection setup exists
+      - name: kzdkz
+        description: Documentation required indicator
+      - name: wstgh
+        description: Shipping unit type
+      - name: prfrq
+        description: Inspection frequency
+      - name: nkmpr
+        description: Next inspection
+      - name: umlmc
+        description: Stock in transfer (plant to plant)
+      - name: ladgr
+        description: Loading group
+      - name: xchpf
+        description: Batch management requirement indicator
+      - name: usequ
+        description: Quota arrangement usage
+      - name: lgrad
+        description: Service level
+      - name: auftl
+        description: Order entry level
+      - name: plvar
+        description: Planning calendar
+      - name: otype
+        description: Object type
+      - name: objid
+        description: Object ID
+      - name: mtvfp
+        description: Checking group for availability check
+      - name: periv
+        description: Fiscal year variant
+      - name: kzkfk
+        description: Configurable material
+      - name: vrvez
+        description: Processing time variance
+      - name: vbamg
+        description: Lot size variance
+      - name: vbeaz
+        description: Processing time variance
+      - name: lizyk
+        description: Delivery cycle
+      - name: bwscl
+        description: Valuation class
+      - name: kautb
+        description: Automatic reorder point
+      - name: kordb
+        description: Source list requirement
+      - name: stawn
+        description: Commodity code/Import code number
+      - name: herkl
+        description: Country of origin
+      - name: herkr
+        description: Region of origin
+      - name: expme
+        description: Export/import group
+      - name: mtver
+        description: Material freight group
+      - name: prctr
+        description: Profit center
+      - name: trame
+        description: Stock in transit
+      - name: mrppp
+        description: Planning strategy group
+      - name: sauft
+        description: Repetitive manufacturing indicator
+      - name: fxhor
+        description: Firming horizon
+      - name: vrmod
+        description: Consumption mode
+      - name: vint1
+        description: Consumption period - backward
+      - name: vint2
+        description: Consumption period - forward
+      - name: verkz
+        description: Version indicator
+      - name: stlal
+        description: Alternative BOM
+      - name: stlan
+        description: BOM usage
+      - name: plnnr
+        description: Task list group
+      - name: aplal
+        description: Group counter
+      - name: losgr
+        description: Costing lot size
+      - name: sobsk
+        description: Special stock indicator
+      - name: frtme
+        description: Production unit
+      - name: lgpro
+        description: Issue storage location
+      - name: disgr
+        description: MRP group
+      - name: kausf
+        description: Smoothing factor for forecast
+      - name: qztp
+        description: Time method
+      - name: qmatv
+        description: Reference material for material forecast
+      - name: takzt
+        description: Takt time
+      - name: rwpro
+        description: Range of coverage profile
+      - name: copam
+        description: Co-product material
+      - name: abcin
+        description: ABC indicator
+      - name: awsls
+        description: Variance key
+      - name: sernp
+        description: Serial number profile
+      - name: cuobj
+        description: Configuration material
+      - name: stdpd
+        description: Standard price period
+      - name: sfepr
+        description: Safety time indicator
+      - name: xmcng
+        description: Material usage
+      - name: qssys
+        description: QM system
+      - name: lfrhy
+        description: Planning cycle
+      - name: rdprf
+        description: Rounding profile
+      - name: vrbmt
+        description: Forecast model
+      - name: vrbwk
+        description: Reference plant for forecast
+      - name: vrbdt
+        description: Forecast reference date
+      - name: vrbfk
+        description: Multiplying factor for reference material
+      - name: autru
+        description: Reset automatically
+      - name: prefe
+        description: Production resource/tool
+      - name: prenc
+        description: Change number for production resources/tools
+      - name: preno
+        description: Object number of production resource/tool
+      - name: prend
+        description: Object dependency of production resource/tool
+      - name: prene
+        description: Equipment number of production resource/tool
+      - name: preng
+        description: Group for production resources/tools
+      - name: itark
+        description: Internal transfer allowed
+      - name: servg
+        description: Service level
+      - name: kzkup
+        description: Co-product indicator
+      - name: strgr
+        description: Planning strategy group
+      - name: cuobv
+        description: Internal object number
+      - name: lgfsb
+        description: Default storage type
+      - name: schgt
+        description: Bulk material indicator
+      - name: ccfix
+        description: Fixed attribute
+      - name: eprio
+        description: Stock determination priority
+      - name: qmata
+        description: QM material authorization
+      - name: resvp
+        description: Reserved stock
+      - name: plnty
+        description: Task list type
+      - name: uomgr
+        description: Unit of measure group
+      - name: umrsl
+        description: Environmental management group
+      - name: abfac
+        description: Discount factor
+      - name: sfcpf
+        description: Production supply area
+      - name: shflg
+        description: Safety time indicator
+      - name: shzet
+        description: Safety time
+      - name: mdach
+        description: MRP area
+      - name: kzech
+        description: JIT indicator
+      - name: megru
+        description: Unit of measure group
+      - name: mfrgr
+        description: Material freight group
+      - name: profil
+        description: Backflush profile
+      - name: vkumc
+        description: Sales value of stock in transfer
+      - name: vktrw
+        description: Sales value of stock in transit
+      - name: kzagl
+        description: Smoothing indicator
+      - name: fvidk
+        description: Production version to be costed
+      - name: fxpru
+        description: Fiscal year variant for production
+      - name: loggr
+        description: Logistics handling group
+      - name: fprfm
+        description: Forecast profile
+      - name: glgmg
+        description: Total replenishment lead time
+      - name: vkglg
+        description: Sales value of total stock
+      - name: indus
+        description: Industry sector
+      - name: mownr
+        description: Military service
+      - name: mogru
+        description: Military service group
+      - name: casnr
+        description: CAS number
+      - name: gpnum
+        description: Product number
+      - name: steuc
+        description: Control code
+      - name: fabkz
+        description: JIT delivery schedules
+      - name: matgr
+        description: Material group
+      - name: vspvb
+        description: Consumption posting
+      - name: dplfs
+        description: Delivery plant for external procurement
+      - name: dplpu
+        description: DRP profile
+      - name: dplho
+        description: Deployment horizon
+      - name: minls
+        description: Minimum lot size
+      - name: maxls
+        description: Maximum lot size
+      - name: fixls
+        description: Fixed lot size
+      - name: ltinc
+        description: Lot increment
+      - name: compl
+        description: Completeness indicator
+      - name: convt
+        description: Conversion factor
+      - name: shpro
+        description: Shortage profile
+      - name: ahdis
+        description: Deployment strategy
+      - name: diber
+        description: Planning time fence
+      - name: kzpsp
+        description: Indicator for PS material
+      - name: ocmpf
+        description: Original batch management indicator
+      - name: apokz
+        description: Kanban indicator
+      - name: mcrue
+        description: Manual reorder point indicator (always X)
+      - name: lfmon
+        description: Month of last goods receipt
+      - name: lfgja
+        description: Year of last goods receipt
+      - name: eislo
+        description: Effective lot size
+      - name: ncost
+        description: Do not cost
+      - name: rotation_date
+        description: Next rotation date
+      - name: uchkz
+        description: Underdelivery tolerance
+      - name: ucmat
+        description: Material number for underdelivery tolerance
+      - name: bwesb
+        description: Valuated stock in quality inspection
+      - name: sgt_covs
+        description: Segmentation coverage strategy
+      - name: sgt_statc
+        description: Segmentation status category
+      - name: sgt_scope
+        description: Segmentation scope of planning
+      - name: sgt_mrpsi
+        description: Segmentation MRP relevant stock indicator
+      - name: sgt_prcm
+        description: Segmentation procurement type
+      - name: sgt_chint
+        description: Segmentation characteristics profile for planning
+      - name: sgt_stk_prt
+        description: Segmentation stock protection
+      - name: sgt_defsc
+        description: Segmentation default supply area
+      - name: sgt_mrp_atp_status
+        description: Segmentation MRP and ATP status
+      - name: sgt_mmstd
+        description: Segmentation material status date
+      - name: fsh_mg_arun_req
+        description: Fashion management active ingredients requirement
+      - name: fsh_seaim
+        description: Fashion management season aim
+      - name: fsh_var_group
+        description: Fashion management variant group
+      - name: fsh_kzech
+        description: Fashion management batch determination
+      - name: fsh_calendar_group
+        description: Fashion management calendar group
+      - name: arun_fix_batch
+        description: Active ingredient batch determination
+      - name: ppskz
+        description: Postponement strategy
+      - name: cons_procg
+        description: Consumption procurement
+      - name: gi_pr_time
+        description: Goods issue processing time
+      - name: multiple_ekgrp
+        description: Multiple purchasing groups
+      - name: ref_schema
+        description: Reference schema
+      - name: min_troc
+        description: Minimum traceability
+      - name: max_troc
+        description: Maximum traceability
+      - name: target_stock
+        description: Target stock
+      - name: nf_flag
+        description: Non-food flag
+      - name: _cwm_umlmc
+        description: CWM stock in transfer (plant to plant)
+      - name: _cwm_trame
+        description: CWM stock in transit
+      - name: _cwm_bwesb
+        description: CWM valuated stock in quality inspection
+      - name: scm_matlocid_guid16
+        description: SCM material location ID (GUID 16)
+      - name: scm_matlocid_guid22
+        description: SCM material location ID (GUID 22)
+      - name: scm_grprt
+        description: SCM group reporting
+      - name: scm_giprt
+        description: SCM goods issue processing time
+      - name: scm_scost
+        description: SCM service cost
+      - name: scm_reldt
+        description: SCM release date
+      - name: scm_rrp_type
+        description: SCM record and replay type
+      - name: scm_heur_id
+        description: SCM heuristic ID
+      - name: scm_package_id
+        description: SCM package ID
+      - name: scm_sspen
+        description: SCM single source penalty
+      - name: scm_get_alerts
+        description: SCM get alerts
+      - name: scm_res_net_name
+        description: SCM resource network name
+      - name: scm_conhap
+        description: SCM consumption happening
+      - name: scm_hunit
+        description: SCM handling unit
+      - name: scm_conhap_out
+        description: SCM consumption happening output
+      - name: scm_hunit_out
+        description: SCM handling unit output
+      - name: scm_shelf_life_loc
+        description: SCM shelf life location
+      - name: scm_shelf_life_dur
+        description: SCM shelf life duration
+      - name: scm_maturity_dur
+        description: SCM maturity duration
+      - name: scm_shlf_lfe_req_min
+        description: SCM shelf life requirement minimum
+      - name: scm_shlf_lfe_req_max
+        description: SCM shelf life requirement maximum
+      - name: scm_lsuom
+        description: SCM lot size unit of measure
+      - name: scm_reord_dur
+        description: SCM reorder duration
+      - name: scm_target_dur
+        description: SCM target duration
+      - name: scm_tstrid
+        description: SCM test resource ID
+      - name: scm_stra1
+        description: SCM strategy 1
+      - name: scm_peg_past_alert
+        description: SCM pegging past alert
+      - name: scm_peg_future_alert
+        description: SCM pegging future alert
+      - name: scm_peg_strategy
+        description: SCM pegging strategy
+      - name: scm_peg_wo_alert_fst
+        description: SCM pegging without alert first
+      - name: scm_fixpeg_prod_set
+        description: SCM fixed pegging production set
+      - name: scm_whatbom
+        description: SCM what BOM
+      - name: dummy_plnt_incl_eew_ps
+        description: Dummy plant including EEW PS
+      - name: scm_rrp_sel_group
+        description: SCM record and replay selection group
+      - name: scm_intsrc_prof
+        description: SCM internal source profile
+      - name: scm_prio
+        description: SCM priority
+      - name: scm_min_pass_amount
+        description: SCM minimum pass amount
+      - name: scm_profid
+        description: SCM profile ID
+      - name: scm_ges_mng_use
+        description: SCM gesture management use
+      - name: scm_ges_bst_use
+        description: SCM gesture best use
+      - name: esppflg
+        description: ESP flag
+      - name: scm_thruput_time
+        description: SCM throughput time
+      - name: scm_tpop
+        description: SCM time of production
+      - name: scm_safty_v
+        description: SCM safety variant
+      - name: scm_ppsafystk
+        description: SCM post-production safety stock
+      - name: scm_ppsafystk_v
+        description: SCM post-production safety stock variant
+      - name: scm_repsafty
+        description: SCM replenishment safety
+      - name: scm_repsafty_v
+        description: SCM replenishment safety variant
+      - name: scm_reord_v
+        description: SCM reorder variant
+      - name: scm_maxstock_v
+        description: SCM maximum stock variant
+      - name: scm_scost_prcnt
+        description: SCM service cost percentage
+      - name: scm_proc_cost
+        description: SCM process cost
+      - name: scm_ndcostwa
+        description: SCM node cost warehouse
+      - name: scm_ndcostwe
+        description: SCM node cost weight
+      - name: excise_tax_rlvnce
+        description: Excise tax relevance
+      - name: scm_coninp
+        description: SCM control input
+      - name: conf_gmsync
+        description: Configuration GM sync
+      - name: scm_iunit
+        description: SCM integration unit
+      - name: scm_sft_lock
+        description: SCM safety lock
+      - name: sfty_stk_meth
+        description: Safety stock method
+      - name: temp_ctrl_min
+        description: Temperature control minimum
+      - name: temp_ctrl_max
+        description: Temperature control maximum
+      - name: temp_uom
+        description: Temperature unit of measure
+      - name: jitprodnconfprofile
+        description: JIT production confirmation profile
+      - name: _sapmp_tolprpl
+        description: SAP MP tolerance percentage plus
+      - name: _sapmp_tolprmi
+        description: SAP MP tolerance percentage minus
+      - name: _sttpec_servalid
+        description: ST-TPEC service validation
+      - name: _vso_r_pkgrp
+        description: VSO retail packaging group
+      - name: _vso_r_lane_num
+        description: VSO retail lane number
+      - name: _vso_r_pal_vend
+        description: VSO retail pallet vendor
+      - name: _vso_r_fork_dir
+        description: VSO retail fork direction
+      - name: iuid_relevant
+        description: IUID relevance indicator
+      - name: iuid_type
+        description: IUID type
+      - name: uid_iea
+        description: UID issuing entity attribute
+      - name: dpcbt
+        description: Data protection control byte
+
+  - name: mchb
+    description: Batch Stocks (MCHB) compatibility view - Contains batch-specific stock quantities and valuations for each material and storage location
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: matnr
+        description: Material number
+      - name: werks
+        description: Plant
+      - name: lgort
+        description: Storage location
+      - name: charg
+        description: Batch number
+      - name: lvorm
+        description: Flag for deletion at storage location level
+      - name: ersda
+        description: Date on which record was created
+      - name: ernam
+        description: Name of person who created the object
+      - name: laeda
+        description: Date of last change
+      - name: aenam
+        description: Name of person who changed object
+      - name: lfgja
+        description: Fiscal year of last goods receipt
+      - name: lfmon
+        description: Period of last goods receipt
+      - name: sperc
+        description: Blocking indicator for batch
+      - name: clabs
+        description: Valuated unrestricted-use stock
+      - name: cumlm
+        description: Stock in transfer (plant to plant)
+      - name: cinsm
+        description: Stock in quality inspection
+      - name: ceinm
+        description: Restricted-use stock
+      - name: cspem
+        description: Blocked stock
+      - name: cretm
+        description: Returns blocked stock
+      - name: cvmla
+        description: Valuated stock - sales order
+      - name: cvmum
+        description: Valuated stock - project
+      - name: cvmin
+        description: Valuated stock - individual customer
+      - name: cvmei
+        description: Valuated stock - consignment
+      - name: cvmsp
+        description: Valuated stock - subcontracting
+      - name: cvmre
+        description: Valuated stock - returns
+      - name: kzicl
+        description: Indicator for stock category (unrestricted)
+      - name: kzicq
+        description: Indicator for stock category (quality inspection)
+      - name: kzice
+        description: Indicator for stock category (restricted)
+      - name: kzics
+        description: Indicator for stock category (blocked)
+      - name: kzvcl
+        description: Indicator for valuated stock category (unrestricted)
+      - name: kzvcq
+        description: Indicator for valuated stock category (quality inspection)
+      - name: kzvce
+        description: Indicator for valuated stock category (restricted)
+      - name: kzvcs
+        description: Indicator for valuated stock category (blocked)
+      - name: herkl
+        description: Country of origin of the material
+      - name: chdll
+        description: Last change to batch line
+      - name: chjin
+        description: Batch change indicator
+      - name: chrue
+        description: Batch change indicator (always X)
+      - name: sgt_scat
+        description: Stock segment category
+      - name: fsh_season_year
+        description: Fashion management season year
+      - name: fsh_season
+        description: Fashion management season
+      - name: fsh_collection
+        description: Fashion management collection
+      - name: fsh_theme
+        description: Fashion management theme
+      - name: fsh_salloc_qty
+        description: Fashion management allocated quantity
+      - name: _cwm_clabs
+        description: CWM valuated unrestricted-use stock
+      - name: _cwm_cinsm
+        description: CWM stock in quality inspection
+      - name: _cwm_ceinm
+        description: CWM restricted-use stock
+      - name: _cwm_cspem
+        description: CWM blocked stock
+      - name: _cwm_cretm
+        description: CWM returns blocked stock
+      - name: _cwm_cumlm
+        description: CWM stock in transfer (plant to plant)
+      - name: _cwm_cvmla
+        description: CWM valuated stock - sales order
+      - name: _cwm_cvmin
+        description: CWM valuated stock - individual customer
+      - name: _cwm_cvmei
+        description: CWM valuated stock - consignment
+      - name: _cwm_cvmsp
+        description: CWM valuated stock - subcontracting
+      - name: _cwm_cvmre
+        description: CWM valuated stock - returns
+      - name: _cwm_cvmum
+        description: CWM valuated stock - project
+
+  - name: mkpf
+    description: Material Document Header (MKPF) compatibility view - Contains header-level information for material documents from goods movements
+    columns:
+      - name: _cwm_consumption_qty
+        description: CWM consumption quantity
+      - name: _cwm_erfme
+        description: CWM entry unit of measure
+      - name: _cwm_erfmg
+        description: CWM entry quantity
+      - name: _cwm_meins
+        description: CWM base unit of measure
+      - name: _cwm_meins_sid
+        description: CWM base unit of measure SID
+      - name: _cwm_menge
+        description: CWM quantity posted
+      - name: _cwm_stock_qty
+        description: CWM stock quantity
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: _fivetran_deleted
+        description: Fivetran deletion flag
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archived flag
+      - name: _fivetran_synced
+        description: Fivetran synchronization timestamp
+      - name: ablad
+        description: Unloading point
+      - name: aedat
+        description: Changed on date
+      - name: aktnr
+        description: Promotion number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: aplzl
+        description: Asset line item counter
+      - name: ass_pspnr
+        description: Assignment partner project system number
+      - name: aufnr
+        description: Order number
+      - name: aufpl
+        description: Routing number for operations
+      - name: aufps
+        description: Counter for operations
+      - name: awsys
+        description: Logical system
+      - name: belnr
+        description: Document number
+      - name: belum
+        description: Document environment
+      - name: bemot
+        description: Posting indicator
+      - name: berid
+        description: MRP area
+      - name: berkz
+        description: Requirements type
+      - name: bestq
+        description: Stock type
+      - name: bfwms
+        description: Subsequent movement type
+      - name: bktxt
+        description: Document header text
+      - name: bla2d
+        description: Location of asset (2nd dimension)
+      - name: blart
+        description: Document type
+      - name: blaum
+        description: Posting logic
+      - name: bldat
+        description: Document date in document
+      - name: bnbtr
+        description: Amount in document currency
+      - name: bpmng
+        description: Quantity in order price unit
+      - name: bprme
+        description: Order price unit
+      - name: bstaus_cg
+        description: Status of stock receipt
+      - name: bstaus_sg
+        description: Status of stock issue
+      - name: bstme
+        description: Order unit
+      - name: bstmg
+        description: Order quantity
+      - name: bsttyp_cg
+        description: Stock type of receipt
+      - name: bsttyp_sg
+        description: Stock type of issue
+      - name: bualt
+        description: Amount in local currency
+      - name: budat
+        description: Posting date in the document
+      - name: bukrs
+        description: Company code
+      - name: bustm
+        description: Tax on sales/purchases code
+      - name: bustw
+        description: Amount for tax on sales/purchases
+      - name: buzei
+        description: Item of an accounting document
+      - name: buzum
+        description: Assignment to line item of an FI document
+      - name: bwart
+        description: Movement type
+      - name: bwlvs
+        description: Movement type for manual account determination
+      - name: bwtar
+        description: Valuation type
+      - name: cancellation_type
+        description: Cancellation type
+      - name: cancelled
+        description: Cancellation indicator
+      - name: charg
+        description: Batch number
+      - name: charg_cid
+        description: Batch number CID
+      - name: charg_sid
+        description: Batch number SID
+      - name: charg_whs_cg
+        description: Batch number warehouse for goods receipt
+      - name: charg_whs_sg
+        description: Batch number warehouse for goods issue
+      - name: compl_mark
+        description: Completion indicator
+      - name: condi
+        description: Cost in document currency
+      - name: cons_value_a1
+        description: Consumption value in alternative valuation area 1
+      - name: consumption_qty
+        description: Consumption quantity
+      - name: cpudt
+        description: Day on which accounting document was entered
+      - name: cputm
+        description: Time of entry
+      - name: cuobj_ch
+        description: Configuration
+      - name: currency_a1
+        description: Currency for alternative valuation area 1
+      - name: dabrbz
+        description: GR slip deadline for material staging
+      - name: dabrz
+        description: GR slip deadline for external processing
+      - name: day_budat
+        description: Day of posting date
+      - name: disub_owner
+        description: Distribution/submarining owner
+      - name: disub_owner_cid
+        description: Distribution/submarining owner CID
+      - name: disub_owner_sid
+        description: Distribution/submarining owner SID
+      - name: dmbtr
+        description: Amount in local currency
+      - name: dmbtr_cons
+        description: Consumption amount in local currency
+      - name: dmbtr_stock
+        description: Stock amount in local currency
+      - name: dmbum
+        description: Amount in local currency with reverse +/- sign
+      - name: dummy_incl_eew_cobl
+        description: Dummy field including EEW COBL
+      - name: dummy_matdoc_incl_eew_ps
+        description: Dummy material document including EEW PS
+      - name: dypla
+        description: Stock placement strategy
+      - name: ebeln
+        description: Purchasing document number
+      - name: ebelp
+        description: Item number of purchasing document
+      - name: elikz
+        description: Delivery completed indicator
+      - name: ematn
+        description: Material number used by customer
+      - name: emlif
+        description: Supplying (issuing) plant
+      - name: equnr
+        description: Equipment number
+      - name: erfme
+        description: Unit of entry
+      - name: erfmg
+        description: Quantity in unit of entry
+      - name: etanp_mark
+        description: E-tank pickup mark
+      - name: evere
+        description: Shipping unit
+      - name: evers
+        description: Shipping unit type
+      - name: ewm_gmdoc
+        description: EWM goods movement document
+      - name: ewm_lgnum
+        description: EWM warehouse number
+      - name: ewm_lgpla
+        description: EWM storage bin
+      - name: exbwr
+        description: Externally entered posting amount
+      - name: exnum
+        description: External document number
+      - name: exvkw
+        description: External amount in local currency
+      - name: fbuda
+        description: Posting date in external system
+      - name: fipos
+        description: Commitment item
+      - name: fistl
+        description: Funds center
+      - name: fkber
+        description: Functional area
+      - name: fls_rsto
+        description: Release for lean service
+      - name: frath
+        description: Quantity of capacity consumption
+      - name: frbnr
+        description: Billing plan number / Invoicing plan number
+      - name: fsh_collection
+        description: Fashion management collection
+      - name: fsh_season
+        description: Fashion management season
+      - name: fsh_season_year
+        description: Fashion management season year
+      - name: fsh_theme
+        description: Fashion management theme
+      - name: fzgls_mark
+        description: Vehicle license number mark
+      - name: geber
+        description: Fund
+      - name: gjahr
+        description: Material document year
+      - name: gjper
+        description: Period (YYYYMM)
+      - name: gjper_curr_per
+        description: Current period (YYYYMM)
+      - name: grant_nbr
+        description: Grant number
+      - name: grund
+        description: Reason for goods movement
+      - name: gsber
+        description: Business area
+      - name: gts_cusref_no
+        description: GTS customs reference number
+      - name: header_counter
+        description: Header counter for material document
+      - name: hsdat
+        description: Date of manufacture
+      - name: imkey
+        description: Key for internal material movement
+      - name: insmk
+        description: Stock type
+      - name: j_1agirupd
+        description: Updates for GIR (goods issue reason)
+      - name: j_1bexbase
+        description: Export basis amount in document currency
+      - name: kalnr
+        description: Cost estimate number
+      - name: kalnr_cg
+        description: Cost estimate number for goods receipt
+      - name: kblnr
+        description: Document number of the material document
+      - name: kblpos
+        description: Line item in material document
+      - name: kdauf
+        description: Sales order number
+      - name: kdein
+        description: Sales order schedule line number
+      - name: kdpos
+        description: Sales order item number
+      - name: knbdr
+        description: Customer number
+      - name: knttp_gr
+        description: Account assignment category for goods receipt
+      - name: knumv
+        description: Number of the document condition
+      - name: kokrs
+        description: Controlling area
+      - name: kostl
+        description: Cost center
+      - name: kstrg
+        description: Cost object
+      - name: kunnr
+        description: Customer number
+      - name: kunnr_cid
+        description: Customer number CID
+      - name: kunnr_sid
+        description: Customer number SID
+      - name: kzbew
+        description: Movement indicator
+      - name: kzbws
+        description: Valuation of special stock
+      - name: kzear
+        description: Settlement rule
+      - name: kzstr
+        description: Reversal movement
+      - name: kzvbr
+        description: Consumption posting
+      - name: kzzug
+        description: Addition indicator
+      - name: lbbsa_cid
+        description: Valuation area CID
+      - name: lbbsa_sid
+        description: Valuation area SID
+      - name: lbkum
+        description: Total valuated stock
+      - name: le_vbeln
+        description: Delivery
+      - name: lfbja
+        description: Fiscal year of invoice receipt
+      - name: lfbnr
+        description: Document number of a reference document
+      - name: lfpos
+        description: Reference document item
+      - name: lgnum
+        description: Warehouse number
+      - name: lgort
+        description: Storage location
+      - name: lgort_cid
+        description: Storage location CID
+      - name: lgort_sid
+        description: Storage location SID
+      - name: lgpla
+        description: Storage bin
+      - name: lgtyp
+        description: Storage type
+      - name: lifnr
+        description: Vendor account number
+      - name: lifnr_cid
+        description: Vendor account number CID
+      - name: lifnr_sid
+        description: Vendor account number SID
+      - name: line_depth
+        description: Line depth
+      - name: line_id
+        description: Line ID
+      - name: llief
+        description: Last supplier to deliver
+      - name: lmbmv
+        description: Special movement indicator
+      - name: lsmeh
+        description: Confirmation unit
+      - name: lsmng
+        description: Confirmed quantity
+      - name: lstar
+        description: Activity type
+      - name: maa_urzei
+        description: Material update time stamp
+      - name: mandt
+        description: Client
+      - name: mat_kdauf
+        description: Material's sales order
+      - name: mat_kdauf_cid
+        description: Material's sales order CID
+      - name: mat_kdpos
+        description: Material's sales order item
+      - name: mat_kdpos_cid
+        description: Material's sales order item CID
+      - name: mat_pspnr
+        description: Material's project number
+      - name: mat_pspnr_cid
+        description: Material's project number CID
+      - name: matbf
+        description: Material
+      - name: matnr
+        description: Material number
+      - name: mblnr
+        description: Number of material document
+      - name: meins
+        description: Base unit of measure
+      - name: menge
+        description: Quantity
+      - name: mengu
+        description: Negative posting
+      - name: mjahr
+        description: Material document year
+      - name: month_budat
+        description: Month of posting date
+      - name: msr_active
+        description: MSR active
+      - name: mwskz
+        description: Tax on sales/purchases code
+      - name: nplnr
+        description: Network number for account assignment
+      - name: nroflabels
+        description: Number of labels
+      - name: nschn
+        description: Next serial number
+      - name: oicondcod
+        description: Condition code
+      - name: oinavnw
+        description: Net value of the services (in document currency)
+      - name: pabpm
+        description: Confirmation of the posting time
+      - name: palan
+        description: Number of packages
+      - name: paobjnr
+        description: Profitability segment number
+      - name: parbu
+        description: Partner business area
+      - name: parent_id
+        description: Parent ID
+      - name: pargb
+        description: Partner business area
+      - name: pbamg
+        description: Confirmed quantity in base unit of measure
+      - name: periv
+        description: Fiscal year variant
+      - name: pernr
+        description: Personnel number
+      - name: plpla
+        description: Planned storage location
+      - name: popup_mark
+        description: Pop-up mark
+      - name: pprctr
+        description: Partner profit center
+      - name: prctr
+        description: Profit center
+      - name: price_a1
+        description: Price in alternative valuation area 1
+      - name: price_source_a1
+        description: Price source for alternative valuation area 1
+      - name: projn
+        description: Project number (internal)
+      - name: prznr
+        description: Business process
+      - name: ps_psp_pnr
+        description: Work breakdown structure element (WBS element)
+      - name: qinspst
+        description: Inspection stock indicator
+      - name: quarter_budat
+        description: Quarter of posting date
+      - name: record_type
+        description: Record type
+      - name: resourcename_cid
+        description: Resource name CID
+      - name: resourcename_sid
+        description: Resource name SID
+      - name: reversal_movement
+        description: Reversal movement indicator
+      - name: rsart
+        description: Type of reservation
+      - name: rsnum
+        description: Number of reservation/dependent requirements
+      - name: rspos
+        description: Item number of reservation/dependent requirements
+      - name: sakto
+        description: G/L account number
+      - name: salk3
+        description: Value at sales prices including sales tax
+      - name: service_doc_id
+        description: Service document ID
+      - name: service_doc_item_id
+        description: Service document item ID
+      - name: service_doc_type
+        description: Service document type
+      - name: serviceperformer
+        description: Service performer
+      - name: sgt_rcat
+        description: Requirements category (Stock Segment)
+      - name: sgt_scat
+        description: Stock category (Stock Segment)
+      - name: sgt_umscat
+        description: Transfer stock category (Stock Segment)
+      - name: sgtxt
+        description: Text (Item)
+      - name: shkum
+        description: Serialization cumulative quantity
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: sjahr
+        description: Fiscal year of the allocation table
+      - name: smbln
+        description: Number of material document
+      - name: smblp
+        description: Item in material document
+      - name: sobkz
+        description: Special stock indicator
+      - name: spe_budat_uhr
+        description: Time of posting
+      - name: spe_budat_zone
+        description: Time zone for posting
+      - name: spe_gts_stock_ty
+        description: GTS stock type
+      - name: spe_logsys
+        description: Logical system for GTS
+      - name: spe_mdnum_ewm
+        description: Material document number in EWM
+      - name: stock_qty
+        description: Stock quantity
+      - name: stock_value_a1
+        description: Stock value in alternative valuation area 1
+      - name: stock_vkwrt
+        description: Sales value of the stock
+      - name: tanum
+        description: Transfer requirement number
+      - name: tbnum
+        description: Transfer posting number
+      - name: tbpos
+        description: Item number for transfer posting
+      - name: tbpri
+        description: Transfer posting indicator
+      - name: tcode
+        description: Transaction code
+      - name: tcode2
+        description: Additional transaction code
+      - name: txjcd
+        description: Tax jurisdiction code
+      - name: ubnum
+        description: Transfer requirement
+      - name: umbar
+        description: Posting string for quantity conversion
+      - name: umbuk_cg
+        description: Company code for transfer posting
+      - name: umcha
+        description: New batch number
+      - name: umkzbws_cg
+        description: Valuation of special stock in transfer posting
+      - name: umlgo
+        description: Receiving/issuing storage location
+      - name: ummab
+        description: Receiving plant for transfer postings
+      - name: ummab_cid
+        description: Receiving plant CID
+      - name: ummat
+        description: Material number (new)
+      - name: ummen_cg
+        description: Quantities are always positive for transfer posting
+      - name: umsok
+        description: Special stock indicator for transfer posting
+      - name: umsok_cid
+        description: Special stock indicator CID for transfer posting
+      - name: umwer_cg
+        description: Valuation of transfer posting in receiving plant
+      - name: umwrk
+        description: Receiving plant
+      - name: umwrk_cid
+        description: Receiving plant CID
+      - name: umzst
+        description: Original stock type
+      - name: umzus
+        description: Additional stock indicator
+      - name: urzei
+        description: Time of entry
+      - name: usnam
+        description: User name
+      - name: vbeln_im
+        description: Delivery
+      - name: vbelp_im
+        description: Delivery item
+      - name: vbobj_cg
+        description: Sales document object in goods receipt
+      - name: vbobj_sg
+        description: Sales document object in goods issue
+      - name: vfdat
+        description: Shelf life expiration date
+      - name: vgart
+        description: Movement type (inventory management)
+      - name: vkmws
+        description: Vat amount in document currency
+      - name: vkwra
+        description: Amount at sales price in local currency
+      - name: vkwrt
+        description: Sales value
+      - name: vprsv
+        description: Price control indicator
+      - name: vptnr
+        description: Partner number
+      - name: vschn
+        description: Version number for serial number
+      - name: waers
+        description: Currency key
+      - name: weanz
+        description: Number of indicators
+      - name: week_budat
+        description: Week of posting date
+      - name: weekday_budat
+        description: Weekday of posting date
+      - name: wempf
+        description: Goods recipient
+      - name: werks
+        description: Plant
+      - name: wertu
+        description: Production time unit
+      - name: weunb
+        description: Incompletion status
+      - name: wever
+        description: Version management
+      - name: work_item_id
+        description: Work item ID
+      - name: wrf_charstc1
+        description: Characteristic value 1
+      - name: wrf_charstc2
+        description: Characteristic value 2
+      - name: wrf_charstc3
+        description: Characteristic value 3
+      - name: xabln
+        description: GR/IR account clearing
+      - name: xauto
+        description: Automatic goods receipt
+      - name: xbeau
+        description: Order acknowledgment requirement
+      - name: xblnr
+        description: Reference document number
+      - name: xblvs
+        description: Posting block for document
+      - name: xcompl
+        description: Completeness indicator
+      - name: xfmat
+        description: Production/inspection memo
+      - name: xmacc
+        description: Material is relevant for RFM procedure
+      - name: xobew
+        description: Object included in price determination
+      - name: xprint
+        description: Print indicator
+      - name: xruej
+        description: Fiscal year change
+      - name: xruem
+        description: Period change
+      - name: xsauf
+        description: Automatically maintained
+      - name: xsaut
+        description: Automatic settlement
+      - name: xserg
+        description: Automatic creation of settlement rule
+      - name: xskst
+        description: Cost estimate reference
+      - name: xspro
+        description: Update special procurement
+      - name: xstor
+        description: Reversal of consumption posting
+      - name: xwoff
+        description: Write-off value active
+      - name: xwsbr
+        description: Write-off amount posting
+      - name: year_budat
+        description: Year of posting date
+      - name: yearday_budat
+        description: Day of year for posting date
+      - name: yearmonth_budat
+        description: Year and month of posting date
+      - name: yearquarter_budat
+        description: Year and quarter of posting date
+      - name: yearweek_budat
+        description: Year and week of posting date
+      - name: zeile
+        description: Item number
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: zusch
+        description: Overhead key
+      - name: zustd
+        description: Responsible person
+      - name: zustd_t156m
+        description: Responsible person from table T156M
+
+  - name: mseg
+    description: Material Document Line Items (MSEG) compatibility view - Contains detailed line item information for all material movement transactions
+    columns:
+      - name: _cwm_consumption_qty
+        description: CWM consumption quantity
+      - name: _cwm_erfme
+        description: CWM entry unit of measure
+      - name: _cwm_erfmg
+        description: CWM entry quantity
+      - name: _cwm_meins
+        description: CWM base unit of measure
+      - name: _cwm_meins_sid
+        description: CWM base unit of measure SID
+      - name: _cwm_menge
+        description: CWM quantity posted
+      - name: _cwm_stock_qty
+        description: CWM stock quantity
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: _fivetran_deleted
+        description: Fivetran deletion flag
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archived flag
+      - name: _fivetran_synced
+        description: Fivetran synchronization timestamp
+      - name: ablad
+        description: Unloading point
+      - name: aedat
+        description: Changed on date
+      - name: aktnr
+        description: Promotion number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: aplzl
+        description: Asset line item counter
+      - name: ass_pspnr
+        description: Assignment partner project system number
+      - name: aufnr
+        description: Order number
+      - name: aufpl
+        description: Routing number for operations
+      - name: aufps
+        description: Counter for operations
+      - name: awsys
+        description: Logical system
+      - name: belnr
+        description: Document number
+      - name: belum
+        description: Document environment
+      - name: bemot
+        description: Posting indicator
+      - name: berid
+        description: MRP area
+      - name: berkz
+        description: Requirements type
+      - name: bestq
+        description: Stock type
+      - name: bfwms
+        description: Subsequent movement type
+      - name: bktxt
+        description: Document header text
+      - name: bla2d
+        description: Location of asset (2nd dimension)
+      - name: blart
+        description: Document type
+      - name: blaum
+        description: Posting logic
+      - name: bldat
+        description: Document date in document
+      - name: bnbtr
+        description: Amount in document currency
+      - name: bpmng
+        description: Quantity in order price unit
+      - name: bprme
+        description: Order price unit
+      - name: bstaus_cg
+        description: Status of stock receipt
+      - name: bstaus_sg
+        description: Status of stock issue
+      - name: bstme
+        description: Order unit
+      - name: bstmg
+        description: Order quantity
+      - name: bsttyp_cg
+        description: Stock type of receipt
+      - name: bsttyp_sg
+        description: Stock type of issue
+      - name: bualt
+        description: Amount in local currency
+      - name: budat
+        description: Posting date in the document
+      - name: bukrs
+        description: Company code
+      - name: bustm
+        description: Tax on sales/purchases code
+      - name: bustw
+        description: Amount for tax on sales/purchases
+      - name: buzei
+        description: Item of an accounting document
+      - name: buzum
+        description: Assignment to line item of an FI document
+      - name: bwart
+        description: Movement type for goods movements
+      - name: bwlvs
+        description: Movement type for manual account determination
+      - name: bwtar
+        description: Valuation type
+      - name: cancellation_type
+        description: Cancellation type
+      - name: cancelled
+        description: Cancellation indicator
+      - name: charg
+        description: Batch number
+      - name: charg_cid
+        description: Batch number CID
+      - name: charg_sid
+        description: Batch number SID
+      - name: charg_whs_cg
+        description: Batch number warehouse for goods receipt
+      - name: charg_whs_sg
+        description: Batch number warehouse for goods issue
+      - name: compl_mark
+        description: Completion indicator
+      - name: condi
+        description: Cost in document currency
+      - name: cons_value_a1
+        description: Consumption value in alternative valuation area 1
+      - name: consumption_qty
+        description: Consumption quantity
+      - name: cpudt
+        description: Day on which accounting document was entered
+      - name: cputm
+        description: Time of entry
+      - name: cuobj_ch
+        description: Configuration
+      - name: currency_a1
+        description: Currency for alternative valuation area 1
+      - name: dabrbz
+        description: GR slip deadline for material staging
+      - name: dabrz
+        description: GR slip deadline for external processing
+      - name: day_budat
+        description: Day of posting date
+      - name: disub_owner
+        description: Distribution/submarining owner
+      - name: disub_owner_cid
+        description: Distribution/submarining owner CID
+      - name: disub_owner_sid
+        description: Distribution/submarining owner SID
+      - name: dmbtr
+        description: Amount in local currency
+      - name: dmbtr_cons
+        description: Consumption amount in local currency
+      - name: dmbtr_stock
+        description: Stock amount in local currency
+      - name: dmbum
+        description: Amount in local currency with reverse +/- sign
+      - name: dummy_incl_eew_cobl
+        description: Dummy field including EEW COBL
+      - name: dummy_matdoc_incl_eew_ps
+        description: Dummy material document including EEW PS
+      - name: dypla
+        description: Stock placement strategy
+      - name: ebeln
+        description: Purchasing document number
+      - name: ebelp
+        description: Item number of purchasing document
+      - name: elikz
+        description: Delivery completed indicator
+      - name: ematn
+        description: Material number used by customer
+      - name: emlif
+        description: Supplying (issuing) plant
+      - name: equnr
+        description: Equipment number
+      - name: erfme
+        description: Unit of entry
+      - name: erfmg
+        description: Quantity in unit of entry
+      - name: etanp_mark
+        description: E-tank pickup mark
+      - name: evere
+        description: Shipping unit
+      - name: evers
+        description: Shipping unit type
+      - name: ewm_gmdoc
+        description: EWM goods movement document
+      - name: ewm_lgnum
+        description: EWM warehouse number
+      - name: ewm_lgpla
+        description: EWM storage bin
+      - name: exbwr
+        description: Externally entered posting amount
+      - name: exnum
+        description: External document number
+      - name: exvkw
+        description: External amount in local currency
+      - name: fbuda
+        description: Posting date in external system
+      - name: fipos
+        description: Commitment item
+      - name: fistl
+        description: Funds center
+      - name: fkber
+        description: Functional area
+      - name: fls_rsto
+        description: Release for lean service
+      - name: frath
+        description: Quantity of capacity consumption
+      - name: frbnr
+        description: Billing plan number / Invoicing plan number
+      - name: fsh_collection
+        description: Fashion management collection
+      - name: fsh_season
+        description: Fashion management season
+      - name: fsh_season_year
+        description: Fashion management season year
+      - name: fsh_theme
+        description: Fashion management theme
+      - name: fzgls_mark
+        description: Vehicle license number mark
+      - name: geber
+        description: Fund
+      - name: gjahr
+        description: Material document year
+      - name: gjper
+        description: Period (YYYYMM)
+      - name: gjper_curr_per
+        description: Current period (YYYYMM)
+      - name: grant_nbr
+        description: Grant number
+      - name: grund
+        description: Reason for goods movement
+      - name: gsber
+        description: Business area
+      - name: gts_cusref_no
+        description: GTS customs reference number
+      - name: header_counter
+        description: Header counter for material document
+      - name: hsdat
+        description: Date of manufacture
+      - name: imkey
+        description: Key for internal material movement
+      - name: insmk
+        description: Stock type
+      - name: j_1agirupd
+        description: Updates for GIR (goods issue reason)
+      - name: j_1bexbase
+        description: Export basis amount in document currency
+      - name: kalnr
+        description: Cost estimate number
+      - name: kalnr_cg
+        description: Cost estimate number for goods receipt
+      - name: kblnr
+        description: Document number of the material document
+      - name: kblpos
+        description: Line item in material document
+      - name: kdauf
+        description: Sales order number
+      - name: kdein
+        description: Sales order schedule line number
+      - name: kdpos
+        description: Sales order item number
+      - name: knbdr
+        description: Customer number
+      - name: knttp_gr
+        description: Account assignment category for goods receipt
+      - name: knumv
+        description: Number of the document condition
+      - name: kokrs
+        description: Controlling area
+      - name: kostl
+        description: Cost center
+      - name: kstrg
+        description: Cost object
+      - name: kunnr
+        description: Customer number
+      - name: kunnr_cid
+        description: Customer number CID
+      - name: kunnr_sid
+        description: Customer number SID
+      - name: kzbew
+        description: Movement indicator
+      - name: kzbws
+        description: Valuation of special stock
+      - name: kzear
+        description: Settlement rule
+      - name: kzstr
+        description: Reversal movement
+      - name: kzvbr
+        description: Consumption posting
+      - name: kzzug
+        description: Addition indicator
+      - name: lbbsa_cid
+        description: Valuation area CID
+      - name: lbbsa_sid
+        description: Valuation area SID
+      - name: lbkum
+        description: Total valuated stock
+      - name: le_vbeln
+        description: Delivery
+      - name: lfbja
+        description: Fiscal year of invoice receipt
+      - name: lfbnr
+        description: Document number of a reference document
+      - name: lfpos
+        description: Reference document item
+      - name: lgnum
+        description: Warehouse number
+      - name: lgort
+        description: Storage location
+      - name: lgort_cid
+        description: Storage location CID
+      - name: lgort_sid
+        description: Storage location SID
+      - name: lgpla
+        description: Storage bin
+      - name: lgtyp
+        description: Storage type
+      - name: lifnr
+        description: Vendor account number
+      - name: lifnr_cid
+        description: Vendor account number CID
+      - name: lifnr_sid
+        description: Vendor account number SID
+      - name: line_depth
+        description: Line depth for hierarchical material documents
+      - name: line_id
+        description: Line ID for material document
+      - name: llief
+        description: Last supplier to deliver
+      - name: lmbmv
+        description: Special movement indicator
+      - name: lsmeh
+        description: Confirmation unit
+      - name: lsmng
+        description: Confirmed quantity
+      - name: lstar
+        description: Activity type
+      - name: maa_urzei
+        description: Material update time stamp
+      - name: mandt
+        description: Client
+      - name: mat_kdauf
+        description: Material's sales order
+      - name: mat_kdauf_cid
+        description: Material's sales order CID
+      - name: mat_kdpos
+        description: Material's sales order item
+      - name: mat_kdpos_cid
+        description: Material's sales order item CID
+      - name: mat_pspnr
+        description: Material's project number
+      - name: mat_pspnr_cid
+        description: Material's project number CID
+      - name: matbf
+        description: Material number
+      - name: matnr
+        description: Material number
+      - name: mblnr
+        description: Number of material document
+      - name: meins
+        description: Base unit of measure
+      - name: menge
+        description: Quantity posted to stock in base unit of measure
+      - name: mengu
+        description: Negative posting
+      - name: mjahr
+        description: Material document year
+      - name: month_budat
+        description: Month of posting date
+      - name: msr_active
+        description: MSR active indicator
+      - name: mwskz
+        description: Tax on sales/purchases code
+      - name: nplnr
+        description: Network number for account assignment
+      - name: nroflabels
+        description: Number of labels
+      - name: nschn
+        description: Next serial number
+      - name: oicondcod
+        description: Condition code
+      - name: oinavnw
+        description: Net value of the services (in document currency)
+      - name: pabpm
+        description: Confirmation of the posting time
+      - name: palan
+        description: Number of packages
+      - name: paobjnr
+        description: Profitability segment number
+      - name: parbu
+        description: Partner business area
+      - name: parent_id
+        description: Parent ID for material document hierarchy
+      - name: pargb
+        description: Partner business area
+      - name: pbamg
+        description: Confirmed quantity in base unit of measure
+      - name: periv
+        description: Fiscal year variant
+      - name: pernr
+        description: Personnel number
+      - name: plpla
+        description: Planned storage location
+      - name: popup_mark
+        description: Pop-up mark
+      - name: pprctr
+        description: Partner profit center
+      - name: prctr
+        description: Profit center
+      - name: price_a1
+        description: Price in alternative valuation area 1
+      - name: price_source_a1
+        description: Price source for alternative valuation area 1
+      - name: projn
+        description: Project number (internal)
+      - name: prznr
+        description: Business process
+      - name: ps_psp_pnr
+        description: Work breakdown structure element (WBS element)
+      - name: qinspst
+        description: Inspection stock indicator
+      - name: quarter_budat
+        description: Quarter of posting date
+      - name: record_type
+        description: Record type (MDOC for material documents)
+      - name: resourcename_cid
+        description: Resource name CID
+      - name: resourcename_sid
+        description: Resource name SID
+      - name: reversal_movement
+        description: Reversal movement indicator
+      - name: rsart
+        description: Type of reservation
+      - name: rsnum
+        description: Number of reservation/dependent requirements
+      - name: rspos
+        description: Item number of reservation/dependent requirements
+      - name: sakto
+        description: G/L account number
+      - name: salk3
+        description: Value at sales prices including sales tax
+      - name: service_doc_id
+        description: Service document ID
+      - name: service_doc_item_id
+        description: Service document item ID
+      - name: service_doc_type
+        description: Service document type
+      - name: serviceperformer
+        description: Service performer
+      - name: sgt_rcat
+        description: Requirements category (Stock Segment)
+      - name: sgt_scat
+        description: Stock category (Stock Segment)
+      - name: sgt_umscat
+        description: Transfer stock category (Stock Segment)
+      - name: sgtxt
+        description: Text (Item)
+      - name: shkum
+        description: Serialization cumulative quantity
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: sjahr
+        description: Fiscal year of the allocation table
+      - name: smbln
+        description: Number of material document
+      - name: smblp
+        description: Item in material document
+      - name: sobkz
+        description: Special stock indicator
+      - name: spe_budat_uhr
+        description: Time of posting
+      - name: spe_budat_zone
+        description: Time zone for posting
+      - name: spe_gts_stock_ty
+        description: GTS stock type
+      - name: spe_logsys
+        description: Logical system for GTS
+      - name: spe_mdnum_ewm
+        description: Material document number in EWM
+      - name: stock_qty
+        description: Stock quantity for stock determination
+      - name: stock_value_a1
+        description: Stock value in alternative valuation area 1
+      - name: stock_vkwrt
+        description: Sales value of the stock
+      - name: tanum
+        description: Transfer requirement number
+      - name: tbnum
+        description: Transfer posting number
+      - name: tbpos
+        description: Item number for transfer posting
+      - name: tbpri
+        description: Transfer posting indicator
+      - name: tcode
+        description: Transaction code
+      - name: tcode2
+        description: Additional transaction code
+      - name: txjcd
+        description: Tax jurisdiction code
+      - name: ubnum
+        description: Transfer requirement
+      - name: umbar
+        description: Posting string for quantity conversion
+      - name: umbuk_cg
+        description: Company code for transfer posting
+      - name: umcha
+        description: New batch number
+      - name: umkzbws_cg
+        description: Valuation of special stock in transfer posting
+      - name: umlgo
+        description: Receiving/issuing storage location
+      - name: ummab
+        description: Receiving plant for transfer postings
+      - name: ummab_cid
+        description: Receiving plant CID
+      - name: ummat
+        description: Material number (new)
+      - name: ummen_cg
+        description: Quantities are always positive for transfer posting
+      - name: umsok
+        description: Special stock indicator for transfer posting
+      - name: umsok_cid
+        description: Special stock indicator CID for transfer posting
+      - name: umwer_cg
+        description: Valuation of transfer posting in receiving plant
+      - name: umwrk
+        description: Receiving plant
+      - name: umwrk_cid
+        description: Receiving plant CID
+      - name: umzst
+        description: Original stock type
+      - name: umzus
+        description: Additional stock indicator
+      - name: urzei
+        description: Time of entry
+      - name: usnam
+        description: User name
+      - name: vbeln_im
+        description: Delivery
+      - name: vbelp_im
+        description: Delivery item
+      - name: vbobj_cg
+        description: Sales document object in goods receipt
+      - name: vbobj_sg
+        description: Sales document object in goods issue
+      - name: vfdat
+        description: Shelf life expiration date
+      - name: vgart
+        description: Movement type (inventory management)
+      - name: vkmws
+        description: VAT amount in document currency
+      - name: vkwra
+        description: Amount at sales price in local currency
+      - name: vkwrt
+        description: Sales value of material in material document currency
+      - name: vprsv
+        description: Price control indicator
+      - name: vptnr
+        description: Partner number
+      - name: vschn
+        description: Version number for serial number
+      - name: waers
+        description: Currency key
+      - name: weanz
+        description: Number of indicators
+      - name: week_budat
+        description: Week of posting date
+      - name: weekday_budat
+        description: Weekday of posting date
+      - name: wempf
+        description: Goods recipient
+      - name: werks
+        description: Plant
+      - name: wertu
+        description: Production time unit
+      - name: weunb
+        description: Incompletion status
+      - name: wever
+        description: Version management
+      - name: work_item_id
+        description: Work item ID
+      - name: wrf_charstc1
+        description: Characteristic value 1
+      - name: wrf_charstc2
+        description: Characteristic value 2
+      - name: wrf_charstc3
+        description: Characteristic value 3
+      - name: xabln
+        description: GR/IR account clearing
+      - name: xauto
+        description: Automatic goods receipt
+      - name: xbeau
+        description: Order acknowledgment requirement
+      - name: xblnr
+        description: Reference document number
+      - name: xblvs
+        description: Posting block for document
+      - name: xcompl
+        description: Completeness indicator
+      - name: xfmat
+        description: Production/inspection memo
+      - name: xmacc
+        description: Material is relevant for RFM procedure
+      - name: xobew
+        description: Object included in price determination
+      - name: xprint
+        description: Print indicator
+      - name: xruej
+        description: Fiscal year change
+      - name: xruem
+        description: Period change
+      - name: xsauf
+        description: Automatically maintained
+      - name: xsaut
+        description: Automatic settlement
+      - name: xserg
+        description: Control - Automatic creation of settlement rule
+      - name: xskst
+        description: Cost estimate reference
+      - name: xspro
+        description: Update special procurement
+      - name: xstor
+        description: Reversal of consumption posting
+      - name: xwoff
+        description: Write-off value active
+      - name: xwsbr
+        description: Write-off amount posting
+      - name: year_budat
+        description: Year of posting date
+      - name: yearday_budat
+        description: Day of year for posting date
+      - name: yearmonth_budat
+        description: Year and month of posting date
+      - name: yearquarter_budat
+        description: Year and quarter of posting date
+      - name: yearweek_budat
+        description: Year and week of posting date
+      - name: zeile
+        description: Item number within material document
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: zusch
+        description: Overhead key
+      - name: zustd
+        description: Responsible person
+      - name: zustd_t156m
+        description: Responsible person from table T156M

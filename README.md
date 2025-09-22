@@ -21,6 +21,7 @@
     - Brings in general ledger models like General Ledger: Balances, Leading Ledger (`sap__0fi_gl_10`) and Line Items Leading Ledger (`sap__0fi_gl_14`).
     - Brings in master text models like Company Code (`sap__0comp_code_text`), Company (`sap__0company_text`), and Vendor (`sap__0vendor_text`).
     - Provides sales and procurement models including facts and dimensions for purchase and sales orders.
+    - Provides compatibility views to help maintain backwards compatibility.
 - Produces modeled tables that leverage SAP data from [Fivetran's SAP connectors, like LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements), [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent) or [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana).
 - Generates a comprehensive data dictionary of your source and modeled sap data through the [dbt docs site](https://fivetran.github.io/dbt_sap/).
 
@@ -59,8 +60,20 @@ The following tables provide a detailed list of all tables materialized within t
 | [sap__fact_purchasing_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__dim_vendor) | Consolidates purchase order fact data from the `ekbe`, `eket`, `ekko`, `ekpo`, and `t001w` sources, representing transactional procurement activity across line items and orders. SAP field names are mapped to English readable column names. |
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Contains fact-level sales order data, integrating records from `vbak`, `vbap`, `vbuk`, and `vbup` sources to provide visibility into sales transaction performance. SAP field names are mapped to English readable column names. |
 
+### Compatibility Views
+The following models provide compatibility views that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports.
+
+| **Table**                         | **Description**                                                                                                                                                                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [coss](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents, replicating the native SAP COSS table structure. |
+| [faglflexa](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflexa) | Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents, maintaining compatibility with native SAP FAGLFLEXA table. |
+| [marc](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information, replicating the native SAP MARC table structure. |
+| [mchb](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mchb) | Batch Stocks (MCHB) compatibility view - Contains batch-specific stock quantities and valuations for each material and storage location, maintaining compatibility with native SAP MCHB table. |
+| [mkpf](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mkpf) | Material Document Header (MKPF) compatibility view - Contains header-level information for material documents from goods movements, replicating the native SAP MKPF table structure. |
+| [mseg](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mseg) | Material Document Line Items (MSEG) compatibility view - Contains detailed line item information for all material movement transactions, maintaining compatibility with native SAP MSEG table. |
+
 ### Materialized Models
-Each Quickstart transformation job run materializes 95 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 133 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -86,7 +99,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.4.0", "<0.5.0"]
 ```
 
 ### Step 3: Define database and schema variables

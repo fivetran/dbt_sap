@@ -10,6 +10,301 @@ sources:
       loaded_at_field: _fivetran_synced
 
     tables:
+      - name: acdoca
+        identifier: "{{ var('sap_acdoca_identifier', 'acdoca') }}"
+        config:
+          enabled: "{{ var('sap_using_acdoca', true) }}"
+        description: add docs here
+
+      - name: finsc_cmp_versnd
+        identifier: "{{ var('sap_finsc_cmp_versnd_identifier', 'finsc_cmp_versnd') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_cmp_versnd', true) }}"
+        description: Financial SCM component version data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
+          - name: mandt
+            description: Client
+          - name: bukrs
+            description: Company code
+          - name: rldnr
+            description: Ledger
+          - name: versn
+            description: Version
+          - name: field_name_buzei
+            description: Field name for line item
+          - name: field_name_wtgbtr_add
+            description: Field name for transaction currency amount to add
+          - name: field_name_wtgbtr_subtract
+            description: Field name for transaction currency amount to subtract
+          - name: set_to_zero
+            description: Set to zero indicator
+          - name: field_name_wogbtr_add
+            description: Field name for object currency amount to add
+          - name: field_name_wogbtr_subtract
+            description: Field name for object currency amount to subtract
+          - name: field_name_wkgbtr_add
+            description: Field name for controlling area currency amount to add
+          - name: field_name_wkgbtr_subtract
+            description: Field name for controlling area currency amount to subtract
+          - name: field_name_wkfbtr_add
+            description: Field name for controlling area fixed amount to add
+          - name: field_name_wkfbtr_subtract
+            description: Field name for controlling area fixed amount to subtract
+          - name: field_name_pagbtr_add
+            description: Field name for parallel currency amount to add
+          - name: field_name_pagbtr_subtract
+            description: Field name for parallel currency amount to subtract
+          - name: field_name_pafbtr_add
+            description: Field name for parallel fixed amount to add
+          - name: field_name_pafbtr_subtract
+            description: Field name for parallel fixed amount to subtract
+
+      - name: tj01
+        identifier: "{{ var('sap_tj01_identifier', 'tj01') }}"
+        config:
+          enabled: "{{ var('sap_using_tj01', true) }}"
+        description: System status
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+
+      - name: marc
+        identifier: "{{ var('sap_marc_identifier', 'marc') }}"
+        config:
+          enabled: "{{ var('sap_using_marc', true) }}"
+        description: Plant/storage view material master
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: matnr
+            description: Material number
+          - name: werks
+            description: Plant
+
+      - name: mchb
+        identifier: "{{ var('sap_mchb_identifier', 'mchb') }}"
+        config:
+          enabled: "{{ var('sap_using_mchb', true) }}"
+        description: Batch stocks
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+
+      - name: mchp
+        identifier: "{{ var('sap_mchp_identifier', 'mchp') }}"
+        config:
+          enabled: "{{ var('sap_using_mchp', true) }}"
+        description: Batch master (plant level)
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+
+      - name: tka01
+        identifier: "{{ var('sap_tka01_identifier', 'tka01') }}"
+        config:
+          enabled: "{{ var('sap_using_tka01', true) }}"
+        description: Controlling area
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: kokrs
+            description: Controlling area
+
+      - name: t000
+        identifier: "{{ var('sap_t000_identifier', 't000') }}"
+        config:
+          enabled: "{{ var('sap_using_t000', true) }}"
+        description: Clients
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: logsys
+            description: Logical system
+
+      - name: matdoc
+        identifier: "{{ var('sap_matdoc_identifier', 'matdoc') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc', true) }}"
+        description: Material document header
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+
+      - name: matdoc_extract
+        identifier: "{{ var('sap_matdoc_extract_identifier', 'matdoc_extract') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc_extract', true) }}"
+        description: Material document extract data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+
+      - name: sapsll_tunos
+        identifier: "{{ var('sap_sapsll_tunos_identifier', '_sapsll_tunos') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_tunos', true) }}"
+        description: SAP Special Ledger transaction numbers
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: land1
+            description: Country key
+          - name: ctsty
+            description: Transaction type
+          - name: stcts
+            description: Statistical number
+
+      - name: sapsll_maritc
+        identifier: "{{ var('sap_sapsll_maritc_identifier', '_sapsll_maritc') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_maritc', true) }}"
+        description: SAP Special Ledger material items
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: matnr
+            description: Material number
+          - name: stcts
+            description: Statistical number
+          - name: datab
+            description: Valid from date
+          - name: datbi
+            description: Valid to date
+          - name: ccngn
+            description: Currency number generation
+
+      - name: sapsll_nosca
+        identifier: "{{ var('sap_sapsll_nosca_identifier', '_sapsll_nosca') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_nosca', true) }}"
+        description: SAP Special Ledger non-scalable data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: stcts
+            description: Statistical number
+          - name: datab
+            description: Valid from date
+          - name: datbi
+            description: Valid to date
+          - name: mandt
+            description: Client
+          - name: nosct
+            description: Number of special cost classification
+
+      - name: sapsll_clsnr
+        identifier: "{{ var('sap_sapsll_clsnr_identifier', '_sapsll_clsnr') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_clsnr', true) }}"
+        description: SAP Special Ledger classification
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: nosct
+            description: Number of special cost classification
+          - name: ccngn
+            description: Currency number generation
+          - name: datab
+            description: Valid from date
+          - name: datbi
+            description: Valid to date
+          - name: mandt
+            description: Client
+          - name: bemeh
+            description: Reference unit
+
+      - name: finsc_ledger_rep
+        identifier: "{{ var('sap_finsc_ledger_rep_identifier', 'finsc_ledger_rep') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ledger_rep', true) }}"
+        description: Financial SCM ledger reporting data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: rldnr
+            description: Ledger
+          - name: mandt
+            description: Client
+          - name: rldnr_pers
+            description: Personal ledger number
+
+      - name: finsc_ld_cmp
+        identifier: "{{ var('sap_finsc_ld_cmp_identifier', 'finsc_ld_cmp') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ld_cmp', true) }}"
+        description: Financial SCM lead component data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: curposk
+            description: Currency position K
+          - name: curposo
+            description: Currency position O
+          - name: curposv
+            description: Currency position V
+          - name: curposb
+            description: Currency position B
+          - name: curposc
+            description: Currency position C
+          - name: curposd
+            description: Currency position D
+          - name: curpose
+            description: Currency position E
+          - name: curposf
+            description: Currency position F
+          - name: curposg
+            description: Currency position G
+          - name: mandt
+            description: Client
+          - name: bukrs
+            description: Company code
+          - name: rldnr
+            description: Ledger
+
       - name: bkpf
         identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
         config:

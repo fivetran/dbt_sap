@@ -1,3 +1,63 @@
+# dbt_sap v0.4.0
+[PR #29](https://github.com/fivetran/dbt_sap/pull/29) includes the following updates:
+
+## Feature and Schema/Data Changes
+Introduced 6 new compatibility view models that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports. Additionally, added support for new upstream staging models used to support the compatibility view end models.
+
+**38 total changes • 0 possible breaking changes**
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [`coss`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | New model |  |  | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents. |
+| [`faglflexa`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflexa) | New model |  |  | Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents. |
+| [`marc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | New model |  |  | Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information. |
+| [`mchb`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mchb) | New model |  |  | Batch Stocks (MCHB) compatibility view - Contains batch-specific stock quantities and valuations for each material and storage location. |
+| [`mkpf`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mkpf) | New model |  |  | Material Document Header (MKPF) compatibility view - Contains header-level information for material documents from goods movements. |
+| [`mseg`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mseg) | New model |  |  | Material Document Line Items (MSEG) compatibility view - Contains detailed line item information for all material movement transactions. |
+| [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New model |  |  | Staging model for universal journal entries (`acdoca`). |
+| [`stg_sap__finsc_cmp_versnd`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_cmp_versnd) | New model |  |  | Staging model for financial component version send (`finsc_cmp_versnd`). |
+| [`stg_sap__finsc_ld_cmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ld_cmp) | New model |  |  | Staging model for financial ledger component (`finsc_ld_cmp`). |
+| [`stg_sap__finsc_ledger_rep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ledger_rep) | New model |  |  | Staging model for financial ledger reports (`finsc_ledger_rep`). |
+| [`stg_sap__marc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__marc) | New model |  |  | Staging model for material master plant data (`marc`). |
+| [`stg_sap__matdoc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__matdoc) | New model |  |  | Staging model for material documents (`matdoc`). |
+| [`stg_sap__matdoc_extract`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__matdoc_extract) | New model |  |  | Staging model for material document extracts (`matdoc_extract`). |
+| [`stg_sap__mchb`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__mchb) | New model |  |  | Staging model for batch stocks (`mchb`). |
+| [`stg_sap__mchp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__mchp) | New model |  |  | Staging model for batch period stocks (`mchp`). |
+| [`stg_sap__sapsll_clsnr`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_clsnr) | New model |  |  | Staging model for SAP special ledger country codes (`sapsll_clsnr`). |
+| [`stg_sap__sapsll_maritc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_maritc) | New model |  |  | Staging model for SAP special ledger material codes (`sapsll_maritc`). |
+| [`stg_sap__sapsll_nosca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_nosca) | New model |  |  | Staging model for SAP special ledger scale categories (`sapsll_nosca`). |
+| [`stg_sap__sapsll_tunos`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_tunos) | New model |  |  | Staging model for SAP special ledger scale numbers (`sapsll_tunos`). |
+| [`stg_sap__t000`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t000) | New model |  |  | Staging model for clients (`t000`). |
+| [`stg_sap__tj01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tj01) | New model |  |  | Staging model for system statuses (`tj01`). |
+| [`stg_sap__tka01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tka01) | New model |  |  | Staging model for controlling areas (`tka01`). |
+| [`stg_sap__acdoca_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca_tmp) | New model |  |  | Temporary staging model for universal journal entries (`acdoca`). |
+| [`stg_sap__finsc_cmp_versnd_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_cmp_versnd_tmp) | New model |  |  | Temporary staging model for financial component version send (`finsc_cmp_versnd`). |
+| [`stg_sap__finsc_ld_cmp_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ld_cmp_tmp) | New model |  |  | Temporary staging model for financial ledger component (`finsc_ld_cmp`). |
+| [`stg_sap__finsc_ledger_rep_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ledger_rep_tmp) | New model |  |  | Temporary staging model for financial ledger reports (`finsc_ledger_rep`). |
+| [`stg_sap__marc_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__marc_tmp) | New model |  |  | Temporary staging model for material master plant data (`marc`). |
+| [`stg_sap__matdoc_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__matdoc_tmp) | New model |  |  | Temporary staging model for material documents (`matdoc`). |
+| [`stg_sap__matdoc_extract_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__matdoc_extract_tmp) | New model |  |  | Temporary staging model for material document extracts (`matdoc_extract`). |
+| [`stg_sap__mchb_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__mchb_tmp) | New model |  |  | Temporary staging model for batch stocks (`mchb`). |
+| [`stg_sap__mchp_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__mchp_tmp) | New model |  |  | Temporary staging model for batch period stocks (`mchp`). |
+| [`stg_sap__sapsll_clsnr_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_clsnr_tmp) | New model |  |  | Temporary staging model for SAP special ledger country codes (`sapsll_clsnr`). |
+| [`stg_sap__sapsll_maritc_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_maritc_tmp) | New model |  |  | Temporary staging model for SAP special ledger material codes (`sapsll_maritc`). |
+| [`stg_sap__sapsll_nosca_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_nosca_tmp) | New model |  |  | Temporary staging model for SAP special ledger scale categories (`sapsll_nosca`). |
+| [`stg_sap__sapsll_tunos_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_tunos_tmp) | New model |  |  | Temporary staging model for SAP special ledger scale numbers (`sapsll_tunos`). |
+| [`stg_sap__t000_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t000_tmp) | New model |  |  | Temporary staging model for clients (`t000`). |
+| [`stg_sap__tj01_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tj01_tmp) | New model |  |  | Temporary staging model for system statuses (`tj01`). |
+| [`stg_sap__tka01_tmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tka01_tmp) | New model |  |  | Temporary staging model for controlling areas (`tka01`). |
+
+## Under the Hood
+- Updated `quickstart.yml` to include all new staging model variables with proper uppercase source table names.
+- Added all compatibility view models to the `public_models` configuration in `quickstart.yml`.
+- Updated README documentation with new "Compatibility Views" section detailing all compatibility view models.
+- Added 16 new `get_*_columns` macro files to support the new staging models.
+- Created integration test seed files for all new staging models.
+- Enhanced `src_sap.yml` and `stg_sap.yml` with documentation for new source tables and staging models.
+
+## Contributors
+[@fivetran-jacklowery](https://github.com/fivetran-jacklowery) ([PR #29](https://github.com/fivetran/dbt_sap/pull/29))
+
+
 # dbt_sap v0.3.1
 
 [PR #36](https://github.com/fivetran/dbt_sap/pull/36) includes the following updates:
