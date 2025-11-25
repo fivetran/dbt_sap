@@ -1,3 +1,10 @@
+# dbt_sap v0.5.0
+
+[PR #37](https://github.com/fivetran/dbt_sap/pull/37) includes the following updates:
+
+## Features
+  - Increases the required dbt version upper limit to v3.0.0
+
 # dbt_sap v0.4.0
 [PR #29](https://github.com/fivetran/dbt_sap/pull/29) includes the following updates:
 
