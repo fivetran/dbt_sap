@@ -1,10 +1,10 @@
 name: 'sap_integration_tests'
-version: '0.5.0'
+version: '0.5.1'
 profile: 'integration_tests'
 config-version: 2
 
 vars:
-  sap_schema: sap_integration_tests
+  sap_schema: zz_dbt_avinash_seed
   sap:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bseg_identifier: "sap_bseg_data"
