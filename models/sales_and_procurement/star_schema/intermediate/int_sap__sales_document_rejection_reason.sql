@@ -32,8 +32,6 @@ with tvag as (
         and tvag.abgru = tvagt.abgru
         and tvagt.spras = 'e'
     {% endif %}
-
-    where tvag.mandt in ('{{ var("sales_and_procurement_mandt_var", ["800"]) | join("','") }}')
 )
 
 select *
