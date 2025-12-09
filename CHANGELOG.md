@@ -3,8 +3,8 @@
 [PR #38](https://github.com/fivetran/dbt_sap/pull/38) includes the following updates:
 
 ## Under the Hood
-- Removed redundant `sales_and_procurement_mandt_var` filter from sales and procurement intermediate models, as the SAP client filtering is already applied at the Fivetran connector level during data extraction. [See the "Configure Fivetran in SAP" section](https://fivetran.com/docs/connectors/databases/sap/sap-erp-hana/setup-guide#configurefivetraninsapoptional) of the Fivetran SAP ERP on HANA Setup Guide instructions for more details. 
-- Removed `sales_and_procurement_mandt_var` variable documentation from README.
+- Removes redundant `sales_and_procurement_mandt_var` filter from sales and procurement intermediate models, as the SAP client filtering is already applied at the Fivetran connector level during data extraction. [See the "Configure Fivetran in SAP" section](https://fivetran.com/docs/connectors/databases/sap/sap-erp-hana/setup-guide#configurefivetraninsapoptional) of the Fivetran SAP ERP on HANA Setup Guide instructions for more details. 
+- Removes `sales_and_procurement_mandt_var` variable documentation from README.
 
 # dbt_sap v0.5.0
 
