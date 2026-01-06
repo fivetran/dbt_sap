@@ -86,7 +86,7 @@ select
     max(dabrz) as dabrz,
     max(bwstrat) as bwstrat,
     max(objnr_hk) as objnr_hk,
-    max(timestamp) as timestamp,
+    max(timestamp_at) as timestamp_at,
     max(qmnum) as qmnum,
     max(geber) as geber,
     max(pgeber) as pgeber,

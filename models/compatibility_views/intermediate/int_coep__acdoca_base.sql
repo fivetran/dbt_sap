@@ -264,7 +264,7 @@ v_coep_acdoca_r1 as (
         a.dabrz,
         a.bwstrat,
         a.objnr_hk,
-        a.timestamp_at as timestamp,
+        a.timestamp_at,
         a.qmnum,
         a.rfund as geber,
         a.sfund as pgeber,

@@ -46,7 +46,7 @@ with acdoca_amounts as (
         geber,
         grant_nbr,
         budget_pd,
-        timestamp
+        timestamp_at
 
     from {{ ref('int_cosp__acdoca_base') }}
 

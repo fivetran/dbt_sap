@@ -72,7 +72,7 @@ select
     dabrz,
     bwstrat,
     objnr_hk,
-    timestamp as timestmp,
+    timestamp_at as timestmp,
     qmnum,
     geber,
     pgeber,

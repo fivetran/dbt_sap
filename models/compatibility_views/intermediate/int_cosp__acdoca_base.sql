@@ -164,7 +164,7 @@ with acdoca_base as (
         a.rfund as geber,
         a.rgrant_nbr as grant_nbr,
         a.rbudget_pd as budget_pd,
-        a.timestamp_at as timestamp
+        a.timestamp_at
 
     from {{ ref('stg_sap__acdoca') }} a
     inner join {{ ref('stg_sap__finsc_cmp_versnd') }} v

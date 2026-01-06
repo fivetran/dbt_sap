@@ -47,7 +47,7 @@ with acdoca_timestamp as (
         -- Simplified timestamp handling - using original timestamp
         -- The original SQL had very complex timestamp calculations that we'll simplify
         case
-            when timestamp > 0 then timestamp * 10000
+            when timestamp_at > 0 then timestamp_at * 10000
             else 0
         end as timestmp
 
