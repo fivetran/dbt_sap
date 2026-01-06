@@ -6,8 +6,14 @@ dbt_versions: ">=1.3.0 <3.0.0"
 table_variables:
   sap_using_bkpf:
     - BKPF
+  sap_using_bsad_bck:
+    - BSAD_BCK
   sap_using_bseg:
     - BSEG
+  sap_using_coep:
+    - COEP
+  sap_using_cosp_bak:
+    - COSP_BAK
   sap_using_dd07l:
     - DD07L
   sap_using_dd07t:
@@ -42,12 +48,16 @@ table_variables:
     - PA0008
   sap_using_pa0031:
     - PA0031
+  sap_using_prps:
+    - PRPS
   sap_using_ska1:
     - SKA1
   sap_using_t001:
     - T001
   sap_using_t001w:
     - T001W
+  sap_using_t006:
+    - T006
   sap_using_t024:
     - T024
   sap_using_t024e:
@@ -136,6 +146,10 @@ public_models: [
   "sap__dim_vendor",
   "sap__fact_purchasing_order",
   "sap__fact_sales_order",
+  "bsad",
+  "bsid",
+  "coep",
+  "cosp",
   "coss",
   "faglflexa",
   "marc",

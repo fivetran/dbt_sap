@@ -5,7 +5,8 @@
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "kokrs", "datatype": dbt.type_string()},
     {"name": "logsystem", "datatype": dbt.type_string()},
-    {"name": "mandt", "datatype": dbt.type_string()}
+    {"name": "mandt", "datatype": dbt.type_string()},
+    {"name": "xwbuk", "datatype": dbt.type_string()}
 ] %}
 
 {{ return(columns) }}
