@@ -174,8 +174,8 @@ select
     c.qunit2,
     c.qunit3
 
-from acdoca_final c
-left outer join prps_base p
+from acdoca_final as c
+left outer join prps_base as p
     on cast(p.mandt as {{ dbt.type_string() }}) = cast(c.mandt as {{ dbt.type_string() }})
     and cast(p.posid as {{ dbt.type_string() }}) = cast(c.pspnr as {{ dbt.type_string() }})
     and cast(c.mandt as {{ dbt.type_string() }}) = cast(p.mandt as {{ dbt.type_string() }})

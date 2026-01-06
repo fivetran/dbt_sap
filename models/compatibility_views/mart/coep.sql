@@ -135,7 +135,7 @@ original_coep as (
         cast(coep.qunit2 as {{ dbt.type_string() }}) as qunit2,
         cast(coep.qunit3 as {{ dbt.type_string() }}) as qunit3
 
-    from coep_base coep
+    from coep_base as coep
     where not (cast(coep.wrttp as {{ dbt.type_string() }}) = '04' or cast(coep.wrttp as {{ dbt.type_string() }}) = 'U4' or cast(coep.wrttp as {{ dbt.type_string() }}) = 'U1')
 
 ),

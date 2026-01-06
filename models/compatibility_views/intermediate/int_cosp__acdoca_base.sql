@@ -166,19 +166,19 @@ with acdoca_base as (
         a.rbudget_pd as budget_pd,
         a.timestamp_at
 
-    from {{ ref('stg_sap__acdoca') }} a
-    inner join {{ ref('stg_sap__finsc_cmp_versnd') }} v
+    from {{ ref('stg_sap__acdoca') }} as a
+    inner join {{ ref('stg_sap__finsc_cmp_versnd') }} as v
         on cast(v.mandt as {{ dbt.type_string() }}) = cast(a.rclnt as {{ dbt.type_string() }})
         and cast(v.bukrs as {{ dbt.type_string() }}) = cast(a.rbukrs as {{ dbt.type_string() }})
         and cast(v.rldnr as {{ dbt.type_string() }}) = cast(a.rldnr as {{ dbt.type_string() }})
-    inner join {{ ref('stg_sap__tj01') }} t
+    inner join {{ ref('stg_sap__tj01') }} as t
         on cast(t.vrgng as {{ dbt.type_string() }}) = cast(a.vrgng as {{ dbt.type_string() }})
         and cast(t.xcosp as {{ dbt.type_string() }}) = 'X'
         and (cast(t.xcoss as {{ dbt.type_string() }}) = '' or t.xcoss is null)
-    inner join {{ ref('stg_sap__tka01') }} tk
+    inner join {{ ref('stg_sap__tka01') }} as tk
         on cast(tk.mandt as {{ dbt.type_string() }}) = cast(a.rclnt as {{ dbt.type_string() }})
         and cast(tk.kokrs as {{ dbt.type_string() }}) = cast(a.kokrs as {{ dbt.type_string() }})
-    inner join {{ ref('stg_sap__t000') }} s
+    inner join {{ ref('stg_sap__t000') }} as s
         on cast(s.mandt as {{ dbt.type_string() }}) = cast(a.rclnt as {{ dbt.type_string() }})
     where
         (

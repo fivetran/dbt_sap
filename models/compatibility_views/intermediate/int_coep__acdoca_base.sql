@@ -343,8 +343,8 @@ v_coep_acdoca_r1 as (
         a.co_accasty_n2,
         a.co_accasty_n3
 
-    from acdoca_base a
-    inner join finsc_cmp_versnd_base v
+    from acdoca_base as a
+    inner join finsc_cmp_versnd_base as v
         on cast(v.mandt as {{ dbt.type_string() }}) = cast(a.rclnt as {{ dbt.type_string() }})
         and cast(v.bukrs as {{ dbt.type_string() }}) = cast(a.rbukrs as {{ dbt.type_string() }})
         and cast(v.rldnr as {{ dbt.type_string() }}) = cast(a.rldnr as {{ dbt.type_string() }})

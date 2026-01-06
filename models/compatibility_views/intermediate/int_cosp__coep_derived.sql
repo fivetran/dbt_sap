@@ -61,21 +61,21 @@ with coep_base as (
                 end
         end as muvflg_calc
 
-    from {{ ref('stg_sap__coep') }} c
-    inner join {{ ref('stg_sap__tj01') }} j
+    from {{ ref('stg_sap__coep') }} as c
+    inner join {{ ref('stg_sap__tj01') }} as j
         on cast(j.vrgng as {{ dbt.type_string() }}) = cast(c.vrgng as {{ dbt.type_string() }})
         and cast(j.wtkat as {{ dbt.type_string() }}) = 'A'
         and cast(j.xcosp as {{ dbt.type_string() }}) = 'X'
-    left join {{ ref('stg_sap__t006') }} t_meinb
+    left join {{ ref('stg_sap__t006') }} as t_meinb
         on cast(t_meinb.mandt as {{ dbt.type_string() }}) = cast(c.mandt as {{ dbt.type_string() }})
         and cast(t_meinb.msehi as {{ dbt.type_string() }}) = cast(c.meinb as {{ dbt.type_string() }})
-    left join {{ ref('stg_sap__t006') }} t_meinh
+    left join {{ ref('stg_sap__t006') }} as t_meinh
         on cast(t_meinh.mandt as {{ dbt.type_string() }}) = cast(c.mandt as {{ dbt.type_string() }})
         and cast(t_meinh.msehi as {{ dbt.type_string() }}) = cast(c.meinh as {{ dbt.type_string() }})
-    inner join {{ ref('stg_sap__tka01') }} t
+    inner join {{ ref('stg_sap__tka01') }} as t
         on cast(t.mandt as {{ dbt.type_string() }}) = cast(c.mandt as {{ dbt.type_string() }})
         and cast(t.kokrs as {{ dbt.type_string() }}) = cast(c.kokrs as {{ dbt.type_string() }})
-    inner join {{ ref('stg_sap__t000') }} s
+    inner join {{ ref('stg_sap__t000') }} as s
         on cast(s.mandt as {{ dbt.type_string() }}) = cast(c.mandt as {{ dbt.type_string() }})
         and (
             cast(s.logsys as {{ dbt.type_string() }}) = cast(c.logsyso as {{ dbt.type_string() }})
