@@ -1,0 +1,141 @@
+{{ config(enabled=(var('sap_using_acdoca', True) and var('sap_using_finsc_cmp_versnd', True) and var('sap_using_tka01', True))) }}
+
+with base as (
+
+    select *
+    from {{ ref('int_coep__acdoca_aggregated') }}
+
+)
+
+select
+    mandt,
+    kokrs,
+    belnr,
+    buzei,
+    versn,
+    budat,
+    perio,
+    wtgbtr,
+    wogbtr,
+    wkgbtr,
+    wkfbtr,
+    pagbtr,
+    pafbtr,
+    megbtr,
+    mefbtr,
+    mbgbtr,
+    mbfbtr,
+    lednr,
+    objnr,
+    gjahr,
+    wrttp,
+    kstar,
+    hrkft,
+    vrgng,
+    parob,
+    parob1,
+    uspob,
+    vbund,
+    pargb,
+    beknz,
+    twaer,
+    owaer,
+    meinh,
+    meinb,
+    muvflg,
+    sgtxt,
+    refbz,
+    zlenr,
+    bw_refbz,
+    gkont,
+    gkoar,
+    werks,
+    matnr,
+    rbest,
+    ebeln,
+    ebelp,
+    zekkn,
+    erlkz,
+    pernr,
+    paobjnr,
+    beltp,
+    bukrs,
+    gsber,
+    fkber,
+    scope,
+    logsyso,
+    pkstar,
+    pbukrs,
+    pfkber,
+    pscope,
+    logsysp,
+    dabrz,
+    bwstrat,
+    objnr_hk,
+    timestamp as timestmp,
+    qmnum,
+    geber,
+    pgeber,
+    grant_nbr,
+    pgrant_nbr,
+    refbz_fi,
+    segment,
+    psegment,
+    posnr,
+    prctr,
+    pprct,
+    budget_pd,
+    pbudget_pd,
+    prodper,
+    awtyp,
+    awkey,
+    awsys,
+    kwaer,
+    accas,
+    accasty,
+    kostl,
+    lstar,
+    aufnr,
+    autyp,
+    pspnr,
+    pspid,
+    vbeln,
+    vbposnr,
+    ce4key,
+    erkrs,
+    paccas,
+    paccasty,
+    pkostl,
+    plstar,
+    paufnr,
+    pautyp,
+    ppspnr,
+    ppspid,
+    pvbeln,
+    pvbposnr,
+    pce4key,
+    quant1,
+    quant2,
+    quant3,
+    qunit1,
+    qunit2,
+    qunit3,
+    co_accasty_n1 as objnr_n1,
+    co_accasty_n2 as objnr_n2,
+    co_accasty_n3 as objnr_n3
+
+from base
+where (cast(versn as {{ dbt.type_string() }}) = '000'
+    or not (wogbtr = 0)
+    or not (wkgbtr = 0)
+    or not (wkfbtr = 0)
+    or not (wtgbtr = 0)
+    or not (pagbtr = 0)
+    or not (pafbtr = 0)
+    or not (megbtr = 0)
+    or not (mefbtr = 0)
+    or not (mbgbtr = 0)
+    or not (mbfbtr = 0)
+    or not (quant1 = 0)
+    or not (quant2 = 0)
+    or not (quant3 = 0))

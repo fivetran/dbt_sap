@@ -65,6 +65,10 @@ The following models provide compatibility views that replicate the structure an
 
 | **Table**                         | **Description**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [bsad](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | Customer Cleared Items (BSAD) compatibility view - Provides cleared customer accounting line items combining archived and active records, replicating the native SAP BSAD table structure. |
+| [bsid](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | Customer Open Items (BSID) compatibility view - Contains open customer accounting line items from active documents, maintaining compatibility with native SAP BSID table. |
+| [coep](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | Cost Object Line Items (COEP) compatibility view - Provides line item data for cost objects combining original COEP data with derived ACDOCA records for actual postings, replicating the native SAP COEP table structure. |
+| [cosp](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | Cost Object Summarization (COSP) compatibility view - Contains period-wise summarized cost and quantity data for cost objects combining archived COSP_BAK data with aggregated ACDOCA actuals, maintaining compatibility with native SAP COSP table. |
 | [coss](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents, replicating the native SAP COSS table structure. |
 | [faglflexa](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflexa) | Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents, maintaining compatibility with native SAP FAGLFLEXA table. |
 | [marc](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information, replicating the native SAP MARC table structure. |
@@ -73,7 +77,7 @@ The following models provide compatibility views that replicate the structure an
 | [mseg](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mseg) | Material Document Line Items (MSEG) compatibility view - Contains detailed line item information for all material movement transactions, maintaining compatibility with native SAP MSEG table. |
 
 ### Materialized Models
-Each Quickstart transformation job run materializes 133 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 148 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -99,7 +103,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.6.0", "<0.7.0"]
 ```
 
 ### Step 3: Define database and schema variables
