@@ -5,7 +5,7 @@
         href="https://github.com/fivetran/dbt_sap/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_,<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0,_<3.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
@@ -104,6 +104,7 @@ Include the following sap package version in your `packages.yml` file.
 packages:
   - package: fivetran/sap
     version: [">=0.6.0", "<0.7.0"]
+
 ```
 
 ### Step 3: Define database and schema variables
@@ -137,7 +138,6 @@ We have set up where conditions in our data to allow you to bring in only the da
 
 ```yml
 vars:
-    sales_and_procurement_mandt_var: ['100', '200', '300', '800'] # This sets the filter used in the sales_and_procurement models. The default is '800', but a list of allowable values can be passed.
     bkpf_mandt_var: 'value1' # The client field in the `sap__0fi_gl_14` model, this filter allows you to parse down to one client's records.
     kna1_mandt_var: 'value2' # The client field in the `sap__0customer_attr` model, this filter allows you to parse down to one client's records.
     lfa1_mandt_var: 'value3' # The client field in the `sap__0vendor_attr` model, this filter allows you to parse down to one client's records.

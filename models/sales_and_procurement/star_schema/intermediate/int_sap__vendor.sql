@@ -144,4 +144,3 @@ select
     _fivetran_synced as _fivetran_synced,
     _fivetran_rowid as _fivetran_rowid
 from {{ ref('stg_sap__lfa1') }}
-where mandt in ('{{ var(sales_and_procurement_mandt_var, [800]) | join(',') }}')

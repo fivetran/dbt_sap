@@ -28,6 +28,21 @@
 - Added new enable/disable variables for all new staging tables: `sap_using_t006`, `sap_using_cosp_bak`, `sap_using_bsad_bck`, `sap_using_coep`, `sap_using_prps`
 - Enhanced `remove_slashes_from_col_names` macro to support database reserved words handling by adding `reserved_word_list` parameter, ensuring proper quoting for columns that are reserved keywords
 
+# dbt_sap v0.5.1
+
+[PR #38](https://github.com/fivetran/dbt_sap/pull/38) includes the following updates:
+
+## Under the Hood
+- Removes redundant `sales_and_procurement_mandt_var` filter from sales and procurement intermediate models, as the SAP client filtering is already applied at the Fivetran connector level during data extraction. [See the "Configure Fivetran in SAP" section](https://fivetran.com/docs/connectors/databases/sap/sap-erp-hana/setup-guide#configurefivetraninsapoptional) of the Fivetran SAP ERP on HANA Setup Guide instructions for more details. 
+- Removes `sales_and_procurement_mandt_var` variable documentation from README.
+
+# dbt_sap v0.5.0
+
+[PR #37](https://github.com/fivetran/dbt_sap/pull/37) includes the following updates:
+
+## Features
+  - Increases the required dbt version upper limit to v3.0.0
+
 
 # dbt_sap v0.4.0
 [PR #29](https://github.com/fivetran/dbt_sap/pull/29) includes the following updates:
