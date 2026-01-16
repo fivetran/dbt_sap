@@ -1,15 +1,3 @@
-# dbt_sap v0.6.0
-
-[PR #40](https://github.com/fivetran/dbt_sap/pull/40) includes the following updates:
-
-## Documentation
-- Updates README with standardized Fivetran formatting.
-
-## Under the Hood
-- In the `quickstart.yml` file:
-  - Adds `table_variables` for relevant sources to prevent missing sources from blocking downstream Quickstart models.
-  - Adds `supported_vars` for Quickstart UI customization.
-
 # dbt_sap v0.5.1
 
 [PR #38](https://github.com/fivetran/dbt_sap/pull/38) includes the following updates:
