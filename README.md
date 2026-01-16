@@ -16,14 +16,16 @@
         <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
-This dbt package transforms data from Fivetran's Sap connector into analytics-ready tables.
+This dbt package transforms data from Fivetran's SAP connector into analytics-ready tables.
 
 ## Resources
 
 - Number of materialized models¹: 133
 - Connector documentation
-  - [Sap connector documentation](https://fivetran.com/docs/connectors/applications/sap)
-  - [Sap ERD](https://fivetran.com/docs/connectors/applications/sap#schemainformation)
+  - Supported SAP connector documentation:
+   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
+   - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
+   - [SAP ERP on HANA](https://fivetran.com/docs/databases/sap-erp/sap-erp-hana)
 - dbt package documentation
   - [GitHub repository](https://github.com/fivetran/dbt_sap)
   - [dbt Docs](https://fivetran.github.io/dbt_sap/#!/overview)
