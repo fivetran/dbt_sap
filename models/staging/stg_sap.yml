@@ -4,10 +4,30 @@ models:
   - name: stg_sap__bkpf
     description: Accounting document header
     columns:
+      - name: bukrs_sender
+        description: Sender company code
+      - name: belnr_sender
+        description: Sender accounting document number
+      - name: gjahr_sender
+        description: Sender fiscal year
+      - name: budat
+        description: Posting date
+      - name: propmano
+        description: Property management
+      - name: lotkz
+        description: Ledger group
+      - name: awtyp
+        description: Reference procedure (reference transaction / source application)
+      - name: logsystem_sender
+        description: Sender logical system
+      - name: xnetb
+        description: Net amount indicator
+      - name: xstov
+        description: Reversal posting indicator
       - name: awkey
         description: Reference key
       - name: awsys
-        description: Logical system
+        description: Logical system (of reference document)
       - name: belnr
         description: Accounting document number
       - name: blart
@@ -45,9 +65,449 @@ models:
       - name: xreorg
         description: Doc. contains open item that was transferred during reorg.
 
+  - name: stg_sap__bsad_bck
+    description: Customer line items - archived records staging model
+    columns:
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: kunnr
+        description: Customer account number
+      - name: umsks
+        description: Special G/L transaction type
+      - name: umskz
+        description: Special G/L indicator
+      - name: augdt
+        description: Clearing date
+      - name: augbl
+        description: Clearing document number
+      - name: zuonr
+        description: Assignment number
+      - name: gjahr
+        description: Fiscal year
+      - name: belnr
+        description: Accounting document number
+      - name: buzei
+        description: Number of line item within accounting document
+      - name: budat
+        description: Posting date in the document
+      - name: bldat
+        description: Document date in document
+      - name: cpudt
+        description: Day on which accounting document was entered
+      - name: waers
+        description: Currency key
+      - name: blart
+        description: Document type
+      - name: monat
+        description: Posting period
+      - name: bschl
+        description: Posting key
+      - name: zumsk
+        description: Target special G/L indicator
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: gsber
+        description: Business area
+      - name: tax_country
+        description: Tax reporting country
+      - name: mwskz
+        description: Tax code
+      - name: txdat_from
+        description: Date from which tax code is valid
+      - name: dmbtr
+        description: Amount in local currency
+      - name: wrbtr
+        description: Amount in document currency
+      - name: mwsts
+        description: Tax amount in local currency
+      - name: wmwst
+        description: Tax amount in document currency
+      - name: lwsts
+        description: Local withholding tax amount
+      - name: bdiff
+        description: Valuation difference amount
+      - name: bdif2
+        description: Valuation difference amount 2
+      - name: sgtxt
+        description: Item text
+      - name: projn
+        description: Project number (internal)
+      - name: aufnr
+        description: Order number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: saknr
+        description: G/L account number
+      - name: hkont
+        description: General ledger account
+      - name: fkont
+        description: Financial account
+      - name: filkd
+        description: Branch account
+      - name: zfbdt
+        description: Baseline date for due date calculation
+      - name: zterm
+        description: Terms of payment key
+      - name: zbd1t
+        description: Cash discount days 1
+      - name: zbd2t
+        description: Cash discount days 2
+      - name: zbd3t
+        description: Net payment terms period
+      - name: zbd1p
+        description: Cash discount percentage 1
+      - name: zbd2p
+        description: Cash discount percentage 2
+      - name: skfbt
+        description: Amount eligible for cash discount in document currency
+      - name: sknto
+        description: Cash discount amount in local currency
+      - name: wskto
+        description: Cash discount amount in document currency
+      - name: zlsch
+        description: Payment method
+      - name: zlspr
+        description: Payment block key
+      - name: zbfix
+        description: Fixed due date
+      - name: hbkid
+        description: Short key for a house bank
+      - name: bvtyp
+        description: Partner bank type
+      - name: rebzg
+        description: Invoice reference document number
+      - name: rebzj
+        description: Fiscal year of the invoice reference document
+      - name: rebzz
+        description: Invoice reference document line item
+      - name: samnr
+        description: Collective invoice number
+      - name: anfbn
+        description: Request number
+      - name: anfbj
+        description: Fiscal year of the request
+      - name: anfbu
+        description: Request item number
+      - name: anfae
+        description: Request date
+      - name: mansp
+        description: Dunning block
+      - name: mschl
+        description: Dunning key
+      - name: madat
+        description: Last dunning notice date
+      - name: manst
+        description: Dunning level
+      - name: maber
+        description: Dunning area
+      - name: xnetb
+        description: Net payment indicator
+      - name: xanet
+        description: Net procedure - line item level
+      - name: xcpdd
+        description: Cleared - planning level
+      - name: xinve
+        description: Invoice verified indicator
+      - name: xzahl
+        description: Payment indicator
+      - name: mwsk1
+        description: Tax code 1
+      - name: txdat_from1
+        description: Date from which tax code 1 is valid
+      - name: tax_country1
+        description: Tax reporting country 1
+      - name: dmbt1
+        description: Tax base amount in local currency 1
+      - name: wrbt1
+        description: Tax base amount in document currency 1
+      - name: hist_tax_factor1
+        description: Historical tax factor 1
+      - name: mwsk2
+        description: Tax code 2
+      - name: txdat_from2
+        description: Date from which tax code 2 is valid
+      - name: tax_country2
+        description: Tax reporting country 2
+      - name: dmbt2
+        description: Tax base amount in local currency 2
+      - name: wrbt2
+        description: Tax base amount in document currency 2
+      - name: hist_tax_factor2
+        description: Historical tax factor 2
+      - name: mwsk3
+        description: Tax code 3
+      - name: txdat_from3
+        description: Date from which tax code 3 is valid
+      - name: tax_country3
+        description: Tax reporting country 3
+      - name: dmbt3
+        description: Tax base amount in local currency 3
+      - name: wrbt3
+        description: Tax base amount in document currency 3
+      - name: hist_tax_factor3
+        description: Historical tax factor 3
+      - name: hist_tax_factor
+        description: Historical tax factor
+      - name: bstat
+        description: Document status
+      - name: vbund
+        description: Company ID of trading partner
+      - name: vbeln
+        description: Sales document number
+      - name: rebzt
+        description: Invoice reference transaction
+      - name: infae
+        description: Inverted date for net due date
+      - name: stceg
+        description: VAT registration number
+      - name: egbld
+        description: Country for EU triangular deal
+      - name: eglld
+        description: Country code for EU listing
+      - name: rstgr
+        description: Reason code for payments
+      - name: xnoza
+        description: Account is not counted
+      - name: vertt
+        description: Contract type
+      - name: vertn
+        description: Contract number
+      - name: vbewa
+        description: Business transaction variant
+      - name: wverw
+        description: Usage indicator
+      - name: projk
+        description: Project key
+      - name: fipos
+        description: Commitment item
+      - name: nplnr
+        description: Network number for account assignment
+      - name: aufpl
+        description: Task list number
+      - name: aplzl
+        description: General counter for task list
+      - name: xegdr
+        description: EU triangular deal indicator
+      - name: dmbe2
+        description: Amount in second local currency
+      - name: dmbe3
+        description: Amount in third local currency
+      - name: dmb21
+        description: Amount 2 in second local currency
+      - name: dmb22
+        description: Amount 2-2 in second local currency
+      - name: dmb23
+        description: Amount 2-3 in second local currency
+      - name: dmb31
+        description: Amount 3 in third local currency
+      - name: dmb32
+        description: Amount 3-2 in third local currency
+      - name: dmb33
+        description: Amount 3-3 in third local currency
+      - name: bdif3
+        description: Valuation difference 3
+      - name: xragl
+        description: Balance sheet adjustment indicator
+      - name: uzawe
+        description: Payment method supplement
+      - name: xstov
+        description: Storno/reversal indicator
+      - name: mwst2
+        description: Tax amount 2 in local currency
+      - name: mwst3
+        description: Tax amount 3 in local currency
+      - name: sknt2
+        description: Cash discount amount 2 in local currency
+      - name: sknt3
+        description: Cash discount amount 3 in local currency
+      - name: xref1
+        description: Reference key 1
+      - name: xref2
+        description: Reference key 2
+      - name: xarch
+        description: Archived indicator
+      - name: pswsl
+        description: Update currency for purchase order history
+      - name: pswbt
+        description: Amount for updating purchase order history
+      - name: lzbkz
+        description: Payment method supplement country version
+      - name: landl
+        description: Country code for payment
+      - name: imkey
+        description: Key for real estate object
+      - name: vbel2
+        description: Sales document number
+      - name: vpos2
+        description: Item number of the SD document
+      - name: posn2
+        description: Sales document item
+      - name: eten2
+        description: Delivery date category
+      - name: fistl
+        description: Funds center
+      - name: geber
+        description: Fund
+      - name: dabrz
+        description: Settlement date
+      - name: xnegp
+        description: Negative posting indicator
+      - name: kostl
+        description: Cost center
+      - name: rfzei
+        description: Reference line for payment
+      - name: kkber
+        description: Credit control area
+      - name: empfb
+        description: Payee
+      - name: prctr
+        description: Profit center
+      - name: xref3
+        description: Reference key 3
+      - name: qsskz
+        description: Withholding tax indicator
+      - name: zinkz
+        description: Interest calculation indicator
+      - name: dtws1
+        description: Withholding tax base amount 1
+      - name: dtws2
+        description: Withholding tax base amount 2
+      - name: dtws3
+        description: Withholding tax base amount 3
+      - name: dtws4
+        description: Withholding tax base amount 4
+      - name: xpypr
+        description: Payment request indicator
+      - name: kidno
+        description: Payment reference
+      - name: absbt
+        description: Abs.amt.in%
+      - name: ccbtc
+        description: Company code for payment
+      - name: pycur
+        description: Currency for payment
+      - name: pyamt
+        description: Payment amount
+      - name: bupla
+        description: Business place
+      - name: secco
+        description: Section code
+      - name: cession_kz
+        description: Cession indicator
+      - name: ppdiff
+        description: Price difference amount
+      - name: ppdif2
+        description: Price difference amount 2
+      - name: ppdif3
+        description: Price difference amount 3
+      - name: kblnr
+        description: Document number earmarked funds document
+      - name: kblpos
+        description: Earmarked funds document item
+      - name: grant_nbr
+        description: Grant number
+      - name: gmvkz
+        description: Joint venture indicator
+      - name: srtype
+        description: Origin type of posting
+      - name: lotkz
+        description: Ledger group
+      - name: fkber
+        description: Functional area
+      - name: intreno
+        description: Internal reference number
+      - name: pprct
+        description: Partner profit center
+      - name: buzid
+        description: Identification of the line item
+      - name: auggj
+        description: Fiscal year of clearing document
+      - name: hktid
+        description: Account ID
+      - name: budget_pd
+        description: Budget period
+      - name: pays_prov
+        description: Paying company code (provider)
+      - name: pays_tran
+        description: Payment transaction type
+      - name: mndid
+        description: Mandate reference of the payment
+      - name: kontt
+        description: Account type
+      - name: kontl
+        description: Account assignment object
+      - name: uebgdat
+        description: Transfer date
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: btype
+        description: Transaction type
+      - name: propmano
+        description: Property management
+      - name: gkont
+        description: Offsetting account for general postings
+      - name: gkart
+        description: Offsetting account type
+      - name: ghkon
+        description: Business area account
+
   - name: stg_sap__bseg
     description: Accounting document segment
     columns:
+      - name: fcsl
+        description: Amount in freely defined currency 1
+      - name: fkont
+        description: Financial account
+      - name: hbkid
+        description: House bank ID
+      - name: mwsts
+        description: Tax amount in local currency
+      - name: bschl
+        description: Posting key
+      - name: zumsk
+        description: Target special G/L indicator
+      - name: wmwst
+        description: Tax amount in document currency
+      - name: rfccur
+        description: Currency key for freely defined currency 1
+      - name: bvtyp
+        description: Partner bank type
+      - name: anfae
+        description: Request date
+      - name: anfbj
+        description: Fiscal year of the request
+      - name: anfbn
+        description: Request number
+      - name: anfbu
+        description: Request item number
+      - name: lwsts
+        description: Local withholding tax amount
+      - name: projn
+        description: Project number (internal)
+      - name: rebzj
+        description: Invoice reference year
+      - name: rebzz
+        description: Invoice reference line item
+      - name: tax_country
+        description: Tax reporting country
+      - name: txdat_from
+        description: Date from which tax code is valid
+      - name: xanet
+        description: Net procedure - line item level
+      - name: xcpdd
+        description: Cleared - planning level
+      - name: xinve
+        description: Invoice verified indicator
       - name: absbt
         description: Credit management (Hedged amount)
       - name: agzei
@@ -91,13 +551,13 @@ models:
       - name: dmbtr
         description: Amount in local currency
       - name: dtws1
-        description: Instruction key 1
+        description: Withholding tax base amount 1
       - name: dtws2
-        description: Instruction key 2
+        description: Withholding tax base amount 2
       - name: dtws3
-        description: Instruction key 3
+        description: Withholding tax base amount 3
       - name: dtws4
-        description: Instruction key 4
+        description: Withholding tax base amount 4
       - name: ebeln
         description: Purchasing document number
       - name: ebelp
@@ -177,9 +637,9 @@ models:
       - name: rebzg
         description: Number of the invoice the transaction belongs to
       - name: rebzt
-        description: Follow-on document type
+        description: Invoice reference transaction
       - name: rfzei
-        description: Payment card item
+        description: Reference line item for payment
       - name: rstgr
         description: Reason code for payments
       - name: saknr
@@ -286,6 +746,186 @@ models:
         description: Owner/Cont.
       - name: zzuserfld3
         description: Vein
+      - name: mwsk1
+        description: Tax code 1
+      - name: txdat_from1
+        description: Date from which tax code 1 is valid
+      - name: tax_country1
+        description: Tax reporting country 1
+      - name: dmbt1
+        description: Tax base amount in local currency 1
+      - name: wrbt1
+        description: Tax base amount in document currency 1
+      - name: hist_tax_factor1
+        description: Historical tax factor 1
+      - name: mwsk2
+        description: Tax code 2
+      - name: txdat_from2
+        description: Date from which tax code 2 is valid
+      - name: tax_country2
+        description: Tax reporting country 2
+      - name: dmbt2
+        description: Tax base amount in local currency 2
+      - name: wrbt2
+        description: Tax base amount in document currency 2
+      - name: hist_tax_factor2
+        description: Historical tax factor 2
+      - name: mwsk3
+        description: Tax code 3
+      - name: txdat_from3
+        description: Date from which tax code 3 is valid
+      - name: tax_country3
+        description: Tax reporting country 3
+      - name: dmbt3
+        description: Tax base amount in local currency 3
+      - name: wrbt3
+        description: Tax base amount in document currency 3
+      - name: hist_tax_factor3
+        description: Historical tax factor 3
+      - name: hist_tax_factor
+        description: Historical tax factor
+      - name: bstat
+        description: Document status
+      - name: infae
+        description: Inverted date for net due date
+      - name: stceg
+        description: VAT registration number
+      - name: egbld
+        description: Country for EU triangular deal
+      - name: eglld
+        description: Country code for EU listing
+      - name: xnoza
+        description: Indicator Account is not counted
+      - name: fipos
+        description: Commitment item
+      - name: nplnr
+        description: Network number for account assignment
+      - name: aufpl
+        description: Task list number
+      - name: aplzl
+        description: General counter for task list
+      - name: xegdr
+        description: EU triangular deal indicator
+      - name: dmbe2
+        description: Amount in second local currency
+      - name: dmbe3
+        description: Amount in third local currency
+      - name: dmb21
+        description: Amount 2 in second local currency
+      - name: dmb22
+        description: Amount 2-2 in second local currency
+      - name: dmb23
+        description: Amount 2-3 in second local currency
+      - name: dmb31
+        description: Amount 3 in third local currency
+      - name: dmb32
+        description: Amount 3-2 in third local currency
+      - name: dmb33
+        description: Amount 3-3 in third local currency
+      - name: xstov
+        description: Storno/reversal indicator
+      - name: mwst2
+        description: Tax amount 2 in local currency
+      - name: mwst3
+        description: Tax amount 3 in local currency
+      - name: sknt2
+        description: Cash discount amount 2 in local currency
+      - name: sknt3
+        description: Cash discount amount 3 in local currency
+      - name: lzbkz
+        description: Payment method supplement country version
+      - name: landl
+        description: Country code for payment
+      - name: vpos2
+        description: Item number of the SD document
+      - name: fistl
+        description: Funds center
+      - name: geber
+        description: Fund
+      - name: empfb
+        description: Payee
+      - name: prctr
+        description: Profit center
+      - name: qsskz
+        description: Withholding tax indicator
+      - name: zinkz
+        description: Interest calculation indicator
+      - name: ppdiff
+        description: Price difference amount
+      - name: ppdif2
+        description: Price difference amount 2
+      - name: ppdif3
+        description: Price difference amount 3
+      - name: kblnr
+        description: Document number earmarked funds document
+      - name: kblpos
+        description: Earmarked funds document item
+      - name: grant_nbr
+        description: Grant number
+      - name: gmvkz
+        description: Joint venture indicator
+      - name: srtype
+        description: Origin type of posting
+      - name: lotkz
+        description: Ledger group
+      - name: intreno
+        description: Internal reference number
+      - name: hktid
+        description: Account ID
+      - name: budget_pd
+        description: Budget period
+      - name: bdgt_account
+        description: Budget account
+      - name: re_account
+        description: Real estate account
+      - name: pays_prov
+        description: Paying company code (provider)
+      - name: pays_tran
+        description: Payment transaction type
+      - name: mndid
+        description: Mandate reference of the payment
+      - name: payt_rsn
+        description: Payment reason
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: kontt
+        description: Account type
+      - name: kontl
+        description: Account assignment object
+      - name: uebgdat
+        description: Transfer date
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: btype
+        description: Transaction type
+      - name: propmano
+        description: Property management
+      - name: gkont
+        description: Offsetting account for general postings
+      - name: gkart
+        description: Offsetting account type
+      - name: ghkon
+        description: Business area account
+      - name: awtyp
+        description: Reference procedure for determining source application
+      - name: logsystem_sender        
+        description: Sender logical system
+      - name: bukrs_sender
+        description: Sender company code
+      - name: belnr_sender
+        description: Sender accounting document number
+      - name: gjahr_sender
+        description: Sender fiscal year
+      - name: buzei_sender
+        description: Line item of sender document
+      - name: pendays
+        description: Number of days for penalty calculation
+      - name: j_1tpbupl
+        description: Tax business place
+      - name: h_bstat
+        description: Document status from header table (BKPF)
 
   - name: stg_sap__dd07l
     description: Domain values
@@ -6592,6 +7232,134 @@ models:
   - name: stg_sap__acdoca
     description: Universal journal entry line items
     columns:
+      - name: aufnr
+        description: Order number
+      - name: aworg
+        description: Reference organization unit
+      - name: awref
+        description: Reference number
+      - name: autyp
+        description: Order type
+      - name: rbcur
+        description: Currency key of second local currency
+      - name: rccur
+        description: Currency key of third local currency
+      - name: rdcur
+        description: Currency key of fourth local currency
+      - name: scope
+        description: Consolidation scope
+      - name: ppaobjnr
+        description: Partner profitability segment number
+      - name: pps_posid
+        description: Partner WBS element
+      - name: pps_pspid
+        description: Partner project definition
+      - name: rbest
+        description: Stock account indicator
+      - name: qmnum
+        description: Notification number
+      - name: quant1
+        description: Quantity in first quantity field
+      - name: quant2
+        description: Quantity in second quantity field
+      - name: quant3
+        description: Quantity in third quantity field
+      - name: qunit1
+        description: Unit of measure for first quantity
+      - name: qunit2
+        description: Unit of measure for second quantity
+      - name: qunit3
+        description: Unit of measure for third quantity
+      - name: bwstrat
+        description: Valuation strategy
+      - name: sgtxt
+        description: Item text
+      - name: recur
+        description: Currency key of company code currency
+      - name: objnr_hk
+        description: Object number at header level
+      - name: accas
+        description: Account assignment object
+      - name: paccas
+        description: Partner account assignment object
+      - name: paobjnr
+        description: Profitability segment number
+      - name: paufnr
+        description: Partner order number
+      - name: pautyp
+        description: Partner order type
+      - name: pbukrs
+        description: Partner company code
+      - name: pernr
+        description: Personnel number
+      - name: co_accasty_n1
+        description: Account assignment type for reference procedure 1
+      - name: co_accasty_n2
+        description: Account assignment type for reference procedure 2
+      - name: co_accasty_n3
+        description: Account assignment type for reference procedure 3
+      - name: co_refbz
+        description: Reference field (CO reference)
+      - name: co_refbz1
+        description: Reference field 1 (CO reference)
+      - name: co_refbz2
+        description: Reference field 2 (CO reference)
+      - name: co_refbz5
+        description: Reference field 5 (CO reference)
+      - name: co_refbz6
+        description: Reference field 6 (CO reference)
+      - name: co_refbz7
+        description: Reference field 7 (CO reference)
+      - name: co_zlenr
+        description: Line item counter (line counter)
+      - name: dabrz
+        description: Settlement reference date
+      - name: ebeln
+        description: Purchase order number
+      - name: ebelp
+        description: Purchase order line item number
+      - name: erkrs
+        description: Cost object controlling area
+      - name: erlkz
+        description: Completion indicator
+      - name: gkoar
+        description: Offsetting account type
+      - name: gkont
+        description: Offsetting account
+      - name: kdauf
+        description: Sales order number
+      - name: kdpos
+        description: Sales order item
+      - name: pkdauf
+        description: Partner sales order number
+      - name: pkdpos
+        description: Partner sales order item
+      - name: plstar
+        description: Activity type
+      - name: prodper
+        description: Production period
+      - name: ps_posid
+        description: Work breakdown structure element
+      - name: ps_pspid
+        description: Project definition
+      - name: pscope
+        description: Partner consolidation scope
+      - name: rgcur
+        description: Currency key of eighth local currency
+      - name: logsysp
+        description: Partner logical system
+      - name: lstar
+        description: Activity type
+      - name: matnr
+        description: Material number
+      - name: werks
+        description: Plant
+      - name: xpaobjnr_co_rel
+        description: Relevant profitability segment number
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: rldnr
+        description: Ledger
       - name: rclnt
         description: Client
       - name: ryear
@@ -6689,9 +7457,9 @@ models:
       - name: rvcur
         description: Currency of amount in fourth local currency
       - name: fcsl
-        description: Amount in foreign currency
+        description: Amount in freely defined currency 1
       - name: rfccur
-        description: Foreign currency
+        description: Currency key for freely defined currency 1
       - name: rkcur
         description: Currency of amount in second local currency
       - name: rocur
@@ -6715,21 +7483,21 @@ models:
       - name: uspob
         description: Statistical posting object
       - name: co_beknz
-        description: Reference procedure
+        description: Debit/credit indicator (CO reference)
       - name: rwcur
         description: Currency for amount fields in transaction
       - name: co_buzei
-        description: Reference line
+        description: Reference line item
       - name: co_buzei1
-        description: Reference line 1
+        description: Reference line item 1
       - name: co_buzei2
-        description: Reference line 2
+        description: Reference line item 2
       - name: co_buzei5
-        description: Reference line 5
+        description: Reference line item 5
       - name: co_buzei6
-        description: Reference line 6
+        description: Reference line item 6
       - name: co_buzei7
-        description: Reference line 7
+        description: Reference line item 7
       - name: rldnr
         description: Ledger
       - name: poper
@@ -6783,9 +7551,9 @@ models:
       - name: pfsl3
         description: Amount in third parallel fixed currency
       - name: co_megbtr
-        description: Quantity in base unit of measure
+        description: Quantity (CO reference)
       - name: co_mefbtr
-        description: Quantity in unit of entry
+        description: Fixed quantity (CO reference)
       - name: msl
         description: Quantity
       - name: mfsl
@@ -6802,7 +7570,7 @@ models:
         description: Grant number
       - name: rbudget_pd
         description: Budget period
-      - name: timestamp
+      - name: timestamp_at
         description: UTC timestamp
       - name: logsyso
         description: Logical system of source
@@ -6846,6 +7614,8 @@ models:
         description: Field name for parallel currency amount to add
       - name: field_name_pagbtr_subtract
         description: Field name for parallel currency amount to subtract
+      - name: field_name_refbz
+        description: Field name for reference procedure
       - name: field_name_pafbtr_add
         description: Field name for parallel fixed amount to add
       - name: field_name_pafbtr_subtract
@@ -6956,6 +7726,14 @@ models:
   - name: stg_sap__tj01
     description: System status
     columns:
+      - name: vrgng
+        description: Business transaction
+      - name: wtkat
+        description: Value category
+      - name: xcosp
+        description: Update COSP indicator
+      - name: xcoss
+        description: Update COSS indicator
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_synced
@@ -6968,7 +7746,885 @@ models:
         description: Client
       - name: kokrs
         description: Controlling area
+      - name: logsystem
+        description: Logical system
+      - name: xwbuk
+        description: Company code indicator
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+
+  - name: stg_sap__t006
+    description: Unit of measure
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: mandt
+        description: Client
+      - name: msehi
+        description: Unit of measure
+      - name: temp_unit
+        description: Temperature unit
+      - name: temp_value
+        description: Temperature value
+      - name: nennr
+        description: Denominator
+      - name: kzex3
+        description: External format indicator
+      - name: primary
+        description: Primary unit flag
+      - name: decan
+        description: Decimal places
+      - name: press_unit
+        description: Pressure unit
+      - name: kzkeh
+        description: Conversion key
+      - name: exp10
+        description: Exponent to base 10
+      - name: zaehl
+        description: Numerator
+      - name: kz2eh
+        description: Unit conversion indicator
+      - name: famunit
+        description: Unit family
+      - name: press_val
+        description: Pressure value
+      - name: andec
+        description: Number of decimal places
+      - name: kz1eh
+        description: Primary unit indicator
+      - name: addko
+        description: Addition constant
+      - name: isocode
+        description: ISO code
+      - name: kzex6
+        description: External format length 6
+      - name: expon
+        description: Exponent
+      - name: dimid
+        description: Dimension ID
+      - name: kzwob
+        description: Commercial weight/volume
+
+  - name: stg_sap__cosp_bak
+    description: Cost object line items (archive)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: mandt
+        description: Client
+      - name: beknz
+        description: Movement type
+      - name: gjahr
+        description: Fiscal year
+      - name: hrkft
+        description: Origin of cost element
+      - name: kstar
+        description: Cost element
+      - name: lednr
+        description: Ledger number
+      - name: objnr
+        description: Object number
+      - name: pargb
+        description: Partner object
+      - name: perbl
+        description: Period block
+      - name: twaer
+        description: Transaction currency
+      - name: vbund
+        description: Company code group
+      - name: versn
+        description: Version
+      - name: vrgng
+        description: Business transaction
+      - name: wrttp
+        description: Value type
+      - name: wtg001
+        description: Transaction currency amount - Period 001
+      - name: wtg002
+        description: Transaction currency amount - Period 002
+      - name: wtg003
+        description: Transaction currency amount - Period 003
+      - name: wtg004
+        description: Transaction currency amount - Period 004
+      - name: wtg005
+        description: Transaction currency amount - Period 005
+      - name: wtg006
+        description: Transaction currency amount - Period 006
+      - name: wtg007
+        description: Transaction currency amount - Period 007
+      - name: wtg008
+        description: Transaction currency amount - Period 008
+      - name: wtg009
+        description: Transaction currency amount - Period 009
+      - name: wtg010
+        description: Transaction currency amount - Period 010
+      - name: wtg011
+        description: Transaction currency amount - Period 011
+      - name: wtg012
+        description: Transaction currency amount - Period 012
+      - name: wtg013
+        description: Transaction currency amount - Period 013
+      - name: wtg014
+        description: Transaction currency amount - Period 014
+      - name: wtg015
+        description: Transaction currency amount - Period 015
+      - name: wtg016
+        description: Transaction currency amount - Period 016
+      - name: wog001
+        description: Object currency amount - Period 001
+      - name: wog002
+        description: Object currency amount - Period 002
+      - name: wog003
+        description: Object currency amount - Period 003
+      - name: wog004
+        description: Object currency amount - Period 004
+      - name: wog005
+        description: Object currency amount - Period 005
+      - name: wog006
+        description: Object currency amount - Period 006
+      - name: wog007
+        description: Object currency amount - Period 007
+      - name: wog008
+        description: Object currency amount - Period 008
+      - name: wog009
+        description: Object currency amount - Period 009
+      - name: wog010
+        description: Object currency amount - Period 010
+      - name: wog011
+        description: Object currency amount - Period 011
+      - name: wog012
+        description: Object currency amount - Period 012
+      - name: wog013
+        description: Object currency amount - Period 013
+      - name: wog014
+        description: Object currency amount - Period 014
+      - name: wog015
+        description: Object currency amount - Period 015
+      - name: wog016
+        description: Object currency amount - Period 016
+      - name: wkg001
+        description: Controlling currency amount - Period 001
+      - name: wkg002
+        description: Controlling currency amount - Period 002
+      - name: wkg003
+        description: Controlling currency amount - Period 003
+      - name: wkg004
+        description: Controlling currency amount - Period 004
+      - name: wkg005
+        description: Controlling currency amount - Period 005
+      - name: wkg006
+        description: Controlling currency amount - Period 006
+      - name: wkg007
+        description: Controlling currency amount - Period 007
+      - name: wkg008
+        description: Controlling currency amount - Period 008
+      - name: wkg009
+        description: Controlling currency amount - Period 009
+      - name: wkg010
+        description: Controlling currency amount - Period 010
+      - name: wkg011
+        description: Controlling currency amount - Period 011
+      - name: wkg012
+        description: Controlling currency amount - Period 012
+      - name: wkg013
+        description: Controlling currency amount - Period 013
+      - name: wkg014
+        description: Controlling currency amount - Period 014
+      - name: wkg015
+        description: Controlling currency amount - Period 015
+      - name: wkg016
+        description: Controlling currency amount - Period 016
+      - name: wkf001
+        description: Fixed currency amount - Period 001
+      - name: wkf002
+        description: Fixed currency amount - Period 002
+      - name: wkf003
+        description: Fixed currency amount - Period 003
+      - name: wkf004
+        description: Fixed currency amount - Period 004
+      - name: wkf005
+        description: Fixed currency amount - Period 005
+      - name: wkf006
+        description: Fixed currency amount - Period 006
+      - name: wkf007
+        description: Fixed currency amount - Period 007
+      - name: wkf008
+        description: Fixed currency amount - Period 008
+      - name: wkf009
+        description: Fixed currency amount - Period 009
+      - name: wkf010
+        description: Fixed currency amount - Period 010
+      - name: wkf011
+        description: Fixed currency amount - Period 011
+      - name: wkf012
+        description: Fixed currency amount - Period 012
+      - name: wkf013
+        description: Fixed currency amount - Period 013
+      - name: wkf014
+        description: Fixed currency amount - Period 014
+      - name: wkf015
+        description: Fixed currency amount - Period 015
+      - name: wkf016
+        description: Fixed currency amount - Period 016
+      - name: pag001
+        description: Plan amounts - Period 001
+      - name: pag002
+        description: Plan amounts - Period 002
+      - name: pag003
+        description: Plan amounts - Period 003
+      - name: pag004
+        description: Plan amounts - Period 004
+      - name: pag005
+        description: Plan amounts - Period 005
+      - name: pag006
+        description: Plan amounts - Period 006
+      - name: pag007
+        description: Plan amounts - Period 007
+      - name: pag008
+        description: Plan amounts - Period 008
+      - name: pag009
+        description: Plan amounts - Period 009
+      - name: pag010
+        description: Plan amounts - Period 010
+      - name: pag011
+        description: Plan amounts - Period 011
+      - name: pag012
+        description: Plan amounts - Period 012
+      - name: pag013
+        description: Plan amounts - Period 013
+      - name: pag014
+        description: Plan amounts - Period 014
+      - name: pag015
+        description: Plan amounts - Period 015
+      - name: pag016
+        description: Plan amounts - Period 016
+      - name: meg001
+        description: Quantity field - Period 001
+      - name: meg002
+        description: Quantity field - Period 002
+      - name: meg003
+        description: Quantity field - Period 003
+      - name: meg004
+        description: Quantity field - Period 004
+      - name: meg005
+        description: Quantity field - Period 005
+      - name: meg006
+        description: Quantity field - Period 006
+      - name: meg007
+        description: Quantity field - Period 007
+      - name: meg008
+        description: Quantity field - Period 008
+      - name: meg009
+        description: Quantity field - Period 009
+      - name: meg010
+        description: Quantity field - Period 010
+      - name: meg011
+        description: Quantity field - Period 011
+      - name: meg012
+        description: Quantity field - Period 012
+      - name: meg013
+        description: Quantity field - Period 013
+      - name: meg014
+        description: Quantity field - Period 014
+      - name: meg015
+        description: Quantity field - Period 015
+      - name: meg016
+        description: Quantity field - Period 016
+      - name: mef001
+        description: Fixed quantity - Period 001
+      - name: mef002
+        description: Fixed quantity - Period 002
+      - name: mef003
+        description: Fixed quantity - Period 003
+      - name: mef004
+        description: Fixed quantity - Period 004
+      - name: mef005
+        description: Fixed quantity - Period 005
+      - name: mef006
+        description: Fixed quantity - Period 006
+      - name: mef007
+        description: Fixed quantity - Period 007
+      - name: mef008
+        description: Fixed quantity - Period 008
+      - name: mef009
+        description: Fixed quantity - Period 009
+      - name: mef010
+        description: Fixed quantity - Period 010
+      - name: mef011
+        description: Fixed quantity - Period 011
+      - name: mef012
+        description: Fixed quantity - Period 012
+      - name: mef013
+        description: Fixed quantity - Period 013
+      - name: mef014
+        description: Fixed quantity - Period 014
+      - name: mef015
+        description: Fixed quantity - Period 015
+      - name: mef016
+        description: Fixed quantity - Period 016
+      - name: muv001
+        description: Manual update indicator - Period 001
+      - name: muv002
+        description: Manual update indicator - Period 002
+      - name: muv003
+        description: Manual update indicator - Period 003
+      - name: muv004
+        description: Manual update indicator - Period 004
+      - name: muv005
+        description: Manual update indicator - Period 005
+      - name: muv006
+        description: Manual update indicator - Period 006
+      - name: muv007
+        description: Manual update indicator - Period 007
+      - name: muv008
+        description: Manual update indicator - Period 008
+      - name: muv009
+        description: Manual update indicator - Period 009
+      - name: muv010
+        description: Manual update indicator - Period 010
+      - name: muv011
+        description: Manual update indicator - Period 011
+      - name: muv012
+        description: Manual update indicator - Period 012
+      - name: muv013
+        description: Manual update indicator - Period 013
+      - name: muv014
+        description: Manual update indicator - Period 014
+      - name: muv015
+        description: Manual update indicator - Period 015
+      - name: muv016
+        description: Manual update indicator - Period 016
+      - name: timestmp
+        description: Timestamp
+      - name: bukrs
+        description: Company code
+      - name: fkber
+        description: Functional area
+      - name: segment
+        description: Segment
+      - name: geber
+        description: Fund
+      - name: grant_nbr
+        description: Grant number
+      - name: budget_pd
+        description: Budget period
+      - name: meinh
+        description: Unit of measure
+      - name: beltp
+        description: Document type
+
+  - name: stg_sap__prps
+    description: Work breakdown structure (WBS) element master data staging model
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: mandt
+        description: Client
+      - name: pspnr
+        description: Work breakdown structure element
+      - name: pbukr
+        description: Company code
+      - name: kappl
+        description: Application
+      - name: usr11
+        description: User field 11
+      - name: cgpl_guid16
+        description: CGPL GUID
+      - name: isize
+        description: Size
+      - name: berko
+        description: Person responsible cost center
+      - name: usr09
+        description: User field 09
+      - name: sort1
+        description: Search term 1
+      - name: prart
+        description: Project type
+      - name: slwid
+        description: Settlement rule
+      - name: fakkz
+        description: Billing indicator
+      - name: usr00
+        description: User field 00
+      - name: vbeln_prps
+        description: Sales document
+      - name: psphi
+        description: WBS element level
+      - name: usr02
+        description: User field 02
+      - name: plint
+        description: Planning integrated
+      - name: abukr
+        description: Company code for settlement
+      - name: npfaz
+        description: Network profile
+      - name: pspri
+        description: Priority
+      - name: logsystem
+        description: Logical system
+      - name: use05
+        description: User element 05
+      - name: use06
+        description: User element 06
+      - name: pgprf
+        description: Project profile
+      - name: aedat
+        description: Last changed date
+      - name: usr05
+        description: User field 05
+      - name: stufe
+        description: Level
+      - name: sort2
+        description: Search term 2
+      - name: scope
+        description: Object class
+      - name: post1
+        description: WBS element description
+      - name: settlementobject
+        description: Settlement receiver
+      - name: aenam
+        description: Changed by
+      - name: xstat
+        description: Status
+      - name: usr01
+        description: User field 01
+      - name: clasf
+        description: Classification
+      - name: usr03
+        description: User field 03
+      - name: astna
+        description: Lowest WBS element
+      - name: tadat
+        description: Actual start date
+      - name: cgpl_objtype
+        description: CGPL object type
+      - name: berbu
+        description: Responsible business area
+      - name: akstl
+        description: Cost center for commitments
+      - name: vernr
+        description: Responsible person
+      - name: sponsoredprog
+        description: Sponsored program
+      - name: objnr
+        description: Object number
+      - name: berst
+        description: Responsible cost center
+      - name: sort3
+        description: Search term 3
+      - name: zschl
+        description: Interest calculation indicator
+      - name: bertr
+        description: Company code for responsible cost center
+      - name: eew_prps_ps_dummy
+        description: PS dummy structure enhancement
+      - name: grant_fix_assigned
+        description: Grant fixed assignment
+      - name: vlpkz
+        description: Invoice plan indicator
+      - name: equnr
+        description: Equipment number
+      - name: jibsa
+        description: JIB/JIBE sender business area
+      - name: recid
+        description: Recovery indicator
+      - name: otype
+        description: Account assignment category
+      - name: pspkz
+        description: WBS element billing indicator
+      - name: kalnr
+        description: Cost estimate number
+      - name: pgsbr
+        description: Business area for standard WBS
+      - name: cgpl_logsys
+        description: CGPL logical system
+      - name: use04
+        description: User element 04
+      - name: rgrant_nbr
+        description: Regional grant number
+      - name: stort
+        description: Location
+      - name: usr04
+        description: User field 04
+      - name: func_area
+        description: Functional area
+      - name: akokr
+        description: Commitment controlling area
+      - name: aennr
+        description: Change number
+      - name: fkstl
+        description: Cost center for billing
+      - name: posid_edit
+        description: Work breakdown structure element (editable)
+      - name: adpsp
+        description: Summarization WBS element
+      - name: imprf
+        description: Investment profile
+      - name: zuord
+        description: Assignment field
+      - name: erdat
+        description: Created on
+      - name: tplnr
+        description: Functional location
+      - name: poski
+        description: WBS element account assignment
+      - name: verna
+        description: Responsible person name
+      - name: ernam
+        description: Created by
+      - name: settlmtruleinherited
+        description: Settlement rule inherited
+      - name: prps_status
+        description: WBS element status
+      - name: txjcd
+        description: Tax jurisdiction
+      - name: grpkz
+        description: Grant indicator
+      - name: func_area_fix_assigned
+        description: Functional area fixed assignment
+      - name: etype
+        description: Equity type
+      - name: spsnr
+        description: Blocking object number
+      - name: vlpsp
+        description: Billing plan WBS element
+      - name: ferc_ind
+        description: FERC indicator
+      - name: usr07
+        description: User field 07
+      - name: fkokr
+        description: Billing controlling area
+      - name: prctr
+        description: Profit center
+      - name: loevm
+        description: Deletion indicator
+      - name: kostl
+        description: Cost center
+      - name: klvar
+        description: Costing variant
+      - name: zschm
+        description: Interest calculation schema
+      - name: fabkl
+        description: Factory calendar
+      - name: rfund
+        description: Regional fund
+      - name: matnr
+        description: Material number
+      - name: txtsp
+        description: Language key
+      - name: belkz
+        description: Document indicator
+      - name: fund_fix_assign
+        description: Fund fixed assignment
+      - name: plakz
+        description: Planning element
+      - name: izwek
+        description: Investment reason
+      - name: kalsm
+        description: Costing sheet
+      - name: evgew
+        description: Weighted volume
+      - name: posid
+        description: Work breakdown structure element (WBS element)
+      - name: pspnr_logs
+        description: Logical WBS element
+      - name: pwpos
+        description: Maintenance work center position
+      - name: trmeq
+        description: Transfer to equipment
+      - name: cpd_updat
+        description: CPD last changed
+      - name: jibcl
+        description: JIB/JIBE class
+      - name: ktrg
+        description: Cost object
+      - name: kzbws
+        description: Valuation view
+      - name: settlementelement
+        description: Settlement element
+      - name: vname
+        description: Joint venture
+      - name: astnr
+        description: Top WBS element
+      - name: usr10
+        description: User field 10
+      - name: subpr
+        description: Subproject
+      - name: use07
+        description: User element 07
+      - name: fplnr
+        description: Financial plan number
+      - name: usr06
+        description: User field 06
+      - name: usr08
+        description: User field 08
+      - name: posnr_prps
+        description: Position number
+      - name: kvewe
+        description: Usage
+      - name: rfippnt
+        description: RFIP point
+      - name: pkokr
+        description: Controlling area for commitments
+      - name: postu
+        description: Item category
+      - name: werks
+        description: Plant
+      - name: abgsl
+        description: Settlement key
+      - name: iumkz
+        description: Environmentally relevant indicator
+
+  - name: stg_sap__coep
+    description: Controlling actual line items for cost objects staging model
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: mandt
+        description: Client
+      - name: kokrs
+        description: Controlling area
+      - name: belnr
+        description: Document number
+      - name: buzei
+        description: Line item
+      - name: perio
+        description: Period
+      - name: wtgbtr
+        description: Value in transaction currency
+      - name: wogbtr
+        description: Value in object currency
+      - name: wkgbtr
+        description: Value in controlling area currency
+      - name: wkfbtr
+        description: Fixed value in controlling area currency
+      - name: pagbtr
+        description: Value in parallel currency
+      - name: pafbtr
+        description: Fixed value in parallel currency
+      - name: megbtr
+        description: Quantity in unit of measure
+      - name: mefbtr
+        description: Fixed quantity
+      - name: mbgbtr
+        description: Quantity in base unit of measure
+      - name: mbfbtr
+        description: Fixed quantity in base unit of measure
+      - name: lednr
+        description: Ledger number
+      - name: objnr
+        description: Object number
+      - name: gjahr
+        description: Fiscal year
+      - name: wrttp
+        description: Value type
+      - name: versn
+        description: Version
+      - name: kstar
+        description: Cost element
+      - name: hrkft
+        description: Origin group
+      - name: vrgng
+        description: Transaction
+      - name: parob
+        description: Partner object
+      - name: parob1
+        description: Partner object 1
+      - name: uspob
+        description: Original partner object
+      - name: vbund
+        description: Trading partner
+      - name: pargb
+        description: Partner business area
+      - name: beknz
+        description: Account assignment indicator
+      - name: twaer
+        description: Transaction currency
+      - name: owaer
+        description: Object currency
+      - name: meinh
+        description: Unit of measure
+      - name: meinb
+        description: Base unit of measure
+      - name: mvflg
+        description: Manual value entry indicator
+      - name: sgtxt
+        description: Line item text
+      - name: refbz
+        description: Reference document
+      - name: zlenr
+        description: Payment reference
+      - name: bw_refbz
+        description: BW reference document
+      - name: gkont
+        description: Offsetting account
+      - name: gkoar
+        description: Offsetting account type
+      - name: werks
+        description: Plant
+      - name: matnr
+        description: Material number
+      - name: rbest
+        description: Invoice recipient
+      - name: ebeln
+        description: Purchase order number
+      - name: ebelp
+        description: Purchase order item
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: erlkz
+        description: Completion indicator
+      - name: pernr
+        description: Personnel number
+      - name: btrkl
+        description: Transaction type
+      - name: objnr_n1
+        description: Object number level 1
+      - name: objnr_n2
+        description: Object number level 2
+      - name: objnr_n3
+        description: Object number level 3
+      - name: paobjnr
+        description: Profitability segment object number
+      - name: beltp
+        description: Document type
+      - name: bukrs
+        description: Company code
+      - name: gsber
+        description: Business area
+      - name: fkber
+        description: Functional area
+      - name: scope
+        description: Object class
+      - name: logsyso
+        description: Logical system for object
+      - name: pkstar
+        description: Partner cost element
+      - name: pbukrs
+        description: Partner company code
+      - name: pfkber
+        description: Partner functional area
+      - name: pscope
+        description: Partner object class
+      - name: logsysp
+        description: Logical system for partner
+      - name: dabrz
+        description: Settlement reference date
+      - name: bwstrat
+        description: Valuation strategy
+      - name: objnr_hk
+        description: Object number for hierarchy
+      - name: timestmp
+        description: Timestamp
+      - name: qmnum
+        description: Quality notification number
+      - name: geber
+        description: Fund
+      - name: pgeber
+        description: Partner fund
+      - name: grant_nbr
+        description: Grant number
+      - name: pgrant_nbr
+        description: Partner grant number
+      - name: refbz_fi
+        description: FI reference document
+      - name: segment
+        description: Segment
+      - name: psegment
+        description: Partner segment
+      - name: posnr
+        description: Position number
+      - name: prctr
+        description: Profit center
+      - name: pprct
+        description: Partner profit center
+      - name: budget_pd
+        description: Budget period
+      - name: pbudget_pd
+        description: Partner budget period
+      - name: prodper
+        description: Production period
+      - name: awtyp
+        description: Reference document type
+      - name: awkey
+        description: Reference document key
+      - name: awsys
+        description: Reference document system
+      - name: kwaer
+        description: Controlling area currency
+      - name: accas
+        description: Account assignment object
+      - name: accasty
+        description: Account assignment object type
+      - name: kostl
+        description: Cost center
+      - name: lstar
+        description: Activity type
+      - name: aufnr
+        description: Order number
+      - name: autyp
+        description: Order type
+      - name: pspnr
+        description: Work breakdown structure element
+      - name: pspid
+        description: WBS element ID
+      - name: vbeln
+        description: Sales document
+      - name: vbposnr
+        description: Sales document item
+      - name: ce4key
+        description: Profitability segment key
+      - name: erkrs
+        description: Statistical exchange rate
+      - name: paccas
+        description: Partner account assignment object
+      - name: paccasty
+        description: Partner account assignment object type
+      - name: pkostl
+        description: Partner cost center
+      - name: plstar
+        description: Partner activity type
+      - name: paufnr
+        description: Partner order number
+      - name: pautyp
+        description: Partner order type
+      - name: ppspnr
+        description: Partner work breakdown structure element
+      - name: ppspid
+        description: Partner WBS element ID
+      - name: pvbeln
+        description: Partner sales document
+      - name: pvbposnr
+        description: Partner sales document item
+      - name: pce4key
+        description: Partner profitability segment key
+      - name: quant1
+        description: Quantity 1
+      - name: quant2
+        description: Quantity 2
+      - name: quant3
+        description: Quantity 3
+      - name: qunit1
+        description: Quantity unit 1
+      - name: qunit2
+        description: Quantity unit 2
+      - name: qunit3
+        description: Quantity unit 3
