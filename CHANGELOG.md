@@ -21,6 +21,9 @@
 | [`stg_sap__tj01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tj01) | Column additions | N/A | `wtkat` | Added value category for enhanced system status classification |
 | [`stg_sap__tka01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tka01) | Column additions | N/A | `xwbuk` | Added cross-company code posting indicator |
 
+## Documentation
+- Updates README with standardized Fivetran formatting.
+
 ## Under the Hood
 - Added compatibility view intermediate models: Created 10 intermediate models to handle complex transformations:
   - COEP: `int_coep__acdoca_base`, `int_coep__acdoca_calculated`, `int_coep__acdoca_aggregated`, `int_coep__acdoca_final`, `int_coep__original`
