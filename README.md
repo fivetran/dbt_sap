@@ -1,5 +1,5 @@
 <!--section="sap_transformation_model"-->
-# Sap dbt Package
+# SAP dbt Package
 
 <p align="left">
     <a alt="License"
@@ -20,7 +20,7 @@ This dbt package transforms data from Fivetran's SAP connector into analytics-re
 
 ## Resources
 
-- Number of materialized models¹: 133
+- Number of materialized models¹: 148
 - Connector documentation
   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
   - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
@@ -81,6 +81,10 @@ By default, this package materializes the following final tables:
 
 | Table | Description |
 | :---- | :---- |
+| [bsad](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | Customer Line Items Cleared/Archived (BSAD) compatibility view - Represents cleared customer items in the classic BSAD format via a compatibility view; depending on configuration it may include archived content. |
+| [bsid](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | Customer Line Items (BSID) compatibility view (S/4HANA) - Represents open customer items in the classic BSID format, provided via a compatibility view (logically equivalent to the classic FI line item/index content). |
+| [coep](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA. |
+| [cosp](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | Cost Object Line Items Summary (COSP) compatibility view - Provides aggregated period-wise cost and quantity data for cost objects, combining archived COSP_BAK data with derived ACDOCA data. |
 | [coss](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents, replicating the native SAP COSS table structure. |
 | [faglflexa](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflexa) | Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents, maintaining compatibility with native SAP FAGLFLEXA table. |
 | [marc](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information, replicating the native SAP MARC table structure. |
