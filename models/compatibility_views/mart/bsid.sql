@@ -38,7 +38,7 @@ select
   cast(i.txdat_from as {{ dbt.type_string() }}) as txdat_from,
   cast(i.dmbtr as {{ dbt.type_numeric() }}) as dmbtr,
   cast(i.wrbtr as {{ dbt.type_numeric() }}) as wrbtr,
-  -- i.fcsl,
+  cast(i.fcsl as {{ dbt.type_numeric() }}) as fcsl,
   cast(i.rfccur as {{ dbt.type_string() }}) as rfccur,
   cast(i.mwsts as {{ dbt.type_numeric() }}) as mwsts,
   cast(i.wmwst as {{ dbt.type_numeric() }}) as wmwst,
@@ -145,7 +145,7 @@ select
   cast(i.xref1 as {{ dbt.type_string() }}) as xref1,
   cast(i.xref2 as {{ dbt.type_string() }}) as xref2,
   case
-    when i._dataaging = '00000000' then cast('' as {{ dbt.type_string() }})
+    when coalesce(i._dataaging,'00000000') = '00000000' then cast('' as {{ dbt.type_string() }})
     else cast('X' as {{ dbt.type_string() }})
   end as xarch,
   cast(i.pswsl as {{ dbt.type_string() }}) as pswsl,

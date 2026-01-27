@@ -66,7 +66,7 @@ models:
         description: Doc. contains open item that was transferred during reorg.
 
   - name: stg_sap__bsad_bck
-    description: Customer line items - archived records staging model
+    description: Secondary index for customers - cleared items
     columns:
       - name: _fivetran_synced
         description: Fivetran sync timestamp
@@ -389,7 +389,7 @@ models:
       - name: kidno
         description: Payment reference
       - name: absbt
-        description: Abs.amt.in%
+        description: Hedged amount
       - name: ccbtc
         description: Company code for payment
       - name: pycur
@@ -7366,6 +7366,8 @@ models:
         description: Fiscal year
       - name: belnr
         description: Document number
+      - name: co_belnr
+        description: Controlling document number
       - name: rbukrs
         description: Company code
       - name: bttype
@@ -7756,7 +7758,7 @@ models:
         description: Fivetran sync timestamp
 
   - name: stg_sap__t006
-    description: Unit of measure
+    description: Units of measurment
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -7812,7 +7814,7 @@ models:
         description: Commercial weight/volume
 
   - name: stg_sap__cosp_bak
-    description: Cost object line items (archive)
+    description: Cost totals for external postings
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker
@@ -8390,7 +8392,7 @@ models:
         description: Environmentally relevant indicator
 
   - name: stg_sap__coep
-    description: Controlling actual line items for cost objects staging model
+    description: Line items by period
     columns:
       - name: _fivetran_deleted
         description: Fivetran deletion marker

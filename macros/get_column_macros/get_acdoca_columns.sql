@@ -14,6 +14,7 @@
     {"name": "awtyp", "datatype": dbt.type_string()},
     {"name": "beltp", "datatype": dbt.type_string()},
     {"name": "belnr", "datatype": dbt.type_string()},
+    {"name": "co_belnr", "datatype": dbt.type_string()},
     {"name": "bschl", "datatype": dbt.type_string()},
     {"name": "bsl", "datatype": dbt.type_numeric()},
     {"name": "bstat", "datatype": dbt.type_string()},

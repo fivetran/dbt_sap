@@ -161,7 +161,7 @@ with cosp_from_archive as (
         cast(muv015 as {{ dbt.type_string() }}) as muv015,
         cast(muv016 as {{ dbt.type_string() }}) as muv016,
         cast(beltp as {{ dbt.type_string() }}) as beltp,
-        cast(timestmp as {{ dbt.type_string() }}) as timestmp,
+        cast(timestmp as {{ dbt.type_numeric() }}) as timestmp,
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         cast(fkber as {{ dbt.type_string() }}) as fkber,
         cast(segment as {{ dbt.type_string() }}) as segment,
@@ -335,7 +335,7 @@ cosp_from_acdoca_aggregated as (
         case when max(case when cast(perio as {{ dbt.type_string() }}) = '014' then muvflg else 0 end) = 1 then cast('X' as {{ dbt.type_string() }}) else cast('' as {{ dbt.type_string() }}) end as muv014,
         case when max(case when cast(perio as {{ dbt.type_string() }}) = '015' then muvflg else 0 end) = 1 then cast('X' as {{ dbt.type_string() }}) else cast('' as {{ dbt.type_string() }}) end as muv015,
         case when max(case when cast(perio as {{ dbt.type_string() }}) = '016' then muvflg else 0 end) = 1 then cast('X' as {{ dbt.type_string() }}) else cast('' as {{ dbt.type_string() }}) end as muv016,
-        cast(max(timestmp) as {{ dbt.type_string() }}) as timestmp
+        cast(max(timestmp) as {{ dbt.type_numeric() }}) as timestmp
 
     from {{ ref('int_cosp__acdoca_derived') }}
     where cast(wrttp as {{ dbt.type_string() }}) in ('04', '11')

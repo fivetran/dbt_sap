@@ -147,7 +147,7 @@ sources:
           - name: ryear
             description: Fiscal year
           - name: belnr
-            description: Document number
+            description: Controlling document number
           - name: rbukrs
             description: Company code
           - name: bttype
@@ -927,7 +927,7 @@ sources:
         identifier: "{{ var('sap_bsad_bck_identifier', 'bsad_bck') }}"
         config:
           enabled: "{{ var('sap_using_bsad_bck', true) }}"
-        description: Customer line items - archived records
+        description: Secondary index for customers - cleared items
         columns:
           - name: _fivetran_synced
             description: Fivetran sync timestamp
@@ -1250,7 +1250,7 @@ sources:
           - name: kidno
             description: Payment reference
           - name: absbt
-            description: Abs.amt.in%
+            description: Hedged amount
           - name: ccbtc
             description: Company code for payment
           - name: pycur
@@ -7736,7 +7736,7 @@ sources:
         identifier: "{{ var('sap_t006_identifier', 't006') }}"
         config:
           enabled: "{{ var('sap_using_t006', true) }}"
-        description: Unit of measure
+        description: Units of measurment
         columns:
           - name: _fivetran_deleted
             description: Fivetran deletion marker
@@ -7795,7 +7795,7 @@ sources:
         identifier: "{{ var('sap_cosp_bak_identifier', 'cosp_bak') }}"
         config:
           enabled: "{{ var('sap_using_cosp_bak', true) }}"
-        description: Cost object. Line items (archive)
+        description: Cost totals for external postings
         columns:
           - name: _fivetran_deleted
             description: Fivetran deletion marker
@@ -8378,7 +8378,7 @@ sources:
         identifier: "{{ var('sap_coep_identifier', 'coep') }}"
         config:
           enabled: "{{ var('sap_using_coep', true) }}"
-        description: Controlling actual line items for cost objects
+        description: Line items by period
         columns:
           - name: _fivetran_deleted
             description: Fivetran deletion marker

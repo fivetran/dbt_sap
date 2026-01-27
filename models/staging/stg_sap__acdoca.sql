@@ -23,6 +23,7 @@ final as (
         cast(rclnt as {{ dbt.type_string() }}) as rclnt,
         cast(ryear as {{ dbt.type_string() }}) as ryear,
         cast(belnr as {{ dbt.type_string() }}) as belnr,
+        cast(co_belnr as {{ dbt.type_string() }}) as co_belnr,
         cast(rbukrs as {{ dbt.type_string() }}) as rbukrs,
         cast(rldnr as {{ dbt.type_string() }}) as rldnr,
         bttype,

@@ -2779,7 +2779,7 @@ models:
       - name: uzawe
         description: Payment method supplement
       - name: xstov
-        description: Storno/reversal indicator
+        description: Reversal indicator
       - name: mwst2
         description: Tax amount 2 in local currency
       - name: mwst3
@@ -2849,7 +2849,7 @@ models:
       - name: kidno
         description: Payment reference
       - name: absbt
-        description: Abs.amt.in%
+        description: Hedged amount
       - name: ccbtc
         description: Company code for payment
       - name: pycur
@@ -2943,7 +2943,7 @@ models:
       - name: pendays
         description: Number of penalty days
       - name: j_1tpbupl
-        description: Tax reporting business place
+        description: Branch code
 
   - name: bsad
     description: Customer Line Items Cleared/Archived (BSAD) compatibility view - Represents cleared customer items in the classic BSAD format via a compatibility view; depending on configuration it may include archived content
@@ -3203,7 +3203,7 @@ models:
       - name: uzawe
         description: Payment method supplement
       - name: xstov
-        description: Storno/reversal indicator (from BKPF for cleared records)
+        description: Reversal indicator (from BKPF for cleared records)
       - name: mwst2
         description: Tax amount 2 in local currency
       - name: mwst3
@@ -3271,7 +3271,7 @@ models:
       - name: kidno
         description: Payment reference
       - name: absbt
-        description: Abs.amt.in%
+        description: Hedged amount
       - name: ccbtc
         description: Company code for payment
       - name: pycur
@@ -3365,7 +3365,7 @@ models:
       - name: pendays
         description: Number of days for penalty calculation (hardcoded to 0 for archived records)
       - name: j_1tpbupl
-        description: Tax reporting business place
+        description: Branch code
 
   - name: coep
     description: Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA
@@ -3375,7 +3375,7 @@ models:
       - name: kokrs
         description: Controlling area
       - name: belnr
-        description: Document number
+        description: Controlling document number
       - name: buzei
         description: Line item number within document
       - name: perio

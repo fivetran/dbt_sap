@@ -26,7 +26,7 @@ v_coep_acdoca_r1 as (
     select
         a.rclnt as mandt,
         a.kokrs as kokrs,
-        a.belnr as belnr,
+        a.co_belnr as belnr,
         case
             when v.field_name_buzei = 'CO_BUZEI' then a.co_buzei
             when v.field_name_buzei = 'CO_BUZEI1' then a.co_buzei1
@@ -231,11 +231,11 @@ v_coep_acdoca_r1 as (
         a.co_zlenr as zlenr,
         a.co_buzei as bw_refbz,
         case
-            when (a.vrgng in ('COI', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6', 'RKU3')) then a.gkont
+            when (a.vrgng in ('COIN', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6', 'RKU3')) then a.gkont
             else cast('' as {{ dbt.type_string() }})
         end as gkont,
         case
-            when (a.vrgng in ('COI', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6', 'RKU3')) then a.gkoar
+            when (a.vrgng in ('COIN', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6', 'RKU3')) then a.gkoar
             else cast('' as {{ dbt.type_string() }})
         end as gkoar,
         a.werks,
@@ -271,7 +271,7 @@ v_coep_acdoca_r1 as (
         a.rgrant_nbr as grant_nbr,
         a.sgrant_nbr as pgrant_nbr,
         case
-            when (a.vrgng in ('COI', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6')) then a.buzei
+            when (a.vrgng in ('COIN', 'COIE', 'KZRI', 'INV1', 'INV2', 'INV3', 'INV4', 'INV5', 'INV6')) then a.buzei
             else cast('000' as {{ dbt.type_string() }})
         end as refbz_fi,
         a.segment,
