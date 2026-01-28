@@ -5,7 +5,7 @@
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
-| [`bsad`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | Addition | N/A | New compatibility view | Customer Line Items Cleared/Archived - provides cleared and archived customer receivables |
+| [`bsad`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | New Compatibility View | | | Customer Line Items Cleared/Archived - provides cleared and archived customer receivables |
 | [`bsid`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | Addition | N/A | New compatibility view | Customer Line Items - provides open customer receivables and line item data |
 | [`coep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | Addition | N/A | New compatibility view | Controlling Object Line Items - provides detailed line item data for controlling documents |
 | [`cosp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | Addition | N/A | New compatibility view | Cost Object Line Items Summary - provides period-wise cost and quantity data for cost objects |
@@ -25,11 +25,11 @@
 - Updates README with standardized Fivetran formatting.
 
 ## Under the Hood
-- Added compatibility view intermediate models: Created 10 intermediate models to handle complex transformations:
+- Creates the following compatibility view intermediate models to handle complex transformations:
   - COEP: `int_coep__acdoca_base`, `int_coep__acdoca_calculated`, `int_coep__acdoca_aggregated`, `int_coep__acdoca_final`, `int_coep__original`
   - COSP: `int_cosp__acdoca_base`, `int_cosp__acdoca_amounts`, `int_cosp__acdoca_timestamp`, `int_cosp__coep_derived`, `int_cosp__acdoca_derived`
-- Added new enable/disable variables for all new staging tables: `sap_using_t006`, `sap_using_cosp_bak`, `sap_using_bsad_bck`, `sap_using_coep`, `sap_using_prps`
-- Enhanced `remove_slashes_from_col_names` macro to support database reserved words handling by adding `reserved_word_list` parameter, ensuring proper quoting for columns that are reserved keywords
+- Adds new enable/disable variables for all new staging tables: `sap_using_t006`, `sap_using_cosp_bak`, `sap_using_bsad_bck`, `sap_using_coep`, `sap_using_prps`
+- Enhances `remove_slashes_from_col_names` macro to support database reserved words handling by adding `reserved_word_list` parameter, ensuring proper quoting for columns that are reserved keywords
 
 # dbt_sap v0.5.1
 
