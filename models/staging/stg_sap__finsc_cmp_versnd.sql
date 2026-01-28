@@ -36,6 +36,7 @@ final as (
         cast(field_name_wkfbtr_subtract as {{ dbt.type_string() }}) as field_name_wkfbtr_subtract,
         cast(field_name_pagbtr_add as {{ dbt.type_string() }}) as field_name_pagbtr_add,
         cast(field_name_pagbtr_subtract as {{ dbt.type_string() }}) as field_name_pagbtr_subtract,
+        cast(field_name_refbz as {{ dbt.type_string() }}) as field_name_refbz,
         cast(field_name_pafbtr_add as {{ dbt.type_string() }}) as field_name_pafbtr_add,
         cast(field_name_pafbtr_subtract as {{ dbt.type_string() }}) as field_name_pafbtr_subtract,
         _fivetran_sap_archived,

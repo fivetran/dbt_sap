@@ -21,6 +21,7 @@ fields as (
 final as (
     select
         cast(vrgng as {{ dbt.type_string() }}) as vrgng,
+        cast(wtkat as {{ dbt.type_string() }}) as wtkat,
         cast(xcosp as {{ dbt.type_string() }}) as xcosp,
         cast(xcoss as {{ dbt.type_string() }}) as xcoss,
         _fivetran_deleted,

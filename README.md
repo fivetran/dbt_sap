@@ -1,5 +1,5 @@
 <!--section="sap_transformation_model"-->
-# Sap dbt Package
+# SAP dbt Package
 
 <p align="left">
     <a alt="License"
@@ -20,7 +20,7 @@ This dbt package transforms data from Fivetran's SAP connector into analytics-re
 
 ## Resources
 
-- Number of materialized models¹: 133
+- Number of materialized models¹: 148
 - Connector documentation
   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
   - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
@@ -78,9 +78,14 @@ By default, this package materializes the following final tables:
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Fact table consolidating sales order line-level data from vbak, vbap, vbuk, and vbup sources with document attributes (document number, item, category, type, order reason, delivery block), organizational dimensions (sales organization, distribution channel, division, plant, customer), product details (material, material group, product hierarchy), quantity and pricing metrics (order quantity, net value, net price, gross weight), dates (document date, requested delivery date, created date), and status indicators (delivery status, overall status, item delivery status) to measure sales performance and order fulfillment. <br></br>**Example Analytics Questions:**<ul><li>What is the total net_value and order_quantity by sold_to_customer_id, material_id, and sales_organization_id?</li><li>How do sales vary by sales_document_type_id, distribution_channel_id, and division_id over time (document_date)?</li><li>Which materials have the highest order volumes and net prices by product_hierarchy_id and plant_id?</li></ul>|
 
 **Compatibility Views**
+> Views that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports.
 
 | Table | Description |
 | :---- | :---- |
+| [bsad](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | Customer Line Items Cleared/Archived (BSAD) compatibility view - Represents cleared customer items in the classic BSAD format via a compatibility view; depending on configuration it may include archived content. |
+| [bsid](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | Customer Line Items (BSID) compatibility view (S/4HANA) - Represents open customer items in the classic BSID format, provided via a compatibility view (logically equivalent to the classic FI line item/index content). |
+| [coep](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA. |
+| [cosp](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | Cost Object Line Items Summary (COSP) compatibility view - Provides aggregated period-wise cost and quantity data for cost objects, combining archived COSP_BAK data with derived ACDOCA data. |
 | [coss](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss) | Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents, replicating the native SAP COSS table structure. |
 | [faglflexa](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflexa) | Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents, maintaining compatibility with native SAP FAGLFLEXA table. |
 | [marc](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information, replicating the native SAP MARC table structure. |
@@ -115,7 +120,8 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
+
 ```
 
 #### Databricks Dispatch Configuration

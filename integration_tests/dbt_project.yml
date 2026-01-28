@@ -1,5 +1,6 @@
 name: 'sap_integration_tests'
-version: '0.5.1'
+version: '0.6.0'
+
 profile: 'integration_tests'
 config-version: 2
 
@@ -7,7 +8,10 @@ vars:
   sap_schema: sap_integration_tests
   sap:
     sap_bkpf_identifier: "sap_bkpf_data"
+    sap_bsad_bck_identifier: "sap_bsad_bck_data"
     sap_bseg_identifier: "sap_bseg_data"
+    sap_coep_identifier: "sap_coep_data"
+    sap_cosp_bak_identifier: "sap_cosp_bak_data"
     sap_faglflexa_identifier: "sap_faglflexa_data"
     sap_faglflext_identifier: "sap_faglflext_data"
     sap_kna1_identifier: "sap_kna1_data"
@@ -18,6 +22,7 @@ vars:
     sap_pa0007_identifier: "sap_pa0007_data"
     sap_pa0008_identifier: "sap_pa0008_data"
     sap_pa0031_identifier: "sap_pa0031_data"
+    sap_prps_identifier: "sap_prps_data"
     sap_ska1_identifier: "sap_ska1_data"
     sap_t001_identifier: "sap_t001_data"
     sap_t503_identifier: "sap_t503_data"
@@ -56,6 +61,7 @@ vars:
     sap_sapsll_nosca_identifier: "sap_sapsll_nosca_data"
     sap_sapsll_tunos_identifier: "sap_sapsll_tunos_data"
     sap_t000_identifier: "sap_t000_data"
+    sap_t006_identifier: "sap_t006_data"
     sap_tj01_identifier: "sap_tj01_data"
     sap_tka01_identifier: "sap_tka01_data"
 
@@ -73,6 +79,7 @@ seeds:
     +column_types:
       _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
       _fivetran_synced: timestamp
+      "*": "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_acdoca_data:
       +column_types:

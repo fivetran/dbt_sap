@@ -32,8 +32,8 @@ dbt test --vars '{sap_using_mara: False, sap_using_makt: False, sap_using_t134: 
 dbt run --vars '{sap_using_dd07t: False, sap_using_t161t: False, sap_using_t001w: False}' --target "$db" --full-refresh
 dbt test --vars '{sap_using_dd07t: False, sap_using_t161t: False, sap_using_t001w: False}' --target "$db"
 
-dbt run --vars '{sap_using_acdoca: False, sap_using_marc: False, sap_using_t000: False, sap_using_mchp: False, sap_using_sapsll_tunos: False, sap_using_finsc_ledger_rep: False}' --target "$db" --full-refresh
-dbt test --vars '{sap_using_acdoca: False, sap_using_marc: False, sap_using_t000: False, sap_using_mchp: False, sap_using_sapsll_tunos: False, sap_using_finsc_ledger_rep: False}' --target "$db"
+dbt run --vars '{sap_using_acdoca: False, sap_using_marc: False, sap_using_t000: False, sap_using_mchp: False, sap_using_sapsll_tunos: False, sap_using_finsc_ledger_rep: False, sap_using_bsad_bck: False, sap_using_coep: False, sap_using_t006: False}' --target "$db" --full-refresh
+dbt test --vars '{sap_using_acdoca: False, sap_using_marc: False, sap_using_t000: False, sap_using_mchp: False, sap_using_sapsll_tunos: False, sap_using_finsc_ledger_rep: False, sap_using_bsad_bck: False, sap_using_coep: False, sap_using_t006: False}' --target "$db"
 
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"
 

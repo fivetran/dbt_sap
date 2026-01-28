@@ -1,3 +1,36 @@
+# dbt_sap v0.6.0
+
+## Schema/Data Change
+**15 total changes • 0 breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [`bsad`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | New Compatibility View | | | Customer Line Items Cleared/Archived - provides cleared and archived customer receivables |
+| [`bsid`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | New Compatibility View | | | Customer Line Items - provides open customer receivables and line item data |
+| [`coep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | New Compatibility View | | | Controlling Object Line Items - provides detailed line item data for controlling documents |
+| [`cosp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | New Compatibility View | | | Cost Object Line Items Summary - provides period-wise cost and quantity data for cost objects |
+| [`stg_sap__t006`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__t006) | New Staging Model | | | Unit of Measure staging model with 26 fields for currency and unit conversions |
+| [`stg_sap__cosp_bak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__cosp_bak) | New Staging Model | | | Cost Object Line Items archive staging model with 154+ fields including period-based amounts |
+| [`stg_sap__bsad_bck`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bsad_bck) | New Staging Model | | | Customer Line Items archived backup staging model |
+| [`stg_sap__coep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__coep) | New Staging Model | | | Controlling Object Line Items staging model |
+| [`stg_sap__prps`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__prps) | New Staging Model | | |  Project System data staging model |
+| [`stg_sap__bseg`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bseg) | New Columns | | **Tax & Localization**: `tax_country`, `tax_country1`, `tax_country2`, `tax_country3`, `hist_tax_factor`, `hist_tax_factor1`, `hist_tax_factor2`, `hist_tax_factor3`, `txdat_from`, `txdat_from1`, `txdat_from2`, `txdat_from3`<br><br>**Accounts & Budgeting**: `gkont`, `gkart`, `bdgt_account`, `ghkon`<br><br>**Payments & Currency**: `payt_rsn`, `rfccur`, `fcsl`, `lwsts`<br><br>**Document & Processing Attributes**: `_dataaging`, `buzei_sender`, `h_bstat` | Added 23 new columns for enhanced tax handling, budget accounting, and payment processing |
+| [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New Columns | | **Assignments & References**: `accas`, `paccas`, `co_accasty_n1`, `co_accasty_n2`, `co_accasty_n3`, `aworg`, `awref`, `co_refbz`, `co_refbz1`, `co_refbz2`, `co_refbz5`, `co_refbz6`, `co_refbz7`, `co_zlenr`, `logsysp`, `scope`, `pscope`<br><br>**Orders, Projects & Objects**: `aufnr`, `autyp`, `paufnr`, `pautyp`, `objnr_hk`, `paobjnr`, `ppaobjnr`, `xpaobjnr_co_rel`, `ps_posid`, `ps_pspid`, `pps_posid`, `pps_pspid`, `qmnum`<br><br>**Commercial Documents**: `ebeln`, `ebelp`, `zekkn`, `kdauf`, `kdpos`, `pkdauf`, `pkdpos`<br><br>**Materials, Plants & Resources**: `matnr`, `werks`, `lstar`, `plstar`, `pernr`<br><br>**Quantities & Currencies**: `quant1`, `quant2`, `quant3`, `qunit1`, `qunit2`, `qunit3`, `rbcur`, `rccur`, `rdcur`, `recur`, `rgcur`<br><br>**Additional Attributes**: `bwstrat`, `dabrz`, `erkrs`, `erlkz`, `gkoar`, `gkont`, `pbukrs`, `prodper`, `rbest`, `sgtxt`, `xsplitmod` | Added 64 new columns for controlling area assignments, cost objects, purchasing documents, and project system integration |
+| [`stg_sap__bkpf`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bkpf) | New Columns | | `belnr_sender`, `bukrs_sender`, `gjahr_sender`, `logsystem_sender` | Added 4 new sender-related columns for document traceability |
+| [`stg_sap__finsc_cmp_versnd`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_cmp_versnd) | New Columns | | `field_name_refbz` | Added reference number field handling |
+| [`stg_sap__tj01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tj01) | New Columns | | `wtkat` | Added value category for enhanced system status classification |
+| [`stg_sap__tka01`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__tka01) | New Columns | | `xwbuk` | Added cross-company code posting indicator |
+
+## Documentation
+- Updates README with standardized Fivetran formatting.
+
+## Under the Hood
+- Creates the following compatibility view intermediate models to handle complex transformations:
+  - COEP: `int_coep__acdoca_base`, `int_coep__acdoca_calculated`, `int_coep__acdoca_aggregated`, `int_coep__acdoca_final`, `int_coep__original`
+  - COSP: `int_cosp__acdoca_base`, `int_cosp__acdoca_amounts`, `int_cosp__acdoca_timestamp`, `int_cosp__coep_derived`, `int_cosp__acdoca_derived`
+- Adds new enable/disable variables for all new staging tables: `sap_using_t006`, `sap_using_cosp_bak`, `sap_using_bsad_bck`, `sap_using_coep`, `sap_using_prps`
+- Enhances `remove_slashes_from_col_names` macro to support database reserved words handling by adding `reserved_word_list` parameter, ensuring proper quoting for columns that are reserved keywords
+
 # dbt_sap v0.5.1
 
 [PR #38](https://github.com/fivetran/dbt_sap/pull/38) includes the following updates:
@@ -12,6 +45,7 @@
 
 ## Features
   - Increases the required dbt version upper limit to v3.0.0
+
 
 # dbt_sap v0.4.0
 [PR #29](https://github.com/fivetran/dbt_sap/pull/29) includes the following updates:

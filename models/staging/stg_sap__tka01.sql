@@ -23,6 +23,7 @@ final as (
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(kokrs as {{ dbt.type_string() }}) as kokrs,
         logsystem,
+        cast(xwbuk as {{ dbt.type_string() }}) as xwbuk,
         _fivetran_deleted,
         _fivetran_synced
     from fields
