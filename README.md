@@ -78,6 +78,7 @@ By default, this package materializes the following final tables:
 | [sap__fact_sales_order](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order) | Fact table consolidating sales order line-level data from vbak, vbap, vbuk, and vbup sources with document attributes (document number, item, category, type, order reason, delivery block), organizational dimensions (sales organization, distribution channel, division, plant, customer), product details (material, material group, product hierarchy), quantity and pricing metrics (order quantity, net value, net price, gross weight), dates (document date, requested delivery date, created date), and status indicators (delivery status, overall status, item delivery status) to measure sales performance and order fulfillment. <br></br>**Example Analytics Questions:**<ul><li>What is the total net_value and order_quantity by sold_to_customer_id, material_id, and sales_organization_id?</li><li>How do sales vary by sales_document_type_id, distribution_channel_id, and division_id over time (document_date)?</li><li>Which materials have the highest order volumes and net prices by product_hierarchy_id and plant_id?</li></ul>|
 
 **Compatibility Views**
+> Views that replicate the structure and data of native SAP tables, enabling seamless migration and integration for existing SAP-based processes and reports.
 
 | Table | Description |
 | :---- | :---- |
