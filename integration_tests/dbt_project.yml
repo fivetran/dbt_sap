@@ -1,5 +1,5 @@
 name: 'sap_integration_tests'
-version: '0.6.0'
+version: '0.6.1'
 
 profile: 'integration_tests'
 config-version: 2
@@ -828,7 +828,6 @@ seeds:
         rfarea: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rclnt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rcntr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        rfarea: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rpmax: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rrcty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rvers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"

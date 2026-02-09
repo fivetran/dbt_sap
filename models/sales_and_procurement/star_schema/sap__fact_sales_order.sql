@@ -42,42 +42,42 @@ with sales_document_header as (
         sales_document_header.sold_to_party_id as sold_to_customer_id,
         sales_document_header.sales_document_id,
         sales_document_header.created_date,
-        sales_document_header.created_by,
+        sales_document_header.created_by
 
         {% if using_sales_document_item %}
-        ltrim(sales_document_item.sales_document_item_id, '0') as sales_document_item,
-        sales_document_item.plant_own_or_external_id as plant_id,
-        sales_document_item.material_id,
-        sales_document_item.material_group_id,
-        sales_document_item.sales_document_item_category_id,
-        sales_document_item.product_hierarchy_id,
-        sales_document_item.base_uom_id,
-        case 
+        , ltrim(sales_document_item.sales_document_item_id, '0') as sales_document_item
+        , sales_document_item.plant_own_or_external_id as plant_id
+        , sales_document_item.material_id
+        , sales_document_item.material_group_id
+        , sales_document_item.sales_document_item_category_id
+        , sales_document_item.product_hierarchy_id
+        , sales_document_item.base_uom_id
+        , case
             when sales_document_header.sd_document_category = 'c' then sales_document_item.order_quantity
             else sales_document_item.order_quantity * -1
-        end as order_quantity,
-        sales_document_item.sales_uom_id,
-        case 
+        end as order_quantity
+        , sales_document_item.sales_uom_id
+        , case
             when sales_document_header.sd_document_category = 'c' then sales_document_item.net_val
             else sales_document_item.net_val * -1
-        end as net_value,
-        sales_document_item.net_price_val as net_price,
-        sales_document_item.sd_document_currency_id,
-        sales_document_item.gross_weight_the_item as gross_weight,
-        sales_document_item.weight_uom_id,
-        sales_document_item.returns_item,
-        sales_document_item.reason_rejection_id,
-        sales_document_item._fivetran_deleted,
-        sales_document_item._fivetran_synced,
+        end as net_value
+        , sales_document_item.net_price_val as net_price
+        , sales_document_item.sd_document_currency_id
+        , sales_document_item.gross_weight_the_item as gross_weight
+        , sales_document_item.weight_uom_id
+        , sales_document_item.returns_item
+        , sales_document_item.reason_rejection_id
+        , sales_document_item._fivetran_deleted
+        , sales_document_item._fivetran_synced
         {% endif %}
 
         {% if using_sales_document_header_status %}
-        sales_document_header_status.delivery_status,
-        sales_document_header_status.overall_status,
+        , sales_document_header_status.delivery_status
+        , sales_document_header_status.overall_status
         {% endif %}
 
         {% if using_sales_document_item_status %}
-        sales_document_item_status.delivery_status as item_delivery_status
+        , sales_document_item_status.delivery_status as item_delivery_status
         {% endif %}
 
     from sales_document_header
