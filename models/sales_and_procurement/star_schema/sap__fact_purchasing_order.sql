@@ -49,111 +49,111 @@ with purchasing_document_item as (
                 then purchasing_document_item.purchase_order_quantity
             else -1 * purchasing_document_item.purchase_order_quantity
         end as purchase_order_quantity,
-        case 
+        case
             when lower(purchasing_document_item.rejection_indicator) = 'x'
                 then purchasing_document_item.purchase_order_quantity
             else cast(0 as {{ dbt.type_numeric() }})
-        end as cancel_purchase_quantity,
+        end as cancel_purchase_quantity
 
         {% if using_purchasing_document_header %}
-        purchasing_document_header.company_code_id,
-        purchasing_document_header.purchasing_group_id,
-        purchasing_document_header.purchasing_organization_id,
-        purchasing_document_header.vendor_id,
-        purchasing_document_header.purchasing_document_date,
-        purchasing_document_header.exchange_rate,
-        purchasing_document_header.currency_id as document_currency_id,
-        cast(
+        , purchasing_document_header.company_code_id
+        , purchasing_document_header.purchasing_group_id
+        , purchasing_document_header.purchasing_organization_id
+        , purchasing_document_header.vendor_id
+        , purchasing_document_header.purchasing_document_date
+        , purchasing_document_header.exchange_rate
+        , purchasing_document_header.currency_id as document_currency_id
+        , cast(
             purchasing_document_item.net_order_po_currency_val *
-            case 
+            case
                 when purchasing_document_header.exchange_rate < 0
                     then -1 / purchasing_document_header.exchange_rate
                 else purchasing_document_header.exchange_rate
             end as {{ dbt.type_numeric() }}
-        ) as purchase_order_amount,
-        case 
+        ) as purchase_order_amount
+        , case
             when lower(purchasing_document_item.rejection_indicator) = 'x'
-                then cast(purchasing_document_item.net_order_po_currency_val * case 
+                then cast(purchasing_document_item.net_order_po_currency_val * case
                     when purchasing_document_header.exchange_rate < 0
                         then - 1 / purchasing_document_header.exchange_rate
                     else purchasing_document_header.exchange_rate
                     end as {{ dbt.type_numeric() }}
                     )
             else cast(0 as {{ dbt.type_numeric() }})
-		end as cancel_purchase_amount,
+		end as cancel_purchase_amount
         {% endif %}
 
         {% if using_company %}
-        company.currency_id,
+        , company.currency_id
         {% endif %}
 
         {% if using_purchasing_document_schedule_total %}
-        purchasing_document_schedule_total.lastest_scheduled_delivery_date as scheduled_delivery_date,
+        , purchasing_document_schedule_total.lastest_scheduled_delivery_date as scheduled_delivery_date
         {% endif %}
 
         {% if using_purchasing_document_overview %}
-        purchasing_document_overview.latest_goods_receive_date,
-        purchasing_document_overview.received_quantity as purchasing_delivered_quantity,
-        purchasing_document_overview.received_value_in_local_curr as purchase_delivered_amount,
-        purchasing_document_overview.invoice_value_local_curr as purchase_invoiced_amount,
-        purchasing_document_overview.delivery_completed,
-        case
+        , purchasing_document_overview.latest_goods_receive_date
+        , purchasing_document_overview.received_quantity as purchasing_delivered_quantity
+        , purchasing_document_overview.received_value_in_local_curr as purchase_delivered_amount
+        , purchasing_document_overview.invoice_value_local_curr as purchase_invoiced_amount
+        , purchasing_document_overview.delivery_completed
+        , case
             when purchasing_document_item.delivery_completed <> ''
                 then cast(0 as {{ dbt.type_numeric() }})
             else (purchasing_document_item.purchase_order_quantity - coalesce(purchasing_document_overview.received_quantity, 0))
-        end as purchase_open_quantity,
-        case 
+        end as purchase_open_quantity
+        , case
             when coalesce(purchasing_document_overview.delivery_completed, 'n') <> ' '
                 and coalesce(purchasing_document_overview.received_quantity, 0) < purchasing_document_item.purchase_order_quantity
                 then cast(1 as {{ dbt.type_numeric() }})
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_item_open_count,
-        case 
+        end as purchase_item_open_count
+        , case
             when coalesce(purchasing_document_overview.delivery_completed, 'n') <> ' '
                 or purchasing_document_overview.received_quantity >= purchasing_document_item.purchase_order_quantity
                 then cast(1 as {{ dbt.type_numeric() }})
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_item_closed_count,
+        end as purchase_item_closed_count
         {% endif %}
 
         {% if using_purchasing_document_header and using_purchasing_document_overview %}
-        {{ dbt.datediff("purchasing_document_header.purchasing_document_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_deliver_late_days,
-        case
+        , {{ dbt.datediff("purchasing_document_header.purchasing_document_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_deliver_late_days
+        , case
             when purchasing_document_overview.delivery_completed is not null
                 then cast(0 as {{ dbt.type_numeric() }})
             else (
-                purchasing_document_item.net_order_po_currency_val * 
+                purchasing_document_item.net_order_po_currency_val *
                 (
-                    case 
+                    case
                         when purchasing_document_header.exchange_rate < 0
                             then -1 / purchasing_document_header.exchange_rate
                         else purchasing_document_header.exchange_rate
                     end
                 )
             ) - purchasing_document_overview.received_value_in_local_curr
-        end as purchase_open_amount,
+        end as purchase_open_amount
         {% endif %}
 
         {% if using_purchasing_document_overview and using_purchasing_document_schedule_total %}
-        {{ dbt.datediff("purchasing_document_schedule_total.lastest_scheduled_delivery_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_late_lead_days,
-        case 
+        , {{ dbt.datediff("purchasing_document_schedule_total.lastest_scheduled_delivery_date", "purchasing_document_overview.latest_goods_receive_date", "day") }} as purchase_late_lead_days
+        , case
             when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
                 then purchasing_document_overview.received_quantity
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_late_quantity,
-        case 
+        end as purchase_late_quantity
+        , case
             when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
                 then purchasing_document_overview.received_value_in_local_curr
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_late_amount,
-        case 
+        end as purchase_late_amount
+        , case
             when purchasing_document_overview.latest_goods_receive_date > purchasing_document_schedule_total.lastest_scheduled_delivery_date
                 then cast(1 as {{ dbt.type_numeric() }})
             else cast(0 as {{ dbt.type_numeric() }})
-        end as purchase_item_late_count,
+        end as purchase_item_late_count
         {% endif %}
 
-        cast(1 as {{ dbt.type_numeric() }}) as purchase_order_item_count
+        , cast(1 as {{ dbt.type_numeric() }}) as purchase_order_item_count
 
     from purchasing_document_item
 

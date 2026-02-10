@@ -1,3 +1,10 @@
+# dbt_sap v0.6.1
+
+[PR #42](https://github.com/fivetran/dbt_sap/pull/42) includes the following updates:
+
+## Bug Fix
+- Fixes potential SQL compilation errors in `sap__fact_sales_order` and `sap__fact_purchasing_order` models caused by trailing commas when certain source table variables are disabled. These models now use leading comma formatting for all conditional field selections, ensuring successful compilation regardless of which `sap_using_*` variables are enabled or disabled.
+
 # dbt_sap v0.6.0
 
 ## Schema/Data Change
