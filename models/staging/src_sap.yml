@@ -514,6 +514,10 @@ sources:
             description: Fivetran deletion marker
           - name: _fivetran_synced
             description: Fivetran sync timestamp
+          - name: record_type
+            description: Record type (header or item)
+          - name: header_counter
+            description: Header counter
 
       - name: matdoc_extract
         identifier: "{{ var('sap_matdoc_extract_identifier', 'matdoc_extract') }}"
@@ -526,7 +530,7 @@ sources:
           - name: _fivetran_synced
             description: Fivetran sync timestamp
 
-      - name: sapsll_tunos
+      - name: sapsll_tunos 
         identifier: "{{ var('sap_sapsll_tunos_identifier', '_sapsll_tunos') }}"
         config:
           enabled: "{{ var('sap_using_sapsll_tunos', true) }}"

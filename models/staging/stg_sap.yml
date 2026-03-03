@@ -7688,6 +7688,10 @@ models:
         description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+      - name: record_type
+        description: Record type (header or item)
+      - name: header_counter
+        description: Header counter
 
   - name: stg_sap__matdoc_extract
     description: Material document extract data
