@@ -8381,11 +8381,11 @@ models:
       - name: dmbum
         description: Revaluation amount on back-posting to a previous period
       - name: dummy_incl_eew_cobl
-        description: Custom Fields: Dummy for Use in Extension Includes
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dummy_matdoc_incl_eew_ps
-        description: Custom Fields: Dummy for Use in Extension Includes
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dypla
-        description: Indicator: dynamic storage bin
+        description: Indicator (dynamic storage bin)
       - name: ebeln
         description: Purchasing document number
       - name: ebelp
