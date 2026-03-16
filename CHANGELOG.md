@@ -1,3 +1,13 @@
+# dbt_sap v0.6.2
+
+[PR #43](https://github.com/fivetran/dbt_sap/pull/43) includes the following updates:
+
+## Documentation
+- Adds column-level descriptions to `stg_sap__marc`, `stg_sap__mchb`, and `stg_sap__mchp` staging models.
+- Adds the `as4local` column description to `stg_sap__dd07l` and `stg_sap__dd07t`.
+- Removes stale column descriptions from `stg_sap__bseg` for columns no longer present in the source model.
+- Updates the README to replace badge images with plain text compatibility information.
+
 # dbt_sap v0.6.1
 
 [PR #42](https://github.com/fivetran/dbt_sap/pull/42) includes the following updates:

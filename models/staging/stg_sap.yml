@@ -8998,8 +8998,6 @@ models:
         description: Physical inventory blocking indicator
       - name: werks
         description: Plant
-      - name: xobew
-        description: Vendor Stock Valuation Indicator
 
   - name: stg_sap__mchp
     description: Batch master (plant level)
