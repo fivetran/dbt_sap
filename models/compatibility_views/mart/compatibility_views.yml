@@ -569,7 +569,7 @@ models:
       - name: miskz
         description: Mixed MRP indicator
       - name: fhori
-        description: Firming horizon in days
+        description: Firming horizon in days 
       - name: pfrei
         description: Release for costing
       - name: ffrei
@@ -586,8 +586,8 @@ models:
         description: Interoperation time
       - name: basmg
         description: Base quantity
-      - name: dezeit
-        description: Default storage location
+      - name: dzeit
+        description: In-house production time
       - name: maxlz
         description: Maximum lot size
       - name: lzeih
@@ -716,8 +716,8 @@ models:
         description: MRP group
       - name: kausf
         description: Smoothing factor for forecast
-      - name: qztp
-        description: Time method
+      - name: qzgtp
+        description: Certificate type
       - name: qmatv
         description: Reference material for material forecast
       - name: takzt
@@ -1042,9 +1042,9 @@ models:
         description: SCM time of production
       - name: scm_safty_v
         description: SCM safety variant
-      - name: scm_ppsafystk
+      - name: scm_ppsaftystk
         description: SCM post-production safety stock
-      - name: scm_ppsafystk_v
+      - name: scm_ppsaftystk_v
         description: SCM post-production safety stock variant
       - name: scm_repsafty
         description: SCM replenishment safety
@@ -1222,178 +1222,130 @@ models:
   - name: mkpf
     description: Material Document Header (MKPF) compatibility view - Contains header-level information for material documents from goods movements
     columns:
-      - name: _cwm_consumption_qty
-        description: CWM consumption quantity
       - name: _cwm_erfme
-        description: CWM entry unit of measure
+        description: Unit of the entry
       - name: _cwm_erfmg
-        description: CWM entry quantity
+        description: Quantity in the entered unit of measure
       - name: _cwm_meins
-        description: CWM base unit of measure
-      - name: _cwm_meins_sid
-        description: CWM base unit of measure SID
+        description: 	Base unit of measure
       - name: _cwm_menge
-        description: CWM quantity posted
-      - name: _cwm_stock_qty
-        description: CWM stock quantity
-      - name: _dataaging
-        description: Data aging timestamp
-      - name: _fivetran_deleted
-        description: Fivetran deletion flag
-      - name: _fivetran_sap_archived
-        description: Fivetran SAP archived flag
-      - name: _fivetran_synced
-        description: Fivetran synchronization timestamp
+        description: 	Quantity calculated in the base unit of measure in which stocks of the product are managed. 
       - name: ablad
-        description: Unloading point
+        description: Unloading Point
       - name: aedat
-        description: Changed on date
+        description: Last change date
       - name: aktnr
-        description: Promotion number
+        description: Promotional deal number
       - name: anln1
         description: Main asset number
       - name: anln2
         description: Asset subnumber
       - name: aplzl
-        description: Asset line item counter
-      - name: ass_pspnr
-        description: Assignment partner project system number
+        description: General counter for task list
       - name: aufnr
         description: Order number
       - name: aufpl
-        description: Routing number for operations
+        description: Task list number
       - name: aufps
-        description: Counter for operations
+        description: Order item number
       - name: awsys
-        description: Logical system
+        description: Logical system (of reference document)
       - name: belnr
-        description: Document number
+        description: Accounting document number
       - name: belum
-        description: Document environment
+        description: Document Number of an Accounting Document
       - name: bemot
-        description: Posting indicator
-      - name: berid
-        description: MRP area
+        description: Accounting Indicator
       - name: berkz
-        description: Requirements type
+        description: Material Staging Indicator for Production Supply
       - name: bestq
-        description: Stock type
+        description: Stock Category in the Warehouse Management System
       - name: bfwms
-        description: Subsequent movement type
+        description: Control posting for external WMS
       - name: bktxt
-        description: Document header text
+        description: Document Header Text
       - name: bla2d
-        description: Location of asset (2nd dimension)
+        description: Doc. type for additional doc. in purchase account management
       - name: blart
         description: Document type
       - name: blaum
-        description: Posting logic
+        description: Document type of revaluation document
       - name: bldat
         description: Document date in document
       - name: bnbtr
-        description: Amount in document currency
+        description: Delivery costs in local currency
       - name: bpmng
         description: Quantity in order price unit
       - name: bprme
         description: Order price unit
-      - name: bstaus_cg
-        description: Status of stock receipt
-      - name: bstaus_sg
-        description: Status of stock issue
       - name: bstme
         description: Order unit
       - name: bstmg
-        description: Order quantity
-      - name: bsttyp_cg
-        description: Stock type of receipt
-      - name: bsttyp_sg
-        description: Stock type of issue
+        description: Goods receipt quantity in order unit
       - name: bualt
-        description: Amount in local currency
+        description: Amount Posted in Alternative Price Control
       - name: budat
-        description: Posting date in the document
+        description: Posting date
+      - name: budat_mkpf
+        description: Posting Date in the Document
       - name: bukrs
         description: Company code
       - name: bustm
-        description: Tax on sales/purchases code
+        description: Posting string for quantities
       - name: bustw
-        description: Amount for tax on sales/purchases
+        description: Posting String for Values
       - name: buzei
-        description: Item of an accounting document
+        description: Number of line item within accounting document
       - name: buzum
-        description: Assignment to line item of an FI document
+        description: Reversal accounting document line item
       - name: bwart
         description: Movement type
       - name: bwlvs
-        description: Movement type for manual account determination
+        description: Movement Type for Warehouse Management
       - name: bwtar
         description: Valuation type
-      - name: cancellation_type
-        description: Cancellation type
-      - name: cancelled
-        description: Cancellation indicator
       - name: charg
         description: Batch number
-      - name: charg_cid
-        description: Batch number CID
-      - name: charg_sid
-        description: Batch number SID
-      - name: charg_whs_cg
-        description: Batch number warehouse for goods receipt
-      - name: charg_whs_sg
-        description: Batch number warehouse for goods issue
       - name: compl_mark
-        description: Completion indicator
+        description: Completed indicator
       - name: condi
-        description: Cost in document currency
-      - name: cons_value_a1
-        description: Consumption value in alternative valuation area 1
-      - name: consumption_qty
-        description: Consumption quantity
+        description: Joint Venture Indicator (Condition Key)
       - name: cpudt
-        description: Day on which accounting document was entered
+        description: Entry date
+      - name: cpudt_mkpf
+        description: Day On Which Accounting Document Was Entered
       - name: cputm
-        description: Time of entry
+        description: Entry time
+      - name: cputm_mkpf
+        description: Time of Entry
       - name: cuobj_ch
-        description: Configuration
-      - name: currency_a1
-        description: Currency for alternative valuation area 1
+        description: Changed configuration object
       - name: dabrbz
-        description: GR slip deadline for material staging
+        description: Reference date for settlement
       - name: dabrz
-        description: GR slip deadline for external processing
-      - name: day_budat
-        description: Day of posting date
+        description: Settlement reference date
       - name: disub_owner
-        description: Distribution/submarining owner
-      - name: disub_owner_cid
-        description: Distribution/submarining owner CID
-      - name: disub_owner_sid
-        description: Distribution/submarining owner SID
+        description: Owner of subcontractor components
       - name: dmbtr
         description: Amount in local currency
-      - name: dmbtr_cons
-        description: Consumption amount in local currency
-      - name: dmbtr_stock
-        description: Stock amount in local currency
       - name: dmbum
-        description: Amount in local currency with reverse +/- sign
+        description: Revaluation amount on back-posting to a previous period
       - name: dummy_incl_eew_cobl
-        description: Dummy field including EEW COBL
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dummy_matdoc_incl_eew_ps
-        description: Dummy material document including EEW PS
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dypla
-        description: Stock placement strategy
+        description: Indicator (dynamic storage bin)
       - name: ebeln
         description: Purchasing document number
       - name: ebelp
         description: Item number of purchasing document
       - name: elikz
-        description: Delivery completed indicator
+        description: Final delivery indicator
       - name: ematn
-        description: Material number used by customer
+        description: Material number (vendor)
       - name: emlif
-        description: Supplying (issuing) plant
+        description: Vendor material number
       - name: equnr
         description: Equipment number
       - name: erfme
@@ -1401,25 +1353,23 @@ models:
       - name: erfmg
         description: Quantity in unit of entry
       - name: etanp_mark
-        description: E-tank pickup mark
+        description: Adjust Open Quantity in Scheduling Agreement Item
       - name: evere
-        description: Shipping unit
+        description: ERS indicator
       - name: evers
-        description: Shipping unit type
+        description: Shipping instructions
       - name: ewm_gmdoc
-        description: EWM goods movement document
+        description: Warehouse Document for Goods Movement
       - name: ewm_lgnum
-        description: EWM warehouse number
-      - name: ewm_lgpla
-        description: EWM storage bin
+        description: Warehouse Number/Warehouse Complex
       - name: exbwr
-        description: Externally entered posting amount
+        description: Externally Entered Posting Amount in Local Currency
       - name: exnum
-        description: External document number
+        description: Export/import number
       - name: exvkw
-        description: External amount in local currency
+        description: Externally Entered Sales Value in Local Currency
       - name: fbuda
-        description: Posting date in external system
+        description: Services rendered date
       - name: fipos
         description: Commitment item
       - name: fistl
@@ -1427,625 +1377,503 @@ models:
       - name: fkber
         description: Functional area
       - name: fls_rsto
-        description: Release for lean service
+        description: Release strategy origin
       - name: frath
-        description: Quantity of capacity consumption
+        description: Unplanned delivery costs
       - name: frbnr
-        description: Billing plan number / Invoicing plan number
+        description: Number of Bill of Lading at Time of Goods Receipt
       - name: fsh_collection
-        description: Fashion management collection
+        description: Fashion collection
       - name: fsh_season
-        description: Fashion management season
+        description: Fashion season
       - name: fsh_season_year
-        description: Fashion management season year
+        description: Fashion season year
       - name: fsh_theme
-        description: Fashion management theme
+        description: Fashion theme
+      - name: fsh_umcoll
+        description: Receiving/Issuing Collection
+      - name: fsh_umsea
+        description: Receiving/Issuing Season
+      - name: fsh_umsea_yr
+        description: Receiving/Issuing Season Year
+      - name: fsh_umtheme
+        description: Receiving/Issuing Theme
       - name: fzgls_mark
-        description: Vehicle license number mark
+        description: Do Not Adjust Cumulative Received Quantity
       - name: geber
         description: Fund
       - name: gjahr
-        description: Material document year
-      - name: gjper
-        description: Period (YYYYMM)
-      - name: gjper_curr_per
-        description: Current period (YYYYMM)
+        description: Fiscal year
       - name: grant_nbr
         description: Grant number
       - name: grund
-        description: Reason for goods movement
+        description: Movement reason
       - name: gsber
         description: Business area
       - name: gts_cusref_no
-        description: GTS customs reference number
+        description: Customs Reference Number for Scrapping
       - name: header_counter
-        description: Header counter for material document
+        description: Header counter
       - name: hsdat
-        description: Date of manufacture
+        description: Date of Manufacture
       - name: imkey
-        description: Key for internal material movement
+        description: Key for real estate object
       - name: insmk
         description: Stock type
       - name: j_1agirupd
-        description: Updates for GIR (goods issue reason)
+        description: Goods issue revaluation performed
       - name: j_1bexbase
-        description: Export basis amount in document currency
-      - name: kalnr
-        description: Cost estimate number
-      - name: kalnr_cg
-        description: Cost estimate number for goods receipt
+        description: Alternate base amount in document currency
       - name: kblnr
-        description: Document number of the material document
+        description: Document number earmarked funds document
       - name: kblpos
-        description: Line item in material document
+        description: Earmarked funds document item
       - name: kdauf
         description: Sales order number
       - name: kdein
-        description: Sales order schedule line number
+        description: Delivery schedule for sales order
       - name: kdpos
-        description: Sales order item number
-      - name: knbdr
-        description: Customer number
+        description: Sales order item
       - name: knttp_gr
-        description: Account assignment category for goods receipt
+        description: Account Assignment Category
       - name: knumv
-        description: Number of the document condition
+        description: Condition number
       - name: kokrs
         description: Controlling area
       - name: kostl
         description: Cost center
       - name: kstrg
-        description: Cost object
+        description: Cost objects
       - name: kunnr
-        description: Customer number
-      - name: kunnr_cid
-        description: Customer number CID
-      - name: kunnr_sid
-        description: Customer number SID
+        description: Customer account number
       - name: kzbew
-        description: Movement indicator
+        description: Movement Indicator
       - name: kzbws
-        description: Valuation of special stock
+        description: Value not deductible
       - name: kzear
-        description: Settlement rule
+        description: Final Issue for Reservation
       - name: kzstr
-        description: Reversal movement
+        description: Transaction/event is relevant to statistics
       - name: kzvbr
-        description: Consumption posting
+        description: Bill of materials explosion
       - name: kzzug
-        description: Addition indicator
-      - name: lbbsa_cid
-        description: Valuation area CID
-      - name: lbbsa_sid
-        description: Valuation area SID
+        description: Receipt Indicator
       - name: lbkum
-        description: Total valuated stock
+        description: Total valuated stock before the posting
       - name: le_vbeln
         description: Delivery
       - name: lfbja
-        description: Fiscal year of invoice receipt
+        description: Fiscal Year of a Reference Document
       - name: lfbnr
-        description: Document number of a reference document
+        description: Vendor invoice number
       - name: lfpos
-        description: Reference document item
+        description: Vendor invoice item
       - name: lgnum
-        description: Warehouse number
+        description: Warehouse Number / Warehouse Complex
       - name: lgort
         description: Storage location
-      - name: lgort_cid
-        description: Storage location CID
-      - name: lgort_sid
-        description: Storage location SID
       - name: lgpla
-        description: Storage bin
+        description: Storage Bin
       - name: lgtyp
-        description: Storage type
+        description: Storage Type
       - name: lifnr
-        description: Vendor account number
-      - name: lifnr_cid
-        description: Vendor account number CID
-      - name: lifnr_sid
-        description: Vendor account number SID
+        description: Account number of vendor or creditor
       - name: line_depth
-        description: Line depth
+        description: Hierarchy level of line in document
       - name: line_id
-        description: Line ID
+        description: Unique identification of document line
       - name: llief
-        description: Last supplier to deliver
-      - name: lmbmv
-        description: Special movement indicator
+        description: Main vendor
       - name: lsmeh
-        description: Confirmation unit
+        description: Order unit of measure
       - name: lsmng
-        description: Confirmed quantity
+        description: Order unit quantity
       - name: lstar
         description: Activity type
       - name: maa_urzei
-        description: Material update time stamp
+        description: Original Line for Account Assignment Item in Material Doc.
       - name: mandt
         description: Client
       - name: mat_kdauf
-        description: Material's sales order
-      - name: mat_kdauf_cid
-        description: Material's sales order CID
+        description: Sales order number of valuated sales order stock
       - name: mat_kdpos
-        description: Material's sales order item
-      - name: mat_kdpos_cid
-        description: Material's sales order item CID
+        description: Sales Order Item of Valuated Sales Order Stock
       - name: mat_pspnr
-        description: Material's project number
-      - name: mat_pspnr_cid
-        description: Material's project number CID
+        description: Valuated Sales Order Stock WBS Element
       - name: matbf
-        description: Material
+        description: Material in Respect of Which Stock is Managed
       - name: matnr
         description: Material number
       - name: mblnr
-        description: Number of material document
+        description: Number of Material Document
       - name: meins
         description: Base unit of measure
       - name: menge
         description: Quantity
       - name: mengu
-        description: Negative posting
+        description: Quantity Updating in Material Master Record
       - name: mjahr
-        description: Material document year
-      - name: month_budat
-        description: Month of posting date
+        description: Material Document Year
       - name: msr_active
-        description: MSR active
+        description: MSR active flag
       - name: mwskz
-        description: Tax on sales/purchases code
+        description: Tax code
       - name: nplnr
         description: Network number for account assignment
       - name: nroflabels
-        description: Number of labels
+        description: Number of labels to be printed
       - name: nschn
-        description: Next serial number
+        description: Indicator for interim storage posting for destination storage type and bin
       - name: oicondcod
-        description: Condition code
+        description: Joint Venture Indicator (Condition Key)
       - name: oinavnw
-        description: Net value of the services (in document currency)
-      - name: pabpm
-        description: Confirmation of the posting time
+        description: Non-deductible input tax
       - name: palan
-        description: Number of packages
+        description: WMS Number of pallets
       - name: paobjnr
         description: Profitability segment number
       - name: parbu
-        description: Partner business area
+        description: Clearing company code
       - name: parent_id
-        description: Parent ID
+        description: ID of the Parent Document
       - name: pargb
-        description: Partner business area
+        description: Trading partner's business area
       - name: pbamg
-        description: Confirmed quantity in base unit of measure
-      - name: periv
-        description: Fiscal year variant
+        description: Quantity
       - name: pernr
         description: Personnel number
       - name: plpla
-        description: Planned storage location
+        description: Distribution of Differences
       - name: popup_mark
-        description: Pop-up mark
+        description: Display Dialog Box
       - name: pprctr
         description: Partner profit center
       - name: prctr
         description: Profit center
-      - name: price_a1
-        description: Price in alternative valuation area 1
-      - name: price_source_a1
-        description: Price source for alternative valuation area 1
       - name: projn
         description: Project number (internal)
       - name: prznr
-        description: Business process
+        description: Business Process
       - name: ps_psp_pnr
-        description: Work breakdown structure element (WBS element)
+        description: WBS element
       - name: qinspst
-        description: Inspection stock indicator
-      - name: quarter_budat
-        description: Quarter of posting date
+        description: Status of Goods Receipt Inspection
       - name: record_type
-        description: Record type
+        description: Record type (header or item)
       - name: resourcename_cid
-        description: Resource name CID
+        description: Resource Name (Stock Identifier)
       - name: resourcename_sid
-        description: Resource name SID
-      - name: reversal_movement
-        description: Reversal movement indicator
+        description: Resource Name (Stock Identifier)
       - name: rsart
-        description: Type of reservation
+        description: Record type
       - name: rsnum
-        description: Number of reservation/dependent requirements
+        description: Reservation number
       - name: rspos
-        description: Item number of reservation/dependent requirements
+        description: Item Number of Reservation / Dependent Requirements
       - name: sakto
-        description: G/L account number
+        description: G/L Account Number
       - name: salk3
-        description: Value at sales prices including sales tax
+        description: Value of total valuated stock before the posting
       - name: service_doc_id
-        description: Service document ID
+        description: Service Document ID
       - name: service_doc_item_id
-        description: Service document item ID
+        description: Service Document Item ID
       - name: service_doc_type
-        description: Service document type
+        description: Service Document Type
       - name: serviceperformer
         description: Service performer
+      - name: sgt_chint
+        description: Discrete Batch Number
       - name: sgt_rcat
-        description: Requirements category (Stock Segment)
+        description: Segmentation requirement category
       - name: sgt_scat
-        description: Stock category (Stock Segment)
+        description: Segmentation category
       - name: sgt_umscat
-        description: Transfer stock category (Stock Segment)
+        description: Receiving/Issuing Stock Segment
       - name: sgtxt
-        description: Text (Item)
+        description: Item text
       - name: shkum
-        description: Serialization cumulative quantity
+        description: Debit/credit indicator in revaluation
       - name: shkzg
         description: Debit/credit indicator
       - name: sjahr
-        description: Fiscal year of the allocation table
+        description: Material Document Year
       - name: smbln
-        description: Number of material document
+        description: Number of Material Document
       - name: smblp
-        description: Item in material document
+        description: Item in Material Document
       - name: sobkz
         description: Special stock indicator
       - name: spe_budat_uhr
-        description: Time of posting
+        description: Time of Goods Issue (Local, Relating to a Plant)
       - name: spe_budat_zone
-        description: Time zone for posting
+        description: Time Zone
       - name: spe_gts_stock_ty
-        description: GTS stock type
+        description: GTS Stock Type
       - name: spe_logsys
-        description: Logical system for GTS
+        description: Logical System of EWM Material Document
       - name: spe_mdnum_ewm
-        description: Material document number in EWM
-      - name: stock_qty
-        description: Stock quantity
-      - name: stock_value_a1
-        description: Stock value in alternative valuation area 1
-      - name: stock_vkwrt
-        description: Sales value of the stock
+        description: Number of Material Document in EWM
       - name: tanum
-        description: Transfer requirement number
+        description: Transfer Order Number
       - name: tbnum
-        description: Transfer posting number
+        description: Transfer Requirement Number
       - name: tbpos
-        description: Item number for transfer posting
+        description: Transfer Requirement Item
       - name: tbpri
-        description: Transfer posting indicator
+        description: Transfer Priority
       - name: tcode
-        description: Transaction code
+        description: Transaction Code
       - name: tcode2
-        description: Additional transaction code
+        description: Transaction Code
+      - name: tcode2_mkpf
+        description: Transaction Code
       - name: txjcd
         description: Tax jurisdiction code
       - name: ubnum
-        description: Transfer requirement
+        description: Transfer requirement number
       - name: umbar
-        description: Posting string for quantity conversion
-      - name: umbuk_cg
-        description: Company code for transfer posting
+        description: Valuation Type of Transfer Batch
       - name: umcha
-        description: New batch number
-      - name: umkzbws_cg
-        description: Valuation of special stock in transfer posting
+        description: Receiving/Issuing Batch
       - name: umlgo
         description: Receiving/issuing storage location
       - name: ummab
-        description: Receiving plant for transfer postings
-      - name: ummab_cid
-        description: Receiving plant CID
+        description: Receiving/Issuing Material
       - name: ummat
-        description: Material number (new)
-      - name: ummen_cg
-        description: Quantities are always positive for transfer posting
+        description: Receiving/Issuing Material
       - name: umsok
-        description: Special stock indicator for transfer posting
-      - name: umsok_cid
-        description: Special stock indicator CID for transfer posting
-      - name: umwer_cg
-        description: Valuation of transfer posting in receiving plant
+        description: Stock transfer
       - name: umwrk
-        description: Receiving plant
-      - name: umwrk_cid
-        description: Receiving plant CID
+        description: Receiving plant/issuing plant
       - name: umzst
-        description: Original stock type
+        description: Status of Transfer Batch
       - name: umzus
-        description: Additional stock indicator
+        description: Status key of transfer batch
       - name: urzei
-        description: Time of entry
+        description: Original line in material document
       - name: usnam
         description: User name
+      - name: usnam_mkpf
+        description: User Name
       - name: vbeln_im
         description: Delivery
       - name: vbelp_im
-        description: Delivery item
-      - name: vbobj_cg
-        description: Sales document object in goods receipt
-      - name: vbobj_sg
-        description: Sales document object in goods issue
+        description: Delivery Item
       - name: vfdat
-        description: Shelf life expiration date
+        description: Shelf Life Expiration or Best-Before Date
       - name: vgart
-        description: Movement type (inventory management)
+        description: Transaction/Event Type
+      - name: vgart_mkpf
+        description: Transaction/Event Type
       - name: vkmws
-        description: Vat amount in document currency
+        description: Tax on sales/purchases code
       - name: vkwra
-        description: Amount at sales price in local currency
+        description: Value at Sales Prices Excluding Value Added Tax
       - name: vkwrt
-        description: Sales value
+        description: Value at Sales Prices Including Value-Added Tax
       - name: vprsv
         description: Price control indicator
       - name: vptnr
-        description: Partner number
+        description: Partner account number
       - name: vschn
-        description: Version number for serial number
+        description: Indicator for interim storage posting for source storage type and bin
       - name: waers
         description: Currency key
       - name: weanz
-        description: Number of indicators
-      - name: week_budat
-        description: Week of posting date
-      - name: weekday_budat
-        description: Weekday of posting date
+        description: Number of GR/GI Slips to Be Printed
       - name: wempf
         description: Goods recipient
       - name: werks
         description: Plant
       - name: wertu
-        description: Production time unit
+        description: Value Updating in Material Master Record
       - name: weunb
-        description: Incompletion status
+        description: Goods receipt non-valuated
       - name: wever
-        description: Version management
+        description: Version for Printing GR/GI Slip
       - name: work_item_id
-        description: Work item ID
+        description: Work Item ID
       - name: wrf_charstc1
-        description: Characteristic value 1
+        description: Retail characteristic 1
       - name: wrf_charstc2
-        description: Characteristic value 2
+        description: Retail characteristic 2
       - name: wrf_charstc3
-        description: Characteristic value 3
+        description: Retail characteristic 3
       - name: xabln
-        description: GR/IR account clearing
+        description: Goods Receipt/Issue Slip Number
       - name: xauto
-        description: Automatic goods receipt
+        description: Item automatically created
       - name: xbeau
-        description: Order acknowledgment requirement
+        description: Purchase order created at time of goods receipt
       - name: xblnr
         description: Reference document number
+      - name: xblnr_mkpf
+        description: Reference Document Number
       - name: xblvs
-        description: Posting block for document
+        description: Indicator of posting in warehouse management system
       - name: xcompl
-        description: Completeness indicator
-      - name: xfmat
-        description: Production/inspection memo
+        description: Material document can only be canceled in full
       - name: xmacc
-        description: Material is relevant for RFM procedure
+        description: Cross-company accounting flag
       - name: xobew
-        description: Object included in price determination
+        description: Vendor Stock Valuation Indicator
       - name: xprint
-        description: Print indicator
+        description: Print via Output Control
       - name: xruej
-        description: Fiscal year change
+        description: Indicator of post to previous year
       - name: xruem
-        description: Period change
+        description: Allow Posting to Previous Period (Backposting)
       - name: xsauf
-        description: Automatically maintained
-      - name: xsaut
-        description: Automatic settlement
+        description: Indicator of Posting to Order Is Statistical
       - name: xserg
-        description: Automatic creation of settlement rule
+        description: Indicator of Posting to Profitability Analysis Is Statistical
       - name: xskst
-        description: Cost estimate reference
+        description: Indicator of Statistical Posting to Cost Center
       - name: xspro
-        description: Update special procurement
-      - name: xstor
-        description: Reversal of consumption posting
+        description: Indicator of Posting to Project Is Statistical
       - name: xwoff
-        description: Write-off value active
+        description: Goods movement offset flag
       - name: xwsbr
-        description: Write-off amount posting
-      - name: year_budat
-        description: Year of posting date
-      - name: yearday_budat
-        description: Day of year for posting date
-      - name: yearmonth_budat
-        description: Year and month of posting date
-      - name: yearquarter_budat
-        description: Year and quarter of posting date
-      - name: yearweek_budat
-        description: Year and week of posting date
+        description: ERS settlement flag
       - name: zeile
-        description: Item number
+        description: Item in Material Document
       - name: zekkn
-        description: Sequential number of account assignment
+        description: Account assignment sequence number
       - name: zusch
-        description: Overhead key
+        description: Batch status key
       - name: zustd
-        description: Responsible person
+        description: Batch in Restricted-Use Stock
       - name: zustd_t156m
-        description: Responsible person from table T156M
+        description: Stock Type Modification (Read from Table T156M)
 
   - name: mseg
     description: Material Document Line Items (MSEG) compatibility view - Contains detailed line item information for all material movement transactions
     columns:
-      - name: _cwm_consumption_qty
-        description: CWM consumption quantity
       - name: _cwm_erfme
-        description: CWM entry unit of measure
+        description: Unit of the entry
       - name: _cwm_erfmg
-        description: CWM entry quantity
+        description: Quantity in the entered unit of measure
       - name: _cwm_meins
-        description: CWM base unit of measure
-      - name: _cwm_meins_sid
-        description: CWM base unit of measure SID
+        description: 	Base unit of measure
       - name: _cwm_menge
-        description: CWM quantity posted
-      - name: _cwm_stock_qty
-        description: CWM stock quantity
-      - name: _dataaging
-        description: Data aging timestamp
-      - name: _fivetran_deleted
-        description: Fivetran deletion flag
-      - name: _fivetran_sap_archived
-        description: Fivetran SAP archived flag
-      - name: _fivetran_synced
-        description: Fivetran synchronization timestamp
+        description: 	Quantity calculated in the base unit of measure in which stocks of the product are managed. 
       - name: ablad
-        description: Unloading point
+        description: Unloading Point
       - name: aedat
-        description: Changed on date
+        description: Last change date
       - name: aktnr
-        description: Promotion number
+        description: Promotional deal number
       - name: anln1
         description: Main asset number
       - name: anln2
         description: Asset subnumber
       - name: aplzl
-        description: Asset line item counter
-      - name: ass_pspnr
-        description: Assignment partner project system number
+        description: General counter for task list
       - name: aufnr
         description: Order number
       - name: aufpl
-        description: Routing number for operations
+        description: Task list number
       - name: aufps
-        description: Counter for operations
+        description: Order item number
       - name: awsys
-        description: Logical system
+        description: Logical system (of reference document)
       - name: belnr
-        description: Document number
+        description: Accounting document number
       - name: belum
-        description: Document environment
+        description: Document Number of an Accounting Document
       - name: bemot
-        description: Posting indicator
-      - name: berid
-        description: MRP area
+        description: Accounting Indicator
       - name: berkz
-        description: Requirements type
+        description: Material Staging Indicator for Production Supply
       - name: bestq
-        description: Stock type
+        description: Stock Category in the Warehouse Management System
       - name: bfwms
-        description: Subsequent movement type
+        description: Control posting for external WMS
       - name: bktxt
-        description: Document header text
+        description: Document Header Text
       - name: bla2d
-        description: Location of asset (2nd dimension)
+        description: Doc. type for additional doc. in purchase account management
       - name: blart
         description: Document type
       - name: blaum
-        description: Posting logic
+        description: Document type of revaluation document
       - name: bldat
         description: Document date in document
       - name: bnbtr
-        description: Amount in document currency
+        description: Delivery costs in local currency
       - name: bpmng
         description: Quantity in order price unit
       - name: bprme
         description: Order price unit
-      - name: bstaus_cg
-        description: Status of stock receipt
-      - name: bstaus_sg
-        description: Status of stock issue
       - name: bstme
         description: Order unit
       - name: bstmg
-        description: Order quantity
-      - name: bsttyp_cg
-        description: Stock type of receipt
-      - name: bsttyp_sg
-        description: Stock type of issue
+        description: Goods receipt quantity in order unit
       - name: bualt
-        description: Amount in local currency
+        description: Amount Posted in Alternative Price Control
       - name: budat
-        description: Posting date in the document
+        description: Posting date
+      - name: budat_mkpf
+        description: Posting Date in the Document
       - name: bukrs
         description: Company code
       - name: bustm
-        description: Tax on sales/purchases code
+        description: Posting string for quantities
       - name: bustw
-        description: Amount for tax on sales/purchases
+        description: Posting String for Values
       - name: buzei
-        description: Item of an accounting document
+        description: Number of line item within accounting document
       - name: buzum
-        description: Assignment to line item of an FI document
+        description: Reversal accounting document line item
       - name: bwart
-        description: Movement type for goods movements
+        description: Movement type
       - name: bwlvs
-        description: Movement type for manual account determination
+        description: Movement Type for Warehouse Management
       - name: bwtar
         description: Valuation type
-      - name: cancellation_type
-        description: Cancellation type
-      - name: cancelled
-        description: Cancellation indicator
       - name: charg
         description: Batch number
-      - name: charg_cid
-        description: Batch number CID
-      - name: charg_sid
-        description: Batch number SID
-      - name: charg_whs_cg
-        description: Batch number warehouse for goods receipt
-      - name: charg_whs_sg
-        description: Batch number warehouse for goods issue
       - name: compl_mark
-        description: Completion indicator
+        description: Completed indicator
       - name: condi
-        description: Cost in document currency
-      - name: cons_value_a1
-        description: Consumption value in alternative valuation area 1
-      - name: consumption_qty
-        description: Consumption quantity
+        description: Joint Venture Indicator (Condition Key)
       - name: cpudt
-        description: Day on which accounting document was entered
+        description: Entry date
+      - name: cpudt_mkpf
+        description: Day On Which Accounting Document Was Entered
       - name: cputm
-        description: Time of entry
+        description: Entry time
+      - name: cputm_mkpf
+        description: Time of Entry
       - name: cuobj_ch
-        description: Configuration
-      - name: currency_a1
-        description: Currency for alternative valuation area 1
+        description: Changed configuration object
       - name: dabrbz
-        description: GR slip deadline for material staging
+        description: Reference date for settlement
       - name: dabrz
-        description: GR slip deadline for external processing
-      - name: day_budat
-        description: Day of posting date
+        description: Settlement reference date
       - name: disub_owner
-        description: Distribution/submarining owner
-      - name: disub_owner_cid
-        description: Distribution/submarining owner CID
-      - name: disub_owner_sid
-        description: Distribution/submarining owner SID
+        description: Owner of subcontractor components
       - name: dmbtr
         description: Amount in local currency
-      - name: dmbtr_cons
-        description: Consumption amount in local currency
-      - name: dmbtr_stock
-        description: Stock amount in local currency
       - name: dmbum
-        description: Amount in local currency with reverse +/- sign
+        description: Revaluation amount on back-posting to a previous period
       - name: dummy_incl_eew_cobl
-        description: Dummy field including EEW COBL
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dummy_matdoc_incl_eew_ps
-        description: Dummy material document including EEW PS
+        description: Custom Fields (Dummy for Use in Extension Includes)
       - name: dypla
-        description: Stock placement strategy
+        description: Indicator (dynamic storage bin)
       - name: ebeln
         description: Purchasing document number
       - name: ebelp
         description: Item number of purchasing document
       - name: elikz
-        description: Delivery completed indicator
+        description: Final delivery indicator
       - name: ematn
-        description: Material number used by customer
+        description: Material number (vendor)
       - name: emlif
-        description: Supplying (issuing) plant
+        description: Vendor material number
       - name: equnr
         description: Equipment number
       - name: erfme
@@ -2053,25 +1881,23 @@ models:
       - name: erfmg
         description: Quantity in unit of entry
       - name: etanp_mark
-        description: E-tank pickup mark
+        description: Adjust Open Quantity in Scheduling Agreement Item
       - name: evere
-        description: Shipping unit
+        description: ERS indicator
       - name: evers
-        description: Shipping unit type
+        description: Shipping instructions
       - name: ewm_gmdoc
-        description: EWM goods movement document
+        description: Warehouse Document for Goods Movement
       - name: ewm_lgnum
-        description: EWM warehouse number
-      - name: ewm_lgpla
-        description: EWM storage bin
+        description: Warehouse Number/Warehouse Complex
       - name: exbwr
-        description: Externally entered posting amount
+        description: Externally Entered Posting Amount in Local Currency
       - name: exnum
-        description: External document number
+        description: Export/import number
       - name: exvkw
-        description: External amount in local currency
+        description: Externally Entered Sales Value in Local Currency
       - name: fbuda
-        description: Posting date in external system
+        description: Services rendered date
       - name: fipos
         description: Commitment item
       - name: fistl
@@ -2079,449 +1905,375 @@ models:
       - name: fkber
         description: Functional area
       - name: fls_rsto
-        description: Release for lean service
+        description: Release strategy origin
       - name: frath
-        description: Quantity of capacity consumption
+        description: Unplanned delivery costs
       - name: frbnr
-        description: Billing plan number / Invoicing plan number
+        description: Number of Bill of Lading at Time of Goods Receipt
       - name: fsh_collection
-        description: Fashion management collection
+        description: Fashion collection
       - name: fsh_season
-        description: Fashion management season
+        description: Fashion season
       - name: fsh_season_year
-        description: Fashion management season year
+        description: Fashion season year
       - name: fsh_theme
-        description: Fashion management theme
+        description: Fashion theme
+      - name: fsh_umcoll
+        description: Receiving/Issuing Collection
+      - name: fsh_umsea
+        description: Receiving/Issuing Season
+      - name: fsh_umsea_yr
+        description: Receiving/Issuing Season Year
+      - name: fsh_umtheme
+        description: Receiving/Issuing Theme
       - name: fzgls_mark
-        description: Vehicle license number mark
+        description: Do Not Adjust Cumulative Received Quantity
       - name: geber
         description: Fund
       - name: gjahr
-        description: Material document year
-      - name: gjper
-        description: Period (YYYYMM)
-      - name: gjper_curr_per
-        description: Current period (YYYYMM)
+        description: Fiscal year
       - name: grant_nbr
         description: Grant number
       - name: grund
-        description: Reason for goods movement
+        description: Movement reason
       - name: gsber
         description: Business area
       - name: gts_cusref_no
-        description: GTS customs reference number
+        description: Customs Reference Number for Scrapping
       - name: header_counter
-        description: Header counter for material document
+        description: Header counter
       - name: hsdat
-        description: Date of manufacture
+        description: Date of Manufacture
       - name: imkey
-        description: Key for internal material movement
+        description: Key for real estate object
       - name: insmk
         description: Stock type
       - name: j_1agirupd
-        description: Updates for GIR (goods issue reason)
+        description: Goods issue revaluation performed
       - name: j_1bexbase
-        description: Export basis amount in document currency
-      - name: kalnr
-        description: Cost estimate number
-      - name: kalnr_cg
-        description: Cost estimate number for goods receipt
+        description: Alternate base amount in document currency
       - name: kblnr
-        description: Document number of the material document
+        description: Document number earmarked funds document
       - name: kblpos
-        description: Line item in material document
+        description: Earmarked funds document item
       - name: kdauf
         description: Sales order number
       - name: kdein
-        description: Sales order schedule line number
+        description: Delivery schedule for sales order
       - name: kdpos
-        description: Sales order item number
-      - name: knbdr
-        description: Customer number
+        description: Sales order item
       - name: knttp_gr
-        description: Account assignment category for goods receipt
+        description: Account Assignment Category
       - name: knumv
-        description: Number of the document condition
+        description: Condition number
       - name: kokrs
         description: Controlling area
       - name: kostl
         description: Cost center
       - name: kstrg
-        description: Cost object
+        description: Cost objects
       - name: kunnr
-        description: Customer number
-      - name: kunnr_cid
-        description: Customer number CID
-      - name: kunnr_sid
-        description: Customer number SID
+        description: Customer account number
       - name: kzbew
-        description: Movement indicator
+        description: Movement Indicator
       - name: kzbws
-        description: Valuation of special stock
+        description: Value not deductible
       - name: kzear
-        description: Settlement rule
+        description: Final Issue for Reservation
       - name: kzstr
-        description: Reversal movement
+        description: Transaction/event is relevant to statistics
       - name: kzvbr
-        description: Consumption posting
+        description: Bill of materials explosion
       - name: kzzug
-        description: Addition indicator
-      - name: lbbsa_cid
-        description: Valuation area CID
-      - name: lbbsa_sid
-        description: Valuation area SID
+        description: Receipt Indicator
       - name: lbkum
-        description: Total valuated stock
+        description: Total valuated stock before the posting
       - name: le_vbeln
         description: Delivery
       - name: lfbja
-        description: Fiscal year of invoice receipt
+        description: Fiscal Year of a Reference Document
       - name: lfbnr
-        description: Document number of a reference document
+        description: Vendor invoice number
       - name: lfpos
-        description: Reference document item
+        description: Vendor invoice item
       - name: lgnum
-        description: Warehouse number
+        description: Warehouse Number / Warehouse Complex
       - name: lgort
         description: Storage location
-      - name: lgort_cid
-        description: Storage location CID
-      - name: lgort_sid
-        description: Storage location SID
       - name: lgpla
-        description: Storage bin
+        description: Storage Bin
       - name: lgtyp
-        description: Storage type
+        description: Storage Type
       - name: lifnr
-        description: Vendor account number
-      - name: lifnr_cid
-        description: Vendor account number CID
-      - name: lifnr_sid
-        description: Vendor account number SID
+        description: Account number of vendor or creditor
       - name: line_depth
-        description: Line depth for hierarchical material documents
+        description: Hierarchy level of line in document
       - name: line_id
-        description: Line ID for material document
+        description: Unique identification of document line
       - name: llief
-        description: Last supplier to deliver
-      - name: lmbmv
-        description: Special movement indicator
+        description: Main vendor
       - name: lsmeh
-        description: Confirmation unit
+        description: Order unit of measure
       - name: lsmng
-        description: Confirmed quantity
+        description: Order unit quantity
       - name: lstar
         description: Activity type
       - name: maa_urzei
-        description: Material update time stamp
+        description: Original Line for Account Assignment Item in Material Doc.
       - name: mandt
         description: Client
       - name: mat_kdauf
-        description: Material's sales order
-      - name: mat_kdauf_cid
-        description: Material's sales order CID
+        description: Sales order number of valuated sales order stock
       - name: mat_kdpos
-        description: Material's sales order item
-      - name: mat_kdpos_cid
-        description: Material's sales order item CID
+        description: Sales Order Item of Valuated Sales Order Stock
       - name: mat_pspnr
-        description: Material's project number
-      - name: mat_pspnr_cid
-        description: Material's project number CID
+        description: Valuated Sales Order Stock WBS Element
       - name: matbf
-        description: Material number
+        description: Material in Respect of Which Stock is Managed
       - name: matnr
         description: Material number
       - name: mblnr
-        description: Number of material document
+        description: Number of Material Document
       - name: meins
         description: Base unit of measure
       - name: menge
-        description: Quantity posted to stock in base unit of measure
+        description: Quantity
       - name: mengu
-        description: Negative posting
+        description: Quantity Updating in Material Master Record
       - name: mjahr
-        description: Material document year
-      - name: month_budat
-        description: Month of posting date
+        description: Material Document Year
       - name: msr_active
-        description: MSR active indicator
+        description: MSR active flag
       - name: mwskz
-        description: Tax on sales/purchases code
+        description: Tax code
       - name: nplnr
         description: Network number for account assignment
       - name: nroflabels
-        description: Number of labels
+        description: Number of labels to be printed
       - name: nschn
-        description: Next serial number
+        description: Indicator for interim storage posting for destination storage type and bin
       - name: oicondcod
-        description: Condition code
+        description: Joint Venture Indicator (Condition Key)
       - name: oinavnw
-        description: Net value of the services (in document currency)
-      - name: pabpm
-        description: Confirmation of the posting time
+        description: Non-deductible input tax
       - name: palan
-        description: Number of packages
+        description: WMS Number of pallets
       - name: paobjnr
         description: Profitability segment number
       - name: parbu
-        description: Partner business area
+        description: Clearing company code
       - name: parent_id
-        description: Parent ID for material document hierarchy
+        description: ID of the Parent Document
       - name: pargb
-        description: Partner business area
+        description: Trading partner's business area
       - name: pbamg
-        description: Confirmed quantity in base unit of measure
-      - name: periv
-        description: Fiscal year variant
+        description: Quantity
       - name: pernr
         description: Personnel number
       - name: plpla
-        description: Planned storage location
+        description: Distribution of Differences
       - name: popup_mark
-        description: Pop-up mark
+        description: Display Dialog Box
       - name: pprctr
         description: Partner profit center
       - name: prctr
         description: Profit center
-      - name: price_a1
-        description: Price in alternative valuation area 1
-      - name: price_source_a1
-        description: Price source for alternative valuation area 1
       - name: projn
         description: Project number (internal)
       - name: prznr
-        description: Business process
+        description: Business Process
       - name: ps_psp_pnr
-        description: Work breakdown structure element (WBS element)
+        description: WBS element
       - name: qinspst
-        description: Inspection stock indicator
-      - name: quarter_budat
-        description: Quarter of posting date
+        description: Status of Goods Receipt Inspection
       - name: record_type
-        description: Record type (MDOC for material documents)
+        description: Record type (header or item)
       - name: resourcename_cid
-        description: Resource name CID
+        description: Resource Name (Stock Identifier)
       - name: resourcename_sid
-        description: Resource name SID
-      - name: reversal_movement
-        description: Reversal movement indicator
+        description: Resource Name (Stock Identifier)
       - name: rsart
-        description: Type of reservation
+        description: Record type
       - name: rsnum
-        description: Number of reservation/dependent requirements
+        description: Reservation number
       - name: rspos
-        description: Item number of reservation/dependent requirements
+        description: Item Number of Reservation / Dependent Requirements
       - name: sakto
-        description: G/L account number
+        description: G/L Account Number
       - name: salk3
-        description: Value at sales prices including sales tax
+        description: Value of total valuated stock before the posting
       - name: service_doc_id
-        description: Service document ID
+        description: Service Document ID
       - name: service_doc_item_id
-        description: Service document item ID
+        description: Service Document Item ID
       - name: service_doc_type
-        description: Service document type
+        description: Service Document Type
       - name: serviceperformer
         description: Service performer
+      - name: sgt_chint
+        description: Discrete Batch Number
       - name: sgt_rcat
-        description: Requirements category (Stock Segment)
+        description: Segmentation requirement category
       - name: sgt_scat
-        description: Stock category (Stock Segment)
+        description: Segmentation category
       - name: sgt_umscat
-        description: Transfer stock category (Stock Segment)
+        description: Receiving/Issuing Stock Segment
       - name: sgtxt
-        description: Text (Item)
+        description: Item text
       - name: shkum
-        description: Serialization cumulative quantity
+        description: Debit/credit indicator in revaluation
       - name: shkzg
         description: Debit/credit indicator
       - name: sjahr
-        description: Fiscal year of the allocation table
+        description: Material Document Year
       - name: smbln
-        description: Number of material document
+        description: Number of Material Document
       - name: smblp
-        description: Item in material document
+        description: Item in Material Document
       - name: sobkz
         description: Special stock indicator
       - name: spe_budat_uhr
-        description: Time of posting
+        description: Time of Goods Issue (Local, Relating to a Plant)
       - name: spe_budat_zone
-        description: Time zone for posting
+        description: Time Zone
       - name: spe_gts_stock_ty
-        description: GTS stock type
+        description: GTS Stock Type
       - name: spe_logsys
-        description: Logical system for GTS
+        description: Logical System of EWM Material Document
       - name: spe_mdnum_ewm
-        description: Material document number in EWM
-      - name: stock_qty
-        description: Stock quantity for stock determination
-      - name: stock_value_a1
-        description: Stock value in alternative valuation area 1
-      - name: stock_vkwrt
-        description: Sales value of the stock
+        description: Number of Material Document in EWM
       - name: tanum
-        description: Transfer requirement number
+        description: Transfer Order Number
       - name: tbnum
-        description: Transfer posting number
+        description: Transfer Requirement Number
       - name: tbpos
-        description: Item number for transfer posting
+        description: Transfer Requirement Item
       - name: tbpri
-        description: Transfer posting indicator
+        description: Transfer Priority
       - name: tcode
-        description: Transaction code
+        description: Transaction Code
       - name: tcode2
-        description: Additional transaction code
+        description: Transaction Code
+      - name: tcode2_mkpf
+        description: Transaction Code
       - name: txjcd
         description: Tax jurisdiction code
       - name: ubnum
-        description: Transfer requirement
+        description: Transfer requirement number
       - name: umbar
-        description: Posting string for quantity conversion
-      - name: umbuk_cg
-        description: Company code for transfer posting
+        description: Valuation Type of Transfer Batch
       - name: umcha
-        description: New batch number
-      - name: umkzbws_cg
-        description: Valuation of special stock in transfer posting
+        description: Receiving/Issuing Batch
       - name: umlgo
         description: Receiving/issuing storage location
       - name: ummab
-        description: Receiving plant for transfer postings
-      - name: ummab_cid
-        description: Receiving plant CID
+        description: Receiving/Issuing Material
       - name: ummat
-        description: Material number (new)
-      - name: ummen_cg
-        description: Quantities are always positive for transfer posting
+        description: Receiving/Issuing Material
       - name: umsok
-        description: Special stock indicator for transfer posting
-      - name: umsok_cid
-        description: Special stock indicator CID for transfer posting
-      - name: umwer_cg
-        description: Valuation of transfer posting in receiving plant
+        description: Stock transfer
       - name: umwrk
-        description: Receiving plant
-      - name: umwrk_cid
-        description: Receiving plant CID
+        description: Receiving plant/issuing plant
       - name: umzst
-        description: Original stock type
+        description: Status of Transfer Batch
       - name: umzus
-        description: Additional stock indicator
+        description: Status key of transfer batch
       - name: urzei
-        description: Time of entry
+        description: Original line in material document
       - name: usnam
         description: User name
+      - name: usnam_mkpf
+        description: User Name
       - name: vbeln_im
         description: Delivery
       - name: vbelp_im
-        description: Delivery item
-      - name: vbobj_cg
-        description: Sales document object in goods receipt
-      - name: vbobj_sg
-        description: Sales document object in goods issue
+        description: Delivery Item
       - name: vfdat
-        description: Shelf life expiration date
+        description: Shelf Life Expiration or Best-Before Date
       - name: vgart
-        description: Movement type (inventory management)
+        description: Transaction/Event Type
+      - name: vgart_mkpf
+        description: Transaction/Event Type
       - name: vkmws
-        description: VAT amount in document currency
+        description: Tax on sales/purchases code
       - name: vkwra
-        description: Amount at sales price in local currency
+        description: Value at Sales Prices Excluding Value Added Tax
       - name: vkwrt
-        description: Sales value of material in material document currency
+        description: Value at Sales Prices Including Value-Added Tax
       - name: vprsv
         description: Price control indicator
       - name: vptnr
-        description: Partner number
+        description: Partner account number
       - name: vschn
-        description: Version number for serial number
+        description: Indicator for interim storage posting for source storage type and bin
       - name: waers
         description: Currency key
       - name: weanz
-        description: Number of indicators
-      - name: week_budat
-        description: Week of posting date
-      - name: weekday_budat
-        description: Weekday of posting date
+        description: Number of GR/GI Slips to Be Printed
       - name: wempf
         description: Goods recipient
       - name: werks
         description: Plant
       - name: wertu
-        description: Production time unit
+        description: Value Updating in Material Master Record
       - name: weunb
-        description: Incompletion status
+        description: Goods receipt non-valuated
       - name: wever
-        description: Version management
+        description: Version for Printing GR/GI Slip
       - name: work_item_id
-        description: Work item ID
+        description: Work Item ID
       - name: wrf_charstc1
-        description: Characteristic value 1
+        description: Retail characteristic 1
       - name: wrf_charstc2
-        description: Characteristic value 2
+        description: Retail characteristic 2
       - name: wrf_charstc3
-        description: Characteristic value 3
+        description: Retail characteristic 3
       - name: xabln
-        description: GR/IR account clearing
+        description: Goods Receipt/Issue Slip Number
       - name: xauto
-        description: Automatic goods receipt
+        description: Item automatically created
       - name: xbeau
-        description: Order acknowledgment requirement
+        description: Purchase order created at time of goods receipt
       - name: xblnr
         description: Reference document number
+      - name: xblnr_mkpf
+        description: Reference Document Number
       - name: xblvs
-        description: Posting block for document
+        description: Indicator of posting in warehouse management system
       - name: xcompl
-        description: Completeness indicator
-      - name: xfmat
-        description: Production/inspection memo
+        description: Material document can only be canceled in full
       - name: xmacc
-        description: Material is relevant for RFM procedure
+        description: Cross-company accounting flag
       - name: xobew
-        description: Object included in price determination
+        description: Vendor Stock Valuation Indicator
       - name: xprint
-        description: Print indicator
+        description: Print via Output Control
       - name: xruej
-        description: Fiscal year change
+        description: Indicator of post to previous year
       - name: xruem
-        description: Period change
+        description: Allow Posting to Previous Period (Backposting)
       - name: xsauf
-        description: Automatically maintained
-      - name: xsaut
-        description: Automatic settlement
+        description: Indicator of Posting to Order Is Statistical
       - name: xserg
-        description: Control - Automatic creation of settlement rule
+        description: Indicator of Posting to Profitability Analysis Is Statistical
       - name: xskst
-        description: Cost estimate reference
+        description: Indicator of Statistical Posting to Cost Center
       - name: xspro
-        description: Update special procurement
-      - name: xstor
-        description: Reversal of consumption posting
+        description: Indicator of Posting to Project Is Statistical
       - name: xwoff
-        description: Write-off value active
+        description: Goods movement offset flag
       - name: xwsbr
-        description: Write-off amount posting
-      - name: year_budat
-        description: Year of posting date
-      - name: yearday_budat
-        description: Day of year for posting date
-      - name: yearmonth_budat
-        description: Year and month of posting date
-      - name: yearquarter_budat
-        description: Year and quarter of posting date
-      - name: yearweek_budat
-        description: Year and week of posting date
+        description: ERS settlement flag
       - name: zeile
-        description: Item number within material document
+        description: Item in Material Document
       - name: zekkn
-        description: Sequential number of account assignment
+        description: Account assignment sequence number
       - name: zusch
-        description: Overhead key
+        description: Batch status key
       - name: zustd
-        description: Responsible person
+        description: Batch in Restricted-Use Stock
       - name: zustd_t156m
-        description: Responsible person from table T156M
+        description: Stock Type Modification (Read from Table T156M)
 
   - name: bsid
     description: Customer Line Items (BSID) compatibility view (S/4HANA) - Represents open customer items in the classic BSID format, provided via a compatibility view (logically equivalent to the classic FI line item/index content)
