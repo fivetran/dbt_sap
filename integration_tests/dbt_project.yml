@@ -1,5 +1,5 @@
 name: 'sap_integration_tests'
-version: '0.6.1'
+version: '0.6.2'
 
 profile: 'integration_tests'
 config-version: 2
@@ -66,6 +66,9 @@ vars:
     sap_tka01_identifier: "sap_tka01_data"
 
 models:
+  +persist_docs:
+    relation: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "sap_{{ var('directed_schema','dev') }}"
 
 dispatch:

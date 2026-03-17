@@ -550,6 +550,8 @@ models:
         description: Partner profit center
       - name: pfkber
         description: Functional area of partner
+      - name: pswsl
+        description: Update currency for general ledger transaction figures
       - name: wrbtr
         description: Amount in document currency
       - name: saknr
@@ -558,6 +560,8 @@ models:
         description: Clearing specific to ledger groups
       - name: xopvw
         description: Indicator (Open Item Management?)
+      - name: xref2
+        description: Business partner reference key
       - name: zzspreg
         description: Special region
       - name: xreorg
@@ -624,6 +628,12 @@ models:
   - name: sap__0material_attr
     description: This model is used to display material attribute information, originating from the mara source. 
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: mandt
         description: Client
       - name: matnr
