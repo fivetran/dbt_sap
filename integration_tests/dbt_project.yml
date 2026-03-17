@@ -114,6 +114,7 @@ seeds:
 
     sap_bseg_data:
       +column_types:
+        _dataaging: "date"
         abper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         absbt: numeric
         agzei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -175,7 +176,6 @@ seeds:
         gsber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hkont: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hwbas: numeric
-        hwzus: numeric
         hwzuz: numeric
         kblpos: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         klibt: numeric
