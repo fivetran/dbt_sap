@@ -66,6 +66,9 @@ vars:
     sap_tka01_identifier: "sap_tka01_data"
 
 models:
+  +persist_docs:
+    relation: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "sap_{{ var('directed_schema','dev') }}"
 
 dispatch:
