@@ -466,8 +466,6 @@ models:
     columns:
       - name: _fivetran_synced
         description: Fivetran sync timestamp
-      - name: _dataaging
-        description: Data aging timestamp
       - name: mandt
         description: Client (mandant) identifier
       - name: bukrs
@@ -874,6 +872,10 @@ models:
         description: Personnel number
       - name: vorgn
         description: Business transaction with partner
+      - name: j_1tpbupl
+        description: Business place for India
+      - name: buzei_sender
+        description: Line item number of the sender document
 
   - name: stg_sap__bseg
     description: Accounting document segment
