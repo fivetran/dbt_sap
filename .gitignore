@@ -19,6 +19,7 @@ target/
 # Claude instructions
 .claude/
 CLAUDE.md
+dev_tools/
 
 # Jupyter Notebook
 .ipynb_checkpoints
