@@ -1,3 +1,29 @@
+# dbt_sap v0.6.3
+
+[PR #](https://github.com/fivetran/dbt_sap/pull/) includes the following updates:
+
+## Bug Fix
+- Fixes a SQL compilation error on BigQuery in the `bsid` and `bsad` models to cast `_dataaging` to string to avoid datatype failures, ensuring consistent types regardless of how the source column is synced.
+
+# dbt_sap v0.6.2
+
+[PR #43](https://github.com/fivetran/dbt_sap/pull/43) includes the following updates:
+
+## Documentation
+- Adds missing, removes stale, and corrects column-level descriptions for the following models:
+  - `marc`
+  - `mchb`
+  - `mkpf`
+  - `mseg`
+  - `sap__0fi_gl_14`
+  - `sap__0material_attr`
+  - `stg_sap__bseg`
+  - `stg_sap__dd07l`
+  - `stg_sap__dd07t`
+  - `stg_sap__marc`
+  - `stg_sap__mchb`
+  - `stg_sap__mchp`
+
 # dbt_sap v0.6.1
 
 [PR #42](https://github.com/fivetran/dbt_sap/pull/42) includes the following updates:
