@@ -29,6 +29,7 @@ vars:
     acdoca: "{{ source('sap', 'acdoca') }}"
     bkpf: "{{ source('sap', 'bkpf') }}"
     bsad_bck: "{{ source('sap', 'bsad_bck') }}"
+    bsak_bck: "{{ source('sap', 'bsak_bck') }}"
     bseg: "{{ source('sap', 'bseg') }}"
     coep: "{{ source('sap', 'coep') }}"
     dd07l: "{{ source('sap', 'dd07l') }}"
