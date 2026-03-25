@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: sap
-    schema: antonio_alnylam_saphanadb
-    database: antonio_carbone
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
 
     loader: fivetran
     config:
