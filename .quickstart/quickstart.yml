@@ -8,6 +8,8 @@ table_variables:
     - BKPF
   sap_using_bsad_bck:
     - BSAD_BCK
+  sap_using_bsak_bck:
+    - BSAK_BCK
   sap_using_bseg:
     - BSEG
   sap_using_coep:
@@ -147,6 +149,7 @@ public_models: [
   "sap__fact_purchasing_order",
   "sap__fact_sales_order",
   "bsad",
+  "bsak",
   "bsid",
   "coep",
   "cosp",
