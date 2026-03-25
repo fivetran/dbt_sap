@@ -1,3 +1,10 @@
+# dbt_sap v0.6.3
+
+[PR #44](https://github.com/fivetran/dbt_sap/pull/44) includes the following update:
+
+## Bug Fix
+- Fixes a SQL compilation error on BigQuery in the `bsid` and `bsad` models to cast `_dataaging` to string to avoid datatype failures, ensuring consistent types regardless of how the source column is synced.
+
 # dbt_sap v0.6.2
 
 [PR #43](https://github.com/fivetran/dbt_sap/pull/43) includes the following updates:
