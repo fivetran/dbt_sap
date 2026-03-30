@@ -1,6 +1,6 @@
 # dbt_sap v0.7.0
 
-[PR #45](https://github.com/fivetran/dbt_sap/pull/XX) includes the following updates:
+[PR #45](https://github.com/fivetran/dbt_sap/pull/45) includes the following updates:
 
 ## Schema/Data Change
 **2 total changes • 0 breaking changes**
@@ -9,9 +9,6 @@
 | ---------- | ----------- | -------- | -------- | ----- |
 | [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak) | New Compatibility View | | | Vendor Line Items Cleared/Archived - provides cleared and archived vendor payables, combining archived records from `BSAK_BCK` with cleared records derived from `BSEG`/`BKPF` |
 | [`stg_sap__bsak_bck`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bsak_bck) | New Staging Model | | | Vendor Line Items archived backup staging model with vendor-specific fields including purchase order references (`ebeln`, `ebelp`), customs (`zollt`, `zolld`), withholding tax detail (`qsshb`, `qbshb`, `qsznr`, `qsfbt`), and penalty fields (`penlc1-3`, `penfc`, `penrc`) |
-
-## Under the Hood
-- Adds new enable/disable variable `sap_using_bsak_bck` for the new `BSAK_BCK` source table.
 
 # dbt_sap v0.6.3
 

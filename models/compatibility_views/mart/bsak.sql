@@ -377,7 +377,7 @@ cleared_records as (
     cast(i.xref1 as {{ dbt.type_string() }}) as xref1,
     cast(i.xref2 as {{ dbt.type_string() }}) as xref2,
     case
-      when coalesce(i._dataaging, '00000000') = '00000000' then cast('' as {{ dbt.type_string() }})
+      when coalesce(cast(i._dataaging as {{ dbt.type_string() }}), '00000000') = '00000000' then cast('' as {{ dbt.type_string() }})
       else cast('X' as {{ dbt.type_string() }})
     end as xarch,
     cast(i.pswsl as {{ dbt.type_string() }}) as pswsl,
