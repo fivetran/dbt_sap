@@ -1322,6 +1322,425 @@ sources:
           - name: ghkon
             description: Business area account
 
+      - name: bsak_bck
+        identifier: "{{ var('sap_bsak_bck_identifier', 'bsak_bck') }}"
+        config:
+          enabled: "{{ var('sap_using_bsak_bck', true) }}"
+        description: Secondary index for vendors - cleared items
+        columns:
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _dataaging
+            description: Data aging timestamp
+          - name: mandt
+            description: Client (mandant) identifier
+          - name: bukrs
+            description: Company code
+          - name: lifnr
+            description: Vendor account number
+          - name: umsks
+            description: Special G/L transaction type
+          - name: umskz
+            description: Special G/L indicator
+          - name: augdt
+            description: Clearing date
+          - name: augbl
+            description: Clearing document number
+          - name: zuonr
+            description: Assignment number
+          - name: gjahr
+            description: Fiscal year
+          - name: belnr
+            description: Accounting document number
+          - name: buzei
+            description: Line item number
+          - name: budat
+            description: Posting date
+          - name: bldat
+            description: Document date
+          - name: cpudt
+            description: Entry date
+          - name: waers
+            description: Currency key
+          - name: xblnr
+            description: Reference document number
+          - name: blart
+            description: Document type
+          - name: monat
+            description: Fiscal period
+          - name: bschl
+            description: Posting key
+          - name: zumsk
+            description: Target special G/L indicator
+          - name: shkzg
+            description: Debit/credit indicator
+          - name: gsber
+            description: Business area
+          - name: tax_country
+            description: Tax reporting country
+          - name: mwskz
+            description: Tax on sales/purchases code
+          - name: txdat_from
+            description: Date from which tax is valid
+          - name: dmbtr
+            description: Amount in local currency
+          - name: wrbtr
+            description: Amount in document currency
+          - name: mwsts
+            description: Tax amount in local currency
+          - name: wmwst
+            description: Tax amount in document currency
+          - name: lwsts
+            description: Tax amount in second local currency
+          - name: bdiff
+            description: Exchange rate difference
+          - name: bdif2
+            description: Exchange rate difference local currency 2
+          - name: sgtxt
+            description: Item text
+          - name: projn
+            description: Project number
+          - name: aufnr
+            description: Order number
+          - name: anln1
+            description: Asset number
+          - name: anln2
+            description: Asset sub-number
+          - name: ebeln
+            description: Purchasing document number
+          - name: ebelp
+            description: Item number of purchasing document
+          - name: saknr
+            description: G/L account number
+          - name: hkont
+            description: Reconciliation account in general ledger
+          - name: fkont
+            description: Financial management account
+          - name: filkd
+            description: Account at customer
+          - name: zfbdt
+            description: Baseline date for due date calculation
+          - name: zterm
+            description: Terms of payment key
+          - name: zbd1t
+            description: Cash discount days 1
+          - name: zbd2t
+            description: Cash discount days 2
+          - name: zbd3t
+            description: Net payment terms period
+          - name: zbd1p
+            description: Cash discount percentage 1
+          - name: zbd2p
+            description: Cash discount percentage 2
+          - name: skfbt
+            description: Amount eligible for cash discount
+          - name: sknto
+            description: Cash discount amount in local currency
+          - name: wskto
+            description: Cash discount amount in document currency
+          - name: zlsch
+            description: Payment method
+          - name: zlspr
+            description: Payment block key
+          - name: zbfix
+            description: Fixed payment terms indicator
+          - name: hbkid
+            description: Short key for a house bank
+          - name: bvtyp
+            description: Partner bank type
+          - name: rebzg
+            description: Number of the invoice to which the transaction belongs
+          - name: rebzj
+            description: Fiscal year of the relevant invoice
+          - name: rebzz
+            description: Line item in the relevant invoice
+          - name: samnr
+            description: Internal document group key
+          - name: zollt
+            description: Customs tariff number
+          - name: zolld
+            description: Customs tariff date
+          - name: lzbkz
+            description: State central bank indicator
+          - name: landl
+            description: Supplying country
+          - name: diekz
+            description: Service indicator
+          - name: mansp
+            description: Dunning block
+          - name: mschl
+            description: Dunning key
+          - name: madat
+            description: Last dunning date
+          - name: manst
+            description: Dunning level
+          - name: maber
+            description: Dunning area
+          - name: xnetb
+            description: Indicator for net posting
+          - name: xanet
+            description: Indicator for net discount base
+          - name: xcpdd
+            description: Indicator for installment payment
+          - name: xesrd
+            description: Indicator for ESR/ISR payment reference
+          - name: xzahl
+            description: Indicator for automatic payment
+          - name: mwsk1
+            description: Tax code for first tax amount
+          - name: txdat_from1
+            description: Date from which first tax is valid
+          - name: tax_country1
+            description: Tax reporting country for first tax
+          - name: dmbt1
+            description: First tax amount in local currency
+          - name: wrbt1
+            description: First tax amount in document currency
+          - name: hist_tax_factor1
+            description: Historical tax factor 1
+          - name: mwsk2
+            description: Tax code for second tax amount
+          - name: txdat_from2
+            description: Date from which second tax is valid
+          - name: tax_country2
+            description: Tax reporting country for second tax
+          - name: dmbt2
+            description: Second tax amount in local currency
+          - name: wrbt2
+            description: Second tax amount in document currency
+          - name: hist_tax_factor2
+            description: Historical tax factor 2
+          - name: mwsk3
+            description: Tax code for third tax amount
+          - name: txdat_from3
+            description: Date from which third tax is valid
+          - name: tax_country3
+            description: Tax reporting country for third tax
+          - name: dmbt3
+            description: Third tax amount in local currency
+          - name: wrbt3
+            description: Third tax amount in document currency
+          - name: hist_tax_factor3
+            description: Historical tax factor 3
+          - name: hist_tax_factor
+            description: Historical tax factor
+          - name: qsskz
+            description: Withholding tax code
+          - name: qsshb
+            description: Withholding tax base amount
+          - name: qbshb
+            description: Withholding tax amount
+          - name: bstat
+            description: Document status
+          - name: anfbn
+            description: Invoice reference document number
+          - name: anfbj
+            description: Invoice reference fiscal year
+          - name: anfbu
+            description: Invoice reference company code
+          - name: vbund
+            description: Company ID of trading partner
+          - name: rebzt
+            description: Follow-on document type
+          - name: stceg
+            description: VAT registration number
+          - name: egbld
+            description: Country of destination for EC goods delivery
+          - name: eglld
+            description: Land of destination for delivery
+          - name: qsznr
+            description: Withholding tax certificate number
+          - name: qsfbt
+            description: Withholding tax-exempt amount
+          - name: xinve
+            description: Indicator for investment measure
+          - name: projk
+            description: WBS element
+          - name: fipos
+            description: Commitment item
+          - name: nplnr
+            description: Network number for account assignment
+          - name: aufpl
+            description: Routing number of operations in the order
+          - name: aplzl
+            description: Internal counter
+          - name: xegdr
+            description: Indicator for EC triangular deal
+          - name: dmbe2
+            description: Amount in second local currency
+          - name: dmbe3
+            description: Amount in third local currency
+          - name: dmb21
+            description: Tax amount in second local currency 1
+          - name: dmb22
+            description: Tax amount in second local currency 2
+          - name: dmb23
+            description: Tax amount in second local currency 3
+          - name: dmb31
+            description: Tax amount in third local currency 1
+          - name: dmb32
+            description: Tax amount in third local currency 2
+          - name: dmb33
+            description: Tax amount in third local currency 3
+          - name: mwst2
+            description: Tax amount in second local currency
+          - name: mwst3
+            description: Tax amount in third local currency
+          - name: sknt2
+            description: Cash discount amount in second local currency
+          - name: sknt3
+            description: Cash discount amount in third local currency
+          - name: bdif3
+            description: Exchange rate difference local currency 3
+          - name: xragl
+            description: Indicator for clearing-related difference
+          - name: rstgr
+            description: Reason code for payments
+          - name: uzawe
+            description: Payment method supplement
+          - name: kostl
+            description: Cost center
+          - name: lnran
+            description: Key for payment run identification
+          - name: xstov
+            description: Indicator for reversal posting
+          - name: kzbtr
+            description: Indicator for amount
+          - name: xref1
+            description: Business partner reference key 1
+          - name: xref2
+            description: Business partner reference key 2
+          - name: xarch
+            description: Indicator for archiving
+          - name: pswsl
+            description: Payment currency
+          - name: pswbt
+            description: Amount in payment currency
+          - name: imkey
+            description: Internal key for real estate object
+          - name: zekkn
+            description: Sequential number of account assignment
+          - name: fistl
+            description: Funds center
+          - name: geber
+            description: Fund
+          - name: dabrz
+            description: Reference date for settlement
+          - name: xnegp
+            description: Indicator for negative posting
+          - name: empfb
+            description: Payee/Payer
+          - name: prctr
+            description: Profit center
+          - name: xref3
+            description: Reference key for line item
+          - name: dtws1
+            description: Days/months for first due date calculation
+          - name: dtws2
+            description: Days/months for second due date calculation
+          - name: dtws3
+            description: Days/months for third due date calculation
+          - name: dtws4
+            description: Days/months for fourth due date calculation
+          - name: xpypr
+            description: Indicator for payment request
+          - name: kidno
+            description: Payment reference
+          - name: pycur
+            description: Payment currency
+          - name: pyamt
+            description: Payment amount
+          - name: bupla
+            description: Business place
+          - name: secco
+            description: Section code
+          - name: ppdiff
+            description: Cash discount adjustment in local currency
+          - name: ppdif2
+            description: Cash discount adjustment in second local currency
+          - name: ppdif3
+            description: Cash discount adjustment in third local currency
+          - name: penlc1
+            description: Penalty amount in local currency 1
+          - name: penlc2
+            description: Penalty amount in local currency 2
+          - name: penlc3
+            description: Penalty amount in local currency 3
+          - name: penfc
+            description: Penalty amount in foreign currency
+          - name: pendays
+            description: Number of days for penalty calculation
+          - name: penrc
+            description: Penalty interest rate
+          - name: vertt
+            description: Contract type
+          - name: vertn
+            description: Contract number
+          - name: vbewa
+            description: Flow type
+          - name: kblnr
+            description: Document number for an earmarked fund
+          - name: kblpos
+            description: Item for an earmarked fund
+          - name: grant_nbr
+            description: Grant number
+          - name: gmvkz
+            description: Indicator for grant management
+          - name: srtype
+            description: Type of source document
+          - name: lotkz
+            description: Lot number for document
+          - name: zinkz
+            description: Indicator for interest on arrears
+          - name: fkber
+            description: Functional area
+          - name: intreno
+            description: Internal key for real estate object
+          - name: pprct
+            description: Partner profit center
+          - name: buzid
+            description: Identification of the line item
+          - name: auggj
+            description: Fiscal year of clearing document
+          - name: hktid
+            description: ID for account details
+          - name: budget_pd
+            description: Budget period
+          - name: bdgt_account
+            description: Budget account
+          - name: re_account
+            description: Real estate account
+          - name: payt_rsn
+            description: Payment reason
+          - name: kontt
+            description: Account type
+          - name: kontl
+            description: Account supplement
+          - name: uebgdat
+            description: Transfer date
+          - name: vname
+            description: Joint venture
+          - name: egrup
+            description: Equity group
+          - name: btype
+            description: Transaction type
+          - name: propmano
+            description: Property management
+          - name: gkont
+            description: Offsetting account for general postings
+          - name: gkart
+            description: Offsetting account type
+          - name: ghkon
+            description: Business area account
+          - name: pernr
+            description: Personnel number
+          - name: vorgn
+            description: Business transaction with partner
+          - name: j_1tpbupl
+            description: Business place
+          - name: buzei_sender
+            description: Line item number of the sender document
+
       - name: bseg
         identifier: "{{ var('sap_bseg_identifier', 'bseg') }}"
         config:

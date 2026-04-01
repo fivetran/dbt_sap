@@ -70,6 +70,7 @@ By default, this package materializes the following final tables:
 | Table | Description |
 | :---- | :---- |
 | [bsad](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad) | Customer Line Items Cleared/Archived (BSAD) compatibility view - Represents cleared customer items in the classic BSAD format via a compatibility view; depending on configuration it may include archived content. |
+| [bsak](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak) | Vendor Line Items Cleared/Archived (BSAK) compatibility view - Represents cleared vendor items in the classic BSAK format via a compatibility view; depending on configuration it may include archived content. |
 | [bsid](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) | Customer Line Items (BSID) compatibility view (S/4HANA) - Represents open customer items in the classic BSID format, provided via a compatibility view (logically equivalent to the classic FI line item/index content). |
 | [coep](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coep) | Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA. |
 | [cosp](https://fivetran.github.io/dbt_sap/#!/model/model.sap.cosp) | Cost Object Line Items Summary (COSP) compatibility view - Provides aggregated period-wise cost and quantity data for cost objects, combining archived COSP_BAK data with derived ACDOCA data. |
@@ -107,7 +108,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
 ```
 

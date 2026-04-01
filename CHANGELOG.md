@@ -1,9 +1,22 @@
+# dbt_sap v0.7.0
+
+[PR #45](https://github.com/fivetran/dbt_sap/pull/45) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 0 breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak) | New Compatibility View | | | Vendor Line Items Cleared/Archived - provides cleared and archived vendor payables, combining archived records from `BSAK_BCK` with cleared records derived from `BSEG`/`BKPF` |
+| [`stg_sap__bsak_bck`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bsak_bck) | New Staging Model | | | Vendor Line Items archived backup staging model with vendor-specific fields including purchase order references (`ebeln`, `ebelp`), customs (`zollt`, `zolld`), withholding tax detail (`qsshb`, `qbshb`, `qsznr`, `qsfbt`), and penalty fields (`penlc1-3`, `penfc`, `penrc`) |
+
 # dbt_sap v0.6.3
 
 [PR #44](https://github.com/fivetran/dbt_sap/pull/44) includes the following update:
 
 ## Bug Fix
 - Fixes a SQL compilation error on BigQuery in the `bsid` and `bsad` models to cast `_dataaging` to string to avoid datatype failures, ensuring consistent types regardless of how the source column is synced.
+
 
 # dbt_sap v0.6.2
 

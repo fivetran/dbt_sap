@@ -1,5 +1,5 @@
 name: 'sap_integration_tests'
-version: '0.6.3'
+version: '0.7.0'
 
 profile: 'integration_tests'
 config-version: 2
@@ -9,6 +9,7 @@ vars:
   sap:
     sap_bkpf_identifier: "sap_bkpf_data"
     sap_bsad_bck_identifier: "sap_bsad_bck_data"
+    sap_bsak_bck_identifier: "sap_bsak_bck_data"
     sap_bseg_identifier: "sap_bseg_data"
     sap_coep_identifier: "sap_coep_data"
     sap_cosp_bak_identifier: "sap_cosp_bak_data"
