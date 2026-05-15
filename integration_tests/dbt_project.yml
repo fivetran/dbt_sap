@@ -80,18 +80,27 @@ seeds:
   +docs:
     show: False
   sap_integration_tests:
-    +column_types:
-      _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-      _fivetran_synced: timestamp
-      "*": "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-
     sap_acdoca_data:
       +column_types:
         acrrefobj_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+    sap_cosp_bak_data:
+      +column_types:
+        _fivetran_synced: timestamp
     sap_sapsll_maritc_data:
       +column_types:
         crea_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         lchg_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+    sap_bsad_bck_data:
+      +column_types:
+        _fivetran_synced: timestamp
+        _dataaging: date
+    sap_bsak_bck_data:
+      +column_types:
+        _fivetran_synced: timestamp
+        _dataaging: date
+    sap_coep_data:
+      +column_types:
+        _fivetran_synced: timestamp
     sap_bkpf_data:
       +column_types:
         aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -270,9 +279,12 @@ seeds:
 
     sap_dd07l_data:
       +column_types:
+        _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        _fivetran_synced: timestamp
         domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        hvr_change_time: timestamp
 
     sap_dd07t_data:
       +column_types:
@@ -284,8 +296,10 @@ seeds:
 
     sap_ekbe_data:
       +column_types:
+        _fivetran_synced: timestamp
         dmbtr: numeric
         dmbtr_pop: numeric
+        hvr_change_time: timestamp
         retamt_fc: numeric
         retamt_lc: numeric
         retamtp_fc: numeric
@@ -295,6 +309,8 @@ seeds:
 
     sap_eket_data:
       +column_types:
+        _fivetran_synced: timestamp
+        hvr_change_time: timestamp
         otb_res_value: numeric
         otb_spec_value: numeric
         otb_value: numeric
