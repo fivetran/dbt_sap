@@ -1072,8 +1072,8 @@ seeds:
         orgeh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         otype: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         pernr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
+        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
         plans: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         preas: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         refex: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1554,8 +1554,8 @@ seeds:
         konty: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         molga: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        persg: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
+        persk: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
         trfkz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         typsz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         zeity: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1568,13 +1568,13 @@ seeds:
 
     sap_tvag_data:
       +column_types:
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
         abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         dragr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
     sap_tvagt_data:
       +column_types:
-        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'text' }}"
         abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bezei: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
