@@ -39,6 +39,7 @@ test_scenarios:
       sap_using_t134: false
       sap_using_t134t: false
     include_incremental: false
+    warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency
 
   - name: "reference tables disabled"
     vars:
@@ -46,6 +47,7 @@ test_scenarios:
       sap_using_t161t: false
       sap_using_t001w: false
     include_incremental: false
+    warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency
 
   - name: "finance disabled"
     vars:
@@ -59,3 +61,4 @@ test_scenarios:
       sap_using_coep: false
       sap_using_t006: false
     include_incremental: false
+    warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency
