@@ -1,0 +1,63 @@
+# Only set if not using default adapter ranges
+# dbt_adapter_versions:
+#   snowflake: ">=1.3.0,<2.0.0"
+#   bigquery: ">=1.3.0,<2.0.0"
+#   postgres: ">=1.3.0,<2.0.0"
+#   redshift: ">=1.3.0,<2.0.0"
+#   databricks: ">=1.6.0,<2.0.0"
+
+schema_variable_name: "sap_schema"
+
+include_databricks_sql: false
+include_sqlserver: false
+include_dbt_compile: true
+
+test_scenarios:
+  - name: "Default"
+    vars: {}
+    include_incremental: false
+
+  - name: "purchasing disabled"
+    vars:
+      sap_using_ekko: false
+      sap_using_ekpo: false
+      sap_using_eket: false
+    include_incremental: false
+
+  - name: "sales disabled"
+    vars:
+      sap_using_vbak: false
+      sap_using_vbap: false
+      sap_using_vbuk: false
+      sap_using_vbup: false
+    include_incremental: false
+
+  - name: "materials disabled"
+    vars:
+      sap_using_mara: false
+      sap_using_makt: false
+      sap_using_t134: false
+      sap_using_t134t: false
+    include_incremental: false
+
+  - name: "reference tables disabled"
+    vars:
+      sap_using_dd07t: false
+      sap_using_t161t: false
+      sap_using_t001w: false
+    include_incremental: false
+    warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency
+
+  - name: "finance disabled"
+    vars:
+      sap_using_acdoca: false
+      sap_using_marc: false
+      sap_using_t000: false
+      sap_using_mchp: false
+      sap_using_sapsll_tunos: false
+      sap_using_finsc_ledger_rep: false
+      sap_using_bsad_bck: false
+      sap_using_coep: false
+      sap_using_t006: false
+    include_incremental: false
+    warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency
