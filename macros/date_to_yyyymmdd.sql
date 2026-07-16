@@ -13,3 +13,7 @@
 {% macro databricks__date_to_yyyymmdd(date_expression) %}
     date_format({{ date_expression }}, 'yyyyMMdd')
 {% endmacro %}
+
+{% macro duckdb__date_to_yyyymmdd(date_expression) %}
+    strftime({{ date_expression }}, '%Y%m%d')
+{% endmacro %}

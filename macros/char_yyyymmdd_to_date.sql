@@ -28,3 +28,7 @@
 {% macro databricks__char_yyyymmdd_to_date(date_string) %}
     to_date(cast({{ date_string }} as string), 'yyyyMMdd')
 {% endmacro %}
+
+{% macro duckdb__char_yyyymmdd_to_date(date_string) %}
+    try_strptime(cast({{ date_string }} as varchar), '%Y%m%d')::date
+{% endmacro %}

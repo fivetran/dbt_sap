@@ -28,3 +28,9 @@
     date_format(date_sub(to_date({{ date_string }}, 'yyyyMMdd'), 1), 'yyyyMMdd')
 
 {% endmacro %}
+
+{% macro duckdb__subtract_day_to_char_date(date_string) %}
+
+    strftime(strptime({{ date_string }}, '%Y%m%d')::date - interval '1 day', '%Y%m%d')
+
+{% endmacro %}
