@@ -4086,3 +4086,434 @@ models:
         description: Grant number for grant management
       - name: budget_pd
         description: Budget period for budget management
+  - name: faglflext
+    description: >
+      General Ledger Totals (FAGLFLEXT) compatibility view — reconstructs the classic SAP FAGLFLEXT
+      totals table from ACDOCA, FINSC_LEDGER_REP, and FINSC_LD_CMP. Amounts are aggregated by fiscal
+      year and pivoted into 16 period columns (TSL01–TSL16, HSL01–HSL16, KSL01–KSL16, OSL01–OSL16,
+      MSL01–MSL16) plus a carry-forward column (*VT). Requires sap_using_acdoca,
+      sap_using_finsc_ledger_rep, and sap_using_finsc_ld_cmp to be true.
+    columns:
+      - name: rclnt
+        description: Client (mandant) identifier
+      - name: ryear
+        description: Fiscal year
+      - name: objnr00
+        description: Object number segment 00 (reserved; always 0 in S/4HANA)
+      - name: objnr01
+        description: Object number segment 01 (reserved; always 0 in S/4HANA)
+      - name: objnr02
+        description: Object number segment 02 (reserved; always 0 in S/4HANA)
+      - name: objnr03
+        description: Object number segment 03 (reserved; always 0 in S/4HANA)
+      - name: objnr04
+        description: Object number segment 04 (reserved; always 0 in S/4HANA)
+      - name: objnr05
+        description: Object number segment 05 (reserved; always 0 in S/4HANA)
+      - name: objnr06
+        description: Object number segment 06 (reserved; always 0 in S/4HANA)
+      - name: objnr07
+        description: Object number segment 07 (reserved; always 0 in S/4HANA)
+      - name: objnr08
+        description: Object number segment 08 (reserved; always 0 in S/4HANA)
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: rpmax
+        description: Maximum posting period within the period block (e.g. 016, 032)
+      - name: activ
+        description: Business transaction type (BTTYPE from ACDOCA)
+      - name: rmvct
+        description: Movement type for inventory and asset postings
+      - name: rtcur
+        description: Transaction currency key
+      - name: runit
+        description: Unit of measure for quantity fields
+      - name: awtyp
+        description: Reference transaction type (object type of originating document)
+      - name: rldnr
+        description: Ledger identifier resolved from FINSC_LEDGER_REP
+      - name: rrcty
+        description: Record type (actual, plan, etc.)
+      - name: rvers
+        description: Version (always '001' in S/4HANA ACDOCA path)
+      - name: logsys
+        description: Logical system (source system identifier)
+      - name: racct
+        description: General ledger account number
+      - name: cost_elem
+        description: Cost element (populated when CO line item exists, otherwise empty)
+      - name: rbukrs
+        description: Company code
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rfarea
+        description: Functional area
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for profitability analysis
+      - name: scntr
+        description: Partner cost center
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Partner functional area
+      - name: sbusa
+        description: Partner business area
+      - name: rassc
+        description: Company ID of trading partner
+      - name: psegment
+        description: Partner segment
+      - name: tslvt
+        description: Transaction currency carry-forward balance
+      - name: tsl01
+        description: Transaction currency amount for period 01
+      - name: tsl02
+        description: Transaction currency amount for period 02
+      - name: tsl03
+        description: Transaction currency amount for period 03
+      - name: tsl04
+        description: Transaction currency amount for period 04
+      - name: tsl05
+        description: Transaction currency amount for period 05
+      - name: tsl06
+        description: Transaction currency amount for period 06
+      - name: tsl07
+        description: Transaction currency amount for period 07
+      - name: tsl08
+        description: Transaction currency amount for period 08
+      - name: tsl09
+        description: Transaction currency amount for period 09
+      - name: tsl10
+        description: Transaction currency amount for period 10
+      - name: tsl11
+        description: Transaction currency amount for period 11
+      - name: tsl12
+        description: Transaction currency amount for period 12
+      - name: tsl13
+        description: Transaction currency amount for period 13
+      - name: tsl14
+        description: Transaction currency amount for period 14
+      - name: tsl15
+        description: Transaction currency amount for period 15
+      - name: tsl16
+        description: Transaction currency amount for period 16
+      - name: hslvt
+        description: Company code currency carry-forward balance
+      - name: hsl01
+        description: Company code currency amount for period 01
+      - name: hsl02
+        description: Company code currency amount for period 02
+      - name: hsl03
+        description: Company code currency amount for period 03
+      - name: hsl04
+        description: Company code currency amount for period 04
+      - name: hsl05
+        description: Company code currency amount for period 05
+      - name: hsl06
+        description: Company code currency amount for period 06
+      - name: hsl07
+        description: Company code currency amount for period 07
+      - name: hsl08
+        description: Company code currency amount for period 08
+      - name: hsl09
+        description: Company code currency amount for period 09
+      - name: hsl10
+        description: Company code currency amount for period 10
+      - name: hsl11
+        description: Company code currency amount for period 11
+      - name: hsl12
+        description: Company code currency amount for period 12
+      - name: hsl13
+        description: Company code currency amount for period 13
+      - name: hsl14
+        description: Company code currency amount for period 14
+      - name: hsl15
+        description: Company code currency amount for period 15
+      - name: hsl16
+        description: Company code currency amount for period 16
+      - name: kslvt
+        description: Third currency carry-forward balance (mapped from FINSC_LD_CMP curposk)
+      - name: ksl01
+        description: Third currency amount for period 01
+      - name: ksl02
+        description: Third currency amount for period 02
+      - name: ksl03
+        description: Third currency amount for period 03
+      - name: ksl04
+        description: Third currency amount for period 04
+      - name: ksl05
+        description: Third currency amount for period 05
+      - name: ksl06
+        description: Third currency amount for period 06
+      - name: ksl07
+        description: Third currency amount for period 07
+      - name: ksl08
+        description: Third currency amount for period 08
+      - name: ksl09
+        description: Third currency amount for period 09
+      - name: ksl10
+        description: Third currency amount for period 10
+      - name: ksl11
+        description: Third currency amount for period 11
+      - name: ksl12
+        description: Third currency amount for period 12
+      - name: ksl13
+        description: Third currency amount for period 13
+      - name: ksl14
+        description: Third currency amount for period 14
+      - name: ksl15
+        description: Third currency amount for period 15
+      - name: ksl16
+        description: Third currency amount for period 16
+      - name: oslvt
+        description: Fourth currency carry-forward balance (mapped from FINSC_LD_CMP curposo)
+      - name: osl01
+        description: Fourth currency amount for period 01
+      - name: osl02
+        description: Fourth currency amount for period 02
+      - name: osl03
+        description: Fourth currency amount for period 03
+      - name: osl04
+        description: Fourth currency amount for period 04
+      - name: osl05
+        description: Fourth currency amount for period 05
+      - name: osl06
+        description: Fourth currency amount for period 06
+      - name: osl07
+        description: Fourth currency amount for period 07
+      - name: osl08
+        description: Fourth currency amount for period 08
+      - name: osl09
+        description: Fourth currency amount for period 09
+      - name: osl10
+        description: Fourth currency amount for period 10
+      - name: osl11
+        description: Fourth currency amount for period 11
+      - name: osl12
+        description: Fourth currency amount for period 12
+      - name: osl13
+        description: Fourth currency amount for period 13
+      - name: osl14
+        description: Fourth currency amount for period 14
+      - name: osl15
+        description: Fourth currency amount for period 15
+      - name: osl16
+        description: Fourth currency amount for period 16
+      - name: mslvt
+        description: Quantity carry-forward balance
+      - name: msl01
+        description: Quantity for period 01
+      - name: msl02
+        description: Quantity for period 02
+      - name: msl03
+        description: Quantity for period 03
+      - name: msl04
+        description: Quantity for period 04
+      - name: msl05
+        description: Quantity for period 05
+      - name: msl06
+        description: Quantity for period 06
+      - name: msl07
+        description: Quantity for period 07
+      - name: msl08
+        description: Quantity for period 08
+      - name: msl09
+        description: Quantity for period 09
+      - name: msl10
+        description: Quantity for period 10
+      - name: msl11
+        description: Quantity for period 11
+      - name: msl12
+        description: Quantity for period 12
+      - name: msl13
+        description: Quantity for period 13
+      - name: msl14
+        description: Quantity for period 14
+      - name: msl15
+        description: Quantity for period 15
+      - name: msl16
+        description: Quantity for period 16
+      - name: faglflext_timestamp
+        description: Timestamp of the most recent source record included in this aggregated row
+
+  - name: anep
+    description: >
+      Asset Line Items (ANEP) compatibility view — reconstructs the classic SAP ANEP table from
+      ACDOCA asset accounting lines in S/4HANA, joined with FINSC_LEDGER_REP and FINSC_LD_CMP for
+      ledger resolution. Filters to valid asset postings using slalittype and movcat combinations
+      from the reference FAAV_ANEP1 logic. Requires sap_using_acdoca, sap_using_finsc_ledger_rep,
+      and sap_using_finsc_ld_cmp to be true.
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset sub-number
+      - name: gjahr
+        description: Fiscal year
+      - name: lnran
+        description: Line item number of the asset document (derived from subta)
+      - name: afabe
+        description: Real depreciation area
+      - name: zujhr
+        description: Year of acquisition (always '0000' for S/4HANA ACDOCA path)
+      - name: zucod
+        description: Acquisition code — '0001' for standard postings, '0002' for derived depreciation area postings
+      - name: peraf
+        description: Period of acquisition (always '000' for S/4HANA ACDOCA path)
+      - name: belnr
+        description: Asset accounting document number (from awref)
+      - name: buzei
+        description: Line item number within the document
+      - name: bzdat
+        description: Asset value date
+      - name: bwasl
+        description: Asset transaction type
+      - name: xafar
+        description: Retirement indicator (always '0' for S/4HANA ACDOCA path)
+      - name: anbtr
+        description: Amount in company code currency (sum of HSL)
+      - name: nafab
+        description: Normal depreciation amount (always 0 for S/4HANA ACDOCA path)
+      - name: safab
+        description: Special depreciation amount (always 0 for S/4HANA ACDOCA path)
+      - name: zinsb
+        description: Interest amount (always 0 for S/4HANA ACDOCA path)
+      - name: xantw
+        description: Proportional indicator (always empty for S/4HANA ACDOCA path)
+      - name: xawbt
+        description: Posted indicator (always empty for S/4HANA ACDOCA path)
+      - name: lnsan
+        description: Link number of reversing document line item
+      - name: anupd
+        description: Last changed by (always empty for S/4HANA ACDOCA path)
+      - name: augln
+        description: Clearing line item number — '00000' open, '99999' settled/reversed, otherwise the reversing line
+
+  - name: anlp
+    description: >
+      Asset Periodic Values (ANLP) compatibility view — reconstructs the classic SAP ANLP table from
+      FAAT_PLAN_VALUES in S/4HANA, with a left join to ANLA to supply the account determination group
+      (KTOGR). Requires sap_using_faat_plan_values to be true; sap_using_anla controls whether the
+      ANLA join is included.
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: gjahr
+        description: Fiscal year
+      - name: peraf
+        description: Period
+      - name: afbnr
+        description: Depreciation run number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset sub-number
+      - name: afaber
+        description: Real depreciation area
+      - name: zujhr
+        description: Year of acquisition
+      - name: zucod
+        description: Acquisition code
+      - name: aufwp
+        description: Depreciation expense (periodic)
+      - name: aufwb
+        description: Depreciation expense (cumulative)
+      - name: aufwz
+        description: Depreciation expense (year-to-date)
+      - name: nafap
+        description: Normal depreciation (periodic)
+      - name: nafag
+        description: Normal depreciation (cumulative)
+      - name: nafaz
+        description: Normal depreciation (year-to-date)
+      - name: safap
+        description: Special depreciation (periodic)
+      - name: safag
+        description: Special depreciation (cumulative)
+      - name: safaz
+        description: Special depreciation (year-to-date)
+      - name: aafap
+        description: Write-off depreciation (periodic)
+      - name: aafag
+        description: Write-off depreciation (cumulative)
+      - name: aafaz
+        description: Write-off depreciation (year-to-date)
+      - name: mafap
+        description: Manual depreciation (periodic)
+      - name: mafag
+        description: Manual depreciation (cumulative)
+      - name: mafaz
+        description: Manual depreciation (year-to-date)
+      - name: zinsp
+        description: Interest (periodic)
+      - name: zinsg
+        description: Interest (cumulative)
+      - name: zinsz
+        description: Interest (year-to-date)
+      - name: aufnp
+        description: Write-up (periodic)
+      - name: aufng
+        description: Write-up (cumulative)
+      - name: aufnz
+        description: Write-up (year-to-date)
+      - name: answl
+        description: Net book value at period end
+      - name: invzm
+        description: Investment support amount
+      - name: ktogr
+        description: Account determination group for asset (from ANLA; empty when sap_using_anla is false)
+      - name: afasl
+        description: Depreciation key
+      - name: kostl
+        description: Cost center assignment
+      - name: gsber
+        description: Business area
+      - name: caufn
+        description: Internal order
+      - name: xunul
+        description: Asset is being transferred indicator
+      - name: anupd
+        description: Last changed by
+      - name: fkber
+        description: Functional area
+      - name: belnr
+        description: Asset accounting document number
+      - name: lstar
+        description: Activity type
+      - name: geber
+        description: Fund (public sector)
+      - name: grant_nbr
+        description: Grant number
+      - name: geber2
+        description: Second fund assignment
+      - name: fkber2
+        description: Second functional area
+      - name: grant_nbr2
+        description: Second grant number
+      - name: fistl2
+        description: Second funded program
+      - name: imkey
+        description: Real estate key
+      - name: ps_psp_pnr2
+        description: WBS element
+      - name: budget_pd
+        description: Budget period
+      - name: budget_pd2
+        description: Second budget period
+      - name: segment
+        description: Segment for profitability analysis
+      - name: prctr
+        description: Profit center
+      - name: fistl
+        description: Funded program

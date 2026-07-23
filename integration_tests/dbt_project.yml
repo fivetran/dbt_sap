@@ -1,5 +1,5 @@
 name: 'sap_integration_tests'
-version: '0.7.0'
+version: '0.8.0'
 
 profile: 'integration_tests'
 config-version: 2
@@ -65,6 +65,8 @@ vars:
     sap_t006_identifier: "sap_t006_data"
     sap_tj01_identifier: "sap_tj01_data"
     sap_tka01_identifier: "sap_tka01_data"
+    sap_faat_plan_values_identifier: "sap_faat_plan_values_data"
+    sap_anla_identifier: "sap_anla_data"
 
 models:
   +persist_docs:
@@ -1576,6 +1578,32 @@ seeds:
         wavwr: numeric
         zmeng: numeric
         zwert: numeric
+
+    sap_faat_plan_values_data:
+      +column_types:
+        aufwp: numeric
+        aufwb: numeric
+        aufwz: numeric
+        nafap: numeric
+        nafag: numeric
+        nafaz: numeric
+        safap: numeric
+        safag: numeric
+        safaz: numeric
+        aafap: numeric
+        aafag: numeric
+        aafaz: numeric
+        mafap: numeric
+        mafag: numeric
+        mafaz: numeric
+        zinsp: numeric
+        zinsg: numeric
+        zinsz: numeric
+        aufnp: numeric
+        aufng: numeric
+        aufnz: numeric
+        answl: numeric
+        invzm: numeric
 
 flags:
   send_anonymous_usage_stats: False
