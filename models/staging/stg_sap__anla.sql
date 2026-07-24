@@ -27,13 +27,7 @@ final as (
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         cast(anln1 as {{ dbt.type_string() }}) as anln1,
         cast(anln2 as {{ dbt.type_string() }}) as anln2,
-        cast(ktogr as {{ dbt.type_string() }}) as ktogr,
-        cast(anlkl as {{ dbt.type_string() }}) as anlkl,
-        cast(txt50 as {{ dbt.type_string() }}) as txt50,
-        cast(gsber as {{ dbt.type_string() }}) as gsber,
-        cast(kostl as {{ dbt.type_string() }}) as kostl,
-        cast(meins as {{ dbt.type_string() }}) as meins,
-        _fivetran_synced
+        cast(ktogr as {{ dbt.type_string() }}) as ktogr
     from fields
 )
 
