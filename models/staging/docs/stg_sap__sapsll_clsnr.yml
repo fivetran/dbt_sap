@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_sap__sapsll_clsnr
+    description: SAP Special Ledger classification
+    columns:
+      - name: nosct
+        description: Number of special cost classification
+      - name: ccngn
+        description: Currency number generation
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: mandt
+        description: Client
+      - name: bemeh
+        description: Reference unit

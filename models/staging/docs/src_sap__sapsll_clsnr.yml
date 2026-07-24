@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: sapsll_clsnr
+        identifier: "{{ var('sap_sapsll_clsnr_identifier', '_sapsll_clsnr') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_clsnr', true) }}"
+        description: SAP Special Ledger classification
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: nosct
+            description: Number of special cost classification
+          - name: ccngn
+            description: Currency number generation
+          - name: datab
+            description: Valid from date
+          - name: datbi
+            description: Valid to date
+          - name: mandt
+            description: Client
+          - name: bemeh
+            description: Reference unit

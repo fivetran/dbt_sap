@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_sap__t880
+    description: Global company data (for KONS Ledger)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: city
+        description: City
+      - name: cntry
+        description: Country key
+      - name: curr
+        description: Currency key
+      - name: glsip
+        description: Global ledger posting indicator
+      - name: indpo
+        description: Indicator purchase order relevant
+      - name: langu
+        description: Language key
+      - name: lccomp
+        description: Local company number
+      - name: mandt
+        description: Client
+      - name: mclnt
+        description: Client in local company
+      - name: mcomp
+        description: Consolidated company number
+      - name: modcp
+        description: Consolidation module
+      - name: name1
+        description: Company name
+      - name: name2
+        description: Company name 2
+      - name: pobox
+        description: PO box
+      - name: pstlc
+        description: Postal code
+      - name: rcomp
+        description: Company
+      - name: resta
+        description: Region/state
+      - name: rform
+        description: Legal form
+      - name: stret
+        description: Street
+      - name: strt2
+        description: Street 2
+      - name: zweig
+        description: Branch number

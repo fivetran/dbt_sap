@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: finsc_ledger_rep
+        identifier: "{{ var('sap_finsc_ledger_rep_identifier', 'finsc_ledger_rep') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ledger_rep', true) }}"
+        description: Financial SCM ledger reporting data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: rldnr
+            description: Ledger
+          - name: mandt
+            description: Client
+          - name: rldnr_pers
+            description: Personal ledger number

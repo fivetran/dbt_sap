@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: stg_sap__vbup
+    description: Sales document status (item level)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: absta
+        description: Rejection status for item
+      - name: besta
+        description: Purchase order status (item)
+      - name: cmppi
+        description: Credit check static limit (item)
+      - name: cmppj
+        description: Credit check terms of payment (item)
+      - name: costa
+        description: Costing status (item)
+      - name: dcsta
+        description: Document completeness status
+      - name: fkivp
+        description: Billing plan status (item)
+      - name: fksaa
+        description: Billing block (item)
+      - name: fksta
+        description: Billing status (item)
+      - name: fsh_ar_stat_itm
+        description: Fashion AR status at item level
+      - name: fssta
+        description: Financial document status (item)
+      - name: gbsta
+        description: Overall processing status (item)
+      - name: hdall
+        description: Item fully delivered
+      - name: koqua
+        description: Configuration status (item)
+      - name: kosta
+        description: Cost estimate status (item)
+      - name: lfgsa
+        description: Delivery status (item)
+      - name: lfsta
+        description: Delivery status of item
+      - name: lssta
+        description: Picking status (item)
+      - name: ltsps
+        description: Last transportation scheduling status
+      - name: lvsta
+        description: Goods movement status (item)
+      - name: mandt
+        description: Client
+      - name: manek
+        description: Manual credit check indicator (item)
+      - name: mill_vs_vssta
+        description: Mill-specific item status
+      - name: pdsta
+        description: Pricing document status (item)
+      - name: pksta
+        description: Picking status
+      - name: posnr
+        description: Sales document item number
+      - name: rfgsa
+        description: Reference document status (item)
+      - name: rfsta
+        description: Reference billing status (item)
+      - name: rrsta
+        description: Returns status (item)
+      - name: uvall
+        description: Fully billed (item)
+      - name: uvfak
+        description: Billing block indicator (item)
+      - name: uvp01
+        description: User status 01
+      - name: uvp02
+        description: User status 02
+      - name: uvp03
+        description: User status 03
+      - name: uvp04
+        description: User status 04
+      - name: uvp05
+        description: User status 05
+      - name: uvpak
+        description: Packing status (item)
+      - name: uvpik
+        description: Picking status (item)
+      - name: uvprs
+        description: Pricing status (item)
+      - name: uvvlk
+        description: Delivery status (fully delivered, item)
+      - name: uvwak
+        description: Goods issue status (item)
+      - name: vbeln
+        description: Sales document number
+      - name: vlstp
+        description: Delivery status (partial)
+      - name: wbsta
+        description: Goods issue status (item)

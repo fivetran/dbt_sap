@@ -1,0 +1,148 @@
+version: 2
+
+models:
+  - name: faglflexa
+    description: Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents
+    columns:
+      - name: rclnt
+        description: Client (mandant) identifier
+      - name: ryear
+        description: Fiscal year of the posting
+      - name: docnr
+        description: Document number
+      - name: rldnr
+        description: Ledger for general ledger accounting
+      - name: rbukrs
+        description: Company code
+      - name: docln
+        description: Document line number
+      - name: activ
+        description: Activity type - identifies the type of posting activity
+      - name: rmvct
+        description: Record type for document line
+      - name: rtcur
+        description: Transaction currency
+      - name: runit
+        description: Unit of measure
+      - name: awtyp
+        description: Reference procedure for determining source application
+      - name: rrcty
+        description: Record category for line item
+      - name: rvers
+        description: Version number
+      - name: logsys
+        description: Logical system
+      - name: racct
+        description: General ledger account number
+      - name: cost_elem
+        description: Cost element - used in controlling when CO line items exist
+      - name: rcntr
+        description: Cost center
+      - name: prctr
+        description: Profit center
+      - name: rfarea
+        description: Functional area
+      - name: rbusa
+        description: Business area
+      - name: kokrs
+        description: Controlling area
+      - name: segment
+        description: Segment for profitability analysis
+      - name: scntr
+        description: Sending cost center for cross-company postings
+      - name: pprctr
+        description: Partner profit center
+      - name: sfarea
+        description: Sending functional area
+      - name: sbusa
+        description: Sending business area
+      - name: rassc
+        description: Asset class for fixed asset postings
+      - name: psegment
+        description: Partner segment
+      - name: tsl
+        description: Amount in transaction currency
+      - name: hsl
+        description: Amount in local currency
+      - name: ksl
+        description: Amount in second local currency
+      - name: osl
+        description: Amount in third local currency
+      - name: msl
+        description: Amount in group currency
+      - name: wsl
+        description: Amount in global currency
+      - name: fsl
+        description: Amount in freely defined currency 1
+      - name: vsl
+        description: Amount in freely defined currency 2
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: poper
+        description: Posting period
+      - name: rwcur
+        description: Currency key
+      - name: gjahr
+        description: Fiscal year
+      - name: budat
+        description: Posting date
+      - name: belnr
+        description: Document number
+      - name: buzei
+        description: Line item number
+      - name: bschl
+        description: Posting key
+      - name: bstat
+        description: Document status
+      - name: linetype
+        description: Line item type
+      - name: xsplitmod
+        description: Splitting indicator
+      - name: usnam
+        description: User name who posted the document
+      - name: timestamp_at
+        description: Time stamp for last change
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: fikrs
+        description: Financial management area
+      - name: rfund
+        description: Fund
+      - name: rgrant_nbr
+        description: Grant number
+      - name: rbudget_pd
+        description: Budget period
+      - name: sfund
+        description: Sending fund
+      - name: sgrant_nbr
+        description: Sending grant number
+      - name: sbudget_pd
+        description: Sending budget period
+      - name: re_bukrs
+        description: Real estate company code
+      - name: re_account
+        description: Real estate account
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: recid
+        description: Recovery ID
+      - name: mig_source
+        description: Migration source system
+      - name: mig_docln
+        description: Migration document line number
+      - name: rhcur
+        description: Group currency
+      - name: rfcur
+        description: Freely defined currency 1
+      - name: rvcur
+        description: Freely defined currency 2
+      - name: fcsl
+        description: Amount in freely defined currency 1
+      - name: rfccur
+        description: Freely defined currency code
+      - name: rkcur
+        description: Second local currency
+      - name: rocur
+        description: Third local currency

@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_sap__bkpf
+    description: Accounting document header
+    columns:
+      - name: bukrs_sender
+        description: Sender company code
+      - name: belnr_sender
+        description: Sender accounting document number
+      - name: gjahr_sender
+        description: Sender fiscal year
+      - name: budat
+        description: Posting date
+      - name: propmano
+        description: Property management
+      - name: lotkz
+        description: Ledger group
+      - name: awtyp
+        description: Reference procedure (reference transaction / source application)
+      - name: logsystem_sender
+        description: Sender logical system
+      - name: xnetb
+        description: Net amount indicator
+      - name: xstov
+        description: Reversal posting indicator
+      - name: awkey
+        description: Reference key
+      - name: awsys
+        description: Logical system (of reference document)
+      - name: belnr
+        description: Accounting document number
+      - name: blart
+        description: Document type
+      - name: bldat
+        description: Document date in document
+      - name: bukrs
+        description: Company code
+      - name: cpudt
+        description: Day on which accounting document was entered 
+      - name: fikrs
+        description: Financial management area
+      - name: gjahr
+        description: Fiscal year
+      - name: glvor
+        description: Business transaction
+      - name: hwae2
+        description: Currency key of second local currency
+      - name: hwae3
+        description: Currency key of third local currency
+      - name: hwaer
+        description: Local currency
+      - name: kursf
+        description: Exchange rate
+      - name: ldgrp
+        description: Ledger group
+      - name: mandt
+        description: Client
+      - name: monat
+        description: Fiscal period
+      - name: waers
+        description: Currency key
+      - name: xblnr
+        description: Reference document number
+      - name: xreorg
+        description: Doc. contains open item that was transferred during reorg.

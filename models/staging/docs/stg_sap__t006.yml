@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_sap__t006
+    description: Units of measurment
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: mandt
+        description: Client
+      - name: msehi
+        description: Unit of measure
+      - name: temp_unit
+        description: Temperature unit
+      - name: temp_value
+        description: Temperature value
+      - name: nennr
+        description: Denominator
+      - name: kzex3
+        description: External format indicator
+      - name: is_primary
+        description: Primary unit flag
+      - name: decan
+        description: Decimal places
+      - name: press_unit
+        description: Pressure unit
+      - name: kzkeh
+        description: Conversion key
+      - name: exp10
+        description: Exponent to base 10
+      - name: zaehl
+        description: Numerator
+      - name: kz2eh
+        description: Unit conversion indicator
+      - name: famunit
+        description: Unit family
+      - name: press_val
+        description: Pressure value
+      - name: andec
+        description: Number of decimal places
+      - name: kz1eh
+        description: Primary unit indicator
+      - name: addko
+        description: Addition constant
+      - name: isocode
+        description: ISO code
+      - name: kzex6
+        description: External format length 6
+      - name: expon
+        description: Exponent
+      - name: dimid
+        description: Dimension ID
+      - name: kzwob
+        description: Commercial weight/volume

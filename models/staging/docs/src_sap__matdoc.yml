@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: matdoc
+        identifier: "{{ var('sap_matdoc_identifier', 'matdoc') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc', true) }}"
+        description: Material document header
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp

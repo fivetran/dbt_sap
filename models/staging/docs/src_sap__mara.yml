@@ -1,0 +1,253 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: mara
+        identifier: "{{ var('sap_mara_identifier', 'mara') }}"
+        config:
+          enabled: "{{ var('sap_using_mara', true) }}"
+        description: General material data
+        columns:
+          - name: _accgo_assgd_uom
+            description: Assigned unit of measure (Accruals)
+          - name: _bev1_luldegrp
+            description: Beverage logistics unloading group
+          - name: _bev1_luleinh
+            description: Unloading unit of measure
+          - name: _bev1_nestruccat
+            description: Beverage structure category
+          - name: _dsd_sl_toltyp
+            description: Tolerance type for settlement
+          - name: _dsd_sv_cnt_grp
+            description: Service count group
+          - name: _dsd_vc_group
+            description: Visit control group
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _sttpec_country_ref
+            description: Country of reference (Product environmental compliance)
+          - name: _sttpec_prdcat
+            description: Product category (STTPEC)
+          - name: _sttpec_sertype
+            description: Certificate type (STTPEC)
+          - name: _sttpec_syncact
+            description: Synchronization action (STTPEC)
+          - name: _sttpec_syncchg
+            description: Change type in sync (STTPEC)
+          - name: _sttpec_synctime
+            description: Last sync time (STTPEC)
+          - name: _vso_r_bot_ind
+            description: Bottom layer indicator (Retail VSO)
+          - name: _vso_r_kzgvh_ind
+            description: Closed packaging indicator (Retail VSO)
+          - name: _vso_r_no_p_gvh
+            description: No packaging material group (Retail VSO)
+          - name: _vso_r_pal_b_ht
+            description: Pallet base height (Retail VSO)
+          - name: _vso_r_pal_ind
+            description: Pallet indicator (Retail VSO)
+          - name: _vso_r_pal_min_h
+            description: Minimum pallet height (Retail VSO)
+          - name: _vso_r_pal_ovr_d
+            description: Pallet overhang depth (Retail VSO)
+          - name: _vso_r_pal_ovr_w
+            description: Pallet overhang width (Retail VSO)
+          - name: _vso_r_quan_unit
+            description: Quantity unit (Retail VSO)
+          - name: _vso_r_stack_ind
+            description: Stackable indicator (Retail VSO)
+          - name: _vso_r_stack_no
+            description: Maximum stacking number (Retail VSO)
+          - name: _vso_r_tilt_ind
+            description: Tilt indicator (Retail VSO)
+          - name: _vso_r_tol_b_ht
+            description: Tolerance for base height (Retail VSO)
+          - name: _vso_r_top_ind
+            description: Top layer indicator (Retail VSO)
+          - name: adprof
+            description: Profile for advertising materials
+          - name: adspc_spc
+            description: Ad space specification
+          - name: allow_pmat_igno
+            description: Allow packaging material ignore flag
+          - name: animal_origin
+            description: Indicator (Material of animal origin)
+          - name: anp
+            description: Assembly item indicator
+          - name: bbtyp
+            description: Base unit type
+          - name: brand_id
+            description: Brand identification number
+          - name: bstat
+            description: Material status at plant level
+          - name: bwscl
+            description: Source list requirement
+          - name: cmrel
+            description: Commodity relevant
+          - name: cobjid
+            description: Object ID (Product Compliance)
+          - name: color
+            description: Color description
+          - name: color_atinn
+            description: Internal characteristic number for color
+          - name: commodity
+            description: Commodity code
+          - name: cotype
+            description: Configuration type
+          - name: cwqproc
+            description: Catch weight processing procedure
+          - name: cwqrel
+            description: Catch weight relevance
+          - name: cwqtolgr
+            description: Catch weight tolerance group
+          - name: dg_pack_status
+            description: Dangerous goods packaging status
+          - name: fashgrd
+            description: Fashion grade
+          - name: fiber_code1
+            description: Fiber code 1
+          - name: fiber_code2
+            description: Fiber code 2
+          - name: fiber_code3
+            description: Fiber code 3
+          - name: fiber_code4
+            description: Fiber code 4
+          - name: fiber_code5
+            description: Fiber code 5
+          - name: fiber_part1
+            description: Fiber content part 1
+          - name: fiber_part2
+            description: Fiber content part 2
+          - name: fiber_part3
+            description: Fiber content part 3
+          - name: fiber_part4
+            description: Fiber content part 4
+          - name: fiber_part5
+            description: Fiber content part 5
+          - name: free_char
+            description: Free characteristics
+          - name: fsh_mg_at1
+            description: Fashion material group attribute 1
+          - name: fsh_mg_at2
+            description: Fashion material group attribute 2
+          - name: fsh_mg_at3
+            description: Fashion material group attribute 3
+          - name: fsh_sc_mid
+            description: Fashion supply chain merchandise category
+          - name: fsh_seaim
+            description: Fashion season indicator
+          - name: fsh_sealv
+            description: Fashion season level
+          - name: gds_relevant
+            description: GDS relevant indicator
+          - name: gennr
+            description: Generic material number
+          - name: gtin_variant
+            description: GTIN variant ID
+          - name: hazmat
+            description: Hazardous material indicator
+          - name: herkl
+            description: Country of origin
+          - name: hndlcode
+            description: Handling code
+          - name: hutyp
+            description: Handling unit type
+          - name: hutyp_dflt
+            description: Default HU type
+          - name: imatn
+            description: Material number used by vendor
+          - name: ipmipproduct
+            description: Intellectual Property-managed product
+          - name: kosch
+            description: Product allocation procedure
+          - name: loglev_reto
+            description: Logistics level for returns
+          - name: logunit
+            description: Logical unit
+          - name: matfi
+            description: Material status for FI
+          - name: maxb
+            description: Maximum length
+          - name: maxc
+            description: Maximum width
+          - name: maxc_tol
+            description: Tolerance for width
+          - name: maxdim_uom
+            description: Unit of measure for max dimensions
+          - name: maxh
+            description: Maximum height
+          - name: maxl
+            description: Maximum pallet layer
+          - name: medium
+            description: Medium type
+          - name: mfrgr
+            description: Material freight group
+          - name: mlgut
+            description: Empties BOM indicator
+          - name: oigroupnam
+            description: OIL group name
+          - name: oihmtxgr
+            description: OIL material text group
+          - name: oitrind
+            description: OIL transport indicator
+          - name: packcode
+            description: Packaging code
+          - name: picnum
+            description: Picture number
+          - name: pilferable
+            description: Pilferable indicator
+          - name: psm_code
+            description: Product stewardship code
+          - name: ps_smartform
+            description: Smartform for product safety
+          - name: qgrp
+            description: QM control key
+          - name: qqtime
+            description: Quarantine time
+          - name: qqtimeuom
+            description: Quarantine time unit of measure
+          - name: retdelc
+            description: Returns deletion flag
+          - name: rmatp
+            description: Relevant for material availability check
+          - name: serial
+            description: Serial number profile
+          - name: sgt_covsa
+            description: Segmentation coverage scenario
+          - name: sgt_csgr
+            description: Segmentation strategy
+          - name: sgt_rel
+            description: Segmentation relevance
+          - name: sgt_scope
+            description: Segmentation scope
+          - name: sgt_stat
+            description: Segmentation status
+          - name: size1
+            description: Size 1 (numeric or text)
+          - name: size1_atinn
+            description: Internal characteristic number for size1
+          - name: size2
+            description: Size 2 (numeric or text)
+          - name: size2_atinn
+            description: Internal characteristic number for size2
+          - name: sled_bbd
+            description: Shelf life expiration or best-before date
+          - name: stoff
+            description: Hazardous material number
+          - name: tare_var
+            description: Variable tare weight indicator
+          - name: textile_comp_ind
+            description: Textile composition indicator
+          - name: weora
+            description: Time of goods receipt
+          - name: whmatgr
+            description: Material group for warehouse mgmt
+          - name: whstc
+            description: Warehouse storage condition

@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: tj01
+        identifier: "{{ var('sap_tj01_identifier', 'tj01') }}"
+        config:
+          enabled: "{{ var('sap_using_tj01', true) }}"
+        description: System status
+        columns:
+          - name: vrgng
+            description: Business transaction
+          - name: wtkat
+            description: Value category
+          - name: xcosp
+            description: Update COSP indicator
+          - name: xcoss
+            description: Update COSS indicator
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp

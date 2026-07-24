@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: stg_sap__t134
+    description: Material types
+    columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: mtart
+        description: Material type
+      - name: mandt
+        description: Client
+      - name: aranz
+        description: Layout indicator for material master
+      - name: ardel
+        description: Flag for deletion of layout
+      - name: begru
+        description: Authorization group
+      - name: bsext
+        description: External number assignment allowed
+      - name: bsint
+        description: Internal number assignment allowed
+      - name: cchis
+        description: Change document indicator
+      - name: chneu
+        description: Indicator (New entries allowed)
+      - name: class
+        description: Material type class
+      - name: ctype
+        description: Classification type
+      - name: ekalr
+        description: Costing indicator
+      - name: envop
+        description: Environmentally relevant
+      - name: flref
+        description: Material type references another
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: izust
+        description: Status for inventory management
+      - name: kkref
+        description: Reference key for variant configuration
+      - name: kzgrp
+        description: Group material type
+      - name: kzkfg
+        description: Configurable material indicator
+      - name: kzmpn
+        description: Manufacturer part number allowed
+      - name: kzpip
+        description: Pipeline material indicator
+      - name: kzprc
+        description: Pricing allowed indicator
+      - name: kzrac
+        description: Returnable packaging indicator
+      - name: kzvpr
+        description: Valuation allowed indicator
+      - name: mbref
+        description: Material type reference
+      - name: mstae
+        description: Cross-plant material status
+      - name: mtref
+        description: Reference material type
+      - name: numke
+        description: External number range key
+      - name: numki
+        description: Internal number range key
+      - name: prdru
+        description: Period indicator for price determination
+      - name: pstat
+        description: Maintenance status
+      - name: vmtpo
+        description: Group material type for variants
+      - name: vnumke
+        description: External number range (variant)
+      - name: vnumki
+        description: Internal number range (variant)
+      - name: vprsv
+        description: Price control indicator
+      - name: vtype
+        description: Variant type
+      - name: wmakg
+        description: Weight unit group

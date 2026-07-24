@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: t503
+        identifier: "{{ var('sap_t503_identifier', 't503') }}"
+        config:
+          enabled: "{{ var('sap_using_t503', true) }}"
+        description: Employee group/subgroup
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: abart
+            description: Employee subgroup grouping for personnel calculation rule
+          - name: abtyp
+            description: Employee subgroup grouping for primary wage tpyes
+          - name: aksta
+            description: Activity status
+          - name: ansta
+            description: Employment status
+          - name: antyp
+            description: Employee category
+          - name: austa
+            description: Training status
+          - name: burkz
+            description: Employee subgroup grouping for appraisal
+          - name: inwid
+            description: Participation in incentive wages
+          - name: konty
+            description: Employee subgroup grouping for time quota types
+          - name: mandt
+            description: Client
+          - name: molga
+            description: Reserved field/unused field of length 2
+          - name: persg
+            description: Employee group
+          - name: persk
+            description: Employee subgroup
+          - name: trfkz
+            description: ES grouping for collective agreement provision
+          - name: typsz
+            description: Single-character indicator
+          - name: zeity
+            description: Employee subgroup grouping for work schedules

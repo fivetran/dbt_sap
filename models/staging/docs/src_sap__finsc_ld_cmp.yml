@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: finsc_ld_cmp
+        identifier: "{{ var('sap_finsc_ld_cmp_identifier', 'finsc_ld_cmp') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ld_cmp', true) }}"
+        description: Financial SCM lead component data
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: curposk
+            description: Currency position K
+          - name: curposo
+            description: Currency position O
+          - name: curposv
+            description: Currency position V
+          - name: curposb
+            description: Currency position B
+          - name: curposc
+            description: Currency position C
+          - name: curposd
+            description: Currency position D
+          - name: curpose
+            description: Currency position E
+          - name: curposf
+            description: Currency position F
+          - name: curposg
+            description: Currency position G
+          - name: mandt
+            description: Client
+          - name: bukrs
+            description: Company code
+          - name: rldnr
+            description: Ledger

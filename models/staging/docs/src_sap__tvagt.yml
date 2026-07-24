@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: tvagt
+        identifier: "{{ var('sap_tvagt_identifier', 'tvagt') }}"
+        config:
+          enabled: "{{ var('sap_using_tvagt', true) }}"
+        description: Rejection reason texts
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: abgru
+            description: Reason code
+          - name: bezei
+            description: Description
+          - name: mandt
+            description: Client
+          - name: spras
+            description: Language key

@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_sap__mchp
+    description: Batch master (plant level)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived                                                                                                                                                                               
+        description: Fivetran SAP archive marker                                                                                                                                                                     
+      - name: charg                                                                                                                                                                                                
+        description: Batch number                                                                                                                                                                                    
+      - name: dokar                                                                                                                                                                                                
+        description: Document Type
+      - name: doknr
+        description: Document number
+      - name: doktl
+        description: Document Part
+      - name: dokvr
+        description: Document Version
+      - name: ebrid
+        description: Batch record number
+      - name: ebrstatus
+        description: Status of batch record
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: valdat
+        description: Availability date of batch record
+      - name: vers_stat
+        description: Batch record version handling
+      - name: version
+        description: Version
+      - name: werks
+        description: Plant

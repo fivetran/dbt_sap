@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: anla
+        identifier: "{{ var('sap_anla_identifier', 'anla') }}"
+        config:
+          enabled: "{{ var('sap_using_anla', true) }}"
+        description: Asset master data (fixed assets)
+        columns:
+          - name: mandt
+            description: Client
+          - name: bukrs
+            description: Company code
+          - name: anln1
+            description: Main asset number
+          - name: anln2
+            description: Asset subnumber
+          - name: ktogr
+            description: Account determination group

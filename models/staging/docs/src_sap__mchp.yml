@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: mchp
+        identifier: "{{ var('sap_mchp_identifier', 'mchp') }}"
+        config:
+          enabled: "{{ var('sap_using_mchp', true) }}"
+        description: Batch master (plant level)
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp

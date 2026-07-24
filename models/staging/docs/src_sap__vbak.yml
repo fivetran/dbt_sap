@@ -1,0 +1,333 @@
+version: 2
+
+sources:
+  - name: sap
+    tables:
+      - name: vbak
+        identifier: "{{ var('sap_vbak_identifier', 'vbak') }}"
+        config:
+          enabled: "{{ var('sap_using_vbak', true) }}"
+        description: Sales document header data
+        columns:
+          - name: _dataaging
+            description: Data aging timestamp
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _xlso_catalog_id
+            description: XL system catalog ID
+          - name: _xlso_payment_op
+            description: XL system payment option
+          - name: _xlso_so_vald_fm
+            description: XL system SO valid from
+          - name: _xlso_so_vald_to
+            description: XL system SO valid to
+          - name: _xlso_trans_ctxt
+            description: XL system transaction context
+          - name: _xlso_variant_id
+            description: XL system variant ID
+          - name: abdis
+            description: Reason for rejection of the quotation
+          - name: abhob
+            description: Requested quantity already delivered
+          - name: abhod
+            description: Date of first partial delivery
+          - name: abhov
+            description: Volume delivered so far
+          - name: abruf_part
+            description: Partial delivery call-off
+          - name: abrvw
+            description: Usage indicator
+          - name: aedat
+            description: Last change date
+          - name: agrzr
+            description: Agreement number
+          - name: amtbl
+            description: Billed amount
+          - name: angdt
+            description: Quotation date
+          - name: auart
+            description: Sales document type
+          - name: audat
+            description: Document date
+          - name: aufnr
+            description: Order number
+          - name: augru
+            description: Order reason
+          - name: autlf
+            description: Complete delivery defined for all items
+          - name: awahr
+            description: Probability of the quotation
+          - name: betc
+            description: Tax base code
+          - name: bname
+            description: Name of person who created the document
+          - name: bnddt
+            description: Bid invitation deadline
+          - name: bpn
+            description: Bid project number
+          - name: bsark
+            description: Purchase order type
+          - name: bstdk
+            description: Purchase order date
+          - name: bstnk
+            description: Customer purchase order number
+          - name: bstzd
+            description: Customer purchase order date
+          - name: bukrs_vf
+            description: Company code for billing
+          - name: cancel_allow
+            description: Cancellation allowed indicator
+          - name: cmfre
+            description: Credit management Released
+          - name: cmngv
+            description: Credit management Total value
+          - name: cmnup
+            description: Credit management Not yet posted value
+          - name: cmwae
+            description: Credit management Currency
+          - name: cont_dg
+            description: Dangerous goods document number
+          - name: crm_guid
+            description: CRM GUID for sales document
+          - name: ctlpc
+            description: Pricing control
+          - name: dat_fzau
+            description: Date of customer confirmation
+          - name: enqueue_grp
+            description: Lock group
+          - name: erdat
+            description: Created on
+          - name: ernam
+            description: Created by
+          - name: erzet
+            description: Time of creation
+          - name: faksk
+            description: Billing block at header level
+          - name: fkara
+            description: Billing type
+          - name: fmbdat
+            description: Date for fund commitment
+          - name: fsh_candate
+            description: Cancellation date (Fashion)
+          - name: fsh_cq_check
+            description: Check quantity (Fashion)
+          - name: fsh_kvgr10
+            description: Customer group 10 (Fashion)
+          - name: fsh_kvgr6
+            description: Customer group 6 (Fashion)
+          - name: fsh_kvgr7
+            description: Customer group 7 (Fashion)
+          - name: fsh_kvgr8
+            description: Customer group 8 (Fashion)
+          - name: fsh_kvgr9
+            description: Customer group 9 (Fashion)
+          - name: fsh_os_stg_change
+            description: One-step staging change (Fashion)
+          - name: fsh_rereg
+            description: Reregistration status (Fashion)
+          - name: fsh_ss
+            description: Season indicator (Fashion)
+          - name: fsh_transaction
+            description: Fashion transaction type
+          - name: fsh_vas_cg
+            description: VAS customer group (Fashion)
+          - name: fsh_vrsn_status
+            description: Version status (Fashion)
+          - name: grupp
+            description: Credit control area group
+          - name: gsber
+            description: Business area
+          - name: gskst
+            description: Profit center
+          - name: guebg
+            description: Valid-from date
+          - name: gueen
+            description: Valid-to date
+          - name: gwldt
+            description: Valid-to date (billing document)
+          - name: handle
+            description: System handle for record
+          - name: handoverloc
+            description: Handover location
+          - name: hb_cont_reason
+            description: Header condition control reason
+          - name: hb_expdate
+            description: Header expiration date
+          - name: hb_resdate
+            description: Header reservation date
+          - name: hityp_pr
+            description: Item type proposal
+          - name: ihrez
+            description: Customer reference
+          - name: kalcd
+            description: Calculation schema group
+          - name: kalsm
+            description: Pricing procedure
+          - name: kalsm_ch
+            description: Changed pricing procedure
+          - name: kkber
+            description: Credit control area
+          - name: knkli
+            description: Credit account
+          - name: knuma
+            description: Agreement number
+          - name: knumv
+            description: Condition number
+          - name: kokrs
+            description: Controlling area
+          - name: kostl
+            description: Cost center
+          - name: ktext
+            description: Header text
+          - name: kunnr
+            description: Sold-to party
+          - name: kurst
+            description: Exchange rate type
+          - name: kvgr1
+            description: Customer group 1
+          - name: kvgr2
+            description: Customer group 2
+          - name: kvgr3
+            description: Customer group 3
+          - name: kvgr4
+            description: Customer group 4
+          - name: kvgr5
+            description: Customer group 5
+          - name: landtx
+            description: Country of destination
+          - name: lifsk
+            description: Delivery block (header)
+          - name: logsysb
+            description: Logical system (billing)
+          - name: mahdt
+            description: Dunning date
+          - name: mahza
+            description: Dunning level
+          - name: mandt
+            description: Client
+          - name: mill_appl_id
+            description: Mill product application ID
+          - name: mod_allow
+            description: Modification allowed
+          - name: msr_id
+            description: MSR process ID
+          - name: mtlaur
+            description: Material availability date
+          - name: multi
+            description: Multi-step shipping indicator
+          - name: netwr
+            description: Net value of the order
+          - name: objnr
+            description: Object number
+          - name: pay_method
+            description: Payment method
+          - name: phase
+            description: Project phase
+          - name: proli
+            description: Project profile
+          - name: ps_psp_pnr
+            description: WBS element
+          - name: psm_budat
+            description: Budget date (Public Sector)
+          - name: qmnum
+            description: Notification number
+          - name: rep_freq
+            description: Reporting frequency
+          - name: rplnr
+            description: Replenishment order number
+          - name: sbgrp
+            description: Product hierarchy group
+          - name: scheme_grp
+            description: Pricing scheme group
+          - name: smenr
+            description: Sales employee number
+          - name: spart
+            description: Division
+          - name: sppaym
+            description: Special payment agreement
+          - name: stafo
+            description: Follow-up document status
+          - name: stage
+            description: Stage in approval workflow
+          - name: stceg_l
+            description: VAT registration number
+          - name: stwae
+            description: Statistics currency
+          - name: submi
+            description: Subcontracting indicator
+          - name: swenr
+            description: Warranty number
+          - name: tas
+            description: Task list type
+          - name: taxk1
+            description: Tax classification 1
+          - name: taxk2
+            description: Tax classification 2
+          - name: taxk3
+            description: Tax classification 3
+          - name: taxk4
+            description: Tax classification 4
+          - name: taxk5
+            description: Tax classification 5
+          - name: taxk6
+            description: Tax classification 6
+          - name: taxk7
+            description: Tax classification 7
+          - name: taxk8
+            description: Tax classification 8
+          - name: taxk9
+            description: Tax classification 9
+          - name: telf1
+            description: Telephone number
+          - name: tm_ctrl_key
+            description: Transportation planning point
+          - name: trvog
+            description: Transaction group
+          - name: upd_tmstmp
+            description: Update timestamp
+          - name: vbeln
+            description: Sales document number
+          - name: vbeln_grp
+            description: Grouping sales document
+          - name: vbkla
+            description: Order probability
+          - name: vbklt
+            description: Texts for order probability
+          - name: vbtyp
+            description: Document category in sales
+          - name: vdatu
+            description: Requested delivery date
+          - name: vgbel
+            description: Document number of the reference
+          - name: vgtyp
+            description: Document category of the reference
+          - name: vkbur
+            description: Sales office
+          - name: vkgrp
+            description: Sales group
+          - name: vkorg
+            description: Sales organization
+          - name: vprgr
+            description: Pricing group
+          - name: vsbed
+            description: Shipping conditions
+          - name: vsnmr_v
+            description: Version number
+          - name: vtweg
+            description: Distribution channel
+          - name: vzeit
+            description: Time of delivery
+          - name: waerk
+            description: Document currency
+          - name: wtysc_clm_hdr
+            description: Warranty claim header
+          - name: xblnr
+            description: Reference document number
+          - name: xegdr
+            description: External GUID reference
+          - name: zuonr
+            description: Assignment number

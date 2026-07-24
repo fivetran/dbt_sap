@@ -1,0 +1,424 @@
+version: 2
+
+models:
+  - name: bsad
+    description: Customer Line Items Cleared/Archived (BSAD) compatibility view - Represents cleared customer items in the classic BSAD format via a compatibility view; depending on configuration it may include archived content
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: kunnr
+        description: Customer account number
+      - name: umsks
+        description: Special G/L transaction type
+      - name: umskz
+        description: Special G/L indicator
+      - name: augdt
+        description: Clearing date - filled for cleared items
+      - name: augbl
+        description: Clearing document number - filled for cleared items
+      - name: zuonr
+        description: Assignment number
+      - name: gjahr
+        description: Fiscal year
+      - name: belnr
+        description: Accounting document number
+      - name: buzei
+        description: Number of line item within accounting document
+      - name: budat
+        description: Posting date in the document
+      - name: bldat
+        description: Document date in document
+      - name: cpudt
+        description: Day on which accounting document was entered
+      - name: waers
+        description: Currency key
+      - name: xblnr
+        description: Reference document number
+      - name: blart
+        description: Document type
+      - name: monat
+        description: Posting period
+      - name: bschl
+        description: Posting key
+      - name: zumsk
+        description: Target special G/L indicator
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: gsber
+        description: Business area
+      - name: tax_country
+        description: Tax reporting country
+      - name: mwskz
+        description: Tax code
+      - name: txdat_from
+        description: Date from which tax code is valid
+      - name: dmbtr
+        description: Amount in local currency
+      - name: wrbtr
+        description: Amount in document currency
+      - name: fcsl
+        description: Amount in freely defined currency 1 (hardcoded to 0 for archived records)
+      - name: rfccur
+        description: Currency key for freely defined currency 1 (hardcoded empty for archived records)
+      - name: mwsts
+        description: Tax amount in local currency
+      - name: wmwst
+        description: Tax amount in document currency
+      - name: lwsts
+        description: Local withholding tax amount
+      - name: bdiff
+        description: Valuation difference amount
+      - name: bdif2
+        description: Valuation difference amount 2
+      - name: sgtxt
+        description: Item text
+      - name: projn
+        description: Project number (internal)
+      - name: aufnr
+        description: Order number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: saknr
+        description: G/L account number (often same as HKONT; can differ in some postings such as special G/L)
+      - name: hkont
+        description: Posting G/L account (account used on the line item)
+      - name: fkont
+        description: Financial account
+      - name: filkd
+        description: Branch account
+      - name: zfbdt
+        description: Baseline date for due date calculation
+      - name: zterm
+        description: Terms of payment key
+      - name: zbd1t
+        description: Cash discount days 1
+      - name: zbd2t
+        description: Cash discount days 2
+      - name: zbd3t
+        description: Net payment terms period
+      - name: zbd1p
+        description: Cash discount percentage 1
+      - name: zbd2p
+        description: Cash discount percentage 2
+      - name: skfbt
+        description: Amount eligible for cash discount in document currency
+      - name: sknto
+        description: Cash discount amount in local currency
+      - name: wskto
+        description: Cash discount amount in document currency
+      - name: zlsch
+        description: Payment method
+      - name: zlspr
+        description: Payment block key
+      - name: zbfix
+        description: Fixed due date
+      - name: hbkid
+        description: Short key for a house bank
+      - name: bvtyp
+        description: Partner bank type
+      - name: rebzg
+        description: Invoice reference document number
+      - name: rebzj
+        description: Fiscal year of the invoice reference document
+      - name: rebzz
+        description: Invoice reference document line item
+      - name: samnr
+        description: Collective invoice number
+      - name: anfbn
+        description: Request number
+      - name: anfbj
+        description: Fiscal year of the request
+      - name: anfbu
+        description: Request item number
+      - name: anfae
+        description: Request date
+      - name: mansp
+        description: Dunning block
+      - name: mschl
+        description: Dunning key
+      - name: madat
+        description: Last dunning notice date
+      - name: manst
+        description: Dunning level
+      - name: maber
+        description: Dunning area
+      - name: xnetb
+        description: Net payment indicator
+      - name: xanet
+        description: Net procedure - line item level
+      - name: xcpdd
+        description: Cleared - planning level
+      - name: xinve
+        description: Invoice verified indicator
+      - name: xzahl
+        description: Payment indicator
+      - name: xarch
+        description: Archived indicator (from BSAD_BCK for archived records, derived from _dataaging for cleared records)
+      - name: mwsk1
+        description: Tax code 1
+      - name: txdat_from1
+        description: Date from which tax code 1 is valid
+      - name: tax_country1
+        description: Tax reporting country 1
+      - name: dmbt1
+        description: Tax base amount in local currency 1
+      - name: wrbt1
+        description: Tax base amount in document currency 1
+      - name: hist_tax_factor1
+        description: Historical tax factor 1
+      - name: mwsk2
+        description: Tax code 2
+      - name: txdat_from2
+        description: Date from which tax code 2 is valid
+      - name: tax_country2
+        description: Tax reporting country 2
+      - name: dmbt2
+        description: Tax base amount in local currency 2
+      - name: wrbt2
+        description: Tax base amount in document currency 2
+      - name: hist_tax_factor2
+        description: Historical tax factor 2
+      - name: mwsk3
+        description: Tax code 3
+      - name: txdat_from3
+        description: Date from which tax code 3 is valid
+      - name: tax_country3
+        description: Tax reporting country 3
+      - name: dmbt3
+        description: Tax base amount in local currency 3
+      - name: wrbt3
+        description: Tax base amount in document currency 3
+      - name: hist_tax_factor3
+        description: Historical tax factor 3
+      - name: hist_tax_factor
+        description: Historical tax factor
+      - name: bstat
+        description: Document status
+      - name: vbund
+        description: Company ID of trading partner
+      - name: vbeln
+        description: Sales document number
+      - name: rebzt
+        description: Invoice reference transaction
+      - name: infae
+        description: Inverted date for net due date
+      - name: stceg
+        description: VAT registration number
+      - name: egbld
+        description: Country for EU triangular deal
+      - name: eglld
+        description: Country code for EU listing
+      - name: rstgr
+        description: Reason code for payments
+      - name: xnoza
+        description: Indicator Account is not counted
+      - name: vertt
+        description: Contract type
+      - name: vertn
+        description: Contract number
+      - name: vbewa
+        description: Business transaction variant
+      - name: wverw
+        description: Usage indicator
+      - name: projk
+        description: Project key
+      - name: fipos
+        description: Commitment item
+      - name: nplnr
+        description: Network number for account assignment
+      - name: aufpl
+        description: Task list number
+      - name: aplzl
+        description: General counter for task list
+      - name: xegdr
+        description: EU triangular deal indicator
+      - name: dmbe2
+        description: Amount in second local currency
+      - name: dmbe3
+        description: Amount in third local currency
+      - name: dmb21
+        description: Amount 2 in second local currency
+      - name: dmb22
+        description: Amount 2-2 in second local currency
+      - name: dmb23
+        description: Amount 2-3 in second local currency
+      - name: dmb31
+        description: Amount 3 in third local currency
+      - name: dmb32
+        description: Amount 3-2 in third local currency
+      - name: dmb33
+        description: Amount 3-3 in third local currency
+      - name: bdif3
+        description: Valuation difference 3
+      - name: xragl
+        description: Balance sheet adjustment indicator
+      - name: uzawe
+        description: Payment method supplement
+      - name: xstov
+        description: Reversal indicator (from BKPF for cleared records)
+      - name: mwst2
+        description: Tax amount 2 in local currency
+      - name: mwst3
+        description: Tax amount 3 in local currency
+      - name: sknt2
+        description: Cash discount amount 2 in local currency
+      - name: sknt3
+        description: Cash discount amount 3 in local currency
+      - name: xref1
+        description: Reference key 1
+      - name: xref2
+        description: Reference key 2
+      - name: pswsl
+        description: Update currency for purchase order history
+      - name: pswbt
+        description: Amount for updating purchase order history
+      - name: lzbkz
+        description: Payment method supplement country version
+      - name: landl
+        description: Country code for payment
+      - name: imkey
+        description: Key for real estate object
+      - name: vbel2
+        description: Sales document number
+      - name: vpos2
+        description: Item number of the SD document (hardcoded to '000000' for cleared records from BSEG)
+      - name: posn2
+        description: Sequential number of the line item
+      - name: eten2
+        description: Delivery date category
+      - name: fistl
+        description: Funds center
+      - name: geber
+        description: Fund
+      - name: dabrz
+        description: Settlement date
+      - name: xnegp
+        description: Negative posting indicator
+      - name: kostl
+        description: Cost center
+      - name: rfzei
+        description: Reference line for payment
+      - name: kkber
+        description: Credit control area
+      - name: empfb
+        description: Payee
+      - name: prctr
+        description: Profit center
+      - name: xref3
+        description: Reference key 3
+      - name: qsskz
+        description: Withholding tax indicator
+      - name: zinkz
+        description: Interest calculation indicator
+      - name: dtws1
+        description: Withholding tax base amount 1
+      - name: dtws2
+        description: Withholding tax base amount 2
+      - name: dtws3
+        description: Withholding tax base amount 3
+      - name: dtws4
+        description: Withholding tax base amount 4
+      - name: xpypr
+        description: Payment request indicator
+      - name: kidno
+        description: Payment reference
+      - name: absbt
+        description: Hedged amount
+      - name: ccbtc
+        description: Company code for payment
+      - name: pycur
+        description: Currency for payment
+      - name: pyamt
+        description: Payment amount
+      - name: bupla
+        description: Business place
+      - name: secco
+        description: Section code
+      - name: cession_kz
+        description: Cession indicator
+      - name: ppdiff
+        description: Price difference amount
+      - name: ppdif2
+        description: Price difference amount 2
+      - name: ppdif3
+        description: Price difference amount 3
+      - name: kblnr
+        description: Document number earmarked funds document
+      - name: kblpos
+        description: Earmarked funds document item
+      - name: grant_nbr
+        description: Grant number
+      - name: gmvkz
+        description: Joint venture indicator
+      - name: srtype
+        description: Origin type of posting
+      - name: lotkz
+        description: Ledger group (from BKPF for cleared records)
+      - name: fkber
+        description: Functional area (uses fkber_long if available, otherwise fkber)
+      - name: intreno
+        description: Internal reference number
+      - name: pprct
+        description: Partner profit center
+      - name: buzid
+        description: Identification of the line item
+      - name: auggj
+        description: Fiscal year of clearing document
+      - name: hktid
+        description: Account ID
+      - name: budget_pd
+        description: Budget period
+      - name: bdgt_account
+        description: Budget account (hardcoded empty for archived records from BSAD_BCK)
+      - name: re_account
+        description: Real estate account (hardcoded empty for archived records from BSAD_BCK)
+      - name: pays_prov
+        description: Paying company code (provider)
+      - name: pays_tran
+        description: Payment transaction type
+      - name: mndid
+        description: Mandate reference of the payment
+      - name: payt_rsn
+        description: Payment reason (hardcoded empty for archived records from BSAD_BCK)
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: kontt
+        description: Account type (hardcoded empty for archived records from BSAD_BCK)
+      - name: kontl
+        description: Account assignment object (hardcoded empty for archived records from BSAD_BCK)
+      - name: uebgdat
+        description: Transfer date (hardcoded to '00000000')
+      - name: vname
+        description: Joint venture
+      - name: egrup
+        description: Equity group
+      - name: btype
+        description: Transaction type
+      - name: propmano
+        description: Property management (from BKPF for cleared records)
+      - name: gkont
+        description: Offsetting account for general postings
+      - name: gkart
+        description: Offsetting account type
+      - name: ghkon
+        description: Business area account
+      - name: awtyp
+        description: Reference procedure for determining source application (hardcoded empty for archived records, from BKPF for cleared records)
+      - name: logsystem_sender
+        description: Logical system of sender (hardcoded empty for archived records, from BKPF for cleared records)
+      - name: bukrs_sender
+        description: Company code of sender (hardcoded empty for archived records, from BKPF for cleared records)
+      - name: belnr_sender
+        description: Document number of sender (hardcoded empty for archived records, from BKPF for cleared records)
+      - name: gjahr_sender
+        description: Fiscal year of sender (hardcoded to '0000' for archived records, from BKPF for cleared records)
+      - name: buzei_sender
+        description: Line item of sender document (hardcoded to '000' for archived records)
+      - name: pendays
+        description: Number of days for penalty calculation (hardcoded to 0 for archived records)
+      - name: j_1tpbupl
+        description: Branch code

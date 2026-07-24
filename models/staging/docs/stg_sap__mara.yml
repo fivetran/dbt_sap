@@ -1,0 +1,496 @@
+version: 2
+
+models:
+  - name: stg_sap__mara
+    description: General material data 
+    columns:
+      - name: aeklk
+        description: Stock transfer net change costing
+      - name: aenam
+        description: Name of person who changed object
+      - name: aeszn
+        description: Document change number (without document management system)
+      - name: attyp
+        description: Material category
+      - name: begru
+        description: Authorization group
+      - name: behvo
+        description: Container requirements
+      - name: bflme
+        description: Generic material with logistical variants
+      - name: bismt
+        description: Old material number
+      - name: blanz
+        description: Number of sheets (without document management system)
+      - name: blatt
+        description: Page number of document (without document management system)
+      - name: bmatn
+        description: Number of firm's own (internal) inventory-managed material
+      - name: breit
+        description: Width
+      - name: brgew
+        description: Gross weight
+      - name: bstme
+        description: Order unit
+      - name: bwscl
+        description: Source of supply
+      - name: bwvor
+        description: Procurement rule
+      - name: cadkz
+        description: CAD indicator
+      - name: cmeth
+        description: Quantity conversion method
+      - name: compl
+        description: Material completion level
+      - name: cuobf
+        description: Internal object number
+      - name: datab
+        description: Valid-from date
+      - name: disst
+        description: Low-level code
+      - name: ean11
+        description: International Article Number (EAN/UPC)
+      - name: eannr
+        description: European Article Number (EAN)
+      - name: ekwsl
+        description: Purchasing value key
+      - name: entar
+        description: Disposal type
+      - name: ergei
+        description: Unit of weight (allowed packaging weight) 
+      - name: ergew
+        description: Allowed packaging weight
+      - name: ernam
+        description: Name of person who created the object
+      - name: ersda
+        description: Created on
+      - name: ervoe
+        description: Volume unit (allowed packaging volume)
+      - name: ervol
+        description: Allowed packaging volume
+      - name: etiag
+        description: IS-R labeling (material grouping)
+      - name: etiar
+        description: Label type
+      - name: etifo
+        description: Label form
+      - name: extwg
+        description: External material group
+      - name: ferth
+        description: Production/inspection memo
+      - name: formt
+        description: Page format of production memo
+      - name: fuelg
+        description: Maximum level (by volume)
+      - name: gewei
+        description: Weight unit
+      - name: gewto
+        description: Excess weight tolerance for handling unit
+      - name: groes
+        description: Size/dimensions
+      - name: hoehe
+        description: Height
+      - name: ihivi
+        description: Indicator (highly viscous)
+      - name: iloos
+        description: Indicator (in bulk/liquid)
+      - name: inhal
+        description: Net contents
+      - name: inhbr
+        description: Gross contents
+      - name: inhme
+        description: Content unit
+      - name: iprkz
+        description: Period indicator for shelf life expiration date
+      - name: kosch
+        description: Product allocation determination procedure
+      - name: kunnr
+        description: Competitor
+      - name: kzeff
+        description: Assign effectivity parameter values / override change numbers
+      - name: kzgvh
+        description: Packaging material is closed packaging
+      - name: kzkfg
+        description: Configurable material
+      - name: kzkup
+        description: Indicator (Material can be co-product)
+      - name: kznfm
+        description: Indicator (The amterial has a follow-up material)
+      - name: kzrev
+        description: Revision level has been assigned to the material
+      - name: kzumw
+        description: Environmentally relevant
+      - name: kzwsm
+        description: Units of measure usage
+      - name: labor
+        description: Laboratory/design office
+      - name: laeda
+        description: Date of last change
+      - name: laeng
+        description: Length
+      - name: liqdt
+        description: Deletion date
+      - name: lvorm
+        description: Flag material for deletion at client level
+      - name: magrv
+        description: Material group (Packaging materials)
+      - name: mandt
+        description: Client
+      - name: matkl
+        description: Material group
+      - name: matnr
+        description: Material number
+      - name: mbrsh
+        description: Industry sector
+      - name: meabm
+        description: Unit of dimension for length/width/height
+      - name: meins
+        description: Base unit of measure
+      - name: mfrnr
+        description: Manufacturer number
+      - name: mfrpn
+        description: Manufacturer part number
+      - name: mhdhb
+        description: Total shelf life
+      - name: mhdlp
+        description: Storage percentage
+      - name: mhdrz
+        description: Minimum remaining shelf life
+      - name: mlgut
+        description: Empties bill of material
+      - name: mprof
+        description: Mfr part profile
+      - name: mstae
+        description: Cross-plant material status
+      - name: mstav
+        description: Cross-distribution-chain material status
+      - name: mstde
+        description: Date from which the cross-plan material status is valid
+      - name: mstdv
+        description: Date from which the X-distr.-chain material status is valid
+      - name: mtart
+        description: Material type
+      - name: mtpos_mara
+        description: General item category group
+      - name: normt
+        description: Industry Standard Description (such as ANSI or ISO)
+      - name: nrfhg
+        description: Material qualifies for discount in kind
+      - name: nsnid
+        description: NATO item identification number
+      - name: ntgew
+        description: Net weight
+      - name: numtp
+        description: Category of International Article Number (EAN)
+      - name: plgtp
+        description: Price band category
+      - name: pmata
+        description: Pricing reference material
+      - name: prdha
+        description: Product hierarchy
+      - name: profl
+        description: Dangerous goods indicator profile
+      - name: przus
+        description: Indicator (Product composition printed on packaging)
+      - name: pstat
+        description: Maintenance status
+      - name: qmpur
+        description: QM in procurement is active
+      - name: raube
+        description: Storage conditions
+      - name: rbnrm
+        description: Catalog profile
+      - name: rdmhd
+        description: Rounding rule for calculation of SLED
+      - name: saisj
+        description: Season year
+      - name: saiso
+        description: Season category
+      - name: saity
+        description: Rollout in a season
+      - name: satnr
+        description: Cross-plant configurable material
+      - name: serlv
+        description: Level of explicitness for serial numbers
+      - name: spart
+        description: Divsion
+      - name: sprof
+        description: Pricing profile for variants
+      - name: stfak
+        description: Stacking factor
+      - name: stoff
+        description: Hazardous material number
+      - name: taklv
+        description: Tax classification of the material
+      - name: tempb
+        description: Temperature conditions indicator
+      - name: tragr
+        description: Transportation group
+      - name: vabme
+        description: Variable purchase order unit active
+      - name: vhart
+        description: Packaging material type
+      - name: voleh
+        description: Volume unit
+      - name: volto
+        description: Excess volume tolerance of the handling unit
+      - name: volum
+        description: Volume
+      - name: vpreh
+        description: Comparison price unit
+      - name: vpsta
+        description: Maintenance status of complete material
+      - name: wesch
+        description: Quantity, or number of GR/GI slips to be printed
+      - name: wrkst
+        description: Basic material
+      - name: xchpf
+        description: Batch management requirement indicator
+      - name: xgchp
+        description: Indicator (Approved batch record required)
+      - name: zeiar
+        description: Document type (without document management system)
+      - name: zeifo
+        description: Page form of document (without document management system)
+      - name: zeinr
+        description: Document number (without document management system)
+      - name: zeivr
+        description: Document version (without document management system)
+      - name: _accgo_assgd_uom
+        description: Assigned unit of measure (Accruals)
+      - name: _bev1_luldegrp
+        description: Beverage logistics unloading group
+      - name: _bev1_luleinh
+        description: Unloading unit of measure
+      - name: _bev1_nestruccat
+        description: Beverage structure category
+      - name: _dsd_sl_toltyp
+        description: Tolerance type for settlement
+      - name: _dsd_sv_cnt_grp
+        description: Service count group
+      - name: _dsd_vc_group
+        description: Visit control group
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _sttpec_country_ref
+        description: Country of reference (Product environmental compliance)
+      - name: _sttpec_prdcat
+        description: Product category (STTPEC)
+      - name: _sttpec_sertype
+        description: Certificate type (STTPEC)
+      - name: _sttpec_syncact
+        description: Synchronization action (STTPEC)
+      - name: _sttpec_syncchg
+        description: Change type in sync (STTPEC)
+      - name: _sttpec_synctime
+        description: Last sync time (STTPEC)
+      - name: _vso_r_bot_ind
+        description: Bottom layer indicator (Retail VSO)
+      - name: _vso_r_kzgvh_ind
+        description: Closed packaging indicator (Retail VSO)
+      - name: _vso_r_no_p_gvh
+        description: No packaging material group (Retail VSO)
+      - name: _vso_r_pal_b_ht
+        description: Pallet base height (Retail VSO)
+      - name: _vso_r_pal_ind
+        description: Pallet indicator (Retail VSO)
+      - name: _vso_r_pal_min_h
+        description: Minimum pallet height (Retail VSO)
+      - name: _vso_r_pal_ovr_d
+        description: Pallet overhang depth (Retail VSO)
+      - name: _vso_r_pal_ovr_w
+        description: Pallet overhang width (Retail VSO)
+      - name: _vso_r_quan_unit
+        description: Quantity unit (Retail VSO)
+      - name: _vso_r_stack_ind
+        description: Stackable indicator (Retail VSO)
+      - name: _vso_r_stack_no
+        description: Maximum stacking number (Retail VSO)
+      - name: _vso_r_tilt_ind
+        description: Tilt indicator (Retail VSO)
+      - name: _vso_r_tol_b_ht
+        description: Tolerance for base height (Retail VSO)
+      - name: _vso_r_top_ind
+        description: Top layer indicator (Retail VSO)
+      - name: adprof
+        description: Profile for advertising materials
+      - name: adspc_spc
+        description: Ad space specification
+      - name: allow_pmat_igno
+        description: Allow packaging material ignore flag
+      - name: animal_origin
+        description: Indicator (Material of animal origin)
+      - name: anp
+        description: Assembly item indicator
+      - name: bbtyp
+        description: Base unit type
+      - name: brand_id
+        description: Brand identification number
+      - name: bstat
+        description: Material status at plant level
+      - name: care_code
+        description: Classification code used to identify special handling or care instructions for a material, such as temperature control, fragility, or hazard levels.
+      - name: cmrel
+        description: Commodity relevant
+      - name: cobjid
+        description: Object ID (Product Compliance)
+      - name: color
+        description: Color description
+      - name: color_atinn
+        description: Internal characteristic number for color
+      - name: commodity
+        description: Commodity code
+      - name: cotype
+        description: Configuration type
+      - name: cwqproc
+        description: Catch weight processing procedure
+      - name: cwqrel
+        description: Catch weight relevance
+      - name: cwqtolgr
+        description: Catch weight tolerance group
+      - name: dg_pack_status
+        description: Dangerous goods packaging status
+      - name: fashgrd
+        description: Fashion grade
+      - name: fiber_code1
+        description: Fiber code 1
+      - name: fiber_code2
+        description: Fiber code 2
+      - name: fiber_code3
+        description: Fiber code 3
+      - name: fiber_code4
+        description: Fiber code 4
+      - name: fiber_code5
+        description: Fiber code 5
+      - name: fiber_part1
+        description: Fiber content part 1
+      - name: fiber_part2
+        description: Fiber content part 2
+      - name: fiber_part3
+        description: Fiber content part 3
+      - name: fiber_part4
+        description: Fiber content part 4
+      - name: fiber_part5
+        description: Fiber content part 5
+      - name: free_char
+        description: Free characteristics
+      - name: fsh_mg_at1
+        description: Fashion material group attribute 1
+      - name: fsh_mg_at2
+        description: Fashion material group attribute 2
+      - name: fsh_mg_at3
+        description: Fashion material group attribute 3
+      - name: fsh_sc_mid
+        description: Fashion supply chain merchandise category
+      - name: fsh_seaim
+        description: Fashion season indicator
+      - name: fsh_sealv
+        description: Fashion season level
+      - name: gds_relevant
+        description: GDS relevant indicator
+      - name: gennr
+        description: Generic material number
+      - name: gtin_variant
+        description: GTIN variant ID
+      - name: hazmat
+        description: Hazardous material indicator
+      - name: herkl
+        description: Country of origin
+      - name: hndlcode
+        description: Handling code
+      - name: hutyp
+        description: Handling unit type
+      - name: hutyp_dflt
+        description: Default HU type
+      - name: imatn
+        description: Material number used by vendor
+      - name: ipmipproduct
+        description: Intellectual Property-managed product
+      - name: loglev_reto
+        description: Logistics level for returns
+      - name: logunit
+        description: Logical unit
+      - name: matfi
+        description: Material status for FI
+      - name: maxb
+        description: Maximum length
+      - name: maxc
+        description: Maximum width
+      - name: maxc_tol
+        description: Tolerance for width
+      - name: maxdim_uom
+        description: Unit of measure for max dimensions
+      - name: maxh
+        description: Maximum height
+      - name: maxl
+        description: Maximum pallet layer
+      - name: mcond
+        description: Material condition group used for pricing determination.
+      - name: medium
+        description: Medium type
+      - name: mfrgr
+        description: Material freight group
+      - name: oigroupnam
+        description: OIL group name
+      - name: oihmtxgr
+        description: OIL material text group
+      - name: oitrind
+        description: OIL transport indicator
+      - name: packcode
+        description: Packaging code
+      - name: picnum
+        description: Picture number
+      - name: pilferable
+        description: Pilferable indicator
+      - name: ps_smartform
+        description: Smartform for product safety
+      - name: psm_code
+        description: Product stewardship code
+      - name: qgrp
+        description: QM control key
+      - name: qqtime
+        description: Quarantine time
+      - name: qqtimeuom
+        description: Quarantine time unit of measure
+      - name: retdelc
+        description: Returns deletion flag
+      - name: rmatp
+        description: Relevant for material availability check
+      - name: serial
+        description: Serial number profile
+      - name: sgt_covsa
+        description: Segmentation coverage scenario
+      - name: sgt_csgr
+        description: Segmentation strategy
+      - name: sgt_rel
+        description: Segmentation relevance
+      - name: sgt_scope
+        description: Segmentation scope
+      - name: sgt_stat
+        description: Segmentation status
+      - name: size1
+        description: Size 1 (numeric or text)
+      - name: size1_atinn
+        description: Internal characteristic number for size1
+      - name: size2
+        description: Size 2 (numeric or text)
+      - name: size2_atinn
+        description: Internal characteristic number for size2
+      - name: sled_bbd
+        description: Shelf life expiration or best-before date
+      - name: tare_var
+        description: Variable tare weight indicator
+      - name: textile_comp_ind
+        description: Textile composition indicator
+      - name: weora
+        description: Time of goods receipt
+      - name: whmatgr
+        description: Material group for warehouse mgmt
+      - name: whstc
+        description: Warehouse storage condition
