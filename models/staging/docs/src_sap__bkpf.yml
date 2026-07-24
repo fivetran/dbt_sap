@@ -1,0 +1,270 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: bkpf
+        identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
+        config:
+          enabled: "{{ var('sap_using_bkpf', true) }}"
+        description: Accounting document header
+        columns:
+          - name: belnr_sender
+            description: Sender accounting document number
+          - name: bukrs_sender
+            description: Sender company code
+          - name: gjahr_sender
+            description: Sender fiscal year
+          - name: budat
+            description: Posting date
+          - name: propmano
+            description: Property management
+          - name: lotkz
+            description: Ledger group
+          - name: awtyp
+            description: Reference document type
+          - name: xnetb
+            description: Net amount indicator
+          - name: logsystem_sender
+            description: Sender logical system
+          - name: xstov
+            description: Reversal posting indicator
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: _sapf15_status
+            description: SAP F15 status flag
+          - name: adisc
+            description: Dunning block
+          - name: aedat
+            description: Last change date
+          - name: arcid
+            description: Archive run ID
+          - name: ausbk
+            description: House bank
+          - name: awkey
+            description: Reference key
+          - name: awsys
+            description: Logical system
+          - name: awtyp
+            description: Reference document type
+          - name: basw2
+            description: Second local currency base amount
+          - name: basw3
+            description: Third local currency base amount
+          - name: batch
+            description: Batch number
+          - name: belnr
+            description: Accounting document number
+          - name: bktxt
+            description: Document header text
+          - name: blart
+            description: Document type
+          - name: bldat
+            description: Document date in document
+          - name: blind
+            description: Invoice list indicator
+          - name: brnch
+            description: Branch number
+          - name: bstat
+            description: Document status
+          - name: budat
+            description: Posting date
+          - name: bukrs
+            description: Company code
+          - name: bvorg
+            description: Original document number
+          - name: cash_alloc
+            description: Cash allocation indicator
+          - name: ccins
+            description: Credit card issuer
+          - name: ccnum
+            description: Credit card number
+          - name: cpudt
+            description: Day on which accounting document was entered
+          - name: cputm
+            description: Time of entry
+          - name: ctxkrs
+            description: Translation currency
+          - name: curt2
+            description: Second local currency
+          - name: curt3
+            description: Third local currency
+          - name: dbblg
+            description: Reference document number for depreciation
+          - name: doccat
+            description: Document category
+          - name: dokid
+            description: Document ID
+          - name: duefl
+            description: Due date flag
+          - name: exclude_flag
+            description: Exclusion indicator
+          - name: fikrs
+            description: Financial management area
+          - name: fm_umart
+            description: FM transaction type
+          - name: follow_on
+            description: Follow-on document flag
+          - name: frath
+            description: Document grouping key
+          - name: gjahr
+            description: Fiscal year
+          - name: glvor
+            description: Business transaction
+          - name: grpid
+            description: Group ID
+          - name: hwae2
+            description: Currency key of second local currency
+          - name: hwae3
+            description: Currency key of third local currency
+          - name: hwaer
+            description: Local currency
+          - name: iblar
+            description: Interest indicator
+          - name: intdate
+            description: Interest calculation date
+          - name: intform
+            description: Interest calculation method
+          - name: knumv
+            description: Condition document number
+          - name: kur2x
+            description: Exchange rate for second local currency
+          - name: kur3x
+            description: Exchange rate for third local currency
+          - name: kurs2
+            description: Exchange rate 2
+          - name: kurs3
+            description: Exchange rate 3
+          - name: kursf
+            description: Exchange rate
+          - name: kurst
+            description: Exchange rate type
+          - name: kursx
+            description: Exchange rate (market)
+          - name: kuty2
+            description: Exchange rate quotation type 2
+          - name: kuty3
+            description: Exchange rate quotation type 3
+          - name: kzkrs
+            description: Currency translation key
+          - name: kzwrs
+            description: Cash discount amount
+          - name: ldgrp
+            description: Ledger group
+          - name: lotkz
+            description: Lottery indicator
+          - name: mandt
+            description: Client
+          - name: monat
+            description: Fiscal period
+          - name: numpg
+            description: Number range for document
+          - name: offset_refer_dat
+            description: Offset reference date
+          - name: offset_status
+            description: Offset document status
+          - name: penrc
+            description: Number of pension recipients
+          - name: ppnam
+            description: Program name
+          - name: propmano
+            description: Proposal management number
+          - name: psoak
+            description: Public sector account assignment
+          - name: psobt
+            description: Object type
+          - name: psodt
+            description: Due date
+          - name: psofn
+            description: Fund
+          - name: psoks
+            description: Commitment item
+          - name: psosg
+            description: Funded program
+          - name: psotm
+            description: Functional area
+          - name: psoty
+            description: Funds center
+          - name: psozl
+            description: Grant
+          - name: reindat
+            description: Reinsurance start date
+          - name: resubmission
+            description: Resubmission date
+          - name: rldnr
+            description: Ledger
+          - name: sampled
+            description: Sampled document flag
+          - name: sname
+            description: User name
+          - name: ssblk
+            description: Substitution block
+          - name: stblg
+            description: Reversal document number
+          - name: stgrd
+            description: Reason code
+          - name: stjah
+            description: Reversal fiscal year
+          - name: stodt
+            description: Reversal posting date
+          - name: subset
+            description: Sample set
+          - name: tcode
+            description: Transaction code
+          - name: txkrs
+            description: Currency translation key
+          - name: umrd2
+            description: Translation date for 2nd currency
+          - name: umrd3
+            description: Translation date for 3rd currency
+          - name: upddt
+            description: Update date
+          - name: usnam
+            description: User name
+          - name: vatdate
+            description: VAT date
+          - name: waers
+            description: Currency key
+          - name: wwert
+            description: Value date
+          - name: xblnr
+            description: Reference document number
+          - name: xblnr_alt
+            description: Alternative reference number
+          - name: xmca
+            description: MCA indicator
+          - name: xmwst
+            description: Tax code indicator
+          - name: xnetb
+            description: Net amount indicator
+          - name: xref1_hd
+            description: Reference key 1
+          - name: xref2_hd
+            description: Reference key 2
+          - name: xreorg
+            description: Doc. contains open item that was transferred during reorg.
+          - name: xreversal
+            description: Reversal document indicator
+          - name: xrueb
+            description: Reversal reason
+          - name: xsnet
+            description: Net procedure indicator
+          - name: xsplit
+            description: Document split indicator
+          - name: xstov
+            description: Reversal posting indicator
+          - name: xusvr
+            description: U.S. government flag
+          - name: xwvof
+            description: Goods movement indicator

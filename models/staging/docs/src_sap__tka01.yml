@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: tka01
+        identifier: "{{ var('sap_tka01_identifier', 'tka01') }}"
+        config:
+          enabled: "{{ var('sap_using_tka01', true) }}"
+        description: Controlling area
+        columns:
+          - name: logsystem
+            description: Logical system
+          - name: xwbuk
+            description: Company code indicator
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: mandt
+            description: Client
+          - name: kokrs
+            description: Controlling area

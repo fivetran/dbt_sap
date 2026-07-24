@@ -1,0 +1,174 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: eket
+        identifier: "{{ var('sap_eket_identifier', 'eket') }}"
+        config:
+          enabled: "{{ var('sap_using_eket', true) }}"
+        description: Schedule lines for purchasing document
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_sap_archived
+            description: Fivetran SAP archive marker
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: abart
+            description: Disposal type
+          - name: altdt
+            description: Date of last changes
+          - name: ameng
+            description: Quantity in unit of entry
+          - name: anzsn
+            description: Number of serial numbers
+          - name: aulwe
+            description: Delivery completed indicator
+          - name: banfn
+            description: Purchase requisition number
+          - name: bedat
+            description: Document date in purchasing document
+          - name: bnfpo
+            description: Item number of purchase requisition
+          - name: budg_type
+            description: Budget type
+          - name: cd_locno
+            description: Location number for CD
+          - name: cd_loctype
+            description: Type of CD location
+          - name: charg
+            description: Batch number
+          - name: check_type
+            description: Type of check
+          - name: chkom
+            description: Confirmation control key
+          - name: cncl_ancmnt_done
+            description: Cancel announcement processed
+          - name: dabmg
+            description: Quantity reduced
+          - name: dat01
+            description: Date field 1
+          - name: dateshift_number
+            description: Number of days delivery date shifted
+          - name: dl_id
+            description: Delivery ID
+          - name: dng_date
+            description: Announcement date
+          - name: dng_time
+            description: Announcement time
+          - name: ebeln
+            description: Purchasing document number
+          - name: ebelp
+            description: Item number of purchasing document
+          - name: eindt
+            description: Delivery date
+          - name: eldat
+            description: Goods receipt date
+          - name: eluhr
+            description: Time of goods receipt
+          - name: estkz
+            description: Control indicator
+          - name: etenr
+            description: Schedule line number
+          - name: fixkz
+            description: Fixed date and quantity indicator
+          - name: fsh_os_id
+            description: One-step ID for fashion
+          - name: fsh_ralloc_qty
+            description: Reallocation quantity
+          - name: fsh_salloc_qty
+            description: Stock allocation quantity
+          - name: geo_route
+            description: Geographical route
+          - name: glmng
+            description: Quantity of goods received
+          - name: gts_ind
+            description: GTS relevant indicator
+          - name: handover_date
+            description: Handover date to forwarding agent
+          - name: handoverdate
+            description: Handover date
+          - name: handovertime
+            description: Handover time
+          - name: hvr_change_time
+            description: HVR change timestamp
+          - name: hvr_is_deleted
+            description: HVR deletion flag
+          - name: key_id
+            description: Key ID
+          - name: lddat
+            description: Loading date
+          - name: lduhr
+            description: Loading time
+          - name: licha
+            description: Vendor batch number
+          - name: lpein
+            description: Price unit
+          - name: mahnz
+            description: Reminder level
+          - name: mandt
+            description: Client
+          - name: mbdat
+            description: GR planned date
+          - name: mbuhr
+            description: GR planned time
+          - name: menge
+            description: Quantity
+          - name: mng02
+            description: Second quantity field
+          - name: no_scem
+            description: No supply chain event management
+          - name: nodisp
+            description: No display indicator
+          - name: otb_curr
+            description: Currency of OTB
+          - name: otb_reason
+            description: OTB blocking reason
+          - name: otb_res_value
+            description: OTB release value
+          - name: otb_spec_value
+            description: OTB special release value
+          - name: otb_status
+            description: OTB status
+          - name: otb_value
+            description: OTB value
+          - name: qunum
+            description: Number of delivery note
+          - name: qupos
+            description: Delivery note item
+          - name: route_gts
+            description: GTS route
+          - name: rsnum
+            description: Reservation number
+          - name: sernr
+            description: Serial number
+          - name: slfdt
+            description: Shelf life expiration date
+          - name: spr_rsn_profile
+            description: Profile for delivery date reason
+          - name: tddat
+            description: Transportation planning date
+          - name: tduhr
+            description: Transportation planning time
+          - name: tsp
+            description: Service level
+          - name: uzeit
+            description: Time of entry
+          - name: verid
+            description: Production version
+          - name: wadat
+            description: Planned goods issue date
+          - name: wamng
+            description: Quantity of goods issued
+          - name: wauhr
+            description: Goods issue time
+          - name: wemng
+            description: Quantity of goods received

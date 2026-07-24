@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: tvag
+        identifier: "{{ var('sap_tvag_identifier', 'tvag') }}"
+        config:
+          enabled: "{{ var('sap_using_tvag', true) }}"
+        description: Sales document rejection reasons
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: abgru
+            description: Reason code
+          - name: dragr
+            description: Item is relevant for delivery scheduling
+          - name: ep_off
+            description: EDI partner-specific flag
+          - name: fk_erl
+            description: Billing block active
+          - name: fsh_pqr_spec
+            description: PQR specification (Fashion)
+          - name: hvr_change_time
+            description: HVR change timestamp
+          - name: hvr_is_deleted
+            description: HVR deletion flag
+          - name: kowrr
+            description: Net value relevant
+          - name: mandt
+            description: Client

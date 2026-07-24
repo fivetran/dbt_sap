@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: ska1
+        identifier: "{{ var('sap_ska1_identifier', 'ska1') }}"
+        config:
+          enabled: "{{ var('sap_using_ska1', true) }}"
+        description: G/L Account Master (Chart of Accounts)
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: bilkt
+            description: Group account number
+          - name: erdat
+            description: Date on which the record was created
+          - name: ernam
+            description: Name of person who created the object
+          - name: func_area
+            description: Functional area
+          - name: gvtyp
+            description: P&L statement account type
+          - name: ktoks
+            description: G/L account group
+          - name: ktopl
+            description: Chart of accounts
+          - name: mandt
+            description: Client
+          - name: mcod1
+            description: Search term 1
+          - name: mustr
+            description: Number of the sample account
+          - name: sakan
+            description: G/L account number, significant length
+          - name: saknr
+            description: G/L account number
+          - name: vbund
+            description: Company id of tradiing partner
+          - name: xbilk
+            description: Indicator (account is a balance sheet account?)
+          - name: xloev
+            description: Indicator (account marked for deletion?)
+          - name: xspea
+            description: Indicator (account is blocked for creation?)
+          - name: xspeb
+            description: Indicator (Is account blocked for posting?)
+          - name: xspep
+            description: Indicator (Account blocked for planning?)

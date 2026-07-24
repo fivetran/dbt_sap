@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: t161t
+        identifier: "{{ var('sap_t161t_identifier', 't161t') }}"
+        config:
+          enabled: "{{ var('sap_using_t161t', true) }}"
+        description: Purchasing doc type texts
+        columns:
+          - name: _fivetran_deleted
+            description: Fivetran deletion marker
+          - name: _fivetran_rowid
+            description: Fivetran unique row ID
+          - name: _fivetran_synced
+            description: Fivetran sync timestamp
+          - name: batxt
+            description: Description
+          - name: bsart
+            description: Document type
+          - name: bstyp
+            description: Document category
+          - name: mandt
+            description: Client
+          - name: spras
+            description: Language key
