@@ -1,3 +1,8 @@
+{{ config(
+    tags="fivetran_validations",
+    enabled=var('fivetran_validation_tests_enabled', false)
+) }}
+
 {% set staging_cols = adapter.get_columns_in_relation(ref('stg_sap__faglflexa')) %}
 
 {# Exclude Fivetran metadata and faglflexa_timestamp, which is aliased as timestamp_at in the compat view #}
