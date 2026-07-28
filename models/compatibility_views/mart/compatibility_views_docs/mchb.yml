@@ -1,0 +1,116 @@
+version: 2
+
+models:
+  - name: mchb
+    description: Batch Stocks (MCHB) compatibility view - Contains batch-specific stock quantities and valuations for each material and storage location
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: matnr
+        description: Material number
+      - name: werks
+        description: Plant
+      - name: lgort
+        description: Storage location
+      - name: charg
+        description: Batch number
+      - name: lvorm
+        description: Flag for deletion at storage location level
+      - name: ersda
+        description: Date on which record was created
+      - name: ernam
+        description: Name of person who created the object
+      - name: laeda
+        description: Date of last change
+      - name: aenam
+        description: Name of person who changed object
+      - name: lfgja
+        description: Fiscal year of last goods receipt
+      - name: lfmon
+        description: Period of last goods receipt
+      - name: sperc
+        description: Blocking indicator for batch
+      - name: clabs
+        description: Valuated unrestricted-use stock
+      - name: cumlm
+        description: Stock in transfer (plant to plant)
+      - name: cinsm
+        description: Stock in quality inspection
+      - name: ceinm
+        description: Restricted-use stock
+      - name: cspem
+        description: Blocked stock
+      - name: cretm
+        description: Returns blocked stock
+      - name: cvmla
+        description: Valuated stock - sales order
+      - name: cvmum
+        description: Valuated stock - project
+      - name: cvmin
+        description: Valuated stock - individual customer
+      - name: cvmei
+        description: Valuated stock - consignment
+      - name: cvmsp
+        description: Valuated stock - subcontracting
+      - name: cvmre
+        description: Valuated stock - returns
+      - name: kzicl
+        description: Indicator for stock category (unrestricted)
+      - name: kzicq
+        description: Indicator for stock category (quality inspection)
+      - name: kzice
+        description: Indicator for stock category (restricted)
+      - name: kzics
+        description: Indicator for stock category (blocked)
+      - name: kzvcl
+        description: Indicator for valuated stock category (unrestricted)
+      - name: kzvcq
+        description: Indicator for valuated stock category (quality inspection)
+      - name: kzvce
+        description: Indicator for valuated stock category (restricted)
+      - name: kzvcs
+        description: Indicator for valuated stock category (blocked)
+      - name: herkl
+        description: Country of origin of the material
+      - name: chdll
+        description: Last change to batch line
+      - name: chjin
+        description: Batch change indicator
+      - name: chrue
+        description: Batch change indicator (always X)
+      - name: sgt_scat
+        description: Stock segment category
+      - name: fsh_season_year
+        description: Fashion management season year
+      - name: fsh_season
+        description: Fashion management season
+      - name: fsh_collection
+        description: Fashion management collection
+      - name: fsh_theme
+        description: Fashion management theme
+      - name: fsh_salloc_qty
+        description: Fashion management allocated quantity
+      - name: _cwm_clabs
+        description: CWM valuated unrestricted-use stock
+      - name: _cwm_cinsm
+        description: CWM stock in quality inspection
+      - name: _cwm_ceinm
+        description: CWM restricted-use stock
+      - name: _cwm_cspem
+        description: CWM blocked stock
+      - name: _cwm_cretm
+        description: CWM returns blocked stock
+      - name: _cwm_cumlm
+        description: CWM stock in transfer (plant to plant)
+      - name: _cwm_cvmla
+        description: CWM valuated stock - sales order
+      - name: _cwm_cvmin
+        description: CWM valuated stock - individual customer
+      - name: _cwm_cvmei
+        description: CWM valuated stock - consignment
+      - name: _cwm_cvmsp
+        description: CWM valuated stock - subcontracting
+      - name: _cwm_cvmre
+        description: CWM valuated stock - returns
+      - name: _cwm_cvmum
+        description: CWM valuated stock - project

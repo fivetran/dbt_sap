@@ -1,0 +1,122 @@
+version: 2
+
+models:
+  - name: stg_sap__mchb
+    description: Batch stocks
+    columns:
+      - name: _cwm_ceinm
+        description: CWM total stock of all restricted batches
+      - name: _cwm_cinsm
+        description: CWM stock in quality inspection
+      - name: _cwm_clabs
+        description: CWM valuated unrestricted-use stock
+      - name: _cwm_cretm
+        description: CWM blocked stock returns
+      - name: _cwm_cspem
+        description: CWM blocked stock
+      - name: _cwm_cumlm
+        description: CWM stock in transfer
+      - name: _cwm_cvmei
+        description: CWM restricted-use stock in previous period
+      - name: _cwm_cvmin
+        description: CWM stock in quality inspection in previous period
+      - name: _cwm_cvmla
+        description: CWM valuated unrestricted-use stock in previous period
+      - name: _cwm_cvmre
+        description: CWM blocked stock returns in previous period
+      - name: _cwm_cvmsp
+        description: CWM blocked stock of previous period
+      - name: _cwm_cvmum
+        description: CWM stock in transfer in previous period
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: aenam
+        description: Name of person who changed object
+      - name: ceinm
+        description: Total stock of all restricted batches
+      - name: charg
+        description: Batch number
+      - name: chdll
+        description: Date of last physical inventory for unrestricted-use stock
+      - name: chjin
+        description: Fiscal year of current physical inventory indicator
+      - name: chrue
+        description: Prior period batch stock history record indicator
+      - name: cinsm
+        description: Stock in quality inspection
+      - name: clabs
+        description: Valuated unrestricted-use stock
+      - name: cretm
+        description: Blocked stock returns
+      - name: cspem
+        description: Blocked stock
+      - name: cumlm
+        description: Stock in transfer
+      - name: cvmei
+        description: Restricted-use stock in previous period
+      - name: cvmin
+        description: Stock in quality inspection in previous period
+      - name: cvmla
+        description: Valuated unrestricted-use stock in previous period
+      - name: cvmre
+        description: Blocked stock returns in previous period
+      - name: cvmsp
+        description: Blocked stock of previous period
+      - name: cvmum
+        description: Stock in transfer in previous period
+      - name: ernam
+        description: Created by
+      - name: ersda
+        description: Created on
+      - name: fsh_collection
+        description: Fashion collection
+      - name: fsh_salloc_qty
+        description: Stock allocation quantity
+      - name: fsh_season
+        description: Fashion season
+      - name: fsh_season_year
+        description: Fashion season year
+      - name: fsh_theme
+        description: Fashion theme
+      - name: herkl
+        description: Country of origin
+      - name: kzice
+        description: Physical inventory indicator for restricted-use stock
+      - name: kzicl
+        description: Physical inventory indicator for warehouse stock in current year
+      - name: kzicq
+        description: Physical inventory indicator for quality inspection stock in current year
+      - name: kzics
+        description: Physical inventory indicator for blocked stock
+      - name: kzvce
+        description: Physical inventory indicator for restricted-use stock in previous period
+      - name: kzvcl
+        description: Physical inventory indicator for stock in previous year
+      - name: kzvcq
+        description: Physical inventory indicator for quality inspection stock in previous period
+      - name: kzvcs
+        description: Physical inventory indicator for blocked stock in previous period
+      - name: laeda
+        description: Date of last change
+      - name: lfgja
+        description: Vendor invoice fiscal year
+      - name: lfmon
+        description: Current period (posting period)
+      - name: lgort
+        description: Storage location
+      - name: lvorm
+        description: Flag material for deletion at client level
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: sgt_scat
+        description: Segmentation category
+      - name: sperc
+        description: Physical inventory blocking indicator
+      - name: werks
+        description: Plant

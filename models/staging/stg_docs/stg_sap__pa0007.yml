@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: stg_sap__pa0007
+    description: HR master record--infotype 0007 (planned working time)
+    columns:
+      - name: aedtm
+        description: Changed on
+      - name: arbst
+        description: Daily working hours
+      - name: awtyp
+        description: Reference transaction
+      - name: begda
+        description: Start date
+      - name: dysch
+        description: Create daily work schedule dynamically
+      - name: empct
+        description: Employment percentage
+      - name: endda
+        description: End date
+      - name: flag1
+        description: Reserved field/unused field
+      - name: flag2
+        description: Reserved field/unused field 
+      - name: flag3
+        description: Reserved field/unused field
+      - name: flag4
+        description: Reserved field/unused field
+      - name: grpvl
+        description: Grouping value for personnel assignments
+      - name: histo
+        description: Historical record flag
+      - name: itbld
+        description: Infotype screen control
+      - name: itxex
+        description: Text exists for infotype
+      - name: jrstd
+        description: Annual working hours
+      - name: kztim
+        description: Additional indicator for time management
+      - name: mandt
+        description: Client
+      - name: maxja
+        description: Maximum number of working hours per year
+      - name: maxmo
+        description: Maximum number of work hours per month
+      - name: maxta
+        description: Maximum number of work hours per day
+      - name: maxwo
+        description: Maximum number of work hours per week
+      - name: minja
+        description: Minimum annual working hours
+      - name: minmo
+        description: Minimum number of work hours per month
+      - name: minta
+        description: Minimum number of work hours per day
+      - name: minwo
+        description: Minimum weekly working hours
+      - name: mostd
+        description: Monthly hours
+      - name: objps
+        description: Object identification
+      - name: ordex
+        description: Confirmation fields exist
+      - name: pernr
+        description: Personnel number
+      - name: preas
+        description: Reason for changing master data
+      - name: refex
+        description: Reference fields exist (primary/secondary costs)
+      - name: rese1
+        description: Reserved field/unused field of length 2
+      - name: rese2
+        description: Reserved field/unused field of length 2 
+      - name: schkz
+        description: Work schedule rule
+      - name: seqnr
+        description: Number of infotype record with same key
+      - name: sprps
+        description: Lock indicator for HR master data record
+      - name: subty
+        description: Subtype
+      - name: teilk
+        description: Indicator part-time employee 
+      - name: uname
+        description: Name of person who changed objects
+      - name: wkwdy
+        description: Weekly workdays
+      - name: wostd
+        description: Hours per week
+      - name: wweek
+        description: Working week
+      - name: zterf
+        description: Employee time management status

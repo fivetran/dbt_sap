@@ -1,0 +1,186 @@
+version: 2
+
+models:
+  - name: stg_sap__ekbe
+    description: Purchasing document history
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: arewb
+        description: Amount in local currency
+      - name: arewr
+        description: Original amount in local currency
+      - name: arewr_pop
+        description: Corrected local currency amount
+      - name: areww
+        description: Valuated amount in local currency
+      - name: bamng
+        description: Quantity entered
+      - name: bekkn
+        description: Account assignment number
+      - name: belnr
+        description: Document number
+      - name: bewtp
+        description: Transaction type
+      - name: bldat
+        description: Document date
+      - name: bpmng
+        description: Quantity in order price unit
+      - name: bpmng_pop
+        description: Adjusted quantity in order price unit
+      - name: bpweb
+        description: Vendor document number
+      - name: bpwes
+        description: Vendor item number
+      - name: budat
+        description: Posting date
+      - name: buzei
+        description: Document item
+      - name: bwart
+        description: Movement type
+      - name: bwtar
+        description: Valuation type
+      - name: charg
+        description: Batch number
+      - name: cpudt
+        description: Entry date
+      - name: cputm
+        description: Entry time
+      - name: dmbtr
+        description: Amount in local currency
+      - name: dmbtr_pop
+        description: Adjusted amount in local currency
+      - name: ebeln
+        description: Purchasing document
+      - name: ebelp
+        description: Purchasing document item
+      - name: elikz
+        description: Final delivery flag
+      - name: ematn
+        description: Supplier material number
+      - name: ernam
+        description: Created by
+      - name: et_upd
+        description: Update timestamp
+      - name: etens
+        description: Confirmation sequence number
+      - name: evere
+        description: ERS indicator
+      - name: fsh_collection
+        description: Fashion collection
+      - name: fsh_season
+        description: Fashion season
+      - name: fsh_season_year
+        description: Fashion season year
+      - name: fsh_theme
+        description: Fashion theme
+      - name: gjahr
+        description: Fiscal year
+      - name: grund
+        description: Movement reason
+      - name: hswae
+        description: Insurance currency
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: introw
+        description: Internal row number
+      - name: inv_item_origin
+        description: Invoice item origin
+      - name: j_sc_die_comp_f
+        description: Custom field
+      - name: knumv
+        description: Condition number
+      - name: kudif
+        description: Customer-specific field
+      - name: lemin
+        description: Minimum delivery quantity
+      - name: lfbnr
+        description: Vendor invoice number
+      - name: lfgja
+        description: Vendor invoice fiscal year
+      - name: lfpos
+        description: Vendor invoice item
+      - name: lsmeh
+        description: Order unit of measure
+      - name: lsmng
+        description: Order unit quantity
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: menge
+        description: Quantity
+      - name: menge_pop
+        description: Adjusted quantity
+      - name: mwskz
+        description: Tax code
+      - name: packno
+        description: Package number
+      - name: reewr
+        description: ERS amount
+      - name: refwr
+        description: Reference amount
+      - name: retamt_fc
+        description: Retention amount (FC)
+      - name: retamt_lc
+        description: Retention amount (LC)
+      - name: retamtp_fc
+        description: Retention percent (FC)
+      - name: retamtp_lc
+        description: Retention percent (LC)
+      - name: rewrb
+        description: Tax amount
+      - name: saprl
+        description: SAP release
+      - name: sgt_scat
+        description: Segmentation category
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: srvpos
+        description: Service line number
+      - name: vbeln_st
+        description: Sales document
+      - name: vbelp_st
+        description: Sales document item
+      - name: vgabe
+        description: Transaction/event type
+      - name: waers
+        description: Currency key
+      - name: weora
+        description: Goods receipt time
+      - name: werks
+        description: Plant
+      - name: wesbb
+        description: Quantity to be invoiced
+      - name: wesbs
+        description: Quantity to be delivered
+      - name: wkurs
+        description: Exchange rate
+      - name: wrbtr
+        description: Amount in document currency
+      - name: wrbtr_pop
+        description: Adjusted amount in document currency
+      - name: wrf_charstc1
+        description: Retail characteristic 1
+      - name: wrf_charstc2
+        description: Retail characteristic 2
+      - name: wrf_charstc3
+        description: Retail characteristic 3
+      - name: xblnr
+        description: Reference document number
+      - name: xmacc
+        description: Cross-company accounting flag
+      - name: xunpl
+        description: Planned delivery costs flag
+      - name: xwoff
+        description: Goods movement offset flag
+      - name: xwsbr
+        description: ERS settlement flag
+      - name: zekkn
+        description: Account assignment sequence number

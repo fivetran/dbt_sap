@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_sap__sapsll_maritc
+    description: SAP Special Ledger material items
+    columns:
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: stcts
+        description: Statistical number
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: ccngn
+        description: Currency number generation

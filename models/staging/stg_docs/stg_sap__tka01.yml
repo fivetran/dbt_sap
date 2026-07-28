@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_sap__tka01
+    description: Controlling area
+    columns:
+      - name: mandt
+        description: Client
+      - name: kokrs
+        description: Controlling area
+      - name: logsystem
+        description: Logical system
+      - name: xwbuk
+        description: Company code indicator
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

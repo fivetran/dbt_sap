@@ -1,0 +1,340 @@
+version: 2
+
+models:
+  - name: coss
+    description: Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: lednr
+        description: Ledger number - identifier for different ledgers in financial accounting
+      - name: objnr
+        description: Object number - unique identifier for the cost object
+      - name: gjahr
+        description: Fiscal year
+      - name: wrttp
+        description: Value type - distinguishes between plan data (04) and actual data (11)
+      - name: versn
+        description: Version - identifies different planning versions
+      - name: kstar
+        description: Cost element - general ledger account used for cost accounting
+      - name: hrkft
+        description: Origin of cost element - indicates source system or posting logic
+      - name: vrgng
+        description: Business transaction - identifies the type of posting transaction
+      - name: parob
+        description: Partner object - related cost object for internal cost postings
+      - name: uspob
+        description: User-defined partner object for additional assignment
+      - name: beknz
+        description: Debit/credit indicator for postings
+      - name: twaer
+        description: Transaction currency
+      - name: perbl
+        description: Number of periods - indicates fiscal year structure
+      - name: meinh
+        description: Unit of measure for quantities
+      - name: wtg001
+        description: Transaction currency amount for period 001
+      - name: wtg002
+        description: Transaction currency amount for period 002
+      - name: wtg003
+        description: Transaction currency amount for period 003
+      - name: wtg004
+        description: Transaction currency amount for period 004
+      - name: wtg005
+        description: Transaction currency amount for period 005
+      - name: wtg006
+        description: Transaction currency amount for period 006
+      - name: wtg007
+        description: Transaction currency amount for period 007
+      - name: wtg008
+        description: Transaction currency amount for period 008
+      - name: wtg009
+        description: Transaction currency amount for period 009
+      - name: wtg010
+        description: Transaction currency amount for period 010
+      - name: wtg011
+        description: Transaction currency amount for period 011
+      - name: wtg012
+        description: Transaction currency amount for period 012
+      - name: wtg013
+        description: Transaction currency amount for period 013
+      - name: wtg014
+        description: Transaction currency amount for period 014
+      - name: wtg015
+        description: Transaction currency amount for period 015
+      - name: wtg016
+        description: Transaction currency amount for period 016
+      - name: wog001
+        description: Object currency amount for period 001
+      - name: wog002
+        description: Object currency amount for period 002
+      - name: wog003
+        description: Object currency amount for period 003
+      - name: wog004
+        description: Object currency amount for period 004
+      - name: wog005
+        description: Object currency amount for period 005
+      - name: wog006
+        description: Object currency amount for period 006
+      - name: wog007
+        description: Object currency amount for period 007
+      - name: wog008
+        description: Object currency amount for period 008
+      - name: wog009
+        description: Object currency amount for period 009
+      - name: wog010
+        description: Object currency amount for period 010
+      - name: wog011
+        description: Object currency amount for period 011
+      - name: wog012
+        description: Object currency amount for period 012
+      - name: wog013
+        description: Object currency amount for period 013
+      - name: wog014
+        description: Object currency amount for period 014
+      - name: wog015
+        description: Object currency amount for period 015
+      - name: wog016
+        description: Object currency amount for period 016
+      - name: wkg001
+        description: Controlling area currency amount for period 001
+      - name: wkg002
+        description: Controlling area currency amount for period 002
+      - name: wkg003
+        description: Controlling area currency amount for period 003
+      - name: wkg004
+        description: Controlling area currency amount for period 004
+      - name: wkg005
+        description: Controlling area currency amount for period 005
+      - name: wkg006
+        description: Controlling area currency amount for period 006
+      - name: wkg007
+        description: Controlling area currency amount for period 007
+      - name: wkg008
+        description: Controlling area currency amount for period 008
+      - name: wkg009
+        description: Controlling area currency amount for period 009
+      - name: wkg010
+        description: Controlling area currency amount for period 010
+      - name: wkg011
+        description: Controlling area currency amount for period 011
+      - name: wkg012
+        description: Controlling area currency amount for period 012
+      - name: wkg013
+        description: Controlling area currency amount for period 013
+      - name: wkg014
+        description: Controlling area currency amount for period 014
+      - name: wkg015
+        description: Controlling area currency amount for period 015
+      - name: wkg016
+        description: Controlling area currency amount for period 016
+      - name: wkf001
+        description: Fixed amount in controlling area currency for period 001
+      - name: wkf002
+        description: Fixed amount in controlling area currency for period 002
+      - name: wkf003
+        description: Fixed amount in controlling area currency for period 003
+      - name: wkf004
+        description: Fixed amount in controlling area currency for period 004
+      - name: wkf005
+        description: Fixed amount in controlling area currency for period 005
+      - name: wkf006
+        description: Fixed amount in controlling area currency for period 006
+      - name: wkf007
+        description: Fixed amount in controlling area currency for period 007
+      - name: wkf008
+        description: Fixed amount in controlling area currency for period 008
+      - name: wkf009
+        description: Fixed amount in controlling area currency for period 009
+      - name: wkf010
+        description: Fixed amount in controlling area currency for period 010
+      - name: wkf011
+        description: Fixed amount in controlling area currency for period 011
+      - name: wkf012
+        description: Fixed amount in controlling area currency for period 012
+      - name: wkf013
+        description: Fixed amount in controlling area currency for period 013
+      - name: wkf014
+        description: Fixed amount in controlling area currency for period 014
+      - name: wkf015
+        description: Fixed amount in controlling area currency for period 015
+      - name: wkf016
+        description: Fixed amount in controlling area currency for period 016
+      - name: pag001
+        description: Plan amount in group currency for period 001
+      - name: pag002
+        description: Plan amount in group currency for period 002
+      - name: pag003
+        description: Plan amount in group currency for period 003
+      - name: pag004
+        description: Plan amount in group currency for period 004
+      - name: pag005
+        description: Plan amount in group currency for period 005
+      - name: pag006
+        description: Plan amount in group currency for period 006
+      - name: pag007
+        description: Plan amount in group currency for period 007
+      - name: pag008
+        description: Plan amount in group currency for period 008
+      - name: pag009
+        description: Plan amount in group currency for period 009
+      - name: pag010
+        description: Plan amount in group currency for period 010
+      - name: pag011
+        description: Plan amount in group currency for period 011
+      - name: pag012
+        description: Plan amount in group currency for period 012
+      - name: pag013
+        description: Plan amount in group currency for period 013
+      - name: pag014
+        description: Plan amount in group currency for period 014
+      - name: pag015
+        description: Plan amount in group currency for period 015
+      - name: pag016
+        description: Plan amount in group currency for period 016
+      - name: paf001
+        description: Plan fixed amount in group currency for period 001
+      - name: paf002
+        description: Plan fixed amount in group currency for period 002
+      - name: paf003
+        description: Plan fixed amount in group currency for period 003
+      - name: paf004
+        description: Plan fixed amount in group currency for period 004
+      - name: paf005
+        description: Plan fixed amount in group currency for period 005
+      - name: paf006
+        description: Plan fixed amount in group currency for period 006
+      - name: paf007
+        description: Plan fixed amount in group currency for period 007
+      - name: paf008
+        description: Plan fixed amount in group currency for period 008
+      - name: paf009
+        description: Plan fixed amount in group currency for period 009
+      - name: paf010
+        description: Plan fixed amount in group currency for period 010
+      - name: paf011
+        description: Plan fixed amount in group currency for period 011
+      - name: paf012
+        description: Plan fixed amount in group currency for period 012
+      - name: paf013
+        description: Plan fixed amount in group currency for period 013
+      - name: paf014
+        description: Plan fixed amount in group currency for period 014
+      - name: paf015
+        description: Plan fixed amount in group currency for period 015
+      - name: paf016
+        description: Plan fixed amount in group currency for period 016
+      - name: meg001
+        description: Quantity in unit of measure for period 001
+      - name: meg002
+        description: Quantity in unit of measure for period 002
+      - name: meg003
+        description: Quantity in unit of measure for period 003
+      - name: meg004
+        description: Quantity in unit of measure for period 004
+      - name: meg005
+        description: Quantity in unit of measure for period 005
+      - name: meg006
+        description: Quantity in unit of measure for period 006
+      - name: meg007
+        description: Quantity in unit of measure for period 007
+      - name: meg008
+        description: Quantity in unit of measure for period 008
+      - name: meg009
+        description: Quantity in unit of measure for period 009
+      - name: meg010
+        description: Quantity in unit of measure for period 010
+      - name: meg011
+        description: Quantity in unit of measure for period 011
+      - name: meg012
+        description: Quantity in unit of measure for period 012
+      - name: meg013
+        description: Quantity in unit of measure for period 013
+      - name: meg014
+        description: Quantity in unit of measure for period 014
+      - name: meg015
+        description: Quantity in unit of measure for period 015
+      - name: meg016
+        description: Quantity in unit of measure for period 016
+      - name: mef001
+        description: Fixed quantity in unit of measure for period 001
+      - name: mef002
+        description: Fixed quantity in unit of measure for period 002
+      - name: mef003
+        description: Fixed quantity in unit of measure for period 003
+      - name: mef004
+        description: Fixed quantity in unit of measure for period 004
+      - name: mef005
+        description: Fixed quantity in unit of measure for period 005
+      - name: mef006
+        description: Fixed quantity in unit of measure for period 006
+      - name: mef007
+        description: Fixed quantity in unit of measure for period 007
+      - name: mef008
+        description: Fixed quantity in unit of measure for period 008
+      - name: mef009
+        description: Fixed quantity in unit of measure for period 009
+      - name: mef010
+        description: Fixed quantity in unit of measure for period 010
+      - name: mef011
+        description: Fixed quantity in unit of measure for period 011
+      - name: mef012
+        description: Fixed quantity in unit of measure for period 012
+      - name: mef013
+        description: Fixed quantity in unit of measure for period 013
+      - name: mef014
+        description: Fixed quantity in unit of measure for period 014
+      - name: mef015
+        description: Fixed quantity in unit of measure for period 015
+      - name: mef016
+        description: Fixed quantity in unit of measure for period 016
+      - name: muv001
+        description: Manual update flag for period 001 (X=manual update)
+      - name: muv002
+        description: Manual update flag for period 002 (X=manual update)
+      - name: muv003
+        description: Manual update flag for period 003 (X=manual update)
+      - name: muv004
+        description: Manual update flag for period 004 (X=manual update)
+      - name: muv005
+        description: Manual update flag for period 005 (X=manual update)
+      - name: muv006
+        description: Manual update flag for period 006 (X=manual update)
+      - name: muv007
+        description: Manual update flag for period 007 (X=manual update)
+      - name: muv008
+        description: Manual update flag for period 008 (X=manual update)
+      - name: muv009
+        description: Manual update flag for period 009 (X=manual update)
+      - name: muv010
+        description: Manual update flag for period 010 (X=manual update)
+      - name: muv011
+        description: Manual update flag for period 011 (X=manual update)
+      - name: muv012
+        description: Manual update flag for period 012 (X=manual update)
+      - name: muv013
+        description: Manual update flag for period 013 (X=manual update)
+      - name: muv014
+        description: Manual update flag for period 014 (X=manual update)
+      - name: muv015
+        description: Manual update flag for period 015 (X=manual update)
+      - name: muv016
+        description: Manual update flag for period 016 (X=manual update)
+      - name: beltp
+        description: Document type for line item posting
+      - name: timestmp
+        description: Timestamp for last change to the record
+      - name: bukrs
+        description: Company code
+      - name: fkber
+        description: Functional area for cost assignment
+      - name: segment
+        description: Segment for profitability analysis
+      - name: geber
+        description: Fund for public sector accounting
+      - name: grant_nbr
+        description: Grant number for grant management
+      - name: budget_pd
+        description: Budget period for budget management

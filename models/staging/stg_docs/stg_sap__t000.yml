@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_sap__t000
+    description: Clients
+    columns:
+      - name: mandt
+        description: Client
+      - name: logsys
+        description: Logical system
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

@@ -1,0 +1,184 @@
+version: 2
+
+models:
+  - name: stg_sap__vbuk
+    description: Sales document status (header)
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: abstk
+        description: Rejection status
+      - name: aedat
+        description: Last change date
+      - name: bestk
+        description: Purchase order status
+      - name: block
+        description: General blocking reason
+      - name: buchk
+        description: Accounting status
+      - name: cmgst
+        description: Overall credit check status
+      - name: cmps0
+        description: Credit check static check
+      - name: cmps1
+        description: Credit check days sales outstanding
+      - name: cmps2
+        description: Credit check oldest open item
+      - name: cmps_cm
+        description: Credit check credit master data
+      - name: cmps_te
+        description: Credit check terms of payment
+      - name: cmpsa
+        description: Credit check component A
+      - name: cmpsb
+        description: Credit check component B
+      - name: cmpsc
+        description: Credit check component C
+      - name: cmpsd
+        description: Credit check component D
+      - name: cmpse
+        description: Credit check component E
+      - name: cmpsf
+        description: Credit check component F
+      - name: cmpsg
+        description: Credit check component G
+      - name: cmpsh
+        description: Credit check component H
+      - name: cmpsi
+        description: Credit check component I
+      - name: cmpsj
+        description: Credit check component J
+      - name: cmpsk
+        description: Credit check component K
+      - name: cmpsl
+        description: Credit check component L
+      - name: cmpsm
+        description: Credit check component M
+      - name: costa
+        description: Costing status
+      - name: dcstk
+        description: Document completeness status
+      - name: fkivk
+        description: Invoicing plan status
+      - name: fksak
+        description: Billing document creation status
+      - name: fkstk
+        description: Billing status
+      - name: fmstk
+        description: Funds management status
+      - name: fsh_ar_stat_hdr
+        description: Fashion AR status header
+      - name: fsstk
+        description: Financial document status
+      - name: gbstk
+        description: Overall processing status
+      - name: hdall
+        description: Header fully delivered
+      - name: hdals
+        description: Header partially delivered
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: koquk
+        description: Configuration status
+      - name: kostk
+        description: Cost estimate status
+      - name: lfgsk
+        description: Delivery status
+      - name: lfstk
+        description: Delivery status of item
+      - name: lsstk
+        description: Picking status
+      - name: lvstk
+        description: Goods movement status
+      - name: mandt
+        description: Client
+      - name: manek
+        description: Manual credit check indicator
+      - name: pdstk
+        description: Pricing document status
+      - name: pkstk
+        description: Picking confirmation status
+      - name: relik
+        description: Release indicator
+      - name: rfgsk
+        description: Reference document status
+      - name: rfstk
+        description: Reference billing status
+      - name: rrsta
+        description: Returns status
+      - name: saprl
+        description: Release status
+      - name: spe_tmpid
+        description: Temporary document ID
+      - name: spstg
+        description: Shipping status
+      - name: trsta
+        description: Transportation status
+      - name: uvall
+        description: Fully billed
+      - name: uvals
+        description: Partially billed
+      - name: uvfak
+        description: Billing block indicator
+      - name: uvfas
+        description: Partial billing block
+      - name: uvgek
+        description: Rebate agreement status
+      - name: uvk01
+        description: User status 01
+      - name: uvk02
+        description: User status 02
+      - name: uvk03
+        description: User status 03
+      - name: uvk04
+        description: User status 04
+      - name: uvk05
+        description: User status 05
+      - name: uvpak
+        description: Packing status
+      - name: uvpas
+        description: Packing partial status
+      - name: uvpik
+        description: Picking status
+      - name: uvpis
+        description: Picking partial status
+      - name: uvprs
+        description: Pricing status
+      - name: uvs01
+        description: Custom status 01
+      - name: uvs02
+        description: Custom status 02
+      - name: uvs03
+        description: Custom status 03
+      - name: uvs04
+        description: Custom status 04
+      - name: uvs05
+        description: Custom status 05
+      - name: uvvlk
+        description: Delivery status (fully delivered)
+      - name: uvvls
+        description: Delivery status (partially delivered)
+      - name: uvwak
+        description: Goods issue status
+      - name: uvwas
+        description: Partial goods issue status
+      - name: vbeln
+        description: Sales document number
+      - name: vbobj
+        description: Object type
+      - name: vbtyp
+        description: Sales document category
+      - name: vbtyp_ext
+        description: External document category
+      - name: vestk
+        description: Shipping status
+      - name: vlstk
+        description: Delivery status
+      - name: wbstk
+        description: Goods issue status

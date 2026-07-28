@@ -1,0 +1,236 @@
+version: 2
+
+models:
+  - name: coep
+    description: Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: kokrs
+        description: Controlling area
+      - name: belnr
+        description: Controlling document number
+      - name: buzei
+        description: Line item number within document
+      - name: perio
+        description: Period
+      - name: wtgbtr
+        description: Amount in transaction currency
+      - name: wogbtr
+        description: Amount in object currency
+      - name: wkgbtr
+        description: Amount in controlling area currency
+      - name: wkfbtr
+        description: Fixed amount in controlling area currency
+      - name: pagbtr
+        description: Amount in parallel currency/group currency
+      - name: pafbtr
+        description: Fixed amount in parallel currency/group currency
+      - name: megbtr
+        description: Quantity in unit of measure
+      - name: mefbtr
+        description: Fixed quantity in unit of measure
+      - name: mbgbtr
+        description: Amount in alternative currency
+      - name: mbfbtr
+        description: Fixed amount in alternative currency
+      - name: lednr
+        description: Ledger number
+      - name: objnr
+        description: Object number - unique identifier for the cost object
+      - name: gjahr
+        description: Fiscal year
+      - name: wrttp
+        description: Value type - distinguishes between different types of values (actual, plan, etc.)
+      - name: versn
+        description: Version - identifies different planning versions
+      - name: kstar
+        description: Cost element - general ledger account used for cost accounting
+      - name: hrkft
+        description: Origin of cost element - indicates source system or posting logic
+      - name: vrgng
+        description: Business transaction - identifies the type of posting transaction
+      - name: parob
+        description: Partner object - related cost object for internal cost postings
+      - name: parob1
+        description: Partner object 1 for account assignment
+      - name: uspob
+        description: User-defined partner object for additional assignment
+      - name: vbund
+        description: Company ID of trading partner
+      - name: pargb
+        description: Partner business area
+      - name: beknz
+        description: Debit/credit indicator for postings
+      - name: twaer
+        description: Transaction currency
+      - name: owaer
+        description: Object currency
+      - name: meinh
+        description: Unit of measure for quantities
+      - name: meinb
+        description: Unit of measure for base quantity
+      - name: mvflg
+        description: Manual posting flag - indicates manual value entry
+      - name: sgtxt
+        description: Line item text description
+      - name: refbz
+        description: Reference designation for line item
+      - name: zlenr
+        description: Line counter for multiple line items
+      - name: bw_refbz
+        description: Reference designation for business warehouse
+      - name: gkont
+        description: Offsetting account for general postings
+      - name: gkoar
+        description: Offsetting account type
+      - name: werks
+        description: Plant
+      - name: matnr
+        description: Material number
+      - name: rbest
+        description: Best estimate indicator
+      - name: ebeln
+        description: Purchasing document number
+      - name: ebelp
+        description: Item number of purchasing document
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: erlkz
+        description: Settlement rule indicator
+      - name: pernr
+        description: Personnel number
+      - name: btrkl
+        description: Business transaction type
+      - name: objnr_n1
+        description: Object number 1 for account assignment
+      - name: objnr_n2
+        description: Object number 2 for account assignment
+      - name: objnr_n3
+        description: Object number 3 for account assignment
+      - name: paobjnr
+        description: Profitability segment number (CO-PA)
+      - name: beltp
+        description: Document type for line item posting
+      - name: bukrs
+        description: Company code
+      - name: gsber
+        description: Business area
+      - name: fkber
+        description: Functional area for cost assignment
+      - name: scope
+        description: Consolidation scope
+      - name: logsyso
+        description: Logical system of origin
+      - name: pkstar
+        description: Partner cost element
+      - name: pbukrs
+        description: Partner company code
+      - name: pfkber
+        description: Partner functional area
+      - name: pscope
+        description: Partner consolidation scope
+      - name: logsysp
+        description: Logical system of partner
+      - name: dabrz
+        description: Settlement date for external processing
+      - name: bwstrat
+        description: Valuation strategy
+      - name: objnr_hk
+        description: Object number for overhead calculation
+      - name: timestmp
+        description: Timestamp for last change to the record
+      - name: qmnum
+        description: Notification number for quality management
+      - name: geber
+        description: Fund for public sector accounting
+      - name: pgeber
+        description: Partner fund
+      - name: grant_nbr
+        description: Grant number for grant management
+      - name: pgrant_nbr
+        description: Partner grant number
+      - name: refbz_fi
+        description: Reference designation for financial accounting
+      - name: segment
+        description: Segment for profitability analysis
+      - name: psegment
+        description: Partner segment
+      - name: posnr
+        description: Position number for line item
+      - name: prctr
+        description: Profit center
+      - name: pprct
+        description: Partner profit center
+      - name: budget_pd
+        description: Budget period for budget management
+      - name: pbudget_pd
+        description: Partner budget period
+      - name: prodper
+        description: Production period
+      - name: awtyp
+        description: Reference procedure for determining source application
+      - name: awkey
+        description: Object key for reference document
+      - name: awsys
+        description: Logical system for reference document
+      - name: kwaer
+        description: Currency key for controlling area currency
+      - name: accas
+        description: Account assignment object
+      - name: accasty
+        description: Account assignment category
+      - name: kostl
+        description: Cost center
+      - name: lstar
+        description: Activity type
+      - name: aufnr
+        description: Order number
+      - name: autyp
+        description: Order type
+      - name: pspnr
+        description: Work breakdown structure element (WBS element)
+      - name: pspid
+        description: Work breakdown structure element (WBS element) ID
+      - name: vbeln
+        description: Sales document number
+      - name: vbposnr
+        description: Sales document item number
+      - name: ce4key
+        description: Profitability segment for CO-PA
+      - name: erkrs
+        description: Settlement cost center
+      - name: paccas
+        description: Partner account assignment object
+      - name: paccasty
+        description: Partner account assignment category
+      - name: pkostl
+        description: Partner cost center
+      - name: plstar
+        description: Partner activity type
+      - name: paufnr
+        description: Partner order number
+      - name: pautyp
+        description: Partner order type
+      - name: ppspnr
+        description: Partner work breakdown structure element
+      - name: ppspid
+        description: Partner work breakdown structure element ID
+      - name: pvbeln
+        description: Partner sales document number
+      - name: pvbposnr
+        description: Partner sales document item number
+      - name: pce4key
+        description: Partner profitability segment for CO-PA
+      - name: quant1
+        description: Quantity 1 in unit of measure
+      - name: quant2
+        description: Quantity 2 in unit of measure
+      - name: quant3
+        description: Quantity 3 in unit of measure
+      - name: qunit1
+        description: Unit of measure for quantity 1
+      - name: qunit2
+        description: Unit of measure for quantity 2
+      - name: qunit3
+        description: Unit of measure for quantity 3

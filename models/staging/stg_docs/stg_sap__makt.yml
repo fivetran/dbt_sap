@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_sap__makt
+    description: Material Descriptions
+    columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: maktx
+        description: Material description
+      - name: mandt
+        description: Client
+      - name: matnr
+        description: Material number
+      - name: spras
+        description: Language key

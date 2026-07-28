@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_sap__t024
+    description: Purchasing groups
+    columns:
+      - name: ekgrp
+        description: Purchasing group
+      - name: mandt
+        description: Client
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: eknam
+        description: Name of purchasing group
+      - name: ektel
+        description: Telephone number
+      - name: ldest
+        description: Logical destination
+      - name: smtp_addr
+        description: Email address
+      - name: tel_extens
+        description: Telephone extension
+      - name: tel_number
+        description: Telephone number
+      - name: telfx
+        description: Fax number
