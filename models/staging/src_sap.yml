@@ -1,0 +1,359 @@
+version: 2
+
+sources:
+  - name: sap
+    schema: "{{ var('sap_schema', 'sap') }}"
+    database: "{% if target.type != 'spark' %}{{ var('sap_database', target.database) }}{% endif %}"
+
+    loader: fivetran
+    config:
+      loaded_at_field: _fivetran_synced
+
+    tables:
+      - name: acdoca
+        identifier: "{{ var('sap_acdoca_identifier', 'acdoca') }}"
+        config:
+          enabled: "{{ var('sap_using_acdoca', true) }}"
+        description: Universal journal entry line items
+
+      - name: finsc_cmp_versnd
+        identifier: "{{ var('sap_finsc_cmp_versnd_identifier', 'finsc_cmp_versnd') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_cmp_versnd', true) }}"
+        description: Financial SCM component version data
+
+      - name: tj01
+        identifier: "{{ var('sap_tj01_identifier', 'tj01') }}"
+        config:
+          enabled: "{{ var('sap_using_tj01', true) }}"
+        description: System status
+
+      - name: marc
+        identifier: "{{ var('sap_marc_identifier', 'marc') }}"
+        config:
+          enabled: "{{ var('sap_using_marc', true) }}"
+        description: Plant/storage view material master
+
+      - name: mchb
+        identifier: "{{ var('sap_mchb_identifier', 'mchb') }}"
+        config:
+          enabled: "{{ var('sap_using_mchb', true) }}"
+        description: Batch stocks
+
+      - name: mchp
+        identifier: "{{ var('sap_mchp_identifier', 'mchp') }}"
+        config:
+          enabled: "{{ var('sap_using_mchp', true) }}"
+        description: Batch master (plant level)
+
+      - name: tka01
+        identifier: "{{ var('sap_tka01_identifier', 'tka01') }}"
+        config:
+          enabled: "{{ var('sap_using_tka01', true) }}"
+        description: Controlling area
+
+      - name: t000
+        identifier: "{{ var('sap_t000_identifier', 't000') }}"
+        config:
+          enabled: "{{ var('sap_using_t000', true) }}"
+        description: Clients
+
+      - name: matdoc
+        identifier: "{{ var('sap_matdoc_identifier', 'matdoc') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc', true) }}"
+        description: Material document header
+
+      - name: matdoc_extract
+        identifier: "{{ var('sap_matdoc_extract_identifier', 'matdoc_extract') }}"
+        config:
+          enabled: "{{ var('sap_using_matdoc_extract', true) }}"
+        description: Material document extract data
+
+      - name: sapsll_tunos
+        identifier: "{{ var('sap_sapsll_tunos_identifier', '_sapsll_tunos') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_tunos', true) }}"
+        description: SAP Special Ledger transaction numbers
+
+      - name: sapsll_maritc
+        identifier: "{{ var('sap_sapsll_maritc_identifier', '_sapsll_maritc') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_maritc', true) }}"
+        description: SAP Special Ledger material items
+
+      - name: sapsll_nosca
+        identifier: "{{ var('sap_sapsll_nosca_identifier', '_sapsll_nosca') }}"
+        config:
+          enabled: "{{ var('sap_using_sapsll_nosca', true) }}"
+        description: SAP Special Ledger non-scalable data
+
+      - name: sapsll_clsnr
+        identifier: "{{ var('sap_sapsll_clsnr_identifier', '_sapsll_clsnr') }}"
+        config:
+          enabled: "{{ var('sap_using__sapsll_clsnr', true) }}"
+        description: SAP Special Ledger classification
+
+      - name: finsc_ledger_rep
+        identifier: "{{ var('sap_finsc_ledger_rep_identifier', 'finsc_ledger_rep') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ledger_rep', true) }}"
+        description: Financial SCM ledger reporting data
+
+      - name: finsc_ld_cmp
+        identifier: "{{ var('sap_finsc_ld_cmp_identifier', 'finsc_ld_cmp') }}"
+        config:
+          enabled: "{{ var('sap_using_finsc_ld_cmp', true) }}"
+        description: Financial SCM lead component data
+
+      - name: bkpf
+        identifier: "{{ var('sap_bkpf_identifier', 'bkpf') }}"
+        config:
+          enabled: "{{ var('sap_using_bkpf', true) }}"
+        description: Accounting document header
+
+      - name: bsad_bck
+        identifier: "{{ var('sap_bsad_bck_identifier', 'bsad_bck') }}"
+        config:
+          enabled: "{{ var('sap_using_bsad_bck', true) }}"
+        description: Secondary index for customers - cleared items
+
+      - name: bsak_bck
+        identifier: "{{ var('sap_bsak_bck_identifier', 'bsak_bck') }}"
+        config:
+          enabled: "{{ var('sap_using_bsak_bck', true) }}"
+        description: Secondary index for vendors - cleared items
+
+      - name: bseg
+        identifier: "{{ var('sap_bseg_identifier', 'bseg') }}"
+        config:
+          enabled: "{{ var('sap_using_bseg', true) }}"
+        description: Accounting document segment
+
+      - name: dd07l
+        identifier: "{{ var('sap_dd07l_identifier', 'dd07l') }}"
+        config:
+          enabled: "{{ var('sap_using_dd07l', true) }}"
+        description: Domain values
+
+      - name: dd07t
+        identifier: "{{ var('sap_dd07t_identifier', 'dd07t') }}"
+        config:
+          enabled: "{{ var('sap_using_dd07t', true) }}"
+        description: Texts for domain values
+
+      - name: ekbe
+        identifier: "{{ var('sap_ekbe_identifier', 'ekbe') }}"
+        config:
+          enabled: "{{ var('sap_using_ekbe', true) }}"
+        description: Purchasing document history
+
+      - name: eket
+        identifier: "{{ var('sap_eket_identifier', 'eket') }}"
+        config:
+          enabled: "{{ var('sap_using_eket', true) }}"
+        description: Schedule lines for purchasing document
+
+      - name: ekko
+        identifier: "{{ var('sap_ekko_identifier', 'ekko') }}"
+        config:
+          enabled: "{{ var('sap_using_ekko', true) }}"
+        description: Purchasing document header
+
+      - name: ekpo
+        identifier: "{{ var('sap_ekpo_identifier', 'ekpo') }}"
+        config:
+          enabled: "{{ var('sap_using_ekpo', true) }}"
+        description: Purchasing document item
+
+      - name: faglflexa
+        identifier: "{{ var('sap_faglflexa_identifier', 'faglflexa') }}"
+        config:
+          enabled: "{{ var('sap_using_faglflexa', true) }}"
+        description: General ledger (Actual line items)
+
+      - name: faglflext
+        identifier: "{{ var('sap_faglflext_identifier', 'faglflext') }}"
+        config:
+          enabled: "{{ var('sap_using_faglflext', true) }}"
+        description: General ledger (Totals)
+
+      - name: kna1
+        identifier: "{{ var('sap_kna1_identifier', 'kna1') }}"
+        config:
+          enabled: "{{ var('sap_using_kna1', true) }}"
+        description: General Data in Customer Master
+
+      - name: lfa1
+        identifier: "{{ var('sap_lfa1_identifier', 'lfa1') }}"
+        config:
+          enabled: "{{ var('sap_using_lfa1', true) }}"
+        description: Vendor master (General section)
+
+      - name: makt
+        identifier: "{{ var('sap_makt_identifier', 'makt') }}"
+        config:
+          enabled: "{{ var('sap_using_makt', true) }}"
+        description: Material Descriptions
+
+      - name: mara
+        identifier: "{{ var('sap_mara_identifier', 'mara') }}"
+        config:
+          enabled: "{{ var('sap_using_mara', true) }}"
+        description: General material data
+
+      - name: pa0000
+        identifier: "{{ var('sap_pa0000_identifier', 'pa0000') }}"
+        config:
+          enabled: "{{ var('sap_using_pa0000', true) }}"
+        description: HR master record--infotype 0000 (Actions)
+
+      - name: pa0001
+        identifier: "{{ var('sap_pa0001_identifier', 'pa0001') }}"
+        config:
+          enabled: "{{ var('sap_using_pa0001', true) }}"
+        description: HR master record--infotype 0001 (org. assignment)
+
+      - name: pa0007
+        identifier: "{{ var('sap_pa0007_identifier', 'pa0007') }}"
+        config:
+          enabled: "{{ var('sap_using_pa0007', true) }}"
+        description: HR master record--infotype 0007 (planned working time)
+
+      - name: pa0008
+        identifier: "{{ var('sap_pa0008_identifier', 'pa0008') }}"
+        config:
+          enabled: "{{ var('sap_using_pa0008', true) }}"
+        description: HR master record--infotype 0008 (basic pay)
+
+      - name: pa0031
+        identifier: "{{ var('sap_pa0031_identifier', 'pa0031') }}"
+        config:
+          enabled: "{{ var('sap_using_pa0031', true) }}"
+        description: HR master record--infotype 0031 (Reference personnel numbers)
+
+      - name: ska1
+        identifier: "{{ var('sap_ska1_identifier', 'ska1') }}"
+        config:
+          enabled: "{{ var('sap_using_ska1', true) }}"
+        description: G/L Account Master (Chart of Accounts)
+
+      - name: t001
+        identifier: "{{ var('sap_t001_identifier', 't001') }}"
+        config:
+          enabled: "{{ var('sap_using_t001', true) }}"
+        description: Company codes
+
+      - name: t001w
+        identifier: "{{ var('sap_t001w_identifier', 't001w') }}"
+        config:
+          enabled: "{{ var('sap_using_t001w', true) }}"
+        description: Plants/Branches
+
+      - name: t024
+        identifier: "{{ var('sap_t024_identifier', 't024') }}"
+        config:
+          enabled: "{{ var('sap_using_t024', true) }}"
+        description: Purchasing groups
+
+      - name: t024e
+        identifier: "{{ var('sap_t024e_identifier', 't024e') }}"
+        config:
+          enabled: "{{ var('sap_using_t024e', true) }}"
+        description: Purchasing organization text
+
+      - name: t134
+        identifier: "{{ var('sap_t134_identifier', 't134') }}"
+        config:
+          enabled: "{{ var('sap_using_t134', true) }}"
+        description: Material types
+
+      - name: t134t
+        identifier: "{{ var('sap_t134t_identifier', 't134t') }}"
+        config:
+          enabled: "{{ var('sap_using_t134t', true) }}"
+        description: Material type descriptions
+
+      - name: t161
+        identifier: "{{ var('sap_t161_identifier', 't161') }}"
+        config:
+          enabled: "{{ var('sap_using_t161', true) }}"
+        description: Purchasing document types
+
+      - name: t161t
+        identifier: "{{ var('sap_t161t_identifier', 't161t') }}"
+        config:
+          enabled: "{{ var('sap_using_t161t', true) }}"
+        description: Purchasing doc type texts
+
+      - name: t503
+        identifier: "{{ var('sap_t503_identifier', 't503') }}"
+        config:
+          enabled: "{{ var('sap_using_t503', true) }}"
+        description: Employee group/subgroup
+
+      - name: t880
+        identifier: "{{ var('sap_t880_identifier', 't880') }}"
+        config:
+          enabled: "{{ var('sap_using_t880', true) }}"
+        description: Global company data (for KONS Ledger)
+
+      - name: tvag
+        identifier: "{{ var('sap_tvag_identifier', 'tvag') }}"
+        config:
+          enabled: "{{ var('sap_using_tvag', true) }}"
+        description: Sales document rejection reasons
+
+      - name: tvagt
+        identifier: "{{ var('sap_tvagt_identifier', 'tvagt') }}"
+        config:
+          enabled: "{{ var('sap_using_tvagt', true) }}"
+        description: Rejection reason texts
+
+      - name: vbak
+        identifier: "{{ var('sap_vbak_identifier', 'vbak') }}"
+        config:
+          enabled: "{{ var('sap_using_vbak', true) }}"
+        description: Sales document header data
+
+      - name: vbap
+        identifier: "{{ var('sap_vbap_identifier', 'vbap') }}"
+        config:
+          enabled: "{{ var('sap_using_vbap', true) }}"
+        description: Sales document item data
+
+      - name: vbuk
+        identifier: "{{ var('sap_vbuk_identifier', 'vbuk') }}"
+        config:
+          enabled: "{{ var('sap_using_vbuk', true) }}"
+        description: Sales document status (header)
+
+      - name: vbup
+        identifier: "{{ var('sap_vbup_identifier', 'vbup') }}"
+        config:
+          enabled: "{{ var('sap_using_vbup', true) }}"
+        description: Sales document status (item level)
+
+      - name: t006
+        identifier: "{{ var('sap_t006_identifier', 't006') }}"
+        config:
+          enabled: "{{ var('sap_using_t006', true) }}"
+        description: Units of measurment
+
+      - name: cosp_bak
+        identifier: "{{ var('sap_cosp_bak_identifier', 'cosp_bak') }}"
+        config:
+          enabled: "{{ var('sap_using_cosp_bak', true) }}"
+        description: Cost totals for external postings
+
+      - name: prps
+        identifier: "{{ var('sap_prps_identifier', 'prps') }}"
+        config:
+          enabled: "{{ var('sap_using_prps', true) }}"
+        description: Work breakdown structure (WBS) element master data
+
+      - name: coep
+        identifier: "{{ var('sap_coep_identifier', 'coep') }}"
+        config:
+          enabled: "{{ var('sap_using_coep', true) }}"
+        description: Line items by period
