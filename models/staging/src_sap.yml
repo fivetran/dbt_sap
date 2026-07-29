@@ -357,3 +357,15 @@ sources:
         config:
           enabled: "{{ var('sap_using_coep', true) }}"
         description: Line items by period
+
+      - name: anla
+        identifier: "{{ var('sap_anla_identifier', 'anla') }}"
+        config:
+          enabled: "{{ var('sap_using_anla', true) }}"
+        description: Asset master (general data)
+
+      - name: faat_plan_values
+        identifier: "{{ var('sap_faat_plan_values_identifier', 'faat_plan_values') }}"
+        config:
+          enabled: "{{ var('sap_using_faat_plan_values', true) }}"
+        description: Asset accounting planned periodic values

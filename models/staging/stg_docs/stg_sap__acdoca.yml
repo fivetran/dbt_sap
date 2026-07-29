@@ -348,6 +348,40 @@ models:
         description: UTC timestamp
       - name: logsyso
         description: Logical system of source
+      - name: afabe
+        description: Real depreciation area
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: anbwa
+        description: Asset transaction type
+      - name: awitgrp
+        description: Reference procedure item group
+      - name: awitem
+        description: Reference procedure item
+      - name: bzdat
+        description: Asset value date
+      - name: movcat
+        description: Movement category (groups asset transaction types)
+      - name: prec_awref
+        description: Preceding reference document number
+      - name: slalittype
+        description: Line item category
+      - name: subta
+        description: Subtransaction number
+      - name: subta_rev
+        description: Subtransaction number of the reversing document
+      - name: vorgn
+        description: Business transaction type
+      - name: xreversed
+        description: Indicator for whether the document has been reversed
+      - name: xreversing
+        description: Indicator for whether the document is a reversal
+      - name: xsettled
+        description: Indicator for whether the line item is settled
+      - name: xsettling
+        description: Indicator for whether the line item is being settled
       - name: _fivetran_deleted
         description: Fivetran deletion marker
       - name: _fivetran_synced

@@ -3,16 +3,15 @@
 [PR #46](https://github.com/fivetran/dbt_sap/pull/46) includes the following updates:
 
 ## Schema/Data Change
-**3 total changes • 2 possible breaking changes**
+**4 total changes • 2 possible breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
 | All `stg_sap__*` staging models | Schema change | `<target_schema>_sap` | `<target_schema>_sap_source` | Staging models now materialize in their own schema to avoid naming conflicts with the output schema. |
 | All compatibility view models | Schema change | `<target_schema>_sap_comp_views` | `<target_schema>_sap` | Compatibility views now materialize in the main output schema alongside other end models. |
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext), [`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep), [`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, from ACDOCA), Asset Line Items (`anep`, from ACDOCA), and Asset Periodic Values (`anlp`, from FAAT_PLAN_VALUES + ANLA). |
+| [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla), [`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging Models | | | Adds two new staging models supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
 
-## Under the Hood
-- Adds new staging models, column macros, source definitions, and integration test seed data for `FAAT_PLAN_VALUES` and `ANLA` source tables used by the `anlp` compatibility view.
 
 # dbt_sap v0.7.0
 

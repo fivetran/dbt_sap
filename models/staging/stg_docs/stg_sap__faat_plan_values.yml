@@ -116,3 +116,5 @@ models:
         description: Funds center
       - name: _fivetran_synced
         description: Fivetran sync timestamp
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
