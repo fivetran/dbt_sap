@@ -2,13 +2,19 @@
 
 [PR #46](https://github.com/fivetran/dbt_sap/pull/46) includes the following updates:
 
+## Breaking Schema Change (--full-refresh required after upgrading)
+**2 breaking changes**
+
+- **All `stg_sap__*` staging models** now materialize in `<target_schema>_sap_source` (previously `<target_schema>_sap`).
+- **All compatibility view models** now materialize in `<target_schema>_sap` (previously `<target_schema>_sap_comp_views`).
+
+Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema.
+
 ## Schema/Data Change
-**4 total changes • 2 possible breaking changes**
+**2 total changes • 0 breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
-| All `stg_sap__*` staging models | Schema change | `<target_schema>_sap` | `<target_schema>_sap_source` | Staging models now materialize in their own schema to avoid naming conflicts with the output schema. |
-| All compatibility view models | Schema change | `<target_schema>_sap_comp_views` | `<target_schema>_sap` | Compatibility views now materialize in the main output schema alongside other end models. |
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext), [`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep), [`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, from ACDOCA), Asset Line Items (`anep`, from ACDOCA), and Asset Periodic Values (`anlp`, from FAAT_PLAN_VALUES + ANLA). |
 | [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla), [`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging Models | | | Adds two new staging models supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
 
