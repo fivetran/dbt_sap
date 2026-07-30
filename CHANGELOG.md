@@ -1,6 +1,6 @@
 # dbt_sap v0.8.0
 
-[PR #46](https://github.com/fivetran/dbt_sap/pull/46) includes the following updates:
+[PR #49](https://github.com/fivetran/dbt_sap/pull/49) includes the following updates:
 
 ## Breaking Schema Change (--full-refresh required after upgrading)
 **2 breaking changes**
@@ -15,8 +15,11 @@ Any downstream queries, BI tools, or other dbt projects that reference these mod
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
-| [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext), [`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep), [`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, from ACDOCA), Asset Line Items (`anep`, from ACDOCA), and Asset Periodic Values (`anlp`, from FAAT_PLAN_VALUES + ANLA). |
-| [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla), [`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging Models | | | Adds two new staging models supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
+| [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, from ACDOCA), Asset Line Items (`anep`, from ACDOCA), and Asset Periodic Values (`anlp`, from FAAT_PLAN_VALUES + ANLA). |
+| [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging Models | | | Adds two new staging models supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
+
+## Documentation
+- Splits the staging and compatibility view YAML doc files into one file per model (previously grouped together), and simplifies the source YAML by removing redundant column-level documentation. Makes the docs easier to navigate for both humans and AI coding agents.
 
 
 # dbt_sap v0.7.0
