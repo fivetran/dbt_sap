@@ -48,134 +48,134 @@ sq_coss_wdv_1 as (
     a.co_beknz as beknz,
     a.rwcur as twaer,
     case
-      when v.field_name_buzei = 'co_buzei' then a.co_buzei
-      when v.field_name_buzei = 'co_buzei1' then a.co_buzei1
-      when v.field_name_buzei = 'co_buzei2' then a.co_buzei2
-      when v.field_name_buzei = 'co_buzei5' then a.co_buzei5
-      when v.field_name_buzei = 'co_buzei6' then a.co_buzei6
-      when v.field_name_buzei = 'co_buzei7' then a.co_buzei7
+      when upper(v.field_name_buzei) = 'CO_BUZEI' then a.co_buzei
+      when upper(v.field_name_buzei) = 'CO_BUZEI1' then a.co_buzei1
+      when upper(v.field_name_buzei) = 'CO_BUZEI2' then a.co_buzei2
+      when upper(v.field_name_buzei) = 'CO_BUZEI5' then a.co_buzei5
+      when upper(v.field_name_buzei) = 'CO_BUZEI6' then a.co_buzei6
+      when upper(v.field_name_buzei) = 'CO_BUZEI7' then a.co_buzei7
       else a.co_buzei
     end as buzei,
     a.rldnr as rldnr,
     a.poper as perio,
     a.co_meinh as meinh,
-    case v.field_name_wtgbtr_add
-      when 'wsl' then a.wsl
-      when 'wsl2' then a.wsl2
-      when 'wsl3' then a.wsl3
+    case upper(v.field_name_wtgbtr_add)
+      when 'WSL' then a.wsl
+      when 'WSL2' then a.wsl2
+      when 'WSL3' then a.wsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as wtgbtr_add,
-    case v.field_name_wtgbtr_subtract
-      when 'wsl' then a.wsl
-      when 'wsl2' then a.wsl2
-      when 'wsl3' then a.wsl3
+    case upper(v.field_name_wtgbtr_subtract)
+      when 'WSL' then a.wsl
+      when 'WSL2' then a.wsl2
+      when 'WSL3' then a.wsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as wtgbtr_subtract,
     case
-      when v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
-      when v.field_name_wogbtr_add = 'co_osl' then a.co_osl
-      when v.field_name_wogbtr_add = 'hsl' then a.hsl
-      when v.field_name_wogbtr_add = 'osl' then a.osl
-      when v.field_name_wogbtr_add = 'vsl' then a.vsl
-      when v.field_name_wogbtr_add = 'bsl' then a.bsl
-      when v.field_name_wogbtr_add = 'csl' then a.csl
-      when v.field_name_wogbtr_add = 'dsl' then a.dsl
-      when v.field_name_wogbtr_add = 'esl' then a.esl
-      when v.field_name_wogbtr_add = 'fsl' then a.fsl
-      when v.field_name_wogbtr_add = 'gsl' then a.gsl
-      when v.field_name_wogbtr_add = 'ksl' then a.ksl
+      when upper(v.set_to_zero) = 'X' then cast(0 as {{ dbt.type_numeric() }})
+      when upper(v.field_name_wogbtr_add) = 'CO_OSL' then a.co_osl
+      when upper(v.field_name_wogbtr_add) = 'HSL' then a.hsl
+      when upper(v.field_name_wogbtr_add) = 'OSL' then a.osl
+      when upper(v.field_name_wogbtr_add) = 'VSL' then a.vsl
+      when upper(v.field_name_wogbtr_add) = 'BSL' then a.bsl
+      when upper(v.field_name_wogbtr_add) = 'CSL' then a.csl
+      when upper(v.field_name_wogbtr_add) = 'DSL' then a.dsl
+      when upper(v.field_name_wogbtr_add) = 'ESL' then a.esl
+      when upper(v.field_name_wogbtr_add) = 'FSL' then a.fsl
+      when upper(v.field_name_wogbtr_add) = 'GSL' then a.gsl
+      when upper(v.field_name_wogbtr_add) = 'KSL' then a.ksl
       else cast(0 as {{ dbt.type_numeric() }})
     end as wogbtr_add,
-    case v.field_name_wogbtr_subtract
-      when 'hsl' then a.hsl
-      when 'osl' then a.osl
-      when 'co_osl' then a.co_osl
-      when 'vsl' then a.vsl
-      when 'bsl' then a.bsl
-      when 'csl' then a.csl
-      when 'dsl' then a.dsl
-      when 'esl' then a.esl
-      when 'fsl' then a.fsl
-      when 'gsl' then a.gsl
-      when 'ksl' then a.ksl
+    case upper(v.field_name_wogbtr_subtract)
+      when 'HSL' then a.hsl
+      when 'OSL' then a.osl
+      when 'CO_OSL' then a.co_osl
+      when 'VSL' then a.vsl
+      when 'BSL' then a.bsl
+      when 'CSL' then a.csl
+      when 'DSL' then a.dsl
+      when 'ESL' then a.esl
+      when 'FSL' then a.fsl
+      when 'GSL' then a.gsl
+      when 'KSL' then a.ksl
       else cast(0 as {{ dbt.type_numeric() }})
     end as wogbtr_subtract,
-    case v.field_name_wkgbtr_add
-      when 'ksl' then a.ksl
-      when 'osl' then a.osl
-      when 'vsl' then a.vsl
-      when 'bsl' then a.bsl
-      when 'csl' then a.csl
-      when 'dsl' then a.dsl
-      when 'esl' then a.esl
-      when 'fsl' then a.fsl
-      when 'gsl' then a.gsl
-      when 'hsl' then a.hsl
+    case upper(v.field_name_wkgbtr_add)
+      when 'KSL' then a.ksl
+      when 'OSL' then a.osl
+      when 'VSL' then a.vsl
+      when 'BSL' then a.bsl
+      when 'CSL' then a.csl
+      when 'DSL' then a.dsl
+      when 'ESL' then a.esl
+      when 'FSL' then a.fsl
+      when 'GSL' then a.gsl
+      when 'HSL' then a.hsl
       else cast(0 as {{ dbt.type_numeric() }})
     end as wkgbtr_add,
-    case v.field_name_wkgbtr_subtract
-      when 'ksl' then a.ksl
-      when 'osl' then a.osl
-      when 'vsl' then a.vsl
-      when 'bsl' then a.bsl
-      when 'csl' then a.csl
-      when 'dsl' then a.dsl
-      when 'esl' then a.esl
-      when 'fsl' then a.fsl
-      when 'gsl' then a.gsl
-      when 'hsl' then a.hsl
+    case upper(v.field_name_wkgbtr_subtract)
+      when 'KSL' then a.ksl
+      when 'OSL' then a.osl
+      when 'VSL' then a.vsl
+      when 'BSL' then a.bsl
+      when 'CSL' then a.csl
+      when 'DSL' then a.dsl
+      when 'ESL' then a.esl
+      when 'FSL' then a.fsl
+      when 'GSL' then a.gsl
+      when 'HSL' then a.hsl
       else cast(0 as {{ dbt.type_numeric() }})
     end as wkgbtr_subtract,
-    case v.field_name_wkfbtr_add
-      when 'kfsl' then a.kfsl
-      when 'kfsl2' then a.kfsl2
-      when 'kfsl3' then a.kfsl3
+    case upper(v.field_name_wkfbtr_add)
+      when 'KFSL' then a.kfsl
+      when 'KFSL2' then a.kfsl2
+      when 'KFSL3' then a.kfsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as wkfbtr_add,
-    case v.field_name_wkfbtr_subtract
-      when 'kfsl' then a.kfsl
-      when 'kfsl2' then a.kfsl2
-      when 'kfsl3' then a.kfsl3
+    case upper(v.field_name_wkfbtr_subtract)
+      when 'KFSL' then a.kfsl
+      when 'KFSL2' then a.kfsl2
+      when 'KFSL3' then a.kfsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as wkfbtr_subtract,
-    case v.field_name_pagbtr_add
-      when 'psl' then a.psl
-      when 'psl2' then a.psl2
-      when 'psl3' then a.psl3
+    case upper(v.field_name_pagbtr_add)
+      when 'PSL' then a.psl
+      when 'PSL2' then a.psl2
+      when 'PSL3' then a.psl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as pagbtr_add,
-    case v.field_name_pagbtr_subtract
-      when 'psl' then a.psl
-      when 'psl2' then a.psl2
-      when 'psl3' then a.psl3
+    case upper(v.field_name_pagbtr_subtract)
+      when 'PSL' then a.psl
+      when 'PSL2' then a.psl2
+      when 'PSL3' then a.psl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as pagbtr_subtract,
-    case v.field_name_pafbtr_add
-      when 'pfsl' then a.pfsl
-      when 'pfsl2' then a.pfsl2
-      when 'pfsl3' then a.pfsl3
+    case upper(v.field_name_pafbtr_add)
+      when 'PFSL' then a.pfsl
+      when 'PFSL2' then a.pfsl2
+      when 'PFSL3' then a.pfsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as pafbtr_add,
-    case v.field_name_pafbtr_subtract
-      when 'pfsl' then a.pfsl
-      when 'pfsl2' then a.pfsl2
-      when 'pfsl3' then a.pfsl3
+    case upper(v.field_name_pafbtr_subtract)
+      when 'PFSL' then a.pfsl
+      when 'PFSL2' then a.pfsl2
+      when 'PFSL3' then a.pfsl3
       else cast(0 as {{ dbt.type_numeric() }})
     end as pafbtr_subtract,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
+      when v.versn != '000' or upper(v.set_to_zero) = 'X' then cast(0 as {{ dbt.type_numeric() }})
       else a.co_megbtr
     end as megbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
+      when v.versn != '000' or upper(v.set_to_zero) = 'X' then cast(0 as {{ dbt.type_numeric() }})
       else a.co_mefbtr
     end as mefbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
+      when v.versn != '000' or upper(v.set_to_zero) = 'X' then cast(0 as {{ dbt.type_numeric() }})
       else a.msl
     end as mbgbtr,
     case
-      when v.versn != '000' or v.set_to_zero = 'x' then cast(0 as {{ dbt.type_numeric() }})
+      when v.versn != '000' or upper(v.set_to_zero) = 'X' then cast(0 as {{ dbt.type_numeric() }})
       else a.mfsl
     end as mbfbtr,
     cast(a.muvflg as {{ dbt.type_int() }}) as muvflg,
@@ -195,7 +195,7 @@ sq_coss_wdv_1 as (
     on (v.mandt = a.rclnt and v.bukrs = a.rbukrs and v.rldnr = a.rldnr)
 
   inner join stg_sap__tj01 as t 
-    on (t.vrgng = a.vrgng and t.xcosp = '' and t.xcoss = 'x')
+    on (t.vrgng = a.vrgng and t.xcosp = '' and upper(t.xcoss) = 'X')
 
   inner join stg_sap__tka01 as tk 
     on (tk.mandt = a.rclnt and tk.kokrs = a.kokrs)
@@ -203,12 +203,12 @@ sq_coss_wdv_1 as (
   inner join stg_sap__t000 as s 
     on (s.mandt = a.rclnt
       and (s.logsys = a.logsyso or a.logsyso = '' 
-        or ((a.accasty = 'ks' or a.accasty = 'kl')
+        or ((upper(a.accasty) = 'KS' or upper(a.accasty) = 'KL')
         and (s.logsys = tk.logsystem or tk.logsystem = ''))
       )
     )
   where ((a.co_buzei != '000' and a.accasty != '')
-    or (a.mig_source = 'c' and a.bstat = 'c')) 
+    or (upper(a.mig_source) = 'C' and upper(a.bstat) = 'C')) 
     and a.objnr != ''
 ),
 
@@ -1482,67 +1482,67 @@ select
   v_coss_wdv_11.mef016,
   case
     when v_coss_wdv_11.i001 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv001,
   case
     when v_coss_wdv_11.i002 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv002,
   case
     when v_coss_wdv_11.i003 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv003,
   case
     when v_coss_wdv_11.i004 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv004,
   case
     when v_coss_wdv_11.i005 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv005,
   case
     when v_coss_wdv_11.i006 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv006,
   case
     when v_coss_wdv_11.i007 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv007,
   case
     when v_coss_wdv_11.i008 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv008,
   case
     when v_coss_wdv_11.i009 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv009,
   case
     when v_coss_wdv_11.i010 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv010,
   case
     when v_coss_wdv_11.i011 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv011,
   case
     when v_coss_wdv_11.i012 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv012,
   case
     when v_coss_wdv_11.i013 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv013,
   case
     when v_coss_wdv_11.i014 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv014,
   case
     when v_coss_wdv_11.i015 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv015,
   case
     when v_coss_wdv_11.i016 = 0 then ''
-    else 'x'
+    else 'X'
   end as muv016,
   v_coss_wdv_11.beltp,
   v_coss_wdv_11.timestmp,

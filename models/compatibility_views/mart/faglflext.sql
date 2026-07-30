@@ -93,8 +93,8 @@ glsi_acd as (
     inner join stg_sap__finsc_ld_cmp as lc
         on lc.mandt = a.rclnt and lc.bukrs = a.rbukrs and lc.rldnr = lr.rldnr
     where
-        (a.bstat = '' or a.bstat = 'l' or a.bstat = 'u'
-        or a.bstat = 'j' or a.bstat = 'c' or a.bstat = 't')
+        (upper(a.bstat) = '' or upper(a.bstat) = 'L' or upper(a.bstat) = 'U'
+        or upper(a.bstat) = 'J' or upper(a.bstat) = 'C' or upper(a.bstat) = 'T')
 ),
 
 -- Step 2 (FGLV_GLTT0): Aggregate line items by all dimension columns, sum amounts per period.

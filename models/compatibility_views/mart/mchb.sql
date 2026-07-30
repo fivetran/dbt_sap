@@ -128,7 +128,7 @@ nsdm_v_mchb_diff as (
     cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmei,
     cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmsp,
     cast(0 as {{ dbt.type_numeric() }}) as _cwm_cvmre,
-    'x' as chrue
+    'X' as chrue
   from nsdm_v_mchb_agg
   group by 1,2,3,4,5
 )
@@ -212,7 +212,7 @@ select
   t.herkl,
   t.chdll,
   t.chjin,
-  'x' as chrue,
+  'X' as chrue,
   t.sgt_scat,
   '' as fsh_season_year,
   '' as fsh_season,
