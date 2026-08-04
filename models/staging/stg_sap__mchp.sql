@@ -37,6 +37,7 @@ final as (
         _fivetran_sap_archived,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

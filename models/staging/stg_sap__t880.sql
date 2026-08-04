@@ -48,6 +48,7 @@ final as (
         strt2,
         zweig
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

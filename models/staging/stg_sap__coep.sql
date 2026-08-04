@@ -130,6 +130,7 @@ fields as (
         qunit3
 
     from base
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * from fields

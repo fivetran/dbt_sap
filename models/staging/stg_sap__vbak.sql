@@ -182,6 +182,7 @@ final as (
         tm_ctrl_key,
         gsber
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

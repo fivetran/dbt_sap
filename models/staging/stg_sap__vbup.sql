@@ -68,6 +68,7 @@ final as (
         uvp01,
         uvp03
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

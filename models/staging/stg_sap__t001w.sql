@@ -165,6 +165,7 @@ final as (
         xvvwa,
         zone1
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

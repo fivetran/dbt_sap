@@ -34,6 +34,7 @@ final as (
         tel_number,
         telfx
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

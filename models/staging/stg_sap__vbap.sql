@@ -410,6 +410,7 @@ final as (
         msr_approv_block,
         cepok
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

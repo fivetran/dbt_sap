@@ -222,6 +222,7 @@ final as (
         _fivetran_sap_archived
 
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *
