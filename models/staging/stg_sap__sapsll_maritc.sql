@@ -20,6 +20,8 @@ fields as (
 
 final as (
     select
+        _fivetran_deleted,
+        _fivetran_synced,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(matnr as {{ dbt.type_string() }}) as matnr,
         cast(stcts as {{ dbt.type_string() }}) as stcts,
@@ -27,6 +29,7 @@ final as (
         cast(datbi as {{ dbt.type_string() }}) as datbi,
         cast(ccngn as {{ dbt.type_string() }}) as ccngn
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

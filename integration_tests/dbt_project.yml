@@ -1651,6 +1651,9 @@ seeds:
         aufnz: numeric
         answl: numeric
         invzm: numeric
+    sap_anla_data:
+      +column_types:
+        _fivetran_synced: timestamp
     sap_bsad_bck_data:
       +column_types:
         _fivetran_synced: timestamp
