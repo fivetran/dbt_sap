@@ -11,12 +11,16 @@
 Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema.
 
 ## Schema/Data Change
-**2 total changes • 0 breaking changes**
+**3 total changes • 0 breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, from ACDOCA), Asset Line Items (`anep`, from ACDOCA), and Asset Periodic Values (`anlp`, from FAAT_PLAN_VALUES + ANLA). |
 | [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging Models | | | Adds two new staging models supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
+| [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New Columns | | `afabe`, `anlgr`, `anlgr2`, `anln1`, `anln2`, `anbwa`, `awitgrp`, `awitem`, `bzdat`, `movcat`, `prec_awref`, `slalittype`, `subta`, `subta_rev`, `vorgn`, `xreversed`, `xreversing`, `xsettled`, `xsettling` | Adds 19 new asset-accounting columns used to build the `anep` and `faglflext` compatibility views. |
+
+## Bug Fix
+- Fixes case-sensitive string comparisons in `coss.sql` (the field-name-to-column dispatch logic, and the `set_to_zero`/`xcoss`/`mig_source`/`bstat`/`accasty` filters) and `faglflexa.sql` (the `bstat` filter) that compared against lowercase literals while the underlying SAP data uses uppercase codes. This caused rows to be silently dropped or amount fields to incorrectly fall through to `0`.
 
 ## Documentation
 - Splits the staging and compatibility view YAML doc files into one file per model (previously grouped together), and simplifies the source YAML by removing redundant column-level documentation. Makes the docs easier to navigate for both humans and AI coding agents.

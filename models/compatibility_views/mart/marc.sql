@@ -118,7 +118,7 @@ nsdm_v_marc_diff as (
       end
     ) as bwesb,
     cast(max(nsdm_v_marc_agg.gjper_max) as {{ dbt.type_string() }}) as gjper,
-    'X' as mcrue,
+    'x' as mcrue,
     sum(
       case
         nsdm_v_marc_agg.lbbsa
@@ -379,7 +379,7 @@ select
   t.kzpsp,
   t.ocmpf,
   t.apokz,
-  'X' as mcrue,
+  'x' as mcrue,
   case
     when (
       m.gjper = '0000000'

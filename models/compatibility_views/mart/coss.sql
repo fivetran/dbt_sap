@@ -1482,67 +1482,67 @@ select
   v_coss_wdv_11.mef016,
   case
     when v_coss_wdv_11.i001 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv001,
   case
     when v_coss_wdv_11.i002 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv002,
   case
     when v_coss_wdv_11.i003 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv003,
   case
     when v_coss_wdv_11.i004 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv004,
   case
     when v_coss_wdv_11.i005 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv005,
   case
     when v_coss_wdv_11.i006 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv006,
   case
     when v_coss_wdv_11.i007 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv007,
   case
     when v_coss_wdv_11.i008 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv008,
   case
     when v_coss_wdv_11.i009 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv009,
   case
     when v_coss_wdv_11.i010 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv010,
   case
     when v_coss_wdv_11.i011 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv011,
   case
     when v_coss_wdv_11.i012 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv012,
   case
     when v_coss_wdv_11.i013 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv013,
   case
     when v_coss_wdv_11.i014 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv014,
   case
     when v_coss_wdv_11.i015 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv015,
   case
     when v_coss_wdv_11.i016 = 0 then ''
-    else 'X'
+    else 'x'
   end as muv016,
   v_coss_wdv_11.beltp,
   v_coss_wdv_11.timestmp,
