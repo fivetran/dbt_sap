@@ -82,6 +82,8 @@ seeds:
   +docs:
     show: False
   sap_integration_tests:
+    +column_types:
+      _fivetran_deleted: boolean
     sap_acdoca_data:
       +column_types:
         _fivetran_synced: timestamp
