@@ -6,17 +6,19 @@ models:
       Asset Line Items (ANEP) compatibility view — reconstructs the classic SAP ANEP table from
       ACDOCA asset accounting lines in S/4HANA, joined with FINSC_LEDGER_REP and FINSC_LD_CMP for
       ledger resolution. Filters to valid asset postings using slalittype and movcat combinations
-      from the reference FAAV_ANEP1 logic. Requires sap_using_acdoca, sap_using_finsc_ledger_rep,
-      and sap_using_finsc_ld_cmp to be true.
+      from the reference FAAV_ANEP1 logic. Also unions in a second set of rows re-keyed on each
+      posted asset's group asset (anlgr/anlgr2) when it differs from the posted asset, so postings
+      to a member asset also roll up under its group asset — matching FAAV_ANEP1's second branch.
+      Requires sap_using_acdoca, sap_using_finsc_ledger_rep, and sap_using_finsc_ld_cmp to be true.
     columns:
       - name: mandt
         description: Client (mandant) identifier
       - name: bukrs
         description: Company code
       - name: anln1
-        description: Main asset number
+        description: Main asset number (or, for the group-asset rollup rows, the group asset's main number)
       - name: anln2
-        description: Asset sub-number
+        description: Asset sub-number (or, for the group-asset rollup rows, the group asset's sub-number)
       - name: gjahr
         description: Fiscal year
       - name: lnran

@@ -192,6 +192,8 @@ final as (
         cast(xpaobjnr_co_rel as {{ dbt.type_string() }}) as xpaobjnr_co_rel,
         zekkn,
         cast(afabe as {{ dbt.type_string() }}) as afabe,
+        cast(anlgr as {{ dbt.type_string() }}) as anlgr,
+        cast(anlgr2 as {{ dbt.type_string() }}) as anlgr2,
         cast(anln1 as {{ dbt.type_string() }}) as anln1,
         cast(anln2 as {{ dbt.type_string() }}) as anln2,
         cast(anbwa as {{ dbt.type_string() }}) as anbwa,

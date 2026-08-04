@@ -17,12 +17,15 @@ stg_sap__finsc_ld_cmp as (
 
 -- Filter ACDOCA to asset accounting line items and join to ledger configuration
 -- tables to resolve the representative ledger per depreciation area (afabe).
-asset_lines as (
+-- This filter is shared by both branches of asset_lines below.
+acdoca_base as (
     select
         a.rclnt,
         a.rbukrs,
         a.anln1,
         a.anln2,
+        a.anlgr,
+        a.anlgr2,
         a.ryear,
         a.afabe,
         a.subta,
@@ -48,8 +51,7 @@ asset_lines as (
     inner join stg_sap__finsc_ld_cmp as lc
         on (lc.mandt = a.rclnt and lc.bukrs = a.rbukrs and lc.rldnr = lr.rldnr)
     where
-        a.anln1 != ''
-        and a.awtyp != 'AMDP'
+        a.awtyp != 'AMDP'
         and a.bstat != 'C'
         and a.mig_source in ('A', '')
         and (
@@ -73,6 +75,31 @@ asset_lines as (
             )
         )
         and a.movcat not in ('C7', 'E7')
+),
+
+-- Union of two branches, matching the reference view's FAAV_ANEP1:
+-- 1) line items keyed directly on the posted asset (anln1/anln2)
+-- 2) the same line items re-keyed on the asset's group asset (anlgr/anlgr2),
+--    emitted only when the group asset differs from the posted asset, so that
+--    reporting against the group asset also picks up its members' postings.
+asset_lines as (
+    select
+        rclnt, rbukrs, anln1, anln2, ryear, afabe, subta, awref, awitgrp, awitem,
+        mig_source, bzdat, anbwa, slalittype, movcat, vorgn, subta_rev, prec_awref,
+        xsettled, xsettling, xreversed, xreversing, hsl
+    from acdoca_base
+    where anln1 != ''
+
+    union all
+
+    select
+        rclnt, rbukrs, anlgr as anln1, anlgr2 as anln2, ryear, afabe, subta, awref,
+        awitgrp, awitem, mig_source, bzdat, anbwa, slalittype, movcat, vorgn,
+        subta_rev, prec_awref, xsettled, xsettling, xreversed, xreversing, hsl
+    from acdoca_base
+    where
+        anlgr != ''
+        and (anlgr != anln1 or (anlgr = anln1 and anlgr2 != anln2))
 ),
 
 -- Aggregate line items to the ANEP grain. Derived column expressions are deferred

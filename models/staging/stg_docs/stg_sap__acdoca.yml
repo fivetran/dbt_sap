@@ -350,6 +350,10 @@ models:
         description: Logical system of source
       - name: afabe
         description: Real depreciation area
+      - name: anlgr
+        description: Main asset number of the group asset
+      - name: anlgr2
+        description: Asset subnumber of the group asset
       - name: anln1
         description: Main asset number
       - name: anln2

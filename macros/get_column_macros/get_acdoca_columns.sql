@@ -7,6 +7,8 @@
     {"name": "accas", "datatype": dbt.type_string()},
     {"name": "accasty", "datatype": dbt.type_string()},
     {"name": "afabe", "datatype": dbt.type_string()},
+    {"name": "anlgr", "datatype": dbt.type_string()},
+    {"name": "anlgr2", "datatype": dbt.type_string()},
     {"name": "anln1", "datatype": dbt.type_string()},
     {"name": "anln2", "datatype": dbt.type_string()},
     {"name": "anbwa", "datatype": dbt.type_string()},
