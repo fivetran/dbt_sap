@@ -11,13 +11,14 @@
 Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema.
 
 ## Schema/Data Change
-**3 total changes • 0 breaking changes**
+**4 total changes • 0 breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), Asset Line Items (`anep`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), and Asset Periodic Values (`anlp`, needs `FAAT_PLAN_VALUES` table + optional `ANLA` table for fixed asset dimensions). |
 | [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging/Tmp Models | | | Adds two new staging models (with corresponding `_tmp` models) supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
 | [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New Columns | | `afabe`, `anlgr`, `anlgr2`, `anln1`, `anln2`, `anbwa`, `awitgrp`, `awitem`, `bzdat`, `movcat`, `prec_awref`, `slalittype`, `subta`, `subta_rev`, `vorgn`, `xreversed`, `xreversing`, `xsettled`, `xsettling` | Adds 19 new asset-accounting columns used to build the `anep` and `faglflext` compatibility views. |
+| [`stg_sap__matdoc_extract`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__matdoc_extract)<br>[`mchb`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.mchb)<br>[`marc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.marc) | Changed field/model | Soft-deleted `MATDOC_EXTRACT` rows were included in stock quantity aggregations | Soft-deleted rows are now excluded | Fixes negative or otherwise incorrect stock quantity values (for example `mchb.clabs`) caused by including soft-deleted `MATDOC_EXTRACT` records in the aggregations that feed `mchb` and `marc`. |
 
 ## Bug Fix
 - Fixes case-sensitive string comparisons in `coss.sql` (the field-name-to-column dispatch logic, and the `set_to_zero`/`xcoss`/`mig_source`/`bstat`/`accasty` filters) and `faglflexa.sql` (the `bstat` filter) that compared against lowercase literals while the underlying SAP data uses uppercase codes. This caused rows to be silently dropped or amount fields to incorrectly fall through to `0`.

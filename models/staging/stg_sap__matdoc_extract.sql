@@ -62,6 +62,7 @@ final as (
         cast(werks as {{ dbt.type_string() }}) as werks,
         xobew
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *
