@@ -5,7 +5,7 @@ This dbt package transforms data from Fivetran's SAP connector into analytics-re
 
 ## Resources
 
-- Number of materialized models¹: 148
+- Number of materialized models¹: 155
 - Connector documentation
   - [LDP SAP Netweaver](https://fivetran.com/docs/local-data-processing/requirements/source-and-target-requirements/sap-netweaver-requirements)
   - [HVA SAP](https://fivetran.com/docs/databases/sap-erp/high-volume-agent)
