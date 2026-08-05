@@ -11,7 +11,7 @@
 Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema.
 
 ## Schema/Data Change
-**4 total changes • 1 possible breaking change**
+**5 total changes • 1 possible breaking change**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
@@ -19,6 +19,7 @@ Any downstream queries, BI tools, or other dbt projects that reference these mod
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), Asset Line Items (`anep`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), and Asset Periodic Values (`anlp`, needs `FAAT_PLAN_VALUES` table + optional `ANLA` table for fixed asset dimensions). |
 | [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging/Tmp Models | | | Adds two new staging models (with corresponding `_tmp` models) supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
 | [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New Columns | | `afabe`, `anlgr`, `anlgr2`, `anln1`, `anln2`, `anbwa`, `awitgrp`, `awitem`, `bzdat`, `movcat`, `prec_awref`, `slalittype`, `subta`, `subta_rev`, `vorgn`, `xreversed`, `xreversing`, `xsettled`, `xsettling` | Adds 19 new asset-accounting columns used to build the `anep` and `faglflext` compatibility views. |
+| [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__finsc_ld_cmp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ld_cmp)<br>[`stg_sap__finsc_ledger_rep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__finsc_ledger_rep)<br>[`stg_sap__sapsll_clsnr`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_clsnr)<br>[`stg_sap__sapsll_maritc`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_maritc)<br>[`stg_sap__sapsll_nosca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_nosca)<br>[`stg_sap__sapsll_tunos`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__sapsll_tunos) | New Columns | | `_fivetran_deleted`, `_fivetran_synced` | Adds these standard Fivetran metadata columns, which these models were missing, so soft-deleted rows can be filtered out the same way as every other staging model in the package. |
 
 ## Bug Fix
 - Fixes case-sensitive string comparisons in `coss.sql` (the field-name-to-column dispatch logic, and the `set_to_zero`/`xcoss`/`mig_source`/`bstat`/`accasty` filters) and `faglflexa.sql` (the `bstat` filter) that compared against lowercase literals while the underlying SAP data uses uppercase codes. This caused rows to be silently dropped or amount fields to incorrectly fall through to `0`.
