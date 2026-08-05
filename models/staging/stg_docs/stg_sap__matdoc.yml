@@ -4,6 +4,10 @@ models:
   - name: stg_sap__matdoc
     description: Material document header
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: _cwm_erfme
         description: Unit of the entry
       - name: _cwm_erfmg

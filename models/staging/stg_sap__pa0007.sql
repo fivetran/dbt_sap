@@ -23,6 +23,8 @@ fields as (
 final as (
     
     select
+        _fivetran_deleted,
+        _fivetran_synced,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         pernr,
         subty,
@@ -68,6 +70,7 @@ final as (
         wweek,
         zterf
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

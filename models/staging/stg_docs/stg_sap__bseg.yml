@@ -4,6 +4,10 @@ models:
   - name: stg_sap__bseg
     description: Accounting document segment
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
       - name: fcsl
         description: Amount in freely defined currency 1
       - name: fkont

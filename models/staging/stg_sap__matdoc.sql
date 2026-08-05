@@ -22,6 +22,8 @@ fields as (
 
 final as (
     select
+        _fivetran_deleted,
+        _fivetran_synced,
         mandt,                
         mblnr,                
         mjahr,                
@@ -285,6 +287,7 @@ final as (
         cast(record_type as {{ dbt.type_string() }}) as record_type,
         cast(header_counter as {{ dbt.type_numeric() }}) as header_counter
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

@@ -4,6 +4,8 @@ models:
   - name: stg_sap__bsad_bck
     description: Secondary index for customers - cleared items
     columns:
+      - name: _fivetran_deleted
+        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
       - name: _dataaging
