@@ -4,8 +4,6 @@ models:
   - name: stg_sap__finsc_ledger_rep
     description: Financial SCM ledger reporting data
     columns:
-      - name: _fivetran_synced
-        description: Fivetran sync timestamp
       - name: rldnr
         description: Ledger
       - name: mandt

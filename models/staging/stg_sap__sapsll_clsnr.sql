@@ -20,7 +20,6 @@ fields as (
 
 final as (
     select
-        _fivetran_synced,
         cast(nosct as {{ dbt.type_string() }}) as nosct,
         cast(ccngn as {{ dbt.type_string() }}) as ccngn,
         cast(datab as {{ dbt.type_string() }}) as datab,

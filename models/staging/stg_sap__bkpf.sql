@@ -23,7 +23,6 @@ fields as (
 final as (
 
     select
-        _fivetran_synced,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         cast(bukrs_sender as {{ dbt.type_string() }}) as bukrs_sender,

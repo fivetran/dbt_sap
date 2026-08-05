@@ -4,8 +4,6 @@ models:
   - name: stg_sap__sapsll_maritc
     description: SAP Special Ledger material items
     columns:
-      - name: _fivetran_synced
-        description: Fivetran sync timestamp
       - name: mandt
         description: Client
       - name: matnr
