@@ -1,6 +1,7 @@
 {% macro get_finsc_ld_cmp_columns() %}
 
 {% set columns = [
+    {"name": "_fivetran_deleted", "datatype": "boolean"},
     {"name": "bukrs", "datatype": dbt.type_string()},
     {"name": "curposb", "datatype": dbt.type_string()},
     {"name": "curposc", "datatype": dbt.type_string()},

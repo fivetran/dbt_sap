@@ -58,10 +58,10 @@ final as (
         vprsv,
         vtype,
         wmakg,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_rowid
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

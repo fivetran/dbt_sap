@@ -217,11 +217,11 @@ final as (
         rpmkr,
         name3,
         name1,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived
 
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

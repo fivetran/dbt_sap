@@ -210,9 +210,9 @@ final as (
         cast(xreversing as {{ dbt.type_string() }}) as xreversing,
         cast(xsettled as {{ dbt.type_string() }}) as xsettled,
         cast(xsettling as {{ dbt.type_string() }}) as xsettling,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

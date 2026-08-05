@@ -23,7 +23,6 @@ fields as (
 final as (
 
     select
-        _fivetran_deleted,
         _fivetran_rowid,
         _fivetran_synced,
         city,
@@ -48,6 +47,7 @@ final as (
         strt2,
         zweig
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

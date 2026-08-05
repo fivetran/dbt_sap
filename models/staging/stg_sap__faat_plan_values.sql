@@ -78,9 +78,9 @@ final as (
         cast(segment as {{ dbt.type_string() }}) as segment,
         cast(prctr as {{ dbt.type_string() }}) as prctr,
         cast(fistl as {{ dbt.type_string() }}) as fistl,
-        _fivetran_synced,
-        _fivetran_deleted
+        _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

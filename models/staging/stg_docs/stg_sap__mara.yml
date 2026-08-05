@@ -270,8 +270,6 @@ models:
         description: Service count group
       - name: _dsd_vc_group
         description: Visit control group
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_rowid
         description: Fivetran unique row ID
       - name: _fivetran_sap_archived

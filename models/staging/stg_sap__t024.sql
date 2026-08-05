@@ -20,7 +20,6 @@ fields as (
 
 final as (
     select
-        _fivetran_deleted,
         _fivetran_rowid,
         _fivetran_synced,
         _fivetran_sap_archived,
@@ -34,6 +33,7 @@ final as (
         tel_number,
         telfx
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

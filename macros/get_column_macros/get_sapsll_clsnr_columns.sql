@@ -1,6 +1,7 @@
 {% macro get_sapsll_clsnr_columns() %}
 
 {% set columns = [
+    {"name": "_fivetran_deleted", "datatype": "boolean"},
     {"name": "bemeh", "datatype": dbt.type_string()},
     {"name": "ccngn", "datatype": dbt.type_string()},
     {"name": "datab", "datatype": dbt.type_string()},

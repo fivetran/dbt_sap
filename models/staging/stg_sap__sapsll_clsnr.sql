@@ -27,6 +27,7 @@ final as (
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(bemeh as {{ dbt.type_string() }}) as bemeh
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

@@ -386,7 +386,5 @@ models:
         description: Indicator for whether the line item is settled
       - name: xsettling
         description: Indicator for whether the line item is being settled
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp

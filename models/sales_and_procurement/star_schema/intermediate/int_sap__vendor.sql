@@ -140,7 +140,6 @@ select
     staging_time as staging_time_in_days,
     scheduling_type as scheduling_procedure,
     submi_relevant as cd_relevant_collective_numbering,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_rowid as _fivetran_rowid
 from {{ ref('stg_sap__lfa1') }}

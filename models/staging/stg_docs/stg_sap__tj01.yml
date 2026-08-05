@@ -12,7 +12,5 @@ models:
         description: Update COSP indicator
       - name: xcoss
         description: Update COSS indicator
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp

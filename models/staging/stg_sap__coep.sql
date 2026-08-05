@@ -10,7 +10,6 @@ with base as (
 fields as (
 
     select
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived,
         mandt,
@@ -130,6 +129,7 @@ fields as (
         qunit3
 
     from base
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * from fields

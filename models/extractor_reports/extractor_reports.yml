@@ -628,8 +628,6 @@ models:
   - name: sap__0material_attr
     description: This model is used to display material attribute information, originating from the mara source. 
     columns:
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_rowid
         description: Fivetran unique row ID
       - name: _fivetran_synced

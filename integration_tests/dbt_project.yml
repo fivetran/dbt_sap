@@ -82,19 +82,19 @@ seeds:
   +docs:
     show: False
   sap_integration_tests:
+    +column_types:
+      _fivetran_deleted: boolean
+      _fivetran_synced: timestamp
     sap_acdoca_data:
       +column_types:
-        _fivetran_synced: timestamp
         acrrefobj_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
     sap_sapsll_maritc_data:
       +column_types:
-        _fivetran_synced: timestamp
         crea_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         lchg_date_time: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
     sap_bkpf_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         aedat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         awkey: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -120,7 +120,6 @@ seeds:
     sap_bseg_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         _dataaging: "date"
         abper: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         absbt: numeric
@@ -274,7 +273,6 @@ seeds:
     sap_dd07l_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -282,7 +280,6 @@ seeds:
     sap_dd07t_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         domname: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         domvalue_l: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         as4vers: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -291,7 +288,6 @@ seeds:
 
     sap_ekbe_data:
       +column_types:
-        _fivetran_synced: timestamp
         dmbtr: numeric
         dmbtr_pop: numeric
         retamt_fc: numeric
@@ -303,7 +299,6 @@ seeds:
 
     sap_eket_data:
       +column_types:
-        _fivetran_synced: timestamp
         otb_res_value: numeric
         otb_spec_value: numeric
         otb_value: numeric
@@ -726,7 +721,6 @@ seeds:
     sap_faglflexa_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         belnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bschl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         budat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -752,7 +746,6 @@ seeds:
 
     sap_faglflext_data:
       +column_types:
-        _fivetran_synced: timestamp
         hslvt: numeric
         hsl01: numeric
         hsl02: numeric
@@ -867,7 +860,6 @@ seeds:
       +quote_columns: true
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bbbnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bbsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -896,14 +888,12 @@ seeds:
       +alias: sap_kna1_data
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         _vso_r_palhgt: numeric
         umsa1: numeric
         umsat: numeric
     sap_kna1_data_snowflake:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
       +enabled: "{{ true if target.type == 'snowflake' else false }}"
       +quote_columns: true
       +alias: sap_kna1_data
@@ -911,7 +901,6 @@ seeds:
     sap_lfa1_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bbbnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bbsnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -936,7 +925,6 @@ seeds:
     sap_makt_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         matnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -945,7 +933,6 @@ seeds:
     sap_mara_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         blanz: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         compl: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         cuobf: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -980,7 +967,6 @@ seeds:
     sap_pa0000_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1013,7 +999,6 @@ seeds:
     sap_pa0001_data:
       +column_types: 
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         abkrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
         aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ansvh: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1070,7 +1055,6 @@ seeds:
     sap_pa0007_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         arbst: numeric
         awtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1119,7 +1103,6 @@ seeds:
     sap_pa0008_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ancur: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         ansal: numeric
@@ -1408,7 +1391,6 @@ seeds:
     sap_pa0031_data:
       +column_types: 
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         aedtm: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
         begda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         endda: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1456,7 +1438,6 @@ seeds:
     sap_ska1_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         erdat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         sakan: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1464,7 +1445,6 @@ seeds:
 
     sap_t001_data:
       +column_types:
-        _fivetran_synced: timestamp
         adrnr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bukrs: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         buvar: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
@@ -1486,7 +1466,6 @@ seeds:
     sap_t001w_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         werks: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1495,7 +1474,6 @@ seeds:
     sap_t024_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         ekgrp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         eknam: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
@@ -1507,7 +1485,6 @@ seeds:
     sap_t134t_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mtart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         mtbez: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
 
@@ -1519,7 +1496,6 @@ seeds:
     sap_t161t_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         bstyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         bsart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1528,7 +1504,6 @@ seeds:
     sap_t503_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         abart: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}" 
         abtyp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         aksta: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1549,7 +1524,6 @@ seeds:
     sap_t880_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         rcomp: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         name1: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1557,7 +1531,6 @@ seeds:
     sap_tvag_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         dragr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1565,7 +1538,6 @@ seeds:
     sap_tvagt_data:
       +column_types:
         _fivetran_rowid: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
-        _fivetran_synced: timestamp
         mandt: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         abgru: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         spras: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
@@ -1573,13 +1545,11 @@ seeds:
 
     sap_vbak_data:
       +column_types:
-        _fivetran_synced: timestamp
         cmngv: numeric
         netwr: numeric
 
     sap_vbap_data:
       +column_types:
-        _fivetran_synced: timestamp
         ablfz: numeric
         absfz: numeric
         anzsn: numeric
@@ -1625,7 +1595,6 @@ seeds:
 
     sap_faat_plan_values_data:
       +column_types:
-        _fivetran_synced: timestamp
         aufwp: numeric
         aufwb: numeric
         aufwz: numeric
@@ -1649,73 +1618,6 @@ seeds:
         aufnz: numeric
         answl: numeric
         invzm: numeric
-    sap_bsad_bck_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_bsak_bck_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_coep_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_cosp_bak_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_finsc_cmp_versnd_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_finsc_ld_cmp_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_finsc_ledger_rep_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_marc_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_matdoc_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_matdoc_extract_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_mchb_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_mchp_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_prps_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_sapsll_clsnr_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_sapsll_nosca_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_sapsll_tunos_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_t000_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_t006_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_t024e_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_tj01_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_tka01_data:
-      +column_types:
-        _fivetran_synced: timestamp
-    sap_vbup_data:
-      +column_types:
-        _fivetran_synced: timestamp
-
 
 flags:
   send_anonymous_usage_stats: False

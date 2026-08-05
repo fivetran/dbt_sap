@@ -66,7 +66,6 @@ select
     fprfw as distrib_profile_plant_id,
     ort01 as city,
     iwerk as maintenance_planning_plant_id,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__t001w') }}

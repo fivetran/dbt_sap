@@ -67,7 +67,6 @@ with sales_document_header as (
         , sales_document_item.weight_uom_id
         , sales_document_item.returns_item
         , sales_document_item.reason_rejection_id
-        , sales_document_item._fivetran_deleted
         , sales_document_item._fivetran_synced
         {% endif %}
 

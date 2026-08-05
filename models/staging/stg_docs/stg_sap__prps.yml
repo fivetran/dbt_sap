@@ -4,8 +4,6 @@ models:
   - name: stg_sap__prps
     description: Work breakdown structure (WBS) element master data staging model
     columns:
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
       - name: _fivetran_sap_archived
