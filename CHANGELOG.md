@@ -2,18 +2,13 @@
 
 [PR #49](https://github.com/fivetran/dbt_sap/pull/49) includes the following updates:
 
-## Breaking Schema Change (--full-refresh required after upgrading)
-
-- **All `stg_sap__*` staging models** now materialize in `<target_schema>_sap_source` (previously `<target_schema>_sap`).
-- **All compatibility view models** now materialize in `<target_schema>_sap` (previously `<target_schema>_sap_comp_views`).
-
-Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema.
-
-## Schema/Data Change
-**5 total changes • 2 breaking changes**
+## Schema/Data Change (--full-refresh required after upgrading)
+**7 total changes • 4 breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
+| **All `stg_sap__*` staging models** (breaking) | Materialization | `<target_schema>_sap` | `<target_schema>_sap_source` | Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will break until updated to point at the new schema. |
+| **All compatibility view models** (breaking) | Materialization | `<target_schema>_sap_comp_views` | `<target_schema>_sap` | Same as above — update any downstream references to the new schema. |
 | **All `stg_sap__*` staging models with a `_fivetran_deleted` column** (breaking) | Row filter | | Soft-deleted rows are excluded | Removes deleted rows in staging and downstream so aggregations (for example `mchb.clabs`) are calculated from active records only. |
 | **All `stg_sap__*` staging models, and downstream models that passed it through (for example `sap__fact_sales_order`, `sap__0material_attr`)** (breaking) | Removed field | `_fivetran_deleted` | | Removes column from every model's output. The delete filter above still runs internally against the source column, so the output column would only ever read `false`. Removing it avoids persisting a column that can no longer carry information. |
 | [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), Asset Line Items (`anep`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), and Asset Periodic Values (`anlp`, needs `FAAT_PLAN_VALUES` table + optional `ANLA` table for fixed asset dimensions). |
