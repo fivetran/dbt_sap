@@ -23,7 +23,6 @@ fields as (
 final as (
 
     select
-        _fivetran_deleted,
         _fivetran_synced,
         _dataaging,
         cast(mandt as {{ dbt.type_string() }}) as mandt,

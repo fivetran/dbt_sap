@@ -20,7 +20,6 @@ fields as (
 
 final as (
     select
-        _fivetran_deleted,
         _fivetran_synced,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(matnr as {{ dbt.type_string() }}) as matnr,

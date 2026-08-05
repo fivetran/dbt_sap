@@ -4,8 +4,6 @@ models:
   - name: stg_sap__pa0000
     description: HR master record--infotype 0000 (Actions)
     columns:
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
       - name: aedtm

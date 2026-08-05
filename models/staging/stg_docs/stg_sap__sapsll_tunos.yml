@@ -4,8 +4,6 @@ models:
   - name: stg_sap__sapsll_tunos
     description: SAP Special Ledger transaction numbers
     columns:
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
       - name: mandt

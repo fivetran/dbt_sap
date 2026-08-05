@@ -161,7 +161,6 @@ final as (
         zbd3t,
         zterm,
         _fivetran_sap_archived,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
     where not coalesce(_fivetran_deleted, false)

@@ -10,8 +10,6 @@ models:
         description: Catch weight stock in transit quantity
       - name: _cwm_umlmc
         description: Catch weight transfer order stock quantity
-      - name: _fivetran_deleted
-        description: Fivetran soft delete indicator
       - name: _fivetran_sap_archived
         description: SAP record archived indicator
       - name: _fivetran_synced

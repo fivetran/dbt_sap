@@ -20,7 +20,6 @@ fields as (
 
 final as (
     select
-        _fivetran_deleted,
         _fivetran_synced,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(land1 as {{ dbt.type_string() }}) as land1,

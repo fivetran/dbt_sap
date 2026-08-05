@@ -28,8 +28,6 @@ models:
         description: CWM blocked stock of previous period
       - name: _cwm_cvmum
         description: CWM stock in transfer in previous period
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker
       - name: _fivetran_synced

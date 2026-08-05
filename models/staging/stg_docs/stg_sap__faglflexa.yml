@@ -93,7 +93,5 @@ models:
       - name: wsl
         description: Value in original transaction currency
 
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp

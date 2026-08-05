@@ -195,7 +195,6 @@ final as (
         cast((faglflext.oslvt+faglflext.osl01+faglflext.osl02+faglflext.osl03+faglflext.osl04+faglflext.osl05+faglflext.osl06+faglflext.osl07+faglflext.osl08+faglflext.osl09+faglflext.osl10+faglflext.osl11+faglflext.osl12+faglflext.osl13+faglflext.osl14+faglflext.osl15+faglflext.osl16) as {{ dbt.type_numeric() }}) as osm16,
         faglflext.faglflext_timestamp,
         faglflext._fivetran_rowid,
-        faglflext._fivetran_deleted,
         faglflext._fivetran_synced
     from faglflext 
     inner join t001 

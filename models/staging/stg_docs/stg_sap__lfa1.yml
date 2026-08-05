@@ -232,8 +232,6 @@ models:
         description: Scheduling type
       - name: submi_relevant
         description: Subcontracting relevant
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
       - name: _fivetran_rowid

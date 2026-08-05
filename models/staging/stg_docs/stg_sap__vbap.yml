@@ -12,8 +12,6 @@ models:
         description: Beverage-specific fund indicator
       - name: _dataaging
         description: Data aging timestamp
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker
       - name: _fivetran_synced

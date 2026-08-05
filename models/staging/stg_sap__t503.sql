@@ -39,7 +39,6 @@ final as (
         trfkz,
         typsz,
         zeity,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_rowid
     from fields

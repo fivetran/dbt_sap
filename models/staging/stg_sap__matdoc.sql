@@ -22,7 +22,6 @@ fields as (
 
 final as (
     select
-        _fivetran_deleted,
         _fivetran_synced,
         mandt,                
         mblnr,                

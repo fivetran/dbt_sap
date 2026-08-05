@@ -24,7 +24,6 @@ final as (
         mtart,
         mtbez,
         spras,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_rowid
     from fields

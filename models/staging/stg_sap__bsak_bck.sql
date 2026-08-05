@@ -227,7 +227,6 @@ final as (
         vorgn,
         j_1tpbupl,
         buzei_sender,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
     where not coalesce(_fivetran_deleted, false)

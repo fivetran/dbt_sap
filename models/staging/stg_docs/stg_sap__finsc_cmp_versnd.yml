@@ -44,7 +44,5 @@ models:
         description: Field name for parallel fixed amount to subtract
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp

@@ -13,7 +13,6 @@ select
     mkals as market_price_schema_id,
     bukrs as company_code_id,
     bukrs_ntr as cocdsubsstlmt_id,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__t024e') }}

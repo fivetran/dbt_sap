@@ -23,7 +23,6 @@ final as (
         _cwm_bwesb,
         _cwm_trame,
         _cwm_umlmc,
-        _fivetran_deleted,
         _fivetran_sap_archived,
         _fivetran_synced,
         _sapmp_tolprmi,

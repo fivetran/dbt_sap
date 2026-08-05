@@ -218,7 +218,6 @@ final as (
         gkont,
         gkart,
         ghkon,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
     where not coalesce(_fivetran_deleted, false)

@@ -24,7 +24,6 @@ final as (
         cast(wtkat as {{ dbt.type_string() }}) as wtkat,
         cast(xcosp as {{ dbt.type_string() }}) as xcosp,
         cast(xcoss as {{ dbt.type_string() }}) as xcoss,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
     where not coalesce(_fivetran_deleted, false)

@@ -24,7 +24,6 @@ final as (
         cast(kokrs as {{ dbt.type_string() }}) as kokrs,
         logsystem,
         cast(xwbuk as {{ dbt.type_string() }}) as xwbuk,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
     where not coalesce(_fivetran_deleted, false)

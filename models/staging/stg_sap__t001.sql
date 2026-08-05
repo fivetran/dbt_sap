@@ -102,7 +102,6 @@ final as (
         xfdmm,
         xgsbe,
         stceg,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived
     from fields

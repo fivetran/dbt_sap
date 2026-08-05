@@ -27,7 +27,6 @@ final as (
         _cwm_meins_sid,
         _cwm_stock_qty_l1,
         _cwm_stock_qty_l2,
-        _fivetran_deleted,
         _fivetran_sap_archived,
         _fivetran_synced,
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,

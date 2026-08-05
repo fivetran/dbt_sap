@@ -12,7 +12,5 @@ models:
         description: Logical system
       - name: xwbuk
         description: Company code indicator
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp
