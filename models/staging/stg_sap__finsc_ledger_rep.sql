@@ -24,6 +24,7 @@ final as (
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(rldnr_pers as {{ dbt.type_string() }}) as rldnr_pers
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

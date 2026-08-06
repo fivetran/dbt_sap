@@ -80,7 +80,6 @@ select
     xfdmm as update_mm_in_cmf,
     xgsbe as business_area_fin_statements,
     stceg as vat_registration_no,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 

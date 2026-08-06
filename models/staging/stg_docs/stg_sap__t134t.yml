@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_sap__t134t
+    description: Material type descriptions
+    columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: mtart
+        description: Material type
+      - name: mandt
+        description: Client
+      - name: mtbez
+        description: Description of material type
+      - name: spras
+        description: Language key

@@ -32,10 +32,10 @@ final as (
         mkals,
         bukrs,
         bukrs_ntr,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

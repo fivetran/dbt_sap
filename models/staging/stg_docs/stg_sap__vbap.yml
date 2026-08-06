@@ -1,0 +1,782 @@
+version: 2
+
+models:
+  - name: stg_sap__vbap
+    description: Sales document item data
+    columns:
+      - name: _accgo_is_co_rel
+        description: CO-relevant indicator (Accruals)
+      - name: _accgo_tx_p
+        description: Accruals tax percentage
+      - name: _bev1_srfund
+        description: Beverage-specific fund indicator
+      - name: _dataaging
+        description: Data aging timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _slce_inst_guid
+        description: Solution configuration instance GUID
+      - name: _slce_single_conf_done
+        description: Single configuration completed
+      - name: _slce_single_conf_reqired
+        description: Single configuration required
+      - name: _slce_sol_cuobj
+        description: Solution configuration object number
+      - name: _slce_sol_ext_guid
+        description: Solution external GUID
+      - name: _slce_sol_matnr
+        description: Solution material number
+      - name: _slce_sol_posnr
+        description: Solution item number
+      - name: _xlso_course_bda
+        description: XL course begin date
+      - name: _xlso_course_eda
+        description: XL course end date
+      - name: _xlso_course_id
+        description: XL course ID
+      - name: abdat
+        description: Delivery date
+      - name: abfor
+        description: Schedule line date (initial)
+      - name: abges
+        description: Quantity confirmed by availability check
+      - name: abgrs
+        description: Reason for rejection
+      - name: abgru
+        description: Rejection reason
+      - name: ablfz
+        description: Partial delivery allowed
+      - name: absfz
+        description: Maximum partial deliveries
+      - name: aedat
+        description: Last change date
+      - name: antlf
+        description: Number of partial deliveries
+      - name: anzsn
+        description: Number of serial numbers
+      - name: aplzl_oaa
+        description: Routing line number (OAA)
+      - name: aplzl_olc
+        description: Routing line number (OLC)
+      - name: arktx
+        description: Short text for sales order item
+      - name: arsnum
+        description: Scheduling agreement number
+      - name: arspos
+        description: Scheduling agreement item
+      - name: atpkz
+        description: ATP check indicator
+      - name: aufnr
+        description: Order number
+      - name: aufpl_oaa
+        description: Routing number (OAA)
+      - name: aufpl_olc
+        description: Routing number (OLC)
+      - name: awahr
+        description: Order probability
+      - name: bedae
+        description: Requirement type
+      - name: berid
+        description: MRP area
+      - name: betc
+        description: Tax base code
+      - name: bonus
+        description: Bonus indicator
+      - name: bpn
+        description: Bid project number
+      - name: brgew
+        description: Gross weight
+      - name: budget_pd
+        description: Budget period
+      - name: bwtar
+        description: Valuation type
+      - name: bwtex
+        description: External valuation type
+      - name: cancel_allow
+        description: Cancellation allowed
+      - name: cepok
+        description: Order confirmation partner
+      - name: charg
+        description: Batch number
+      - name: chmvs
+        description: Batch split indicator
+      - name: chspl
+        description: Split delivery indicator
+      - name: clint
+        description: Classification internal number
+      - name: cmeth
+        description: Costing method
+      - name: cmkua
+        description: Credit management check at item level
+      - name: cmpnt
+        description: Component item indicator
+      - name: cmpre
+        description: Comparative quantity
+      - name: cmpre_flt
+        description: Float-based comparison quantity
+      - name: cmtfg
+        description: Configuration strategy
+      - name: cpd_updat
+        description: Update indicator for CPD item
+      - name: cuobj
+        description: Configuration object number
+      - name: cuobj_ch
+        description: Changed configuration object
+      - name: ean11
+        description: International Article Number (EAN/UPC)
+      - name: eannr
+        description: European Article Number
+      - name: erdat
+        description: Creation date
+      - name: erlre
+        description: Final delivery indicator
+      - name: ernam
+        description: Created by
+      - name: erzet
+        description: Time of entry
+      - name: exart
+        description: Export/import type
+      - name: faksp
+        description: Billing block for item
+      - name: ferc_ind
+        description: Federal Energy Reg Commission indicator
+      - name: fiscal_incentive
+        description: Fiscal incentive indicator
+      - name: fiscal_incentive_id
+        description: Fiscal incentive ID
+      - name: fistl
+        description: Funds center
+      - name: fixmg
+        description: Fixed quantity
+      - name: fkber
+        description: Functional area
+      - name: fkrel
+        description: Relevant for billing
+      - name: fmeng
+        description: Confirmed quantity
+      - name: fmfgus_key
+        description: FM federal government US key
+      - name: fonds
+        description: Fund
+      - name: fsh_candate
+        description: Fashion cancellation date
+      - name: fsh_collection
+        description: Fashion collection
+      - name: fsh_crsd
+        description: Creation strategy
+      - name: fsh_grid_cond_rec
+        description: Grid condition record (Fashion)
+      - name: fsh_item
+        description: Fashion item number
+      - name: fsh_item_group
+        description: Fashion item group
+      - name: fsh_pqr_uepos
+        description: Parent item for PQR
+      - name: fsh_psm_pfm_split
+        description: Budget split for fashion items
+      - name: fsh_searef
+        description: Season reference
+      - name: fsh_season
+        description: Fashion season
+      - name: fsh_season_year
+        description: Fashion season year
+      - name: fsh_theme
+        description: Fashion theme
+      - name: fsh_transaction
+        description: Fashion transaction type
+      - name: fsh_vas_prnt_id
+        description: Parent VAS item
+      - name: fsh_vas_rel
+        description: VAS relevance indicator
+      - name: fsh_vasref
+        description: VAS reference ID
+      - name: gewei
+        description: Weight unit
+      - name: grant_nbr
+        description: Grant number
+      - name: grkor
+        description: Group counter
+      - name: grpos
+        description: Group position
+      - name: gsber
+        description: Business area
+      - name: handoverdate
+        description: Handover date to shipper
+      - name: handoverloc
+        description: Handover location
+      - name: handovertime
+        description: Handover time
+      - name: iuid_relevant
+        description: Indicator for IUID relevance
+      - name: j_1bcfop
+        description: Brazilian CFOP code
+      - name: j_1btaxlw1
+        description: Local tax classification 1
+      - name: j_1btaxlw2
+        description: Local tax classification 2
+      - name: j_1btaxlw3
+        description: Local tax classification 3
+      - name: j_1btaxlw4
+        description: Local tax classification 4
+      - name: j_1btaxlw5
+        description: Local tax classification 5
+      - name: j_1btxsdc
+        description: Substituição tributária code (Brazil)
+      - name: kalnr
+        description: Internal number for conditions
+      - name: kalsm_k
+        description: Pricing procedure for item
+      - name: kalvar
+        description: Calculation variant
+      - name: kannr
+        description: Quantity contract number
+      - name: kbmeng
+        description: Cumulative confirmed quantity
+      - name: kbver
+        description: Condition record version
+      - name: kdmat
+        description: Customer material number
+      - name: kever
+        description: Version number of costing
+      - name: klmeng
+        description: Target quantity
+      - name: klvar
+        description: Variant configuration version
+      - name: kmein
+        description: Target quantity unit
+      - name: kmpmg
+        description: Cumulative quantity delivered
+      - name: knttp
+        description: Account assignment category
+      - name: knuma_ag
+        description: Agreement item number
+      - name: knuma_pi
+        description: Pricing item number
+      - name: knumh
+        description: Condition record number
+      - name: kondm
+        description: Material group 1
+      - name: kosch
+        description: Product allocation procedure
+      - name: kostl
+        description: Cost center
+      - name: koupd
+        description: Last configuration update
+      - name: kowrr
+        description: Statistical value
+      - name: kpein
+        description: Pricing unit
+      - name: ktgrm
+        description: Tax classification
+      - name: kwmeng
+        description: Order quantity
+      - name: kzbws
+        description: Value not deductible
+      - name: kzfme
+        description: Indicator for FM assignment
+      - name: kztlf
+        description: Third-party order processing
+      - name: kzvbr
+        description: Relevant for rebate processing
+      - name: kzwi1
+        description: Subtotal 1
+      - name: kzwi2
+        description: Subtotal 2
+      - name: kzwi3
+        description: Subtotal 3
+      - name: kzwi4
+        description: Subtotal 4
+      - name: kzwi5
+        description: Subtotal 5
+      - name: kzwi6
+        description: Subtotal 6
+      - name: lfmng
+        description: Quantity already delivered
+      - name: lfrel
+        description: Schedule line relevant for delivery
+      - name: lgort
+        description: Storage location
+      - name: logsys_ext
+        description: External logical system
+      - name: lprio
+        description: Delivery priority
+      - name: lsmeng
+        description: Cumulative open quantity
+      - name: lstanr
+        description: Standard BOM item number
+      - name: magrv
+        description: Material group for packaging
+      - name: mandt
+        description: Client
+      - name: manual_tc_reason
+        description: Manual tax code reason
+      - name: matkl
+        description: Material group
+      - name: matnr
+        description: Material number
+      - name: matwa
+        description: Material entered
+      - name: meins
+        description: Base unit of measure
+      - name: mfrgr
+        description: Material freight group
+      - name: mill_se_gposn
+        description: General position number (Mill)
+      - name: mod_allow
+        description: Modification allowed
+      - name: mprok
+        description: Product allocation indicator
+      - name: msr_approv_block
+        description: MSR approval block indicator
+      - name: msr_refund_code
+        description: MSR refund code
+      - name: msr_ret_reason
+        description: MSR return reason
+      - name: mtvfp
+        description: Availability check rule
+      - name: mvgr1
+        description: Material group 1
+      - name: mvgr2
+        description: Material group 2
+      - name: mvgr3
+        description: Material group 3
+      - name: mvgr4
+        description: Material group 4
+      - name: mvgr5
+        description: Material group 5
+      - name: mwsbp
+        description: Tax amount in pricing currency
+      - name: nachl
+        description: Subsequent function indicator
+      - name: netpr
+        description: Net price
+      - name: netwr
+        description: Net value
+      - name: nrab_knumh
+        description: Condition record number (manual discount)
+      - name: ntgew
+        description: Net weight
+      - name: objnr
+        description: Object number
+      - name: oia_baselo
+        description: OIL base location
+      - name: oibasprod
+        description: OIL base product
+      - name: oibwtar_ex
+        description: External valuation type for OIL
+      - name: oibwtar_im
+        description: Internal valuation type for OIL
+      - name: oibypass
+        description: Bypass indicator for OIL
+      - name: oic_adestn
+        description: Destination address (OIL)
+      - name: oic_aorgin
+        description: Origin address (OIL)
+      - name: oic_dcityc
+        description: Destination city code
+      - name: oic_dcounc
+        description: Destination country code
+      - name: oic_dland1
+        description: Destination country
+      - name: oic_drcreg
+        description: Destination region code
+      - name: oic_drctry
+        description: Destination region country
+      - name: oic_dregio
+        description: Destination region
+      - name: oic_kmpos
+        description: OIL line item number
+      - name: oic_lifnr
+        description: Vendor number (OIL)
+      - name: oic_mot
+        description: Mode of transport
+      - name: oic_ocityc
+        description: Origin city code
+      - name: oic_ocounc
+        description: Origin country code
+      - name: oic_oland1
+        description: Origin country
+      - name: oic_oregio
+        description: Origin region
+      - name: oic_pbatch
+        description: Planned batch
+      - name: oic_pdestn
+        description: Planned destination
+      - name: oic_porgin
+        description: Planned origin
+      - name: oic_ptrip
+        description: Planned trip number
+      - name: oic_truckn
+        description: Truck number
+      - name: oicertf1
+        description: Certificate number
+      - name: oicertf1_ex
+        description: External certificate ID
+      - name: oicontnr
+        description: Container number
+      - name: oid_extbol
+        description: External bill of lading number
+      - name: oid_miscdl
+        description: Miscellaneous delivery ID
+      - name: oid_ship
+        description: Shipment number
+      - name: oidmsg_dat
+        description: Message date
+      - name: oidmsg_prd
+        description: Message product
+      - name: oidmsg_qty
+        description: Message quantity
+      - name: oidmsg_shp
+        description: Message shipment
+      - name: oidmsg_trm
+        description: Message transport mode
+      - name: oidmsg_uom
+        description: Unit of measure (message)
+      - name: oidrc
+        description: Message reconciliation code
+      - name: oiedbal
+        description: Opening inventory balance
+      - name: oiedbal_ex
+        description: External opening balance
+      - name: oiedbal_im
+        description: Internal opening balance
+      - name: oiedbalm
+        description: Opening measured balance
+      - name: oiedbalm_ex
+        description: External opening measured balance
+      - name: oiedbalm_im
+        description: Internal opening measured balance
+      - name: oiedok
+        description: Document number for opening inventory
+      - name: oiexgnum
+        description: Exchange agreement number
+      - name: oiexgtyp
+        description: Exchange type
+      - name: oifeech
+        description: Fee charge code
+      - name: oifeedt
+        description: Fee effective date
+      - name: oifeetot
+        description: Total fee amount
+      - name: oignrule
+        description: Gain/loss rule
+      - name: oih_folqty
+        description: Follow-on quantity
+      - name: oih_folqty_ex
+        description: External follow-on quantity
+      - name: oih_lcfol
+        description: Local follow-on quantity
+      - name: oih_lcfol_ex
+        description: External local follow-on quantity
+      - name: oih_licin
+        description: License in
+      - name: oih_licin_ex
+        description: External license in
+      - name: oih_lictp
+        description: License type
+      - name: oih_lictp_ex
+        description: External license type
+      - name: oihantyp
+        description: Handling type
+      - name: oihantyp_ex
+        description: External handling type
+      - name: oihantyp_im
+        description: Internal handling type
+      - name: oihcotdisch
+        description: Discharge indicator
+      - name: oihnotlgort
+        description: Not relevant storage location
+      - name: oihnotwerks
+        description: Not relevant plant
+      - name: oihtaxrcp_ex
+        description: External tax recipient
+      - name: oiinex
+        description: Include/exclude indicator
+      - name: oiinex_ex
+        description: External include/exclude indicator
+      - name: oimetind
+        description: Measurement indicator
+      - name: oinetcyc
+        description: Netting cycle
+      - name: oioilcon
+        description: Oil content
+      - name: oipipeval
+        description: Pipeline value
+      - name: oiplantd
+        description: Destination plant
+      - name: oipricie
+        description: Price inclusive indicator
+      - name: oipricie_ex
+        description: External price inclusive indicator
+      - name: oipricie_im
+        description: Internal price inclusive indicator
+      - name: oipsdrc
+        description: Source of pricing
+      - name: oisbrel
+        description: Subsequent billing release
+      - name: oislf
+        description: Subsequent document reference
+      - name: oitaxfrom
+        description: Tax origin
+      - name: oitaxfrom_ex
+        description: External tax origin
+      - name: oitaxfrom_im
+        description: Internal tax origin
+      - name: oitaxgrp
+        description: Tax group
+      - name: oitaxgrp_ex
+        description: External tax group
+      - name: oitaxgrp_im
+        description: Internal tax group
+      - name: oitaxto
+        description: Tax destination
+      - name: oitaxto_ex
+        description: External tax destination
+      - name: oitaxto_im
+        description: Internal tax destination
+      - name: oiwap
+        description: Weighted average price
+      - name: paobjnr
+        description: Profitability segment number
+      - name: pargb
+        description: Partner business area
+      - name: pay_method
+        description: Payment method
+      - name: pctrf
+        description: Profit center transfer indicator
+      - name: plavo
+        description: Planned order indicator
+      - name: pmatn
+        description: Pricing reference material
+      - name: posar
+        description: Order type
+      - name: posex
+        description: External item number
+      - name: posnr
+        description: Sales document item number
+      - name: posnv
+        description: Sub-item number
+      - name: prbme
+        description: Pricing unit of measure
+      - name: prctr
+        description: Profit center
+      - name: prefe
+        description: Preference indicator
+      - name: prodh
+        description: Product hierarchy
+      - name: prosa
+        description: Order probability
+      - name: provg
+        description: Promotion ID
+      - name: prs_objnr
+        description: Object number for condition pricing
+      - name: prs_sd_spsnr
+        description: Sales-specific price source
+      - name: prs_work_period
+        description: Pricing work period
+      - name: prsok
+        description: Pricing ok flag
+      - name: ps_psp_pnr
+        description: WBS element
+      - name: pstyv
+        description: Item category
+      - name: rep_freq
+        description: Replenishment frequency
+      - name: revacc_refid
+        description: Reference ID for revenue recognition
+      - name: revacc_reftype
+        description: Reference type for revenue recognition
+      - name: rkfkf
+        description: Billing relevance
+      - name: route
+        description: Route
+      - name: serail
+        description: Serial number profile
+      - name: sernr
+        description: Serial number
+      - name: sgt_rcat
+        description: Segmentation requirement category
+      - name: shkzg
+        description: Debit/credit indicator
+      - name: skopf
+        description: Pricing copy indicator
+      - name: sktof
+        description: Cash discount indicator
+      - name: sloctype
+        description: Storage location type
+      - name: smeng
+        description: Confirmed quantity
+      - name: sobkz
+        description: Special stock indicator
+      - name: spart
+        description: Division
+      - name: spcsto
+        description: Special stock
+      - name: sposn
+        description: BOM sub-item number
+      - name: stadat
+        description: Start date
+      - name: stafo
+        description: Follow-on document status
+      - name: stcur
+        description: Statistics currency
+      - name: stdat
+        description: Statistics date
+      - name: stkey
+        description: Key for product hierarchy statistics
+      - name: stlkn
+        description: BOM item node number
+      - name: stlnr
+        description: BOM number
+      - name: stlty
+        description: BOM category
+      - name: stman
+        description: Manual BOM entry indicator
+      - name: stockloc
+        description: Stock location
+      - name: stpos
+        description: BOM item number
+      - name: stpoz
+        description: BOM sub-item number
+      - name: sugrd
+        description: Reason for goods movement
+      - name: sumbd
+        description: Total confirmed quantity
+      - name: tas
+        description: Transportation scheduling agreement
+      - name: tax_subject_st
+        description: Tax subject status
+      - name: taxm1
+        description: Tax indicator 1
+      - name: taxm2
+        description: Tax indicator 2
+      - name: taxm3
+        description: Tax indicator 3
+      - name: taxm4
+        description: Tax indicator 4
+      - name: taxm5
+        description: Tax indicator 5
+      - name: taxm6
+        description: Tax indicator 6
+      - name: taxm7
+        description: Tax indicator 7
+      - name: taxm8
+        description: Tax indicator 8
+      - name: taxm9
+        description: Tax indicator 9
+      - name: tc_aut_det
+        description: Automatic tax code determination
+      - name: techs
+        description: Technical specification
+      - name: trmrisk_relevant
+        description: Treasury risk relevance indicator
+      - name: uebtk
+        description: Unlimited overdelivery allowed
+      - name: uebto
+        description: Overdelivery tolerance
+      - name: uepos
+        description: Higher-level item
+      - name: uepvw
+        description: Item usage
+      - name: ukonm
+        description: Rounding profile
+      - name: umref
+        description: Reference document number for transfer
+      - name: umvkn
+        description: Supplying sales organization
+      - name: umvkz
+        description: Supplying distribution channel
+      - name: umzin
+        description: Conversion denominator
+      - name: umziz
+        description: Conversion numerator
+      - name: untto
+        description: Delivery quantity
+      - name: upflu
+        description: Indicator updated from forecast
+      - name: upmat
+        description: Upper-level material number
+      - name: vbeaf
+        description: Confirmed schedule lines quantity
+      - name: vbeav
+        description: Cumulative open quantity
+      - name: vbeln
+        description: Sales document number
+      - name: vbelv
+        description: Preceding document
+      - name: vgbel
+        description: Reference document number
+      - name: vgpos
+        description: Reference item number
+      - name: vgref
+        description: Reference usage
+      - name: vgtyp
+        description: Document category of reference
+      - name: vkaus
+        description: Sales document reason
+      - name: vkgru
+        description: Responsible sales group
+      - name: voleh
+        description: Volume unit
+      - name: volum
+        description: Volume
+      - name: voref
+        description: Order reference
+      - name: vpmat
+        description: Pricing material number
+      - name: vpwrk
+        description: Supplying plant
+      - name: vpzuo
+        description: Assignment number
+      - name: vrkme
+        description: Sales unit
+      - name: vstel
+        description: Shipping point
+      - name: waerk
+        description: Document currency
+      - name: wavwr
+        description: Total value of goods
+      - name: werks
+        description: Plant
+      - name: wgru1
+        description: Pricing group 1
+      - name: wgru2
+        description: Pricing group 2
+      - name: wktnr
+        description: Value contract number
+      - name: wktps
+        description: Value contract item
+      - name: wrf_charstc1
+        description: Retail characteristic 1
+      - name: wrf_charstc2
+        description: Retail characteristic 2
+      - name: wrf_charstc3
+        description: Retail characteristic 3
+      - name: wtysc_clmitem
+        description: Warranty claim item
+      - name: xchar
+        description: Batch management requirement indicator
+      - name: xchpf
+        description: Batch management indicator
+      - name: z_prs_bill_flag
+        description: Billing flag (custom)
+      - name: z_prs_chargelevl
+        description: Charge level (custom)
+      - name: z_prs_country
+        description: Country indicator (custom)
+      - name: z_prs_offshore
+        description: Offshore flag (custom)
+      - name: zieme
+        description: Custom unit of measure
+      - name: zmeng
+        description: Cumulative order quantity
+      - name: zschl_k
+        description: Condition type key (custom)
+      - name: zwert
+        description: Value for custom field
+      - name: zzdea_license
+        description: DEA license number
+      - name: zzdea_schedule
+        description: DEA schedule

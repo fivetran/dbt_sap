@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_sap__t161t
+    description: Purchasing doc type texts
+    columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: batxt
+        description: Description
+      - name: bsart
+        description: Document type
+      - name: bstyp
+        description: Document category
+      - name: mandt
+        description: Client
+      - name: spras
+        description: Language key

@@ -26,10 +26,10 @@ final as (
         valpos,
         domvalue_l,
         hvr_change_time,
-        _fivetran_deleted,
         _fivetran_rowid,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

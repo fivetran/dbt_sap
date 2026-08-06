@@ -1,0 +1,290 @@
+version: 2
+
+models:
+  - name: stg_sap__ekko
+    description: Purchasing document header
+    columns:
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: ebeln
+        description: Purchasing document number
+      - name: mandt
+        description: Client
+      - name: abgru
+        description: Reason for rejection
+      - name: absgr
+        description: Reason code
+      - name: addnr
+        description: Address number
+      - name: adrnr
+        description: Vendor address number
+      - name: aedat
+        description: Document change date
+      - name: angdt
+        description: Quotation date
+      - name: angnr
+        description: Quotation number
+      - name: aurel_allow
+        description: Allow automatic release
+      - name: ausnr
+        description: Authorization number
+      - name: autlf
+        description: Complete delivery indicator
+      - name: bedat
+        description: Purchasing document date
+      - name: bnddt
+        description: Deadline for submission
+      - name: bsakz
+        description: Collective number indicator
+      - name: bsart
+        description: Purchasing document type
+      - name: bstyp
+        description: Purchasing document category
+      - name: budg_type
+        description: Budget type
+      - name: bukrs
+        description: Company code
+      - name: bwbdt
+        description: Start of validity
+      - name: check_type
+        description: Type of check
+      - name: con_distr_lev
+        description: Contract distribution level
+      - name: con_otb_req
+        description: OTB check required
+      - name: con_prebook_lev
+        description: Prebook level for contract
+      - name: contract_allow
+        description: Contract type allowed
+      - name: delper_allow
+        description: Partial delivery allowed
+      - name: description
+        description: Header description
+      - name: dpamt
+        description: Down payment amount
+      - name: dpdat
+        description: Down payment date
+      - name: dppct
+        description: Down payment percentage
+      - name: dptyp
+        description: Down payment category
+      - name: eindt
+        description: Delivery date
+      - name: eindt_allow
+        description: Allow delivery date changes
+      - name: ekgrp
+        description: Purchasing group
+      - name: ekgrp_allow
+        description: Purchasing group allowed
+      - name: ekorg
+        description: Purchasing organization
+      - name: eq_eindt
+        description: Equal delivery date
+      - name: eq_werks
+        description: Equal plant
+      - name: ernam
+        description: Created by
+      - name: exnum
+        description: Export/import number
+      - name: fixpo
+        description: Fixed vendor indicator
+      - name: fixpo_allow
+        description: Fixed vendor allowed
+      - name: force_cnt
+        description: Forced confirmation count
+      - name: force_id
+        description: Forced confirmation ID
+      - name: frggr
+        description: Release group
+      - name: frgke
+        description: Release code
+      - name: frgrl
+        description: Release strategy
+      - name: frgsx
+        description: Release status
+      - name: frgzu
+        description: Release indicator
+      - name: fsh_item_group
+        description: Item group (fashion)
+      - name: fsh_os_stg_change
+        description: One-step stage change
+      - name: fsh_snst_status
+        description: Seasonal status
+      - name: fsh_transaction
+        description: Fashion transaction type
+      - name: fsh_vas_last_item
+        description: Last VAS item
+      - name: gwldt
+        description: Valid-to date
+      - name: handoverloc
+        description: Handover location
+      - name: hierarchy_exists
+        description: Document hierarchy exists
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: ihran
+        description: Vendor internal reference
+      - name: ihrez
+        description: Vendor quotation number
+      - name: inco1
+        description: Incoterms (part 1)
+      - name: inco2
+        description: Incoterms (part 2)
+      - name: inco2_l
+        description: Incoterms long text 2
+      - name: inco3_l
+        description: Incoterms long text 3
+      - name: incov
+        description: Incoterms version
+      - name: kalsm
+        description: Calculation schema
+      - name: kdatb
+        description: Valid-from date
+      - name: kdate
+        description: Pricing date
+      - name: key_id
+        description: Key ID
+      - name: key_id_allow
+        description: Allow changes to key ID
+      - name: knumv
+        description: Document condition number
+      - name: konnr
+        description: Contract number
+      - name: kornr
+        description: Outline agreement item
+      - name: ktwrt
+        description: Total value of items
+      - name: kufix
+        description: Exchange rate fixed
+      - name: kunnr
+        description: Customer number
+      - name: lands
+        description: Country key
+      - name: lblif
+        description: Vendor delivery completed
+      - name: legal_contract
+        description: Legal contract ID
+      - name: lifnr
+        description: Vendor account number
+      - name: lifre
+        description: Subcontractor number
+      - name: llief
+        description: Main vendor
+      - name: loekz
+        description: Deletion indicator in purchasing document
+      - name: logsy
+        description: Logical system
+      - name: lphis
+        description: Change history
+      - name: lponr
+        description: Last PO number
+      - name: ltsnr_allow
+        description: Allowed supplier route
+      - name: memory
+        description: Buffer memory setting
+      - name: memorytype
+        description: Buffer memory type
+      - name: msr_id
+        description: Material substitution rule
+      - name: otb_cond_type
+        description: OTB condition type
+      - name: otb_curr
+        description: OTB currency
+      - name: otb_level
+        description: OTB level
+      - name: otb_reason
+        description: Reason for OTB block
+      - name: otb_res_value
+        description: Released value OTB
+      - name: otb_spec_value
+        description: Special release value OTB
+      - name: otb_status
+        description: OTB check status
+      - name: otb_value
+        description: OTB value
+      - name: pincr
+        description: Price increase percentage
+      - name: pohf_type
+        description: Purchase order history flag type
+      - name: procstat
+        description: Processing status
+      - name: pstyp_allow
+        description: Item category allowed
+      - name: reason_code
+        description: Rejection reason
+      - name: release_date
+        description: Release date
+      - name: reloc_id
+        description: Relocation ID
+      - name: reloc_seq_id
+        description: Relocation sequence ID
+      - name: reswk
+        description: Supplying plant
+      - name: retpc
+        description: Return percentage
+      - name: rettp
+        description: Return type
+      - name: revno
+        description: Revision number
+      - name: rlwrt
+        description: Release value
+      - name: scmproc
+        description: SCM process type
+      - name: shipcond
+        description: Shipping conditions
+      - name: source_logsys
+        description: Source logical system
+      - name: spr_rsn_profile
+        description: Delivery date reason profile
+      - name: spras
+        description: Language key
+      - name: stafo
+        description: Item status
+      - name: stako
+        description: Header status
+      - name: statu
+        description: Processing status
+      - name: stceg
+        description: VAT registration number
+      - name: stceg_l
+        description: VAT registration number (long)
+      - name: submi
+        description: Subcontracting indicator
+      - name: telf1
+        description: Telephone number
+      - name: threshold_exists
+        description: Threshold value exists
+      - name: unsez
+        description: Non-deductible input tax indicator
+      - name: upinc
+        description: Price update indicator
+      - name: verkf
+        description: Salesperson at vendor
+      - name: vsart
+        description: Shipping type
+      - name: vzskz
+        description: Payment card plan
+      - name: waers
+        description: Currency key
+      - name: weakt
+        description: Goods receipt indicator
+      - name: werks_allow
+        description: Plant allowed
+      - name: wkurs
+        description: Exchange rate
+      - name: zbd1p
+        description: Cash discount percentage 1
+      - name: zbd1t
+        description: Cash discount days 1
+      - name: zbd2p
+        description: Cash discount percentage 2
+      - name: zbd2t
+        description: Cash discount days 2
+      - name: zbd3t
+        description: Net payment terms period
+      - name: zterm
+        description: Terms of payment key

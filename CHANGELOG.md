@@ -1,3 +1,27 @@
+# dbt_sap v0.8.0
+
+[PR #49](https://github.com/fivetran/dbt_sap/pull/49) includes the following updates:
+
+## Schema/Data Change (--full-refresh required after upgrading)
+**7 total changes • 4 breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| **Breaking:**<br><br>All `compatibility_views` models | Schema | `<target_schema>`<br>`_sap_comp_views` | `<target_schema>`<br>`_sap` | Any downstream queries, BI tools, or other dbt projects that reference these models by their old schema will grow stale until updated to point at the new schema. |
+| **Breaking:**<br><br>All `stg_sap__*` staging models | Schema | `<target_schema>`<br>`_sap` | `<target_schema>`<br>`_sap_source` | Same as above. |
+| **Breaking:**<br><br>All `stg_sap__*` staging models | Row filter | All rows included | Soft-deleted rows are excluded | Removes deleted rows in staging and downstream so aggregations (for example `mchb.clabs`) are calculated from active records only. |
+| **Breaking:**<br><br>All `stg_sap__*` staging models<br>[`sap__0material_attr`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__0material_attr)<br>[`sap__fact_sales_order`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_sales_order)<br>[`int_sap__0fi_gl_10_sums`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.int_sap__0fi_gl_10_sums) | Removed field | `_fivetran_deleted` | | Removes column from every model's output. The delete filter above still runs internally against the source column, so the output column would only ever read `false`. Removing it avoids persisting a column that can no longer carry information. |
+| [`faglflext`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.faglflext)<br>[`anep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anep)<br>[`anlp`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.anlp) | New Compatibility Views | | | Adds three new compatibility views: General Ledger Totals (`faglflext`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), Asset Line Items (`anep`, needs `ACDOCA`, `FINSC_LD_CMP`, `FINSC_LEDGER_REP` tables to run), and Asset Periodic Values (`anlp`, needs `FAAT_PLAN_VALUES` table + optional `ANLA` table for fixed asset dimensions). |
+| [`stg_sap__anla`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__anla)<br>[`stg_sap__faat_plan_values`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__faat_plan_values) | New Staging/Tmp Models | | | Adds two new staging models (with corresponding `_tmp` models) supporting the `anlp` compatibility view: Asset Master (`ANLA`) and Asset Accounting Planned Values (`FAAT_PLAN_VALUES`). |
+| [`stg_sap__acdoca`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__acdoca) | New Columns | | `afabe`, `anlgr`, `anlgr2`, `anln1`, `anln2`, `anbwa`, `awitgrp`, `awitem`, `bzdat`, `movcat`, `prec_awref`, `slalittype`, `subta`, `subta_rev`, `vorgn`, `xreversed`, `xreversing`, `xsettled`, `xsettling` | Adds 19 new asset-accounting columns used to build the `anep` and `faglflext` compatibility views. |
+
+## Bug Fix
+- Fixes case-sensitive string comparisons in `coss.sql` (the field-name-to-column dispatch logic, and the `set_to_zero`/`xcoss`/`mig_source`/`bstat`/`accasty` filters) and `faglflexa.sql` (the `bstat` filter) that compared against lowercase literals while the underlying SAP data uses uppercase codes. This caused rows to be silently dropped or amount fields to incorrectly fall through to `0`.
+
+## Documentation
+- Splits the staging and compatibility view YAML doc files into one file per model (previously grouped together), and simplifies the source YAML by removing redundant column-level documentation. Makes the docs easier to navigate for both humans and AI coding agents.
+
+
 # dbt_sap v0.7.0
 
 [PR #45](https://github.com/fivetran/dbt_sap/pull/45) includes the following updates:

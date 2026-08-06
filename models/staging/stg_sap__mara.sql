@@ -30,7 +30,6 @@ final as (
         _dsd_sl_toltyp,
         _dsd_sv_cnt_grp,
         _dsd_vc_group,
-        _fivetran_deleted,
         _fivetran_rowid,
         _fivetran_sap_archived,
         _fivetran_synced,
@@ -269,6 +268,7 @@ final as (
         zeinr,
         zeivr
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

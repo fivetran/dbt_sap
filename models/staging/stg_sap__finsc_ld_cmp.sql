@@ -33,6 +33,7 @@ final as (
         cast(bukrs as {{ dbt.type_string() }}) as bukrs,
         cast(rldnr as {{ dbt.type_string() }}) as rldnr
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

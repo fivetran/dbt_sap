@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: stg_sap__matdoc_extract
+    description: Material document extract data
+    columns:
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _cwm_consumption_qty                                                                                                                                                                                 
+        description: Catch weight consumption quantity                                                                                                                                                                                   
+      - name: _cwm_meins                                                                                                                                                                                           
+        description: Base unit of measure                                                                                                                                                                                   
+      - name: _cwm_meins_sid                                                                                                                                                                                       
+        description: Base unit of measure (stock identifier)
+      - name: _cwm_stock_qty_l1
+        description: Catch weight stock quantity ledger 1
+      - name: _cwm_stock_qty_l2
+        description: Catch weight stock quantity ledger 2
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: bukrs
+        description: Company code
+      - name: charg_sid
+        description: Batch number (stock identifier)
+      - name: consumption_qty
+        description: consumption quantity
+      - name: cpudt_l1
+        description: Entry date ledger 1
+      - name: cpudt_l2
+        description: Entry date ledger 2
+      - name: disub_owner_sid
+        description: Distributor/subscriber owner (source system ID)
+      - name: gjper
+        description: Fiscal year and period
+      - name: gjper_curr_per
+        description: Current period within fiscal year
+      - name: kunnr_sid
+        description: Customer number (source system ID)
+      - name: kzbws
+        description: Value not deductible
+      - name: lbbsa_sid
+        description: Stock balance area (source system ID)
+      - name: lgort_sid
+        description: Storage location (source system ID)
+      - name: lifnr_sid
+        description: Vendor number (source system ID)
+      - name: mandt
+        description: Client
+      - name: mat_kdauf
+        description: Sales order number of valuated sales order stock
+      - name: mat_kdpos
+        description: Sales Order Item of Valuated Sales Order Stock
+      - name: mat_pspnr
+        description: Valuated Sales Order Stock WBS Element
+      - name: matbf
+        description: Material in Respect of Which Stock is Managed
+      - name: meins
+        description: Base unit of measure
+      - name: periv
+        description: Fiscal year variant
+      - name: record_type
+        description: Record type (header or item)
+      - name: resourcename_sid
+        description: Resource Name (Stock Identifier)
+      - name: sobkz
+        description: Special stock indicator
+      - name: stock_ind_l2
+        description: Stock indicator ledger 2
+      - name: stock_qty_l1
+        description: Stock quantity ledger 1
+      - name: stock_qty_l2
+        description: Stock quantity ledger 2
+      - name: stock_vkwrt_l1
+        description: Stock sales value ledger 1
+      - name: stock_vkwrt_l2
+        description: Stock sales value ledger 2
+      - name: waers
+        description: Currency key
+      - name: werks
+        description: Plant
+      - name: xobew
+        description: Vendor Stock Valuation Indicator

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_sap__finsc_ld_cmp
+    description: Financial SCM lead component data
+    columns:
+      - name: curposk
+        description: Currency position K
+      - name: curposo
+        description: Currency position O
+      - name: curposv
+        description: Currency position V
+      - name: curposb
+        description: Currency position B
+      - name: curposc
+        description: Currency position C
+      - name: curposd
+        description: Currency position D
+      - name: curpose
+        description: Currency position E
+      - name: curposf
+        description: Currency position F
+      - name: curposg
+        description: Currency position G
+      - name: mandt
+        description: Client
+      - name: bukrs
+        description: Company code
+      - name: rldnr
+        description: Ledger

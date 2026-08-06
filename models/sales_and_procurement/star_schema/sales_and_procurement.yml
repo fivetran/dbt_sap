@@ -260,7 +260,5 @@ models:
         description: Status of item delivery
       - name: created_by
         description: User who created the sales document
-      - name: _fivetran_deleted
-        description: Fivetran deletion marker
       - name: _fivetran_synced
         description: Fivetran sync timestamp

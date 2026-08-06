@@ -1,0 +1,626 @@
+version: 2
+
+models:
+  - name: stg_sap__marc
+    description: Plant/storage view material master
+    columns:
+      - name: _cwm_bwesb
+        description: Catch weight GR quantity for purchase orders
+      - name: _cwm_trame
+        description: Catch weight stock in transit quantity
+      - name: _cwm_umlmc
+        description: Catch weight transfer order stock quantity
+      - name: _fivetran_sap_archived
+        description: SAP record archived indicator
+      - name: _fivetran_synced
+        description: Timestamp of last Fivetran sync
+      - name: _sapmp_tolprmi
+        description: Underdelivery tolerance percentage for MRP
+      - name: _sapmp_tolprpl
+        description: Overdelivery tolerance percentage for MRP
+      - name: _sttpec_servalid
+        description: Service validity period indicator
+      - name: _vso_r_fork_dir
+        description: VSO forklift direction indicator
+      - name: _vso_r_lane_num
+        description: VSO lane number
+      - name: _vso_r_pal_vend
+        description: VSO pallet vendor
+      - name: _vso_r_pkgrp
+        description: VSO packaging group
+      - name: abcin
+        description: ABC indicator for physical inventory
+      - name: abfac
+        description: Multiplication factor for ABC indicator
+      - name: ahdis
+        description: Distribution profile for Kanban/JIT
+      - name: altsl
+        description: Alternative BOM usage indicator
+      - name: aplal
+        description: Application for task list selection
+      - name: apokz
+        description: APO relevance indicator for MRP
+      - name: arun_fix_batch
+        description: Fixed batch for automatic goods movements
+      - name: atpkz
+        description: ATP check indicator
+      - name: auftl
+        description: Splitting indicator for collective orders
+      - name: ausdt
+        description: End date for total replenishment lead time
+      - name: ausme
+        description: Unit of issue
+      - name: ausss
+        description: Discontinued parts indicator
+      - name: autru
+        description: Automatic goods receipt indicator
+      - name: awsls
+        description: Variance key
+      - name: basmg
+        description: Base quantity for costing lot size
+      - name: bearz
+        description: Processing time in workdays
+      - name: beskz
+        description: Procurement type (in-house/external/both)
+      - name: bstfe
+        description: Fixed lot size
+      - name: bstma
+        description: Maximum lot size
+      - name: bstmi
+        description: Minimum lot size
+      - name: bstrf
+        description: Rounding value for purchase order quantity
+      - name: bwesb
+        description: Total GR quantity for purchase orders
+      - name: bwscl
+        description: Valuation class for split valuation
+      - name: bwtty
+        description: Valuation type for plant data
+      - name: casnr
+        description: Inspection certificate number
+      - name: ccfix
+        description: Cost center for fixed lot size
+      - name: compl
+        description: Completion level for Kanban
+      - name: conf_gmsync
+        description: Confirmation and goods movement sync indicator
+      - name: cons_procg
+        description: Consumption-based procurement indicator
+      - name: convt
+        description: Conversion type for unit of measure
+      - name: copam
+        description: Co-product active indicator
+      - name: cuobj
+        description: Configuration object for variant
+      - name: cuobv
+        description: Configuration object for variant costing
+      - name: diber
+        description: MRP area
+      - name: disgr
+        description: MRP group
+      - name: disls
+        description: Lot-sizing procedure
+      - name: dismm
+        description: MRP type
+      - name: dispo
+        description: MRP controller
+      - name: dispr
+        description: MRP profile
+      - name: dpcbt
+        description: Days' supply calculation method
+      - name: dplfs
+        description: Fixed supply duration
+      - name: dplho
+        description: Horizon for days' supply
+      - name: dplpu
+        description: Days' supply unit of time
+      - name: dummy_plnt_incl_eew_ps
+        description: Dummy field for PS EEW extension
+      - name: dzeit
+        description: In-house production time
+      - name: eisbe
+        description: Safety stock quantity
+      - name: eislo
+        description: Minimum safety stock
+      - name: ekgrp
+        description: Purchasing group
+      - name: eprio
+        description: Shortage priority
+      - name: esppflg
+        description: Enhanced storage location MRP indicator
+      - name: excise_tax_rlvnce
+        description: Excise tax relevance indicator
+      - name: expme
+        description: Unit of measure for expiry date
+      - name: fabkz
+        description: Production scheduler indicator
+      - name: fevor
+        description: Production supervisor
+      - name: ffrei
+        description: Float release indicator
+      - name: fhori
+        description: Scheduling float horizon
+      - name: fixls
+        description: Fixed lot-for-lot quantity indicator
+      - name: fprfm
+        description: Firm zone for MRP
+      - name: frtme
+        description: Transportation group
+      - name: fsh_calendar_group
+        description: Fashion calendar group
+      - name: fsh_kzech
+        description: Fashion genuine cut indicator
+      - name: fsh_mg_arun_req
+        description: Fashion automatic goods movement requirement
+      - name: fsh_seaim
+        description: Fashion season imbalance indicator
+      - name: fsh_var_group
+        description: Fashion variant group
+      - name: fvidk
+        description: Forward scheduling indicator
+      - name: fxhor
+        description: Planning time fence (fixed)
+      - name: fxpru
+        description: Planned order price indicator
+      - name: gi_pr_time
+        description: Goods issue processing time
+      - name: glgmg
+        description: Available stock quantity for MRP
+      - name: gpmkz
+        description: Repetitive manufacturing indicator
+      - name: gpnum
+        description: Repetitive manufacturing profile
+      - name: herbl
+        description: Country of origin region
+      - name: herkl
+        description: Country of origin
+      - name: herkr
+        description: Region of origin
+      - name: indus
+        description: Industry standard description
+      - name: insmk
+        description: Stock type indicator for quality inspection
+      - name: itark
+        description: Inspection type
+      - name: iuid_relevant
+        description: Unique item identifier relevance indicator
+      - name: iuid_type
+        description: Unique item identifier type
+      - name: jitprodnconfprofile
+        description: JIT production confirmation profile
+      - name: kausf
+        description: Component scrap percentage
+      - name: kautb
+        description: Automatic purchase order creation indicator
+      - name: kordb
+        description: Correction factor for base quantity
+      - name: kzagl
+        description: Equal usage split indicator
+      - name: kzaus
+        description: Material subject to discontinuation indicator
+      - name: kzbed
+        description: Requirements grouping indicator
+      - name: kzdie
+        description: Service indicator
+      - name: kzdkz
+        description: MRP area relevant indicator
+      - name: kzech
+        description: Genuine cut indicator
+      - name: kzkfk
+        description: Collective requirements indicator
+      - name: kzkri
+        description: Critical part indicator
+      - name: kzkup
+        description: Customer coupling indicator
+      - name: kzppv
+        description: Planning calendar indicator
+      - name: kzpro
+        description: Production version indicator
+      - name: kzpsp
+        description: WBS element indicator
+      - name: ladgr
+        description: Loading group
+      - name: lagpr
+        description: Storage costs percentage
+      - name: lfgja
+        description: Annual planning fiscal year
+      - name: lfmon
+        description: Planning period fiscal month
+      - name: lfrhy
+        description: Planning cycle
+      - name: lgfsb
+        description: Default storage location for external procurement
+      - name: lgpro
+        description: Production storage location
+      - name: lgrad
+        description: Degree of loading
+      - name: lizyk
+        description: License requirement indicator
+      - name: loggr
+        description: Logistics handling group for shipment
+      - name: losfx
+        description: Lot size independent fixed costs
+      - name: losgr
+        description: Lot size for product costing
+      - name: ltinc
+        description: Lot size increment
+      - name: lvorm
+        description: Plant-level deletion flag
+      - name: lzeih
+        description: Unit for replenishment lead time
+      - name: maabc
+        description: ABC indicator
+      - name: mabst
+        description: Maximum stock level
+      - name: mandt
+        description: Client
+      - name: matgr
+        description: Material group for costing
+      - name: matnr
+        description: Material number
+      - name: max_troc
+        description: Maximum throughput for Kanban
+      - name: maxls
+        description: Maximum lot size
+      - name: maxlz
+        description: Maximum replenishment lead time
+      - name: mcrue
+        description: Period-end closing indicator
+      - name: mdach
+        description: Planning run type (regenerative/net change)
+      - name: megru
+        description: Unit of measure group
+      - name: mfrgr
+        description: Material freight group
+      - name: min_troc
+        description: Minimum throughput for Kanban
+      - name: minbe
+        description: Reorder point quantity
+      - name: minls
+        description: Minimum lot size
+      - name: miskz
+        description: Mixed MRP indicator
+      - name: mmsta
+        description: Plant-specific material status
+      - name: mmstd
+        description: Date from which plant status is valid
+      - name: mogru
+        description: MRP order group
+      - name: mownr
+        description: Material owner number
+      - name: mpdau
+        description: Planned delivery time in days
+      - name: mrppp
+        description: MRP planning period
+      - name: mtver
+        description: Planning material
+      - name: mtvfp
+        description: Checking rule for availability check
+      - name: multiple_ekgrp
+        description: Multiple purchasing group indicator
+      - name: ncost
+        description: Do not cost indicator
+      - name: nf_flag
+        description: Non-food flag
+      - name: nfmat
+        description: Follow-up material number
+      - name: nkmpr
+        description: Net requirements MRP relevant indicator
+      - name: objid
+        description: Object ID
+      - name: ocmpf
+        description: Order completion flag
+      - name: otype
+        description: Object type
+      - name: periv
+        description: Fiscal year variant
+      - name: perkz
+        description: Period indicator for shelf life
+      - name: pfrei
+        description: Float release indicator
+      - name: plifz
+        description: Planned delivery time in days
+      - name: plnnr
+        description: Task list group key
+      - name: plnty
+        description: Task list type
+      - name: plvar
+        description: Plan version
+      - name: ppskz
+        description: Kanban indicator
+      - name: prctr
+        description: Profit center
+      - name: prefe
+        description: Preference indicator for foreign trade
+      - name: prenc
+        description: Preference country (north)
+      - name: prend
+        description: Preference country (south)
+      - name: prene
+        description: Preference country (east)
+      - name: preng
+        description: Preference country (general)
+      - name: preno
+        description: Preference country (other)
+      - name: prfrq
+        description: MRP frequency
+      - name: profil
+        description: MRP profile
+      - name: pstat
+        description: Maintenance status of material
+      - name: qmata
+        description: QM control key for material
+      - name: qmatv
+        description: QM inspection control
+      - name: qssys
+        description: QM system at vendor
+      - name: quazt
+        description: Inspection interval
+      - name: qzgtp
+        description: Certificate type
+      - name: rdprf
+        description: Rounding profile
+      - name: ref_schema
+        description: Reference schema
+      - name: resvp
+        description: Period for reservations
+      - name: rgekz
+        description: Backflush indicator
+      - name: rotation_date
+        description: Rotation date
+      - name: ruezt
+        description: Setup/teardown time
+      - name: rwpro
+        description: Storage costs indicator
+      - name: sauft
+        description: Scheduling margin key
+      - name: sbdkz
+        description: Dependent requirements indicator
+      - name: schgt
+        description: Bulk material indicator
+      - name: scm_conhap
+        description: SCM consumption horizon for push alerts
+      - name: scm_conhap_out
+        description: SCM outbound consumption horizon
+      - name: scm_coninp
+        description: SCM inbound consumption horizon
+      - name: scm_fixpeg_prod_set
+        description: SCM fixed pegging production setting
+      - name: scm_ges_bst_use
+        description: SCM total stock usage
+      - name: scm_ges_mng_use
+        description: SCM total quantity usage
+      - name: scm_get_alerts
+        description: SCM alert retrieval indicator
+      - name: scm_giprt
+        description: SCM goods issue processing time
+      - name: scm_grprt
+        description: SCM goods receipt processing time
+      - name: scm_heur_id
+        description: SCM heuristic ID
+      - name: scm_hunit
+        description: SCM handling unit
+      - name: scm_hunit_out
+        description: SCM outbound handling unit
+      - name: scm_intsrc_prof
+        description: SCM internal sourcing profile
+      - name: scm_iunit
+        description: SCM inventory unit
+      - name: scm_lsuom
+        description: SCM lot size unit of measure
+      - name: scm_matlocid_guid16
+        description: SCM material location GUID (16-character)
+      - name: scm_matlocid_guid22
+        description: SCM material location GUID (22-character)
+      - name: scm_maturity_dur
+        description: SCM maturity duration
+      - name: scm_maxstock_v
+        description: SCM maximum stock value
+      - name: scm_min_pass_amount
+        description: SCM minimum passing amount
+      - name: scm_ndcostwa
+        description: SCM non-delivery cost (warehouse)
+      - name: scm_ndcostwe
+        description: SCM non-delivery cost (external)
+      - name: scm_package_id
+        description: SCM package ID
+      - name: scm_peg_future_alert
+        description: SCM future pegging alert indicator
+      - name: scm_peg_past_alert
+        description: SCM past pegging alert indicator
+      - name: scm_peg_strategy
+        description: SCM pegging strategy
+      - name: scm_peg_wo_alert_fst
+        description: SCM pegging without alert (first)
+      - name: scm_ppsaftystk
+        description: SCM PP safety stock quantity
+      - name: scm_ppsaftystk_v
+        description: SCM PP safety stock value
+      - name: scm_prio
+        description: SCM priority
+      - name: scm_proc_cost
+        description: SCM procurement cost
+      - name: scm_profid
+        description: SCM profile ID
+      - name: scm_reldt
+        description: SCM release date
+      - name: scm_reord_dur
+        description: SCM reorder duration
+      - name: scm_reord_v
+        description: SCM reorder point value
+      - name: scm_repsafty
+        description: SCM replenishment safety stock quantity
+      - name: scm_repsafty_v
+        description: SCM replenishment safety stock value
+      - name: scm_res_net_name
+        description: SCM resource network name
+      - name: scm_rrp_sel_group
+        description: SCM RRP selection group
+      - name: scm_rrp_type
+        description: SCM RRP type
+      - name: scm_safty_v
+        description: SCM safety stock value
+      - name: scm_scost
+        description: SCM storage cost
+      - name: scm_scost_prcnt
+        description: SCM storage cost percentage
+      - name: scm_sft_lock
+        description: SCM soft lock indicator
+      - name: scm_shelf_life_dur
+        description: SCM shelf life duration
+      - name: scm_shelf_life_loc
+        description: SCM shelf life location
+      - name: scm_shlf_lfe_req_max
+        description: SCM maximum shelf life requirement
+      - name: scm_shlf_lfe_req_min
+        description: SCM minimum shelf life requirement
+      - name: scm_sspen
+        description: SCM safety stock penalty
+      - name: scm_stra1
+        description: SCM strategy 1
+      - name: scm_target_dur
+        description: SCM target duration
+      - name: scm_thruput_time
+        description: SCM throughput time
+      - name: scm_tpop
+        description: SCM time-phased order point
+      - name: scm_tstrid
+        description: SCM time stream ID
+      - name: scm_whatbom
+        description: SCM BOM usage
+      - name: sernp
+        description: Serial number profile
+      - name: servg
+        description: Service group
+      - name: sfcpf
+        description: Shop floor control profile
+      - name: sfepr
+        description: Scheduling with components MRP indicator
+      - name: sfty_stk_meth
+        description: Safety stock method
+      - name: sgt_chint
+        description: Stock segment change indicator
+      - name: sgt_covs
+        description: Stock segment coverage strategy
+      - name: sgt_defsc
+        description: Stock segment default category
+      - name: sgt_mmstd
+        description: Stock segment material status date
+      - name: sgt_mrp_atp_status
+        description: Stock segment MRP/ATP status
+      - name: sgt_mrpsi
+        description: Stock segment MRP strategy indicator
+      - name: sgt_prcm
+        description: Stock segment procurement mode
+      - name: sgt_scope
+        description: Stock segment scope
+      - name: sgt_statc
+        description: Stock segment status category
+      - name: sgt_stk_prt
+        description: Stock segment stock protection
+      - name: shflg
+        description: Shipping point determination flag
+      - name: shpro
+        description: Shipping point
+      - name: shzet
+        description: Shipping setup time
+      - name: sobsk
+        description: Special procurement type for subcontracting
+      - name: sobsl
+        description: Special procurement type key
+      - name: sproz
+        description: Scrap percentage
+      - name: ssqss
+        description: QM control key
+      - name: stawn
+        description: Commodity code (tariff number)
+      - name: stdpd
+        description: Standard PD profile
+      - name: steuc
+        description: Control code for consumption taxes
+      - name: stlal
+        description: Alternative BOM
+      - name: stlan
+        description: BOM usage
+      - name: strgr
+        description: Planning strategy group
+      - name: takzt
+        description: Takt time (cycle time)
+      - name: target_stock
+        description: Target stock level
+      - name: temp_ctrl_max
+        description: Maximum temperature for storage
+      - name: temp_ctrl_min
+        description: Minimum temperature for storage
+      - name: temp_uom
+        description: Unit of measure for temperature
+      - name: trame
+        description: Stock in transit quantity
+      - name: tranz
+        description: Transit time in days
+      - name: uchkz
+        description: Unit of measure conversion indicator
+      - name: ucmat
+        description: Material for unit of measure conversion
+      - name: ueetk
+        description: Unlimited overdelivery tolerance indicator
+      - name: ueeto
+        description: Overdelivery tolerance percentage
+      - name: uid_iea
+        description: Unique item identifier (IEA)
+      - name: umlmc
+        description: Transfer order stock quantity
+      - name: umrsl
+        description: Conversion ratio
+      - name: uneto
+        description: Underdelivery tolerance percentage
+      - name: uomgr
+        description: Unit of measure group
+      - name: usequ
+        description: Usage sequence
+      - name: vbamg
+        description: Consumption quantity for MRP
+      - name: vbeaz
+        description: Goods issue processing time
+      - name: verkz
+        description: Sales indicator
+      - name: vint1
+        description: Planning interval 1
+      - name: vint2
+        description: Planning interval 2
+      - name: vkglg
+        description: Forecast current period value
+      - name: vktrw
+        description: Forecast carry-over value
+      - name: vkumc
+        description: Cumulative forecast consumption
+      - name: vrbdt
+        description: Consumption date
+      - name: vrbfk
+        description: Correction factor for consumption
+      - name: vrbmt
+        description: Consumption material
+      - name: vrbwk
+        description: Consumption week
+      - name: vrmod
+        description: Consumption mode
+      - name: vrvez
+        description: Backward consumption period
+      - name: vspvb
+        description: Planning plant for product group
+      - name: vzusl
+        description: Supplementary procurement indicator
+      - name: webaz
+        description: Goods receipt processing time in workdays
+      - name: werks
+        description: Plant
+      - name: wstgh
+        description: Interoperations time
+      - name: wzeit
+        description: Production scheduling lead time
+      - name: xchar
+        description: Batch management indicator
+      - name: xchpf
+        description: Batch management required indicator
+      - name: xmcng
+        description: Negative stock indicator for MRP

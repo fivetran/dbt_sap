@@ -47,11 +47,11 @@ final as (
         expon,
         cast(dimid as {{ dbt.type_string() }}) as dimid,
         cast(kzwob as {{ dbt.type_string() }}) as kzwob,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived
 
     from fields
+    where not coalesce(_fivetran_deleted, false)
 
 )
 

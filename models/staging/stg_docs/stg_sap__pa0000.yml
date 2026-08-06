@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: stg_sap__pa0000
+    description: HR master record--infotype 0000 (Actions)
+    columns:
+      - name: aedtm
+        description: Last changed on
+      - name: begda
+        description: Start date
+      - name: endda
+        description: End date
+      - name: flag1
+        description: Reserved field/Unused field
+      - name: flag2
+        description: Reserved field/Unused field
+      - name: flag3
+        description: Reserved field/Unused field
+      - name: flag4
+        description: Reserved field/Unused field
+      - name: grpvl
+        description: Grouping value for personnel assignments
+      - name: histo
+        description: Historical record flag
+      - name: itbld
+        description: Infotype screen control
+      - name: itxex
+        description: Text exists for infotype
+      - name: mandt
+        description: Client
+      - name: massg
+        description: Reason for action
+      - name: massn
+        description: Action type
+      - name: objps
+        description: Object identification
+      - name: ordex
+        description: Confirmation fields exist
+      - name: pernr
+        description: Personnel number
+      - name: preas
+        description: Reason for changing master data
+      - name: refex
+        description: Reference fields exist (primary/secondary costs)
+      - name: rese1
+        description: Reserved field/unused field of length 2
+      - name: rese2
+        description: Reserved field/unused field of length 2
+      - name: seqnr
+        description: Number of infotype record with same key
+      - name: sprps
+        description: Lock indicator for HR master data record
+      - name: stat1
+        description: Customer-specific status
+      - name: stat2
+        description: Employment status
+      - name: stat3
+        description: Special payment status
+      - name: subty
+        description: Subtype
+      - name: uname
+        description: Name of person who changed object

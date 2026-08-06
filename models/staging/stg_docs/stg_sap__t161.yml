@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: stg_sap__t161
+    description: Purchasing document types
+    columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: bsart
+        description: Document type
+      - name: bstyp
+        description: Document category
+      - name: _sapmp_atnam
+        description: SAP MP attribute name
+      - name: _sapmp_ceact
+        description: SAP MP change evaluation active
+      - name: _sapmp_gauf
+        description: SAP MP default value indicator
+      - name: _sapmp_pausw
+        description: SAP MP pause switch
+      - name: _sapmp_pdact
+        description: SAP MP document active
+      - name: _sapmp_pprot
+        description: SAP MP processing type
+      - name: _sapmp_puser
+        description: SAP MP user field
+      - name: abgebot
+        description: Quotation indicator
+      - name: abvor
+        description: Quotation required before order
+      - name: ar_object
+        description: Archiving object
+      - name: brefn
+        description: Reference profile for external system
+      - name: bsakz
+        description: Collective number indicator
+      - name: cp_aktive
+        description: Central contract active
+      - name: cptype
+        description: Central contract type
+      - name: fls_rsto
+        description: Release strategy origin
+      - name: fsh_dpr_detpro
+        description: Detail profile for demand prioritization
+      - name: fsh_excl_return
+        description: Exclude returns indicator
+      - name: fsh_po_idoc
+        description: Fashion PO outbound IDoc active
+      - name: fsh_var_kalsm
+        description: Pricing procedure for variants
+      - name: fsh_vas_act
+        description: Value-added services active
+      - name: fsh_vas_del
+        description: VAS delivery mode
+      - name: fsh_vas_detdt
+        description: VAS determination date
+      - name: fsh_vas_kalsm
+        description: VAS pricing procedure
+      - name: gsfrg
+        description: Release group
+      - name: hityp
+        description: History type
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: koako
+        description: Account assignment mandatory
+      - name: koett
+        description: Item category mandatory
+      - name: kornr
+        description: Reference document number
+      - name: kzale
+        description: Collective agreement allowed
+      - name: lphis
+        description: Change history required
+      - name: mandt
+        description: Client
+      - name: mill_omkz
+        description: Industry solution flag (Mill)
+      - name: msr_active
+        description: MSR active flag
+      - name: numka
+        description: Number range for internal assignment
+      - name: numkc
+        description: Number range for contract
+      - name: numke
+        description: Number range for external assignment
+      - name: numki
+        description: Number range for inquiries
+      - name: oicsegi
+        description: OIL segment indicator
+      - name: oirfqreq
+        description: RFQ required indicator
+      - name: pargr
+        description: Partner role group
+      - name: pincr
+        description: Price increase indicator
+      - name: rdp_profile
+        description: RDP profile
+      - name: refba
+        description: Reference purchase doc type
+      - name: shenq
+        description: Incompletion check indicator
+      - name: stafo
+        description: Follow-on doc status
+      - name: stako
+        description: Header status
+      - name: tolsl
+        description: Tolerance key for limit
+      - name: umlif
+        description: Goods recipient required
+      - name: upinc
+        description: Update indicator
+      - name: variante
+        description: Variant control
+      - name: wrf_enable_dateline
+        description: Enable dateline function
+      - name: wvvkz
+        description: Shipping instruction
+      - name: xlokz
+        description: Delivery block indicator

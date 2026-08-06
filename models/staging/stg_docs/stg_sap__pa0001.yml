@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: stg_sap__pa0001
+    description: HR master record--infotype 0001 (org. assignment)
+    columns:
+      - name: abkrs
+        description: Payroll area
+      - name: aedtm
+        description: Changed on
+      - name: ansvh
+        description: Work contract
+      - name: begda
+        description: Start date
+      - name: btrtl
+        description: Personnel subarea
+      - name: budget_pd
+        description: FM--Budget period
+      - name: bukrs
+        description: Company code
+      - name: ename
+        description: Formatted name of employee or applicant
+      - name: endda
+        description: End date
+      - name: fistl
+        description: Funds center
+      - name: fkber
+        description: Functional area
+      - name: flag1
+        description: Reserved field/unused field
+      - name: flag2
+        description: Reserved field/unused field 
+      - name: flag3
+        description: Reserved field/unused field 
+      - name: flag4
+        description: Reserved field/unused field 
+      - name: geber
+        description: Fund
+      - name: grant_nbr
+        description: Grant
+      - name: grpvl
+        description: Grouping value for personnel assignments
+      - name: gsber
+        description: Business area
+      - name: histo
+        description: Historical record flag
+      - name: itbld
+        description: Infotype screen control
+      - name: itxex
+        description: Text exists for infotype
+      - name: juper
+        description: Legal person
+      - name: kokrs
+        description: Controlling area
+      - name: kostl
+        description: Cost center
+      - name: mandt
+        description: Client
+      - name: mstbr
+        description: Supervisor area
+      - name: objps
+        description: Object identification
+      - name: ordex
+        description: Confirmation fields exist
+      - name: orgeh
+        description: Organizational unit
+      - name: otype
+        description: Object type
+      - name: pernr
+        description: Personnel number
+      - name: persg
+        description: Employee group
+      - name: persk
+        description: Employee subgroup
+      - name: plans
+        description: Position
+      - name: preas
+        description: Reason for changing master data
+      - name: refex
+        description: Reference fields exist (primary/secondary costs)
+      - name: rese1
+        description: Reserved field/unused field of length 2
+      - name: rese2
+        description: Reserved field/unused field of length 2
+      - name: sacha
+        description: Payroll administrator
+      - name: sachp
+        description: Administrator for HR master data
+      - name: sachz
+        description: Administrator for time recording
+      - name: sbmod
+        description: Administrator group
+      - name: seqnr
+        description: Number of infotype record with same key
+      - name: sgmnt
+        description: Segment for segmental reporting
+      - name: sname
+        description: Employee's name (Sortable by LAST NAME FIRST NAME)
+      - name: sprps
+        description: Lock indicator for HR master data record
+      - name: stell
+        description: Job
+      - name: subty
+        description: Subtype
+      - name: uname
+        description: Name of person who changed object
+      - name: vdsk1
+        description: Organizational key
+      - name: werks
+        description: Personnel area
