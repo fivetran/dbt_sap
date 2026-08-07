@@ -1,3 +1,11 @@
+# dbt_sap v0.7.1
+
+[PR #51](https://github.com/fivetran/dbt_sap/pull/51) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_sap v0.7.0
 
 [PR #45](https://github.com/fivetran/dbt_sap/pull/45) includes the following updates:
