@@ -159,7 +159,6 @@ select
     bsark as customer_purchase_order_type_id,
     tm_ctrl_key as control_key,
     gsber as business_area_id,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__vbak') }}

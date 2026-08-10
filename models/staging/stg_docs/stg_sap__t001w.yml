@@ -1,0 +1,292 @@
+version: 2
+
+models:
+  - name: stg_sap__t001w
+    description: Plants/Branches
+    columns:
+      - name: mandt
+        description: Client
+      - name: werks
+        description: Plant
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: achvm
+        description: Material status in plant
+      - name: adrnr
+        description: Address number
+      - name: awsls
+        description: Sales organization distribution channel
+      - name: bapovar
+        description: BAPI variant for plant
+      - name: bedpl
+        description: MRP area
+      - name: betol
+        description: Tolerance group
+      - name: bukrs
+        description: Company code
+      - name: bukrs_glob
+        description: Global company code
+      - name: butxt
+        description: Company name
+      - name: buvar
+        description: Posting period variant
+      - name: bwkey
+        description: Valuation area
+      - name: bzirk
+        description: Sales district
+      - name: bzqhl
+        description: Plant-specific rounding profile
+      - name: chazv
+        description: Batch status for plant
+      - name: chazv_old
+        description: Old batch status
+      - name: cityc
+        description: City code
+      - name: counc
+        description: County code
+      - name: dep_store
+        description: Store department indicator
+      - name: dkweg
+        description: Payment method allowed
+      - name: dtamtc
+        description: Automatic tax determination
+      - name: dtaxr
+        description: Tax region
+      - name: dtprov
+        description: Withholding tax provider
+      - name: dttaxc
+        description: Withholding tax code
+      - name: dttdsp
+        description: Display withholding tax data
+      - name: dvsart
+        description: Document category
+      - name: ebukr
+        description: Central company code
+      - name: ekorg
+        description: Purchasing organization
+      - name: fabkl
+        description: Factory calendar
+      - name: fdbuk
+        description: Head office company code
+      - name: fikrs
+        description: Financial management area
+      - name: fm_derive_acc
+        description: FM derive account assignment
+      - name: fmhrdate
+        description: Budget check date
+      - name: fprfw
+        description: Pricing profile for warehouse
+      - name: fsh_bom_maintenance
+        description: Fashion BOM maintenance
+      - name: fsh_mg_arun_req
+        description: ARUN requirement for fashion allocation
+      - name: fsh_seaim
+        description: Fashion season indicator
+      - name: fstva
+        description: Financial statement version
+      - name: fstvare
+        description: Financial statement version for reporting
+      - name: hvr_change_time
+        description: HVR change timestamp
+      - name: hvr_is_deleted
+        description: HVR deletion flag
+      - name: impda
+        description: Import date
+      - name: infmt
+        description: Invoice format
+      - name: iwerk
+        description: Maintenance planning plant
+      - name: j_1bbranch
+        description: Branch for Brazil localization
+      - name: kkber
+        description: Credit control area
+      - name: kkowk
+        description: Order type
+      - name: kokfi
+        description: FI indicator
+      - name: kopim
+        description: Payment methods copied
+      - name: kordb
+        description: Order backlog
+      - name: ktop2
+        description: Alternative chart of accounts
+      - name: ktopl
+        description: Chart of accounts
+      - name: kunnr
+        description: Customer number
+      - name: land1
+        description: Country key
+      - name: let01
+        description: Indicator for letter 1
+      - name: let02
+        description: Indicator for letter 2
+      - name: let03
+        description: Indicator for letter 3
+      - name: lifnr
+        description: Vendor number
+      - name: mgvlareval
+        description: Legal valuation update indicator
+      - name: mgvlaupd
+        description: Material group valuation update
+      - name: mgvupd
+        description: Material valuation update indicator
+      - name: misch
+        description: Mixed storage indicator
+      - name: mregl
+        description: EU tax reporting country
+      - name: mwska
+        description: Default sales tax code
+      - name: mwskv
+        description: Default purchase tax code
+      - name: name1
+        description: Plant name 1
+      - name: name2
+        description: Plant name 2
+      - name: nodetype
+        description: Node type
+      - name: nschema
+        description: Pricing procedure schema
+      - name: offsacct
+        description: Offset account
+      - name: oihcredipi
+        description: Credit indicator for OIL
+      - name: oihvtype
+        description: Handling unit type (OIL)
+      - name: oilival
+        description: OIL inbound valuation indicator
+      - name: opvar
+        description: Open item management variant
+      - name: ort01
+        description: City
+      - name: periv
+        description: Fiscal year variant
+      - name: pfach
+        description: PO Box
+      - name: pkosa
+        description: Planning strategy group
+      - name: pp_pdate
+        description: Planned posting date
+      - name: pst_per_var
+        description: Posting period variant
+      - name: pstlz
+        description: Postal code
+      - name: rcomp
+        description: Company
+      - name: regio
+        description: Region (state/province)
+      - name: sourcing
+        description: Sourcing indicator
+      - name: spart
+        description: Division
+      - name: spras
+        description: Language key
+      - name: stceg
+        description: VAT registration number
+      - name: storetype
+        description: Store type
+      - name: stras
+        description: Street and house number
+      - name: surccm
+        description: Surrogate company code mapping
+      - name: taxiw
+        description: Tax indicator for plant
+      - name: txjcd
+        description: Tax jurisdiction code
+      - name: txkrs
+        description: Currency translation key
+      - name: txnam_ma1
+        description: Tax name master 1
+      - name: txnam_ma2
+        description: Tax name master 2
+      - name: txnam_ma3
+        description: Tax name master 3
+      - name: umkrs
+        description: Intercompany clearing indicator
+      - name: vkorg
+        description: Sales organization
+      - name: vlfkz
+        description: Delivery split indicator
+      - name: vstel
+        description: Shipping point
+      - name: vtbfi
+        description: Treasury company indicator
+      - name: vtweg
+        description: Distribution channel
+      - name: waabw
+        description: Default exchange rate type
+      - name: waers
+        description: Currency key
+      - name: wfvar
+        description: Workflow variant
+      - name: wksop
+        description: Store opening planning profile
+      - name: wt_newwt
+        description: New withholding tax indicator
+      - name: xbbba
+        description: Business area is mandatory
+      - name: xbbbe
+        description: Business area from plant
+      - name: xbbbf
+        description: Business area from profit center
+      - name: xbbko
+        description: Business area from cost object
+      - name: xbbsc
+        description: Business area from sales order
+      - name: xcession
+        description: Tax exemption indicator
+      - name: xcos
+        description: Cost of sales accounting active
+      - name: xcovr
+        description: Commitment item required
+      - name: xeink
+        description: Purchasing active
+      - name: xextb
+        description: External business partner required
+      - name: xfdis
+        description: Fixed discount allowed
+      - name: xfdmm
+        description: Materials management active
+      - name: xfdsd
+        description: Sales and distribution active
+      - name: xfmca
+        description: Funds management (cash-based)
+      - name: xfmcb
+        description: Funds management (budget-based)
+      - name: xfmco
+        description: Funds management (commitment-based)
+      - name: xgjrv
+        description: Journal voucher active
+      - name: xgsbe
+        description: Business area financials active
+      - name: xjvaa
+        description: Joint venture accounting active
+      - name: xkdft
+        description: Default tax indicator
+      - name: xkkbi
+        description: Credit management active
+      - name: xmwsn
+        description: New tax procedure active
+      - name: xnegp
+        description: Negative postings allowed
+      - name: xprod
+        description: Product costing active
+      - name: xskfn
+        description: Reconciliation account required
+      - name: xslta
+        description: SLA transfer active
+      - name: xsplt
+        description: Document splitting active
+      - name: xstdt
+        description: Use statistics date
+      - name: xvalv
+        description: Use valuation view
+      - name: xvatdate
+        description: VAT date active
+      - name: xvvwa
+        description: Vendor withholding tax active
+      - name: zone1
+        description: Zone key

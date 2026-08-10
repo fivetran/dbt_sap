@@ -27,6 +27,7 @@ final as (
         cast(datbi as {{ dbt.type_string() }}) as datbi,
         cast(ccngn as {{ dbt.type_string() }}) as ccngn
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

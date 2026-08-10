@@ -1,6 +1,6 @@
 config-version: 2
 name: 'sap'
-version: '0.7.1'
+version: '0.8.1'
 require-dbt-version: [">=1.3.0", "<3.0.0"]
 models:
   sap:
@@ -8,6 +8,7 @@ models:
     +schema: sap
     staging:
       +materialized: view
+      +schema: sap_source
     extractor_reports:
       intermediate:
         +materialized: table
@@ -16,7 +17,6 @@ models:
         intermediate:
           +materialized: ephemeral
     compatibility_views:
-      +schema: sap_comp_views
       +materialized: view
       intermediate:
         +materialized: ephemeral
@@ -83,3 +83,5 @@ vars:
     sapsll_maritc: "{{ source('sap', 'sapsll_maritc') }}"
     sapsll_nosca: "{{ source('sap', 'sapsll_nosca') }}"
     sapsll_tunos: "{{ source('sap', 'sapsll_tunos') }}"
+    faat_plan_values: "{{ source('sap', 'faat_plan_values') }}"
+    anla: "{{ source('sap', 'anla') }}"

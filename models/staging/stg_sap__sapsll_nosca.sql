@@ -26,6 +26,7 @@ final as (
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(nosct as {{ dbt.type_string() }}) as nosct
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

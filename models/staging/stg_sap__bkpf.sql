@@ -54,6 +54,7 @@ final as (
         xstov,
         xreorg
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

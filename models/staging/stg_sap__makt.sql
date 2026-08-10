@@ -25,9 +25,9 @@ final as (
         cast(matnr as {{ dbt.type_string() }}) as matnr,
         spras,
         _fivetran_rowid,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

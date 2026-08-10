@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_sap__tj01
+    description: System status
+    columns:
+      - name: vrgng
+        description: Business transaction
+      - name: wtkat
+        description: Value category
+      - name: xcosp
+        description: Update COSP indicator
+      - name: xcoss
+        description: Update COSS indicator
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

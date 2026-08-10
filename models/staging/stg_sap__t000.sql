@@ -22,9 +22,9 @@ final as (
     select
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         cast(logsys as {{ dbt.type_string() }}) as logsys,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

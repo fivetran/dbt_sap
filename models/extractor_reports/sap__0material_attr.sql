@@ -136,7 +136,6 @@ final as (
 		bflme,
 		nsnid,
 		_fivetran_rowid,
-		_fivetran_deleted,
 		_fivetran_synced
 	from mara
 

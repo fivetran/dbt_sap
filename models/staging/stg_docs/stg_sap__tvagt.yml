@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_sap__tvagt
+    description: Sales document rejection reason text
+    columns:
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: abgru
+        description: Reason code
+      - name: bezei
+        description: Description
+      - name: mandt
+        description: Client
+      - name: spras
+        description: Language key

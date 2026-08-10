@@ -174,11 +174,11 @@ final as (
         cast(grant_nbr as {{ dbt.type_string() }}) as grant_nbr,
         cast(budget_pd as {{ dbt.type_string() }}) as budget_pd,
         cast(meinh as {{ dbt.type_string() }}) as meinh,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived
 
     from fields
+    where not coalesce(_fivetran_deleted, false)
 
 )
 

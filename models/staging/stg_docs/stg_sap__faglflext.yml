@@ -1,0 +1,224 @@
+version: 2
+
+models:
+  - name: stg_sap__faglflext
+    description: General ledger (Totals)
+    columns:
+      - name: activ
+        description: FI-SL business transaction
+      - name: awtyp
+        description: Reference transaction
+      - name: cost_elem
+        description: Cost element
+      - name: drcrk
+        description: Debit/credit indicator
+      - name: faglflext_timestamp
+        description: UTC timestamp in short form (YYYYMMDDhhmmss)
+      - name: hsl01 
+        description: Total of transactions of the period in local currency
+      - name: hsl02 
+        description: Total of transactions of the period in local currency
+      - name: hsl03 
+        description: Total of transactions of the period in local currency
+      - name: hsl04 
+        description: Total of transactions of the period in local currency
+      - name: hsl05 
+        description: Total of transactions of the period in local currency
+      - name: hsl06 
+        description: Total of transactions of the period in local currency
+      - name: hsl07 
+        description: Total of transactions of the period in local currency
+      - name: hsl08 
+        description: Total of transactions of the period in local currency
+      - name: hsl09 
+        description: Total of transactions of the period in local currency
+      - name: hsl10 
+        description: Total of transactions of the period in local currency
+      - name: hsl11 
+        description: Total of transactions of the period in local currency
+      - name: hsl12 
+        description: Total of transactions of the period in local currency
+      - name: hsl13 
+        description: Total of transactions of the period in local currency
+      - name: hsl14 
+        description: Total of transactions of the period in local currency
+      - name: hsl15 
+        description: Total of transactions of the period in local currency
+      - name: hsl16 
+        description: Total of transactions of the period in local currency
+      - name: hslvt
+        description: Balance carried forward in local currency
+      - name: kokrs
+        description: Controlling area
+      - name: ksl01 
+        description: Total of transactions of the period in group currency 
+      - name: ksl02 
+        description: Total of transactions of the period in group currency
+      - name: ksl03 
+        description: Total of transactions of the period in group currency
+      - name: ksl04 
+        description: Total of transactions of the period in group currency
+      - name: ksl05 
+        description: Total of transactions of the period in group currency
+      - name: ksl06 
+        description: Total of transactions of the period in group currency
+      - name: ksl07 
+        description: Total of transactions of the period in group currency
+      - name: ksl08 
+        description: Total of transactions of the period in group currency
+      - name: ksl09 
+        description: Total of transactions of the period in group currency
+      - name: ksl10 
+        description: Total of transactions of the period in group currency
+      - name: ksl11 
+        description: Total of transactions of the period in group currency
+      - name: ksl12 
+        description: Total of transactions of the period in group currency
+      - name: ksl13 
+        description: Total of transactions of the period in group currency
+      - name: ksl14 
+        description: Total of transactions of the period in group currency
+      - name: ksl15 
+        description: Total of transactions of the period in group currency
+      - name: ksl16 
+        description: Total of transactions of the period in group currency
+      - name: kslvt
+        description: Balance carried forward in group currency
+      - name: logsys
+        description: Logical system
+      - name: objnr00 
+        description: Object number for table group
+      - name: objnr01
+        description: Object number for table group
+      - name: objnr02
+        description: Object number for table group
+      - name: objnr03
+        description: Object number for table group
+      - name: objnr04
+        description: Object number for table group
+      - name: objnr05
+        description: Object number for table group
+      - name: objnr06
+        description: Object number for table group
+      - name: objnr07
+        description: Object number for table group
+      - name: objnr08
+        description: Object number for table group
+      - name: osl01 
+        description: Total transactions for the period in the fourth currency
+      - name: osl02 
+        description: Total transactions for the period in the fourth currency
+      - name: osl03 
+        description: Total transactions for the period in the fourth currency
+      - name: osl04 
+        description: Total transactions for the period in the fourth currency
+      - name: osl05 
+        description: Total transactions for the period in the fourth currency
+      - name: osl06 
+        description: Total transactions for the period in the fourth currency
+      - name: osl07 
+        description: Total transactions for the period in the fourth currency
+      - name: osl08 
+        description: Total transactions for the period in the fourth currency
+      - name: osl09 
+        description: Total transactions for the period in the fourth currency
+      - name: osl10 
+        description: Total transactions for the period in the fourth currency
+      - name: osl11 
+        description: Total transactions for the period in the fourth currency
+      - name: osl12 
+        description: Total transactions for the period in the fourth currency
+      - name: osl13 
+        description: Total transactions for the period in the fourth currency
+      - name: osl14 
+        description: Total transactions for the period in the fourth currency
+      - name: osl15 
+        description: Total transactions for the period in the fourth currency
+      - name: osl16 
+        description: Total transactions for the period in the fourth currency
+      - name: oslvt
+        description: Balance carried forward in fourth currency
+      - name: pprctr
+        description: Partner profit center
+      - name: prctr
+        description: Profit center
+      - name: psegment
+        description: Partner segment for segmental reporting
+      - name: racct
+        description: Account number
+      - name: rassc
+        description: Company id of trading partner
+      - name: rbukrs
+        description: Company code
+      - name: rbusa
+        description: Business area
+      - name: rclnt
+        description: Client
+      - name: rcntr
+        description: Cost center
+      - name: rfarea
+        description: Functional area
+      - name: rldnr
+        description: Ledger in general ledger accounting
+      - name: rmvct
+        description: Transaction type
+      - name: rpmax
+        description: Period
+      - name: rrcty
+        description: Record type
+      - name: rtcur
+        description: Currency key
+      - name: runit
+        description: Base unit of measure
+      - name: rvers
+        description: Version
+      - name: ryear
+        description: Fiscal year
+      - name: sbusa
+        description: Trading partner's business area
+      - name: scntr
+        description: Sender cost center
+      - name: segment
+        description: Segment for segmental reporting
+      - name: sfarea
+        description: Partner functional area
+      - name: tsl01 
+        description: Total of transactions of the period in transaction currency
+      - name: tsl02
+        description: Total of transactions of the period in transaction currency
+      - name: tsl03
+        description: Total of transactions of the period in transaction currency
+      - name: tsl04
+        description: Total of transactions of the period in transaction currency
+      - name: tsl05
+        description: Total of transactions of the period in transaction currency
+      - name: tsl06
+        description: Total of transactions of the period in transaction currency
+      - name: tsl07
+        description: Total of transactions of the period in transaction currency
+      - name: tsl08
+        description: Total of transactions of the period in transaction currency
+      - name: tsl09
+        description: Total of transactions of the period in transaction currency
+      - name: tsl10
+        description: Total of transactions of the period in transaction currency
+      - name: tsl11
+        description: Total of transactions of the period in transaction currency
+      - name: tsl12
+        description: Total of transactions of the period in transaction currency
+      - name: tsl13
+        description: Total of transactions of the period in transaction currency
+      - name: tsl14
+        description: Total of transactions of the period in transaction currency
+      - name: tsl15
+        description: Total of transactions of the period in transaction currency
+      - name: tsl16
+        description: Total of transactions of the period in transaction currency
+      - name: tslvt
+        description: Balance carried forward in transaction currency
+      - name: zzspreg
+        description: Special region
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

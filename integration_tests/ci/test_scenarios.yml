@@ -57,8 +57,11 @@ test_scenarios:
       sap_using_mchp: false
       sap_using_sapsll_tunos: false
       sap_using_finsc_ledger_rep: false
+      sap_using_finsc_ld_cmp: false
       sap_using_bsad_bck: false
       sap_using_coep: false
       sap_using_t006: false
+      sap_using_anla: false
+      sap_using_faat_plan_values: false
     include_incremental: false
     warehouses: ["bigquery", "postgres", "snowflake", "databricks"] # Removed extra tests for redshift for efficiency

@@ -40,9 +40,9 @@ final as (
         cast(field_name_pafbtr_add as {{ dbt.type_string() }}) as field_name_pafbtr_add,
         cast(field_name_pafbtr_subtract as {{ dbt.type_string() }}) as field_name_pafbtr_subtract,
         _fivetran_sap_archived,
-        _fivetran_deleted,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

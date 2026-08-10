@@ -1,0 +1,574 @@
+version: 2
+
+models:
+  - name: stg_sap__pa0008
+    description: HR master record--infotype 0008 (basic pay)
+    columns:
+      - name: aedtm
+        description: Changed on
+      - name: ancur
+        description: Currency key for annual salary
+      - name: ansal
+        description: Annual salary
+      - name: anz01
+        description: Number/unit
+      - name: anz02
+        description: Number/unit
+      - name: anz03
+        description: Number/unit
+      - name: anz04
+        description: Number/unit
+      - name: anz05
+        description: Number/unit
+      - name: anz06
+        description: Number/unit
+      - name: anz07
+        description: Number/unit
+      - name: anz08
+        description: Number/unit
+      - name: anz09
+        description: Number/unit
+      - name: anz10
+        description: Number/unit
+      - name: anz11
+        description: Number/unit
+      - name: anz12
+        description: Number/unit
+      - name: anz13
+        description: Number/unit
+      - name: anz14
+        description: Number/unit
+      - name: anz15
+        description: Number/unit
+      - name: anz16
+        description: Number/unit
+      - name: anz17
+        description: Number/unit
+      - name: anz18
+        description: Number/unit
+      - name: anz19
+        description: Number/unit
+      - name: anz20
+        description: Number/unit
+      - name: anz21
+        description: Number/unit
+      - name: anz22
+        description: Number/unit
+      - name: anz23
+        description: Number/unit
+      - name: anz24
+        description: Number/unit
+      - name: anz25
+        description: Number/unit
+      - name: anz26
+        description: Number/unit
+      - name: anz27
+        description: Number/unit
+      - name: anz28
+        description: Number/unit
+      - name: anz29
+        description: Number/unit
+      - name: anz30
+        description: Number/unit
+      - name: anz31
+        description: Number/unit
+      - name: anz32
+        description: Number/unit
+      - name: anz33
+        description: Number/unit
+      - name: anz34
+        description: Number/unit
+      - name: anz35
+        description: Number/unit
+      - name: anz36
+        description: Number/unit
+      - name: anz37
+        description: Number/unit
+      - name: anz38
+        description: Number/unit
+      - name: anz39
+        description: Number/unit
+      - name: anz40
+        description: Number/unit
+      - name: begda
+        description: Start date
+      - name: bet01
+        description: Wage type amount for payments
+      - name: bet02
+        description: Wage type amount for payments
+      - name: bet03
+        description: Wage type amount for payments
+      - name: bet04
+        description: Wage type amount for payments
+      - name: bet05
+        description: Wage type amount for payments
+      - name: bet06
+        description: Wage type amount for payments
+      - name: bet07
+        description: Wage type amount for payments
+      - name: bet08
+        description: Wage type amount for payments
+      - name: bet09
+        description: Wage type amount for payments
+      - name: bet10
+        description: Wage type amount for payments
+      - name: bet11
+        description: Wage type amount for payments
+      - name: bet12
+        description: Wage type amount for payments
+      - name: bet13
+        description: Wage type amount for payments
+      - name: bet14
+        description: Wage type amount for payments
+      - name: bet15
+        description: Wage type amount for payments
+      - name: bet16
+        description: Wage type amount for payments
+      - name: bet17
+        description: Wage type amount for payments
+      - name: bet18
+        description: Wage type amount for payments
+      - name: bet19
+        description: Wage type amount for payments
+      - name: bet20
+        description: Wage type amount for payments
+      - name: bet21
+        description: Wage type amount for payments
+      - name: bet22
+        description: Wage type amount for payments
+      - name: bet23
+        description: Wage type amount for payments
+      - name: bet24
+        description: Wage type amount for payments 
+      - name: bet25
+        description: Wage type amount for payments
+      - name: bet26
+        description: Wage type amount for payments
+      - name: bet27
+        description: Wage type amount for payments
+      - name: bet28
+        description: Wage type amount for payments
+      - name: bet29
+        description: Wage type amount for payments
+      - name: bet30
+        description: Wage type amount for payments
+      - name: bet31
+        description: Wage type amount for payments
+      - name: bet32
+        description: Wage type amount for payments
+      - name: bet33
+        description: Wage type amount for payments
+      - name: bet34
+        description: Wage type amount for payments
+      - name: bet35
+        description: Wage type amount for payments
+      - name: bet36
+        description: Wage type amount for payments
+      - name: bet37
+        description: Wage type amount for payments
+      - name: bet38
+        description: Wage type amount for payments
+      - name: bet39
+        description: Wage type amount for payments
+      - name: bet40
+        description: Wage type amount for payments
+      - name: bsgrd
+        description: Capacity utilization level
+      - name: cpind
+        description: Planned compensation type
+      - name: divgv
+        description: Working hours per payroll period
+      - name: ein01
+        description: Time/measurement unit
+      - name: ein02
+        description: Time/measurement unit
+      - name: ein03
+        description: Time/measurement unit
+      - name: ein04
+        description: Time/measurement unit
+      - name: ein05
+        description: Time/measurement unit
+      - name: ein06
+        description: Time/measurement unit
+      - name: ein07
+        description: Time/measurement unit
+      - name: ein08
+        description: Time/measurement unit
+      - name: ein09
+        description: Time/measurement unit
+      - name: ein10
+        description: Time/measurement unit
+      - name: ein11
+        description: Time/measurement unit
+      - name: ein12
+        description: Time/measurement unit 
+      - name: ein13
+        description: Time/measurement unit
+      - name: ein14
+        description: Time/measurement unit
+      - name: ein15
+        description: Time/measurement unit
+      - name: ein16
+        description: Time/measurement unit
+      - name: ein17
+        description: Time/measurement unit
+      - name: ein18
+        description: Time/measurement unit
+      - name: ein19
+        description: Time/measurement unit
+      - name: ein20
+        description: Time/measurement unit
+      - name: ein21
+        description: Time/measurement unit
+      - name: ein22
+        description: Time/measurement unit
+      - name: ein23
+        description: Time/measurement unit
+      - name: ein24
+        description: Time/measurement unit
+      - name: ein25
+        description: Time/measurement unit
+      - name: ein26
+        description: Time/measurement unit
+      - name: ein27
+        description: Time/measurement unit
+      - name: ein28
+        description: Time/measurement unit
+      - name: ein29
+        description: Time/measurement unit
+      - name: ein30
+        description: Time/measurement unit
+      - name: ein31
+        description: Time/measurement unit
+      - name: ein32
+        description: Time/measurement unit
+      - name: ein33
+        description: Time/measurement unit
+      - name: ein34
+        description: Time/measurement unit
+      - name: ein35
+        description: Time/measurement unit
+      - name: ein36
+        description: Time/measurement unit 
+      - name: ein37
+        description: Time/measurement unit
+      - name: ein38
+        description: Time/measurement unit
+      - name: ein39
+        description: Time/measurement unit
+      - name: ein40
+        description: Time/measurement unit
+      - name: endda
+        description: End date
+      - name: falgk
+        description: Case group catalog
+      - name: falgr
+        description: Case group
+      - name: flag1
+        description: Reserved field/unused field
+      - name: flag2
+        description: Reserved field/unused field
+      - name: flag3
+        description: Reserved field/unused field
+      - name: flag4
+        description: Reserved field/unused field
+      - name: flaga
+        description: General flag
+      - name: grpvl
+        description: Grouping value for personnel assignments
+      - name: histo
+        description: Historical record flag
+      - name: ind01
+        description: Indicator for indirect valuation
+      - name: ind02
+        description: Indicator for indirect valuation
+      - name: ind03
+        description: Indicator for indirect valuation
+      - name: ind04
+        description: Indicator for indirect valuation
+      - name: ind05
+        description: Indicator for indirect valuation
+      - name: ind06
+        description: Indicator for indirect valuation
+      - name: ind07
+        description: Indicator for indirect valuation
+      - name: ind08
+        description: Indicator for indirect valuation
+      - name: ind09
+        description: Indicator for indirect valuation
+      - name: ind10
+        description: Indicator for indirect valuation
+      - name: ind11
+        description: Indicator for indirect valuation
+      - name: ind12
+        description: Indicator for indirect valuation
+      - name: ind13
+        description: Indicator for indirect valuation
+      - name: ind14
+        description: Indicator for indirect valuation
+      - name: ind15
+        description: Indicator for indirect valuation
+      - name: ind16
+        description: Indicator for indirect valuation
+      - name: ind17
+        description: Indicator for indirect valuation
+      - name: ind18
+        description: Indicator for indirect valuation
+      - name: ind19
+        description: Indicator for indirect valuation
+      - name: ind20
+        description: Indicator for indirect valuation
+      - name: ind21
+        description: Indicator for indirect valuation
+      - name: ind22
+        description: Indicator for indirect valuation
+      - name: ind23
+        description: Indicator for indirect valuation
+      - name: ind24
+        description: Indicator for indirect valuation
+      - name: ind25
+        description: Indicator for indirect valuation
+      - name: ind26
+        description: Indicator for indirect valuation
+      - name: ind27
+        description: Indicator for indirect valuation
+      - name: ind28
+        description: Indicator for indirect valuation
+      - name: ind29
+        description: Indicator for indirect valuation
+      - name: ind30
+        description: Indicator for indirect valuation
+      - name: ind31
+        description: Indicator for indirect valuation
+      - name: ind32
+        description: Indicator for indirect valuation
+      - name: ind33
+        description: Indicator for indirect valuation
+      - name: ind34
+        description: Indicator for indirect valuation
+      - name: ind35
+        description: Indicator for indirect valuation
+      - name: ind36
+        description: Indicator for indirect valuation
+      - name: ind37
+        description: Indicator for indirect valuation
+      - name: ind38
+        description: Indicator for indirect valuation
+      - name: ind39
+        description: Indicator for indirect valuation
+      - name: ind40
+        description: Indicator for indirect valuation
+      - name: itbld
+        description: Infotype screen control
+      - name: itxex
+        description: Text exists for infotype
+      - name: lga01
+        description: Wage type
+      - name: lga02
+        description: Wage type 
+      - name: lga03
+        description: Wage type 
+      - name: lga04
+        description: Wage type 
+      - name: lga05
+        description: Wage type 
+      - name: lga06
+        description: Wage type 
+      - name: lga07
+        description: Wage type 
+      - name: lga08
+        description: Wage type 
+      - name: lga09
+        description: Wage type 
+      - name: lga10
+        description: Wage type 
+      - name: lga11
+        description: Wage type 
+      - name: lga12
+        description: Wage type 
+      - name: lga13
+        description: Wage type 
+      - name: lga14
+        description: Wage type 
+      - name: lga15
+        description: Wage type 
+      - name: lga16
+        description: Wage type 
+      - name: lga17
+        description: Wage type 
+      - name: lga18
+        description: Wage type 
+      - name: lga19
+        description: Wage type 
+      - name: lga20
+        description: Wage type 
+      - name: lga21
+        description: Wage type 
+      - name: lga22
+        description: Wage type 
+      - name: lga23
+        description: Wage type 
+      - name: lga24
+        description: Wage type 
+      - name: lga25
+        description: Wage type 
+      - name: lga26
+        description: Wage type 
+      - name: lga27
+        description: Wage type 
+      - name: lga28
+        description: Wage type 
+      - name: lga29
+        description: Wage type 
+      - name: lga30
+        description: Wage type 
+      - name: lga31
+        description: Wage type 
+      - name: lga32
+        description: Wage type 
+      - name: lga33
+        description: Wage type 
+      - name: lga34
+        description: Wage type 
+      - name: lga35
+        description: Wage type 
+      - name: lga36
+        description: Wage type 
+      - name: lga37
+        description: Wage type 
+      - name: lga38
+        description: Wage type 
+      - name: lga39
+        description: Wage type 
+      - name: lga40
+        description: Wage type 
+      - name: mandt
+        description: Client
+      - name: objps
+        description: Object identification
+      - name: opk01
+        description: Operation indicator for wage types
+      - name: opk02
+        description: Operation indicator for wage types 
+      - name: opk03
+        description: Operation indicator for wage types 
+      - name: opk04
+        description: Operation indicator for wage types 
+      - name: opk05
+        description: Operation indicator for wage types 
+      - name: opk06
+        description: Operation indicator for wage types 
+      - name: opk07
+        description: Operation indicator for wage types 
+      - name: opk08
+        description: Operation indicator for wage types 
+      - name: opk09
+        description: Operation indicator for wage types 
+      - name: opk10
+        description: Operation indicator for wage types 
+      - name: opk11
+        description: Operation indicator for wage types 
+      - name: opk12
+        description: Operation indicator for wage types 
+      - name: opk13
+        description: Operation indicator for wage types 
+      - name: opk14
+        description: Operation indicator for wage types 
+      - name: opk15
+        description: Operation indicator for wage types 
+      - name: opk16
+        description: Operation indicator for wage types 
+      - name: opk17
+        description: Operation indicator for wage types 
+      - name: opk18
+        description: Operation indicator for wage types 
+      - name: opk19
+        description: Operation indicator for wage types 
+      - name: opk20
+        description: Operation indicator for wage types 
+      - name: opk21
+        description: Operation indicator for wage types 
+      - name: opk22
+        description: Operation indicator for wage types 
+      - name: opk23
+        description: Operation indicator for wage types 
+      - name: opk24
+        description: Operation indicator for wage types 
+      - name: opk25
+        description: Operation indicator for wage types 
+      - name: opk26
+        description: Operation indicator for wage types 
+      - name: opk27
+        description: Operation indicator for wage types 
+      - name: opk28
+        description: Operation indicator for wage types 
+      - name: opk29
+        description: Operation indicator for wage types 
+      - name: opk30
+        description: Operation indicator for wage types 
+      - name: opk31
+        description: Operation indicator for wage types 
+      - name: opk32
+        description: Operation indicator for wage types 
+      - name: opk33
+        description: Operation indicator for wage types 
+      - name: opk34
+        description: Operation indicator for wage types 
+      - name: opk35
+        description: Operation indicator for wage types 
+      - name: opk36
+        description: Operation indicator for wage types
+      - name: opk37
+        description: Operation indicator for wage types
+      - name: opk38
+        description: Operation indicator for wage types 
+      - name: opk39
+        description: Operation indicator for wage types 
+      - name: opk40
+        description: Operation indicator for wage types 
+      - name: ordex
+        description: Confirmation fields exist
+      - name: orzst
+        description: Cost of living allowance level
+      - name: partn
+        description: Partnership
+      - name: pernr
+        description: Personnel number
+      - name: preas
+        description: Reason for changing master data
+      - name: refex
+        description: Reference fields exist (primary/secondary costs)
+      - name: rese1
+        description: Reserved field/unused field of length 2
+      - name: rese2
+        description: Reserved field/unused field of length 2
+      - name: seqnr
+        description: Number of infotype record with same key
+      - name: sprps
+        description: Lock indicator for HR master data record
+      - name: stvor
+        description: Date of next increase
+      - name: subty
+        description: Subtype
+      - name: trfar
+        description: Pay scale type
+      - name: trfgb
+        description: Pay scale area
+      - name: trfgr
+        description: Pay scale group
+      - name: trfst
+        description: Pay scale level
+      - name: uname
+        description: Name of person who changed object
+      - name: vglgb
+        description: Comparison pay scale area
+      - name: vglgr
+        description: Comparison pay scale group
+      - name: vglst
+        description: Comparison pay scale level
+      - name: vglsv
+        description: Date of next increase
+      - name: vglta
+        description: Comparison pay scale type
+      - name: waers
+        description: Currency key

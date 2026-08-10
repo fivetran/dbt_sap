@@ -10,7 +10,6 @@ select
     smtp_addr as e_mail_address,
     tel_extens as telephone_no_extension,
     eknam as description_purchasing_group,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__t024') }}

@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_sap__ska1
+    description: G/L Account Master (Chart of Accounts)
+    columns:
+      - name: bilkt
+        description: Group account number
+      - name: erdat
+        description: Date on which the record was created
+      - name: ernam
+        description: Name of person who created the object
+      - name: func_area
+        description: Functional area
+      - name: gvtyp
+        description: P&L statement account type
+      - name: ktoks
+        description: G/L account group
+      - name: ktopl
+        description: Chart of accounts
+      - name: mandt
+        description: Client
+      - name: mustr
+        description: Number of the sample account
+      - name: sakan
+        description: G/L account number, significant length
+      - name: saknr
+        description: G/L account number
+      - name: vbund
+        description: Company id of tradiing partner
+      - name: xbilk
+        description: Indicator (account is a balance sheet account?)
+      - name: xloev
+        description: Indicator (account marked for deletion?)
+      - name: xspea
+        description: Indicator (account is blocked for creation?)
+      - name: xspeb
+        description: Indicator (Is account blocked for posting?)
+      - name: xspep
+        description: Indicator (Account blocked for planning?)
+
+      - name: _fivetran_rowid
+        description: Fivetran unique row ID
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp

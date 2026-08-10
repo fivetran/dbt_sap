@@ -25,10 +25,10 @@ final as (
         bstyp,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
         spras,
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_rowid
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

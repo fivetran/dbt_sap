@@ -52,6 +52,7 @@ final as (
         stat3,
         uname
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

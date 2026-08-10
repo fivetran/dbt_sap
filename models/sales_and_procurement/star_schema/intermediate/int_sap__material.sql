@@ -254,7 +254,6 @@ with mara as (
         mara.aenam as changed_by,
         mara.mstae as cross_plant_material_status_id,
         mara.zeifo as page_format,
-        mara._fivetran_deleted as _fivetran_deleted,
         mara._fivetran_synced as _fivetran_synced,
         mara._fivetran_sap_archived as _fivetran_sap_archived,
         {{ 'makt.maktx' if using_makt else 'cast(null as ' ~ dbt.type_string() ~ ')' }} as material_description

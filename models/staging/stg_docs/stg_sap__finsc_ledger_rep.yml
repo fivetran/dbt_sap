@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_sap__finsc_ledger_rep
+    description: Financial SCM ledger reporting data
+    columns:
+      - name: rldnr
+        description: Ledger
+      - name: mandt
+        description: Client
+      - name: rldnr_pers
+        description: Personal ledger number

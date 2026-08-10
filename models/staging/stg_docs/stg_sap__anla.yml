@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_sap__anla
+    description: Asset master data (fixed assets)
+    columns:
+      - name: mandt
+        description: Client
+      - name: bukrs
+        description: Company code
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset subnumber
+      - name: ktogr
+        description: Account determination group

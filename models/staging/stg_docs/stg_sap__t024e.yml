@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_sap__t024e
+    description: Purchasing organization text
+    columns:
+      - name: _fivetran_sap_archived
+        description: Fivetran SAP archive marker
+      - name: _fivetran_synced
+        description: Fivetran sync timestamp
+      - name: bpeff
+        description: Effective date of text
+      - name: bukrs
+        description: Company code
+      - name: bukrs_ntr
+        description: Company code description (non-translation ready)
+      - name: ekorg
+        description: Purchasing organization
+      - name: ekotx
+        description: Description of the purchasing organization
+      - name: kalse
+        description: Access sequence number
+      - name: mandt
+        description: Client
+      - name: mkals
+        description: Sequence for access
+      - name: txadr
+        description: Text address number
+      - name: txfus
+        description: Function for text determination
+      - name: txgru
+        description: Text group
+      - name: txkop
+        description: Copying rule for text

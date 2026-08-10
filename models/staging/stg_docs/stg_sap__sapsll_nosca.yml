@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_sap__sapsll_nosca
+    description: SAP Special Ledger non-scalable data
+    columns:
+      - name: stcts
+        description: Statistical number
+      - name: datab
+        description: Valid from date
+      - name: datbi
+        description: Valid to date
+      - name: mandt
+        description: Client
+      - name: nosct
+        description: Number of special cost classification

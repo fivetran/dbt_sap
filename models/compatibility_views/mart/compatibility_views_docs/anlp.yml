@@ -1,0 +1,122 @@
+version: 2
+
+models:
+  - name: anlp
+    description: >
+      Asset Periodic Values (ANLP) compatibility view — reconstructs the classic SAP ANLP table from
+      FAAT_PLAN_VALUES in S/4HANA, with a left join to ANLA to supply the account determination group
+      (KTOGR). Requires sap_using_faat_plan_values to be true; sap_using_anla controls whether the
+      ANLA join is included.
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: gjahr
+        description: Fiscal year
+      - name: peraf
+        description: Period
+      - name: afbnr
+        description: Depreciation run number
+      - name: anln1
+        description: Main asset number
+      - name: anln2
+        description: Asset sub-number
+      - name: afaber
+        description: Real depreciation area
+      - name: zujhr
+        description: Year of acquisition
+      - name: zucod
+        description: Acquisition code
+      - name: aufwp
+        description: Depreciation expense (periodic)
+      - name: aufwb
+        description: Depreciation expense (cumulative)
+      - name: aufwz
+        description: Depreciation expense (year-to-date)
+      - name: nafap
+        description: Normal depreciation (periodic)
+      - name: nafag
+        description: Normal depreciation (cumulative)
+      - name: nafaz
+        description: Normal depreciation (year-to-date)
+      - name: safap
+        description: Special depreciation (periodic)
+      - name: safag
+        description: Special depreciation (cumulative)
+      - name: safaz
+        description: Special depreciation (year-to-date)
+      - name: aafap
+        description: Write-off depreciation (periodic)
+      - name: aafag
+        description: Write-off depreciation (cumulative)
+      - name: aafaz
+        description: Write-off depreciation (year-to-date)
+      - name: mafap
+        description: Manual depreciation (periodic)
+      - name: mafag
+        description: Manual depreciation (cumulative)
+      - name: mafaz
+        description: Manual depreciation (year-to-date)
+      - name: zinsp
+        description: Interest (periodic)
+      - name: zinsg
+        description: Interest (cumulative)
+      - name: zinsz
+        description: Interest (year-to-date)
+      - name: aufnp
+        description: Write-up (periodic)
+      - name: aufng
+        description: Write-up (cumulative)
+      - name: aufnz
+        description: Write-up (year-to-date)
+      - name: answl
+        description: Net book value at period end
+      - name: invzm
+        description: Investment support amount
+      - name: ktogr
+        description: Account determination group for asset (from ANLA; empty when sap_using_anla is false)
+      - name: afasl
+        description: Depreciation key
+      - name: kostl
+        description: Cost center assignment
+      - name: gsber
+        description: Business area
+      - name: caufn
+        description: Internal order
+      - name: xunul
+        description: Asset is being transferred indicator
+      - name: anupd
+        description: Last changed by
+      - name: fkber
+        description: Functional area
+      - name: belnr
+        description: Asset accounting document number
+      - name: lstar
+        description: Activity type
+      - name: geber
+        description: Fund (public sector)
+      - name: grant_nbr
+        description: Grant number
+      - name: geber2
+        description: Second fund assignment
+      - name: fkber2
+        description: Second functional area
+      - name: grant_nbr2
+        description: Second grant number
+      - name: fistl2
+        description: Second funded program
+      - name: imkey
+        description: Real estate key
+      - name: ps_psp_pnr2
+        description: WBS element
+      - name: budget_pd
+        description: Budget period
+      - name: budget_pd2
+        description: Second budget period
+      - name: segment
+        description: Segment for profitability analysis
+      - name: prctr
+        description: Profit center
+      - name: fistl
+        description: Funded program

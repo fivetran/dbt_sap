@@ -20,7 +20,6 @@ fields as (
 
 final as (
     select
-        _fivetran_deleted,
         _fivetran_synced,
         _fivetran_sap_archived,
         cast(mandt as {{ dbt.type_string() }}) as mandt,
@@ -68,6 +67,7 @@ final as (
         uvp01,
         uvp03
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select *

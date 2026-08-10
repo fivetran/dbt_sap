@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: anep
+    description: >
+      Asset Line Items (ANEP) compatibility view — reconstructs the classic SAP ANEP table from
+      ACDOCA asset accounting lines in S/4HANA, joined with FINSC_LEDGER_REP and FINSC_LD_CMP for
+      ledger resolution. Filters to valid asset postings using slalittype and movcat combinations
+      from the reference FAAV_ANEP1 logic. Also unions in a second set of rows re-keyed on each
+      posted asset's group asset (anlgr/anlgr2) when it differs from the posted asset, so postings
+      to a member asset also roll up under its group asset — matching FAAV_ANEP1's second branch.
+      Requires sap_using_acdoca, sap_using_finsc_ledger_rep, and sap_using_finsc_ld_cmp to be true.
+    columns:
+      - name: mandt
+        description: Client (mandant) identifier
+      - name: bukrs
+        description: Company code
+      - name: anln1
+        description: Main asset number (or, for the group-asset rollup rows, the group asset's main number)
+      - name: anln2
+        description: Asset sub-number (or, for the group-asset rollup rows, the group asset's sub-number)
+      - name: gjahr
+        description: Fiscal year
+      - name: lnran
+        description: Line item number of the asset document (derived from subta)
+      - name: afabe
+        description: Real depreciation area
+      - name: zujhr
+        description: Year of acquisition (always '0000' for S/4HANA ACDOCA path)
+      - name: zucod
+        description: Acquisition code — '0001' for standard postings, '0002' for derived depreciation area postings
+      - name: peraf
+        description: Period of acquisition (always '000' for S/4HANA ACDOCA path)
+      - name: belnr
+        description: Asset accounting document number (from awref)
+      - name: buzei
+        description: Line item number within the document
+      - name: bzdat
+        description: Asset value date
+      - name: bwasl
+        description: Asset transaction type
+      - name: xafar
+        description: Retirement indicator (always '0' for S/4HANA ACDOCA path)
+      - name: anbtr
+        description: Amount in company code currency (sum of HSL)
+      - name: nafab
+        description: Normal depreciation amount (always 0 for S/4HANA ACDOCA path)
+      - name: safab
+        description: Special depreciation amount (always 0 for S/4HANA ACDOCA path)
+      - name: zinsb
+        description: Interest amount (always 0 for S/4HANA ACDOCA path)
+      - name: xantw
+        description: Proportional indicator (always empty for S/4HANA ACDOCA path)
+      - name: xawbt
+        description: Posted indicator (always empty for S/4HANA ACDOCA path)
+      - name: lnsan
+        description: Link number of reversing document line item
+      - name: anupd
+        description: Last changed by (always empty for S/4HANA ACDOCA path)
+      - name: augln
+        description: Clearing line item number — '00000' open, '99999' settled/reversed, otherwise the reversing line

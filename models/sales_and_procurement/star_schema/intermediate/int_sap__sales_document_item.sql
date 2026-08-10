@@ -387,7 +387,6 @@ select
     lgort as storage_location_id,
     msr_approv_block as approval_block,
     cepok as status_expected_price,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__vbap') }}

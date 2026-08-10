@@ -120,6 +120,10 @@ table_variables:
     - TJ01
   sap_using_tka01:
     - TKA01
+  sap_using_faat_plan_values:
+    - FAAT_PLAN_VALUES
+  sap_using_anla:
+    - ANLA
 
 destination_configurations:
   databricks:
@@ -155,6 +159,9 @@ public_models: [
   "cosp",
   "coss",
   "faglflexa",
+  "faglflext",
+  "anep",
+  "anlp",
   "marc",
   "mchb",
   "mkpf",

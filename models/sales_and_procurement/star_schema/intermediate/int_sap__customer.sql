@@ -195,7 +195,6 @@ select
     _vso_r_pk_mat as _vso_r_pk_mat,
     name3 as name3,
     name1 as name1,
-    _fivetran_deleted as _fivetran_deleted,
     _fivetran_synced as _fivetran_synced,
     _fivetran_sap_archived as _fivetran_sap_archived
 from {{ ref('stg_sap__kna1') }}
