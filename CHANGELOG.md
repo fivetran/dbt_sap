@@ -1,6 +1,6 @@
 # dbt_sap v0.8.2
 
-[PR #53](https://github.com/fivetran/dbt_sap/pull/53) includes the following updates:
+[PR #54](https://github.com/fivetran/dbt_sap/pull/54) includes the following updates:
 
 ## Bug Fix
 - Fixes a compile error in [`stg_sap__coep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__coep) and [`stg_sap__prps`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__prps) when optional columns such as `_fivetran_sap_archived` are missing from the source. Both models now fill missing columns with null.
