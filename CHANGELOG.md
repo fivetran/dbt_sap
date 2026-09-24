@@ -1,3 +1,12 @@
+# dbt_sap v0.8.2
+
+[PR #54](https://github.com/fivetran/dbt_sap/pull/54) includes the following updates:
+
+## Bug Fix
+- Fixes a compile error in [`stg_sap__coep`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__coep) and [`stg_sap__prps`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__prps) when optional columns such as `_fivetran_sap_archived` are missing from the source. Both models now fill missing columns with null.
+- Fixes a BigQuery query error in [`bsad`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad), [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak), and [`bsid`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid). The four `hist_tax_factor` columns hold bytes that cannot always convert to a string. They now return null instead of failing the query. See [DECISIONLOG](https://github.com/fivetran/dbt_sap/blob/main/DECISIONLOG.md) for more details.
+- Fixes a BigQuery query error in [`coss`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.coss). A hardcoded `decimal(16, 0)` cast made the view unreadable. It now uses the same numeric type as the rest of the model.
+
 # dbt_sap v0.8.1
 
 [PR #51](https://github.com/fivetran/dbt_sap/pull/51) includes the following updates:

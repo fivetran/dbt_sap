@@ -457,7 +457,7 @@ sq_coss_wdv_6 as (
     case
       when v_coss_wdv_5.tsgjahr0 = 0 then cast(0 as {{ dbt.type_numeric() }})
       else cast(
-        (v_coss_wdv_5.tsgjahr0 - 1990) * 365 * 24 * 60 * 60 as decimal(16, 0)
+        (v_coss_wdv_5.tsgjahr0 - 1990) * 365 * 24 * 60 * 60 as {{ dbt.type_numeric() }}
       )
     end as tsgjahr1,
     case
