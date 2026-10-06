@@ -1,3 +1,8 @@
+# dbt_sap v0.8.3-a1
+
+## Bug Fix
+- Fixes a Snowflake compile error in [`bsad`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsad), [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak), and [`bsid`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsid) introduced in v0.8.2. `hist_tax_factor` casting now uses `dbt.safe_cast` on BigQuery only and a plain `cast` elsewhere. See [DECISIONLOG](https://github.com/fivetran/dbt_sap/blob/main/DECISIONLOG.md) for more details.
+
 # dbt_sap v0.8.2
 
 [PR #54](https://github.com/fivetran/dbt_sap/pull/54) includes the following updates:
