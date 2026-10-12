@@ -1,6 +1,6 @@
 # dbt_sap v0.9.0
 
-[PR #XX](https://github.com/fivetran/dbt_sap/pull/XX) includes the following updates:
+[PR #57](https://github.com/fivetran/dbt_sap/pull/57) includes the following updates:
 
 ## Schema/Data Change
 **1 total change • 0 breaking changes**
