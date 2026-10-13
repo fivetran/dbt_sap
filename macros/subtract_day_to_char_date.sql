@@ -25,7 +25,7 @@
 
 {% macro databricks__subtract_day_to_char_date(date_string) %}
 
-    date_format(date_sub(to_date({{ date_string }}, 'yyyyMMdd'), 1), 'yyyyMMdd')
+    date_format(date_sub(try_to_date({{ date_string }}, 'yyyyMMdd'), 1), 'yyyyMMdd')
 
 {% endmacro %}
 
