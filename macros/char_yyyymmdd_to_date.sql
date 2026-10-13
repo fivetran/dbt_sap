@@ -26,7 +26,7 @@
 {% endmacro %}
 
 {% macro databricks__char_yyyymmdd_to_date(date_string) %}
-    try_to_date(cast({{ date_string }} as string), 'yyyyMMdd')
+    to_date(cast({{ date_string }} as string), 'yyyyMMdd')
 {% endmacro %}
 
 {% macro duckdb__char_yyyymmdd_to_date(date_string) %}
