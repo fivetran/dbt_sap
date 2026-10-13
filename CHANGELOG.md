@@ -1,6 +1,6 @@
 # dbt_sap v0.8.3
 
-[PR #XX](https://github.com/fivetran/dbt_sap/pull/XX) includes the following updates:
+[PR #58](https://github.com/fivetran/dbt_sap/pull/58) includes the following updates:
 
 ## Bug Fix
 - Fixes a Databricks query error (`CANNOT_PARSE_TIMESTAMP`) in [`sap__fact_purchasing_order`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.sap__fact_purchasing_order) and other models that convert SAP `YYYYMMDD` date strings. With ANSI mode on, dates that are not valid `YYYYMMDD` (such as SAP's blank date `00000000`) failed the whole query. They now return null, matching the behavior on the other supported destinations.
