@@ -1,5 +1,7 @@
 {{ config(enabled=var('sap_using_bsad_bck', True) and var('sap_using_bseg', True) and var('sap_using_bkpf', True)) }}
 
+{% set cast_function = 'SAFE_CAST' if target.type == 'bigquery' else 'cast' %}
+
 with stg_sap__bsad_bck as (
   select *
   from {{ ref('stg_sap__bsad_bck') }}
@@ -98,36 +100,20 @@ archived_records as (
     cast(b.tax_country1 as {{ dbt.type_string() }}) as tax_country1,
     cast(b.dmbt1 as {{ dbt.type_numeric() }}) as dmbt1,
     cast(b.wrbt1 as {{ dbt.type_numeric() }}) as wrbt1,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('b.hist_tax_factor1', dbt.type_string()) }}
-{% else %}
-  cast(b.hist_tax_factor1 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor1,
+    {{ cast_function }}(b.hist_tax_factor1 AS {{ dbt.type_string() }}) as hist_tax_factor1,
     cast(b.mwsk2 as {{ dbt.type_string() }}) as mwsk2,
     cast(b.txdat_from2 as {{ dbt.type_string() }}) as txdat_from2,
     cast(b.tax_country2 as {{ dbt.type_string() }}) as tax_country2,
     cast(b.dmbt2 as {{ dbt.type_numeric() }}) as dmbt2,
     cast(b.wrbt2 as {{ dbt.type_numeric() }}) as wrbt2,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('b.hist_tax_factor2', dbt.type_string()) }}
-{% else %}
-  cast(b.hist_tax_factor2 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor2,
+    {{ cast_function }}(b.hist_tax_factor2 AS {{ dbt.type_string() }}) as hist_tax_factor2,
     cast(b.mwsk3 as {{ dbt.type_string() }}) as mwsk3,
     cast(b.txdat_from3 as {{ dbt.type_string() }}) as txdat_from3,
     cast(b.tax_country3 as {{ dbt.type_string() }}) as tax_country3,
     cast(b.dmbt3 as {{ dbt.type_numeric() }}) as dmbt3,
     cast(b.wrbt3 as {{ dbt.type_numeric() }}) as wrbt3,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('b.hist_tax_factor3', dbt.type_string()) }}
-{% else %}
-  cast(b.hist_tax_factor3 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor3,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('b.hist_tax_factor', dbt.type_string()) }}
-{% else %}
-  cast(b.hist_tax_factor as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor,
+    {{ cast_function }}(b.hist_tax_factor3 AS {{ dbt.type_string() }}) as hist_tax_factor3,
+    {{ cast_function }}(b.hist_tax_factor AS {{ dbt.type_string() }}) as hist_tax_factor,
     cast(b.bstat as {{ dbt.type_string() }}) as bstat,
     cast(b.vbund as {{ dbt.type_string() }}) as vbund,
     cast(b.vbeln as {{ dbt.type_string() }}) as vbeln,
@@ -329,36 +315,20 @@ cleared_records as (
     cast(i.tax_country1 as {{ dbt.type_string() }}) as tax_country1,
     cast(i.dmbt1 as {{ dbt.type_numeric() }}) as dmbt1,
     cast(i.wrbt1 as {{ dbt.type_numeric() }}) as wrbt1,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('i.hist_tax_factor1', dbt.type_string()) }}
-{% else %}
-  cast(i.hist_tax_factor1 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor1,
+    {{ cast_function }}(i.hist_tax_factor1 AS {{ dbt.type_string() }}) as hist_tax_factor1,
     cast(i.mwsk2 as {{ dbt.type_string() }}) as mwsk2,
     cast(i.txdat_from2 as {{ dbt.type_string() }}) as txdat_from2,
     cast(i.tax_country2 as {{ dbt.type_string() }}) as tax_country2,
     cast(i.dmbt2 as {{ dbt.type_numeric() }}) as dmbt2,
     cast(i.wrbt2 as {{ dbt.type_numeric() }}) as wrbt2,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('i.hist_tax_factor2', dbt.type_string()) }}
-{% else %}
-  cast(i.hist_tax_factor2 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor2,
+    {{ cast_function }}(i.hist_tax_factor2 AS {{ dbt.type_string() }}) as hist_tax_factor2,
     cast(i.mwsk3 as {{ dbt.type_string() }}) as mwsk3,
     cast(i.txdat_from3 as {{ dbt.type_string() }}) as txdat_from3,
     cast(i.tax_country3 as {{ dbt.type_string() }}) as tax_country3,
     cast(i.dmbt3 as {{ dbt.type_numeric() }}) as dmbt3,
     cast(i.wrbt3 as {{ dbt.type_numeric() }}) as wrbt3,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('i.hist_tax_factor3', dbt.type_string()) }}
-{% else %}
-  cast(i.hist_tax_factor3 as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor3,
-    {% if target.type == 'bigquery' %}
-  {{ dbt.safe_cast('i.hist_tax_factor', dbt.type_string()) }}
-{% else %}
-  cast(i.hist_tax_factor as {{ dbt.type_string() }})
-{% endif %} as hist_tax_factor,
+    {{ cast_function }}(i.hist_tax_factor3 AS {{ dbt.type_string() }}) as hist_tax_factor3,
+    {{ cast_function }}(i.hist_tax_factor AS {{ dbt.type_string() }}) as hist_tax_factor,
     cast(i.h_bstat as {{ dbt.type_string() }}) as bstat,
     cast(i.vbund as {{ dbt.type_string() }}) as vbund,
     cast(i.vbeln as {{ dbt.type_string() }}) as vbeln,
