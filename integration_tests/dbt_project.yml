@@ -180,6 +180,7 @@ seeds:
         gbetr: numeric
         gjahr: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         gsber: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        h_bstat: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hkont: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         hwbas: numeric
         hwzuz: numeric
