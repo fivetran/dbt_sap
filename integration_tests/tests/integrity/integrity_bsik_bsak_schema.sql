@@ -12,6 +12,9 @@
 {% if execute %}
     {% set bsik_columns = adapter.get_columns_in_relation(ref('bsik')) %}
     {% set bsak_columns = adapter.get_columns_in_relation(ref('bsak')) %}
+    {% if bsik_columns | length == 0 or bsak_columns | length == 0 %}
+        {{ exceptions.raise_compiler_error("integrity_bsik_bsak_schema needs both bsik and bsak to be built first. Run: dbt build --select +bsik +bsak") }}
+    {% endif %}
     {% for position in range([bsik_columns | length, bsak_columns | length] | max) %}
         {% set bsik_column = bsik_columns[position] if position < bsik_columns | length else none %}
         {% set bsak_column = bsak_columns[position] if position < bsak_columns | length else none %}
