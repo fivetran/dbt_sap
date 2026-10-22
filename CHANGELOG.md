@@ -1,14 +1,3 @@
-# dbt_sap v0.9.0
-
-[PR #57](https://github.com/fivetran/dbt_sap/pull/57) includes the following updates:
-
-## Schema/Data Change
-**1 total change • 0 breaking changes**
-
-| Data Model(s) | Change type | Old | New | Notes |
-| ---------- | ----------- | -------- | -------- | ----- |
-| [`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik) | New Compatibility View | | | Vendor Open Items - provides open (uncleared) vendor payables in the classic BSIK format, derived from `BSEG` vendor line items joined to `BKPF` headers. Complements `bsak` (cleared vendor items) the same way `bsid` complements `bsad` for customers. Needs the `BSEG` and `BKPF` tables to run. Uses the BigQuery-only `hist_tax_factor` casting from v0.8.3. |
-
 # dbt_sap v0.8.3
 
 ## Bug Fix
