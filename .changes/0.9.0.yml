@@ -1,0 +1,13 @@
+version: 0.9.0
+pr_number: 57
+is_breaking: false
+schema_data_changes:
+  entries:
+  - models:
+    - '[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)'
+    change_type: New Compatibility View
+    notes: Vendor Open Items - provides open (uncleared) vendor payables in the classic
+      BSIK format, derived from `BSEG` vendor line items joined to `BKPF` headers.
+      Complements `bsak` (cleared vendor items) the same way `bsid` complements `bsad`
+      for customers. Needs the `BSEG` and `BKPF` tables to run.
+date: '2026-10-22'
