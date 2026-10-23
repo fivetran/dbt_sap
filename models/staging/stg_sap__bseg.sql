@@ -241,7 +241,21 @@ final as (
         zzuserfld2,
         zzuserfld3,
         zzregion,
-        zzstate
+        zzstate,
+        diekz,
+        esrnr,
+        kzbtr,
+        lnran,
+        penfc,
+        penlc1,
+        penlc2,
+        penlc3,
+        pernr,
+        qsznr,
+        vorgn,
+        zekkn,
+        zolld,
+        zollt
     from fields
     where not coalesce(_fivetran_deleted, false)
 )

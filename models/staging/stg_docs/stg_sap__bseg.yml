@@ -440,3 +440,31 @@ models:
         description: Tax business place
       - name: h_bstat
         description: Document status from header table (BKPF)
+      - name: diekz
+        description: Service indicator (foreign payment)
+      - name: esrnr
+        description: ISR/QR subscriber number
+      - name: kzbtr
+        description: Original reduction amount in local currency
+      - name: lnran
+        description: Sequence number of asset line items in fiscal year
+      - name: penfc
+        description: Penalty charge amount in document currency
+      - name: penlc1
+        description: Penalty charge amount in first local currency
+      - name: penlc2
+        description: Penalty charge amount in second local currency
+      - name: penlc3
+        description: Penalty charge amount in third local currency
+      - name: pernr
+        description: Personnel number
+      - name: qsznr
+        description: Certificate number of the withholding tax exemption
+      - name: vorgn
+        description: Transaction type for general ledger
+      - name: zekkn
+        description: Sequential number of account assignment
+      - name: zolld
+        description: Customs date
+      - name: zollt
+        description: Customs tariff number
