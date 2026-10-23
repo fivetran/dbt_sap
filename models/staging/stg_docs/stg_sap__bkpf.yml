@@ -64,3 +64,5 @@ models:
         description: Reference document number
       - name: xreorg
         description: Doc. contains open item that was transferred during reorg.
+      - name: penrc
+        description: Reason for late payment

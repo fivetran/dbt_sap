@@ -3,11 +3,12 @@
 [PR #57](https://github.com/fivetran/dbt_sap/pull/57) includes the following updates:
 
 ## Schema/Data Change
-**1 total change • 0 possible breaking changes**
+**2 total changes • 0 possible breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ------------- | ----------- | --- | --- | ----- |
 | [`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik) | New Compatibility View |  |  | Vendor Open Items - provides open (uncleared) vendor payables in the classic BSIK format, derived from `BSEG` vendor line items joined to `BKPF` headers. Complements `bsak` (cleared vendor items) the same way `bsid` complements `bsad` for customers. Needs the `BSEG` and `BKPF` tables to run. |
+| [`stg_sap__bseg`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bseg)<br>[`stg_sap__bkpf`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bkpf) | New Columns |  | `stg_sap__bseg`: `diekz`, `esrnr`, `kzbtr`, `lnran`, `penfc`, `penlc1`, `penlc2`, `penlc3`, `pernr`, `qsznr`, `vorgn`, `zekkn`, `zolld`, `zollt`<br>`stg_sap__bkpf`: `penrc` | Adds 15 columns already synced from the source but not previously selected, so `bsik` can populate them from `BSEG`/`BKPF` instead of hardcoding blanks. |
 
 # dbt_sap v0.8.3
 

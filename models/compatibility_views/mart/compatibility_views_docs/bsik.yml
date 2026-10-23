@@ -133,15 +133,15 @@ models:
       - name: samnr
         description: Internal document group key
       - name: zollt
-        description: Customs tariff number (hardcoded empty)
+        description: Customs tariff number
       - name: zolld
-        description: Customs date (hardcoded empty)
+        description: Customs date
       - name: lzbkz
         description: State central bank indicator
       - name: landl
         description: Supplying country
       - name: diekz
-        description: Service indicator (hardcoded empty)
+        description: Service indicator (foreign payment)
       - name: mansp
         description: Dunning block
       - name: mschl
@@ -159,7 +159,7 @@ models:
       - name: xcpdd
         description: Indicator for installment payment
       - name: xesrd
-        description: Indicator for ESR/ISR payment reference (hardcoded empty)
+        description: Indicator for ESR/ISR payment reference ('X' when esrnr is populated)
       - name: xzahl
         description: Indicator for automatic payment
       - name: mwsk1
@@ -225,7 +225,7 @@ models:
       - name: eglld
         description: Land of destination for delivery
       - name: qsznr
-        description: Certificate number of the withholding tax exemption (hardcoded empty)
+        description: Certificate number of the withholding tax exemption
       - name: qsfbt
         description: Withholding tax-exempt amount
       - name: xinve
@@ -277,11 +277,11 @@ models:
       - name: kostl
         description: Cost center
       - name: lnran
-        description: Line item number in the asset subledger (hardcoded empty)
+        description: Sequence number of asset line items in fiscal year
       - name: xstov
         description: Indicator for reversal posting (from BKPF)
       - name: kzbtr
-        description: Original reduction amount in local currency (hardcoded empty)
+        description: Original reduction amount in local currency
       - name: xref1
         description: Business partner reference key 1
       - name: xref2
@@ -295,7 +295,7 @@ models:
       - name: imkey
         description: Internal key for real estate object
       - name: zekkn
-        description: Sequential number of account assignment (hardcoded empty)
+        description: Sequential number of account assignment
       - name: fistl
         description: Funds center
       - name: geber
@@ -337,17 +337,17 @@ models:
       - name: ppdif3
         description: Cash discount adjustment in third local currency
       - name: penlc1
-        description: Penalty charge amount in first local currency (hardcoded to 0)
+        description: Penalty charge amount in first local currency
       - name: penlc2
-        description: Penalty charge amount in second local currency (hardcoded to 0)
+        description: Penalty charge amount in second local currency
       - name: penlc3
-        description: Penalty charge amount in third local currency (hardcoded to 0)
+        description: Penalty charge amount in third local currency
       - name: penfc
-        description: Penalty charge amount in document currency (hardcoded to 0)
+        description: Penalty charge amount in document currency
       - name: pendays
         description: Number of days for penalty calculation
       - name: penrc
-        description: Reason for late payment (hardcoded empty)
+        description: Reason for late payment (from BKPF)
       - name: vertt
         description: Contract type
       - name: vertn
@@ -411,9 +411,9 @@ models:
       - name: ghkon
         description: Business area account
       - name: pernr
-        description: Personnel number (hardcoded to '00000000')
+        description: Personnel number
       - name: vorgn
-        description: Business transaction with partner (hardcoded empty)
+        description: Transaction type for general ledger
       - name: awtyp
         description: Reference procedure (from BKPF)
       - name: logsystem_sender
