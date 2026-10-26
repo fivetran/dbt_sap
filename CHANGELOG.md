@@ -10,9 +10,6 @@
 | [`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik) | New Compatibility View |  |  | Vendor Open Items - provides open (uncleared) vendor payables in the classic BSIK format, derived from `BSEG` vendor line items joined to `BKPF` headers. Complements `bsak` (cleared vendor items) the same way `bsid` complements `bsad` for customers. Needs the `BSEG` and `BKPF` tables to run. |
 | [`stg_sap__bseg`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bseg)<br>[`stg_sap__bkpf`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.stg_sap__bkpf) | New Columns |  | `stg_sap__bseg`: `diekz`, `esrnr`, `kzbtr`, `lnran`, `penfc`, `penlc1`, `penlc2`, `penlc3`, `pernr`, `qsznr`, `vorgn`, `zekkn`, `zolld`, `zollt`<br>`stg_sap__bkpf`: `penrc` | Adds 15 columns already synced from the source but not previously selected, so `bsik` can populate them from `BSEG`/`BKPF` instead of hardcoding blanks. |
 
-## Under the Hood
-- Adds a `safe_cast_bigquery` macro (`SAFE_CAST` on BigQuery, plain `cast` elsewhere) and uses it for the `hist_tax_factor` columns in `bsad`, `bsak`, `bsid`, and `bsik`, replacing the inline logic so the four views stay consistent. Output is unchanged on every destination.
-
 # dbt_sap v0.8.3
 
 ## Bug Fix
