@@ -19,9 +19,4 @@ schema_data_changes:
       `penrc`'
     notes: Adds 15 columns already synced from the source but not previously selected,
       so `bsik` can populate them from `BSEG`/`BKPF` instead of hardcoding blanks.
-under_the_hood:
-- description: Adds a `safe_cast_bigquery` macro (`SAFE_CAST` on BigQuery, plain `cast`
-    elsewhere) and uses it for the `hist_tax_factor` columns in `bsad`, `bsak`, `bsid`,
-    and `bsik`, replacing the inline logic so the four views stay consistent. Output
-    is unchanged on every destination.
 date: '2026-10-22'
