@@ -52,7 +52,8 @@ final as (
         kursf,
         xnetb,
         xstov,
-        xreorg
+        xreorg,
+        penrc
     from fields
     where not coalesce(_fivetran_deleted, false)
 )
