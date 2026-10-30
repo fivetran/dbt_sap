@@ -1,3 +1,10 @@
+# dbt_sap v0.9.1
+
+[PR #61](https://github.com/fivetran/dbt_sap/pull/61) includes the following updates:
+
+## Under the Hood
+- Moves the `view` materialization for `int_cosp__acdoca_derived` from the model file to `dbt_project.yml`. The model still builds as a view, and you can override its materialization from your root `dbt_project.yml`, for example to a table on destinations that don't support views.
+
 # dbt_sap v0.9.0
 
 [PR #57](https://github.com/fivetran/dbt_sap/pull/57) includes the following updates:
