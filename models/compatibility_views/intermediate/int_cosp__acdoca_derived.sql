@@ -1,6 +1,5 @@
 {{
     config(
-        materialized='view',
         enabled=var('sap_using_acdoca', True) and
                 var('sap_using_coep', True) and
                 var('sap_using_finsc_cmp_versnd', True) and
