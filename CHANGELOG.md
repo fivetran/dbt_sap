@@ -1,3 +1,13 @@
+# dbt_sap v0.10.0
+
+## Schema/Data Change
+**2 total changes • 2 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ------------- | ----------- | --- | --- | ----- |
+| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak), [`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik) | Changed field (breaking) | `kzbtr` is a string | `kzbtr` is numeric | `kzbtr` is an amount, so it now uses the numeric type instead of a temporary string cast. If you reference `kzbtr` downstream, update any logic that expects a string. |
+| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak) | Changed field (breaking) | `zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`, `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, and `xesrd` are blank or zero for cleared (open-item-reversal) records | These columns now populate from `BSEG`/`BKPF` for cleared records, fixing a bug where the cleared-items branch hardcoded them to blank or zero even though the source data was available | If you see values in these columns where you previously saw blanks or zeros, this is expected. |
+
 # dbt_sap v0.9.1
 
 [PR #61](https://github.com/fivetran/dbt_sap/pull/61) includes the following updates:

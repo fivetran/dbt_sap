@@ -112,7 +112,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
 ```
 
