@@ -1,0 +1,25 @@
+version: 0.10.0
+pr_number: 64
+is_breaking: true
+schema_data_changes:
+  entries:
+  - models:
+    - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
+    change_type: Changed field/model
+    old: '`zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`,
+      `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, `xesrd` hardcoded to blank/zero
+      for cleared (non-archived) records'
+    new: Populated from `BSEG`/`BKPF`, matching the pattern already used by `bsik`
+    is_breaking: true
+    notes: 'archived_records (sourced from the archive table, which genuinely lacks
+      these columns) is unchanged.'
+  - models:
+    - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
+    - '[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)'
+    change_type: Changed field/model
+    old: '`kzbtr` cast as a string'
+    new: '`kzbtr` cast as `dbt.type_numeric()`'
+    is_breaking: true
+    notes: The string cast was a temporary union-compatibility workaround from the
+      `bsik` release (PR #57).
+date: '2026-11-04'
