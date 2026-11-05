@@ -20,5 +20,6 @@ schema_data_changes:
     old: '`kzbtr` cast as a string'
     new: '`kzbtr` cast as `dbt.type_numeric()`'
     is_breaking: true
-    notes: "The string cast was a temporary union-compatibility workaround from the `bsik` release ([PR #57](https://github.com/fivetran/dbt_sap/pull/57))."
+    notes: 'The string cast was a temporary union-compatibility workaround from the
+      `bsik` release ([PR #57](https://github.com/fivetran/dbt_sap/pull/57)).'
 date: '2026-11-04'
