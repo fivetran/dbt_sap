@@ -152,7 +152,7 @@ select
   cast(i.kostl as {{ dbt.type_string() }}) as kostl,
   cast(i.lnran as {{ dbt.type_string() }}) as lnran,
   cast(h.xstov as {{ dbt.type_string() }}) as xstov,
-  cast(i.kzbtr as {{ dbt.type_string() }}) as kzbtr,
+  cast(i.kzbtr as {{ dbt.type_numeric() }}) as kzbtr,
   cast(i.xref1 as {{ dbt.type_string() }}) as xref1,
   cast(i.xref2 as {{ dbt.type_string() }}) as xref2,
   case
