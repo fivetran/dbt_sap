@@ -1,12 +1,14 @@
 # dbt_sap v0.10.0
 
-## Schema/Data Change
+[PR #64](https://github.com/fivetran/dbt_sap/pull/64) includes the following updates:
+
+## Schema/Data Change (--full-refresh required after upgrading)
 **2 total changes • 2 possible breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ------------- | ----------- | --- | --- | ----- |
-| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak), [`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik) | Changed field (breaking) | `kzbtr` is a string | `kzbtr` is numeric | `kzbtr` is an amount, so it now uses the numeric type instead of a temporary string cast. If you reference `kzbtr` downstream, update any logic that expects a string. |
-| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak) | Changed field (breaking) | `zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`, `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, and `xesrd` are blank or zero for cleared (open-item-reversal) records | These columns now populate from `BSEG`/`BKPF` for cleared records, fixing a bug where the cleared-items branch hardcoded them to blank or zero even though the source data was available | If you see values in these columns where you previously saw blanks or zeros, this is expected. |
+| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)<br>(Breaking) | Changed field/model | `zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`, `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, `xesrd` hardcoded to blank/zero for cleared (non-archived) records | Populated from `BSEG`/`BKPF`, matching the pattern already used by `bsik` | archived_records (sourced from the archive table, which genuinely lacks these columns) is unchanged. |
+| [`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)<br>[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)<br>(Breaking) | Changed field/model | `kzbtr` cast as a string | `kzbtr` cast as `dbt.type_numeric()` | The string cast was a temporary union-compatibility workaround from the `bsik` release (PR |
 
 # dbt_sap v0.9.1
 

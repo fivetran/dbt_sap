@@ -11,8 +11,8 @@ schema_data_changes:
       for cleared (non-archived) records'
     new: Populated from `BSEG`/`BKPF`, matching the pattern already used by `bsik`
     is_breaking: true
-    notes: 'archived_records (sourced from the archive table, which genuinely lacks
-      these columns) is unchanged.'
+    notes: archived_records (sourced from the archive table, which genuinely lacks
+      these columns) is unchanged.
   - models:
     - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
     - '[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)'
@@ -21,5 +21,5 @@ schema_data_changes:
     new: '`kzbtr` cast as `dbt.type_numeric()`'
     is_breaking: true
     notes: The string cast was a temporary union-compatibility workaround from the
-      `bsik` release (PR #57).
+      `bsik` release (PR
 date: '2026-11-04'
