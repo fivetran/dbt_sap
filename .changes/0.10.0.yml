@@ -11,8 +11,8 @@ schema_data_changes:
       for cleared (non-archived) records'
     new: Populated from `BSEG`/`BKPF`, matching the pattern already used by `bsik`
     is_breaking: true
-    notes: archived_records (sourced from the archive table, which genuinely lacks
-      these columns) is unchanged.
+    notes: Archived records from `stg_sap__bsak_bck` are unchanged, because the archive
+      table doesn't have these columns.
   - models:
     - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
     - '[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)'
