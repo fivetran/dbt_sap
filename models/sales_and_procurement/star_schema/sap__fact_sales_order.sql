@@ -53,12 +53,12 @@ with sales_document_header as (
         , sales_document_item.product_hierarchy_id
         , sales_document_item.base_uom_id
         , case
-            when sales_document_header.sd_document_category = 'c' then sales_document_item.order_quantity
+            when sales_document_header.sd_document_category = 'C' then sales_document_item.order_quantity
             else sales_document_item.order_quantity * -1
         end as order_quantity
         , sales_document_item.sales_uom_id
         , case
-            when sales_document_header.sd_document_category = 'c' then sales_document_item.net_val
+            when sales_document_header.sd_document_category = 'C' then sales_document_item.net_val
             else sales_document_item.net_val * -1
         end as net_value
         , sales_document_item.net_price_val as net_price
@@ -97,7 +97,7 @@ with sales_document_header as (
         and sales_document_item.sales_document_item_id = sales_document_item_status.sd_item_id
     {% endif %}
 
-    where sales_document_header.sd_document_category in ('c', 'h')
+    where sales_document_header.sd_document_category in ('C', 'H')
 )
 
 select *
