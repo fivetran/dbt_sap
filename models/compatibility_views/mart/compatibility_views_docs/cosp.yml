@@ -3,6 +3,24 @@ version: 2
 models:
   - name: cosp
     description: Cost Object Line Items Summary (COSP) compatibility view - Provides aggregated period-wise cost and quantity data for cost objects, combining archived COSP_BAK data with derived ACDOCA data
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - lednr
+              - objnr
+              - gjahr
+              - wrttp
+              - versn
+              - kstar
+              - hrkft
+              - vrgng
+              - vbund
+              - pargb
+              - beknz
+              - twaer
+              - perbl
     columns:
       - name: mandt
         description: Client (mandant) identifier

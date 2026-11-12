@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__t503
     description: Employee group/subgroup
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - persg
+              - persk
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__vbup
     description: Sales document status (item level)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - posnr
+              - vbeln
     columns:
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker

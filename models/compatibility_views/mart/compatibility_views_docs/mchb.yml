@@ -3,6 +3,15 @@ version: 2
 models:
   - name: mchb
     description: Batch Stocks (MCHB) compatibility view - Contains batch-specific stock quantities and valuations for each material and storage location
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - matnr
+              - werks
+              - lgort
+              - charg
     columns:
       - name: mandt
         description: Client (mandant) identifier

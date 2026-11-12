@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__t134
     description: Material types
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mtart
+              - mandt
+              - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

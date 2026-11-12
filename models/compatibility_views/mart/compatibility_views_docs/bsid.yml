@@ -3,6 +3,21 @@ version: 2
 models:
   - name: bsid
     description: Customer Line Items (BSID) compatibility view (S/4HANA) - Represents open customer items in the classic BSID format, provided via a compatibility view (logically equivalent to the classic FI line item/index content)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - kunnr
+              - umsks
+              - umskz
+              - augdt
+              - augbl
+              - zuonr
+              - gjahr
+              - belnr
+              - buzei
     columns:
       - name: mandt
         description: Client (mandant) identifier
