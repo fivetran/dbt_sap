@@ -16,7 +16,7 @@ This dbt package transforms data from Fivetran's SAP connector into analytics-re
   - [DAG](https://fivetran.github.io/dbt_sap/#!/overview?g_v=1)
   - [Changelog](https://github.com/fivetran/dbt_sap/blob/main/CHANGELOG.md)
 - dbt Core™ supported versions
-  - `>=1.3.0, <3.0.0`
+  - `>=1.10.0, <3.0.0`
 
 ## What does this dbt package do?
 This package enables you to recreate common SAP extractor reports, provide a star schema for analyzing sales and purchase orders, and generate compatibility views. It creates enriched models with metrics focused on general ledger balances, sales and procurement transactions, and master data attributes.
@@ -112,7 +112,7 @@ Include the following sap package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/sap
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
 ```
 
