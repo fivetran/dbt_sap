@@ -3,6 +3,11 @@ version: 2
 models:
   - name: stg_sap__tj01
     description: System status
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - vrgng
     columns:
       - name: vrgng
         description: Business transaction

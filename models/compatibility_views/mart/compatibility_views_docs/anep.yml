@@ -10,6 +10,19 @@ models:
       posted asset's group asset (anlgr/anlgr2) when it differs from the posted asset, so postings
       to a member asset also roll up under its group asset — matching FAAV_ANEP1's second branch.
       Requires sap_using_acdoca, sap_using_finsc_ledger_rep, and sap_using_finsc_ld_cmp to be true.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - anln1
+              - anln2
+              - gjahr
+              - lnran
+              - afabe
+              - zujhr
+              - zucod
     columns:
       - name: mandt
         description: Client (mandant) identifier

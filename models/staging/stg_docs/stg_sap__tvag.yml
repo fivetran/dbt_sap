@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_sap__tvag
     description: Sales document rejection reasons
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - abgru
+              - mandt
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

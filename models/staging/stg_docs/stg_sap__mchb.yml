@@ -3,6 +3,15 @@ version: 2
 models:
   - name: stg_sap__mchb
     description: Batch stocks
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - matnr
+              - werks
+              - lgort
+              - charg
     columns:
       - name: _cwm_ceinm
         description: CWM total stock of all restricted batches

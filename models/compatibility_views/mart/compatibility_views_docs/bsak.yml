@@ -3,6 +3,21 @@ version: 2
 models:
   - name: bsak
     description: Vendor Line Items Cleared/Archived (BSAK) compatibility view - Represents cleared vendor items in the classic BSAK format via a compatibility view; depending on configuration it may include archived content.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - lifnr
+              - umsks
+              - umskz
+              - augdt
+              - augbl
+              - zuonr
+              - gjahr
+              - belnr
+              - buzei
     columns:
       - name: mandt
         description: Client (mandant) identifier

@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_sap__t024
     description: Purchasing groups
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - ekgrp
+              - mandt
     columns:
       - name: ekgrp
         description: Purchasing group

@@ -7,6 +7,18 @@ models:
       FAAT_PLAN_VALUES in S/4HANA, with a left join to ANLA to supply the account determination group
       (KTOGR). Requires sap_using_faat_plan_values to be true; sap_using_anla controls whether the
       ANLA join is included.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - gjahr
+              - peraf
+              - afbnr
+              - anln1
+              - anln2
+              - afaber
     columns:
       - name: mandt
         description: Client (mandant) identifier

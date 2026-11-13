@@ -3,6 +3,13 @@ version: 2
 models:
   - name: marc
     description: Material Master Plant Data (MARC) compatibility view - Contains plant-specific material master data including MRP, procurement, and stock information
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - matnr
+              - werks
     columns:
       - name: mandt
         description: Client (mandant) identifier
