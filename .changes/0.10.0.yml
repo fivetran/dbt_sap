@@ -6,13 +6,10 @@ schema_data_changes:
   - models:
     - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
     change_type: Changed field/model
-    old: '`zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`,
-      `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, `xesrd` hardcoded to blank/zero
-      for cleared (non-archived) records'
+    old: '`zollt`, `zolld`, `diekz`, `qsznr`, `lnran`, `zekkn`, `penlc1`, `penlc2`, `penlc3`, `penfc`, `penrc`, `pernr`, `vorgn`, `xesrd` hardcoded to blank/zero for cleared (non-archived) records'
     new: Populated from `BSEG`/`BKPF`, matching the pattern already used by `bsik`
     is_breaking: true
-    notes: Archived records from `stg_sap__bsak_bck` are unchanged, because the archive
-      table doesn't have these columns.
+    notes: Archived records from `stg_sap__bsak_bck` are unchanged, because the archive table doesn't have these columns.
   - models:
     - '[`bsak`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsak)'
     - '[`bsik`](https://fivetran.github.io/dbt_sap/#!/model/model.sap.bsik)'
@@ -20,6 +17,7 @@ schema_data_changes:
     old: '`kzbtr` cast as a string'
     new: '`kzbtr` cast as `dbt.type_numeric()`'
     is_breaking: true
-    notes: 'The string cast was a temporary union-compatibility workaround from the
-      `bsik` release ([PR #57](https://github.com/fivetran/dbt_sap/pull/57)).'
+    notes: 'The string cast was a temporary union-compatibility workaround from the `bsik` release ([PR #57](https://github.com/fivetran/dbt_sap/pull/57)).'
+under_the_hood:
+- description: Adds `dbt_utils.unique_combination_of_columns` tests to the staging and end models. The tests use the `arguments` syntax introduced in dbt v1.10, which the new v1.11.0 minimum supports.
 date: '2026-11-04'
