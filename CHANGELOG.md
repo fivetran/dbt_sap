@@ -6,9 +6,6 @@
 - Raises the minimum dbt version to 1.10.0.
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_sap/issues/new/choose).
 
-## Under the Hood
-- Audits the yml column documentation against the columns each model outputs. The documentation already matched, so nothing changed.
-
 # dbt_sap v0.10.0
 
 [PR #64](https://github.com/fivetran/dbt_sap/pull/64) includes the following updates:
