@@ -3,6 +3,11 @@ version: 2
 models:
   - name: sap__dim_customer
     description: Customer dimension table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - customer_id
     columns:
       - name: customer_number
         description: Unique identifier of the customer in SAP
@@ -17,6 +22,11 @@ models:
 
   - name: sap__dim_material
     description: Material master dimension table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - material_id
     columns:
       - name: material_number
         description: Unique identifier for the material
@@ -37,6 +47,11 @@ models:
 
   - name: sap__dim_plant
     description: Plant/branch dimension table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - plant_id
     columns:
       - name: plant_id
         description: Unique identifier for the plant
@@ -47,6 +62,11 @@ models:
 
   - name: sap__dim_purchasing_order
     description: Purchasing document header attributes
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - purchasing_document_id
     columns:
       - name: purchasing_document_id
         description: Unique ID of the purchasing document
@@ -75,6 +95,11 @@ models:
 
   - name: sap__dim_purchasing_organization
     description: Purchasing organization dimension
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - purchasing_organization_id
     columns:
       - name: company_code_id
         description: Company code assigned to the organization
@@ -85,6 +110,11 @@ models:
 
   - name: sap__dim_rejection_reason
     description: Reasons for purchase/sales document rejections
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - reason_rejection_id
     columns:
       - name: reason_rejection_id
         description: Code for rejection reason
@@ -93,6 +123,11 @@ models:
 
   - name: sap__dim_vendor
     description: Vendor dimension table.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - vendor_id
     columns:
       - name: vendor_id
         description: ID of the vendor
@@ -117,6 +152,12 @@ models:
 
   - name: sap__fact_purchasing_order
     description: Line-level metrics for purchasing documents
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - purchasing_document_id
+              - purchasing_document_item_id
     columns:
       - name: purchasing_document_id
         description: ID of the purchasing document
@@ -193,6 +234,12 @@ models:
 
   - name: sap__fact_sales_order
     description: Line-level sales order facts and metrics
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - sales_document_id
+              - sales_document_item
     columns:
       - name: sales_document_number
         description: Sales document number

@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__finsc_ld_cmp
     description: Financial SCM lead component data
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - rldnr
     columns:
       - name: curposk
         description: Currency position K

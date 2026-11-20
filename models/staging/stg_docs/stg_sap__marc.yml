@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__marc
     description: Plant/storage view material master
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - matnr
+              - werks
     columns:
       - name: _cwm_bwesb
         description: Catch weight GR quantity for purchase orders

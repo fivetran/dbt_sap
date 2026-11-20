@@ -3,6 +3,24 @@ version: 2
 models:
   - name: coss
     description: Cost Object Summary (COSS) compatibility view - Provides period-wise cost and quantity data for cost objects from controlling documents
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - lednr
+              - objnr
+              - gjahr
+              - wrttp
+              - versn
+              - kstar
+              - hrkft
+              - vrgng
+              - parob
+              - uspob
+              - beknz
+              - twaer
+              - perbl
     columns:
       - name: mandt
         description: Client (mandant) identifier

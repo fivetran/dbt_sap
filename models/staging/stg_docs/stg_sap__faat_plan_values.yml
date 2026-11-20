@@ -3,6 +3,19 @@ version: 2
 models:
   - name: stg_sap__faat_plan_values
     description: Asset accounting planned periodic values (S/4HANA replacement for ANLP)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - anln1
+              - anln2
+              - gjahr
+              - peraf
+              - afaber
+              - zujhr
+              - zucod
     columns:
       - name: mandt
         description: Client

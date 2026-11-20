@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_sap__vbak
     description: Sales document header data
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - vbeln
+              - mandt
     columns:
       - name: _dataaging
         description: Data aging timestamp

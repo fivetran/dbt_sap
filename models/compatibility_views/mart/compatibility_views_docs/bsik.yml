@@ -3,6 +3,21 @@ version: 2
 models:
   - name: bsik
     description: Vendor Open Items (BSIK) compatibility view (S/4HANA) - Represents open vendor items in the classic BSIK format, derived from BSEG vendor line items (koart = 'K') that have not been cleared, joined to BKPF document headers.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - bukrs
+              - lifnr
+              - umsks
+              - umskz
+              - augdt
+              - augbl
+              - zuonr
+              - gjahr
+              - belnr
+              - buzei
     columns:
       - name: mandt
         description: Client (mandant) identifier

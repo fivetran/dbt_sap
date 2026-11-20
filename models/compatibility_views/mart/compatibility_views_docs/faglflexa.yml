@@ -3,6 +3,16 @@ version: 2
 models:
   - name: faglflexa
     description: Financial General Ledger Line Items (FAGLFLEXA) compatibility view - Provides detailed line item data from financial accounting documents
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - rclnt
+              - ryear
+              - docnr
+              - rldnr
+              - rbukrs
+              - docln
     columns:
       - name: rclnt
         description: Client (mandant) identifier

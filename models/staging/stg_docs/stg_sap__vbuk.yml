@@ -3,6 +3,13 @@ version: 2
 models:
   - name: stg_sap__vbuk
     description: Sales document status (header)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - vbeln
+              - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

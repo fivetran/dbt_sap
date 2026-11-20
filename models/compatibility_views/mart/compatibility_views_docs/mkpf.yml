@@ -3,6 +3,13 @@ version: 2
 models:
   - name: mkpf
     description: Material Document Header (MKPF) compatibility view - Contains header-level information for material documents from goods movements
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - mblnr
+              - mjahr
     columns:
       - name: _cwm_erfme
         description: Unit of the entry

@@ -8,6 +8,23 @@ models:
       year and pivoted into 16 period columns (TSL01–TSL16, HSL01–HSL16, KSL01–KSL16, OSL01–OSL16,
       MSL01–MSL16) plus a carry-forward column (*VT). Requires sap_using_acdoca,
       sap_using_finsc_ledger_rep, and sap_using_finsc_ld_cmp to be true.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - rclnt
+              - ryear
+              - objnr00
+              - objnr01
+              - objnr02
+              - objnr03
+              - objnr04
+              - objnr05
+              - objnr06
+              - objnr07
+              - objnr08
+              - drcrk
+              - rpmax
     columns:
       - name: rclnt
         description: Client (mandant) identifier

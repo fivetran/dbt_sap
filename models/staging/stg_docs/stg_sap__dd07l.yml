@@ -3,6 +3,15 @@ version: 2
 models:
   - name: stg_sap__dd07l
     description: Domain values
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - as4vers
+              - valpos
+              - as4local
+              - domname
+              - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

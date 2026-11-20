@@ -3,6 +3,19 @@ version: 2
 models:
   - name: stg_sap__ekbe
     description: Purchasing document history
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - zekkn
+              - gjahr
+              - belnr
+              - vgabe
+              - ebelp
+              - ebeln
+              - mandt
+              - buzei
+              - hvr_change_time
     columns:
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker

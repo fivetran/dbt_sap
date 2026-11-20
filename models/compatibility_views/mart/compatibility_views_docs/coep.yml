@@ -3,6 +3,14 @@ version: 2
 models:
   - name: coep
     description: Controlling Object Line Items (COEP) compatibility view - Provides detailed line item data for controlling documents, combining original COEP table data with derived data from ACDOCA
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - kokrs
+              - belnr
+              - buzei
     columns:
       - name: mandt
         description: Client (mandant) identifier

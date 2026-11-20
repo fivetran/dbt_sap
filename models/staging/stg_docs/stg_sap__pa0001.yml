@@ -3,6 +3,18 @@ version: 2
 models:
   - name: stg_sap__pa0001
     description: HR master record--infotype 0001 (org. assignment)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - pernr
+              - subty
+              - objps
+              - sprps
+              - endda
+              - begda
+              - seqnr
     columns:
       - name: abkrs
         description: Payroll area

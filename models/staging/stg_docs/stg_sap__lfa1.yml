@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_sap__lfa1
     description: Vendor master (General section)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - lifnr
     columns:
       - name: mandt
         description: Client
