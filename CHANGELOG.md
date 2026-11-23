@@ -1,3 +1,8 @@
+# dbt_sap v0.10.1
+
+## Bug Fix
+- Updates the Quickstart table variables for `sap_using_sapsll_clsnr`, `sap_using_sapsll_maritc`, `sap_using_sapsll_nosca`, and `sap_using_sapsll_tunos` in `.quickstart/quickstart.yml` to use the SAP source table names (for example, `/SAPSLL/CLSNR`) instead of the destination names (for example, `_SAPSLL_CLSNR`). Before this fix, Quickstart could not find these tables, set the variables to `false`, and skipped the `marc` model.
+
 # dbt_sap v0.10.0
 
 [PR #64](https://github.com/fivetran/dbt_sap/pull/64) includes the following updates:
