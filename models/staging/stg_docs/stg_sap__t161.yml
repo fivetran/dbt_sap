@@ -10,7 +10,6 @@ models:
               - bstyp
               - bsart
               - mandt
-              - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

@@ -12,7 +12,6 @@ models:
               - ddlanguage
               - domname
               - valpos
-              - hvr_change_time
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

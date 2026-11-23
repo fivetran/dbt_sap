@@ -10,7 +10,6 @@ models:
               - mandt
               - ebelp
               - ebeln
-              - hvr_change_time
     columns:
       - name: _accgo_is_co_rel
         description: CO-relevant indicator

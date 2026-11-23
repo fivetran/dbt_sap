@@ -15,7 +15,6 @@ models:
               - ebeln
               - mandt
               - buzei
-              - hvr_change_time
     columns:
       - name: _fivetran_sap_archived
         description: Fivetran SAP archive marker

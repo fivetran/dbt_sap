@@ -9,7 +9,6 @@ models:
             combination_of_columns:
               - werks
               - mandt
-              - hvr_change_time
     columns:
       - name: mandt
         description: Client

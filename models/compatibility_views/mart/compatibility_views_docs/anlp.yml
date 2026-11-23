@@ -19,6 +19,8 @@ models:
               - anln1
               - anln2
               - afaber
+              - zujhr
+              - zucod
     columns:
       - name: mandt
         description: Client (mandant) identifier

@@ -21,6 +21,14 @@ models:
               - beknz
               - twaer
               - perbl
+              - meinh
+              - beltp
+              - bukrs
+              - fkber
+              - segment
+              - geber
+              - grant_nbr
+              - budget_pd
     columns:
       - name: mandt
         description: Client (mandant) identifier

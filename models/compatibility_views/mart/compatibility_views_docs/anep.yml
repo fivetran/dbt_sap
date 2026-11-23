@@ -23,6 +23,12 @@ models:
               - afabe
               - zujhr
               - zucod
+              - belnr
+              - buzei
+              - bzdat
+              - bwasl
+              - lnsan
+              - augln
     columns:
       - name: mandt
         description: Client (mandant) identifier

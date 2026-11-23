@@ -240,6 +240,8 @@ models:
             combination_of_columns:
               - sales_document_id
               - sales_document_item
+          config:
+            enabled: "{{ var('sap_using_vbap', true) }}"
     columns:
       - name: sales_document_number
         description: Sales document number

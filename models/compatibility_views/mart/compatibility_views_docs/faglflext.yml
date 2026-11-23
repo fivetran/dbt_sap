@@ -25,6 +25,30 @@ models:
               - objnr08
               - drcrk
               - rpmax
+              - activ
+              - rmvct
+              - rtcur
+              - runit
+              - awtyp
+              - rldnr
+              - rrcty
+              - rvers
+              - logsys
+              - racct
+              - cost_elem
+              - rbukrs
+              - rcntr
+              - prctr
+              - rfarea
+              - rbusa
+              - kokrs
+              - segment
+              - scntr
+              - pprctr
+              - sfarea
+              - sbusa
+              - rassc
+              - psegment
     columns:
       - name: rclnt
         description: Client (mandant) identifier
