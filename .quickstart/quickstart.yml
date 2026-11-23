@@ -89,13 +89,13 @@ table_variables:
   sap_using_vbup:
     - VBUP
   sap_using_sapsll_clsnr:
-    - /SAPSLL/CLSNR
+    - "/SAPSLL/CLSNR"
   sap_using_sapsll_maritc:
-    - /SAPSLL/MARITC
+    - "/SAPSLL/MARITC"
   sap_using_sapsll_nosca:
-    - /SAPSLL/NOSCA
+    - "/SAPSLL/NOSCA"
   sap_using_sapsll_tunos:
-    - /SAPSLL/TUNOS
+    - "/SAPSLL/TUNOS"
   sap_using_acdoca:
     - ACDOCA
   sap_using_finsc_cmp_versnd:
