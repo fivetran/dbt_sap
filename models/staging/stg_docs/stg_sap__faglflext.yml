@@ -3,6 +3,23 @@ version: 2
 models:
   - name: stg_sap__faglflext
     description: General ledger (Totals)
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - rclnt
+              - ryear
+              - objnr00
+              - objnr01
+              - objnr02
+              - objnr03
+              - objnr04
+              - objnr05
+              - objnr06
+              - objnr07
+              - objnr08
+              - drcrk
+              - rpmax
     columns:
       - name: activ
         description: FI-SL business transaction

@@ -3,6 +3,14 @@ version: 2
 models:
   - name: stg_sap__t161t
     description: Purchasing doc type texts
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - bstyp
+              - bsart
+              - mandt
+              - spras
     columns:
       - name: _fivetran_rowid
         description: Fivetran unique row ID

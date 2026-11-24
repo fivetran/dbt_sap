@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_sap__kna1
     description: General Data in Customer Master
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - mandt
+              - kunnr
     columns:
       - name: abrvw
         description: Usage indicator
