@@ -7,11 +7,4 @@ new_features:
     Each test uses the table's primary key from the SAP data dictionary, as documented
     in the [LeanX SAP table reference](https://leanx.eu/). If a test fails, please
     [open an issue](https://github.com/fivetran/dbt_sap/issues/new/choose).
-bug_fixes:
-- description: Updates the Quickstart table variables for `sap_using_sapsll_clsnr`,
-    `sap_using_sapsll_maritc`, `sap_using_sapsll_nosca`, and `sap_using_sapsll_tunos`
-    in `.quickstart/quickstart.yml` to use the SAP source table names (for example,
-    `/SAPSLL/CLSNR`) instead of the destination names (for example, `_SAPSLL_CLSNR`).
-    Before this fix, Quickstart could not find these tables, set the variables to
-    `false`, and skipped the `marc` model.
 date: '2026-11-18'
