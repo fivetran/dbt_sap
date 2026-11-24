@@ -59,7 +59,7 @@ with t134 as (
     left join t134t
         on t134.mandt = t134t.mandt
         and t134.mtart = t134t.mtart
-        and t134t.spras = 'e'
+        and upper(t134t.spras) = 'E'
     {% endif %}
 )
 

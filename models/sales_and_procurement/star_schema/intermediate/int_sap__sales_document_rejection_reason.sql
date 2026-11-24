@@ -30,7 +30,7 @@ with tvag as (
     left join tvagt
         on tvag.mandt = tvagt.mandt
         and tvag.abgru = tvagt.abgru
-        and tvagt.spras = 'e'
+        and upper(tvagt.spras) = 'E'
     {% endif %}
 )
 

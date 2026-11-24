@@ -23,10 +23,10 @@ with dd07l as (
         on dd07l.domname = dd07t.domname
         and dd07l.domvalue_l = dd07t.domvalue_l
         and dd07l.as4vers = dd07t.as4vers
-        and dd07t.ddlanguage in ('e')
+        and upper(dd07t.ddlanguage) in ('E')
     {% endif %}
 
-    where dd07l.domname = 'bstyp'
+    where upper(dd07l.domname) = 'BSTYP'
         and dd07l.as4vers = '0000'
 )
 

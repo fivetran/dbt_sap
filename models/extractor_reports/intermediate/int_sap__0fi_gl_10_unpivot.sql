@@ -43,10 +43,10 @@ final as (
   		  when left(fieldtype, 1) = 'o' then '40'
   		end as currency_type,
 		'0' || case when right(fieldtype, 2) = 'vt' then '00' else right(fieldtype, 2) end|| '.' || ryear as fiscal_period,
-		case when drcrk = 's' and substring(fieldtype,3,1) = 'l' then value 
+		case when upper(drcrk) = 'S' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as debit_amount,
-		case when drcrk = 'h' and substring(fieldtype,3,1) = 'l' then value 
+		case when upper(drcrk) = 'H' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as credit_amount,
 		case when substring(fieldtype,3,1) = 'm' then value 
@@ -237,10 +237,10 @@ final as (
 			when left(fieldtype,1) = 'o' then '40' 
 			end as currency_type,
 		'0' || case when right(fieldtype, 2) = 'vt' then '00' else right(fieldtype, 2) end|| '.' || ryear as fiscal_period, 
-		case when drcrk = 's' and substring(fieldtype,3,1) = 'l' then value 
+		case when upper(drcrk) = 'S' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as debit_amount,
-		case when drcrk = 'h' and substring(fieldtype,3,1) = 'l' then value 
+		case when upper(drcrk) = 'H' and substring(fieldtype,3,1) = 'l' then value 
 			else 0 
 			end as credit_amount,
 		case when substring(fieldtype,3,1) = 'm' then value 
