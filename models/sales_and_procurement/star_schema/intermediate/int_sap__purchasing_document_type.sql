@@ -78,7 +78,7 @@ with t161 as (
         on t161.mandt = t161t.mandt
         and t161.bsart = t161t.bsart
         and t161.bstyp = t161t.bstyp
-        and t161t.spras = 'e'
+        and upper(t161t.spras) = 'E'
     {% endif %}
 )
 
