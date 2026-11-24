@@ -4,10 +4,7 @@
 
 ## Feature Update
 - **Breaking change**: Raises the minimum dbt version to 1.10.0.
-- Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_sap/issues/new/choose).
-
-## Bug Fix
-- Updates the Quickstart table variables for `sap_using_sapsll_clsnr`, `sap_using_sapsll_maritc`, `sap_using_sapsll_nosca`, and `sap_using_sapsll_tunos` in `.quickstart/quickstart.yml` to use the SAP source table names (for example, `/SAPSLL/CLSNR`) instead of the destination names (for example, `_SAPSLL_CLSNR`). Before this fix, Quickstart could not find these tables, set the variables to `false`, and skipped the `marc` model.
+- Adds `dbt_utils.unique_combination_of_columns` tests to staging models. Each test uses the table's primary key from the SAP data dictionary, as documented in the [LeanX SAP table reference](https://leanx.eu/). If a test fails, please [open an issue](https://github.com/fivetran/dbt_sap/issues/new/choose).
 
 # dbt_sap v0.10.0
 
